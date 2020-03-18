@@ -1,4 +1,4 @@
-Tutorials
+#Tutorials
 
 Godot Engine Tutorial Series
 https://www.gamefromscratch.com/page/Godot-Game-Engine-tutorial-series.aspx
@@ -6,7 +6,7 @@ https://www.gamefromscratch.com/page/Godot-Game-Engine-tutorial-series.aspx
 Godot - Step by Step
 https://docs.godotengine.org/en/stable/getting_started/step_by_step/
 
-Articles
+#Articles
 
 5 Things Never to Do When You’re Creating Games
 https://www.buildbox.com/creating-games-5-things-you-should-never-do/?fbclid=IwAR2OJ4mQFpvpWBd3eBqzcTsiJ0WyKib_rAKj2_ZI4NmZkMh-42ghUvLRlLc
