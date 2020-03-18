@@ -13,3 +13,6 @@ https://www.buildbox.com/creating-games-5-things-you-should-never-do/?fbclid=IwA
 
 Shneiderman’s Eight Golden Rules Will Help You Design Better Interfaces
 https://www.interaction-design.org/literature/article/shneiderman-s-eight-golden-rules-will-help-you-design-better-interfaces
+
+Video game UI: The design process explained
+https://medium.com/@a_kill_/video-game-ui-the-design-process-explained-14c23fa70d37
