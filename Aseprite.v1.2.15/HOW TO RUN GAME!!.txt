@@ -1,3 +1,0 @@
-To play game, go inside the 'Aseprite' folder, right click and run 'Aseprite' as administrator
-
-If you get any missing dll errors, go inside the _Redist folder and install 'dxwebsetup'
