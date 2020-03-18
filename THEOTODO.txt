@@ -6,7 +6,7 @@ Things to do
     GingerBreadMen Productions
 	Powered by Godot
 
-2) Link to Main Menu
+2)  Main Menu - Consider background (live?)
 
 	   Game Name
 	
