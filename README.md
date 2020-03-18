@@ -1,2 +1,4 @@
 # GingeBreadMen
-Orbital game 2020
+Orbital 2020 Project
+
+A 2D platformer made with Godot.
