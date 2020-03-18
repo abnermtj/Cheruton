@@ -1,0 +1,28 @@
+Things to do
+
+1) Implement Logo Screen
+
+	Picture Picture
+    GingerBreadMen Productions
+	Powered by Godot
+
+2)  Main Menu - Consider background (live?)
+
+	   Game Name
+	
+	Button: Play
+	Button: Settings
+	Button: Exit
+
+3) Implement exit function
+
+	New screen confirming exit: Do you want to exit the game 
+	Button: Yes - exit  Button: No - close screen `
+
+4) Settings
+	New Scene: 
+		Volume: UP button
+		Volume: DOWN button
+		Volume Indicator (BAR)
+
+		
