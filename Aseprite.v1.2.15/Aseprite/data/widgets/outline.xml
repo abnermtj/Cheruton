@@ -1,0 +1,43 @@
+<!-- Aseprite -->
+<!-- Copyright (C) 2019 by Igara Studio S.A. -->
+<gui>
+  <vbox id="outline" expansive="true">
+    <grid columns="2">
+      <label text="@.color" />
+      <colorpicker id="color" cell_align="horizontal" />
+      <label text="@.bg_color" />
+      <colorpicker id="bg_color" cell_align="horizontal" />
+    </grid>
+    <hbox>
+      <vbox>
+	<hbox>
+	  <buttonset id="outline_type" columns="2">
+            <item icon="outline_circle" tooltip="@.circle" tooltip_dir="right" />
+            <item icon="outline_square" tooltip="@.square" tooltip_dir="left" />
+            <item icon="outline_horizontal" tooltip="@.horizontal" tooltip_dir="right" />
+            <item icon="outline_vertical" tooltip="@.vertical" tooltip_dir="left" />
+	  </buttonset>
+	</hbox>
+	<hbox>
+	  <buttonset id="outline_matrix" columns="3">
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+            <item icon="outline_empty_pixel" />
+	  </buttonset>
+	</hbox>
+      </vbox>
+      <vbox>
+	<buttonset id="place" columns="1">
+	  <item text="@.outside" />
+	  <item text="@.inside" />
+	</buttonset>
+      </vbox>
+    </hbox>
+  </vbox>
+</gui>

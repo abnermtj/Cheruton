@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!-- metadata and title -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Convert any picture into pixel-art sprites!">
+      <meta name="author" content="Ronen Ness">
+      <meta name="keywords" content="Pixel Art,GameDev,Game,Game Development,Tools,Drawing,Sprites,Game Graphics,Graphics,Create Sprites,Game Art,Pixels,Old School">
+      <link rel="shortcut icon" href="icon.ico" />
+      <title>Pixelator</title>
+
+      <!-- this hack is required to make bootstrap work -->
+      <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+      <!-- Bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <!-- Bootstrap and jquery js -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+      <!-- color picker -->
+      <link rel="stylesheet" href="css/bootstrap-colorpicker.min.css">
+
+      <!-- Custom styling -->
+      <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body style="overflow-y: hidden">
+
+      <!-- get the remote object to communicate with the main app -->
+      <script>
+        window.ipc = require('electron').remote.app._IPC;
+        window.ipc.log("Renderer IPC works.");
+        window._pixelatorPath = window.ipc.getPixelatorPath();
+        window._previewPath = window.ipc.getPreviewImagePath();
+        window._licensePath = window.ipc.getLicensePath();
+      </script>
+
+      <!-- clear cache -->
+      <script>
+        var remote = require('electron').remote;
+        var win = remote.getCurrentWindow();
+        win.webContents.session.clearCache(function(){
+          // done clearing cache
+        });
+      </script>
+
+      <!-- top navbar -->
+      <nav class="navbar navbar-inverse" style="border-radius: 0px;">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+
+              <!-- file menu -->
+              <li class="dropdown" style="display:inline-block;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#file">File	&nbsp; </a>
+                <ul class="dropdown-menu">
+                  <li><a id="menuNewProject" href="#">New Project</a></li>
+                  <li><a id="menuOpenProject" href="#">Open Project</a></li>
+                  <li><a id="menuSaveProject" href="#">Save Project</a></li>
+                  <li><a id="menuSaveProjectAs" href="#">Save Project As..</a></li>
+                  <li><a id="menuExportImage" href="#">Export Image As..</a></li>
+                  <li><a id="menuExit" href="#">Exit</a></li>
+                </ul>
+              </li>
+
+              <!-- edit menu -->
+              <li class="dropdown" style="display:inline-block;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#edit">Edit	&nbsp; </a>
+                <ul class="dropdown-menu">
+                    <li><a id="menuEditUndo" href="#">Undo Last Action</a></li>
+                  <li><a id="menuEditSaveCurrentAsDefault" href="#">Save Current As Default</a></li>
+                  <li><a id="menuEditResetDefaults" href="#">Delete Saved Defaults</a></li>
+                  <li><a id="menuEditShowDefaults" href="#">Show Saved Defaults</a></li>
+                  <li><a id="copyPreviewToClipboard" href="#">Copy Preview To Clipboard</a></li>
+                </ul>
+              </li>
+
+              <!-- show menu -->
+              <li class="dropdown" style="display:inline-block;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#show">View	&nbsp; </a>
+                <ul class="dropdown-menu">
+                  <li><a id="menuShowSourceFile" href="#">Open Source File</a></li>
+                  <li><a id="menuShowSourceFileLocation" href="#">Source File Location</a></li>
+                  <li><a id="menuRotatePreviewPanels" href="#">Rotate Preview Panels</a></li>
+                  <li><a id="menuShowShellCmd" href="#">Shell Command</a></li>
+                  <li><a id="menuShowLicense" href="#">License</a></li>
+                </ul>
+              </li>
+
+              <!-- update / buy menu -->
+              <li class="dropdown" style="display:inline-block;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#show">Update / Buy	&nbsp; </a>
+                <ul class="dropdown-menu">
+                  <li><a id="menuCheckForUpdates" href="#">Check For Updates</a></li>
+                  <li><a id="menuBuyLicense" href="#">Buy License</a></li>
+                  <li><a id="menuApplyLicense" href="#">Apply License</a></li>
+                </ul>
+              </li>
+
+            <!-- help -->
+              <li class="dropdown" style="display:inline-block;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#show">Help	&nbsp; </a>
+                <ul class="dropdown-menu">
+                  <li><a id="menuShowEulaDetails" href="#">Read EULA</a></li>
+                  <li><a id="menuShowOnlineHelp" href="#">Online Help</a></li>
+                  <li><a id="menuAbout" href="#">About</a></li>
+                </ul>
+              </li>
+
+          </ul>
+        </div>
+      </nav>
+
+      <!-- main content -->
+      <div class="container" style="width: 100%;">
+        <div class="row row-fluid">
+
+          <!-- project settings -->
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+            <form id="project-settings" style="overflow-y: auto">
+
+            <!-- Input menu -->
+            <a class="submenu" data-toggle="collapse" href="#inputDiv" role="button" aria-expanded="true" aria-controls="inputDiv">
+                <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>
+                Input Image
+              </a>
+              <div class="collapse in" id="inputDiv">
+                <div class="card card-body">
+
+                <!-- source file -->
+                <div class="form-group" data-toggle="tooltip" title="Pick the source image to process." style="margin-top:-5px">
+                  <label for="SourceFile">Source File:</label><br />
+                  <input type="file" accept="image/*" class="form-control-file" id="SourceFile" aria-describedby="fileHelp" style="display:none;">
+                  <a href="#" style="cursor:pointer; font-size:120%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; display:inline-block;" id="SourceFileShow" onclick="$('#SourceFile').click();">No source file selected.</a>
+                </div>
+              </div>
+            </div>
+            <hr class="divHr" />
+
+            <!-- Pixelation menu -->
+            <a class="submenu" data-toggle="collapse" href="#pixelateDiv" role="button" aria-expanded="false" aria-controls="pixelateDiv">
+                <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>                
+                Pixelation
+              </a>
+              <div class="collapse" id="pixelateDiv">
+                <div class="card card-body">
+
+                  <!-- pixelate factor -->
+                  <div class="form-group" data-toggle="tooltip" title="How much to pixelate the image.">
+                    <div class="slider-placeholder" id="PixelateFactor" data-label="Pixelate Factor" data-val="5.0" data-min="1.0" data-max="50.0"></div>
+                  </div>
+
+                  <!-- resize to actual pixels -->
+                  <div class="checkbox" data-toggle="tooltip" title="If checked, will resize output image to minimum size.">
+                    <label><input id="ResizeResult" type="checkbox" >Resize result to actual pixels</label>
+                  </div>
+
+                </div>
+              </div>
+              <hr class="divHr" />
+                  
+              <!-- Colors and palette menu -->
+              <a class="submenu" data-toggle="collapse" href="#colorsDiv" role="button" aria-expanded="false" aria-controls="colorsDiv">
+                  <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                  <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>                
+                Colors & Palette
+              </a>
+              <div class="collapse" id="colorsDiv">
+                <div class="card card-body">
+                  
+                  <!-- palette mode -->
+                  <div class="form-group" data-toggle="tooltip" title="Choose how we build the colors palette." style="margin-top:-5px">
+                    <label for="PaletteType">Palette Type:</label>
+                    <select class="form-control" id="PaletteType">
+                      <option value="adaptive" selected>Adaptive</option>
+                      <option value="web">Web</option>
+                      <option value="mixed">Mixed</option>
+                      <option value="dither">Dither</option>
+                      <option value="file">From File</option>
+                      <option value="file_dither">From File With Dither</option>
+                    </select>
+                  </div>
+
+                  <!-- colors count -->
+                  <div id="colors-count-div" class="form-group" data-toggle="tooltip" title="How many colors to allow in palette." >
+                    <div class="slider-placeholder" id="ColorsInPalette" data-label="Colors In Palette" data-val="8" data-min="0" data-max="256"></div>
+                  </div>
+
+                  <!-- palette file -->
+                  <div id="palette-file-div" class="form-group" data-toggle="tooltip" title="Pick palette file. See palettes/ folder for examples." style="display:none;">
+                    <label for="PaletteFile">Palette File:</label><br />
+                    <input type="file" accept="image/*" class="form-control-file" id="PaletteFile" aria-describedby="fileHelp" style="display:none;">
+                    <a href="#" style="cursor:pointer; font-size:120%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; display:inline-block;" id="PaletteFileShow" onclick="$('#PaletteFile').click();">No palette file selected.</a>
+                  </div>
+
+                  <!-- saturation / enhance factor -->
+                  <div class="form-group" data-toggle="tooltip" title="How much to enhance colors / increase saturation.">
+                    <div class="slider-placeholder" id="EnhanceFactor" data-label="Saturation / Enhance" data-val="20" data-min="0" data-max="100"></div>
+                  </div>
+                      
+                </div>
+              </div>
+              <hr class="divHr" />
+                            
+              <!-- Smoothing menu -->
+              <a class="submenu" data-toggle="collapse" href="#smoothingDiv" role="button" aria-expanded="false" aria-controls="smoothingDiv">
+                  <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                  <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>
+                Smoothing Filter
+              </a>
+              <div class="collapse" id="smoothingDiv">
+                <div class="card card-body">
+
+                  <!-- smoothing factor -->
+                  <div class="form-group" data-toggle="tooltip" title="How much to 'smooth' areas and remove floating pixels.">
+                    <div class="slider-placeholder" id="SmoothFactor" data-label="Smoothing Factor" data-val="2" data-min="0" data-max="8"></div>
+                  </div>
+
+                  <!-- smoothing iterations -->
+                  <div class="form-group" data-toggle="tooltip" title="How many times to apply the smoothing filter.">
+                    <div class="slider-placeholder" id="SmoothIterations" data-label="Smoothing Iterations" data-val="1" data-min="1" data-max="8"></div>
+                  </div>
+
+                </div>
+              </div>
+              <hr class="divHr" />
+              
+              <!-- Background menu -->
+              <a class="submenu" data-toggle="collapse" href="#backgroundDiv" role="button" aria-expanded="false" aria-controls="backgroundDiv">
+                  <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                  <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>
+                Background
+              </a>
+              <div class="collapse" id="backgroundDiv">
+                <div class="card card-body">
+
+                  <!-- opacity threshold -->
+                  <div class="form-group" data-toggle="tooltip" title="All colors with less alpha than this threshold will turn completely transparent.">
+                    <div class="slider-placeholder" id="OpacityThreshold" data-label="Opacity Threshold" data-val="250" data-min="0" data-max="254"></div>
+                  </div>
+
+                  <!-- backgrounds color -->
+                  <div class="form-group" data-toggle="tooltip" title="Optional background color.">
+                    <label for="BackgroundColor">Background Color:</label>
+                    <div id="BackgroundColor" data-format="alias" class="input-group colorpicker-component">
+                      <input type="text" value="transparent" class="form-control" />
+                      <span class="input-group-addon"><i></i></span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <hr class="divHr" />
+
+              <!-- outline menu -->
+              <a class="submenu" data-toggle="collapse" href="#outlineDiv" role="button" aria-expanded="false" aria-controls="outlineDiv">
+                  <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                  <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>
+                Outline
+              </a>
+              <div class="collapse" id="outlineDiv">
+                <div class="card card-body">
+
+                  <!-- stroke type -->
+                  <div class="form-group" data-toggle="tooltip" title="Optional outline to add to result (note: based on alpha channels).">
+                    <label for="StrokeType">Outline Type:</label>
+                    <select class="form-control" id="StrokeType">
+                      <option value="outside" selected>Outside</option>
+                      <option value="inside">Inside</option>
+                      <option value="left">Left Side</option>
+                      <option value="sides_in">Sides In</option>
+                      <option value="sides_out">Sides Out</option>
+                      <option value="none">None</option>
+                    </select>
+                  </div>
+
+                  <!-- stroke color -->
+                  <div class="form-group" data-toggle="tooltip" title="Outline color.">
+                    <label for="StrokeColor">Outline Color:</label>
+                    <div id="StrokeColor" data-format="alias" class="input-group colorpicker-component">
+                      <input type="text" value="Black" class="form-control" />
+                      <span class="input-group-addon"><i></i></span>
+                    </div>
+                  </div>
+
+                  <!-- stroke opacity -->
+                  <div class="form-group" data-toggle="tooltip" title="Outline opacity, relevant especially for 'inside' outline types.">
+                    <div class="slider-placeholder" id="StrokeOpacity" data-label="Outline Opacity [use alpha channel]" data-val="255" data-min="0" data-max="255"></div>
+                  </div>
+
+                  <!-- stroke on color change -->
+                  <div class="form-group" data-toggle="tooltip" title="Will add stroke based on color change, and not just opacity.">
+                    <div class="slider-placeholder" id="StrokeOnColorChange" data-label="Outline On Color Change" data-val="0" data-min="0" data-max="255"></div>
+                  </div>
+
+                  <!-- diagonal stroke -->
+                  <div class="checkbox" data-toggle="tooltip" title="If checked, will add diagonal outline (thicker outlines)." style="">
+                    <label><input id="DiagonalStroke" type="checkbox">Diagonal Outline</label>
+                  </div>
+
+                  <!-- stroke using palette -->
+                  &nbsp;&nbsp;
+                  <div class="checkbox" data-toggle="tooltip" title="If checked, will use palette colors for outline." style="">
+                    <label><input id="PaletteStroke" type="checkbox">Palette Outline</label>
+                  </div>
+
+                </div>
+              </div>
+              <hr class="divHr" />
+
+            </form>
+          </div>
+
+
+          <!-- source and preview images -->
+          <div class="col-xs-6 col-sm-8 col-md-8 col-lg-9 col-xl-10" style="padding-right: 0px;">
+
+            <!-- preview options -->
+            <div style="position: absolute; right:15px; width: 160px;">
+              <a class="btn btn-primary" style="width:100%" data-toggle="collapse" href="#previewOptionsDiv" role="button" aria-expanded="false" aria-controls="previewOptionsDiv">
+                  <i class="fa-chevron-up pull-left">&#9651; 	&#160;	&#160;</i>
+                  <i class="fa-chevron-down pull-left">&#9661; 	&#160;	&#160;</i>                
+                Preview Options
+              </a>
+              <div class="collapse" id="previewOptionsDiv">
+                <div class="card card-body preview-options" style="background: white; width: 160px;">
+                    
+                    <button type="button" class="btn btn-default" onclick="rebuildPreview(true);">Update Now</button>
+                    
+                    <button type="button" class="btn btn-default" onclick="copyPreviewToClipboard();">Copy To Clipboard</button>
+                    
+                    <button type="button" class="btn btn-default">
+                        <div class="checkbox" style="margin: 0" data-toggle="tooltip" title="If checked will update preview automatically for every change you make." >
+                          <label><input id="AutoUpdate" type="checkbox" checked>Auto update</label>
+                        </div>
+                    </button>
+
+                    <button type="button" class="btn btn-default">
+                        <div class="checkbox" style="margin: 0" data-toggle="tooltip" title="If checked will show preview image in its actual size." >
+                          <label><input id="ActualSize" type="checkbox" onclick="$('.preview-pic').toggleClass('full-size');" >Show Actual Size</label>
+                        </div>
+                    </button>
+
+                  </div>
+              </div>
+            </div>
+
+            <!-- horizontal preview -->
+            <div class="row preview-panel" id="images-h">
+              <div id="source-h" class="split split-horizontal" data-toggle="tooltip" title="Source image preview.">
+                <p class="white-with-stroke" style="position: absolute;">Source Image:</p>
+                <img class="preview-pic full-size source" />
+              </div>
+              <div id="preview-h" class="split split-horizontal" data-toggle="tooltip" title="Result preview. To export image, please click on 'File -> Export Image As..'.">
+                <p class="white-with-stroke" class="preview-status" style="position: absolute;">Preview:</p>
+                <img id="preview-pic-h" class="preview-pic full-size result" />
+              </div>
+            </div>
+
+            <!-- vertical preview -->
+            <div class="row preview-panel" id="images-v">
+              <div id="source-v" class="split split-vertical" data-toggle="tooltip" title="Source image preview.">
+                <p class="white-with-stroke" style="position: absolute;">Source Image:</p>
+                <img class="preview-pic full-size source" />
+              </div>
+              <div id="preview-v" class="split split-vertical" data-toggle="tooltip" title="Result preview. To export image, please click on 'File -> Export Image As..'.">
+                <p class="white-with-stroke" class="preview-status" style="position: absolute;">Preview:</p>
+                <img id="preview-pic-v" class="preview-pic full-size result" />
+              </div>
+            </div>
+
+            <!-- loading spinner -->
+            <div id="loading-spin" style="position:absolute; left:50%; top:50%; display:none;" class="loader"></div>
+
+            <!-- no license warning -->
+            <div id="noLicenseWarning" class="alert alert-danger preview-alert license-alert" style="display:none;">
+              <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <span><strong>This software is unlicensed.</strong> To use Pixelator commercially, please <a href="#" onclick="window.ipc.openInBrowser('http://pixelatorapp.com/buy.html');">buy / get a license</a>.</span>
+            </div>
+
+            <!-- personal license warning -->
+            <div id="personalLicenseWarning" class="alert alert-warning preview-alert license-alert" style="display:none;">
+              <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <span><strong>You have a non commercial license.</strong> To use Pixelator commercially, please <a href="#" onclick="window.ipc.openInBrowser('http://pixelatorapp.com/buy.html');">buy a license</a>.</span>
+            </div>
+
+          </div>
+        </div>
+      </div> <!-- / main content -->
+
+      <!-- misc dependencies -->
+      <script src="js/bootstrap-colorpicker.min.js"></script>
+      <script src="js/split.min.js"></script>
+      <script src="js/bootbox.min.js"></script>
+      <script src="js/tooltip.min.js"></script>
+
+      <!-- import custom scripts -->
+      <script src="js/bundle.js"></script>
+
+      <!-- init tooltips -->
+      <script>
+          // init tooltips
+          $(function () {
+              $('[data-toggle="tooltip"]').tooltip({
+
+                // set tooltip delay
+                delay: {"show":"2250", "hide":"150"},
+
+                // an ugly trick to fix tooltip position, since offset not working
+                placement: function(tip, element) {
+                  window.setTimeout(function () {
+                      $('.tooltip').css('margin-top', '-20px').css('user-select', 'none').css('cursor', 'pointer');
+                  }, 5);
+                  return 'top';
+                }
+              });
+          })
+      </script>
+
+      <!-- fix settings height -->
+      <script>
+        $( window ).resize(function() {
+          $("#project-settings").height($("body").height() - $("#project-settings").position().top - 60);
+        });
+        $( window ).resize();
+      </script>
+
+      <!-- fix color pickers invalid values -->
+      <script>
+        $('.colorpicker-component').colorpicker().on('changeColor',
+            function(ev) {
+                var val = $(this).colorpicker('getValue');
+                if (!val || val == '#aN') {
+                  $(this).colorpicker('setValue', 'transparent');
+                }
+            });
+      </script>
+
+    </body>
+  </html>

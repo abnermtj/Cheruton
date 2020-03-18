@@ -1,0 +1,52 @@
+<!-- Aseprite -->
+<!-- Copyright (C) 2018  Igara Studio S.A. -->
+<!-- Copyright (C) 2001-2016  David Capello -->
+<gui>
+<window id="sprite_properties" text="@.title">
+  <vbox>
+    <grid columns="2">
+      <label text="@.filename" />
+      <entry text="" id="name" maxsize="256" minwidth="64" readonly="true" cell_align="horizontal" />
+
+      <label text="@.type" />
+      <label text="" id="type" />
+
+      <label text="@.size" />
+      <label text="" id="size" />
+
+      <label text="@.frames" />
+      <label text="" id="frames" />
+
+      <separator text="@.advanced" horizontal="true" cell_hspan="2" />
+
+      <label text="@.transparent_color" />
+      <hbox>
+	<hbox id="transparent_color_placeholder" />
+      </hbox>
+
+      <label text="@.pixel_ratio" />
+      <combobox id="pixel_ratio" cell_align="horizontal">
+	<listitem text="@.square_pixels" value="1:1" />
+	<listitem text="@.double_wide" value="2:1" />
+	<listitem text="@.double_high" value="1:2" />
+      </combobox>
+
+      <label text="@.color_profile" />
+      <hbox>
+	<combobox id="color_profile" cell_align="horizontal" expansive="true"></combobox>
+        <hbox homogeneous="true">
+          <button id="assign_color_profile" text="@.assign_color_profile">Assign</button>
+          <button id="convert_color_profile" text="@.convert_color_profile">Convert</button>
+	</hbox>
+      </hbox>
+
+    </grid>
+    <separator horizontal="true" />
+    <hbox>
+      <boxfiller />
+      <button text="@general.ok" closewindow="true" id="ok" magnet="true" width="60" />
+      <button text="@general.cancel" closewindow="true" id="cancel" width="60" />
+    </hbox>
+  </vbox>
+</window>
+</gui>

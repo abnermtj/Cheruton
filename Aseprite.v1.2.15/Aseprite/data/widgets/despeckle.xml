@@ -1,0 +1,12 @@
+<!-- Aseprite -->
+<!-- Copyright (C) 2001-2018 by David Capello -->
+<gui>
+<hbox id="despeckle">
+  <grid columns="2">
+    <label text="@.width" />
+    <expr id="width" cell_align="horizontal" />
+    <label text="@.height" />
+    <expr id="height" cell_align="horizontal" />
+  </grid>
+</hbox>
+</gui>
