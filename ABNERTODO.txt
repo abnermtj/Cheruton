@@ -1,3 +1,18 @@
-MC - Hair less lumpy for running
-Better pallet for MC 
-better eyes for MC
+Art
+        main Menu art
+        better eyes for MC
+        skill animations
+        common palette for all sprites for consistency
+
+Movement and Collisions
+        input buffering
+        movement cancelling
+        Finite state machine for character state
+        jump improvedments
+
+Skill Tree 
+        Skill point system
+
+General 
+        Art integration at the end once all mechanics done
+        LEVEL DESIGN and core gameplay
