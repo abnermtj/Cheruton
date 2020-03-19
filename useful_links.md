@@ -16,3 +16,6 @@ https://www.interaction-design.org/literature/article/shneiderman-s-eight-golden
 
 Video game UI: The design process explained
 https://medium.com/@a_kill_/video-game-ui-the-design-process-explained-14c23fa70d37
+
+# Art assets
+https://kenney.nl/assets/page:4

@@ -1,6 +1,13 @@
 Art
         main Menu art
         better eyes for MC
+        climb climb
+        basic attacks
+        aniticipation/hit stops/smears/overreaching/holding/ main key
+        http://zweifuss.ca/
+        https://www.youtube.com/watch?v=Mw0h9WmBlsw
+
+        http://lost-fortress.com/index.php/2017/08/24/pixel-art-animation-smoothness/
         skill animations
         common palette for all sprites for consistency
 
