@@ -1,12 +1,12 @@
 # Godot Notes
 ## SETTINGS
-It is also possible to add custom configuration options and read. 
-them in at run-time using the ProjectSettings singleton SETTINGS. 
-NEXT TIME. Singleton are classes only instanced once. 
+It is also possible to add custom configuration options and read. <br/> 
+them in at run-time using the ProjectSettings singleton SETTINGS.  <br/>
+NEXT TIME. Singleton are classes only instanced once. <br/>
 
 ## SCENES
-Main scence can be defined in project settings
-Packed Scenes and have a .tscn filename extension.
+Main scence can be defined in project settings<br/>
+Packed Scenes and have a .tscn filename extension.<br/>
 
 Script instancing:
 ```sh
@@ -19,16 +19,16 @@ OR      var scene = preload("res://myscene.tscn") # Will load when parsing/readi
                                       // a tree of nodes itself
         add_child(node); // add_child is a method from this node itself
 ```
-Remember to execute all steps above. after loading, we don't have 
-to load a gain for another instance, we only load once for as     
-many instances as we want                                         
+Remember to execute all steps above. after loading, we don't have<br/> 
+to load a gain for another instance, we only load once for as     <br/>
+many instances as we want                                         <br/>
 
 Declaring scripts as a class:
 ```sh
 # Declare the class name here
 class_name ScriptName, "res://path/to/optional/icon.svg"
 ```
-Now ScriptName is a valid node. now it can be instanced with 
+Now ScriptName is a valid node. now it can be instanced with <br/>
 ScriptName.new() elsewhere
 
 
@@ -39,27 +39,27 @@ Right click physics material to make a node unique
 TO FIX UNCENTERED GAME SCREEN ON START: editor setting  >run > rect top left
 
 ## NODES
-_ready() vs _init() . Ready is only called when all the child
-nodes and itself are loaded into the scene, NOTE that all childs
-need to be loaded first. init is like a constructor
+_ready() vs _init() . Ready is only called when all the child<br/>
+nodes and itself are loaded into the scene, NOTE that all childs<br/>
+need to be loaded first. init is like a constructor<br/>
+<br/>
+Node._process(delta) vs Node._physics_process(delta), _process is called<br/>
+every frame while _physics is called every physics FPS(in<br/>
+settings), things which need to be calculated before physics algos<br/>
+run need to be _physics_process as delta in _process is unstable<br/>
+as it depends on user hardware. They extend the actual _process<br/>
+and _physics_process process in the class Node<br/>
 
-Node._process(delta) vs Node._physics_process(delta), _process is called
-every frame while _physics is called every physics FPS(in
-settings), things which need to be calculated before physics algos
-run need to be _physics_process as delta in _process is unstable
-as it depends on user hardware. They extend the actual _process
-and _physics_process process in the class Node
+str(var) to convert a var to string if it stored as an int<br/>
 
-str(var) to convert a var to string if it stored as an int
-
-NEW Node: .new() creates a new node, you need to code it to be the child as well
+NEW Node: .new() creates a new node, you need to code it to be the child as well<br/>
 ```sh
     s = Sprite.new() # Create a new sprite!
     add_child(s) # Add it as a child of this node.
 ```
 
-Delete Node: .free() to immediately delete node and all its children.
-.queue_free() to safetly free so that we do not delete mid function call
+Delete Node: .free() to immediately delete node and all its children.<br/>
+.queue_free() to safetly free so that we do not delete mid function call<br/>
 
 ## GROUPS
 func _ready():
@@ -71,10 +71,10 @@ group eg.
 ```sh
         get_tree().call_group("enemies", "player_was_discovered")
 ```
-SceneTree is a class managing hieracy of nodes in a scene as well as
-scene themselves. So we get_tree() to get a reference to SceneTree 
-where we call the call_group function. It is has even more useful
-methods, switching scenes quit and pausing the game!
+SceneTree is a class managing hieracy of nodes in a scene as well as<br/>
+scene themselves. So we get_tree() to get a reference to SceneTree <br/>
+where we call the call_group function. It is has even more useful<br/>
+methods, switching scenes quit and pausing the game!<br/>
 
 ## NOTIFICATIONS - Good to know
 ```sh
@@ -82,15 +82,15 @@ methods, switching scenes quit and pausing the game!
 ```
 Called when object received notification.
 
-REFERENCE NODE BY NAME
-get_node(path) works by searching immediate children
-so to find a child of a child you have to :
-get_node("Label/Button")  // reference by name, NOT TYPE
+REFERENCE NODE BY NAME<br/>
+get_node(path) works by searching immediate children<br/>
+so to find a child of a child you have to :<br/>
+get_node("Label/Button")  // reference by name, NOT TYPE<br/>
 
 
 ## SIGNALS
-Signal format: _on_[EmitterNode]_[signal_name]
-Very low level, it is easier to use provided virtual functions below.
+Signal format: _on_[EmitterNode]_[signal_name]<br/>
+Very low level, it is easier to use provided virtual functions below.<br/>
 OVERRIDABLE FUNCTIONS
 Virtual functions (expect to be redefined in children)
 
