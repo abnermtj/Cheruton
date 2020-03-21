@@ -1,35 +1,38 @@
 Art
-        main Menu art
+        General 
+                match all colors
+        Main Menu
         particles2D
-                -lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
-                - water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
-                -fogs
-                -death
-        better eyes for MC
-        climb climb
-        basic attacks
-        aniticipation/hit stops/smears/overreaching/holding/ main key
-        References
-                http://zweifuss.ca/
-                https://www.youtube.com/watch?v=Mw0h9WmBlsw
-
-        http://lost-fortress.com/index.php/2017/08/24/pixel-art-animation-smoothness/
-        skill animations
-        common palette for all sprites for consistency
-        shaders
+                lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
+                water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
+                fogs
+                god rays
                 day/night https://twitter.com/lazybeargames/status/967071011689648130?lang=en
+                death
+        Main character
+                better eyes for MC
+                climb climb
+                tpose run
+                basic attacks
+        Concepts
+                aniticipation/hit stops/smears/overreaching/holding/ main key
+        References
+                REAL GOAL RYAN FLUERRY GAME:
+                https://www.youtube.com/watch?v=1GupU20ISeM
 
 Movement and Collisions
-        input buffering
-        movement cancelling
+        Input buffering
+        Movement cancelling
         Finite state machine for character state
-        jump improvedments
-
+        jump improvements
+                - delay window before you not allowed to jump after ledge from celeste twitter
 Skill Tree 
         Skill point system
 
-General 
-        Art integration at the end once all mechanics done
-        LEVEL DESIGN and core gameplay
+LEVEL DESIGN AND CORE GAMEPLAY
+
 Talking
-        goto-dialog to make a json file we can parse for each convo
+        goto-dialog - makes a json file we can parse for each conversation(?)
+
+Idea Vomit Here
+        
