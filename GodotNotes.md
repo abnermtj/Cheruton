@@ -5,8 +5,8 @@ them in at run-time using the ProjectSettings singleton SETTINGS.  <br/>
 NEXT TIME. Singleton are classes only instanced once. <br/>
 
 ## SCENES
-Main scence can be defined in project settings<br/>
-Packed Scenes and have a .tscn filename extension.<br/>
+Main scence can be defined in project settings Packed Scenes<br/> 
+and have a .tscn filename extension.                        <br/> 
 
 Script instancing:
 ```sh
@@ -39,16 +39,18 @@ Right click physics material to make a node unique
 TO FIX UNCENTERED GAME SCREEN ON START: editor setting  >run > rect top left
 
 ## NODES
-_ready() vs _init() . Ready is only called when all the child<br/>
-nodes and itself are loaded into the scene, NOTE that all childs<br/>
-need to be loaded first. init is like a constructor<br/>
-<br/>
-Node._process(delta) vs Node._physics_process(delta), _process is called<br/>
-every frame while _physics is called every physics FPS(in<br/>
-settings), things which need to be calculated before physics algos<br/>
-run need to be _physics_process as delta in _process is unstable<br/>
-as it depends on user hardware. They extend the actual _process<br/>
-and _physics_process process in the class Node<br/>
+_ready() vs _init() . Ready is only called when all the     <br/> 
+child nodes and itself are loaded into the scene, NOTE      <br/> 
+that all childs need to be loaded first. init is like a     <br/> 
+constructor                                                 <br/> 
+
+Node._process(delta) vs Node._physics_process(delta),       <br/> 
+_process is called every frame while _physics is called     <br/> 
+every physics FPS(in settings), things which need to        <br/> 
+be calculated before physics algos run need to be           <br/> 
+_physics_process as delta in _process is unstable as it     <br/> 
+depends on user hardware. They extend the actual _process   <br/> 
+and _physics_process process in the class Node              <br/> 
 
 str(var) to convert a var to string if it stored as an int<br/>
 
@@ -88,8 +90,6 @@ so to find a child of a child you have to :<br/>
 get_node("Label/Button")  // reference by name, NOT TYPE<br/>
 
 
-## SIGNALS
-Signal format: _on_[EmitterNode]_[signal_name]<br/>
 Very low level, it is easier to use provided virtual functions below.<br/>
 OVERRIDABLE FUNCTIONS
 Virtual functions (expect to be redefined in children)
@@ -123,3 +123,31 @@ Virtual functions (expect to be redefined in children)
             pass
 ```
 
+
+## SIGNALS
+Signal format: _on_[EmitterNode]_[signal_name]<br/>
+Signals are like interrupts, which is more efficient than polling
+
+On Timer Node, note that giving values to void start(float time_set=-1) <br/>
+if timer_set > 0 then it will  overwrite the wait time you give it.<br/>
+Timer Node counts down from the initial wait time, autostart makes <br/>
+this start as soon as the node entere the tree
+
+Manual connection of signals are necceary when you instance nodes prodecurally, <br/>
+they won't appear in the LHS scenetree heiracy for you to connect to
+
+```s
+<source_node>.connect(<signal_name>, <target_node>, <target_function_name>)
+```
+target node is the receiving node, which is often self(the currently scripted node), <br/>
+function name is called
+
+Manual creation of signals
+```s
+signal my_signal //create custom signal
+signal my_signal(val, val2) // create custom signal with parameters
+
+emit_signal("my_signal", foo, foo2)  // emits with parameters
+```
+Manualy created signals still appear under RHS NODE> SIGNALS, but always remember
+when manually emitting, to emmit the correct number of arguments

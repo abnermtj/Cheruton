@@ -1,15 +1,23 @@
 Art
         main Menu art
+        particles2D
+                -lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
+                - water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
+                -fogs
+                -death
         better eyes for MC
         climb climb
         basic attacks
         aniticipation/hit stops/smears/overreaching/holding/ main key
-        http://zweifuss.ca/
-        https://www.youtube.com/watch?v=Mw0h9WmBlsw
+        References
+                http://zweifuss.ca/
+                https://www.youtube.com/watch?v=Mw0h9WmBlsw
 
         http://lost-fortress.com/index.php/2017/08/24/pixel-art-animation-smoothness/
         skill animations
         common palette for all sprites for consistency
+        shaders
+                day/night https://twitter.com/lazybeargames/status/967071011689648130?lang=en
 
 Movement and Collisions
         input buffering
@@ -23,3 +31,5 @@ Skill Tree
 General 
         Art integration at the end once all mechanics done
         LEVEL DESIGN and core gameplay
+Talking
+        goto-dialog to make a json file we can parse for each convo
