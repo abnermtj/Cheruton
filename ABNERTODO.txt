@@ -25,7 +25,9 @@ Movement and Collisions
         Movement cancelling
         Finite state machine for character state
         jump improvements
-                - delay window before you not allowed to jump after ledge from celeste twitter
+                - delay window before you not allowed to jump after ledge 
+                - jump corner correction instead of a hardbump
+                - dashing against a corner will plop you up
 Skill Tree 
         Skill point system
 
