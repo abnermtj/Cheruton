@@ -9,16 +9,24 @@ Art
                 god rays
                 day/night https://twitter.com/lazybeargames/status/967071011689648130?lang=en
                 death
+                parrallax - refer to witches isle
         Main character
                 better eyes for MC
                 climb climb
                 tpose run
                 basic attacks
         Concepts
+                Stupidly OP MC that hit animations look dumb
+                Chaining dashes that link to specific games objects
                 aniticipation/hit stops/smears/overreaching/holding/ main key
+                Flying high in the sky shooting straight down and camera zoom for that
+                on skill key Character turns to a bow then releasing the skill key it flies in opposite direction of mouse 
         References
                 REAL GOAL RYAN FLUERRY GAME:
                 https://www.youtube.com/watch?v=1GupU20ISeM
+                Flynn: Son of Crimson: it terms of gameplay and graphics
+                Blue protocol 
+                FaeLand
 
 Movement and Collisions
         Input buffering
