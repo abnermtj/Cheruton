@@ -27,6 +27,16 @@ Art
                 Flynn: Son of Crimson: it terms of gameplay and graphics
                 Blue protocol 
                 FaeLand
+                https://www.reddit.com/r/gameassets/top/?t=all
+                https://sanctumpixel.itch.io/
+                YOURNAME
+                Dolphin island 2 - good
+                @jtangc twitter is really good
+                https://godot-engine.zeef.com/andre.antonio.schmitz
+
+                hair
+                https://twitter.com/i/status/1011581635760779264
+
 
 Movement and Collisions
         Input buffering
