@@ -1,7 +1,8 @@
 Art
         General 
-                match all colors
-        Main Menu
+                Decide on rules of the game : colors, what can be jumped on, mechanic
+                Flow, cosistency, control, jump and movement have to be perfect
+                https://szadiart.itch.io/ for places ideas
         particles2D
                 lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
@@ -9,19 +10,39 @@ Art
                 god rays
                 day/night https://twitter.com/lazybeargames/status/967071011689648130?lang=en
                 death
-                parrallax - refer to witches isle
+                parrallax - witches isle
+                Zoomed inness match deadlock
         Main character
                 better eyes for MC
-                climb climb
-                tpose run
+                climb animation
+                normal mapping albedo sprites
+                DEFINE LIGHT SOURCE TOPRIGHT DOWNWARDs
+                just edge lighting normal map for sprites
+                improve running looks like cancer - hair and head too forward
+                idle looks weird flipped
+                Flip often left flip looks weird
                 basic attacks
+                Overgeared glow
+                gold weapon, maybe attacks like archer, floating weapons all gold
+                play with normal maps to understand lighting
+                attacks effect reference
+                https://www.gamedevmarket.net/asset/medieval-fantasy-characters/ 
+                https://www.gamedevmarket.net/asset/2d-pixel-slime/
+        Assets Grasslands
+                Overgeared color pallete
+                Folliage(animated) Bridges bigger trees
+                chests with open animation
+                basic enemyies
+                Wood works 
         Concepts
-                Stupidly OP MC that hit animations look dumb
+                Hit animations that look fun dumb
                 Chaining dashes that link to specific games objects
-                aniticipation/hit stops/smears/overreaching/holding/ main key
+                aniticipation/hit stops/smears/overreaching/holding
                 Flying high in the sky shooting straight down and camera zoom for that
-                on skill key Character turns to a bow then releasing the skill key it flies in opposite direction of mouse 
+                Mobility
         References
+                Overgeared
+                sealedbite, source code read
                 REAL GOAL RYAN FLUERRY GAME:
                 https://www.youtube.com/watch?v=1GupU20ISeM
                 Flynn: Son of Crimson: it terms of gameplay and graphics
@@ -33,7 +54,6 @@ Art
                 Dolphin island 2 - good
                 @jtangc twitter is really good
                 https://godot-engine.zeef.com/andre.antonio.schmitz
-
                 hair
                 https://twitter.com/i/status/1011581635760779264
 
@@ -54,5 +74,35 @@ LEVEL DESIGN AND CORE GAMEPLAY
 Talking
         goto-dialog - makes a json file we can parse for each conversation(?)
 
-Idea Vomit Here
-        
+Concepts
+        FSM advanced statemachine https://www.youtube.com/watch?v=y9x4N3QgAQ 
+        games from scratch concept series
+        Viewport mode for pixelated shadows
+        Engine.time_scale = 0.1 slowmo
+        Multiattack input buffer -antidev
+        animation states pls
+        keyboardcombo like in vim
+
+
+Overview of deadlock code structure
+
+        Main
+                TOP
+                -First scene and menu is defined as a constant
+                ONREADY
+                -either loads the first screen or the game state
+                LOADING
+                -sets to voluem to be low
+                -load FIRST screen or load game state have similar sructure
+                        5 STATE OF LOADING
+                        0) pauses the tree fades out
+                        1) frees all children from pervious level
+                        2) includes all children from previous level
+                        3) fades in
+                        4) go back to 0
+                both of the above have timers for each state that on timeout will cause the next stage to occur,
+                A calls a time to call itself again once certain time has passed
+                PAUSING
+                -stops the tree and freezes the map by saving is current state, delete it, then passing the values
+                to a pause layer that holds it until unpaused hides the old layer shows the frozen one
+                DONT UNDERSTAND LINE 130-135
