@@ -265,6 +265,28 @@ collision_mask describes what layers the body will scan for
 collisions. If an object isn’t in one of the mask layers, the
 body will ignore it. By default, all bodies scan layer 1.
 
+## onready var
+equivalent to assiging variable in _ready(), otherwise would result in
+the value beings assigned when the script is created. Thus var cannot use expressions
+related to the tree while onready var lets u assign value depending on the tree instanced in, so can use get_node (same as $)
+eg.
+```s
+onread var child = $somechild  # this allows for not having to type long path
+# another reason is that some properties are only defined when the node enters the scne eg. UI node with min_size 100px with "expand" will change depending on the scene it is instanced in
+```
+
+## Exporting games
+In project settings, Emulate touch from mouse is disabled by default.
+On the different strech modes, Aspect modes, and Orientation modes.
+Mode,Disabled / 2d / viewprot
+ASSUMING DISABLED aspect mode FOR ALL BELOW
+Disabled: when the window is resized , nothing is upscaled or downscared expect gui, so the window can cut of parts now. 
+2d: stretch all elements to fit the window perfectl, the original ratio dun care
+Viewport: Everything is scaled to orignal relative size, so the whole thing can be squeezed and become pixellated
+Aspect ratio ignore / keep /expand
+Mixing this with above produced funky results. I can't understand. Best just to try
+Orientation mode is the default game orientation in mobile.
+TIP, import 2x higher rest sprites for the different screens resolutions and use DISABLED
 ## TROUBLESHOOTING
 If a sprite is invisible, you may have dragged and dropped it in, you need to load from godot itself using the import button.
 Might be need to restart godot if the background is just black. May be a problem with amd
