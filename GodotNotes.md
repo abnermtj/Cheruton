@@ -123,7 +123,7 @@ Virtual functions (expect to be redefined in children)
             pass
 ```
 
-###What is a scene tree?
+### What is a scene tree?
 There is an Operating System Class(OS Class) which is the only instance running at the start
 Only after it load is everything else is loaded. When the class finishes initializing, it needs
 to be supplied a main loop to run forever. The game starts from this main loop.
@@ -290,3 +290,86 @@ TIP, import 2x higher rest sprites for the different screens resolutions and use
 ## TROUBLESHOOTING
 If a sprite is invisible, you may have dragged and dropped it in, you need to load from godot itself using the import button.
 Might be need to restart godot if the background is just black. May be a problem with amd
+
+## Learning From Dead
+Things to know
+        SETGET
+        Whenever the value of variable is modified by an external source (i.e. not from local usage in the class)
+        , the setter function will be called. This happens before the value is changed.
+        The setter must decide what to do with the new value.
+        Vice versa, when variable is accessed (externally), the getter function must return the desired value.
+        Below lets you define these functions
+        ```
+        var variable = value setget setterfunc, getterfunc
+        var variable = value setget setterfunc  # also valid getter is ommited
+        var variable = value setget ,getterfunc  # also valid setter is ommited
+        ```
+
+Overview of deadlock code structure
+        Main
+                TOP
+                -First scene and menu is defined as a constant
+                ONREADY
+                -either loads the first screen or the game state
+                LOADING
+                -sets to voluem to be low
+                -load FIRST screen or load game state have similar sructure
+                        5 STATE OF LOADING
+                        0) pauses the tree fades out
+                        1) frees all children from pervious level
+                        2) includes all children from previous level
+                        3) fades in
+                        4) go back to 0
+                both of the above have timers for each state that on timeout will cause the next stage to occur,
+                A calls a time to call itself again once certain time has passed
+                PAUSING
+                -stops the tree and freezes the map by saving is current state, delete it, then passing the values
+                to a pause layer that holds it until unpaused hides the old layer shows the frozen one
+                LINE 130-135
+                On game pause, for anything that is part of the map, a setter function
+                in map_part.gd which stops all animation in animation player. Modulate function is
+                used to make the current map part turn the color you want 1,1,1,1 which is pure white
+                when the color is applied to the Texture is seems the it remains mostly the same
+                MODULATE IS COLOR MULTIPLICATION, NOT JUST SETTING THE COLOR. Modulate is part of CanvasItem
+
+                pausemenu.activate() is called when all of the above is done
+
+                pause_finsihed function
+                yield( get_tree().create_timer( 0.25 ), "timeout" ) # player given time to react to unpause
+                it seems a chunk of code is just dedicated to making the minimap work, when you pause it
+                moves and flashes the minimap form the topright to the left of the screen. And to get the main menu
+                to pop uo. most of the actual pausing is done by get_tree.pause(). 
+
+                _on_gamestate_change(), if else and match statements that change the HUD first, depending
+                on the state when the function is called. for lives, they just manually toggled
+
+                set_hud_particles, colors emmitted depending on state
+
+                MUSIC
+                preloads music cuz they wasting my ram
+
+                set_music() middle man function which checks if the currrent music is the music that takes in
+                Tracknumber, FadeIn, FaceOut, Starting Point.
+                no : int, means that the variable no is hinted to be type int i think its more for code clarity.
+                calls music fsm() if need to change
+                
+                musicfsm() actual controller of music
+                3 stages, this function recursively calls itself.
+                fades out music, There is no actual code for the music, AUDIO STREAM PLAYER node handles everything.
+                AUDIOSTREAMPLAYER.stream to select music
+                AUDIOSTREAMPLAYER.play(int pos) to start track at desired position
+                AUDIOSTREAMPLAYER/ANIMATIONPLAYERCHILD.play( "fade_in", -1, 1.0 / fade_in )   #controls the fade in levels etc.
+
+                NOTE THE USE OF '/' to find the grandchild as $Node really is just the path of the node
+
+                use of call_defered to ensure that setting music does not abruptly change current music settings
+                
+                _on_vol_pitch_control_animation_finished() calls the music fsm again, because if there is 
+                a pitch change, music fsm must call itself only when the pitch changing is done, before setting the next
+                track. note how it has an automatical function argument that is default to the signal
+                
+                slow_music and level restart sound effects trivial
+
+        PLAYER GD
+
+        CONSTANTS FOR:
