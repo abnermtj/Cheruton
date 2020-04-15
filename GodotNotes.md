@@ -1,11 +1,11 @@
 # Godot Notes
 ## SETTINGS
-It is also possible to add custom configuration options and read. <br/> 
-them in at run-time using the ProjectSettings singleton SETTINGS.  <br/>
+It is also possible to add custom configuration options and read. 
+them in at run-time using the ProjectSettings singleton SETTINGS.  
 NEXT TIME. Singleton are classes only instanced once. <br/>
 
 ## SCENES
-Main scence can be defined in project settings Packed Scenes<br/> 
+Main scence can be defined in project settings Packed Scenes
 and have a .tscn filename extension.                        <br/> 
 
 Script instancing:
@@ -19,8 +19,8 @@ OR      var scene = preload("res://myscene.tscn") # Will load when parsing/readi
                                       # a tree of nodes itself
         add_child(node); # add_child is a method from this node itself
 ```
-Remember to execute all steps above. after loading, we don't have<br/> 
-to load a gain for another instance, we only load once for as     <br/>
+Remember to execute all steps above. after loading, we don't have
+to load a gain for another instance, we only load once for as     
 many instances as we want                                         <br/>
 
 Declaring scripts as a class:
@@ -28,7 +28,7 @@ Declaring scripts as a class:
 # Declare the class name here
 class_name ScriptName, "res://path/to/optional/icon.svg"
 ```
-Now ScriptName is a valid node. now it can be instanced with <br/>
+Now ScriptName is a valid node. now it can be instanced with
 ScriptName.new() elsewhere
 
 
@@ -39,17 +39,17 @@ Right click physics material to make a node unique
 TO FIX UNCENTERED GAME SCREEN ON START: editor setting  >run > rect top left
 
 ## NODES
-_ready() vs _init() . Ready is only called when all the     <br/> 
-child nodes and itself are loaded into the scene, NOTE      <br/> 
-that all childs need to be loaded first. init is like a     <br/> 
+_ready() vs _init() . Ready is only called when all the      
+child nodes and itself are loaded into the scene, NOTE       
+that all childs need to be loaded first. init is like a      
 constructor                                                 <br/> 
 
-Node._process(delta) vs Node._physics_process(delta),       <br/> 
-_process is called every frame while _physics is called     <br/> 
-every physics FPS(in settings), things which need to        <br/> 
-be calculated before physics algos run need to be           <br/> 
-_physics_process as delta in _process is unstable as it     <br/> 
-depends on user hardware. They extend the actual _process   <br/> 
+Node._process(delta) vs Node._physics_process(delta),        
+_process is called every frame while _physics is called      
+every physics FPS(in settings), things which need to         
+be calculated before physics algos run need to be            
+_physics_process as delta in _process is unstable as it      
+depends on user hardware. They extend the actual _process    
 and _physics_process process in the class Node              <br/> 
 
 str(var) to convert a var to string if it stored as an int<br/>
@@ -60,7 +60,7 @@ NEW Node: .new() creates a new node, you need to code it to be the child as well
     add_child(s) # Add it as a child of this node.
 ```
 
-Delete Node: .free() to immediately delete node and all its children.<br/>
+Delete Node: .free() to immediately delete node and all its children.
 .queue_free() to safetly free so that we do not delete mid function call<br/>
 
 ## GROUPS
@@ -73,9 +73,9 @@ group eg.
 ```sh
         get_tree().call_group("enemies", "player_was_discovered")
 ```
-SceneTree is a class managing hieracy of nodes in a scene as well as<br/>
-scene themselves. So we get_tree() to get a reference to SceneTree <br/>
-where we call the call_group function. It is has even more useful<br/>
+SceneTree is a class managing hieracy of nodes in a scene as well as
+scene themselves. So we get_tree() to get a reference to SceneTree 
+where we call the call_group function. It is has even more useful
 methods, switching scenes quit and pausing the game!<br/>
 
 ## NOTIFICATIONS - Good to know
@@ -84,14 +84,14 @@ methods, switching scenes quit and pausing the game!<br/>
 ```
 Called when object received notification.
 
-REFERENCE NODE BY NAME<br/>
+**REFERENCE NODE BY NAME**<br/>
 get_node(path) works by searching immediate children, it is equivalent to $<br/>
 so to find a child of a child you have to :<br/>
 get_node("Label/Button")  # reference by name, NOT TYPE<br/>
 
 
 Very low level, it is easier to use provided virtual functions below.<br/>
-OVERRIDABLE FUNCTIONS
+**OVERRIDABLE FUNCTIONS** <br/>
 Virtual functions (expect to be redefined in children)
 
 ```sh
@@ -157,18 +157,18 @@ screen.
 Signal format: _on_[EmitterNode]_[signal_name]<br/>
 Signals are like interrupts, which is more efficient than polling
 
-On Timer Node, note that giving values to void start(float time_set=-1) <br/>
-if timer_set > 0 then it will  overwrite the wait time you give it.<br/>
-Timer Node counts down from the initial wait time, autostart makes <br/>
+On Timer Node, note that giving values to void start(float time_set=-1)
+if timer_set > 0 then it will  overwrite the wait time you give it.
+Timer Node counts down from the initial wait time, autostart makes 
 this start as soon as the node entere the tree
 
-Manual connection of signals are necceary when you instance nodes prodecurally, <br/>
+Manual connection of signals are necceary when you instance nodes prodecurally,
 they won't appear in the LHS scenetree heiracy for you to connect to
 
 ```s
 <source_node>.connect(<signal_name>, <target_node>, <target_function_name>)
 ```
-target node is the receiving node, which is often self(the currently scripted node), <br/>
+target node is the receiving node, which is often self(the currently scripted node),
 function name is called
 
 Manual creation of signals
@@ -185,7 +185,7 @@ when manually emitting, to emmit the correct number of arguments
 export keyword allows for the inspector (underscript variables)to set the value as well as other nodes
 the value in the inspector takes precedence over the value in the script.
 
-$ returns the relative path ofa child node from the current node, null if not found.
+'$' returns the relative path ofa child node from the current node, null if not found.
 Equivalent to get_node();  $AnimatedSprite is get_node("AnimatedSprite")
 
 clamp(what, min, max)
@@ -247,16 +247,16 @@ We can find the axis of rotation in 3d by taking the cross product of current fa
 and desired destination.
 
 Timer nodes and Position 2d nodes are used for timing and marking a position in space. 
-One shot option for timer to only run once
+One shot option for timer to only run once.
 
-For path2d, order of the points matter, you have to remeber if u drew clockwise or anti clockwise
-Also remember to close the curve you just made (button in topright)
+For path2d, order of the points matter, you have to remeber if u drew clockwise or anti clockwise.
+Also remember to close the curve you just made (button in topright).
 
-Followpath2d node has to be a child of path2d
+Followpath2d node has to be a child of path2d.
 
-Note that the first in the tree is drawn first in order, so background should be drawn before players and enemies
+Note that the first in the tree is drawn first in order, so background should be drawn before players and enemies.
 
-button shortcuts is two levels deep, so dig through each button to get the atualy setting
+Button shortcuts is two levels deep, so dig through each button to get the atualy setting.
 
 ## Masks vs Layers
 collision_layer describes the layers that the object appears in.
@@ -288,17 +288,17 @@ Mixing this with above produced funky results. I can't understand. Best just to 
 Orientation mode is the default game orientation in mobile.
 TIP, import 2x higher rest sprites for the different screens resolutions and use DISABLED
 ## TROUBLESHOOTING
-If a sprite is invisible, you may have dragged and dropped it in, you need to load from godot itself using the import button.
-Might be need to restart godot if the background is just black. May be a problem with amd
+Invisible sprite and blue background due to my graphics card, try to use desktop instead.
 
-## Learning From Dead
-Things to know
+## Learning From DeadLoc
+Things to know: <br/>
         SETGET
         Whenever the value of variable is modified by an external source (i.e. not from local usage in the class)
         , the setter function will be called. This happens before the value is changed.
         The setter must decide what to do with the new value.
         Vice versa, when variable is accessed (externally), the getter function must return the desired value.
         Below lets you define these functions
+
         ```
         var variable = value setget setterfunc, getterfunc
         var variable = value setget setterfunc  # also valid getter is ommited
@@ -306,70 +306,70 @@ Things to know
         ```
 
 Overview of deadlock code structure
-        Main
-                TOP
-                -First scene and menu is defined as a constant
-                ONREADY
-                -either loads the first screen or the game state
-                LOADING
-                -sets to voluem to be low
-                -load FIRST screen or load game state have similar sructure
-                        5 STATE OF LOADING
-                        0) pauses the tree fades out
-                        1) frees all children from pervious level
-                        2) includes all children from previous level
-                        3) fades in
-                        4) go back to 0
-                both of the above have timers for each state that on timeout will cause the next stage to occur,
-                A calls a time to call itself again once certain time has passed
-                PAUSING
-                -stops the tree and freezes the map by saving is current state, delete it, then passing the values
-                to a pause layer that holds it until unpaused hides the old layer shows the frozen one
-                LINE 130-135
-                On game pause, for anything that is part of the map, a setter function
-                in map_part.gd which stops all animation in animation player. Modulate function is
-                used to make the current map part turn the color you want 1,1,1,1 which is pure white
-                when the color is applied to the Texture is seems the it remains mostly the same
-                MODULATE IS COLOR MULTIPLICATION, NOT JUST SETTING THE COLOR. Modulate is part of CanvasItem
+####Main
+TOP
+-First scene and menu is defined as a constant
+ONREADY
+-either loads the first screen or the game state
+LOADING
+-sets to voluem to be low
+-load FIRST screen or load game state have similar sructure
+5 STATE OF LOADING
+0) pauses the tree fades out
+1) frees all children from pervious level
+2) includes all children from previous level
+3) fades in
+4) go back to 0
+both of the above have timers for each state that on timeout will cause the next stage to occu,
+A calls a time to call itself again once certain time has passed
+PAUSING
+-stops the tree and freezes the map by saving is current state, delete it, then passing the values
+to a pause layer that holds it until unpaused hides the old layer shows the frozen one
+LINE 130-135
+On game pause, for anything that is part of the map, a setter function
+in map_part.gd which stops all animation in animation player. Modulate function is
+used to make the current map part turn the color you want 1,1,1,1 which is pure white
+when the color is applied to the Texture is seems the it remains mostly the same
+MODULATE IS COLOR MULTIPLICATION, NOT JUST SETTING THE COLOR. Modulate is part of CanvasItem
 
-                pausemenu.activate() is called when all of the above is done
+pausemenu.activate() is called when all of the above is done
 
-                pause_finsihed function
-                yield( get_tree().create_timer( 0.25 ), "timeout" ) # player given time to react to unpause
-                it seems a chunk of code is just dedicated to making the minimap work, when you pause it
-                moves and flashes the minimap form the topright to the left of the screen. And to get the main menu
-                to pop uo. most of the actual pausing is done by get_tree.pause(). 
+pause_finsihed function
+yield( get_tree().create_timer( 0.25 ), "timeout" ) # player given time to react to unpause
+it seems a chunk of code is just dedicated to making the minimap work, when you pause it
+moves and flashes the minimap form the topright to the left of the screen. And to get the main menu
+to pop uo. most of the actual pausing is done by get_tree.pause(). 
 
-                _on_gamestate_change(), if else and match statements that change the HUD first, depending
-                on the state when the function is called. for lives, they just manually toggled
+_on_gamestate_change(), if else and match statements that change the HUD first, depending
+on the state when the function is called. for lives, they just manually toggled
 
-                set_hud_particles, colors emmitted depending on state
+set_hud_particles, colors emmitted depending on state
 
-                MUSIC
-                preloads music cuz they wasting my ram
+MUSIC
+preloads music cuz they wasting my ram
 
-                set_music() middle man function which checks if the currrent music is the music that takes in
-                Tracknumber, FadeIn, FaceOut, Starting Point.
-                no : int, means that the variable no is hinted to be type int i think its more for code clarity.
-                calls music fsm() if need to change
-                
-                musicfsm() actual controller of music
-                3 stages, this function recursively calls itself.
-                fades out music, There is no actual code for the music, AUDIO STREAM PLAYER node handles everything.
-                AUDIOSTREAMPLAYER.stream to select music
-                AUDIOSTREAMPLAYER.play(int pos) to start track at desired position
-                AUDIOSTREAMPLAYER/ANIMATIONPLAYERCHILD.play( "fade_in", -1, 1.0 / fade_in )   #controls the fade in levels etc.
+set_music() middle man function which checks if the currrent music is the music that takes in
+Tracknumber, FadeIn, FaceOut, Starting Point.
+no : int, means that the variable no is hinted to be type int i think its more for code clarity.
+calls music fsm() if need to change
 
-                NOTE THE USE OF '/' to find the grandchild as $Node really is just the path of the node
+musicfsm() actual controller of music
+3 stages, this function recursively calls itself.
+fades out music, There is no actual code for the music, AUDIO STREAM PLAYER node handles everything.
+AUDIOSTREAMPLAYER.stream to select music
+AUDIOSTREAMPLAYER.play(int pos) to start track at desired position
+AUDIOSTREAMPLAYER/ANIMATIONPLAYERCHILD.play( "fade_in", -1, 1.0 / fade_in )   #controls the fade in levels etc.
 
-                use of call_defered to ensure that setting music does not abruptly change current music settings
-                
-                _on_vol_pitch_control_animation_finished() calls the music fsm again, because if there is 
-                a pitch change, music fsm must call itself only when the pitch changing is done, before setting the next
-                track. note how it has an automatical function argument that is default to the signal
-                
-                slow_music and level restart sound effects trivial
+NOTE THE USE OF '/' to find the grandchild as $Node really is just the path of the node
 
-        PLAYER GD
+use of call_defered to ensure that setting music does not abruptly change current music settings
 
-        CONSTANTS FOR:
+_on_vol_pitch_control_animation_finished() calls the music fsm again, because if there is 
+a pitch change, music fsm must call itself only when the pitch changing is done, before setting the next
+track. note how it has an automatical function argument that is default to the signal
+
+slow_music and level restart sound effects trivial
+
+####PLAYER GD
+
+CONSTANTS FOR:
