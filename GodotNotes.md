@@ -2,7 +2,7 @@
 ## SETTINGS
 It is also possible to add custom configuration options and read. 
 them in at run-time using the ProjectSettings singleton SETTINGS.  
-NEXT TIME. Singleton are classes only instanced once. <br/>
+Singleton are classes only instanced once. <br/>
 
 ## SCENES
 Main scence can be defined in project settings Packed Scenes
@@ -39,18 +39,17 @@ Right click physics material to make a node unique
 TO FIX UNCENTERED GAME SCREEN ON START: editor setting  >run > rect top left
 
 ## NODES
-_ready() vs _init() . Ready is only called when all the      
-child nodes and itself are loaded into the scene, NOTE       
-that all childs need to be loaded first. init is like a      
+_ready() vs _init() . Ready is only called when all the child nodes and itself are loaded into the scene, NOTE  
+that all childs need to be loaded first. init is like a 
 constructor                                                 <br/> 
 
-Node._process(delta) vs Node._physics_process(delta),        
-_process is called every frame while _physics is called      
-every physics FPS(in settings), things which need to         
-be calculated before physics algos run need to be            
-_physics_process as delta in _process is unstable as it      
-depends on user hardware. They extend the actual _process    
-and _physics_process process in the class Node              <br/> 
+Node._process(delta) vs Node._physics_process(delta),   
+_process is called every frame while _physics is called 
+every physics FPS(in settings), things which need to
+be calculated before physics algos run need to be
+_physics_process as delta in _process is unstable as it 
+depends on user hardware. They extend the actual _process
+and _physics_process process in the class Node <br/> 
 
 str(var) to convert a var to string if it stored as an int<br/>
 
@@ -290,7 +289,7 @@ TIP, import 2x higher rest sprites for the different screens resolutions and use
 ## TROUBLESHOOTING
 Invisible sprite and blue background due to my graphics card, try to use desktop instead.
 
-## Learning From DeadLoc
+## Learning From DeadLock
 Things to know: <br/>
         SETGET
         Whenever the value of variable is modified by an external source (i.e. not from local usage in the class)
@@ -306,7 +305,7 @@ Things to know: <br/>
         ```
 
 Overview of deadlock code structure
-####Main
+###Main
 TOP
 -First scene and menu is defined as a constant
 ONREADY
@@ -370,6 +369,6 @@ track. note how it has an automatical function argument that is default to the s
 
 slow_music and level restart sound effects trivial
 
-####PLAYER GD
+###PLAYER GD
 
 CONSTANTS FOR:
