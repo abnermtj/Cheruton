@@ -1,10 +1,7 @@
 Things to do
 
 1) Implement Logo Screen
-
-	Picture Picture
-    GingerBreadMen Productions
-	Powered by Godot
+	Load in font files
 
 2)  Main Menu - Consider background (live?)
 
