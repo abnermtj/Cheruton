@@ -286,6 +286,19 @@ Aspect ratio ignore / keep /expand
 Mixing this with above produced funky results. I can't understand. Best just to try
 Orientation mode is the default game orientation in mobile.
 TIP, import 2x higher rest sprites for the different screens resolutions and use DISABLED
+
+Export presets, There is a export pck/zip which only exporta a packed version of project data so executable,
+
+REMEMBER TO UPDATE export templates every update of godot.
+export projects, is a complete execuatble.
+
+tidbit, exporting on a mac os computer we have .dmg file vs on windows/linux we get a .zip file. You can set application icon for windows!
+
+To export on andriod, refer to online :p since we not using it. There are Software Development Kits(SDKs) that you also have to download
+
+TO export to IOS, need a MacOS (not needed to be apple) with Xcode. Need an appstore apple id into member ship section :( damn u apple!
+
+To export html for websites, need an actaul server to run it, you can't just double click. To disable the default console, "export without debug"
 ## TROUBLESHOOTING
 Invisible sprite and blue background due to my graphics card, try to use desktop instead.
 
@@ -369,6 +382,112 @@ track. note how it has an automatical function argument that is default to the s
 
 slow_music and level restart sound effects trivial
 
-###PLAYER GD
+### PLAYER GD
 
 CONSTANTS FOR:
+ 1)GRAVITY
+ 2)COYOTE_TIME
+ 3)JUMP_AGAIN_MARGIN  # input buffering
+ 4)TERM_VEL 
+ 5)SNAP_LEN 
+ 6)JUMP_VEL 
+ 7)MAX_VEL 
+ 8)AIR_ACCEL 
+ 9)REF_ATTACK_RANGE
+variable to store the fsm is onready, not when the script is created.
+FSM.NEW   - FSM is a class in fsm.gd where it is passed three arugements.
+ the object whose state it is controlling it can be:
+ 1)a player/enemy object 
+ 2)the states parents 
+ 3)actual state itself 
+ 4)debug flag 
+The parents for idle, run and jump is called STATES.
+Similarily, another FSM for aiming has the parent called
+AIMstate, for the different aim_idle, aim_aim under it
+
+in FSM.gd, it prints of the number of children in the STATES and AIMSTATE or empty if none
+In Gdscript, we can use strings as the index of an array, like a dictionary in python. word then meaning.
+Creates an array called states for each FSM. which stores a dictionary called states that links the name of the state to 
+the actual state object itself
+Declares that states FSM to be "self" (the fsm that is declaring it). And declares the object that it is controlling to be the
+same object as the fsm. which can be the palyer or the enemy etc
+
+func run_machine(delta): <br/>
+This function constantly checks if the next state = to the current state and if not switch to it. also says if it is the starting state
+Stores the PREVIOS state as well, incase some functions need to know it. initliazes the variable which hold the path to the node of running,
+idle etc. then that idle or running state node will continiously run according to the delta we pass along to it. so it is in sync with the fsm.
+So every state has a init and a run function at least
+
+
+## Godot game design philosophy
+CollisionShape2D are an exception to nodes inheriting from those above it. Godot has hot-reloading which means
+when a script is changed, only that script is reloaded(vs the entire game). This means you don't have to restart
+the game to see your reflected changes "Sync scene changes" and "sync script changes"
+
+Gdscript is like python but still offers static langauage quality autocompletion(able to infer types)
+.vs files are visual scriptin files, that help you visualize connection between nodes and their properties.
+
+MIT license, freedom and fully open source!
+
+The Godot editor is a game! It has nodes and scenes at its core hence u can extend it using gd script as well.
+The 'tool' keyword at the top of the script makes it run in the editor(remember which is a game).
+
+The 2D engine and the 3D engine are two separate entities in Godot but you can render 3d in 2d / 2d in 3d/ overlay 2d
+sprite over 3dworld
+
+## Designing interfaces with Control Nodes
+All control nodes share the same main properties:
+        1)Anchor
+        2)Bounding rectangle
+        3)Focus and focus neighbor
+        4)Size flags
+        5)Margin
+        6)The optional UI theme
+
+Commonly used control nodes:
+        1)Label: for displaying text
+        2)TextureRect: used mostly for backgrounds, or everything that should be a static image
+        3)TextureProgress: for lifebars, loading bars, horizontal, vertical or radial
+        4)NinePatchRect: for scalable panels
+        5)TextureButton: to create buttons
+Texture rectangle: Benefits over sprite is that it has scaling options, like tiling or straight up resizing.
+Texture button: like texture rectangle but 5 texture slots, one for each state of the button normal, pressed , hover...
+Texture Progess: allow 3 sprites to create progress bar, one over one under and one the progresss  itself. Fill mode is the direction of the bar.
+Label: you can't scale the text if autowrap is off.
+Ninepatchrect: is called that beaucse the texture is split 3x3, where only the center peice is scaled (by tiling)when  scaling.
+
+Two ways to buildin scalable and responsive UIs
+        - Multiple container nodes that scale and place UI
+        - Layout menu which helps you anchor, place and resize UI with its parent
+
+Anchors are the origin of the Control node, they can be changed   
+is the layout button at the top of the editor easily. Anchor      
+values range from 0 to 1 . For left and top,0 means that without  
+any margins(or displacement), the sprite will be flush to the     
+side with 0. For the bottom and right EDGES, 1 in left and top
+anchor means that they will align with bottom and right edges respectively
+Anchors represent the distance from the parent container's
+size(may not be the viewport)
+ 
+Margins on the other hand refer to exact pixels from the anchor
+
+Control nodes should always be in a container, so that they maintain their margins,and its just the anchors than move along side the container.
+
+Control nodes have a size flag, this tells teh containers how the ui elements should scale. They have things like fill and expand which will react in certain ways whe there are multiple control nodes in the same container
+
+Custom Constants of containers have special properties on control ui arrangment
+
+Useful containers:
+        1)MarginContainer, to add margins around part of the UI
+        2)CenterContainer, to center its children in its bounding box
+        3)VboxContainer and HboxContainer, to arrange UI elements in rows or columns
+        4)GridContainer, to arrange Controls nodes in a grid-like pattern
+size
+
+Containers often nest into each other, UI has progress bar container, title container, button container
+
+Breif explainantion:
+Margin Containers: adds a margin to its children so that they remain separated
+Center Containers all its children are cented in the bouding rectangle.
+H or VBoxContainer: Automatically arranges children accordingly with gap
+GridContainer:grid like container, you can only control the umbers of columns, therows will be determined by children count.
