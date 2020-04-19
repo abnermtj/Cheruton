@@ -1,3 +1,6 @@
+Docs plan
+        Read 4+ chapters a day, really internatlize concepts good base before making game
+
 Art
         General 
                 320x180
@@ -24,22 +27,20 @@ Art
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
-                trees need to be way bigger 3 variants at least of the same type!
-                Overgeared color pallete
-                folliage and color of trees are darkes than the main background! the close the object the darker it is but also more saturated
-                Bridges bigger trees
-                CLOUDS
-                MOUNTAINS
-                A lot more stone, stairs?
-                chests with open animation
-                Flowers
-                basic enemyies
-                Wood works 
+                - mountains hills
+                - ferns
+                - 4 village houses 
+                - 2/3 villagers
+                - 3 basic monster, range melee
+                - boss monster
+                - bridges
+                - chests open animation
         References
                 https://www.gamedevmarket.net/asset/medieval-fantasy-characters/ 
                 https://twitter.com/borlorjee/media
                 AWoken youtube gamedevlog
                 Pinterest is king
+                How to train your dragon
                 Overgeared
                 sealedbite, source code read
                 REAL GOAL RYAN FLUERRY GAME:
@@ -73,6 +74,17 @@ LEVEL DESIGN AND CORE GAMEPLAY
 
 Talking
         goto-dialog - makes a json file we can parse for each conversation(?)
+
+GAMEJAM CRITERIA
+Gameplay
+Fun
+Originality
+Graphics
+Theme
+Overall
+
+GAMEJAM GAMES REFERENCE
+https://evilartbunny.itch.io/alchemists-mountain
 
 Concepts
         PORTAL CONCEPT BETWEEN WORLDS, so to get to the next map you go into the portal, then it will transition in a way that seemless changes the camera
