@@ -1,26 +1,12 @@
 Things to do
 
-1) Implement Logo Screen
-	Load in font files
+1) Design
+	- Welcome 
+	- Main Menu
+	- Settings
 
-2)  Main Menu - Consider background (live?)
-
-	   Game Name
-	
-	Button: Play
-	Button: Settings
-	Button: Exit
-
-3) Implement exit function
-
-	New screen confirming exit: Do you want to exit the game 
-	Button: Yes - exit  Button: No - close screen `
-
-4) Settings
-	New Scene: 
-		Volume: UP button
-		Volume: DOWN button
-		Volume Indicator (BAR)
-
+2) Build Text Font base
 		
-5) Build Sound Collection Base
+3) Build Sound Collection Base
+
+4) Save data for Master Volume
