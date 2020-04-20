@@ -1,6 +1,8 @@
 # GingerBreadMen
 Orbital 2020 Project <br/>
 
+Cheruton. <br/>
+
 A 2D platformer made with Godot.<br/>
 
 Timeline<br/>
