@@ -4,10 +4,12 @@ Docs plan
 Art
         General 
                 320x180
+                45x45 dialog face
                 Copy zoom levels
                 Decide on rules of the game : colors, what can be jumped on, mechanic
                 Animated folliage copy nykra method
                 https://szadiart.itch.io/ for places ideas
+                Vertical parallax
         particles2D
                 fogs
                 god rays
@@ -17,17 +19,16 @@ Art
                 lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
         Main character
+                Diaglog FACE 45 45
                 12fps
                 DEFINE LIGHT SOURCE TOPLEFT DOWNWARDs
                 edge normal mapping albedo sprites
                 basic attacks - slash
                 Overgeared glow
-                gold weapon, maybe attacks like archer, floating weapons all gold
-                play with normal maps to understand lighting
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
-                - mountains hills
+                terrira landscapes
                 - ferns
                 - 4 village houses 
                 - 2/3 villagers
@@ -56,7 +57,6 @@ Art
                 https://godot-engine.zeef.com/andre.antonio.schmitz
                 hair
                 https://twitter.com/i/status/1011581635760779264
-
 
 Movement and Collisions
         Flow, cosistency, control, jump and movement have to be perfect
@@ -89,15 +89,18 @@ https://evilartbunny.itch.io/alchemists-mountain
 Concepts
         PORTAL CONCEPT BETWEEN WORLDS, so to get to the next map you go into the portal, then it will transition in a way that seemless changes the camera
         FSM advanced statemachine https://www.youtube.com/watch?v=y9x4N3QgAQ 
-        LOCAL MULTIPLAYER?
         games from scratch concept series
         Viewport mode for pixelated shadows
         Engine.time_scale = 0.1 slowmo
         Multiattack input buffer -antidev
-        animation states pls
-        skill like vim
-        Hit animations that look fun dumb
         Chaining dashes that link to specific games objects
         aniticipation/hit stops/smears/overreaching/holding
         Flying high in the sky shooting straight down and camera zoom for that
         Mobility
+
+Names
+        -Sapphire
+        -Cheruton
+        -Cono
+        -Bukage
+        -coshu
