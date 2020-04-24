@@ -56,7 +56,7 @@ func _process(time):
 			break
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count() * 100
-	progbar.value= progress
+	progbar.value = progress
 	
 	
 
