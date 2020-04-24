@@ -1,6 +1,8 @@
 extends Node
 
 # Fix these locations as the save file location
+# Adding data to the game dictionary:
+#	DataResource.dict_x["feature"] = value
 
 const FILE_NAME = "res://game-data.json"
 const FILE_NAME2 = "res://settings-data.json"
@@ -28,22 +30,18 @@ var dict_player = {
 }
 
 var dict_settings = {
-		"audio" : audio
-#        "brightness" : get_parent().get_path(),
-#        "color_indibars" : position.x, 
-#        "mmenubg" : mmenubg
+	"audio" : audio
+#       "brightness" : get_parent().get_path(),
+#       "color_indibars" : position.x, 
+#       "mmenubg" : mmenubg
 }
-
-
-
-# Add data to the game dictionary - Guide
-#		dict_x["player"] = player
 
 func save_player(): 
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
 	file.store_string(to_json(dict_player))
 	file.close()
+
 func save_settings(): 	
 	var file = File.new()
 	file.open(FILE_NAME2, File.WRITE)
