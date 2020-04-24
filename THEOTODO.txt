@@ -4,9 +4,11 @@ Things to do
 	- Welcome 
 	- Main Menu
 	- Settings
+	- Loading Screen
+2) Rework Main Menu and Volume
 
-2) Build Text Font base
+3) Build Text Font base
 		
-3) Build Sound Collection Base
+4) Build Sound Collection Base
 
-4) Save data for Master Volume
+5) Save data for Master Volume
