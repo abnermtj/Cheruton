@@ -1,13 +1,21 @@
-Docs plan
-        Read 4+ chapters a day, really internatlize concepts good base before making game
-
 Art
+        Aseprite tips to try
+        ctrl t to transform entire sprite along borders
+        ctrl to select past layesrs
+        Shift tool allows you to shift put the pixels wrap to the other en once it reaches th border
+        despeckle removes noise from images without blurring
+        tags allow you to go backwards on frames
         General 
+                36 color pallete
+                /r/accidental renaissance for compositions
+                contorl so select through layers aseprite
+                For monsters paint pixels over 3d models
+                OUTLINE ONLY INTERACTABLES
                 320x180
                 45x45 dialog face
                 Copy zoom levels
                 Decide on rules of the game : colors, what can be jumped on, mechanic
-                Animated folliage copy nykra method
+                Animated folliage nykra method
                 https://szadiart.itch.io/ for places ideas
                 Vertical parallax
         particles2D
@@ -20,6 +28,7 @@ Art
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
         Main character
                 Diaglog FACE 45 45
+                Need to change color of skin to pop out more
                 12fps
                 DEFINE LIGHT SOURCE TOPLEFT DOWNWARDs
                 edge normal mapping albedo sprites
@@ -28,7 +37,9 @@ Art
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
+                -inner tiles
                 terrira landscapes
+                - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
                 - ferns
                 - 4 village houses 
                 - 2/3 villagers
@@ -36,27 +47,26 @@ Art
                 - boss monster
                 - bridges
                 - chests open animation
+        SEATOWN
+        ICELANDS
+        DEMON KINGS CASTLE
+
         References
                 https://www.gamedevmarket.net/asset/medieval-fantasy-characters/ 
                 https://twitter.com/borlorjee/media
-                AWoken youtube gamedevlog
                 Pinterest is king
                 How to train your dragon
                 Overgeared
                 sealedbite, source code read
-                REAL GOAL RYAN FLUERRY GAME:
                 https://www.youtube.com/watch?v=1GupU20ISeM
                 Flynn: Son of Crimson: it terms of gameplay and graphics
                 Blue protocol 
                 FaeLand
                 https://www.reddit.com/r/gameassets/top/?t=all
                 https://sanctumpixel.itch.io/
-                YOURNAME
                 Dolphin island 2 - good
                 @jtangc twitter is really good - concept art
                 https://godot-engine.zeef.com/andre.antonio.schmitz
-                hair
-                https://twitter.com/i/status/1011581635760779264
 
 Movement and Collisions
         Flow, cosistency, control, jump and movement have to be perfect
