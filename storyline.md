@@ -1,13 +1,24 @@
 Starting scene:
-- You and your other childhood companion (12yo) – play/go school/eat blabla
-- Suddenly, main villain takes away yr companion while attacking your village
-- You harbour this in-built revenge in yr heart
+- You and your other childhood companions (12yo) 
+- Explore weird cave that village has prewarned not to enter
+- Find gem, transport to main boss castle
+- try to run away, in process some of your frens captured
 
 Scene 1 (4 yrs later) – current setting
 - You receive parchment from unknown sender
 - First clue to the secret of the castle
-- Look to the castle and determined to set yr companion free
 - Consider companions!
+
+Major Areas
+- Mountainous Region 
+   - Weather: Snow
+
+- Seaside Town
+   - Weather: Rainy
+   - UnderWater Cave in the sea
+   
+- Castle
+   - Sub-obstacle rooms
 
 Areas
 - 3 big 2 small, 1 final castle
