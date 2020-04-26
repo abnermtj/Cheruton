@@ -1,6 +1,6 @@
 Starting scene:
 - You and your other childhood companions (12yo) 
-- Explore weird cave that village has prewarned not to enter
+- At Night, explore cave that village has prewarned not to enter (only adults can mine), 
 - Find gem, transport to main boss castle
 - try to run away, in process some of your frens captured
 
@@ -8,15 +8,21 @@ Scene 1 (4 yrs later) – current setting
 - You receive parchment from unknown sender
 - First clue to the secret of the castle
 - Consider companions!
+- Start of your life as an adventurer!
 
 Major Areas
-- Mountainous Region 
-   - Weather: Snow
+- Home Town
+   - Mining/merchanting town
+   - Caves where parents dig for magic stones at night
+   - Powerplant, small river and bridge
 
 - Seaside Town
    - Weather: Rainy
    - UnderWater Cave in the sea
    
+- Mountainous Region 
+   - Weather: Snow
+
 - Castle
    - Sub-obstacle rooms
 

@@ -27,26 +27,23 @@ Art
                 lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
         Main character
-                Diaglog FACE 45 45
-                Need to change color of skin to pop out more
                 12fps
                 DEFINE LIGHT SOURCE TOPLEFT DOWNWARDs
                 edge normal mapping albedo sprites
+                jumping straight up
                 basic attacks - slash
                 Overgeared glow
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
-                -inner tiles
-                terrira landscapes
+                - terrira landscapes
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
-                - ferns
-                - 4 village houses 
+                - Fix Mountains looks weird flipped angle the back is facing is weird for the left mountain
+                - 6 village houses 
                 - 2/3 villagers
                 - 3 basic monster, range melee
                 - boss monster
                 - bridges
-                - chests open animation
         SEATOWN
         ICELANDS
         DEMON KINGS CASTLE
