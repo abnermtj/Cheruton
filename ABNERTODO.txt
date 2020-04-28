@@ -1,42 +1,40 @@
+SMU guild hall talks
+
 Art
-        Aseprite tips to try
-        ctrl t to transform entire sprite along borders
-        ctrl to select past layesrs
-        Shift tool allows you to shift put the pixels wrap to the other en once it reaches th border
-        despeckle removes noise from images without blurring
-        tags allow you to go backwards on frames
         General 
-                36 color pallete
                 /r/accidental renaissance for compositions
-                contorl so select through layers aseprite
-                For monsters paint pixels over 3d models
-                OUTLINE ONLY INTERACTABLES
-                320x180
-                45x45 dialog face
+                For monsters paint pixels over 3d models/ ROTOSCOPE
+                Dimensions?restrictions
+                        topleft downwards lighting from our pov
+                        36 color pallete
+                        320x180
+                        45x45 dialog face
+                        12fps
+                        outline only on interactables, floors too!
                 Copy zoom levels
-                Decide on rules of the game : colors, what can be jumped on, mechanic
                 Animated folliage nykra method
                 https://szadiart.itch.io/ for places ideas
-                Vertical parallax
-        particles2D
+        Effects
+                blood
                 fogs
                 god rays
                 day/night https://twitter.com/lazybeargames/status/967071011689648130?lang=en
-                death
-                parrallax - witches isle
+                horizontal and vertical parrallax - witches isle
                 lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
         Main character
-                12fps
-                DEFINE LIGHT SOURCE TOPLEFT DOWNWARDs
-                edge normal mapping albedo sprites
+                Light source is wrong is certain directions
+                edge normal mapping albedo sprites for cave scene
                 jumping straight up
                 basic attacks - slash
-                Overgeared glow
+                improve animation use squash properly
+                PEDRO PIXEL AR GUIDES
+                Sound effect
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
                 - terrira landscapes
+                - mountain looks weird
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
                 - Fix Mountains looks weird flipped angle the back is facing is weird for the left mountain
                 - 6 village houses 
@@ -81,6 +79,10 @@ LEVEL DESIGN AND CORE GAMEPLAY
 
 Talking
         goto-dialog - makes a json file we can parse for each conversation(?)
+
+SOUND 
+        snes style 16bit
+        https://wingless-seraph.net/en/material-music_16bit.html
 
 GAMEJAM CRITERIA
 Gameplay
