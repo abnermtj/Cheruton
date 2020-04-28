@@ -29,4 +29,4 @@ Timeline<br/>
 
 26 Aug - Splashdown - Refinement4<br/>
 	(Poster session and award ceremony)<br/>
-![alt text](https://i.ibb.co/3k1ChYw/progress.png "Progress1")
+![alt text](https://ibb.co/1zrV0Xg "Progress1")
