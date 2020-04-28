@@ -5,10 +5,9 @@ Things to do
 	- Main Menu
 	- Settings
 	- Loading Screen
-2) Rework Main Menu and Volume
+	- Exp Bar
 
-3) Build Text Font base
+2) Build Text Font base
 		
-4) Build Sound Collection Base
+3) Build Sound Collection Base
 
-5) Save data for Master Volume
