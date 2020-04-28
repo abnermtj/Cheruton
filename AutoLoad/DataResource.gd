@@ -4,9 +4,12 @@ extends Node
 # Adding data to the game dictionary:
 #	DataResource.dict_x["feature"] = value
 
-const FILE_NAME = "res://game-data.json"
-const FILE_NAME2 = "res://settings-data.json"
+const FILE_NAME = "res://SaveData/player-data.json"
+const FILE_NAME2 = "res://SaveData/settings-data.json"
 var audio
+var exp_curr = 0
+var exp_max = 0
+var level = 0
 var dict_player = {
 #        "filename" : get_filename(),
 #        "parent" : get_parent().get_path(),
@@ -19,9 +22,9 @@ var dict_player = {
 #        "max_health" : max_health,
 #        "damage" : damage,
 #        "regen" : regen,
-#        "experience" : experience,
-#        "tnl" : tnl,
-#        "level" : level,
+		"exp_curr" : exp_curr,
+		"exp_max" : exp_max,
+		"level" : level,
 #        "attack_bonus" : attack_bonus,
 #        "defense_bonus" : defense_bonus,
 #        "health_bonus" : health_bonus,
@@ -73,3 +76,14 @@ func load_settings():
 			print("Corrupted data for settings!")
 	else:
 		print("No saved data for settings!")
+
+func reset_player():		
+	dict_player["exp_curr"] = 0
+	dict_player["exp_max"] = 60
+	dict_player["level"] = 0
+	save_player()
+
+func reset_settings():	
+	dict_settings["audio"] = -10
+	save_settings()
+	
