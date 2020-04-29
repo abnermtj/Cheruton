@@ -6,10 +6,13 @@ extends Node
 
 const FILE_NAME = "res://SaveData/player-data.json"
 const FILE_NAME2 = "res://SaveData/settings-data.json"
+signal loaded
+
+
 var audio
-var exp_curr = 0
-var exp_max = 0
-var level = 0
+var exp_curr
+var exp_max
+var level
 var dict_player = {
 #        "filename" : get_filename(),
 #        "parent" : get_parent().get_path(),
@@ -50,7 +53,7 @@ func save_settings():
 	file.open(FILE_NAME2, File.WRITE)
 	file.store_string(to_json(dict_settings))
 	file.close()
-	
+
 func load_player():
 	var file = File.new()
 	if file.file_exists(FILE_NAME):
@@ -59,12 +62,15 @@ func load_player():
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
 			dict_player = data
+			emit_signal("loaded")
 		else:
 			print("Corrupted data for player!")
 	else:
 		print("No saved data for player!")	
+
 		
 func load_settings():		
+
 	var file = File.new()
 	if file.file_exists(FILE_NAME2):
 		file.open(FILE_NAME2, File.READ)
@@ -77,6 +83,7 @@ func load_settings():
 	else:
 		print("No saved data for settings!")
 
+	
 func reset_player():		
 	dict_player["exp_curr"] = 0
 	dict_player["exp_max"] = 60
