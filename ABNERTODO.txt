@@ -1,6 +1,7 @@
 SMU guild hall talks
 Art
         General 
+                Grayscale image to ensure the right things pop
                 /r/accidental renaissance for compositions
                 For monsters paint pixels over 3d models/ ROTOSCOPE
                 Dimensions?restrictions
@@ -29,9 +30,11 @@ Art
                 improve animation use squash properly
                 PEDRO PIXEL AR GUIDES
                 Sound effect
+                League of legends color choice vfx
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
-        Assets Grasslands
+        Assets HomeTown/Grasslands
+                - need better ferns around old house.
                 - terrira landscapes
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
                 - 6 village houses 
