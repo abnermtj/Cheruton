@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://LoadScrn/LoadScrn.gd" type="Script" id=1]
+
+[node name="LoadScrn" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -0.397217
+margin_top = -0.397217
+margin_right = 1023.6
+margin_bottom = 599.603
+color = Color( 0.854902, 0.317647, 0.317647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+margin_left = 413.224
+margin_top = 200.699
+margin_right = 513.224
+margin_bottom = 300.699
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 19.0
+margin_top = 34.0
+margin_right = 80.0
+margin_bottom = 66.0
+
+[node name="LoadWord" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Loading..."
+
+[node name="LoadProg" type="ProgressBar" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 61.0
+margin_bottom = 32.0

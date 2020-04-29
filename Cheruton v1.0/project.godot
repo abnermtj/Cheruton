@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Cheruton v1.0"
+run/main_scene="res://ExpBar/Welcome.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DataResource="*res://AutoLoad/DataResource.gd"
+DataFunctions="*res://AutoLoad/DataFunctions.gd"
+LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
+LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
