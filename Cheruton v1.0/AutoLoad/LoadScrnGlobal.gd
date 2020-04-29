@@ -6,7 +6,7 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 var progbar
-onready var load_scrn = preload("res://LoadScrn.tscn")
+onready var load_scrn = preload("res://LoadScrn/LoadScrn.tscn")
 
 func _ready():
 	var root = get_tree().get_root()
