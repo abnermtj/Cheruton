@@ -1,5 +1,4 @@
 SMU guild hall talks
-
 Art
         General 
                 /r/accidental renaissance for compositions
@@ -34,14 +33,11 @@ Art
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
         Assets Grasslands
                 - terrira landscapes
-                - mountain looks weird
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
-                - Fix Mountains looks weird flipped angle the back is facing is weird for the left mountain
                 - 6 village houses 
                 - 2/3 villagers
                 - 3 basic monster, range melee
                 - boss monster
-                - bridges
         SEATOWN
         ICELANDS
         DEMON KINGS CASTLE
