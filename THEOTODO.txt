@@ -6,8 +6,11 @@ Things to do
 	- Settings
 	- Loading Screen
 	- Exp Bar
+	- Health Bar
 
-2) Build Text Font base
+2) Health Info: Numerical Display
+
+3) Build Text Font base
 		
-3) Build Sound Collection Base
+4) Build Sound Collection Base
 
