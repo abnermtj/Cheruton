@@ -29,8 +29,10 @@ margin_top = 92.0
 margin_right = 472.0
 margin_bottom = 163.0
 rect_scale = Vector2( 0.25, 0.1 )
+value = 50.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
+tint_over = Color( 1, 1, 0.980392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,3 +47,4 @@ text = "Health: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="value_changed" from="HealthBar" to="." method="_on_HealthBar_value_changed"]

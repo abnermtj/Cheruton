@@ -2,7 +2,8 @@ extends Control
 
 var old_level
 
-func _ready():	
+func _ready():
+	# change loaded to when start game
 	DataResource.connect("loaded", self, "initbar")
 	DataFunctions.connect("update_exp", self, "update_expbar")
 
