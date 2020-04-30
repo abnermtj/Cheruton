@@ -10,6 +10,9 @@ signal loaded
 
 
 var audio
+var health_curr
+var health_max
+var damage
 var exp_curr
 var exp_max
 var level
@@ -21,8 +24,8 @@ var dict_player = {
 #        "gender" : gender
 #        "attack" : attack,
 #        "defense" : defense,
-#        "current_health" : current_health,
-#        "max_health" : max_health,
+		"health_curr" : health_curr,
+		"health_max" : health_max,
 #        "damage" : damage,
 #        "regen" : regen,
 		"exp_curr" : exp_curr,
@@ -87,6 +90,8 @@ func load_settings():
 func reset_player():		
 	dict_player["exp_curr"] = 0
 	dict_player["exp_max"] = 60
+	dict_player["health_curr"] = 50
+	dict_player["health_max"] = 50
 	dict_player["level"] = 0
 	save_player()
 

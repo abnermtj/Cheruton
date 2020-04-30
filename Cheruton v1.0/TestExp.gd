@@ -13,16 +13,15 @@ func _ready():
 
 
 
-
 func _on_Button_pressed():
-	DataFunctions.add_exp(30)
+	DataFunctions.lose_health(10)
 
 
-func _on_exit_pressed():
+func _on_Button2_pressed():
 	DataResource.save_player()
 	DataResource.save_settings()
 	get_tree().quit()
 
 
-func _on_Button2_pressed():
-	DataResource.reset_player()
+func _on_Button3_pressed():
+	DataFunctions.add_health(10)

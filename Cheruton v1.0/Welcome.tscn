@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TestExp.gd" type="Script" id=1]
+[ext_resource path="res://HealthBar/HealthBar.tscn" type="PackedScene" id=2]
+
+[node name="Welcome" type="Node"]
+
+[node name="TestExp" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="TestExp"]
+margin_left = 63.0
+margin_top = 73.0
+margin_right = 205.0
+margin_bottom = 93.0
+rect_pivot_offset = Vector2( 86.3775, -9.59312 )
+text = "Decrease Health(10)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="TestExp"]
+margin_left = 132.815
+margin_top = 21.2347
+margin_right = 274.815
+margin_bottom = 41.2347
+rect_pivot_offset = Vector2( 86.3775, -9.59312 )
+text = "Increase Health(10)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="TestExp"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" parent="TestExp" instance=ExtResource( 2 )]
+margin_left = 47.2274
+margin_top = 39.0139
+margin_right = -271.773
+margin_bottom = -140.986
+[connection signal="pressed" from="TestExp/Button" to="TestExp" method="_on_Button_pressed"]
+[connection signal="pressed" from="TestExp/Button3" to="TestExp" method="_on_Button3_pressed"]
+[connection signal="pressed" from="TestExp/Button2" to="TestExp" method="_on_Button2_pressed"]
