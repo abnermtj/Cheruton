@@ -1,6 +1,8 @@
 SMU guild hall talks
 Art
         General 
+                basics tps https://www.patreon.com/saint11
+                remove perfection ocd
                 Grayscale image to ensure the right things pop
                 /r/accidental renaissance for compositions
                 For monsters paint pixels over 3d models/ ROTOSCOPE
@@ -14,6 +16,7 @@ Art
                 Copy zoom levels
                 Animated folliage nykra method
                 https://szadiart.itch.io/ for places ideas
+
         Effects
                 blood
                 fogs
@@ -22,25 +25,41 @@ Art
                 horizontal and vertical parrallax - witches isle
                 lazy falling leaves https://old.reddit.com/r/godot/comments/drzhke/testing_platformer_verbs_for_my_github_gamoff_jam/
                 water https://www.reddit.com/r/godot/comments/fgswhr/a_little_bored_and_tired_tonight_so_i_made_some/
+                fire moving from wind of player running
+
         Main character
                 Light source is wrong is certain directions
-                edge normal mapping albedo sprites for cave scene
+                edge normal mapping, use albedo sprites for cave scene
                 jumping straight up
                 basic attacks - slash
-                improve animation use squash properly
                 PEDRO PIXEL AR GUIDES
                 Sound effect
                 League of legends color choice vfx
         Monsters
                 https://www.gamedevmarket.net/asset/2d-pixel-slime/
+
+        Team logo/Game icon
+                new designs pls
+
         Assets HomeTown/Grasslands
-                - need better ferns around old house.
+                - your house better shading?not enough pop
+                - need better ferns around your house.
                 - terrira landscapes
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
                 - 6 village houses 
                 - 2/3 villagers
                 - 3 basic monster, range melee
                 - boss monster
+                -Marketplace
+                - bridge
+                - Tilable Houses 2 days
+                - Marketplace 1 day
+                - Tileable Tower with guardsman 
+                - Water tank place. .5 day
+                ALL BELOW CAN TILE
+                - Tavern - for healz 1 day
+                - Storage facilities. .5day
+                - other buildings face left some middle buldings face straight
         SEATOWN
         ICELANDS
         DEMON KINGS CASTLE
@@ -72,39 +91,24 @@ Movement and Collisions
                 - jump corner correction instead of a hardbump
                 - dashing against a corner will plop you up
 Skill Tree 
-        Skill point system
 
 LEVEL DESIGN AND CORE GAMEPLAY
 
-Talking
+Dialouge system
         goto-dialog - makes a json file we can parse for each conversation(?)
 
 SOUND 
         snes style 16bit
         https://wingless-seraph.net/en/material-music_16bit.html
 
-GAMEJAM CRITERIA
-Gameplay
-Fun
-Originality
-Graphics
-Theme
-Overall
-
-GAMEJAM GAMES REFERENCE
-https://evilartbunny.itch.io/alchemists-mountain
-
 Concepts
-        PORTAL CONCEPT BETWEEN WORLDS, so to get to the next map you go into the portal, then it will transition in a way that seemless changes the camera
+        glider mecahnic to gatekeep
         FSM advanced statemachine https://www.youtube.com/watch?v=y9x4N3QgAQ 
         games from scratch concept series
         Viewport mode for pixelated shadows
         Engine.time_scale = 0.1 slowmo
         Multiattack input buffer -antidev
         Chaining dashes that link to specific games objects
-        aniticipation/hit stops/smears/overreaching/holding
-        Flying high in the sky shooting straight down and camera zoom for that
-        Mobility
 
 Names
         -Sapphire
