@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HealthBarPng/lifebar_fill.png" type="Texture" id=1]
+[ext_resource path="res://HealthBarPng/healthbar_fill.png" type="Texture" id=2]
+[ext_resource path="res://HealthBar/HealthBar.gd" type="Script" id=3]
+
+[node name="HealthBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -319.0
+margin_bottom = -180.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HealthLabel" type="Label" parent="."]
+margin_right = 21.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = 75.0
+margin_top = 92.0
+margin_right = 472.0
+margin_bottom = 163.0
+rect_scale = Vector2( 0.25, 0.1 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthVal" type="Label" parent="."]
+margin_left = 46.0
+margin_top = 92.0
+margin_right = 96.0
+margin_bottom = 106.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Health: "
+__meta__ = {
+"_edit_use_anchors_": false
+}

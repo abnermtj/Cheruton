@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cheruton v1.0"
-run/main_scene="res://ExpBar/Welcome.tscn"
+run/main_scene="res://Welcome.tscn"
 config/icon="res://icon.png"
 
 [autoload]
