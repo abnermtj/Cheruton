@@ -1,6 +1,5 @@
-OrbitalGamePlan/
-Reference/
-Sprites/Aseprite.v1.2.15/
-Sprites/pixelator-win32-x86/
-Sprites/Ken*
-Sprites/progresspics
+Sprites/References
+./OrbitalGamePlan
+./SpritesIgnore
+*.un~
+*.swp
