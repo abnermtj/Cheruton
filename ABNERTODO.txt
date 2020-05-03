@@ -2,6 +2,10 @@ SMU guild hall talks
 Need to make it as fun as possible. Art is also about getting stuff/understanding.
 Art
         General 
+                READ BELOW PLS ON PIXEL PERFECT SCALING GODOT
+                https://medium.com/@tumeowilliam/godot-engine-and-pixel-art-a-better-love-story-than-twilight-4c8155ba71cd
+                https://alvarber.gitlab.io/pixel-perfection-in-godot.html
+                remember to enable pixel snapping else sprites get half pixels
                 basics tps https://www.patreon.com/saint11
                 remove perfection ocd
                 Grayscale image to ensure the right things pop
@@ -42,18 +46,19 @@ Art
         Team logo/Game icon
                 new designs pls
 
+        CAVE
+                Baby mc falling animation into the cave beautiful rocks maybe a concept of turning into different ages. poof.
+                Jokes similar to shazam.
         Assets HomeTown/Grasslands
-                - your house better shading?not enough pop
                 - cloth hanger in direction of sun
                 - need better ferns around your house.
-                - tower doesn't quite fit need detailing
                 - terrira landscapes
                 - hill and rocks and clocks ferns are non commecial bushes, unles you remake them
                 - 6 village houses 
                 - 2/3 villagers
                 - 3 basic monster, range melee
                 - boss monster
-                -Marketplace
+                - Marketplace
                 - bridge
                 - Tilable Houses 2 days
                 - Marketplace 1 day
@@ -68,6 +73,7 @@ Art
         DEMON KINGS CASTLE
 
         References
+                Iconoclast loading screens <3
                 https://www.gamedevmarket.net/asset/medieval-fantasy-characters/ 
                 https://twitter.com/borlorjee/media
                 Pinterest is king
