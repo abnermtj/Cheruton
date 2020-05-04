@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Inventory" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 29.3958
+margin_top = 30.8298
+margin_right = 41.3958
+margin_bottom = 50.8298
+text = "double click"
+__meta__ = {
+"_edit_use_anchors_": false
+}
