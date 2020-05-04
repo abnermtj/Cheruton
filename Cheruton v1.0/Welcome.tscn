@@ -39,10 +39,10 @@ __meta__ = {
 }
 
 [node name="HealthBar" parent="TestExp" instance=ExtResource( 2 )]
-margin_left = 47.2274
-margin_top = 39.0139
-margin_right = -271.773
-margin_bottom = -140.986
+margin_left = 41.1897
+margin_top = 38.2592
+margin_right = -277.811
+margin_bottom = -141.741
 [connection signal="pressed" from="TestExp/Button" to="TestExp" method="_on_Button_pressed"]
 [connection signal="pressed" from="TestExp/Button3" to="TestExp" method="_on_Button3_pressed"]
 [connection signal="pressed" from="TestExp/Button2" to="TestExp" method="_on_Button2_pressed"]
