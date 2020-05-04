@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthbar_fill.png-5bd48d4f60fbe0268b4a4b25b3c97e35.stex"
+path="res://.import/healthbar_fill.png-5a5bb290c30a2c29592e622271518c8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HealthBar/healthbar_fill.png"
-dest_files=[ "res://.import/healthbar_fill.png-5bd48d4f60fbe0268b4a4b25b3c97e35.stex" ]
+source_file="res://Player/Stats/HealthBar/healthbar_fill.png"
+dest_files=[ "res://.import/healthbar_fill.png-5a5bb290c30a2c29592e622271518c8a.stex" ]
 
 [params]
 

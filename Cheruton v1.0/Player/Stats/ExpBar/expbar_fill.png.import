@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expbar_fill.png-727737ab9415b6e282f516670b699025.stex"
+path="res://.import/expbar_fill.png-2efa955c078950035a6ee163b8c81f8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ExpBar/expbar_fill.png"
-dest_files=[ "res://.import/expbar_fill.png-727737ab9415b6e282f516670b699025.stex" ]
+source_file="res://Player/Stats/ExpBar/expbar_fill.png"
+dest_files=[ "res://.import/expbar_fill.png-2efa955c078950035a6ee163b8c81f8a.stex" ]
 
 [params]
 
