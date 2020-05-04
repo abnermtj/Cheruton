@@ -1,13 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ExpBar/ExpBar.gd" type="Script" id=1]
-[ext_resource path="res://ExpBar/expbar_bg.png" type="Texture" id=2]
-[ext_resource path="res://ExpBar/expbar_fill.png" type="Texture" id=3]
-
-
-
-
-
+[ext_resource path="res://Player/Stats/ExpBar/ExpBar.gd" type="Script" id=1]
+[ext_resource path="res://Player/Stats/ExpBar/expbar_bg.png" type="Texture" id=2]
+[ext_resource path="res://Player/Stats/ExpBar/expbar_fill.png" type="Texture" id=3]
 
 [node name="ExpBar" type="Control"]
 script = ExtResource( 1 )
