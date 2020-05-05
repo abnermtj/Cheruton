@@ -2,29 +2,29 @@
 
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
 [sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -39,10 +39,10 @@ margin_left = 145.616
 margin_top = 72.8645
 margin_right = 183.616
 margin_bottom = 92.8645
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,10 +53,10 @@ margin_left = 132.463
 margin_top = 95.0734
 margin_right = 195.463
 margin_bottom = 115.073
-custom_styles/hover = SubResource( 9 )
+custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 13 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,12 +67,13 @@ margin_left = 145.881
 margin_top = 116.767
 margin_right = 180.881
 margin_bottom = 136.767
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 12 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

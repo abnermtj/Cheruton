@@ -8,6 +8,7 @@ const FILE_NAME = "res://SaveData/player-data.json"
 const FILE_NAME2 = "res://SaveData/settings-data.json"
 signal loaded
 
+var current_scene = null
 
 var audio
 var health_curr
