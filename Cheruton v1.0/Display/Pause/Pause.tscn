@@ -11,11 +11,13 @@ __meta__ = {
 }
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
-visible = true
 margin_left = 45.8863
 margin_top = 25.0501
 margin_right = 267.886
 margin_bottom = 156.05
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="PopupMenu"]
 margin_left = 65.388
@@ -59,4 +61,6 @@ text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="PopupMenu/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="PopupMenu/RMMenu" to="." method="_on_RMMenu_pressed"]
 [connection signal="pressed" from="PopupMenu/ExitDirect" to="." method="_on_ExitDirect_pressed"]

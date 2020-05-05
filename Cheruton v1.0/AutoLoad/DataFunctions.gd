@@ -39,8 +39,4 @@ func change_audio_master(var audio_change):
 	emit_signal("change_audio_master")
 
 
-#need to disable keyboard input at welcome, mmenu settings
-func _input(ev):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		LoadGlobal.goto_scene(PAUSE)
 
