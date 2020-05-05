@@ -11,6 +11,7 @@ signal loaded
 var current_scene = null
 
 var audio
+var is_mute
 var health_curr
 var health_max
 var damage
@@ -40,7 +41,8 @@ var dict_player = {
 }
 
 var dict_settings = {
-	"audio" : audio
+	"audio" : audio,
+	"is_mute": is_mute
 #       "brightness" : get_parent().get_path(),
 #       "color_indibars" : position.x, 
 #       "mmenubg" : mmenubg
