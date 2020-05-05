@@ -42,6 +42,8 @@ DataResource="*res://AutoLoad/DataResource.gd"
 DataFunctions="*res://AutoLoad/DataFunctions.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
+KeyPress="*res://AutoLoad/KeyPress.gd"
+Pause="*res://Display/Pause/Pause.gd"
 
 [display]
 

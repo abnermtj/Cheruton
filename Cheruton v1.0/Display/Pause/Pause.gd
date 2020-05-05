@@ -1,15 +1,21 @@
 extends Popup
+signal free_pause
+const SETTINGS = "res://Display/Settings/Settings.tscn"
+const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-
 func _on_ExitDirect_pressed():
-	get_tree().exit()
+	#save player_data?
+	get_tree().quit()
+
+
+func _on_Settings_pressed():
+	emit_signal("free_pause")
+	LoadGlobal.goto_scene(SETTINGS)
+	
+
+func _on_RMMenu_pressed():
+	LoadGlobal.goto_scene(MAINMENU)
+
