@@ -1,16 +1,10 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
+const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 func _ready():
 	DataResource.load_player()
 	DataResource.load_settings()
 	
 	
 func _on_Timer_timeout():
-	LoadGlobal.goto_scene("res://Display/MainMenu/MainMenu.tscn")
+	LoadGlobal.goto_scene(MAINMENU)

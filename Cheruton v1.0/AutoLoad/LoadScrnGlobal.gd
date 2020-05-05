@@ -8,6 +8,8 @@ var time_max = 100 # msec
 var progbar
 onready var load_scrn = preload("res://Display/LoadScrn/LoadScrn.tscn")
 
+const PROGBAR = "ColorRect/CenterContainer/VBoxContainer/LoadProg"
+
 func _ready():
 	var root = get_tree().get_root()
 	DataResource.current_scene = root.get_child(root.get_child_count() -1)
@@ -21,7 +23,7 @@ func goto_scene(path): # game requests to switch to this scene
 	DataResource.current_scene.queue_free() # get rid of the old scene
 	DataResource.current_scene = load_scrn.instance()
 	add_child(DataResource.current_scene)
-	progbar = DataResource.current_scene.get_node("ColorRect/CenterContainer/VBoxContainer/LoadProg")
+	progbar = DataResource.current_scene.get_node(PROGBAR)
 
 	wait_frames = 1
 

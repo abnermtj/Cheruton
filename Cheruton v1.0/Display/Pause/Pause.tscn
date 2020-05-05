@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Pause" type="Popup"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="PopupPanel" type="PopupPanel" parent="PopupMenu"]
+margin_right = 8.0
+margin_bottom = 8.0
