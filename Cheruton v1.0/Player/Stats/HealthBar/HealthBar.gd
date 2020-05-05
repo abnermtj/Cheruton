@@ -24,7 +24,10 @@ func animate_healthbar(start, end):
 
 
 func _on_HealthBar_value_changed(value):
-	$HealthVal.text = str(floor($HealthBar.value * health_max/100), "/", health_max)
+	if($HealthBar.value < 0):
+		$HealthVal.text = str(0, "/", health_max)
+	else:
+		$HealthVal.text = str(floor($HealthBar.value * health_max/100), "/", health_max)
 	if(value > 49):
 		$HealthBar.set_tint_progress(Color(0.180392, 0.415686, 0.258824))
 	elif(value > 19):

@@ -7,6 +7,10 @@
 [node name="Stats" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.88678
+margin_top = 2.64148
+margin_right = 1.88678
+margin_bottom = 2.64148
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,10 +23,10 @@ margin_right = -94.0771
 margin_bottom = 35.9583
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
-margin_left = -41.1638
-margin_top = 50.6602
-margin_right = -360.164
-margin_bottom = -129.34
+margin_left = -27.9564
+margin_top = 49.1508
+margin_right = -346.957
+margin_bottom = -130.849
 
 [node name="increase" type="Button" parent="."]
 margin_left = 52.8296
