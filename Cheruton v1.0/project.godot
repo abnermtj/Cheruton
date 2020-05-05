@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "AsepriteImportData",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImportData.gd"
+}, {
+"base": "Node",
+"class": "AsepriteImporter",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImporter.gd"
+}, {
+"base": "Node",
+"class": "EditorTheme",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
+} ]
 _global_script_class_icons={
-
+"AsepriteImportData": "",
+"AsepriteImporter": "",
+"EditorTheme": ""
 }
 
 [application]
@@ -30,6 +47,10 @@ LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
 
 window/size/width=320
 window/size/height=180
+
+[editor_plugins]
+
+enabled=PoolStringArray( "aseprite_importer" )
 
 [rendering]
 

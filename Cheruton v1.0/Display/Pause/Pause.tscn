@@ -1,13 +1,62 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Display/Pause/Pause.gd" type="Script" id=1]
 
 [node name="Pause" type="Popup"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 320.0
+margin_bottom = 180.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
-margin_right = 20.0
-margin_bottom = 20.0
+visible = true
+margin_left = 45.8863
+margin_top = 25.0501
+margin_right = 267.886
+margin_bottom = 156.05
 
-[node name="PopupPanel" type="PopupPanel" parent="PopupMenu"]
-margin_right = 8.0
-margin_bottom = 8.0
+[node name="Label" type="Label" parent="PopupMenu"]
+margin_left = 65.388
+margin_top = 24.1799
+margin_right = 153.388
+margin_bottom = 38.1799
+text = "Game Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="PopupMenu"]
+margin_left = 80.0321
+margin_top = 46.3165
+margin_right = 143.032
+margin_bottom = 66.3165
+rect_scale = Vector2( 0.75, 0.75 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RMMenu" type="Button" parent="PopupMenu"]
+margin_left = 48.0
+margin_top = 70.0
+margin_right = 198.0
+margin_bottom = 90.0
+rect_scale = Vector2( 0.75, 0.75 )
+text = "Return to Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitDirect" type="Button" parent="PopupMenu"]
+margin_left = 74.0321
+margin_top = 95.3165
+margin_right = 151.032
+margin_bottom = 115.316
+rect_scale = Vector2( 0.75, 0.75 )
+text = "Exit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="PopupMenu/ExitDirect" to="." method="_on_ExitDirect_pressed"]

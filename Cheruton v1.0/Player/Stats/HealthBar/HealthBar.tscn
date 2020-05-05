@@ -17,10 +17,10 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="HealthBar" type="TextureProgress" parent="."]
-margin_left = 102.641
-margin_top = 99.9359
-margin_right = 499.641
-margin_bottom = 170.936
+margin_left = 143.018
+margin_top = 97.6718
+margin_right = 540.018
+margin_bottom = 168.672
 rect_scale = Vector2( 0.25, 0.1 )
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
@@ -40,10 +40,10 @@ __meta__ = {
 }
 
 [node name="HealthVal" type="Label" parent="."]
-margin_left = 52.6558
-margin_top = 96.593
-margin_right = 102.656
-margin_bottom = 110.593
+margin_left = 80.58
+margin_top = 95.461
+margin_right = 130.58
+margin_bottom = 109.461
 __meta__ = {
 "_edit_use_anchors_": false
 }
