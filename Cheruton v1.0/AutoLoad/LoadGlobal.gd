@@ -1,6 +1,8 @@
 extends Node
 
+const SETTINGS = "res://Display/Settings/Settings.tscn"
 
+var old_nodepath
 
 func _ready():
 	var root = get_tree().get_root()
@@ -13,9 +15,12 @@ func goto_scene(path):
 	# a bad idea, because it may still be executing code.
 	# This will result in a crash or unexpected behavior.
 
+	# Store the location of the old scene to be loaded later for settings
+	if(path == SETTINGS):
+		old_nodepath = DataResource.current_scene.filename
+		
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
-
 	call_deferred("_deferred_goto_scene", path)
 
 
