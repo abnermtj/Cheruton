@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
+
+[node name="Settings" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Settings" type="Label" parent="."]
+margin_left = 135.482
+margin_top = 10.7641
+margin_right = 186.482
+margin_bottom = 41.7641
+text = "Settings
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVol" type="Label" parent="."]
+margin_left = 34.453
+margin_top = 56.7906
+margin_right = 67.453
+margin_bottom = 87.7906
+text = "Main Volume: 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolBar" type="ProgressBar" parent="MainVol"]
+margin_left = 112.418
+margin_top = -0.327515
+margin_right = 202.418
+margin_bottom = 13.6725
+
+[node name="MainVolUp" type="Button" parent="MainVol"]
+margin_left = 221.237
+margin_top = -3.09061
+margin_right = 241.237
+margin_bottom = 16.9094
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolDown" type="Button" parent="MainVol"]
+margin_left = 249.237
+margin_top = -3.09061
+margin_right = 269.237
+margin_bottom = 16.9094
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mute" type="Label" parent="."]
+margin_left = 35.2893
+margin_top = 122.854
+margin_right = 68.2893
+margin_bottom = 153.854
+text = "Mute:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MuteToggle" type="CheckButton" parent="Mute"]
+margin_left = 37.4798
+margin_top = -8.61993
+margin_right = 113.48
+margin_bottom = 31.3801
+rect_scale = Vector2( 0.75, 0.75 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="toggled" from="Mute/MuteToggle" to="." method="_on_MuteToggle_toggled"]

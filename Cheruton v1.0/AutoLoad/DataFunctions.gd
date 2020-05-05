@@ -33,7 +33,8 @@ func lose_health(var health_loss):
 	
 	emit_signal("decrease_health", DataResource.dict_player["health_curr"])
 
-#need to disable keyboard input at bootup
+#need to disable keyboard input at welcome, mmenu settings
 func _input(ev):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		LoadGlobal.goto_scene(PAUSE)
+
