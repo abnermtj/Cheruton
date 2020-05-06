@@ -1,23 +1,25 @@
 extends Node
 
-# Fix these locations as the save file location
 # Adding data to the game dictionary:
 #	DataResource.dict_x["feature"] = value
 
 const FILE_NAME = "res://SaveData/player-data.json"
 const FILE_NAME2 = "res://SaveData/settings-data.json"
+
 signal loaded
 
 var current_scene = null
 
 var audio
 var is_mute
+var game_on
 var health_curr
 var health_max
 var damage
 var exp_curr
 var exp_max
 var level
+var coins
 var dict_player = {
 #        "filename" : get_filename(),
 #        "parent" : get_parent().get_path(),
@@ -33,6 +35,7 @@ var dict_player = {
 		"exp_curr" : exp_curr,
 		"exp_max" : exp_max,
 		"level" : level,
+		"coins" : coins,
 #        "attack_bonus" : attack_bonus,
 #        "defense_bonus" : defense_bonus,
 #        "health_bonus" : health_bonus,
@@ -42,7 +45,8 @@ var dict_player = {
 
 var dict_settings = {
 	"audio" : audio,
-	"is_mute": is_mute
+	"is_mute": is_mute,
+	"game_on": game_on,
 #       "brightness" : get_parent().get_path(),
 #       "color_indibars" : position.x, 
 #       "mmenubg" : mmenubg
@@ -96,9 +100,12 @@ func reset_player():
 	dict_player["health_curr"] = 50
 	dict_player["health_max"] = 50
 	dict_player["level"] = 0
+	dict_player["coins"] = 10
 	save_player()
 
 func reset_settings():	
 	dict_settings["audio"] = -10
+	dict_settings["is_mute"] = false
+	dict_settings["game_on"] = false
 	save_settings()
 	

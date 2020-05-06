@@ -1,20 +1,21 @@
 extends Node
 
-var current_scene
-
-
 
 const PAUSE = preload("res://Display/Pause/Pause.tscn")
-#need to disable keyboard input at welcome, mmenu settings
-#fix the freeup and button press - buggy
-func _input(ev): 
-	Pause.connect("free_pause", self, "close_popup")
-	if Input.is_key_pressed(KEY_ESCAPE):
-		# Instance the new scene.
-		DataResource.current_scene.hide()
-		current_scene = PAUSE.instance()
-		self.add_child(current_scene)
-		current_scene.popup()
+const INVENTORY = preload("res://Player/Inventory/Inventory.tscn")
 
-func close_popup():
-	current_scene.queue_free()
+func _input(ev): 
+	if Input.is_key_pressed(KEY_P):
+		#Prevents instancing during non-gameplay scenes
+		if (DataResource.dict_settings["game_on"] == false):
+			return
+		var curr_scene = PAUSE.instance()
+		DataResource.current_scene.add_child(curr_scene)
+		curr_scene.popup()
+
+	elif Input.is_key_pressed(KEY_I):
+		if (DataResource.dict_settings["game_on"] == false):
+			return
+		var curr_scene = INVENTORY.instance()
+		DataResource.current_scene.add_child(curr_scene)
+
