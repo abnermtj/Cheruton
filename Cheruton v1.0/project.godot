@@ -1,0 +1,58 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AsepriteImportData",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImportData.gd"
+}, {
+"base": "Node",
+"class": "AsepriteImporter",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/AsepriteImporter.gd"
+}, {
+"base": "Node",
+"class": "EditorTheme",
+"language": "GDScript",
+"path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
+} ]
+_global_script_class_icons={
+"AsepriteImportData": "",
+"AsepriteImporter": "",
+"EditorTheme": ""
+}
+
+[application]
+
+config/name="Cheruton v1.0"
+run/main_scene="res://Display/Welcome/Welcome.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DataResource="*res://AutoLoad/DataResource.gd"
+DataFunctions="*res://AutoLoad/DataFunctions.gd"
+LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
+LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
+KeyPress="*res://AutoLoad/KeyPress.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+
+[editor_plugins]
+
+enabled=PoolStringArray( "aseprite_importer" )
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
