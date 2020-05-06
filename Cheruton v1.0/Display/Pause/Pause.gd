@@ -13,7 +13,7 @@ func _on_ExitDirect_pressed():
 
 func _on_Settings_pressed():
 	LoadGlobal.goto_scene(SETTINGS)
-	
+
 
 func _on_RMMenu_pressed():
 	LoadGlobal.goto_scene(MAINMENU)

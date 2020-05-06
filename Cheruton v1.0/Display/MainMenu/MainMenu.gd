@@ -4,7 +4,7 @@ const STATS = "res://Player/Stats/Stats.tscn"
 const SETTINGS = "res://Display/Settings/Settings.tscn"
 
 func _ready():
-	pass 
+	pass
 
 
 func _on_Play_pressed():
