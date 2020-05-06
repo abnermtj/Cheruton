@@ -34,10 +34,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.083, 0.166, 0.249, 0.332, 0.415 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1123, 1, 64, 34 ), Rect2( 1189, 1, 64, 34 ), Rect2( 1255, 1, 64, 34 ), Rect2( 1321, 1, 64, 34 ), Rect2( 1387, 1, 64, 34 ), Rect2( 1453, 1, 64, 34 ) ]
+"values": [ Rect2( 1123, 1, 64, 34 ), Rect2( 1189, 1, 64, 34 ), Rect2( 1255, 1, 64, 34 ), Rect2( 1321, 1, 64, 34 ) ]
 }
 
 [sub_resource type="Animation" id=3]

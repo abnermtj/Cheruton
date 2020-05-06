@@ -5,10 +5,10 @@
 
 [node name="Node" type="Node"]
 
-[node name="asd" type="Sprite" parent="."]
-position = Vector2( 641.76, 362.209 )
-scale = Vector2( 1.9859, 2.00318 )
+[node name="asd2" type="Sprite" parent="."]
+position = Vector2( 638.108, 361.555 )
+scale = Vector2( 1.99265, 1.99837 )
 texture = ExtResource( 2 )
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 204.961, 575.239 )
+[node name="player2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 228.961, 571.176 )

@@ -13,7 +13,7 @@ export(float) var GRAVITY = 1600.0
 
 var enter_velocity = Vector2()
 
-var max_horizontal_speed = 0.0
+var max_horizontal_speed = 0.0 # set during init
 var horizontal_speed = 0.0
 var horizontal_velocity = Vector2()
 
@@ -29,7 +29,7 @@ func enter():
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
 
-	horizontal_velocity = enter_velocity if input_direction else Vector2()
+	horizontal_velocity = enter_velocity if input_direction else Vector2() # we we release  movement right before jump, then no horizontal velocity
 	vertical_speed = 600.0
 
 	owner.get_node("AnimationPlayer").play("jump")
