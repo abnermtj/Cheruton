@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MC-General.png-0ea776d6d2dc94f2630db4525f8f6ca6.stex"
+path="res://.import/MC-General.png-53a4f22c7de8fd7b2205c35bc43383e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Movement/Sprites/MC-General.png"
-dest_files=[ "res://.import/MC-General.png-0ea776d6d2dc94f2630db4525f8f6ca6.stex" ]
+source_file="res://Player/ActualPlayer/Sprites/MC-General.png"
+dest_files=[ "res://.import/MC-General.png-53a4f22c7de8fd7b2205c35bc43383e4.stex" ]
 
 [params]
 
