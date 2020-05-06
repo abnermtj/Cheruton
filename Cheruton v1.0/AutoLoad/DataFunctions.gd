@@ -39,11 +39,3 @@ func change_audio_master(var audio_change):
 		DataResource.dict_settings["audio"] = -56
 	emit_signal("change_audio_master")
 
-func prereq_pause():
-	var curr_scene = str(DataResource.current_scene)
-	if(curr_scene == WELCOME ||curr_scene == MAINMENU):
-		return false;
-	elif(curr_scene == SETTINGS || curr_scene == LOAD_SCRN):
-		return false
-	return true
-
