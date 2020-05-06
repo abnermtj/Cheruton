@@ -23,7 +23,7 @@ func goto_scene(path):
 			set_pause = true
 
 		old_nodepath = DataResource.current_scene.filename
-		
+
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
 	call_deferred("_deferred_goto_scene", path)

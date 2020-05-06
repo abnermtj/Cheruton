@@ -9,7 +9,7 @@ func _ready():
 	self.connect("double_pressed", self, "equip")
 	DataFunctions.connect("change_coins", self, "update_coins")
 	$Coin/CoinValue.text = str(DataResource.dict_player["coins"])
-	
+
 
 #func _on_Button_pressed(): # creates a double click signal
 #	count += 1

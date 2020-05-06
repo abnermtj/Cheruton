@@ -48,17 +48,17 @@ var dict_settings = {
 	"is_mute": is_mute,
 	"game_on": game_on,
 #       "brightness" : get_parent().get_path(),
-#       "color_indibars" : position.x, 
+#       "color_indibars" : position.x,
 #       "mmenubg" : mmenubg
 }
 
-func save_player(): 
+func save_player():
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
 	file.store_string(to_json(dict_player))
 	file.close()
 
-func save_settings(): 	
+func save_settings():
 	var file = File.new()
 	file.open(FILE_NAME2, File.WRITE)
 	file.store_string(to_json(dict_settings))
@@ -76,10 +76,10 @@ func load_player():
 		else:
 			print("Corrupted data for player!")
 	else:
-		print("No saved data for player!")	
+		print("No saved data for player!")
 
-		
-func load_settings():		
+
+func load_settings():
 
 	var file = File.new()
 	if file.file_exists(FILE_NAME2):
@@ -93,8 +93,8 @@ func load_settings():
 	else:
 		print("No saved data for settings!")
 
-	
-func reset_player():		
+
+func reset_player():
 	dict_player["exp_curr"] = 0
 	dict_player["exp_max"] = 60
 	dict_player["health_curr"] = 50
@@ -103,9 +103,9 @@ func reset_player():
 	dict_player["coins"] = 10
 	save_player()
 
-func reset_settings():	
+func reset_settings():
 	dict_settings["audio"] = -10
 	dict_settings["is_mute"] = false
 	dict_settings["game_on"] = false
 	save_settings()
-	
+
