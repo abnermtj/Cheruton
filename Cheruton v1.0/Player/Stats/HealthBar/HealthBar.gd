@@ -14,8 +14,10 @@ func initbar():
 	$HealthVal.text = str(DataResource.dict_player["health_curr"], "/",DataResource.dict_player["health_max"])
 	
 func change_healthbar(new_health):
+	if(new_health < 0):
+		new_health = 0
 	animate_healthbar($HealthBar.value, new_health/health_max * 100)
-	
+
 
 func animate_healthbar(start, end):
 	$Tween.interpolate_property($HealthBar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -24,10 +26,7 @@ func animate_healthbar(start, end):
 
 
 func _on_HealthBar_value_changed(value):
-	if($HealthBar.value < 0):
-		$HealthVal.text = str(0, "/", health_max)
-	else:
-		$HealthVal.text = str(floor($HealthBar.value * health_max/100), "/", health_max)
+	$HealthVal.text = str(floor($HealthBar.value * health_max/100), "/", health_max)
 	if(value > 49):
 		$HealthBar.set_tint_progress(Color(0.180392, 0.415686, 0.258824))
 	elif(value > 19):
