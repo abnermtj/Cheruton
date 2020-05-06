@@ -32,7 +32,7 @@ func enter():
 	horizontal_velocity = enter_velocity if input_direction else Vector2()
 	vertical_speed = 600.0
 
-	owner.get_node("AnimationPlayer").play("idle")
+	owner.get_node("AnimationPlayer").play("jump")
 
 func update(delta):
 	var input_direction = get_input_direction()
@@ -61,4 +61,4 @@ func animate_jump_height(delta):
 	height += vertical_speed * delta
 	height = max(0.0, height)
 
-	owner.get_node("BodyPivot").position.y = -height
+	owner.get_node("bodyPivot").position.y = -height

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/ActualPlayer/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/ActualPlayer/asd.png" type="Texture" id=2]
+
+[node name="Node" type="Node"]
+
+[node name="asd" type="Sprite" parent="."]
+position = Vector2( 641.76, 362.209 )
+scale = Vector2( 1.9859, 2.00318 )
+texture = ExtResource( 2 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 204.961, 575.239 )
