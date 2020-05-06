@@ -21,3 +21,4 @@ func _on_RMMenu_pressed():
 func _on_ExitPause_pressed():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
+	KeyPress.paused_instance = false

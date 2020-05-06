@@ -4,9 +4,10 @@ signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
 signal change_audio_master
 
-#const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
-#const WELCOME = "res://Display/Welcome/Welcome.tscn"
-const PAUSE = "res://Display/Pause/Pause.tscn"
+const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
+const WELCOME = "res://Display/Welcome/Welcome.tscn"
+const SETTINGS = "res://Display/Settings/Settings.tscn"
+const LOAD_SCRN = "res://Display/LoadScrn/LoadScrn.tscn"
 
 func add_exp(var exp_gain):
 	DataResource.dict_player["exp_curr"] += exp_gain
@@ -38,5 +39,11 @@ func change_audio_master(var audio_change):
 		DataResource.dict_settings["audio"] = -56
 	emit_signal("change_audio_master")
 
-
+func prereq_pause():
+	var curr_scene = str(DataResource.current_scene)
+	if(curr_scene == WELCOME ||curr_scene == MAINMENU):
+		return false;
+	elif(curr_scene == SETTINGS || curr_scene == LOAD_SCRN):
+		return false
+	return true
 
