@@ -5,7 +5,7 @@ const PAUSE = preload("res://Display/Pause/Pause.tscn")
 const INVENTORY = preload("res://Player/Inventory/Inventory.tscn")
 
 func _input(ev): 
-	if Input.is_key_pressed(KEY_P):
+	if Input.is_key_pressed(KEY_ESCAPE):
 		#Prevents instancing during non-gameplay scenes
 		if (DataResource.dict_settings["game_on"] == false):
 			return
