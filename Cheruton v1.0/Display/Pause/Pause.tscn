@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://AutoLoad/Pause.gd" type="Script" id=1]
+[ext_resource path="res://Display/Pause/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Display/Pause/Exit.png" type="Texture" id=2]
 
 [node name="Pause" type="PopupMenu"]
@@ -62,6 +62,10 @@ margin_top = 5.89248
 margin_right = 207.353
 margin_bottom = 12.8925
 texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="popup_hide" from="." to="." method="_on_Pause_popup_hide"]
 [connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="RMMenu" to="." method="_on_RMMenu_pressed"]
 [connection signal="pressed" from="ExitDirect" to="." method="_on_ExitDirect_pressed"]

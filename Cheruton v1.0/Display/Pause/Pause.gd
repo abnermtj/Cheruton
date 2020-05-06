@@ -19,8 +19,14 @@ func _on_RMMenu_pressed():
 	LoadGlobal.goto_scene(MAINMENU)
 
 func _on_ExitPause_pressed():
+	free_the_pause()
+
+
+func _on_Pause_popup_hide():
+	free_the_pause()
+
+func free_the_pause():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 	DataResource.dict_settings["game_on"] = true
-	KeyPress.paused_instance = false
-	
+

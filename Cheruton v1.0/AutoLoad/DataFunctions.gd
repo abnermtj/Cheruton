@@ -2,6 +2,7 @@ extends Node
 
 signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
+
 signal change_audio_master
 
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
@@ -29,7 +30,11 @@ func change_health(var health_change):
 		DataResource.dict_player["health_curr"] = 0
 	
 	emit_signal("change_health", DataResource.dict_player["health_curr"])
-#To update the min and max vals
+
+func change_coins(coins_change):
+	DataResource.dict_player["coins"] += coins_change
+
+
 func change_audio_master(var audio_change):
 	DataResource.dict_settings["audio"] += audio_change
 	if(DataResource.dict_settings["audio"] > 20):

@@ -19,6 +19,7 @@ var damage
 var exp_curr
 var exp_max
 var level
+var coins
 var dict_player = {
 #        "filename" : get_filename(),
 #        "parent" : get_parent().get_path(),
@@ -34,6 +35,7 @@ var dict_player = {
 		"exp_curr" : exp_curr,
 		"exp_max" : exp_max,
 		"level" : level,
+		"coins" : coins,
 #        "attack_bonus" : attack_bonus,
 #        "defense_bonus" : defense_bonus,
 #        "health_bonus" : health_bonus,
@@ -98,6 +100,7 @@ func reset_player():
 	dict_player["health_curr"] = 50
 	dict_player["health_max"] = 50
 	dict_player["level"] = 0
+	dict_player["coins"] = 10
 	save_player()
 
 func reset_settings():	

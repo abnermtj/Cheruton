@@ -1,13 +1,71 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
 
-[node name="Inventory" type="Node2D"]
+[ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
+[ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
+[ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
 
-[node name="Button" type="Button" parent="."]
-margin_left = 29.3958
-margin_top = 30.8298
-margin_right = 41.3958
-margin_bottom = 50.8298
-text = "double click"
+[node name="Inventory" type="Control"]
+margin_left = 23.8725
+margin_top = 23.0991
+margin_right = 303.872
+margin_bottom = 163.099
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Inventory_bg" type="TextureRect" parent="."]
+margin_left = -0.387421
+margin_top = 0.19371
+margin_right = 279.613
+margin_bottom = 140.194
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 104.741
+margin_top = 2.97831
+margin_right = 165.741
+margin_bottom = 16.9783
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="."]
+margin_left = 266.0
+margin_top = 2.0
+margin_right = 270.0
+margin_bottom = 6.0
+rect_scale = Vector2( 3, 3 )
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="TextureRect" parent="."]
+margin_left = 230.735
+margin_top = 33.7128
+margin_right = 246.735
+margin_bottom = 49.7128
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinValue" type="Label" parent="Coin"]
+margin_left = -11.6474
+margin_top = 18.1624
+margin_right = 28.3526
+margin_bottom = 32.1624
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
