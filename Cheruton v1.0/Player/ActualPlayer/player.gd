@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal state_changed
 signal direction_changed(new_direction)
 
 var look_direction = Vector2(1, 0) setget set_look_direction
@@ -18,3 +19,7 @@ func set_dead(value): # non zero means dead
 func set_look_direction(value):
 	look_direction = value
 	emit_signal("direction_changed", value)
+
+
+func _on_states_state_changed(states_stack):
+	emit_signal("state_changed", states_stack)

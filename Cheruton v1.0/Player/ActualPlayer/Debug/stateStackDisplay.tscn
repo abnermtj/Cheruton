@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player/ActualPlayer/Debug/statestackdisplay.gd" type="Script" id=1]
+
+[node name="Panel" type="Panel"]
+margin_right = 104.0
+margin_bottom = 100.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 14.0
+text = "State stack"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="States" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -81.0
+text = "Idle
+walk"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Numbers" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -81.0
+text = "1.
+2."
+__meta__ = {
+"_edit_use_anchors_": false
+}

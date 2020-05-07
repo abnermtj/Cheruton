@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC-General.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -9,6 +9,22 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
+length = 0.166
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1255, 1, 64, 34 ), Rect2( 1321, 1, 64, 34 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
 length = 0.664
 loop = true
 tracks/0/type = "value"
@@ -24,8 +40,8 @@ tracks/0/keys = {
 "values": [ Rect2( 1, 1, 64, 34 ), Rect2( 67, 1, 64, 34 ), Rect2( 133, 1, 64, 34 ), Rect2( 199, 1, 64, 34 ), Rect2( 265, 1, 64, 34 ), Rect2( 331, 1, 64, 34 ), Rect2( 397, 1, 64, 34 ), Rect2( 463, 1, 64, 34 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-length = 0.498
+[sub_resource type="Animation" id=3]
+length = 0.166
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
 tracks/0/interp = 0
@@ -33,13 +49,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.083, 0.166, 0.249 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.083 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1123, 1, 64, 34 ), Rect2( 1189, 1, 64, 34 ), Rect2( 1255, 1, 64, 34 ), Rect2( 1321, 1, 64, 34 ) ]
+"values": [ Rect2( 1123, 1, 64, 34 ), Rect2( 1189, 1, 64, 34 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
+length = 0.166
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1387, 1, 64, 34 ), Rect2( 1453, 1, 64, 34 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.581
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -54,7 +85,7 @@ tracks/0/keys = {
 "values": [ Rect2( 1519, 1, 64, 34 ), Rect2( 1585, 1, 64, 34 ), Rect2( 1651, 1, 64, 34 ), Rect2( 1717, 1, 64, 34 ), Rect2( 1783, 1, 64, 34 ), Rect2( 1849, 1, 64, 34 ), Rect2( 1915, 1, 64, 34 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.664
 loop = true
 tracks/0/type = "value"
@@ -70,7 +101,7 @@ tracks/0/keys = {
 "values": [ Rect2( 595, 1, 64, 34 ), Rect2( 661, 1, 64, 34 ), Rect2( 727, 1, 64, 34 ), Rect2( 793, 1, 64, 34 ), Rect2( 859, 1, 64, 34 ), Rect2( 925, 1, 64, 34 ), Rect2( 991, 1, 64, 34 ), Rect2( 1057, 1, 64, 34 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.083
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -85,7 +116,7 @@ tracks/0/keys = {
 "values": [ Rect2( 529, 1, 64, 34 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 8.50043
 height = 15.1225
 
@@ -97,14 +128,16 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 2 )
-anims/roll = SubResource( 3 )
-anims/run_continious = SubResource( 4 )
-anims/run_start = SubResource( 5 )
+anims/fall = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/jump = SubResource( 3 )
+anims/land = SubResource( 4 )
+anims/roll = SubResource( 5 )
+anims/run_continious = SubResource( 6 )
+anims/run_start = SubResource( 7 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -123,11 +156,12 @@ script = ExtResource( 7 )
 
 [node name="roll" type="Node" parent="states"]
 
-[node name="Label" type="Label" parent="."]
+[node name="stateNameDisplay" type="Label" parent="."]
 margin_left = -43.0
-margin_top = -81.0
-margin_right = 40.0
-margin_bottom = -3.0
+margin_top = -92.0
+margin_right = -5.0
+margin_bottom = -9.0
+rect_scale = Vector2( 2, 2 )
 text = "Test
 "
 align = 1
@@ -144,4 +178,6 @@ texture = ExtResource( 1 )
 offset = Vector2( -16, 0 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 1123, 1, 64, 34 )
+region_rect = Rect2( 1321, 1, 64, 34 )
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

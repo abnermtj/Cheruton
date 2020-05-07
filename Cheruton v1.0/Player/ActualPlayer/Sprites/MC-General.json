@@ -251,7 +251,9 @@
    { "name": "Idle", "from": 0, "to": 7, "direction": "forward" },
    { "name": "run_start", "from": 8, "to": 8, "direction": "forward" },
    { "name": "run_continious", "from": 9, "to": 16, "direction": "forward" },
-   { "name": "Jump", "from": 17, "to": 22, "direction": "forward" },
+   { "name": "jump", "from": 17, "to": 18, "direction": "forward" },
+   { "name": "fall", "from": 19, "to": 20, "direction": "forward" },
+   { "name": "land", "from": 21, "to": 22, "direction": "forward" },
    { "name": "roll", "from": 23, "to": 29, "direction": "forward" },
    { "name": "Deleted runframes", "from": 30, "to": 30, "direction": "forward" },
    { "name": "Deleted jumpframe", "from": 31, "to": 32, "direction": "forward" }
