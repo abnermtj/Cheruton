@@ -42,12 +42,3 @@ func equip_dequip(node):
 
 func tooltips(texture):
 	$Tooltips/CurrItem.set_texture(texture)
-
-
-func _on_Test2_pressed():
-	count += 1
-	tooltips($Test2.texture_normal)
-	if (count == 2):
-		equip_dequip($Test2)
-		$Tooltips/CurrItem.set_texture(null)
-		count = 0
