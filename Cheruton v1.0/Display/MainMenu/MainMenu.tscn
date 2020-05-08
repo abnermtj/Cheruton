@@ -29,6 +29,7 @@
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
