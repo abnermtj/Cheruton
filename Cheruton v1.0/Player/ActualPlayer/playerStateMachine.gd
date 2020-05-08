@@ -1,9 +1,9 @@
-extends "stateMachine.gd"
+extends baseFSM
 
 func _ready():
 	states_map = {
 		"idle": $idle,
-		"move": $run,
+		"run": $run,
 		"jump": $jump,
 		"stagger": $stagger,
 		"attack": $attack,
@@ -17,7 +17,7 @@ func _change_state(state_name):
 	"""
 	if not _active:
 		return
-	if state_name in ["stagger", "jump", "attack"]:  # makes it happen
+	if state_name in ["stagger", "jump", "attack"]:  # these are allowed to be placed ontop of other states
 		states_stack.push_front(states_map[state_name])
 	if state_name == "jump" and current_state == $run:
 		$jump.initialize($run.speed, $run.velocity)

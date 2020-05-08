@@ -1,11 +1,10 @@
-extends "onground.gd"
+extends groundState
 
 export(float) var MAX_WALK_SPEED = 330
 export(float) var MAX_RUN_SPEED = 360
 
 func enter():
 	speed = 0.0
-	velocity = Vector2()
 
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
@@ -28,8 +27,8 @@ func update(delta):
 		return null
 
 func move(speed, direction):
-	velocity = direction.normalized() * speed
-	owner.move_and_slide(velocity, Vector2(), 5, 2)
+	owner.velocity = direction.normalized() * speed
+	owner.move_and_slide(owner.velocity, Vector2(), 5, 2)
 	if owner.get_slide_count() == 0:
 		return
 	return owner.get_slide_collision(0)

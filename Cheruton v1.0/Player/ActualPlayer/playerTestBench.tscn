@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/ActualPlayer/asd.png" type="Texture" id=2]
+[ext_resource path="res://Player/ActualPlayer/Sprites/grassnds_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=3]
 
 [node name="Node" type="Node"]
 
-[node name="asd2" type="Sprite" parent="."]
-position = Vector2( 638.108, 361.555 )
-scale = Vector2( 1.99265, 1.99837 )
-texture = ExtResource( 2 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 228.961, 571.176 )
+position = Vector2( 476.148, 200 )
 
 [node name="Panel" parent="." instance=ExtResource( 3 )]
 rect_scale = Vector2( 2, 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 655360, 0, 0, 655361, 0, 1, 655362, 0, 1, 655363, 0, 1, 655364, 0, 1, 655365, 0, 1, 655366, 0, 1, 655367, 0, 1, 655368, 0, 1, 655369, 0, 1, 655370, 0, 1, 655371, 0, 1, 655372, 0, 1, 655373, 0, 1, 655374, 0, 1, 655375, 0, 1, 655376, 0, 1, 655377, 0, 1, 655378, 0, 1, 655379, 0, 1, 655380, 0, 2 )
 [connection signal="state_changed" from="Player" to="Panel" method="_on_Player_state_changed"]

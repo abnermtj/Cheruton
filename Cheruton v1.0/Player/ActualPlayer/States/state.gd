@@ -4,6 +4,7 @@ but forces us to pass the right arguments to the methods below
 and makes sure every State object had all of these methods.
 """
 extends Node
+class_name baseState
 
 signal finished(next_state_name)
 

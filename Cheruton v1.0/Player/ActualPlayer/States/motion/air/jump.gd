@@ -1,4 +1,4 @@
-extends "../motion.gd"
+extends motionState
 
 export(float) var BASE_MAX_HORIZONTAL_SPEED = 400.0
 
@@ -19,13 +19,12 @@ var horizontal_velocity = Vector2()
 
 var vertical_speed = 0.0
 var height = 0.0
-var falling
 
 func initialize(speed, velocity):
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else BASE_MAX_HORIZONTAL_SPEED
 	enter_velocity = velocity
-	falling = 0
+
 
 func enter():
 	var input_direction = get_input_direction()
@@ -64,11 +63,9 @@ func animate_jump_height(delta):
 	vertical_speed -= GRAVITY * delta
 	height += vertical_speed * delta
 	height = max(0.0, height)
-
-	if  vertical_speed < 0 && not falling:
+	if  vertical_speed < 0 :
 		print( "falling")
-		falling = 1
-		owner.get_node("AnimationPlayer").play("fall")
+		emit_signal("finished","fall")
 
 	owner.get_node("bodyPivot").position.y = -height
 

@@ -1,3 +1,4 @@
+
 """
 Base interface for a generic state machine
 It handles initializing, setting the machine active or not
@@ -6,7 +7,7 @@ and changing the current/active state.
 See the PlayerV2 scene for an example on how to use it
 """
 extends Node
-
+class_name baseFSM
 signal state_changed(current_state)
 
 """

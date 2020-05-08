@@ -23,11 +23,35 @@ _global_script_classes=[ {
 "class": "EditorTheme",
 "language": "GDScript",
 "path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
+}, {
+"base": "Node",
+"class": "baseFSM",
+"language": "GDScript",
+"path": "res://Player/ActualPlayer/stateMachine.gd"
+}, {
+"base": "Node",
+"class": "baseState",
+"language": "GDScript",
+"path": "res://Player/ActualPlayer/States/state.gd"
+}, {
+"base": "motionState",
+"class": "groundState",
+"language": "GDScript",
+"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+}, {
+"base": "baseState",
+"class": "motionState",
+"language": "GDScript",
+"path": "res://Player/ActualPlayer/States/motion/motion.gd"
 } ]
 _global_script_class_icons={
 "AsepriteImportData": "",
 "AsepriteImporter": "",
-"EditorTheme": ""
+"EditorTheme": "",
+"baseFSM": "",
+"baseState": "",
+"groundState": "",
+"motionState": ""
 }
 
 [application]
