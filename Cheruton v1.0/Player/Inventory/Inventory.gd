@@ -20,9 +20,10 @@ func _on_Exit_pressed():
 	free_the_inventory()
 
 func free_the_inventory():
+	DataResource.dict_settings["game_on"] = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
-	DataResource.dict_settings["game_on"] = true
+
 
 
 func _on_Test_pressed(): # creates a double click signal and activates tooltips
