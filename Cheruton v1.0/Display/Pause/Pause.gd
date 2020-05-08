@@ -1,6 +1,7 @@
 extends Popup
 
-const SETTINGS = "res://Display/Settings/Settings.tscn"
+var SETTINGS = preload("res://Display/Settings/Settings.tscn")
+
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 
 func _ready():
@@ -12,7 +13,9 @@ func _on_ExitDirect_pressed():
 
 
 func _on_Settings_pressed():
-	LoadGlobal.goto_scene(SETTINGS)
+	DataResource.current_scene.hide()
+	var curr_scene = SETTINGS.instance()
+	get_tree().get_root().add_child(curr_scene)
 
 
 func _on_RMMenu_pressed():

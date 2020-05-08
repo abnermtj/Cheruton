@@ -1,10 +1,5 @@
 extends Node
 
-const SETTINGS = "res://Display/Settings/Settings.tscn"
-const PAUSE = "res://Display/Pause/Pause.tscn"
-var old_nodepath
-var set_pause
-
 func _ready():
 	var root = get_tree().get_root()
 	DataResource.current_scene = root.get_child(root.get_child_count() - 1)
@@ -17,12 +12,6 @@ func goto_scene(path):
 	# This will result in a crash or unexpected behavior.
 
 	# Store the location of the old scene to be loaded later for settings
-	if(path == SETTINGS):
-		var check = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
-		if(check.filename == PAUSE):
-			set_pause = true
-
-		old_nodepath = DataResource.current_scene.filename
 
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
@@ -41,9 +30,6 @@ func _deferred_goto_scene(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(DataResource.current_scene)
-	if(path == old_nodepath && set_pause == true):
-		KeyPress.escape_key()
-		set_pause = false
 
 
 
