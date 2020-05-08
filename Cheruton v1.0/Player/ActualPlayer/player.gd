@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 2400
-const COYOTE_TIME = 0.1 # time after leaving edge before you actually start dropping
+const COYOTE_TIME = 0.12 # time after leaving edge before you are not allowed to jump
 const JUMP_AGAIN_MARGIN = 0.2 # seconds need to press jump this amout of time for it to input buffer
 const TERM_VEL = 640 # Terminal velocity when falling
 const JUMP_RELEASE_SLOWDOWN = .5 #after releasing jump key how much to slow down by 0 to 1
@@ -13,6 +13,7 @@ const AIR_ACCEL = 40  # increase in this >> increase in stearing power in air
 
 var velocity = Vector2()
 
+var has_jumped = false
 signal state_changed
 signal direction_changed(new_direction)
 

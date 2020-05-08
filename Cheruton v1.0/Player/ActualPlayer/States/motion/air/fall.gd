@@ -3,11 +3,13 @@ extends motionState
 var coyote_timer : float # here incase playeer walks off an edge
 var jump_timer : float
 var jump_again : bool
+var jump_count : int
 
 func enter():
 	owner.get_node( "AnimationPlayer").play("fall")
 	coyote_timer = owner.COYOTE_TIME
 	jump_again = false
+
 
 func update(delta):
 	coyote_timer -= delta
@@ -35,14 +37,16 @@ func update(delta):
 		# jump immediately after landing
 		jump_timer = owner.JUMP_AGAIN_MARGIN
 		jump_again = true
-#		if coyote_timer > 0:  # when accidentally falling off edges
-#				emit_signal("finished", "jump")
+		if coyote_timer > 0 and not owner.has_jumped:  # when accidentally falling off edges
+				emit_signal("finished", "jump")
+				return
 
 	# landing
 	if owner.is_on_floor():
+		owner.has_jumped = false
 		print("landing from fall")
 		owner.get_node("AnimationPlayer").play("land")
-		if jump_again and jump_timer >= 0:
+		if (jump_again and jump_timer >= 0):
 			emit_signal("finished", "jump")
 		else:
 			# land
