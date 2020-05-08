@@ -13,7 +13,7 @@ func get_input_direction():
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	return input_direction
 
-#made changes here
+# makes character face right direction
 func update_look_direction(direction):
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction

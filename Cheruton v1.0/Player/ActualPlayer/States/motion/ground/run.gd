@@ -15,7 +15,7 @@ func handle_input(event):
 
 func update(delta):
 	var input_direction = get_input_direction()
-	if not input_direction:
+	if not input_direction.x:
 		emit_signal("finished", "idle")
 	update_look_direction(input_direction)
 
@@ -28,7 +28,10 @@ func update(delta):
 
 func move(speed, direction):
 	owner.velocity = direction.normalized() * speed
-	owner.move_and_slide(owner.velocity, Vector2(), 5, 2)
+	owner.velocity.y = 1 # to collide
+	owner.move_and_slide(owner.velocity, Vector2.UP)
+	if not owner.is_on_floor():
+		emit_signal("finished","fall")
 	if owner.get_slide_count() == 0:
 		return
 	return owner.get_slide_collision(0)

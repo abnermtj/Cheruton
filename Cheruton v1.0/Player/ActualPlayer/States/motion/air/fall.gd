@@ -15,7 +15,9 @@ func update(delta):
 	# CAPPING FALL SPEED
 	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta )
 
-	var dir = get_input_direction().x
+	var input_dir = get_input_direction()
+	update_look_direction(input_dir)
+	var dir = input_dir.x
 
 	if dir != 0:
 		owner.velocity.x = lerp (owner.velocity.x,\
@@ -28,28 +30,25 @@ func update(delta):
 
 	owner.move_and_slide(owner.velocity, Vector2.UP)
 
-	if Input.is_action_just_pressed( "btn_jump" ):
+	# this is double jump
+	if Input.is_action_just_pressed( "jump" ):
 		# jump immediately after landing
 		jump_timer = owner.JUMP_AGAIN_MARGIN
 		jump_again = true
-		# if fall off a ledge
-		if coyote_timer > 0:
-				emit_signal("finished", "jump")
+#		if coyote_timer > 0:  # when accidentally falling off edges
+#				emit_signal("finished", "jump")
 
 	# landing
 	if owner.is_on_floor():
-		print ("jump again", jump_again)
-		print ("jumptimer" , jump_timer)
+		print("landing from fall")
+		owner.get_node("AnimationPlayer").play("land")
 		if jump_again and jump_timer >= 0:
-			# jump again
 			emit_signal("finished", "jump")
 		else:
 			# land
-			if abs( owner.velocity.x ) > 1:
-#				owner.anim_fx.play( "land_side" )
-				emit_signal("finished", "run")
-			else:
-#				owner.anim_fx.play( "land" )
+			if owner.get_node("states").states_stack.size() == 1:
 				emit_signal("finished", "idle")
+			else:
+				emit_signal("finished", "previous")
 
 

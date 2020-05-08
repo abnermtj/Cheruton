@@ -1,71 +1,49 @@
 extends motionState
 
-export(float) var BASE_MAX_HORIZONTAL_SPEED = 400.0
-
-export(float) var AIR_ACCELERATION = 1000.0
-export(float) var AIR_DECCELERATION = 2000.0
-export(float) var AIR_STEERING_POWER = 50.0
-
-export(float) var JUMP_HEIGHT = 120.0
-export(float) var JUMP_DURATION = 0.8
-
-export(float) var GRAVITY = 1600.0
-
-var enter_velocity = Vector2()
-
-var max_horizontal_speed = 0.0 # set during init
-var horizontal_speed = 0.0
-var horizontal_velocity = Vector2()
-
-var vertical_speed = 0.0
-var height = 0.0
-
-func initialize(speed, velocity):
-	horizontal_speed = speed
-	max_horizontal_speed = speed if speed > 0.0 else BASE_MAX_HORIZONTAL_SPEED
-	enter_velocity = velocity
+var keypress_timer : float # how long you can keep jumpig up to boost height
+#var climb_timer : float
 
 
-func enter():
-	var input_direction = get_input_direction()
-	update_look_direction(input_direction)
-
-	horizontal_velocity = enter_velocity if input_direction else Vector2() # we we release  movement right before jump, then no horizontal velocity
-	vertical_speed = 600.0
-
+func enter() -> void:
+	print( "Starting jump" )
+	owner.velocity.y = owner.JUMP_VEL # old speed kept
+	owner.velocity = owner.move_and_slide( owner.velocity, Vector2.UP )
 	owner.get_node("AnimationPlayer").play("jump")
+	keypress_timer = 0.2
 
-func update(delta):
-	var input_direction = get_input_direction()
-	update_look_direction(input_direction)
+func update( delta ):
+	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta )
+	if keypress_timer >= 0:
+		keypress_timer -= delta
+		if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
+			keypress_timer = -1.0
+			owner.velocity.y *= owner.JUMP_RELEASE_SLOWDOWN # reduces speed on jump release
+	# steering here
+	var input_dir = get_input_direction()
+	update_look_direction(input_dir)
+	var dir = input_dir.x
+	# if we are steering
+	if dir:
+		owner.velocity.x = lerp( owner.velocity.x, \
+			owner.MAX_VEL * dir, \
+			owner.AIR_ACCEL * delta ) # moves towards goal velocity
+	else: # if not moving velocity tends to zero
+		owner.velocity.x = lerp( owner.velocity.x, 0, \
+			owner.AIR_ACCEL * delta )
 
-	move_horizontally(delta, input_direction)
-	animate_jump_height(delta)
-	if height <= 0.0:
+	owner.move_and_slide( owner.velocity, \
+			Vector2.UP )  #Up makes it such that if the collision normal is the same, as up then stop
+
+	if owner.is_on_floor():
+		owner.get_node("AnimationPlayer").play("land")
 		emit_signal("finished", "previous")
-
-
-func move_horizontally(delta, direction):
-	if direction:
-		horizontal_speed += AIR_ACCELERATION * delta
+		print("land")
+	if owner.is_on_ceiling():
+		owner.velocity.y = 0.0
+		emit_signal("finished","previous")
 	else:
-		horizontal_speed -= AIR_DECCELERATION * delta
-	horizontal_speed = clamp(horizontal_speed, 0, max_horizontal_speed)
-
-	var target_velocity = horizontal_speed * direction.normalized()
-	var steering_velocity = (target_velocity - horizontal_velocity).normalized() * AIR_STEERING_POWER
-	horizontal_velocity += steering_velocity
-
-	owner.move_and_slide(horizontal_velocity)
-
-
-func animate_jump_height(delta):
-	vertical_speed -= GRAVITY * delta
-	height += vertical_speed * delta
-	height = max(0.0, height)
-	if  vertical_speed < 0 :
-		print( "falling")
-		emit_signal("finished","fall")
-
-	owner.get_node("bodyPivot").position.y = -height
-
+		print(owner.velocity.y)
+		if owner.velocity.y > 0:
+			print("change to fall")
+			emit_signal("finished","fall")
+	return false

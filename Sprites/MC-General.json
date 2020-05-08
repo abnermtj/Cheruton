@@ -259,7 +259,8 @@
    { "name": "Deleted jumpframe", "from": 31, "to": 32, "direction": "forward" }
   ],
   "layers": [
-   { "name": "oldbody", "opacity": 255, "blendMode": "normal" }
+   { "name": "oldbody", "opacity": 255, "blendMode": "normal" },
+   { "name": "refer", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]

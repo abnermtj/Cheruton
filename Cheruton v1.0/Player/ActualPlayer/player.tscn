@@ -180,6 +180,6 @@ texture = ExtResource( 1 )
 offset = Vector2( -16, 0 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 793, 1, 64, 34 )
+region_rect = Rect2( 1189, 1, 64, 34 )
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
