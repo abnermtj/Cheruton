@@ -7,13 +7,13 @@
 [ext_resource path="res://Player/Inventory/equip_bg.png" type="Texture" id=5]
 
 [node name="Inventory" type="Node2D"]
+position = Vector2( 40, 50 )
+scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
 
 [node name="Inventory_bg" type="TextureRect" parent="."]
-margin_left = -0.0477146
-margin_top = 0.501068
-margin_right = 279.953
-margin_bottom = 140.501
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
