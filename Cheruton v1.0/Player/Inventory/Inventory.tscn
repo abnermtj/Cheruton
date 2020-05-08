@@ -15,23 +15,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="."]
+margin_left = 97.1249
+margin_top = 31.0431
+margin_right = 137.125
+margin_bottom = 45.0431
+text = "Hello"
+
 [node name="Inventory_bg" type="TextureRect" parent="."]
 margin_left = -0.387421
 margin_top = 0.19371
 margin_right = 279.613
 margin_bottom = 140.194
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="."]
-margin_left = 104.741
-margin_top = 2.97831
-margin_right = 165.741
-margin_bottom = 16.9783
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Inventory"
 __meta__ = {
 "_edit_use_anchors_": false
 }
