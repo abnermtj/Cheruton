@@ -1,10 +1,10 @@
-extends Control
+extends Node2D
 
 var count = 0
 var original_head_pos
 #var original_robe_pos
-#var original_hand_pos
-#var original_footwear_pos
+#var original_hand_pos 
+#var original_footwear_pos 
 const HEAD_POS = Vector2(204,22)
 const ROBE_POS = Vector2(204,52)
 const HAND_POS = Vector2(204,82)
@@ -32,7 +32,7 @@ func _on_Test_pressed(): # creates a double click signal and activates tooltips
 		equip_dequip($Test)
 		$Tooltips/CurrItem.set_texture(null)
 		count = 0
-
+		
 func equip_dequip(node):
 
 		var update_pos = node.rect_position
@@ -42,3 +42,12 @@ func equip_dequip(node):
 
 func tooltips(texture):
 	$Tooltips/CurrItem.set_texture(texture)
+
+
+func _on_Test2_pressed():
+	count += 1
+	tooltips($Test2.texture_normal)
+	if (count == 2):
+		equip_dequip($Test2)
+		$Tooltips/CurrItem.set_texture(null)
+		count = 0
