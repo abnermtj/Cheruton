@@ -9,7 +9,8 @@ func _ready():
 
 func _on_Play_pressed():
 	LoadScrnGlobal.goto_scene(STATS)
-
+	DataResource.dict_settings["maj_scn"] = false
+	
 func _on_Settings_pressed():
 	var curr_scene = SETTINGS.instance()
 	DataResource.current_scene.hide()
