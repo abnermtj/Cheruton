@@ -4,7 +4,7 @@ class_name ShakeCamera
 const LOOK_AHEAD_FACTOR = 0.1 # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_OUT
-const SHIFT_DURATION = 1.0
+const SHIFT_DURATION = 2.0
 const RIGHT_BIAS = 1.1 # show more of the screen when going right, ie forward in our game
 
 var _duration := 0.0
@@ -119,6 +119,14 @@ func _check_facing():
 		# modify the self object propery position:x, from the current positino to the target and use the following parementers:
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
+
 func _on_Player_grounded(grounded):
 	print ("grounded is ",grounded)
+#	if not grounded:
+#		drag_margin_top = 1
+#		drag_margin_bottom = 1
+#	else:
+#		drag_margin_top = 0.52
+#		drag_margin_bottom = 0.67
+##
 	drag_margin_v_enabled = not grounded

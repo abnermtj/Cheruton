@@ -14,6 +14,8 @@ position = Vector2( 555.187, 199 )
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 4 )]
 position = Vector2( 1, -68 )
+drag_margin_left = 0.12
+drag_margin_right = 0.12
 drag_margin_bottom = 0.37
 
 [node name="TileMap" type="TileMap" parent="."]
