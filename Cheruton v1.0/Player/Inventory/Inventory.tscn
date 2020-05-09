@@ -1,144 +1,259 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
-[ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
 [ext_resource path="res://Player/Inventory/equip_bg.png" type="Texture" id=5]
 
-[node name="Inventory" type="Node2D"]
-position = Vector2( 40, 50 )
-scale = Vector2( 4, 4 )
-script = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
 
-[node name="Inventory_bg" type="TextureRect" parent="."]
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InvTitle" type="Label" parent="."]
-margin_left = 104.741
-margin_top = 2.97831
-margin_right = 165.741
-margin_bottom = 16.9783
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Inventory"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="TextureButton" parent="."]
-margin_left = 266.0
-margin_top = 3.0
-margin_right = 270.0
-margin_bottom = 7.0
-rect_scale = Vector2( 3, 3 )
-texture_normal = ExtResource( 3 )
+[node name="BorderBackground" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+texture = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Coin" type="TextureRect" parent="."]
-margin_left = 203.69
-margin_top = 102.766
-margin_right = 219.69
-margin_bottom = 118.766
-texture = ExtResource( 4 )
+[node name="InnerBackground" type="TextureRect" parent="BorderBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = 14.0
+margin_right = -18.0
+margin_bottom = -15.0
+texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CoinValue" type="Label" parent="Coin"]
-margin_left = -11.6474
-margin_top = 17.1624
-margin_right = 28.3526
-margin_bottom = 31.1624
+[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headers" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer"]
+margin_right = 1185.0
+margin_bottom = 51.0
+
+[node name="Menu" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
+margin_right = 1131.0
+margin_bottom = 51.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.156863, 0.168627, 0.152941, 1 )
+text = "                                   Inventory"
+
+[node name="Exit" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
+margin_left = 1135.0
+margin_right = 1185.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 3 )
+expand = true
+
+[node name="MElements" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer"]
+margin_top = 55.0
+margin_right = 1185.0
+margin_bottom = 607.0
+size_flags_vertical = 3
+
+[node name="LeftMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_top = 269.0
+margin_right = 20.0
+margin_bottom = 283.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_left = 24.0
+margin_right = 204.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 180, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapons" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+margin_right = 180.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Weapons" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapons" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Weapons"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tooltips" type="TextureRect" parent="."]
-margin_left = 223.307
-margin_top = 64.6926
-margin_right = 273.307
-margin_bottom = 133.693
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CurrItem" type="TextureRect" parent="Tooltips"]
-margin_left = 14.7532
-margin_top = 10.1428
-margin_right = 30.7532
-margin_bottom = 26.1428
-
-[node name="Gear_bg_Eqp" type="TextureRect" parent="."]
-anchor_left = 0.72
-anchor_top = 0.151
-anchor_right = 0.72
-anchor_bottom = 0.151
-margin_left = 202.972
-margin_top = 19.9339
-margin_right = 220.972
-margin_bottom = 101.934
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Head_bg_eqp" type="TextureRect" parent="Gear_bg_Eqp"]
-margin_top = 0.540001
-margin_right = 18.0
-margin_bottom = 18.54
+[node name="Apparel" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+margin_top = 74.0
+margin_right = 180.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
+expand = true
+
+[node name="Apparel" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Robes_bg_eqp" type="TextureRect" parent="Gear_bg_Eqp"]
-margin_top = 20.0
-margin_right = 18.0
-margin_bottom = 38.0
+[node name="Apparel" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Apparel"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Aid" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+margin_top = 148.0
+margin_right = 180.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
+expand = true
+
+[node name="Aid" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Aid"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="Hands_bg_eqp" type="TextureRect" parent="Gear_bg_Eqp"]
-margin_top = 40.0
-margin_right = 18.0
-margin_bottom = 58.0
+[node name="Aid" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Aid/Aid"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Aid"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Misc" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+margin_top = 222.0
+margin_right = 180.0
+margin_bottom = 292.0
+rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
+expand = true
+
+[node name="Misc" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Misc" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Misc"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Feet_bg_eqp" type="TextureRect" parent="Gear_bg_Eqp"]
-margin_top = 60.0
-margin_right = 18.0
-margin_bottom = 78.0
-texture = ExtResource( 5 )
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_left = 208.0
+margin_right = 857.0
+margin_bottom = 552.0
+size_flags_horizontal = 3
+
+[node name="Tabs2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ScrollContainer"]
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Test" type="TextureButton" parent="."]
-margin_left = 60.2421
-margin_top = 51.9434
-margin_right = 76.2421
-margin_bottom = 67.9434
-texture_normal = ExtResource( 4 )
+[node name="ItemInsp" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_left = 861.0
+margin_right = 1161.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CountDown" type="Timer" parent="."]
-wait_time = 0.5
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="Test" to="." method="_on_Test_pressed"]
-[connection signal="timeout" from="CountDown" to="." method="_on_CountDown_timeout"]
+[node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_left = 1165.0
+margin_top = 269.0
+margin_right = 1185.0
+margin_bottom = 283.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="BottomMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer"]
+margin_top = 611.0
+margin_right = 1185.0
+margin_bottom = 631.0
+rect_min_size = Vector2( 0, 20 )
