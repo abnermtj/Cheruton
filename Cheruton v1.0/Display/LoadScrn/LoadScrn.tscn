@@ -3,17 +3,14 @@
 [node name="LoadScrn" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.15791
-margin_right = 3.1579
+rect_scale = Vector2( 4, 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -3.0
-margin_top = 1.0
-margin_right = 317.0
-margin_bottom = 181.0
+margin_right = 320.0
+margin_bottom = 180.0
 color = Color( 0.854902, 0.317647, 0.317647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

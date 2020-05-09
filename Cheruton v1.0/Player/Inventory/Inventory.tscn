@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
 [ext_resource path="res://Player/Inventory/equip_bg.png" type="Texture" id=5]
-[ext_resource path="res://Player/Stats/Stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
+[ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -19,6 +20,8 @@ font_data = ExtResource( 1 )
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,7 +70,7 @@ margin_bottom = 51.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.156863, 0.168627, 0.152941, 1 )
-text = "                                   Inventory"
+text = "                                Inventory"
 
 [node name="Exit" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
 margin_left = 1135.0
@@ -91,7 +94,7 @@ rect_min_size = Vector2( 20, 0 )
 
 [node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 24.0
-margin_right = 204.0
+margin_right = 420.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 180, 0 )
 __meta__ = {
@@ -99,7 +102,7 @@ __meta__ = {
 }
 
 [node name="Weapons" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -132,7 +135,7 @@ __meta__ = {
 
 [node name="Apparel" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 74.0
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -165,7 +168,7 @@ __meta__ = {
 
 [node name="Aid" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 148.0
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 218.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -198,7 +201,7 @@ __meta__ = {
 
 [node name="Misc" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 222.0
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 292.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -231,7 +234,7 @@ __meta__ = {
 
 [node name="KeyItem" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 296.0
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 366.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -264,7 +267,7 @@ __meta__ = {
 
 [node name="Coins" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 370.0
-margin_right = 180.0
+margin_right = 396.0
 margin_bottom = 410.0
 
 [node name="CoinsPict" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins"]
@@ -286,17 +289,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs" instance=ExtResource( 6 )]
+[node name="ExpBar" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs" instance=ExtResource( 6 )]
+margin_top = 414.0
+margin_right = 396.0
+margin_bottom = 485.0
+
+[node name="HealthBar" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 414.0
-margin_right = 180.0
-margin_bottom = 414.0
-rect_scale = Vector2( 1, 1 )
+margin_top = 489.0
+margin_right = 396.0
+margin_bottom = 489.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 208.0
+margin_left = 424.0
 margin_right = 857.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
@@ -327,3 +333,4 @@ margin_top = 611.0
 margin_right = 1185.0
 margin_bottom = 631.0
 rect_min_size = Vector2( 0, 20 )
+[connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/Headers/Exit" to="." method="_on_Exit_pressed"]
