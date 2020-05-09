@@ -1,10 +1,10 @@
 extends Node2D
 class_name VerletChain
 # THIS CLASS IS THE TOP OF THE CHAIN
-export( float ) var GRAVITY := 10.0
-export( float ) var RESISTANCE := 0.80
-export( float ) var FRICTION := 0.90
-export( float ) var CHAIN_LINK_LENGTH := 4.0
+# export is good so each node that extends from this has independant graity resistance..
+export (float) var GRAVITY := 100.0
+export (float) var RESISTANCE := 0.70
+export (float) var CHAIN_LINK_LENGTH := 10.0
 
 var loops = []
 var links = []
@@ -57,7 +57,8 @@ func create_chain( parent ):
 
 func _physics_process( delta ):
 	_update_loops( delta )
-	_constrain_links( delta )
+	for i in range(0,2):
+		_constrain_links( delta )
 	_render_frame()
 
 #move loop in direction of loop above it
@@ -66,8 +67,9 @@ func _update_loops( delta ):
 		if loop.anchor:
 			loop.pos_prv = loop.pos_cur
 			loop.pos_cur = loop.global_position
+#			loop.pos_cur =  get_viewport().get_mouse_position()
 		else:
-			var vel = ( loop.pos_cur - loop.pos_prv ) * RESISTANCE * FRICTION # dist between two orgin vectors is the vector from one ppoint to other
+			var vel = ( loop.pos_cur - loop.pos_prv ) * RESISTANCE # dist between two orgin vectors is the vector from one ppoint to other
 			loop.pos_prv = loop.pos_cur
 			loop.pos_cur += vel # this causes lagging behind
 			loop.pos_cur.y += GRAVITY * delta
@@ -81,7 +83,8 @@ func _constrain_links( delta ):
 		if distance < 0.01: distance = 0.01 # since distance cannot equal to 0, we dividing below
 		var difference = CHAIN_LINK_LENGTH - distance # if distane is too large > chain link length
 		var percentage = difference / distance
-		if percentage > 1: percentage = 1   # move towards it 1 means to close gap completely child will be at parent noded
+#
+#		if percentage > 1: percentage = 1   # move towards it 1 means to close gap completely child will be at parent noded
 		vector *= percentage
 		link.child.pos_cur += vector
 	pass
@@ -92,5 +95,5 @@ func _render_frame():
 	for link in links:
 		link.global_position = ( ( link.parent.global_position + link.child.global_position ) * 0.5 )#.round()
 		link.global_rotation = link.parent.pos_cur.angle_to_point( link.child.pos_cur ) + PI / 2
-	pass
+	pass # doesnt actaully do anythings no return value, not even null, lietrally pass
 

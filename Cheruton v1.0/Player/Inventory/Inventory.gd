@@ -29,7 +29,7 @@ func free_the_inventory():
 func _on_Test_pressed(): # creates a double click signal and activates tooltips
 	if(count == 0):
 		$CountDown.start()
-	
+
 	count += 1
 	if (count == 2):
 		equip_dequip($Test)

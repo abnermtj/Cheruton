@@ -20,3 +20,4 @@ func update_look_direction(direction):
 	if not direction.x in [-1, 1]:
 		return
 	owner.get_node("bodyPivot").set_scale(Vector2(direction.x, 1))
+

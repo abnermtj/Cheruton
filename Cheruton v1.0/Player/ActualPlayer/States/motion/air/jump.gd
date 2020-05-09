@@ -6,7 +6,6 @@ var keypress_timer : float # how long you can keep jumpig up to boost height
 
 func enter() -> void:
 	owner.has_jumped = true
-	print( "Starting jump" )
 	owner.velocity.y = owner.JUMP_VEL # old speed kept
 	owner.velocity = owner.move_and_slide( owner.velocity, Vector2.UP )
 	owner.get_node("AnimationPlayer").play("jump")
@@ -43,9 +42,7 @@ func update( delta ):
 		owner.velocity.y = 0.0
 		emit_signal("finished","fall")
 	else:
-		print(owner.velocity.y)
 		if owner.velocity.y > 0:
-			print("change to fall")
 			emit_signal("finished","fall")
 
 	return false

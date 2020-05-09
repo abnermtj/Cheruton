@@ -32,7 +32,6 @@ func update(delta):
 
 	owner.move_and_slide(owner.velocity, Vector2.UP)
 
-	# this is double jump
 	if Input.is_action_just_pressed( "jump" ):
 		# jump immediately after landing
 		jump_timer = owner.JUMP_AGAIN_MARGIN
@@ -44,9 +43,9 @@ func update(delta):
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false
-		print("landing from fall")
 		owner.get_node("AnimationPlayer").play("land")
 		if (jump_again and jump_timer >= 0):
+			owner.get_node("states").states_stack.pop_front()
 			emit_signal("finished", "jump")
 		else:
 			# land

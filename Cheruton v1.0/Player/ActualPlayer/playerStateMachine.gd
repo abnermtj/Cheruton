@@ -18,10 +18,9 @@ func _change_state(state_name):
 	"""
 	if not _active:
 		return
-	if state_name in ["stagger", "jump", "attack"]:  # these are allowed to be placed ontop of other states
+	print (owner.has_jumped)
+	if (state_name in ["stagger", "jump", "attack"]):  # these are allowed to be placed ontop of other states
 		states_stack.push_front(states_map[state_name])
-#	if state_name == "jump" and current_state == $run:
-#		$jump.initialize($run.speed, $run.velocity)
 	._change_state(state_name)
 
 func _input(event):

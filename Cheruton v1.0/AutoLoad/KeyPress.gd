@@ -17,7 +17,7 @@ func _input(ev):
 			elif(last_key == KEY_ESCAPE):
 				free_scene()
 				last_key = null
-	
+
 		elif Input.is_key_pressed(KEY_I):
 			if (DataResource.dict_settings["game_on"] == true):
 				instance_scene(INVENTORY)
