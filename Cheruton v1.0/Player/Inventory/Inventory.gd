@@ -27,8 +27,10 @@ func free_the_inventory():
 
 
 func _on_Test_pressed(): # creates a double click signal and activates tooltips
+	if(count == 0):
+		$CountDown.start()
+	
 	count += 1
-	tooltips($Test.texture_normal)
 	if (count == 2):
 		equip_dequip($Test)
 		$Tooltips/CurrItem.set_texture(null)
@@ -45,10 +47,7 @@ func tooltips(texture):
 	$Tooltips/CurrItem.set_texture(texture)
 
 
-func _on_Test2_pressed():
-	count += 1
-	tooltips($Test2.texture_normal)
-	if (count == 2):
-		equip_dequip($Test2)
-		$Tooltips/CurrItem.set_texture(null)
-		count = 0
+
+
+func _on_CountDown_timeout():
+	count = 0
