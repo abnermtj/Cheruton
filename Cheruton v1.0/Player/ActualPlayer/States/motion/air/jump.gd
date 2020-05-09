@@ -1,5 +1,5 @@
 extends motionState
-
+#NOTE SOME KEYBOARDS CANNOT up left and space simulatenously google NKRO
 var keypress_timer : float # how long you can keep jumpig up to boost height
 #var climb_timer : float
 

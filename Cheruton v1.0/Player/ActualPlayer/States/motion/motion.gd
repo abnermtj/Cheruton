@@ -3,8 +3,9 @@ extends baseState
 class_name motionState
 
 func handle_input(event):
-	if event.is_action_pressed("simulate_damage"):
-		emit_signal("finished", "stagger")
+	pass
+#	if event.is_action_pressed("simulate_damage"):
+#		emit_signal("finished", "stagger")
 
 # left and right at the same time calcels out
 func get_input_direction():

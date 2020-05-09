@@ -14,7 +14,10 @@ const AIR_ACCEL = 40  # increase in this >> increase in stearing power in air
 var velocity = Vector2()
 
 var has_jumped = false
+var on_floor = false setget signal_on_floor
 signal state_changed
+signal grounded
+
 signal direction_changed(new_direction)
 
 var look_direction = Vector2(1, 0) setget set_look_direction
@@ -37,3 +40,8 @@ func set_look_direction(value):
 
 func _on_states_state_changed(states_stack):
 	emit_signal("state_changed", states_stack)
+
+func signal_on_floor(grounded):
+	on_floor = grounded
+	emit_signal("grounded", on_floor)
+	pass

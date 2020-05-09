@@ -118,8 +118,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 35.4904
-height = 53.1137
+radius = 30.0
+height = 65.0
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 176.745, 74.2908 )
@@ -138,8 +138,7 @@ anims/run_continious = SubResource( 6 )
 anims/run_start = SubResource( 7 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, 7 )
+position = Vector2( -1, 7 )
 shape = SubResource( 8 )
 
 [node name="states" type="Node" parent="."]
@@ -182,6 +181,6 @@ texture = ExtResource( 1 )
 offset = Vector2( -16, 0 )
 flip_h = true
 region_enabled = true
-region_rect = Rect2( 1, 1, 64, 34 )
+region_rect = Rect2( 199, 1, 64, 34 )
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

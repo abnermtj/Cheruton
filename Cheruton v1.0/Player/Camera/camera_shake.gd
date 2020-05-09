@@ -1,6 +1,11 @@
 extends Camera2D
 class_name ShakeCamera
 
+const LOOK_AHEAD_FACTOR = 0.1 # percentage of screen to shift for looking ahead when changing directions
+const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
+const SHIFT_EASE = Tween.EASE_OUT
+const SHIFT_DURATION = 1.0
+const RIGHT_BIAS = 1.1 # show more of the screen when going right, ie forward in our game
 var _duration := 0.0
 var _period_in_ms := 0.0
 var _amplitude := 0.0
@@ -19,17 +24,26 @@ var pan_speed := 3.0
 var slowmo_target = Vector2()
 var slowmo_offset = Vector2()
 
+var facing = 0
+onready var prev_camera_pos = get_camera_position()
+onready var tween = $ShiftTween # this caches a node no need to reload in downtimes between uses
 func _ready():
 #	game.camera = self
 	call_deferred( "align_camera_now" )
 
 func align_camera_now():
-	yield( get_tree().create_timer(0.1), 'timeout' ) # wait .1 seconds
+	# delay below is so that camera not always following player
+	yield( get_tree().create_timer(0.1), 'timeout' ) #yeild freezess current fuction until told to resume
+	# yield (object, signal signal from object to	 continue)
+	# yeild is a coroutine, which interupts function and allows it to complete before continiuing
 	align()
 	reset_smoothing()
 
 
 func _physics_process( delta ):
+	# to make camera face forwards
+	_check_facing()
+	prev_camera_pos = get_camera_position()
 	if _timer != 0:
 		# Only shake on certain frames.
 		_last_shook_timer = _last_shook_timer + delta
@@ -87,7 +101,23 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	_last_offset = Vector2.ZERO
 
 
-
+# in target diretion until reached
 func pan_camera( pan : Vector2 ) -> void:
 	target_pan_offset = pan
 	pass
+
+
+func _check_facing():
+	var new_facing = sign(get_camera_position().x - prev_camera_pos.x) # +1 camera moves to the right else -1 if left else 0
+	if new_facing != 0 && facing != new_facing:
+		facing = new_facing
+		var target_offset = get_viewport_rect().size.x * facing * LOOK_AHEAD_FACTOR
+		if new_facing == 1:
+			target_offset *= RIGHT_BIAS
+		position.x = target_offset
+		# modify the self object propery position:x, from the current positino to the target and use the following parementers:
+		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
+		tween.start()
+func _on_Player_grounded(grounded):
+	print ("grounded is ",grounded)
+	drag_margin_v_enabled = not grounded
