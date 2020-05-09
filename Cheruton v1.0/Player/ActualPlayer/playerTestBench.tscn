@@ -13,6 +13,8 @@ script = ExtResource( 5 )
 position = Vector2( 555.187, 199 )
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 4 )]
+position = Vector2( 1, -68 )
+drag_margin_bottom = 0.37
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( -1, 0 )
@@ -27,4 +29,5 @@ tile_data = PoolIntArray( 393221, 0, 0, 393224, 0, 0, 458752, 0, 0, 458753, 0, 1
 margin_top = -1.0
 margin_bottom = 99.0
 rect_scale = Vector2( 2, 2 )
+[connection signal="grounded" from="Player" to="Player/Camera2D" method="_on_Player_grounded"]
 [connection signal="state_changed" from="Player" to="UI/Panel" method="_on_Player_state_changed"]

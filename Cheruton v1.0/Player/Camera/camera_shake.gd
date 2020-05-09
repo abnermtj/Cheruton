@@ -6,6 +6,7 @@ const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_OUT
 const SHIFT_DURATION = 1.0
 const RIGHT_BIAS = 1.1 # show more of the screen when going right, ie forward in our game
+
 var _duration := 0.0
 var _period_in_ms := 0.0
 var _amplitude := 0.0
