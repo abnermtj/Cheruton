@@ -8,8 +8,8 @@ func _ready():
 
 
 func _on_Play_pressed():
-	LoadScrnGlobal.goto_scene(EMPTY)
 	DataResource.dict_settings["maj_scn"] = false
+	LoadScrnGlobal.goto_scene(EMPTY)
 
 func _on_Settings_pressed():
 	var curr_scene = SETTINGS.instance()
