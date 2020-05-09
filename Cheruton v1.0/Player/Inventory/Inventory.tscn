@@ -137,15 +137,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Test2" type="TextureButton" parent="."]
-margin_left = 101.751
-margin_top = 51.1887
-margin_right = 117.751
-margin_bottom = 67.1887
-texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CountDown" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Test" to="." method="_on_Test_pressed"]
-[connection signal="pressed" from="Test2" to="." method="_on_Test2_pressed"]
+[connection signal="timeout" from="CountDown" to="." method="_on_CountDown_timeout"]

@@ -44,3 +44,6 @@ func change_audio_master(var audio_change):
 		DataResource.dict_settings["audio"] = -56
 	emit_signal("change_audio_master")
 
+#beta
+#func anim_foilage(scene):
+#	pass

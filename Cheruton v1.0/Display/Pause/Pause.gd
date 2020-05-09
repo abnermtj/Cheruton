@@ -18,6 +18,7 @@ func _on_ExitDirect_pressed():
 func _on_Settings_pressed():
 	DataResource.dict_settings["maj_scn"] = true
 	DataResource.current_scene.hide()
+	DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).hide()
 	var curr_scene = SETTINGS.instance()
 	get_tree().get_root().add_child(curr_scene)
 

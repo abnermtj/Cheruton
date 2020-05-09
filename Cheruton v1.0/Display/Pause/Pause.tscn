@@ -4,11 +4,15 @@
 [ext_resource path="res://Display/Pause/Exit.png" type="Texture" id=2]
 
 [node name="Pause" type="PopupMenu"]
+visible = true
 margin_left = 239.673
 margin_top = 123.692
 margin_right = 453.674
 margin_bottom = 247.693
 rect_scale = Vector2( 4, 4 )
+popup_exclusive = true
+hide_on_checkable_item_selection = false
+hide_on_state_item_selection = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,10 +62,10 @@ __meta__ = {
 }
 
 [node name="ExitPause" type="TextureButton" parent="."]
-margin_left = 200.353
-margin_top = 5.89248
-margin_right = 207.353
-margin_bottom = 12.8925
+margin_left = 202.603
+margin_top = 4.14248
+margin_right = 209.603
+margin_bottom = 11.1425
 texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
