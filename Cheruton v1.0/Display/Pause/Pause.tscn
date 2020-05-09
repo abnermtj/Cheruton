@@ -4,11 +4,10 @@
 [ext_resource path="res://Display/Pause/Exit.png" type="Texture" id=2]
 
 [node name="Pause" type="PopupMenu"]
-margin_left = 239.673
-margin_top = 123.692
-margin_right = 453.674
-margin_bottom = 247.693
-rect_scale = Vector2( 4, 4 )
+margin_left = 62.7976
+margin_top = 35.3426
+margin_right = 276.798
+margin_bottom = 159.343
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,6 +65,7 @@ texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="popup_hide" from="." to="." method="_on_Pause_popup_hide"]
 [connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="RMMenu" to="." method="_on_RMMenu_pressed"]
 [connection signal="pressed" from="ExitDirect" to="." method="_on_ExitDirect_pressed"]

@@ -13,8 +13,6 @@ var current_scene = null
 var audio
 var is_mute
 var game_on
-var maj_scn
-
 var health_curr
 var health_max
 var damage
@@ -49,7 +47,6 @@ var dict_settings = {
 	"audio" : audio,
 	"is_mute": is_mute,
 	"game_on": game_on,
-	"maj_scn": maj_scn
 #       "brightness" : get_parent().get_path(),
 #       "color_indibars" : position.x,
 #       "mmenubg" : mmenubg
@@ -110,6 +107,5 @@ func reset_settings():
 	dict_settings["audio"] = -10
 	dict_settings["is_mute"] = false
 	dict_settings["game_on"] = false
-	dict_settings["maj_scn"] = true
 	save_settings()
 
