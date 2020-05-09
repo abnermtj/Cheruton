@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var count = 0
 var original_head_pos
