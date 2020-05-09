@@ -7,8 +7,8 @@
 [node name="HealthBar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -319.0
-margin_bottom = -180.0
+margin_right = -884.0
+margin_bottom = -649.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -16,35 +16,43 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="HealthBar" type="TextureProgress" parent="."]
-margin_left = 143.018
-margin_top = 97.6718
-margin_right = 540.018
-margin_bottom = 168.672
-rect_scale = Vector2( 0.25, 0.1 )
+[node name="HealthRect" type="VBoxContainer" parent="."]
+margin_right = 180.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 180, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthStats" type="HBoxContainer" parent="HealthRect"]
+margin_right = 396.0
+margin_bottom = 14.0
+
+[node name="HealthName" type="Label" parent="HealthRect/HealthStats"]
+margin_right = 46.0
+margin_bottom = 14.0
+text = "Health:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthVal" type="Label" parent="HealthRect/HealthStats"]
+margin_left = 50.0
+margin_right = 50.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HealthRect"]
+margin_top = 18.0
+margin_right = 396.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 50, 50 )
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 tint_over = Color( 1, 1, 0.980392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="HealthName" type="Label" parent="."]
-margin_left = 29.624
-margin_top = 96.2277
-margin_right = 79.624
-margin_bottom = 112.228
-text = "Health: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthVal" type="Label" parent="."]
-margin_left = 80.58
-margin_top = 95.461
-margin_right = 130.58
-margin_bottom = 109.461
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="value_changed" from="HealthBar" to="." method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="HealthRect/HealthBar" to="." method="_on_HealthBar_value_changed"]
