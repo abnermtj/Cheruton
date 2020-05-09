@@ -24,7 +24,7 @@ func instance_scene(NEW):
 	var curr_scene = NEW.instance()
 	DataResource.current_scene.add_child(curr_scene)
 
-	
+
 func free_scene():
 	DataResource.dict_settings["game_on"] = true
 	var instanced_scene = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
