@@ -1,6 +1,6 @@
 extends Control
 
-const STATS = "res://Player/Stats/Stats.tscn"
+const EMPTY = "res://Empty.tscn"
 var SETTINGS = preload("res://Display/Settings/Settings.tscn")
 
 func _ready():
@@ -8,9 +8,9 @@ func _ready():
 
 
 func _on_Play_pressed():
-	LoadScrnGlobal.goto_scene(STATS)
+	LoadScrnGlobal.goto_scene(EMPTY)
 	DataResource.dict_settings["maj_scn"] = false
-
+	DataResource.dict_settings["game_on"] = true
 func _on_Settings_pressed():
 	var curr_scene = SETTINGS.instance()
 	DataResource.current_scene.hide()

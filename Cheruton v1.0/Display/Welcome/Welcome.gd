@@ -2,7 +2,6 @@ extends Node
 
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 func _ready():
-	DataResource.dict_settings["game_on"] = false
 	DataResource.load_player()
 	DataResource.load_settings()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings["is_mute"])
