@@ -35,13 +35,13 @@ func update( delta ):
 	owner.move_and_slide( owner.velocity, \
 			Vector2.UP )  #Up makes it such that if the collision normal is the same, as up then stop
 
-	if owner.is_on_floor():
-		owner.get_node("AnimationPlayer").play("land")
-		emit_signal("finished", "previous")
-		print("land")
+#	if owner.is_on_floor():
+#		owner.get_node("AnimationPlayer").play("land")
+#		emit_signal("finished", "previous")
+#		print("land")
 	if owner.is_on_ceiling():
 		owner.velocity.y = 0.0
-		emit_signal("finished","previous")
+		emit_signal("finished","fall")
 	else:
 		print(owner.velocity.y)
 		if owner.velocity.y > 0:
