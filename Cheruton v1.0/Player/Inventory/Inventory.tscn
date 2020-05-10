@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
@@ -23,6 +23,10 @@ size = 22
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -646,24 +650,259 @@ __meta__ = {
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
 margin_right = 300.0
+margin_bottom = 225.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 225.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atk:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Def:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 74.0
+margin_right = 226.0
+margin_bottom = 107.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
 
 [node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 4.0
+margin_top = 229.0
 margin_right = 300.0
-margin_bottom = 24.0
+margin_bottom = 249.0
 rect_min_size = Vector2( 300, 20 )
 
-[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 28.0
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+margin_top = 253.0
 margin_right = 300.0
-margin_bottom = 68.0
+margin_bottom = 478.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "New Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 225.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atk:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Def:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 74.0
+margin_right = 226.0
+margin_bottom = 107.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+margin_top = 482.0
+margin_right = 300.0
+margin_bottom = 552.0
+
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+margin_top = 28.0
+margin_bottom = 42.0
 
 [node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+margin_left = 4.0
+margin_right = 74.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
+
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+margin_left = 78.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons/Compare/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Compare"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 1165.0
