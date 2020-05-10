@@ -6,8 +6,10 @@ var count = 0
 func _ready():
 	DataResource.dict_settings["game_on"] = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.dict_player["coins"])
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
+	# Hide initbar() to view inventory directly
+	
+	#$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
+	#$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 
 func _on_Exit_pressed():
 	free_the_inventory()
