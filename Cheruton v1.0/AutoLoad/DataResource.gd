@@ -3,8 +3,8 @@ extends Node
 # Adding data to the game dictionary:
 #	DataResource.dict_x["feature"] = value
 
-const FILE_NAME = "res://SaveData/player-data.json"
-const FILE_NAME2 = "res://SaveData/settings-data.json"
+const FILE_PLAYER = "res://SaveData/player-data.json"
+const FILE_SETTINGS = "res://SaveData/settings-data.json"
 
 signal loaded
 
@@ -57,45 +57,37 @@ var dict_settings = {
 }
 
 func save_player():
-	var file = File.new()
-	file.open(FILE_NAME, File.WRITE)
-	file.store_string(to_json(dict_player))
-	file.close()
+	save_data(FILE_PLAYER, dict_player)
 
 func save_settings():
-	var file = File.new()
-	file.open(FILE_NAME2, File.WRITE)
-	file.store_string(to_json(dict_settings))
-	file.close()
+	save_data(FILE_SETTINGS, dict_settings)
 
 func load_player():
-	var file = File.new()
-	if file.file_exists(FILE_NAME):
-		file.open(FILE_NAME, File.READ)
-		var data = parse_json(file.get_as_text())
-		file.close()
-		if typeof(data) == TYPE_DICTIONARY:
-			dict_player = data
-			emit_signal("loaded")
-		else:
-			print("Corrupted data for player!")
-	else:
-		print("No saved data for player!")
-
+	dict_player = load_data(FILE_PLAYER, dict_player)
 
 func load_settings():
+	dict_settings = load_data(FILE_SETTINGS, dict_settings)
 
+func save_data(FILE, dictionary):
 	var file = File.new()
-	if file.file_exists(FILE_NAME2):
-		file.open(FILE_NAME2, File.READ)
+	file.open(FILE, File.WRITE)
+	file.store_string(to_json(dictionary))
+	file.close()
+
+func load_data(FILE, dict):
+	var file = File.new()
+	if file.file_exists(FILE):
+		file.open(FILE, File.READ)
 		var data = parse_json(file.get_as_text())
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
-			dict_settings = data
+			dict = data
+			print("Loaded data!")
+			return dict
 		else:
-			print("Corrupted data for settings!")
+			print("Corrupted data!")
 	else:
-		print("No saved data for settings!")
+		print("No saved data!")
 
 
 func reset_player():
@@ -113,5 +105,3 @@ func reset_settings():
 	dict_settings["game_on"] = false
 	dict_settings["maj_scn"] = true
 	save_settings()
-
-func load
