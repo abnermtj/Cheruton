@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Inventory/random_trash_bin.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -642,6 +643,27 @@ rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+margin_right = 300.0
+
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+margin_top = 4.0
+margin_right = 300.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 300, 20 )
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+margin_top = 28.0
+margin_right = 300.0
+margin_bottom = 68.0
+
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 9 )
+expand = true
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 1165.0
