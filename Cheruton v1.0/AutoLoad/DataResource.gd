@@ -22,6 +22,7 @@ var exp_curr
 var exp_max
 var level
 var coins
+
 var dict_player = {
 #        "filename" : get_filename(),
 #        "parent" : get_parent().get_path(),
@@ -113,3 +114,4 @@ func reset_settings():
 	dict_settings["maj_scn"] = true
 	save_settings()
 
+func load

@@ -1,0 +1,62 @@
+{
+  "Weapons": {
+    "Steel Sword": {
+      "item_attack": 15,
+      "item_defense": 0,
+      "item_weight": 5
+    }
+  },
+  "Apparel": {},
+  "Aid": {
+    "Potion Tube": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 20,
+      "item_exp": 0,
+      "item_strength": 0
+    },
+    "Potion Flask": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 50,
+      "item_exp": 0,
+      "item_strength": 0
+    },
+    "Potion Jug": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 100,
+      "item_exp": 0,
+      "item_strength": 0
+    },
+    "Manna Tube": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 0,
+      "item_exp": 0,
+      "item_strength": 20
+    },
+    "Manna Flask": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 0,
+      "item_exp": 0,
+      "item_strength": 50
+    },
+    "Manna Jug": {
+      "item_attack": null,
+      "item_defense": null,
+      "item_weight": null,
+      "item_health": 0,
+      "item_exp": 0,
+      "item_strength": 100
+    }
+  },
+  "Misc": {},
+  "KeyItems": {}
+}

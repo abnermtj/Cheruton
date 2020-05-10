@@ -91,6 +91,7 @@ DataFunctions="*res://AutoLoad/DataFunctions.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
 KeyPress="*res://AutoLoad/KeyPress.gd"
+InventoryHandle="*res://AutoLoad/InventoryHandle.gd"
 
 [display]
 
