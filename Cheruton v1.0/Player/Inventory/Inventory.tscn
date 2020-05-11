@@ -18,19 +18,19 @@ font_data = ExtResource( 1 )
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=3]
-size = 22
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 32
+size = 22
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -101,19 +101,19 @@ expand = true
 [node name="MElements" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer"]
 margin_top = 55.0
 margin_right = 1185.0
-margin_bottom = 825.0
+margin_bottom = 607.0
 size_flags_vertical = 3
 
 [node name="LeftMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_top = 378.0
+margin_top = 269.0
 margin_right = 20.0
-margin_bottom = 392.0
+margin_bottom = 283.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 24.0
 margin_right = 234.0
-margin_bottom = 770.0
+margin_bottom = 552.0
 rect_min_size = Vector2( 210, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -303,7 +303,7 @@ margin_left = 44.0
 margin_right = 44.0
 margin_bottom = 40.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.435294, 0.423529, 0.478431, 1 )
 align = 2
 valign = 2
@@ -370,7 +370,7 @@ anchor_bottom = 1.0
 margin_left = -65.0
 margin_top = -35.0
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -384,7 +384,7 @@ margin_right = 433.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="Apparel" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
@@ -435,7 +435,7 @@ anchor_bottom = 1.0
 margin_left = -65.0
 margin_top = -35.0
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -449,7 +449,7 @@ margin_right = 433.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="Aid" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
@@ -500,7 +500,7 @@ anchor_bottom = 1.0
 margin_left = -65.0
 margin_top = -35.0
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -514,7 +514,7 @@ margin_right = 141.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="Misc" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
@@ -565,7 +565,7 @@ anchor_bottom = 1.0
 margin_left = -65.0
 margin_top = -35.0
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -579,7 +579,7 @@ margin_right = 214.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
@@ -630,7 +630,7 @@ anchor_bottom = 1.0
 margin_left = -65.0
 margin_top = -35.0
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -644,13 +644,13 @@ margin_right = 433.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="ItemInsp" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 238.0
 margin_right = 538.0
-margin_bottom = 770.0
+margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -658,31 +658,31 @@ __meta__ = {
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
 margin_right = 300.0
-margin_bottom = 334.0
+margin_bottom = 225.0
 size_flags_vertical = 3
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Current Item"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 334.0
+margin_bottom = 225.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -694,7 +694,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -703,7 +703,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -715,7 +715,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -724,7 +724,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -736,7 +736,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -745,50 +745,50 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 338.0
+margin_top = 229.0
 margin_right = 300.0
-margin_bottom = 358.0
+margin_bottom = 249.0
 rect_min_size = Vector2( 300, 20 )
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 362.0
+margin_top = 253.0
 margin_right = 300.0
-margin_bottom = 696.0
+margin_bottom = 478.0
 size_flags_vertical = 3
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "New Item"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 334.0
+margin_bottom = 225.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -800,7 +800,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -809,7 +809,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -821,7 +821,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -830,7 +830,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -842,7 +842,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -851,20 +851,20 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 297.0
+margin_bottom = 188.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 700.0
+margin_top = 482.0
 margin_right = 300.0
-margin_bottom = 770.0
+margin_bottom = 552.0
 
 [node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
 margin_top = 28.0
@@ -914,15 +914,15 @@ __meta__ = {
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 542.0
-margin_top = 378.0
+margin_top = 269.0
 margin_right = 562.0
-margin_bottom = 392.0
+margin_bottom = 283.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="BottomMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer"]
-margin_top = 829.0
+margin_top = 611.0
 margin_right = 1185.0
-margin_bottom = 849.0
+margin_bottom = 631.0
 rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/Headers/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons" to="." method="_on_Weapons_pressed"]
