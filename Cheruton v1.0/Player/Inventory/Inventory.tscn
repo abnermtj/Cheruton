@@ -108,15 +108,15 @@ rect_min_size = Vector2( 20, 0 )
 
 [node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 24.0
-margin_right = 420.0
+margin_right = 234.0
 margin_bottom = 552.0
-rect_min_size = Vector2( 180, 0 )
+rect_min_size = Vector2( 210, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Weapons" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -149,7 +149,7 @@ __meta__ = {
 
 [node name="Apparel" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 74.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -182,7 +182,7 @@ __meta__ = {
 
 [node name="Aid" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 148.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 218.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -215,7 +215,7 @@ __meta__ = {
 
 [node name="Misc" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 222.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 292.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -248,7 +248,7 @@ __meta__ = {
 
 [node name="KeyItems" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 296.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 366.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -281,7 +281,7 @@ __meta__ = {
 
 [node name="Coins" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 370.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 410.0
 
 [node name="CoinsPict" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins"]
@@ -305,14 +305,13 @@ __meta__ = {
 
 [node name="ExpBar" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs" instance=ExtResource( 6 )]
 margin_top = 414.0
-margin_right = 396.0
 margin_bottom = 485.0
 
 [node name="HealthBar" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 489.0
-margin_right = 396.0
+margin_right = 210.0
 margin_bottom = 489.0
 
 [node name="Weapons" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
@@ -641,8 +640,8 @@ custom_fonts/font = SubResource( 4 )
 valign = 1
 
 [node name="ItemInsp" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 424.0
-margin_right = 724.0
+margin_left = 238.0
+margin_right = 538.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
@@ -906,9 +905,9 @@ __meta__ = {
 }
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 728.0
+margin_left = 542.0
 margin_top = 269.0
-margin_right = 748.0
+margin_right = 562.0
 margin_bottom = 283.0
 rect_min_size = Vector2( 20, 0 )
 

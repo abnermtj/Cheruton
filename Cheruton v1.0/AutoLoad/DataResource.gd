@@ -6,8 +6,6 @@ extends Node
 const FILE_PLAYER = "res://SaveData/player-data.json"
 const FILE_SETTINGS = "res://SaveData/settings-data.json"
 
-signal loaded
-
 var current_scene = null
 
 var audio

@@ -5,7 +5,9 @@
 [ext_resource path="res://Player/Stats/ExpBar/expbar_fill.png" type="Texture" id=3]
 
 [node name="ExpBar" type="Control"]
-rect_min_size = Vector2( 396, 71 )
+margin_right = 210.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 210, 71 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,7 +23,7 @@ __meta__ = {
 }
 
 [node name="ExpStats" type="HBoxContainer" parent="ExpRect"]
-margin_right = 396.0
+margin_right = 190.0
 margin_bottom = 14.0
 
 [node name="ExpLabel" type="Label" parent="ExpRect/ExpStats"]
@@ -42,7 +44,7 @@ __meta__ = {
 
 [node name="ExpBar" type="TextureProgress" parent="ExpRect"]
 margin_top = 18.0
-margin_right = 396.0
+margin_right = 190.0
 margin_bottom = 71.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )

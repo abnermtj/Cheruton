@@ -28,11 +28,12 @@ func free_the_inventory():
 	scene_to_free.queue_free()
 
 func change_active_tab(new_tab, items_list):
-	# Set current tab to default colour
+	# Set current tab to default colour and hide its items
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
 		active_tab_items.hide()
-	# Set new active tab and its colour
+
+	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 	active_tab_items = items_list
 	active_tab.set_normal_texture(active_tab_image)

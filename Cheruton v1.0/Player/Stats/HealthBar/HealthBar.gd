@@ -12,7 +12,7 @@ func initbar():
 	health_max = DataResource.dict_player["health_max"]
 	$HealthRect/HealthBar.value = old_health/health_max * 100
 	$HealthRect/HealthStats/HealthVal.text = str(DataResource.dict_player["health_curr"], "/",DataResource.dict_player["health_max"])
-	
+
 func change_healthbar(new_health):
 	if(new_health < 0):
 		new_health = 0
