@@ -246,7 +246,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyItem" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+[node name="KeyItems" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 296.0
 margin_right = 396.0
 margin_bottom = 366.0
@@ -254,7 +254,7 @@ rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="KeyItem" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItem"]
+[node name="KeyItems" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -267,7 +267,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="KeyItem" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItem/KeyItem"]
+[node name="KeyItems" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
@@ -316,6 +316,7 @@ margin_right = 396.0
 margin_bottom = 489.0
 
 [node name="Weapons" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
 margin_left = 424.0
 margin_right = 857.0
 margin_bottom = 552.0
@@ -381,13 +382,13 @@ valign = 1
 
 [node name="Apparel" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 642.0
-margin_right = 856.0
+margin_left = 424.0
+margin_right = 857.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
 [node name="VBoxCont" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel"]
-margin_right = 214.0
+margin_right = 433.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -396,7 +397,7 @@ __meta__ = {
 }
 
 [node name="201" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont"]
-margin_right = 214.0
+margin_right = 433.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 
@@ -437,7 +438,7 @@ __meta__ = {
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont/201"]
 margin_left = 74.0
-margin_right = 214.0
+margin_right = 433.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -446,8 +447,8 @@ valign = 1
 
 [node name="Aid" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 714.0
-margin_right = 855.0
+margin_left = 569.0
+margin_right = 710.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
@@ -511,13 +512,13 @@ valign = 1
 
 [node name="Misc" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 751.0
+margin_left = 642.0
 margin_right = 856.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
 [node name="VBoxCont" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc"]
-margin_right = 105.0
+margin_right = 214.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -526,7 +527,7 @@ __meta__ = {
 }
 
 [node name="401" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont"]
-margin_right = 105.0
+margin_right = 214.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 
@@ -567,7 +568,7 @@ __meta__ = {
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont/401"]
 margin_left = 74.0
-margin_right = 105.0
+margin_right = 214.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -576,13 +577,13 @@ valign = 1
 
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 772.0
-margin_right = 855.0
+margin_left = 424.0
+margin_right = 857.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
 [node name="VBoxCont" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems"]
-margin_right = 83.0
+margin_right = 433.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -591,7 +592,7 @@ __meta__ = {
 }
 
 [node name="501" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont"]
-margin_right = 83.0
+margin_right = 433.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 
@@ -632,7 +633,7 @@ __meta__ = {
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont/501"]
 margin_left = 74.0
-margin_right = 83.0
+margin_right = 433.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -640,8 +641,8 @@ custom_fonts/font = SubResource( 4 )
 valign = 1
 
 [node name="ItemInsp" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 861.0
-margin_right = 1161.0
+margin_left = 424.0
+margin_right = 724.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
@@ -905,9 +906,9 @@ __meta__ = {
 }
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 1165.0
+margin_left = 728.0
 margin_top = 269.0
-margin_right = 1185.0
+margin_right = 748.0
 margin_bottom = 283.0
 rect_min_size = Vector2( 20, 0 )
 
@@ -921,4 +922,4 @@ rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel" to="." method="_on_Apparel_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Aid/Aid" to="." method="_on_Aid_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc" to="." method="_on_Misc_pressed"]
-[connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItem/KeyItem" to="." method="_on_KeyItem_pressed"]
+[connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems" to="." method="_on_KeyItems_pressed"]
