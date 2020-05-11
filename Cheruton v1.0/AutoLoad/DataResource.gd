@@ -5,8 +5,8 @@ extends Node
 
 const SETTINGS = "res://SaveData/settings-data.json"
 const PLAYER = "res://SaveData/player-data.json"
-const INVENTORY = "res://SaveData/inventory_data.json"
-const LOOT = "res://SaveData/loot_data.json"
+const INVENTORY = "res://SaveData/inventory-data.json"
+const LOOT = "res://SaveData/loot-data.json"
 
 var current_scene = null
 
