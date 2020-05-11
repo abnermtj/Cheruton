@@ -1,26 +1,21 @@
-extends Control
+extends Node
 
-var map_name
-var loot_count
 var loot_dict = {}
 
-func _ready():
-	map_name = "debug" # find something to link to this
-	determine_loot_count()
-	loot_selector()
 
 # Determines the qty of tiems to be released
-func determine_loot_count():
+func determine_loot_count(map_name):
 	var ItemMinCount = DataResource.dict_loot[map_name].ItemMinCount
 	var ItemMaxCount = DataResource.dict_loot[map_name].ItemMaxCount
 	#gives the random seed
 	randomize()
 	#randi() expects array, so factor + 1
-	loot_count = randi()%((int(ItemMaxCount) - int(ItemMinCount))+ 1) + int(ItemMinCount)
+	var loot_count = randi()%((int(ItemMaxCount) - int(ItemMinCount))+ 1) + int(ItemMinCount)
+	return loot_count
 	print(loot_count) #debug
 
 
-func loot_selector():
+func loot_selector(map_name, loot_count):
 	for i in range(1, loot_count + 1):
 		randomize()
 		var index = 1
