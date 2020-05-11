@@ -17,8 +17,6 @@ func _ready():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 	
-
-
 func _on_Exit_pressed():
 	free_the_inventory()
 
