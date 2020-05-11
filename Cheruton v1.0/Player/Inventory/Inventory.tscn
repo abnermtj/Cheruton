@@ -1,14 +1,20 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=16 format=2]
+=======
+[gd_scene load_steps=7 format=2]
+>>>>>>> Stashed changes
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
-[ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
 [ext_resource path="res://Player/Inventory/equip_bg.png" type="Texture" id=5]
+<<<<<<< Updated upstream
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Inventory/random_trash_bin.png" type="Texture" id=9]
+=======
+>>>>>>> Stashed changes
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -18,6 +24,7 @@ font_data = ExtResource( 1 )
 size = 32
 font_data = ExtResource( 1 )
 
+<<<<<<< Updated upstream
 [sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 1 )
@@ -35,11 +42,11 @@ size = 32
 font_data = ExtResource( 1 )
 
 [node name="Inventory" type="Control"]
+=======
+[node name="Control" type="Control"]
+>>>>>>> Stashed changes
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,7 +95,7 @@ margin_bottom = 51.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.156863, 0.168627, 0.152941, 1 )
-text = "                                Inventory"
+text = "                                   Inventory"
 
 [node name="Exit" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
 margin_left = 1135.0
@@ -112,7 +119,11 @@ rect_min_size = Vector2( 20, 0 )
 
 [node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 24.0
+<<<<<<< Updated upstream
 margin_right = 234.0
+=======
+margin_right = 204.0
+>>>>>>> Stashed changes
 margin_bottom = 552.0
 rect_min_size = Vector2( 210, 0 )
 __meta__ = {
@@ -120,7 +131,11 @@ __meta__ = {
 }
 
 [node name="Weapons" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
+<<<<<<< Updated upstream
 margin_right = 210.0
+=======
+margin_right = 180.0
+>>>>>>> Stashed changes
 margin_bottom = 70.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -153,7 +168,11 @@ __meta__ = {
 
 [node name="Apparel" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 74.0
+<<<<<<< Updated upstream
 margin_right = 210.0
+=======
+margin_right = 180.0
+>>>>>>> Stashed changes
 margin_bottom = 144.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -186,7 +205,11 @@ __meta__ = {
 
 [node name="Aid" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 148.0
+<<<<<<< Updated upstream
 margin_right = 210.0
+=======
+margin_right = 180.0
+>>>>>>> Stashed changes
 margin_bottom = 218.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -219,7 +242,11 @@ __meta__ = {
 
 [node name="Misc" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 222.0
+<<<<<<< Updated upstream
 margin_right = 210.0
+=======
+margin_right = 180.0
+>>>>>>> Stashed changes
 margin_bottom = 292.0
 rect_min_size = Vector2( 180, 70 )
 texture = ExtResource( 5 )
@@ -250,6 +277,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+<<<<<<< Updated upstream
 [node name="KeyItems" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"]
 margin_top = 296.0
 margin_right = 210.0
@@ -585,6 +613,10 @@ valign = 1
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
 margin_left = 424.0
+=======
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+margin_left = 208.0
+>>>>>>> Stashed changes
 margin_right = 857.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
@@ -924,9 +956,12 @@ margin_top = 611.0
 margin_right = 1185.0
 margin_bottom = 631.0
 rect_min_size = Vector2( 0, 20 )
+<<<<<<< Updated upstream
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/Headers/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons" to="." method="_on_Weapons_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel" to="." method="_on_Apparel_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Aid/Aid" to="." method="_on_Aid_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc" to="." method="_on_Misc_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems" to="." method="_on_KeyItems_pressed"]
+=======
+>>>>>>> Stashed changes
