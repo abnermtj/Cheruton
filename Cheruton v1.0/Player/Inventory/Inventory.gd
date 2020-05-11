@@ -14,8 +14,8 @@ func _ready():
 	_on_Weapons_pressed()
 	
 	# Hide initbar() to view inventory directly
-	#$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
-	#$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
+	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
+	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 	
 
 
