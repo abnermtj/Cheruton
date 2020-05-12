@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
 }, {
-"base": "Node2D",
-"class": "Level",
-"language": "GDScript",
-"path": "res://Levels/Scripts/levels.gd"
-}, {
 "base": "Camera2D",
 "class": "ShakeCamera",
 "language": "GDScript",
@@ -73,7 +68,6 @@ _global_script_class_icons={
 "AsepriteImportData": "",
 "AsepriteImporter": "",
 "EditorTheme": "",
-"Level": "",
 "ShakeCamera": "",
 "VerletChain": "",
 "VerletLink": "",
@@ -92,13 +86,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-<<<<<<< HEAD
-DataFunctions="*res://AutoLoad/DataFunctions.gd"
-DataResource="*res://AutoLoad/DataResource.gd"
-=======
 DataResource="*res://AutoLoad/DataResource.gd"
 DataFunctions="*res://AutoLoad/DataFunctions.gd"
->>>>>>> b0d522a7e1a5f14f4b04537c786014d9f8e39e12
 KeyPress="*res://AutoLoad/KeyPress.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
