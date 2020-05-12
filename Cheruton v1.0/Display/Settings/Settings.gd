@@ -24,4 +24,5 @@ func _on_Back_pressed():
 	scene_to_free.queue_free()
 	if(KeyPress.last_key == KEY_ESCAPE):
 		DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).show()
+		DataResource.dict_settings.maj_scn = false
 	DataResource.current_scene.show()

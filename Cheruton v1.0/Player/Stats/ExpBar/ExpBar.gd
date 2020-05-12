@@ -8,9 +8,9 @@ func _ready():
 
 
 func initbar():
-	var old_exp = DataResource.dict_player["exp_curr"]
-	var old_exp_max = DataResource.dict_player["exp_max"]
-	old_level = DataResource.dict_player["level"]
+	var old_exp = DataResource.temp_dict_player.exp_curr
+	var old_exp_max = DataResource.temp_dict_player.exp_max
+	old_level = DataResource.temp_dict_player.level
 	if(old_exp_max != 0):
 		$ExpRect/ExpBar.value = old_exp/old_exp_max * 100
 
