@@ -21,22 +21,47 @@ func loot_selector(map_name, loot_count):
 		var index = 1
 		var chosen_loot = randi() % 100 + 1
 		while(chosen_loot > -1):
-			# Item has been found, add it to loot dict
-			if(chosen_loot <= DataResource.dict_loot[map_name]["Item" + str(index) + "Chance"]):
+			# Item has been found - take note of its critical elements
+			if(chosen_loot <= DataResource.dict_loot[map_name]["ItemChance"+ str(index)]):
 				var loot = []
-				loot.append(DataResource.dict_loot[map_name]["Item" + str(index) + "Chance"])
+				loot.append(DataResource.dict_loot[map_name]["ItemType"+ str(index)])
+				loot.append(DataResource.dict_loot[map_name]["ItemName"+ str(index)])
 				randomize()
 				#Randomize the qty of the item to be found
-				loot.append(int(rand_range(float(DataResource.dict_loot[map_name]["Item" + str(index) + "MinQ"]), float(DataResource.dict_loot[map_name]["Item" + str(index) + "MaxQ"]))))
+				loot.append(int(rand_range(float(DataResource.dict_loot[map_name]["ItemMinQ" + str(index)]), float(DataResource.dict_loot[map_name]["ItemMaxQ"+ str(index)]))))
 				loot_dict[loot_dict.size() + 1] = loot
 				break
 			#Item not found, manipulate chosen_loot val and compare against next index
 			else:
-				chosen_loot -= DataResource.dict_loot[map_name]["Item" + str(index) + "Chance"]
+				chosen_loot -= DataResource.dict_loot[map_name]["ItemChance" + str(index)]
 				index += 1
 	print(loot_dict)#-debug
 #
-#func populate_panel():
-#	var count = loot_dic.size()
-#	print(count)#-debug
-#	#check vid to expand
+
+func append_loot(map_name, loot_count):
+	var index = 1
+	while(loot_count != 0):
+		#Append current_index of loot dict to the temp ivnentory dict
+		if(loot_dict[index][0] == "Weapons"):
+			print("Appending to Weapons")
+			#DataResource.temp_dict_inventory["Weapons"].append(loot_dict[index])
+		
+		elif(loot_dict[index][0] == "Apparel"):
+			print("Appending to Apparel")
+			#DataResource.temp_dict_inventory["Apparel"].append(loot_dict[index])
+		elif(loot_dict[index][0] == "Aid"):
+			print("Appending to Aid")
+			#DataResource.temp_dict_inventory["Aid"].append(loot_dict[index])
+			
+		elif(loot_dict[index][0] == "Misc"):
+			print("Appending to Misc")
+			#DataResource.temp_dict_inventory["Misc"].append(loot_dict[index])
+			
+		elif(loot_dict[index][0] == "Key Items"):
+			print("Appending to Key Items")
+			#DataResource.temp_dict_inventory["Key Items"].append(loot_dict[index])
+			
+		elif(loot_dict[index][0] == "Money"):
+			print("Increasing Coins")
+			#DataFunctions.change_coins(coins_change)
+		loot_count -= 1

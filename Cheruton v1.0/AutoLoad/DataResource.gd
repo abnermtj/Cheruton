@@ -15,12 +15,18 @@ var dict_loot
 var dict_player
 var dict_settings
 
+# Stores any unsaved data regarding player stats and inventory
+var temp_dict_inventory
+var temp_dict_player
+
 func load_data():
 	dict_settings = load_dict(SETTINGS)
 	dict_player = load_dict(PLAYER)
 	dict_inventory = load_dict(INVENTORY)
-	#dict_loot = load_dict(LOOT) To be enabled later
-
+	dict_loot = load_dict(LOOT) 
+	temp_dict_player = dict_player
+	temp_dict_inventory = dict_inventory
+	
 func load_dict(FilePath):
 	var DataFile = File.new()
 	DataFile.open(FilePath, File.READ)
@@ -31,11 +37,17 @@ func load_dict(FilePath):
 
 
 func save_player():
+	dict_player = temp_dict_player
 	save_data(PLAYER, dict_player)
-
+	temp_dict_player = dict_player
+	
 func save_settings():
 	save_data(SETTINGS, dict_settings)
 
+func save_inventory():
+	dict_inventory = temp_dict_inventory
+	save_data(INVENTORY, dict_inventory)
+	temp_dict_inventory = dict_inventory
 
 func save_data(FILE, dictionary):
 	var file = File.new()
