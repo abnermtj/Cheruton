@@ -34,5 +34,7 @@ func _on_ExitPause_pressed():
 func free_the_pause():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
+	yield(get_tree().create_timer(0.2), "timeout")
 	DataResource.dict_settings.game_on = true
+	
 
