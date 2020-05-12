@@ -10,12 +10,17 @@ onready var default_tab_image = preload("res://Player/Inventory/inventory_bg.png
 func _ready():
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
+	load_data()
+	
 	# Weapons-Default
 	_on_Weapons_pressed()
 
 	# Hide initbar() to view inventory directly
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
+
+func load_data():
+	pass
 
 func change_active_tab(new_tab, items_list):
 	# Set current tab to default colour and hide its items
@@ -41,9 +46,9 @@ func _on_Apparel_pressed():
 	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel
 	change_active_tab(tab, list)
 
-func _on_Aid_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Aid/Aid
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Aid
+func _on_Consum_pressed():
+	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum
+	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Consum
 	change_active_tab(tab, list)
 
 func _on_Misc_pressed():
