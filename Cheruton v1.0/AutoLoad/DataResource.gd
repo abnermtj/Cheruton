@@ -57,17 +57,17 @@ func save_data(FILE, dictionary):
 
 
 func reset_player():
-	dict_player["exp_curr"] = 0
-	dict_player["exp_max"] = 60
-	dict_player["health_curr"] = 50
-	dict_player["health_max"] = 50
-	dict_player["level"] = 1
-	dict_player["coins"] = 10
+	dict_player.exp_curr = 0
+	dict_player.exp_max = 60
+	dict_player.health_curr = 50
+	dict_player.health_max = 50
+	dict_player.level = 1
+	dict_player.coins = 10
 	save_player()
 
 func reset_settings():
-	dict_settings["audio"] = -10
-	dict_settings["is_mute"] = false
-	dict_settings["game_on"] = false
-	dict_settings["maj_scn"] = true
+	dict_settings.audio = -10
+	dict_settings.is_mute = false
+	dict_settings.game_on = false
+	dict_settings.maj_scn = true
 	save_settings()

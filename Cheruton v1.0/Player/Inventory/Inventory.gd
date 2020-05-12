@@ -8,7 +8,7 @@ onready var active_tab_image = preload("res://Player/Inventory/inventory_bg_keyp
 onready var default_tab_image = preload("res://Player/Inventory/inventory_bg.png")
 
 func _ready():
-	DataResource.dict_settings["game_on"] = false
+	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.dict_player["coins"])
 	# Weapons-Default
 	_on_Weapons_pressed()
@@ -61,7 +61,7 @@ func _on_Exit_pressed():
 	free_the_inventory()
 
 func free_the_inventory():
-	DataResource.dict_settings["game_on"] = true
+	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 #func _on_Test_pressed(): # creates a double click signal and activates tooltips

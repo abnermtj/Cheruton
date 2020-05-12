@@ -8,9 +8,9 @@ var last_key
 
 #fix key closure to close only with assigned key! - find better check than getchild
 func _input(ev):
-	if(DataResource.dict_settings["maj_scn"] == false):
+	if(DataResource.dict_settings.maj_scn == false):
 		if Input.is_key_pressed(KEY_ESCAPE):
-			if (DataResource.dict_settings["game_on"] == true):
+			if (DataResource.dict_settings.game_on == true):
 				instance_scene(PAUSE)
 				DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).popup()
 				last_key = KEY_ESCAPE
@@ -19,7 +19,7 @@ func _input(ev):
 				last_key = null
 
 		elif Input.is_key_pressed(KEY_I):
-			if (DataResource.dict_settings["game_on"] == true):
+			if (DataResource.dict_settings.game_on == true):
 				instance_scene(INVENTORY)
 				last_key = KEY_I
 			elif(last_key == KEY_I):
@@ -34,7 +34,7 @@ func instance_scene(NEW):
 
 
 func free_scene():
-	DataResource.dict_settings["game_on"] = true
+	DataResource.dict_settings.game_on = true
 	var instanced_scene = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	if(instanced_scene):
 		instanced_scene.queue_free()

@@ -59,9 +59,10 @@ func append_loot(map_name, loot_count):
 			
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
-			#DataResource.temp_dict_inventory["Key Items"].append(loot_dict[index])
+			DataResource.temp_dict_inventory["Key Items"].append(loot_dict[index])
 			
 		elif(loot_dict[index][0] == "Money"):
 			print("Increasing Coins")
 			#DataFunctions.change_coins(coins_change)
+		index += 1
 		loot_count -= 1
