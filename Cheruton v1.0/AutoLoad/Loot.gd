@@ -44,25 +44,36 @@ func append_loot(map_name, loot_count):
 		#Append current_index of loot dict to the temp ivnentory dict
 		if(loot_dict[index][0] == "Weapons"):
 			print("Appending to Weapons")
-			#DataResource.temp_dict_inventory["Weapons"].append(loot_dict[index])
-		
+			if(DataResource.temp_dict_inventory.Weapons.has(loot_dict[index][1])):
+				#DataResource.temp_dict_inventory.Weapons..item_qty += loot_dict[index][2]
+
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
-			#DataResource.temp_dict_inventory["Apparel"].append(loot_dict[index])
+			if(DataResource.temp_dict_inventory.Apparel.has(loot_dict[index][1])):
+				var item = loot_dict[index][1]
+				#DataResource.temp_dict_inventory.Apparel.item.item_qty += loot_dict[index][2]
+			
 		elif(loot_dict[index][0] == "Aid"):
 			print("Appending to Aid")
-			#DataResource.temp_dict_inventory["Aid"].append(loot_dict[index])
+			if(DataResource.temp_dict_inventory.Aid.has(loot_dict[index][1])):
+				var item = loot_dict[index][1]
+				#DataResource.temp_dict_inventory.Aid.item.item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Misc"):
 			print("Appending to Misc")
-			#DataResource.temp_dict_inventory["Misc"].append(loot_dict[index])
+			if(DataResource.temp_dict_inventory.Misc.has(loot_dict[index][1])):
+				var item = loot_dict[index][1]
+				#DataResource.temp_dict_inventory.Misc.item.item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
-			DataResource.temp_dict_inventory["Key Items"].append(loot_dict[index])
+			if(DataResource.temp_dict_inventory["Key Items"].has(loot_dict[index][1])):
+				var item = loot_dict[index][1]
+				#DataResource.temp_dict_inventory["Key Items"].item.item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Money"):
 			print("Increasing Coins")
-			#DataFunctions.change_coins(coins_change)
+			#DataFunctions.change_coins(int(loot_dict[index][2]))
 		index += 1
 		loot_count -= 1
+	print(DataResource.temp_dict_inventory)

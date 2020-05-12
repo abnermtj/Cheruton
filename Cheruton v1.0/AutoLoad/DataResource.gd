@@ -1,7 +1,8 @@
 extends Node
 
 # Adding data to the game dictionary:
-#	DataResource.dict_x["feature"] = value
+#	DataResource.dict_x["feature x"] = value
+#   DataResource.dict_x.feature = value
 
 const SETTINGS = "res://SaveData/settings-data.json"
 const PLAYER = "res://SaveData/player-data.json"
@@ -55,6 +56,9 @@ func save_data(FILE, dictionary):
 	file.store_string(to_json(dictionary))
 	file.close()
 
+func restore_last_save():
+	temp_dict_player = dict_player
+	temp_dict_inventory = dict_inventory
 
 func reset_player():
 	dict_player.exp_curr = 0

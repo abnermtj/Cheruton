@@ -9,7 +9,7 @@ onready var default_tab_image = preload("res://Player/Inventory/inventory_bg.png
 
 func _ready():
 	DataResource.dict_settings.game_on = false
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.dict_player["coins"])
+	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	# Weapons-Default
 	_on_Weapons_pressed()
 	
