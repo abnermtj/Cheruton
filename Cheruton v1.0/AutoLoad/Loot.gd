@@ -44,7 +44,7 @@ func append_loot(map_name, loot_count):
 		# Append current_index of loot dict to the temp ivnentory dict
 		# If inventory has the item, increase its item quantity
 		# else, create new data of its stats in dict_inventory
-		
+
 		if(loot_dict[index][0] == "Weapons"):
 			print("Appending to Weapons")
 			if(DataResource.dict_inventory.Weapons.has(loot_dict[index][1])):
@@ -55,27 +55,27 @@ func append_loot(map_name, loot_count):
 				# append to dict_inventory
 				# update new items quantity
 				# retrofit for the other funcs
-				
+
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
 			if(DataResource.dict_inventory.Apparel.has(loot_dict[index][1])):
 				DataResource.dict_inventory.Apparel.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-			
+
 		elif(loot_dict[index][0] == "Consum"):
 			print("Appending to Consum")
 			if(DataResource.dict_inventory.Consum.has(loot_dict[index][1])):
 				DataResource.dict_inventory.Consum.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-			
+
 		elif(loot_dict[index][0] == "Misc"):
 			print("Appending to Misc")
 			if(DataResource.dict_inventory.Misc.has(loot_dict[index][1])):
 				DataResource.dict_inventory.Misc.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-			
+
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
 			if(DataResource.dict_inventory["Key Items"].has(loot_dict[index][1])):
 				DataResource.dict_inventory["Key Items"].get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-			
+
 		elif(loot_dict[index][0] == "Money"):
 			print("Increasing Coins")
 			DataFunctions.change_coins(int(loot_dict[index][2]))

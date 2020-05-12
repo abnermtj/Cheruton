@@ -36,5 +36,5 @@ func free_the_pause():
 	scene_to_free.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	DataResource.dict_settings.game_on = true
-	
+
 
