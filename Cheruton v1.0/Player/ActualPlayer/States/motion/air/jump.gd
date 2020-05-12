@@ -12,7 +12,7 @@ func enter() -> void:
 	keypress_timer = 0.2
 
 func update( delta ):
-	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta )
+	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta * owner.JUMP_GRAVITY_SLOWDOWN)# use delta for all time based movements
 	if keypress_timer >= 0:
 		keypress_timer -= delta
 		if keypress_timer < 0 or Input.is_action_just_released( "jump" ):

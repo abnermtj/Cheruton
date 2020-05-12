@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/aseprite_importer/classes/EditorTheme.gd"
 }, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Levels/levels.gd"
+}, {
 "base": "Camera2D",
 "class": "ShakeCamera",
 "language": "GDScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "AsepriteImportData": "",
 "AsepriteImporter": "",
 "EditorTheme": "",
+"Level": "",
 "ShakeCamera": "",
 "VerletChain": "",
 "VerletLink": "",
@@ -83,15 +89,6 @@ _global_script_class_icons={
 config/name="Cheruton v1.0"
 run/main_scene="res://Display/Welcome/Welcome.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-DataResource="*res://AutoLoad/DataResource.gd"
-DataFunctions="*res://AutoLoad/DataFunctions.gd"
-KeyPress="*res://AutoLoad/KeyPress.gd"
-LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
-LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
-Loot="*res://AutoLoad/Loot.gd"
 
 [display]
 

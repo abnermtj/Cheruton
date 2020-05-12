@@ -121,12 +121,5 @@ func _check_facing():
 		tween.start()
 
 func _on_Player_grounded(grounded):
-	print ("grounded is ",grounded)
-#	if not grounded:
-#		drag_margin_top = 1
-#		drag_margin_bottom = 1
-#	else:
-#		drag_margin_top = 0.52
-#		drag_margin_bottom = 0.67
-##
+
 	drag_margin_v_enabled = not grounded

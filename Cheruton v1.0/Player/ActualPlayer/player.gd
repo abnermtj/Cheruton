@@ -3,16 +3,17 @@ extends KinematicBody2D
 const GRAVITY = 2400
 const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
 const JUMP_AGAIN_MARGIN = 0.12 # seconds need to press jump this amout of time for it to input buffer
-const TERM_VEL = 640 # Terminal velocity when falling
+const TERM_VEL = 640 # Terminal velocity when falling/ jumping straight up
 const JUMP_RELEASE_SLOWDOWN = .5 #after releasing jump key how much to slow down by 0 to 1
 #const SNAP_LEN = 8  # used to move and slide with snap when there are moving platforms
+const JUMP_GRAVITY_SLOWDOWN = .44 # slows down gravity on top of jump more drifting ability for player
 
-const JUMP_VEL = -700.0  # jump power 670 old
-const MAX_VEL = 300 # when steering left and right during jump
-const AIR_ACCEL = 40  # increase in this >> increase in stearing power in air
+const JUMP_VEL = -590.0  # jump power 670 old
+const MAX_VEL = 300  # when steering left and right during jump
+const AIR_ACCEL = 20  # increase in this >> increase in stearing power in air
 
-const MAX_WALK_SPEED = 330
-const MAX_RUN_SPEED = 330
+const MAX_WALK_SPEED = 360
+const MAX_RUN_SPEED = 360
 
 var velocity = Vector2()
 

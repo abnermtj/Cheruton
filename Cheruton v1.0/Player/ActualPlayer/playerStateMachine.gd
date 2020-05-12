@@ -18,12 +18,7 @@ func _change_state(state_name):
 	else:
 		owner.on_floor = true
 
-#	if state_name == "run":
-#		owner.get_node("VerletChain").RESISTANCE = 0.9
-#	else:
-#		owner.get_node("VerletChain").RESISTANCE = 0.75
-
-	print("changing to ", state_name)
+	print("changing to ", state_name, "at time ",OS.get_ticks_msec())
 	if not _active:
 		return
 	print (owner.has_jumped)
