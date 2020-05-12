@@ -11,7 +11,7 @@ func _ready():
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
-	
+
 	# Weapons-Default
 	_on_Weapons_pressed()
 
