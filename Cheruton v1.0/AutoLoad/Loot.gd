@@ -51,6 +51,11 @@ func append_loot(map_name, loot_count):
 				DataResource.dict_inventory.Weapons.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			else:
 				pass
+				# find the data for the new item
+				# append to dict_inventory
+				# update new items quantity
+				# retrofit for the other funcs
+				
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
 			if(DataResource.dict_inventory.Apparel.has(loot_dict[index][1])):

@@ -8,9 +8,9 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/run.gd" type="Script" id=6]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
-[ext_resource path="res://Player/ActualPlayer/Hair/scarf.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/ActualPlayer/Scarf/scarf.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 length = 0.32
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 length = 0.61
 loop = true
 tracks/0/type = "value"
@@ -119,7 +119,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -146,7 +146,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "run_continious"
 length = 0.61
 loop = true
@@ -187,7 +187,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 10 ), Vector2( 0, 3 ), Vector2( 0, 10 ), Vector2( 0, 6 ), Vector2( 0, 10 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 30.0
 height = 65.0
 
@@ -198,7 +198,7 @@ __meta__ = {
 }
 
 [node name="VerletChain" parent="." instance=ExtResource( 9 )]
-position = Vector2( 0, 6.26665 )
+position = Vector2( 0, 9.45207 )
 scale = Vector2( 6, 7 )
 GRAVITY = 20.0
 RESISTANCE = 0.75
@@ -210,19 +210,19 @@ CHAIN_LINK_LENGTH = 5.9
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1157, 1, 32, 36 )
+region_rect = Rect2( 1021, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 9 )
-anims/hover = SubResource( 10 )
-anims/idle = SubResource( 11 )
-anims/idle_continious = SubResource( 12 )
-anims/jump = SubResource( 13 )
-anims/run_continious = SubResource( 14 )
+anims/fall = SubResource( 1 )
+anims/hover = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/idle_continious = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run_continious = SubResource( 6 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 6 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 3 )

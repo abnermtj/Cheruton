@@ -1,102 +1,130 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player/ActualPlayer/Hair/scarf.gd" type="Script" id=1]
-[ext_resource path="res://Player/ActualPlayer/Hair/link.gd" type="Script" id=2]
-[ext_resource path="res://Player/ActualPlayer/Hair/loop.gd" type="Script" id=3]
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC-scarf1.png" type="Texture" id=4]
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC-scarf0.png" type="Texture" id=5]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends VerletChain
+
+var dir_cur = 1 setget _set_dir
+var is_center : = false setget _set_center
+
+func _set_dir( v ):
+	if dir_cur != v:
+		dir_cur = v
+		if not is_center:
+			$anchor.position = Vector2( -1 * dir_cur, 1 )
+		$base.scale.x = dir_cur
+		for loop in loops:
+			loop.get_node( \"Sprite\" ).scale.x = dir_cur
+
+func _set_center( v ):
+	is_center = v
+	if is_center:
+		$anchor.position = Vector2( 0, 1 )
+	else:
+		$anchor.position = Vector2( -1 * dir_cur, 1 )
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends VerletLoop
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends VerletLink
+"
+
 [node name="VerletChain" type="Node2D"]
 scale = Vector2( 4, 4 )
-script = ExtResource( 1 )
+script = SubResource( 1 )
 GRAVITY = 5.0
 RESISTANCE = 0.9
 CHAIN_LINK_LENGTH = 5.0
 
 [node name="anchor" type="Node2D" parent="."]
-script = ExtResource( 3 )
+script = SubResource( 2 )
 anchor = true
 
 [node name="link" type="Node2D" parent="anchor"]
 position = Vector2( 0, -0.035 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor"]
 texture = ExtResource( 4 )
 
 [node name="loop" type="Node2D" parent="anchor"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop"]
 texture = ExtResource( 4 )
 
 [node name="loop2" type="Node2D" parent="anchor/loop"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2"]
 texture = ExtResource( 4 )
 
 [node name="loop3" type="Node2D" parent="anchor/loop/loop2"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2/loop3"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2/loop3"]
 texture = ExtResource( 4 )
 
 [node name="loop4" type="Node2D" parent="anchor/loop/loop2/loop3"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2/loop3/loop4"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2/loop3/loop4"]
 texture = ExtResource( 4 )
 
 [node name="loop5" type="Node2D" parent="anchor/loop/loop2/loop3/loop4"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2/loop3/loop4/loop5"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2/loop3/loop4/loop5"]
 texture = ExtResource( 4 )
 
 [node name="loop6" type="Node2D" parent="anchor/loop/loop2/loop3/loop4/loop5"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2/loop3/loop4/loop5/loop6"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2/loop3/loop4/loop5/loop6"]
 texture = ExtResource( 5 )
 
 [node name="loop7" type="Node2D" parent="anchor/loop/loop2/loop3/loop4/loop5/loop6"]
 position = Vector2( 0, 1 )
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="link" type="Node2D" parent="anchor/loop/loop2/loop3/loop4/loop5/loop6/loop7"]
 position = Vector2( 0, 0.069 )
-script = ExtResource( 2 )
+script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="anchor/loop/loop2/loop3/loop4/loop5/loop6/loop7"]
 texture = ExtResource( 5 )
