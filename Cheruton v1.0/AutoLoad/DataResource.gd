@@ -25,7 +25,7 @@ func load_data():
 	dict_inventory = load_dict(INVENTORY)
 	dict_loot = load_dict(LOOT)
 	temp_dict_player = dict_player
-	temp_dict_inventory = dict_inventory
+
 
 func load_dict(FilePath):
 	var DataFile = File.new()
