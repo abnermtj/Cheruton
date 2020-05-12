@@ -20,6 +20,16 @@ func _ready():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 
 func load_data():
+	# Get data according to relevant sections
+	pass
+
+func item_inspector_default():
+	#show stats of current item - only for weapon/apparel
+	#show description of current item - rest
+	pass
+
+func item_inspector_new():
+	#show description of item hovered upon
 	pass
 
 func change_active_tab(new_tab, items_list):
