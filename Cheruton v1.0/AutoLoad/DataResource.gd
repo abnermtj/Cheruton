@@ -16,8 +16,7 @@ var dict_loot
 var dict_player
 var dict_settings
 
-# Stores any unsaved data regarding player stats and inventory
-var temp_dict_inventory
+# Stores any unsaved data regarding player stats
 var temp_dict_player
 
 func load_data():
@@ -26,7 +25,6 @@ func load_data():
 	dict_inventory = load_dict(INVENTORY)
 	dict_loot = load_dict(LOOT) 
 	temp_dict_player = dict_player
-	temp_dict_inventory = dict_inventory
 	
 func load_dict(FilePath):
 	var DataFile = File.new()
@@ -46,9 +44,8 @@ func save_settings():
 	save_data(SETTINGS, dict_settings)
 
 func save_inventory():
-	dict_inventory = temp_dict_inventory
 	save_data(INVENTORY, dict_inventory)
-	temp_dict_inventory = dict_inventory
+
 
 func save_data(FILE, dictionary):
 	var file = File.new()
@@ -58,7 +55,7 @@ func save_data(FILE, dictionary):
 
 func restore_last_save():
 	temp_dict_player = dict_player
-	temp_dict_inventory = dict_inventory
+
 
 func reset_player():
 	dict_player.exp_curr = 0
