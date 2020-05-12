@@ -15,3 +15,8 @@ func update(delta):
 	var input_direction = get_input_direction()
 	if input_direction.x:
 		emit_signal("finished", "run")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "idle":
+		owner.get_node("AnimationPlayer").play("idle_continious")

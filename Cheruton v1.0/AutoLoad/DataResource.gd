@@ -24,10 +24,10 @@ func load_data():
 	dict_settings = load_dict(SETTINGS)
 	dict_player = load_dict(PLAYER)
 	dict_inventory = load_dict(INVENTORY)
-	dict_loot = load_dict(LOOT) 
+	dict_loot = load_dict(LOOT)
 	temp_dict_player = dict_player
 	temp_dict_inventory = dict_inventory
-	
+
 func load_dict(FilePath):
 	var DataFile = File.new()
 	DataFile.open(FilePath, File.READ)
@@ -41,7 +41,7 @@ func save_player():
 	dict_player = temp_dict_player
 	save_data(PLAYER, dict_player)
 	temp_dict_player = dict_player
-	
+
 func save_settings():
 	save_data(SETTINGS, dict_settings)
 

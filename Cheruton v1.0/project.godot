@@ -84,15 +84,6 @@ config/name="Cheruton v1.0"
 run/main_scene="res://Display/Welcome/Welcome.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-DataResource="*res://AutoLoad/DataResource.gd"
-DataFunctions="*res://AutoLoad/DataFunctions.gd"
-LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
-LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
-KeyPress="*res://AutoLoad/KeyPress.gd"
-Loot="*res://AutoLoad/Loot.gd"
-
 [display]
 
 window/size/width=1280

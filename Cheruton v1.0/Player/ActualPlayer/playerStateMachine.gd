@@ -12,16 +12,18 @@ func _ready():
 	}
 
 func _change_state(state_name):
+
 	if state_name == "fall" or state_name == "jump":
 		owner.on_floor = false
 	else:
-		#print("here")
 		owner.on_floor = true
-	print ("onfloor is ", owner.on_floor)
+
+#	if state_name == "run":
+#		owner.get_node("VerletChain").RESISTANCE = 0.9
+#	else:
+#		owner.get_node("VerletChain").RESISTANCE = 0.75
+
 	print("changing to ", state_name)
-	"""
-	The base state_machine interface this node extends does most of the work
-	"""
 	if not _active:
 		return
 	print (owner.has_jumped)

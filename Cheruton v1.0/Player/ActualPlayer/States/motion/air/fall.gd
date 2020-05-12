@@ -6,7 +6,7 @@ var jump_again : bool
 var jump_count : int
 
 func enter():
-	owner.get_node( "AnimationPlayer").play("fall")
+	owner.get_node( "AnimationPlayer").play("hover")
 	coyote_timer = owner.COYOTE_TIME
 	jump_again = false
 
@@ -55,3 +55,8 @@ func update(delta):
 				emit_signal("finished", "previous")
 
 
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "hover":
+		owner.get_node( "AnimationPlayer").play("fall")
