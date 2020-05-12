@@ -45,35 +45,31 @@ func append_loot(map_name, loot_count):
 		if(loot_dict[index][0] == "Weapons"):
 			print("Appending to Weapons")
 			if(DataResource.temp_dict_inventory.Weapons.has(loot_dict[index][1])):
-				#DataResource.temp_dict_inventory.Weapons..item_qty += loot_dict[index][2]
+				DataResource.temp_dict_inventory.Weapons.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
 			if(DataResource.temp_dict_inventory.Apparel.has(loot_dict[index][1])):
-				var item = loot_dict[index][1]
-				#DataResource.temp_dict_inventory.Apparel.item.item_qty += loot_dict[index][2]
+				DataResource.temp_dict_inventory.Apparel.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Aid"):
 			print("Appending to Aid")
 			if(DataResource.temp_dict_inventory.Aid.has(loot_dict[index][1])):
-				var item = loot_dict[index][1]
-				#DataResource.temp_dict_inventory.Aid.item.item_qty += loot_dict[index][2]
+				DataResource.temp_dict_inventory.Aid.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Misc"):
 			print("Appending to Misc")
 			if(DataResource.temp_dict_inventory.Misc.has(loot_dict[index][1])):
-				var item = loot_dict[index][1]
-				#DataResource.temp_dict_inventory.Misc.item.item_qty += loot_dict[index][2]
+				DataResource.temp_dict_inventory.Misc.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
 			if(DataResource.temp_dict_inventory["Key Items"].has(loot_dict[index][1])):
-				var item = loot_dict[index][1]
-				#DataResource.temp_dict_inventory["Key Items"].item.item_qty += loot_dict[index][2]
+				DataResource.temp_dict_inventory["Key Items"].get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			
 		elif(loot_dict[index][0] == "Money"):
 			print("Increasing Coins")
-			#DataFunctions.change_coins(int(loot_dict[index][2]))
+			DataFunctions.change_coins(int(loot_dict[index][2]))
 		index += 1
 		loot_count -= 1
 	print(DataResource.temp_dict_inventory)
