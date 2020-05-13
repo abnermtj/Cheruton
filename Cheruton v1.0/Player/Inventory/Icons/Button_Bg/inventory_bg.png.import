@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/equip_bg.png-be6a99c1029bbbbac889150afbe40eca.stex"
+path="res://.import/inventory_bg.png-d895ebad02452cabf2064224b13a105e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Inventory/equip_bg.png"
-dest_files=[ "res://.import/equip_bg.png-be6a99c1029bbbbac889150afbe40eca.stex" ]
+source_file="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png"
+dest_files=[ "res://.import/inventory_bg.png-d895ebad02452cabf2064224b13a105e.stex" ]
 
 [params]
 

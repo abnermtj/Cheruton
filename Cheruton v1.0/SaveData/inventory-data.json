@@ -1,6 +1,7 @@
 {
   "Weapons": {
-    "Iron Sword": {
+    "Item1": {
+      "item_name": "Iron Sword",
       "item_attack": 15,
       "item_defense": 0,
       "item_weight": 5,
@@ -8,7 +9,7 @@
     }
   },
   "Apparel": {},
-  "Aid": {
+  "Consum": {
     "Potion Tube": {
       "item_attack": null,
       "item_defense": null,

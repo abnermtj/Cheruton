@@ -1,27 +1,60 @@
 extends Control
 
-var active_tab
 var count = 0
+var active_tab
 var active_tab_items
+var active_tab_inspector
 
-onready var active_tab_image = preload("res://Player/Inventory/inventory_bg_keypress.png")
-onready var default_tab_image = preload("res://Player/Inventory/inventory_bg.png")
+signal tab_changed(next_tab)
+
+onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
+onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+
+onready var tab = "BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"
+onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 func _ready():
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
 
-	# Weapons-Default
-	_on_Weapons_pressed()
+	connect("tab_changed", self, "change_tab_state")
+	emit_signal("tab_changed", "Weapons")
 
 	# Hide initbar() to view inventory directly
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 
+
 func load_data():
 	# Get data according to relevant sections
-	pass
+	var weapons_list = DataResource.dict_inventory.get("Weapons")
+	var apparel_list = DataResource.dict_inventory.get("Apparel")
+	var consum_list = DataResource.dict_inventory.get("Consum")
+	var misc_list = DataResource.dict_inventory.get("Misc")
+	var key_items_list = DataResource.dict_inventory.get("Key Items")
+	
+	#Find subnodes of each tab
+	var weapons_scroll = list + "/Weapons/VBoxCont/"
+	var apparel_scroll = list + "/Apparel/VBoxCont/"
+	var consum_scroll = list + "/Consum/VBoxCont/"
+	var misc_scroll = list + "/Misc/VBoxCont/"
+	var key_items_scroll = list + "/KeyItems/VBoxCont/"
+	
+	#Generate list of items based on tab
+	generate_list(weapons_scroll, weapons_list)
+#	generate_list(apparel_scroll, apparel_list)
+#	generate_list(consum_scroll, consum_list)
+#	generate_list(misc_scroll, misc_list)
+#	generate_list(key_items_scroll, key_items_list)
+		
+		
+func generate_list(scroll_tab, list_tab):
+	var index = 1
+	for i in range(0, list_tab.size()):
+		get_node(scroll_tab + str(100 + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		get_node(scroll_tab + str(100 + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
+		index += 1
 
 func item_inspector_default():
 	#show stats of current item - only for weapon/apparel
@@ -31,45 +64,56 @@ func item_inspector_default():
 func item_inspector_new():
 	#show description of item hovered upon
 	pass
-
-func change_active_tab(new_tab, items_list):
+#
+func change_active_tab(new_tab, items_list, insp_panel):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
 		active_tab_items.hide()
+		active_tab_inspector.hide()
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 	active_tab_items = items_list
+	active_tab_inspector = insp_panel
+	
 	active_tab.set_normal_texture(active_tab_image)
 	active_tab_items.show()
+	active_tab_inspector.show()
 
+func change_tab_state(next_tab):
+	if(next_tab == "Weapons"):
+		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
+	elif(next_tab == "Apparel"):
+		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
 
+	elif(next_tab == "Consum"):
+		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
+
+	elif(next_tab == "Misc"):
+		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
+
+	elif(next_tab == "Key Items"):
+		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
+	
+	if(next_tab):
+		print("Current Tab: ")
+		print(next_tab)
 
 func _on_Weapons_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Weapons")
 
 func _on_Apparel_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Apparel")
 
 func _on_Consum_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Consum
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Consum")
 
 func _on_Misc_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Misc
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Misc")
 
 func _on_KeyItems_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Key Items")
 
 
 func _on_Exit_pressed():
