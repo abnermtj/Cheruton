@@ -9,6 +9,7 @@ func _ready():
 		"attack": $attack,
 		"fall": $fall,
 		"roll": $roll,
+		"hook": $hook
 	}
 
 func _change_state(state_name):
@@ -18,11 +19,11 @@ func _change_state(state_name):
 	else:
 		owner.on_floor = true
 
-	print("changing to ", state_name, "at time ",OS.get_ticks_msec())
+	print("changing to ", state_name)#, "at time ",OS.get_ticks_msec())
 	if not _active:
 		return
-	print (owner.has_jumped)
-	if (state_name in ["stagger", "jump", "attack"]):  # these are allowed to be placed ontop of other states
+#	print (owner.has_jumped)
+	if (state_name in ["stagger", "jump", "attack", "hook"]):  # these are allowed to be placed ontop of other states
 		states_stack.push_front(states_map[state_name])
 	._change_state(state_name)
 

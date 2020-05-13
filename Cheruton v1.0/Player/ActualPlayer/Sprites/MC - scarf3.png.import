@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MC-scarf1.png-50096028d0eea70e80cca5749146abd5.stex"
+path="res://.import/MC - scarf3.png-cfd6c8cce5d30b48812b0985527fc639.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/ActualPlayer/Sprites/MC-scarf1.png"
-dest_files=[ "res://.import/MC-scarf1.png-50096028d0eea70e80cca5749146abd5.stex" ]
+source_file="res://Player/ActualPlayer/Sprites/MC - scarf3.png"
+dest_files=[ "res://.import/MC - scarf3.png-cfd6c8cce5d30b48812b0985527fc639.stex" ]
 
 [params]
 

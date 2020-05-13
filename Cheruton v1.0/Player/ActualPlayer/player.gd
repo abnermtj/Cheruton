@@ -17,6 +17,7 @@ const MAX_RUN_SPEED = 360
 
 var velocity = Vector2()
 
+var hook_dir = Vector2()
 var has_jumped = false
 var on_floor = false setget signal_on_floor
 signal state_changed
@@ -37,7 +38,7 @@ func set_dead(value): # non zero means dead
 	set_physics_process(not value)
 	$CollisionPolygon2D.disabled = value
 
-func set_look_direction(value):
+func set_look_direction(value): # vector
 	look_direction = value
 	emit_signal("direction_changed", value)
 

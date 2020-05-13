@@ -1,6 +1,7 @@
 extends Camera2D
 class_name ShakeCamera
 
+# from sealed bite github
 const LOOK_AHEAD_FACTOR = 0.1 # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_OUT

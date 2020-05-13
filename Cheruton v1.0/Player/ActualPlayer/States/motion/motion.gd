@@ -3,9 +3,12 @@ extends baseState
 class_name motionState
 
 func handle_input(event):
-	pass
+	if event.is_action_pressed("hook"):
+		owner.hook_dir = get_input_direction()
+		emit_signal("finished", "hook")
 #	if event.is_action_pressed("simulate_damage"):
 #		emit_signal("finished", "stagger")
+	pass
 
 # left and right at the same time calcels out
 func get_input_direction():

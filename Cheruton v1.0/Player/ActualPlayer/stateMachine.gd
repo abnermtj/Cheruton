@@ -1,21 +1,12 @@
-
-"""
-Base interface for a generic state machine
-It handles initializing, setting the machine active or not
-delegating _physics_process, _input calls to the State nodes,
-and changing the current/active state.
-See the PlayerV2 scene for an example on how to use it
-"""
 extends Node
 class_name baseFSM
 signal state_changed(current_state)
 
 """
-You must set a starting node from the inspector or on
-the node that inherits from this state machine interface
-If you don't the game will crash (on purpose, so you won't
-forget to initialize the state machine)
+from GDquest Godot demos
+You must set a starting node from the inspector or crash
 """
+
 export(NodePath) var START_STATE
 var states_map = {}
 

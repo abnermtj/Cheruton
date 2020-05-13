@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/24fps_MC.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
 [ext_resource path="res://Player/ActualPlayer/Scarf/scarf.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/ActualPlayer/States/motion/hook.gd" type="Script" id=10]
+[ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.08
@@ -146,7 +148,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VerletChain:position")
+tracks/2/path = NodePath("verletChain:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -187,7 +189,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VerletChain:position")
+tracks/2/path = NodePath("verletChain:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -204,14 +206,15 @@ radius = 30.0
 height = 65.0
 
 [node name="player" type="KinematicBody2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="VerletChain" parent="." instance=ExtResource( 9 )]
+[node name="verletChain" parent="." instance=ExtResource( 9 )]
 position = Vector2( 4.08786, -15.6908 )
-scale = Vector2( 6, 7 )
+scale = Vector2( 5, 7 )
 GRAVITY = 20.0
 RESISTANCE = 0.75
 CHAIN_LINK_LENGTH = 5.9
@@ -223,7 +226,7 @@ position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1293, 1, 32, 36 )
+region_rect = Rect2( 1429, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 1 )
@@ -254,7 +257,8 @@ script = ExtResource( 7 )
 [node name="fall" type="Node" parent="states"]
 script = ExtResource( 8 )
 
-[node name="roll" type="Node" parent="states"]
+[node name="hook" type="Node" parent="states"]
+script = ExtResource( 10 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
 margin_left = -43.0
@@ -269,7 +273,10 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="animation_finished" from="AnimationPlayer" to="states/fall" method="_on_AnimationPlayer_animation_finished"]
+
+[node name="chain" parent="." instance=ExtResource( 11 )]
+[connection signal="direction_changed" from="." to="verletChain" method="_on_player_direction_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="states/idle" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="states/fall" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]

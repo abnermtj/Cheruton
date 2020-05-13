@@ -1,4 +1,5 @@
 extends VerletChain
+# from github Sealed Bite GPL
 
 var dir_cur = 1 setget _set_dir
 var is_center : = false setget _set_center
