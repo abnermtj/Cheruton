@@ -50,11 +50,8 @@ func append_loot(map_name, loot_count):
 			if(DataResource.dict_inventory.Weapons.has(loot_dict[index][1])):
 				DataResource.dict_inventory.Weapons.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
 			else:
-				pass
-				# find the data for the new item
-				# append to dict_inventory
-				# update new items quantity
-				# retrofit for the other funcs
+				var curr_size = DataResource.dict_inventory.Weapons.size() + 1
+				insert_data(index, curr_size)
 
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
@@ -81,4 +78,44 @@ func append_loot(map_name, loot_count):
 			DataFunctions.change_coins(int(loot_dict[index][2]))
 		index += 1
 		loot_count -= 1
+	DataResource.save_inventory()
 	print(DataResource.dict_inventory)
+
+func insert_data(index, curr_size):
+	var style
+	if(loot_dict[index][0] == "Weapons" || loot_dict[index][0] == "Apparel"):
+		style = {
+				"item_name": loot_dict[index][1],
+				"item_attack": 15,# stub - to update
+				"item_defense": 0,# stub - to update
+				"item_qty": loot_dict[index][2],
+		} 
+		if(loot_dict[index][0] == "Weapons"):
+			DataResource.dict_inventory.Weapons["Item" + str(curr_size)] = style
+		else:
+			DataResource.dict_inventory.Apparel["Item" + str(curr_size)] = style
+	
+	elif(loot_dict[index][0] == "Consum"):
+		style = {
+				"item_name": loot_dict[index][1],
+				"item_stat": 15,# stub - to update
+				"stat_increase": 0,# stub - to update
+				"item_qty": loot_dict[index][2],
+		} 
+		DataResource.dict_inventory.Consum["Item" + str(curr_size)] = style
+	
+	elif(loot_dict[index][0] == "Misc"):
+		style = {
+				"item_name": loot_dict[index][1],
+				#extra details to be revamped
+				"item_qty": loot_dict[index][2],
+		} 
+		DataResource.dict_inventory.Misc["Item" + str(curr_size)] = style		
+	
+	else: #key_items
+		style = {
+				"item_name": loot_dict[index][1],
+				#extra details to be revamped
+				"item_qty": loot_dict[index][2],
+		} 
+		DataResource.dict_inventory["Key Items"]["Item" + str(curr_size)] = style	
