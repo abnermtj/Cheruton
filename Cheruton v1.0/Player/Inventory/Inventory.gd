@@ -60,6 +60,7 @@ func generate_list(scroll_tab, list_tab, tab_index):
 			get_node(scroll_tab).add_child(instanced)
 			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
 
+		#need to add the pic of the item also
 		get_node(scroll_tab + str(tab_index + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 		get_node(scroll_tab + str(tab_index + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
 		index += 1
@@ -90,18 +91,18 @@ func change_active_tab(new_tab, items_list, insp_panel):
 	active_tab_inspector.show()
 
 func change_tab_state(next_tab):
-	if(next_tab == "Weapons"):
-		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
-	elif(next_tab == "Apparel"):
+	if(next_tab == "Weapons" && active_tab != get_node(tab + "/Weapons/Weapons")):
+			change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
+	elif(next_tab == "Apparel" && active_tab != get_node(tab + "/Apparel/Apparel")):
 		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
 
-	elif(next_tab == "Consum"):
+	elif(next_tab == "Consum" && active_tab != get_node(tab + "/Consum/Consum")):
 		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
 
-	elif(next_tab == "Misc"):
+	elif(next_tab == "Misc" && active_tab != get_node(tab + "/Misc/Misc")):
 		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
 
-	elif(next_tab == "Key Items"):
+	elif(next_tab == "Key Items" && active_tab != get_node(tab + "/KeyItems/KeyItems")):
 		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
 	
 	if(next_tab):
