@@ -33,22 +33,22 @@ func load_data():
 	var consum_list = DataResource.dict_inventory.get("Consum")
 	var misc_list = DataResource.dict_inventory.get("Misc")
 	var key_items_list = DataResource.dict_inventory.get("Key Items")
-	
+
 	#Find subnodes of each tab
 	var weapons_scroll = list + "/Weapons/VBoxCont/"
 	var apparel_scroll = list + "/Apparel/VBoxCont/"
 	var consum_scroll = list + "/Consum/VBoxCont/"
 	var misc_scroll = list + "/Misc/VBoxCont/"
 	var key_items_scroll = list + "/KeyItems/VBoxCont/"
-	
+
 	#Generate list of items based on tab
 	generate_list(weapons_scroll, weapons_list)
 #	generate_list(apparel_scroll, apparel_list)
 #	generate_list(consum_scroll, consum_list)
 #	generate_list(misc_scroll, misc_list)
 #	generate_list(key_items_scroll, key_items_list)
-		
-		
+
+
 func generate_list(scroll_tab, list_tab):
 	var index = 1
 	for i in range(0, list_tab.size()):
@@ -76,14 +76,14 @@ func change_active_tab(new_tab, items_list, insp_panel):
 	active_tab = new_tab
 	active_tab_items = items_list
 	active_tab_inspector = insp_panel
-	
+
 	active_tab.set_normal_texture(active_tab_image)
 	active_tab_items.show()
 	active_tab_inspector.show()
 
 func change_tab_state(next_tab):
 	if(next_tab == "Weapons"):
-		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
+		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
 	elif(next_tab == "Apparel"):
 		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
 
@@ -95,7 +95,7 @@ func change_tab_state(next_tab):
 
 	elif(next_tab == "Key Items"):
 		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
-	
+
 	if(next_tab):
 		print("Current Tab: ")
 		print(next_tab)

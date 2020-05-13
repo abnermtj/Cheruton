@@ -37,3 +37,4 @@ func _physics_process(_delta: float) -> void:
 			hooked = true
 			chain_in_air = false
 	tip = $tip.global_position	# set `tip` as starting position for next frame
+

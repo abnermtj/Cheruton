@@ -6,6 +6,7 @@ func handle_input(event):
 	if event.is_action_pressed("hook"):
 		owner.hook_dir = get_input_direction()
 		emit_signal("finished", "hook")
+		print("hook cancel")
 #	if event.is_action_pressed("simulate_damage"):
 #		emit_signal("finished", "stagger")
 	pass
