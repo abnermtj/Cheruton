@@ -323,13 +323,14 @@ margin_right = 210.0
 margin_bottom = 489.0
 
 [node name="Weapons" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
 margin_left = 238.0
-margin_right = 857.0
+margin_right = 1161.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
 [node name="VBoxCont" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons"]
-margin_right = 619.0
+margin_right = 923.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -338,7 +339,7 @@ __meta__ = {
 }
 
 [node name="101" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont"]
-margin_right = 619.0
+margin_right = 923.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 
@@ -379,7 +380,7 @@ __meta__ = {
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont/101"]
 margin_left = 74.0
-margin_right = 619.0
+margin_right = 923.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -647,8 +648,9 @@ custom_fonts/font = SubResource( 5 )
 valign = 1
 
 [node name="InspWeapons" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 861.0
-margin_right = 1161.0
+visible = false
+margin_left = 238.0
+margin_right = 538.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
@@ -1189,8 +1191,8 @@ margin_bottom = 552.0
 
 [node name="InspConsum" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 253.0
-margin_right = 553.0
+margin_left = 238.0
+margin_right = 538.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
@@ -1232,15 +1234,15 @@ margin_right = 226.0
 margin_bottom = 33.0
 
 [node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_right = 119.0
+margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Stat inc:"
+text = "Stat:"
 
 [node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_left = 123.0
+margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -1362,100 +1364,15 @@ margin_bottom = 552.0
 
 [node name="InspMisc" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 557.0
-margin_right = 857.0
+margin_left = 542.0
+margin_right = 842.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
-margin_right = 300.0
-margin_bottom = 223.0
-size_flags_vertical = 3
-
-[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1"]
-margin_right = 300.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Current Item"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1"]
-margin_top = 37.0
-margin_right = 300.0
-margin_bottom = 223.0
-size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer"]
-margin_right = 226.0
-margin_bottom = 186.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer"]
-margin_right = 226.0
-margin_bottom = 186.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
-margin_right = 226.0
-margin_bottom = 33.0
-
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_right = 119.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Stat inc:"
-
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_left = 123.0
-margin_right = 226.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
-margin_top = 37.0
-margin_right = 226.0
-margin_bottom = 70.0
-
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
-margin_right = 111.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Val:"
-
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
-margin_left = 115.0
-margin_right = 226.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer"]
-margin_left = 230.0
-margin_right = 300.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 70, 70 )
-expand = true
-
-[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
-margin_top = 227.0
-margin_right = 300.0
-margin_bottom = 247.0
-rect_min_size = Vector2( 300, 20 )
-
 [node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
-margin_top = 251.0
 margin_right = 300.0
 margin_bottom = 474.0
 size_flags_horizontal = 3
@@ -1494,40 +1411,6 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons"]
-margin_left = 78.0
-margin_right = 300.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 180, 70 )
-size_flags_horizontal = 3
-texture = ExtResource( 5 )
-expand = true
-
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons/Compare"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-texture_normal = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons/Compare/Compare"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Use"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
 margin_top = 552.0
 margin_right = 300.0
@@ -1535,100 +1418,15 @@ margin_bottom = 552.0
 
 [node name="InspKeyItems" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 861.0
-margin_right = 1161.0
+margin_left = 846.0
+margin_right = 1146.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
-margin_right = 300.0
-margin_bottom = 223.0
-size_flags_vertical = 3
-
-[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1"]
-margin_right = 300.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Current Item"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1"]
-margin_top = 37.0
-margin_right = 300.0
-margin_bottom = 223.0
-size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer"]
-margin_right = 226.0
-margin_bottom = 186.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer"]
-margin_right = 226.0
-margin_bottom = 186.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
-margin_right = 226.0
-margin_bottom = 33.0
-
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_right = 119.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Stat inc:"
-
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
-margin_left = 123.0
-margin_right = 226.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
-margin_top = 37.0
-margin_right = 226.0
-margin_bottom = 70.0
-
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
-margin_right = 111.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Val:"
-
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
-margin_left = 115.0
-margin_right = 226.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer"]
-margin_left = 230.0
-margin_right = 300.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 70, 70 )
-expand = true
-
-[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
-margin_top = 227.0
-margin_right = 300.0
-margin_bottom = 247.0
-rect_min_size = Vector2( 300, 20 )
-
 [node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
-margin_top = 251.0
 margin_right = 300.0
 margin_bottom = 474.0
 size_flags_horizontal = 3
@@ -1667,49 +1465,15 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
-margin_left = 78.0
-margin_right = 300.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 180, 70 )
-size_flags_horizontal = 3
-texture = ExtResource( 5 )
-expand = true
-
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons/Compare"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-texture_normal = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons/Compare/Compare"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Use"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
 margin_top = 552.0
 margin_right = 300.0
 margin_bottom = 552.0
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_left = 1165.0
+margin_left = 238.0
 margin_top = 269.0
-margin_right = 1185.0
+margin_right = 258.0
 margin_bottom = 283.0
 rect_min_size = Vector2( 20, 0 )
 

@@ -3,6 +3,7 @@ extends Control
 var count = 0
 var active_tab
 var active_tab_items
+var active_tab_inspector
 
 signal tab_changed(next_tab)
 
@@ -39,34 +40,36 @@ func item_inspector_new():
 	#show description of item hovered upon
 	pass
 #
-func change_active_tab(new_tab, items_list):
+func change_active_tab(new_tab, items_list, insp_panel):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
 		active_tab_items.hide()
+		active_tab_inspector.hide()
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 	active_tab_items = items_list
+	active_tab_inspector = insp_panel
+	
 	active_tab.set_normal_texture(active_tab_image)
 	active_tab_items.show()
-
+	active_tab_inspector.show()
 
 func change_tab_state(next_tab):
 	if(next_tab == "Weapons"):
-		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"))
-	 
+		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
 	elif(next_tab == "Apparel"):
-		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"))
+		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
 
 	elif(next_tab == "Consum"):
-		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"))
+		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
 
 	elif(next_tab == "Misc"):
-		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"))
+		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
 
 	elif(next_tab == "Key Items"):
-		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"))
+		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
 	
 	if(next_tab):
 		print("Current Tab: ")
