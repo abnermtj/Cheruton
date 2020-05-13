@@ -13,6 +13,7 @@ onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/
 onready var tab = "BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"
 onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
+
 func _ready():
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
@@ -42,18 +43,25 @@ func load_data():
 	var key_items_scroll = list + "/KeyItems/VBoxCont/"
 	
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list)
-#	generate_list(apparel_scroll, apparel_list)
-#	generate_list(consum_scroll, consum_list)
-#	generate_list(misc_scroll, misc_list)
-#	generate_list(key_items_scroll, key_items_list)
+	generate_list(weapons_scroll, weapons_list, 100)
+	generate_list(apparel_scroll, apparel_list, 200)
+	generate_list(consum_scroll, consum_list, 300)
+	generate_list(misc_scroll, misc_list, 400)
+	generate_list(key_items_scroll, key_items_list, 500)
 		
 		
-func generate_list(scroll_tab, list_tab):
+func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
-		get_node(scroll_tab + str(100 + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
-		get_node(scroll_tab + str(100 + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
+		if(!has_node(scroll_tab + str(tab_index + index))):
+			print(str(tab_index + index))	
+			var instance_loc = load("res://Player/Inventory/InstancedScenes/" + str(tab_index + 1)+ ".tscn")
+			var instanced = instance_loc.instance()
+			get_node(scroll_tab).add_child(instanced)
+			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
+
+		get_node(scroll_tab + str(tab_index + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		get_node(scroll_tab + str(tab_index + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
 		index += 1
 
 func item_inspector_default():

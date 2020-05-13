@@ -8,63 +8,30 @@
       "item_qty": 5,
     }
   },
-  "Apparel": {},
-  "Consum": {
-    "Potion Tube": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 20,
-      "item_exp": 0,
-      "item_strength": 0,
+  "Apparel": {
+    "Item1": {
+      "item_name": "Iron Bands",
+      "item_attack": 10,
+      "item_defense": 10,
+      "item_weight": 5,
       "item_qty": 5,
     },
-    "Potion Flask": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 50,
-      "item_exp": 0,
-      "item_strength": 0,
+    "Item2": {
+      "item_name": "Steel Bands",
+      "item_attack": 15,
+      "item_defense": 20,
+      "item_weight": 5,
       "item_qty": 5,
     },
-    "Potion Jug": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 100,
-      "item_exp": 0,
-      "item_strength": 0,
+    "Item3": {
+      "item_name": "Steel Bands",
+      "item_attack": 15,
+      "item_defense": 20,
+      "item_weight": 5,
       "item_qty": 5,
     },
-    "Manna Tube": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 0,
-      "item_exp": 0,
-      "item_strength": 20,
-      "item_qty": 5,
-    },
-    "Manna Flask": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 0,
-      "item_exp": 0,
-      "item_strength": 50,
-      "item_qty": 5,
-    },
-    "Manna Jug": {
-      "item_attack": null,
-      "item_defense": null,
-      "item_weight": null,
-      "item_health": 0,
-      "item_exp": 0,
-      "item_strength": 100,
-      "item_qty": 5,
-    }
   },
+  "Consum": {},
   "Misc": {},
-  "KeyItems": {}
+  "Key Items": {}
 }
