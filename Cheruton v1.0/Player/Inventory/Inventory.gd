@@ -1,19 +1,24 @@
 extends Control
 
-var active_tab
 var count = 0
+var active_tab
 var active_tab_items
 
-onready var active_tab_image = preload("res://Player/Inventory/inventory_bg_keypress.png")
-onready var default_tab_image = preload("res://Player/Inventory/inventory_bg.png")
+signal tab_changed(next_tab)
+
+onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
+onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+
+onready var tab = "BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"
+onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 func _ready():
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
 
-	# Weapons-Default
-	_on_Weapons_pressed()
+	connect("tab_changed", self, "change_tab_state")
+	emit_signal("tab_changed", "Weapons")
 
 	# Hide initbar() to view inventory directly
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
@@ -21,6 +26,8 @@ func _ready():
 
 func load_data():
 	# Get data according to relevant sections
+	#Weapons
+	
 	pass
 
 func item_inspector_default():
@@ -31,7 +38,7 @@ func item_inspector_default():
 func item_inspector_new():
 	#show description of item hovered upon
 	pass
-
+#
 func change_active_tab(new_tab, items_list):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
@@ -45,31 +52,40 @@ func change_active_tab(new_tab, items_list):
 	active_tab_items.show()
 
 
+func change_tab_state(next_tab):
+	if(next_tab == "Weapons"):
+		change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"))
+	 
+	elif(next_tab == "Apparel"):
+		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"))
+
+	elif(next_tab == "Consum"):
+		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"))
+
+	elif(next_tab == "Misc"):
+		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"))
+
+	elif(next_tab == "Key Items"):
+		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"))
+	
+	if(next_tab):
+		print("Current Tab: ")
+		print(next_tab)
 
 func _on_Weapons_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Weapons")
 
 func _on_Apparel_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Apparel")
 
 func _on_Consum_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Consum
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Consum")
 
 func _on_Misc_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/Misc
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Misc")
 
 func _on_KeyItems_pressed():
-	var tab = $BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems
-	var list = $BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems
-	change_active_tab(tab, list)
+	emit_signal("tab_changed", "Key Items")
 
 
 func _on_Exit_pressed():

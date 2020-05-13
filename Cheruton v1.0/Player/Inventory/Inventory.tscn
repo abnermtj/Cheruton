@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Player/Inventory/inventory_bg.png" type="Texture" id=2]
+[ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
-[ext_resource path="res://Player/Inventory/equip_bg.png" type="Texture" id=5]
+[ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=5]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
@@ -583,13 +583,13 @@ valign = 1
 
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 424.0
-margin_right = 857.0
+margin_left = 549.0
+margin_right = 856.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 
 [node name="VBoxCont" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems"]
-margin_right = 433.0
+margin_right = 307.0
 margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -598,7 +598,7 @@ __meta__ = {
 }
 
 [node name="501" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont"]
-margin_right = 433.0
+margin_right = 307.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 
@@ -639,14 +639,14 @@ __meta__ = {
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont/501"]
 margin_left = 74.0
-margin_right = 433.0
+margin_right = 307.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 valign = 1
 
-[node name="ItemInsp" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+[node name="InspWeapons" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 861.0
 margin_right = 1161.0
 margin_bottom = 552.0
@@ -655,41 +655,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
 margin_right = 300.0
-margin_bottom = 225.0
+margin_bottom = 223.0
 size_flags_vertical = 3
 
-[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1"]
 margin_right = 300.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Current Item"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 225.0
+margin_bottom = 223.0
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer"]
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
 margin_right = 226.0
 margin_bottom = 33.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -697,7 +697,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -705,12 +705,12 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
 margin_top = 37.0
 margin_right = 226.0
 margin_bottom = 70.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -718,7 +718,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -726,12 +726,12 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
 margin_top = 74.0
 margin_right = 226.0
 margin_bottom = 107.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -739,7 +739,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -747,55 +747,55 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp1/HBoxContainer"]
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
-[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 229.0
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+margin_top = 227.0
 margin_right = 300.0
-margin_bottom = 249.0
+margin_bottom = 247.0
 rect_min_size = Vector2( 300, 20 )
 
-[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 253.0
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+margin_top = 251.0
 margin_right = 300.0
-margin_bottom = 478.0
+margin_bottom = 474.0
 size_flags_vertical = 3
 
-[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "New Item"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 225.0
+margin_bottom = 223.0
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer"]
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
 margin_right = 226.0
 margin_bottom = 33.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -803,7 +803,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -811,12 +811,12 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
 margin_top = 37.0
 margin_right = 226.0
 margin_bottom = 70.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -824,7 +824,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -832,12 +832,12 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
 margin_top = 74.0
 margin_right = 226.0
 margin_bottom = 107.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -845,7 +845,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -853,23 +853,23 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/ItemInsp2/HBoxContainer"]
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 188.0
+margin_bottom = 186.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
-[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp"]
-margin_top = 482.0
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+margin_top = 478.0
 margin_right = 300.0
-margin_bottom = 552.0
+margin_bottom = 548.0
 
-[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons"]
 margin_top = 28.0
 margin_bottom = 42.0
 
-[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons"]
 margin_left = 4.0
 margin_right = 74.0
 margin_bottom = 70.0
@@ -877,7 +877,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons"]
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons"]
 margin_left = 78.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -886,7 +886,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons/Compare"]
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Compare"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -899,7 +899,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/ItemInsp/Buttons/Compare/Compare"]
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Compare/Compare"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
@@ -910,6 +910,801 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+margin_top = 552.0
+margin_right = 300.0
+margin_bottom = 552.0
+
+[node name="InspApparel" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
+margin_left = 861.0
+margin_right = 1161.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atk:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Def:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 74.0
+margin_right = 226.0
+margin_bottom = 107.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+margin_top = 227.0
+margin_right = 300.0
+margin_bottom = 247.0
+rect_min_size = Vector2( 300, 20 )
+
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+margin_top = 251.0
+margin_right = 300.0
+margin_bottom = 474.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "New Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Attack" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atk:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Attack"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Def:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Defense"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 74.0
+margin_right = 226.0
+margin_bottom = 107.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+margin_top = 478.0
+margin_right = 300.0
+margin_bottom = 548.0
+
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons"]
+margin_top = 28.0
+margin_bottom = 42.0
+
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons"]
+margin_left = 4.0
+margin_right = 74.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons"]
+margin_left = 78.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Compare/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Compare"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+margin_top = 552.0
+margin_right = 300.0
+margin_bottom = 552.0
+
+[node name="InspConsum" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
+margin_left = 253.0
+margin_right = 553.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_right = 119.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stat inc:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_left = 123.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+margin_top = 227.0
+margin_right = 300.0
+margin_bottom = 247.0
+rect_min_size = Vector2( 300, 20 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+margin_top = 251.0
+margin_right = 300.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Details:"
+
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/VBoxContainer"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+margin_top = 478.0
+margin_right = 300.0
+margin_bottom = 548.0
+
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons"]
+margin_top = 28.0
+margin_bottom = 42.0
+
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons"]
+margin_left = 4.0
+margin_right = 74.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons"]
+margin_left = 78.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Compare/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Use"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+margin_top = 552.0
+margin_right = 300.0
+margin_bottom = 552.0
+
+[node name="InspMisc" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
+margin_left = 557.0
+margin_right = 857.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_right = 119.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stat inc:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_left = 123.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp1/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+margin_top = 227.0
+margin_right = 300.0
+margin_bottom = 247.0
+rect_min_size = Vector2( 300, 20 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+margin_top = 251.0
+margin_right = 300.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Details:"
+
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/VBoxContainer"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+margin_top = 478.0
+margin_right = 300.0
+margin_bottom = 548.0
+
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons"]
+margin_top = 28.0
+margin_bottom = 42.0
+
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons"]
+margin_left = 4.0
+margin_right = 74.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons"]
+margin_left = 78.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/Buttons/Compare/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Use"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+margin_top = 552.0
+margin_right = 300.0
+margin_bottom = 552.0
+
+[node name="InspKeyItems" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
+visible = false
+margin_left = 861.0
+margin_right = 1161.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1"]
+margin_right = 300.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current Item"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 223.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer"]
+margin_right = 226.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_right = 226.0
+margin_bottom = 33.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_right = 119.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Stat inc:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+margin_left = 123.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Val:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp1/HBoxContainer"]
+margin_left = 230.0
+margin_right = 300.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 70, 70 )
+expand = true
+
+[node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+margin_top = 227.0
+margin_right = 300.0
+margin_bottom = 247.0
+rect_min_size = Vector2( 300, 20 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+margin_top = 251.0
+margin_right = 300.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Details:"
+
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/VBoxContainer"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+margin_top = 478.0
+margin_right = 300.0
+margin_bottom = 548.0
+
+[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
+margin_top = 28.0
+margin_bottom = 42.0
+
+[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
+margin_left = 4.0
+margin_right = 74.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
+margin_left = 78.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 180, 70 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons/Compare/Compare"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Use"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+margin_top = 552.0
+margin_right = 300.0
+margin_bottom = 552.0
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 1165.0

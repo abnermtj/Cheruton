@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/inventory_bg.png-463353395a76ddfc5e2e0cd43b6c8838.stex"
+path="res://.import/inventory_bg_keypress.png-29151908761c064b36b5fac61163ce73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Inventory/inventory_bg.png"
-dest_files=[ "res://.import/inventory_bg.png-463353395a76ddfc5e2e0cd43b6c8838.stex" ]
+source_file="res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png"
+dest_files=[ "res://.import/inventory_bg_keypress.png-29151908761c064b36b5fac61163ce73.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
