@@ -25,11 +25,36 @@ func _ready():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 
+
 func load_data():
 	# Get data according to relevant sections
-	#Weapons
+	var weapons_list = DataResource.dict_inventory.get("Weapons")
+	var apparel_list = DataResource.dict_inventory.get("Apparel")
+	var consum_list = DataResource.dict_inventory.get("Consum")
+	var misc_list = DataResource.dict_inventory.get("Misc")
+	var key_items_list = DataResource.dict_inventory.get("Key Items")
 	
-	pass
+	#Find subnodes of each tab
+	var weapons_scroll = list + "/Weapons/VBoxCont/"
+	var apparel_scroll = list + "/Apparel/VBoxCont/"
+	var consum_scroll = list + "/Consum/VBoxCont/"
+	var misc_scroll = list + "/Misc/VBoxCont/"
+	var key_items_scroll = list + "/KeyItems/VBoxCont/"
+	
+	#Generate list of items based on tab
+	generate_list(weapons_scroll, weapons_list)
+#	generate_list(apparel_scroll, apparel_list)
+#	generate_list(consum_scroll, consum_list)
+#	generate_list(misc_scroll, misc_list)
+#	generate_list(key_items_scroll, key_items_list)
+		
+		
+func generate_list(scroll_tab, list_tab):
+	var index = 1
+	for i in range(0, list_tab.size()):
+		get_node(scroll_tab + str(100 + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		get_node(scroll_tab + str(100 + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
+		index += 1
 
 func item_inspector_default():
 	#show stats of current item - only for weapon/apparel
