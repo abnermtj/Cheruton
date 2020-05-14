@@ -98,6 +98,7 @@ KeyPress="*res://AutoLoad/KeyPress.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
 Loot="*res://AutoLoad/Loot.gd"
+ItemInstanced="*res://Player/Inventory/InstancedScenes/ItemInstanced.gd"
 
 [display]
 

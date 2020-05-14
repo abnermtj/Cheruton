@@ -15,6 +15,7 @@ onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 
 func _ready():
+	ItemInstanced.connect("activate_item_insp", self, "item_inspector_new")
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
@@ -71,7 +72,8 @@ func item_inspector_default():
 	pass
 
 func item_inspector_new():
-	#show description of item hovered upon
+	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
+	get_node(insp).visible = !get_node(insp).is_visible()
 	pass
 #
 func change_active_tab(new_tab, items_list, insp_panel):
