@@ -153,3 +153,5 @@ func _on_VBoxCont_mouse_entered():
 
 func _on_VBoxCont_mouse_exited():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+
+

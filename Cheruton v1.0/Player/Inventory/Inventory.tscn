@@ -27,7 +27,7 @@ font_data = ExtResource( 1 )
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -427,7 +427,7 @@ size_flags_vertical = 3
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Current Item"
 
@@ -457,7 +457,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -466,7 +466,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -478,7 +478,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -487,7 +487,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -499,7 +499,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -508,7 +508,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer"]
@@ -525,6 +525,7 @@ margin_bottom = 247.0
 rect_min_size = Vector2( 300, 20 )
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+visible = false
 margin_top = 251.0
 margin_right = 300.0
 margin_bottom = 474.0
@@ -533,7 +534,7 @@ size_flags_vertical = 3
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "New Item"
 
@@ -563,7 +564,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -572,7 +573,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -584,7 +585,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -593,7 +594,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -605,7 +606,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -614,7 +615,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2/HBoxContainer"]
@@ -698,7 +699,7 @@ size_flags_vertical = 3
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Current Item"
 
@@ -728,7 +729,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -737,7 +738,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -749,7 +750,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -758,7 +759,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -770,7 +771,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -779,7 +780,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp1/HBoxContainer"]
@@ -796,6 +797,7 @@ margin_bottom = 247.0
 rect_min_size = Vector2( 300, 20 )
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+visible = false
 margin_top = 251.0
 margin_right = 300.0
 margin_bottom = 474.0
@@ -804,7 +806,7 @@ size_flags_vertical = 3
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "New Item"
 
@@ -834,7 +836,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Atk:"
 
@@ -843,7 +845,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Defense" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -855,7 +857,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Def:"
 
@@ -864,7 +866,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer/ScrollContainer/Stats"]
@@ -876,7 +878,7 @@ margin_bottom = 107.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -885,7 +887,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/ItemInsp2/HBoxContainer"]
@@ -962,6 +964,7 @@ __meta__ = {
 }
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+visible = false
 margin_right = 300.0
 margin_bottom = 223.0
 size_flags_vertical = 3
@@ -969,7 +972,7 @@ size_flags_vertical = 3
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1"]
 margin_right = 300.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Current Item"
 
@@ -999,7 +1002,7 @@ margin_bottom = 33.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Stat:"
 
@@ -1008,7 +1011,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
@@ -1020,7 +1023,7 @@ margin_bottom = 70.0
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Val:"
 
@@ -1029,7 +1032,7 @@ margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer"]
@@ -1056,7 +1059,7 @@ size_flags_vertical = 3
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
@@ -1065,7 +1068,7 @@ margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
@@ -1144,7 +1147,7 @@ size_flags_vertical = 3
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
@@ -1153,7 +1156,7 @@ margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
@@ -1198,7 +1201,7 @@ size_flags_vertical = 3
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
@@ -1207,7 +1210,7 @@ margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
@@ -1250,3 +1253,5 @@ rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum" to="." method="_on_Consum_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc" to="." method="_on_Misc_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems" to="." method="_on_KeyItems_pressed"]
+[connection signal="mouse_entered" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" to="." method="_on_VBoxCont_mouse_entered"]
+[connection signal="mouse_exited" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" to="." method="_on_VBoxCont_mouse_exited"]
