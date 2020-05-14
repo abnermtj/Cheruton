@@ -4,7 +4,6 @@ var count = 0
 var active_tab
 var active_tab_items
 var active_tab_inspector
-var item_inspector = false
 
 signal tab_changed(next_tab)
 
@@ -16,10 +15,10 @@ onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 
 func _ready():
-	InstScene.connect("show_details", self, "item_inspector_default")
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
+
 	connect("tab_changed", self, "change_tab_state")
 	emit_signal("tab_changed", "Weapons")
 
@@ -50,34 +49,25 @@ func load_data():
 	generate_list(misc_scroll, misc_list, 400)
 	generate_list(key_items_scroll, key_items_list, 500)
 		
-
-# Generates the list of items under the particular tab
+		
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
+			print(str(tab_index + index))	
 			var instance_loc = load("res://Player/Inventory/InstancedScenes/" + str(tab_index + 1)+ ".tscn")
 			var instanced = instance_loc.instance()
 			get_node(scroll_tab).add_child(instanced)
 			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
-			
+
 		#need to add the pic of the item also
 		get_node(scroll_tab + str(tab_index + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 		get_node(scroll_tab + str(tab_index + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
-
 		index += 1
 
-func item_inspector_default(index):
+func item_inspector_default():
 	#show stats of current item - only for weapon/apparel
 	#show description of current item - rest
-	print(index)
-	item_inspector = !item_inspector
-	if (item_inspector == true):
-		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
-		print("YEs")
-	else:
-		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
-		print("No")
 	pass
 
 func item_inspector_new():
@@ -157,9 +147,11 @@ func free_the_inventory():
 
 #consider delete buttons too
 
-func _on_101_mouse_entered():
+func _on_VBoxCont_mouse_entered():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 
-func _on_101_mouse_exited():
+func _on_VBoxCont_mouse_exited():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+
+

@@ -1253,3 +1253,5 @@ rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum" to="." method="_on_Consum_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc" to="." method="_on_Misc_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems" to="." method="_on_KeyItems_pressed"]
+[connection signal="mouse_entered" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" to="." method="_on_VBoxCont_mouse_entered"]
+[connection signal="mouse_exited" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" to="." method="_on_VBoxCont_mouse_exited"]
