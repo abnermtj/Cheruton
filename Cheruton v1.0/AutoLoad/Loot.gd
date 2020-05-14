@@ -47,32 +47,63 @@ func append_loot(map_name, loot_count):
 
 		if(loot_dict[index][0] == "Weapons"):
 			print("Appending to Weapons")
-			if(DataResource.dict_inventory.Weapons.has(loot_dict[index][1])):
-				DataResource.dict_inventory.Weapons.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-			else:
-				var curr_size = DataResource.dict_inventory.Weapons.size() + 1
-				insert_data(index, curr_size)
-
+			for i in range(1, DataResource.dict_inventory.Weapons.size() + 1):
+				if(DataResource.dict_inventory.Weapons["Item" + str(i)].item_name == loot_dict[index][1]):
+					print("Item Present")
+					DataResource.dict_inventory.Weapons["Item" + str(i)].item_qty += loot_dict[index][2]
+					break
+				elif(i == DataResource.dict_inventory.Weapons.size()):
+					print("Item Not Present. Inserting...")
+					var curr_size = DataResource.dict_inventory.Weapons.size() + 1
+					insert_data(index, curr_size)
+					
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
-			if(DataResource.dict_inventory.Apparel.has(loot_dict[index][1])):
-				DataResource.dict_inventory.Apparel.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-
+			for i in range(1, DataResource.dict_inventory.Apparel.size() + 1):
+				if(DataResource.dict_inventory.Apparel["Item" + str(i)].item_name == loot_dict[index][1]):
+					print("Item Present")
+					DataResource.dict_inventory.Apparel["Item" + str(i)].item_qty += loot_dict[index][2]
+					break
+				elif(i == DataResource.dict_inventory.Apparel.size()):
+					print("Item Not Present. Inserting...")
+					var curr_size = DataResource.dict_inventory.Apparel.size() + 1
+					insert_data(index, curr_size)
+					
 		elif(loot_dict[index][0] == "Consum"):
 			print("Appending to Consum")
-			if(DataResource.dict_inventory.Consum.has(loot_dict[index][1])):
-				DataResource.dict_inventory.Consum.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-
+			for i in range(1, DataResource.dict_inventory.Consum.size() + 1):
+				if(DataResource.dict_inventory.Consum["Item" + str(i)].item_name == loot_dict[index][1]):
+					print("Item Present")
+					DataResource.dict_inventory.Consum["Item" + str(i)].item_qty += loot_dict[index][2]
+					break
+				elif(i == DataResource.dict_inventory.Consum.size()):
+					print("Item Not Present. Inserting...")
+					var curr_size = DataResource.dict_inventory.Consum.size() + 1
+					insert_data(index, curr_size)
+					
 		elif(loot_dict[index][0] == "Misc"):
 			print("Appending to Misc")
-			if(DataResource.dict_inventory.Misc.has(loot_dict[index][1])):
-				DataResource.dict_inventory.Misc.get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-
+			for i in range(1, DataResource.dict_inventory.Misc.size() + 1):
+				if(DataResource.dict_inventory.Misc["Item" + str(i)].item_name == loot_dict[index][1]):
+					print("Item Present")
+					DataResource.dict_inventory.Misc["Item" + str(i)].item_qty += loot_dict[index][2]
+					break
+				elif(i == DataResource.dict_inventory.Misc.size()):
+					print("Item Not Present. Inserting...")
+					var curr_size = DataResource.dict_inventory.Misc.size() + 1
+					insert_data(index, curr_size)
+					
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
-			if(DataResource.dict_inventory["Key Items"].has(loot_dict[index][1])):
-				DataResource.dict_inventory["Key Items"].get(loot_dict[index][1]).item_qty += loot_dict[index][2]
-
+			for i in range(1, DataResource.dict_inventory["Key Items"].size() + 1):
+				if(DataResource.dict_inventory["Key Items"]["Item" + str(i)].item_name == loot_dict[index][1]):
+					print("Item Present")
+					DataResource.dict_inventory["Key Items"]["Item" + str(i)].item_qty += loot_dict[index][2]
+					break
+				elif(i == DataResource.dict_inventory["Key Items"].size()):
+					print("Item Not Present. Inserting...")
+					var curr_size = DataResource.dict_inventory["Key Items"].size() + 1
+					insert_data(index, curr_size)
 		elif(loot_dict[index][0] == "Money"):
 			print("Increasing Coins")
 			DataFunctions.change_coins(int(loot_dict[index][2]))
