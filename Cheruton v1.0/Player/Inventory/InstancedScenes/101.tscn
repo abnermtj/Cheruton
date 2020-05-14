@@ -3,11 +3,11 @@
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 22
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -15,6 +15,9 @@ font_data = ExtResource( 2 )
 margin_right = 923.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemBg" type="TextureRect" parent="."]
 margin_right = 70.0
@@ -26,24 +29,21 @@ expand = true
 [node name="ItemBtn" type="TextureButton" parent="ItemBg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
 rect_min_size = Vector2( 40, 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Qty" type="Label" parent="ItemBg/ItemBtn"]
-anchor_left = 1.0
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -65.0
+margin_left = -32.5
 margin_top = -35.0
+margin_right = 32.5
 rect_min_size = Vector2( 65, 35 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 align = 1
 valign = 2
@@ -57,5 +57,7 @@ margin_right = 923.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 valign = 1
+[connection signal="mouse_entered" from="." to="." method="_on_101_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_101_mouse_exited"]

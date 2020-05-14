@@ -10,7 +10,7 @@ func _ready():
 	var map = "test"
 	var run = Loot.determine_loot_count(map)
 	Loot.loot_selector(map, run)
-	Loot.append_loot(map, run)
+	Loot.append_loot(run)
 
 func _on_Timer_timeout():
 	LoadGlobal.goto_scene(MAINMENU)
