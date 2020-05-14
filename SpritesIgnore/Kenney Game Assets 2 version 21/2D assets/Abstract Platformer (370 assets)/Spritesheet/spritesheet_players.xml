@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="playerBlue_dead.png"	x="115"	y="0"	width="45"	height="47" frameX="-0" frameY="-0" frameWidth="45" frameHeight="47"/>
+	<SubTexture name="playerBlue_duck.png"	x="0"	y="294"	width="56"	height="40" frameX="-0" frameY="-0" frameWidth="56" frameHeight="40"/>
+	<SubTexture name="playerBlue_fall.png"	x="156"	y="420"	width="44"	height="54" frameX="-0" frameY="-0" frameWidth="44" frameHeight="54"/>
+	<SubTexture name="playerBlue_hit.png"	x="108"	y="259"	width="46"	height="40" frameX="-0" frameY="-0" frameWidth="46" frameHeight="40"/>
+	<SubTexture name="playerBlue_roll.png"	x="202"	y="348"	width="40"	height="40" frameX="-0" frameY="-0" frameWidth="40" frameHeight="40"/>
+	<SubTexture name="playerBlue_stand.png"	x="156"	y="101"	width="45"	height="54" frameX="-0" frameY="-0" frameWidth="45" frameHeight="54"/>
+	<SubTexture name="playerBlue_swim1.png"	x="161"	y="0"	width="44"	height="53" frameX="-0" frameY="-0" frameWidth="44" frameHeight="53"/>
+	<SubTexture name="playerBlue_swim2.png"	x="201"	y="420"	width="44"	height="54" frameX="-0" frameY="-0" frameWidth="44" frameHeight="54"/>
+	<SubTexture name="playerBlue_switch1.png"	x="0"	y="374"	width="54"	height="54" frameX="-0" frameY="-0" frameWidth="54" frameHeight="54"/>
+	<SubTexture name="playerBlue_switch2.png"	x="0"	y="429"	width="53"	height="54" frameX="-0" frameY="-0" frameWidth="53" frameHeight="54"/>
+	<SubTexture name="playerBlue_up1.png"	x="156"	y="365"	width="45"	height="54" frameX="-0" frameY="-0" frameWidth="45" frameHeight="54"/>
+	<SubTexture name="playerBlue_up2.png"	x="155"	y="259"	width="45"	height="50" frameX="-0" frameY="-0" frameWidth="45" frameHeight="50"/>
+	<SubTexture name="playerBlue_up3.png"	x="109"	y="126"	width="46"	height="40" frameX="-0" frameY="-0" frameWidth="46" frameHeight="40"/>
+	<SubTexture name="playerBlue_walk1.png"	x="156"	y="310"	width="45"	height="54" frameX="-0" frameY="-0" frameWidth="45" frameHeight="54"/>
+	<SubTexture name="playerBlue_walk2.png"	x="156"	y="156"	width="45"	height="54" frameX="-0" frameY="-0" frameWidth="45" frameHeight="54"/>
+	<SubTexture name="playerBlue_walk3.png"	x="115"	y="48"	width="45"	height="52" frameX="-0" frameY="-0" frameWidth="45" frameHeight="52"/>
+	<SubTexture name="playerBlue_walk4.png"	x="65"	y="37"	width="49"	height="45" frameX="-0" frameY="-0" frameWidth="49" frameHeight="45"/>
+	<SubTexture name="playerBlue_walk5.png"	x="0"	y="39"	width="64"	height="40" frameX="-0" frameY="-0" frameWidth="64" frameHeight="40"/>
+	<SubTexture name="playerGreen_dead.png"	x="282"	y="142"	width="38"	height="43" frameX="-0" frameY="-0" frameWidth="38" frameHeight="43"/>
+	<SubTexture name="playerGreen_duck.png"	x="0"	y="157"	width="56"	height="31" frameX="-0" frameY="-0" frameWidth="56" frameHeight="31"/>
+	<SubTexture name="playerGreen_fall.png"	x="246"	y="396"	width="38"	height="49" frameX="-0" frameY="-0" frameWidth="38" frameHeight="49"/>
+	<SubTexture name="playerGreen_hit.png"	x="108"	y="300"	width="46"	height="40" frameX="-0" frameY="-0" frameWidth="46" frameHeight="40"/>
+	<SubTexture name="playerGreen_roll.png"	x="201"	y="266"	width="40"	height="40" frameX="-0" frameY="-0" frameWidth="40" frameHeight="40"/>
+	<SubTexture name="playerGreen_stand.png"	x="243"	y="345"	width="38"	height="50" frameX="-0" frameY="-0" frameWidth="38" frameHeight="50"/>
+	<SubTexture name="playerGreen_swim1.png"	x="202"	y="96"	width="40"	height="53" frameX="-0" frameY="-0" frameWidth="40" frameHeight="53"/>
+	<SubTexture name="playerGreen_swim2.png"	x="201"	y="211"	width="41"	height="54" frameX="-0" frameY="-0" frameWidth="41" frameHeight="54"/>
+	<SubTexture name="playerGreen_switch1.png"	x="57"	y="157"	width="51"	height="50" frameX="-0" frameY="-0" frameWidth="51" frameHeight="50"/>
+	<SubTexture name="playerGreen_switch2.png"	x="57"	y="300"	width="50"	height="50" frameX="-0" frameY="-0" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="playerGreen_up1.png"	x="246"	y="446"	width="38"	height="50" frameX="-0" frameY="-0" frameWidth="38" frameHeight="50"/>
+	<SubTexture name="playerGreen_up2.png"	x="246"	y="0"	width="38"	height="43" frameX="-0" frameY="-0" frameWidth="38" frameHeight="43"/>
+	<SubTexture name="playerGreen_up3.png"	x="109"	y="167"	width="40"	height="39" frameX="-0" frameY="-0" frameWidth="40" frameHeight="39"/>
+	<SubTexture name="playerGreen_walk1.png"	x="246"	y="44"	width="38"	height="50" frameX="-0" frameY="-0" frameWidth="38" frameHeight="50"/>
+	<SubTexture name="playerGreen_walk2.png"	x="282"	y="345"	width="38"	height="48" frameX="-0" frameY="-0" frameWidth="38" frameHeight="48"/>
+	<SubTexture name="playerGreen_walk3.png"	x="283"	y="186"	width="38"	height="48" frameX="-0" frameY="-0" frameWidth="38" frameHeight="48"/>
+	<SubTexture name="playerGreen_walk4.png"	x="107"	y="388"	width="48"	height="43" frameX="-0" frameY="-0" frameWidth="48" frameHeight="43"/>
+	<SubTexture name="playerGreen_walk5.png"	x="0"	y="117"	width="64"	height="39" frameX="-0" frameY="-0" frameWidth="64" frameHeight="39"/>
+	<SubTexture name="playerGrey_dead.png"	x="321"	y="235"	width="36"	height="39" frameX="-0" frameY="-0" frameWidth="36" frameHeight="39"/>
+	<SubTexture name="playerGrey_duck.png"	x="0"	y="263"	width="56"	height="30" frameX="-0" frameY="-0" frameWidth="56" frameHeight="30"/>
+	<SubTexture name="playerGrey_fall.png"	x="285"	y="46"	width="36"	height="45" frameX="-0" frameY="-0" frameWidth="36" frameHeight="45"/>
+	<SubTexture name="playerGrey_hit.png"	x="65"	y="0"	width="49"	height="36" frameX="-0" frameY="-0" frameWidth="49" frameHeight="36"/>
+	<SubTexture name="playerGrey_roll.png"	x="201"	y="475"	width="36"	height="36" frameX="-0" frameY="-0" frameWidth="36" frameHeight="36"/>
+	<SubTexture name="playerGrey_stand.png"	x="285"	y="440"	width="36"	height="45" frameX="-0" frameY="-0" frameWidth="36" frameHeight="45"/>
+	<SubTexture name="playerGrey_swim1.png"	x="161"	y="54"	width="43"	height="41" frameX="-0" frameY="-0" frameWidth="43" frameHeight="41"/>
+	<SubTexture name="playerGrey_swim2.png"	x="156"	y="211"	width="44"	height="42" frameX="-0" frameY="-0" frameWidth="44" frameHeight="42"/>
+	<SubTexture name="playerGrey_switch1.png"	x="57"	y="254"	width="50"	height="45" frameX="-0" frameY="-0" frameWidth="50" frameHeight="45"/>
+	<SubTexture name="playerGrey_switch2.png"	x="57"	y="208"	width="50"	height="45" frameX="-0" frameY="-0" frameWidth="50" frameHeight="45"/>
+	<SubTexture name="playerGrey_up1.png"	x="285"	y="394"	width="36"	height="45" frameX="-0" frameY="-0" frameWidth="36" frameHeight="45"/>
+	<SubTexture name="playerGrey_up2.png"	x="283"	y="95"	width="37"	height="40" frameX="-0" frameY="-0" frameWidth="37" frameHeight="40"/>
+	<SubTexture name="playerGrey_up3.png"	x="156"	y="475"	width="44"	height="36" frameX="-0" frameY="-0" frameWidth="44" frameHeight="36"/>
+	<SubTexture name="playerGrey_walk1.png"	x="285"	y="0"	width="36"	height="45" frameX="-0" frameY="-0" frameWidth="36" frameHeight="45"/>
+	<SubTexture name="playerGrey_walk2.png"	x="283"	y="278"	width="37"	height="43" frameX="-0" frameY="-0" frameWidth="37" frameHeight="43"/>
+	<SubTexture name="playerGrey_walk3.png"	x="283"	y="235"	width="37"	height="42" frameX="-0" frameY="-0" frameWidth="37" frameHeight="42"/>
+	<SubTexture name="playerGrey_walk4.png"	x="107"	y="351"	width="48"	height="36" frameX="-0" frameY="-0" frameWidth="48" frameHeight="36"/>
+	<SubTexture name="playerGrey_walk5.png"	x="0"	y="80"	width="64"	height="36" frameX="-0" frameY="-0" frameWidth="64" frameHeight="36"/>
+	<SubTexture name="playerRed_dead.png"	x="202"	y="150"	width="39"	height="46" frameX="-0" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="playerRed_duck.png"	x="0"	y="228"	width="56"	height="34" frameX="-0" frameY="-0" frameWidth="56" frameHeight="34"/>
+	<SubTexture name="playerRed_fall.png"	x="243"	y="199"	width="39"	height="50" frameX="-0" frameY="-0" frameWidth="39" frameHeight="50"/>
+	<SubTexture name="playerRed_hit.png"	x="0"	y="335"	width="56"	height="38" frameX="-0" frameY="-0" frameWidth="56" frameHeight="38"/>
+	<SubTexture name="playerRed_roll.png"	x="202"	y="307"	width="40"	height="40" frameX="-0" frameY="-0" frameWidth="40" frameHeight="40"/>
+	<SubTexture name="playerRed_stand.png"	x="242"	y="150"	width="39"	height="48" frameX="-0" frameY="-0" frameWidth="39" frameHeight="48"/>
+	<SubTexture name="playerRed_swim1.png"	x="108"	y="208"	width="47"	height="50" frameX="-0" frameY="-0" frameWidth="47" frameHeight="50"/>
+	<SubTexture name="playerRed_swim2.png"	x="107"	y="432"	width="48"	height="51" frameX="-0" frameY="-0" frameWidth="48" frameHeight="51"/>
+	<SubTexture name="playerRed_switch1.png"	x="54"	y="429"	width="52"	height="48" frameX="-0" frameY="-0" frameWidth="52" frameHeight="48"/>
+	<SubTexture name="playerRed_switch2.png"	x="55"	y="374"	width="51"	height="48" frameX="-0" frameY="-0" frameWidth="51" frameHeight="48"/>
+	<SubTexture name="playerRed_up1.png"	x="243"	y="250"	width="39"	height="48" frameX="-0" frameY="-0" frameWidth="39" frameHeight="48"/>
+	<SubTexture name="playerRed_up2.png"	x="243"	y="95"	width="39"	height="46" frameX="-0" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="playerRed_up3.png"	x="0"	y="189"	width="56"	height="38" frameX="-0" frameY="-0" frameWidth="56" frameHeight="38"/>
+	<SubTexture name="playerRed_walk1.png"	x="206"	y="0"	width="39"	height="48" frameX="-0" frameY="-0" frameWidth="39" frameHeight="48"/>
+	<SubTexture name="playerRed_walk2.png"	x="206"	y="49"	width="39"	height="45" frameX="-0" frameY="-0" frameWidth="39" frameHeight="45"/>
+	<SubTexture name="playerRed_walk3.png"	x="243"	y="299"	width="39"	height="45" frameX="-0" frameY="-0" frameWidth="39" frameHeight="45"/>
+	<SubTexture name="playerRed_walk4.png"	x="65"	y="83"	width="49"	height="42" frameX="-0" frameY="-0" frameWidth="49" frameHeight="42"/>
+	<SubTexture name="playerRed_walk5.png"	x="0"	y="0"	width="64"	height="38" frameX="-0" frameY="-0" frameWidth="64" frameHeight="38"/>
+</TextureAtlas>

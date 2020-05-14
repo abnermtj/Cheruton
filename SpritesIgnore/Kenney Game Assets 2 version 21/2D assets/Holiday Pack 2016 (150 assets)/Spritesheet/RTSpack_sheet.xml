@@ -1,0 +1,22 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="RTSobject_01.png" x="0" y="15" width="64" height="64"/>
+	<SubTexture name="RTSobject_02.png" x="0" y="79" width="64" height="64"/>
+	<SubTexture name="RTSobject_03.png" x="120" y="48" width="19" height="33"/>
+	<SubTexture name="RTSobject_04.png" x="120" y="0" width="26" height="48"/>
+	<SubTexture name="RTSobject_05.png" x="102" y="87" width="27" height="46"/>
+	<SubTexture name="RTSobject_06.png" x="108" y="133" width="16" height="20"/>
+	<SubTexture name="RTSobject_07.png" x="124" y="133" width="16" height="16"/>
+	<SubTexture name="RTSobject_08.png" x="92" y="133" width="16" height="20"/>
+	<SubTexture name="RTSobject_09.png" x="139" y="48" width="16" height="24"/>
+	<SubTexture name="RTSobject_10.png" x="64" y="55" width="42" height="32"/>
+	<SubTexture name="RTSobject_11.png" x="64" y="87" width="38" height="34"/>
+	<SubTexture name="RTSobject_12.png" x="64" y="121" width="28" height="29"/>
+	<SubTexture name="RTSobject_13.png" x="129" y="81" width="16" height="26"/>
+	<SubTexture name="RTSobject_14.png" x="129" y="107" width="16" height="26"/>
+	<SubTexture name="RTSobject_15.png" x="64" y="0" width="56" height="55"/>
+	<SubTexture name="RTSobject_16.png" x="0" y="143" width="64" height="15"/>
+	<SubTexture name="RTSobject_17.png" x="0" y="0" width="64" height="15"/>
+	<SubTexture name="RTSobject_18.png" x="145" y="72" width="12" height="54"/>
+	<SubTexture name="RTSobject_19.png" x="145" y="72" width="12" height="54"/>
+	<SubTexture name="RTSobject_20.png" x="145" y="72" width="12" height="54"/>
+</TextureAtlas>

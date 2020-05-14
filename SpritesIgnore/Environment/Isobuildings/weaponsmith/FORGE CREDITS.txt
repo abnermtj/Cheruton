@@ -1,0 +1,26 @@
+//As included in the zip file with the forge blend model provided by Riidom - CC-BY 3.0 - http://opengameart.org/content/medieval-forge
+
+Textures used either Public Domain or from following artists:
+
+1)
+Dim's enviromental and architectural textures (26 textures).
+
+They're all fairly high quality (most are 1024x1024);
+Normal Maps are included.
+
+Original source:
+http://blenderartists.org/forum/showthread.php?t=131009
+
+Personal communication with author:
+
+"All of those textures are original work, and I am releasing them with the CC Attribution 3.0 license"
+
+http://creativecommons.org/licenses/by/3.0/
+
+
+
+
+
+2)
+Bart
+http://opengameart.org

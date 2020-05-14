@@ -1,0 +1,8 @@
+This work is published under the terms of the
+Creative Commons Attribution Sharealike 3.0 Unported License (see CC).
+For more information visit http://creativecommons.org/licenses/by-sa/3.0/legalcode
+
+This file includes models by:
+Clint Bellanger CC-BY-SA 3.0 - http://opengameart.org/content/kingdom-weapon-set
+Riidom CC-BY 3.0 - http://opengameart.org/content/medieval-forge (this was also used by manthus in manthus/smith/forge) - see also forge credits file
+Daniel Stephens CC-BY-SA 3.0 - http://opengameart.org/users/scribe

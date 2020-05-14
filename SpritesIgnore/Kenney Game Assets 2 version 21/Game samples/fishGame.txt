@@ -1,0 +1,24 @@
+	
+
+	Fish game (source, game)
+	by  Kenney Vleugels (Kenney.nl)
+
+			------------------------------
+
+	Instructions:
+
+	Use mouse or keyboard to control the fish, eat fish smaller than you.
+	Larger fish will kill you!
+
+			------------------------------
+
+	License (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+			------------------------------
+
+	Donate:   http://support.kenney.nl
+	Request:  http://request.kenney.nl
+
+	Follow on Twitter for updates:
+	@KenneyNL

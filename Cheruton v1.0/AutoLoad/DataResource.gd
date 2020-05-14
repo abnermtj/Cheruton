@@ -11,10 +11,10 @@ const LOOT = "res://SaveData/loot-data.json"
 
 var current_scene = null
 
-var dict_inventory
-var dict_loot
-var dict_player
-var dict_settings
+var dict_inventory = {}
+var dict_loot = {}
+var dict_player = {}
+var dict_settings = {}
 
 # Stores any unsaved data regarding player stats
 var temp_dict_player

@@ -1,0 +1,19 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Grey_Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.560784 0.568627 0.600000
+Ks 0.330000 0.330000 0.330000
+
+newmtl Asphalt
+Ka 0.000000 0.000000 0.000000
+Kd 0.411765 0.411765 0.411765
+Ks 0.330000 0.330000 0.330000
+
+newmtl Stone
+Ka 0.000000 0.000000 0.000000
+Kd 0.847059 0.827451 0.749020
+Ks 0.330000 0.330000 0.330000
+

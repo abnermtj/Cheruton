@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 [node name="Chain" type="Node2D"]
+position = Vector2( 0, -1 )
 script = ExtResource( 2 )
 
 [node name="tip" type="KinematicBody2D" parent="."]

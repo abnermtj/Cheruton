@@ -1,0 +1,6 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="foliageTree_01.png" x="103" y="0" width="102" height="290"/>
+	<SubTexture name="foliageTree_02.png" x="0" y="210" width="103" height="193"/>
+	<SubTexture name="foliageTree_03.png" x="0" y="0" width="103" height="210"/>
+	<SubTexture name="foliageTree_04.png" x="205" y="0" width="101" height="287"/>
+</TextureAtlas>

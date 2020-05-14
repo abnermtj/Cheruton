@@ -1,0 +1,19 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Alternate_Dirt
+Ka 0.000000 0.000000 0.000000
+Kd 0.721569 0.564706 0.396078
+Ks 0.330000 0.330000 0.330000
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl Grass
+Ka 0.000000 0.000000 0.000000
+Kd 0.541176 0.709804 0.286275
+Ks 0.330000 0.330000 0.330000
+

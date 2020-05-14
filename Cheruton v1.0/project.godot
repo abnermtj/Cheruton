@@ -90,6 +90,10 @@ config/name="Cheruton v1.0"
 run/main_scene="res://Display/Welcome/Welcome.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+DataResource="*res://AutoLoad/DataResource.gd"
+
 [display]
 
 window/size/width=1280

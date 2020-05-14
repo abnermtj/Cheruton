@@ -1,0 +1,225 @@
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+A new challenger approaches.
+Abort mission.
+All done.
+Arcade mode.
+Are you ready.
+Attack my target.
+Attack your target.
+Backward.
+Begin.
+Begin mission.
+Blue.
+Boss fight.
+Building complete.
+Captured.
+Call for backup.
+Championship mode.
+Choose your character.
+Choose your opponent.
+Combo.
+Combo breaker.
+Continue.
+Correct.
+Cover me!
+Credits.
+Danger.
+Deathmatch.
+Defeat.
+Destination.
+Defend your position.
+Down.
+Draw.
+Drop your weapon.
+Earth.
+East.
+Eliminate.
+Eliminated.
+Enemies in range.
+Engaging with agressive tactics.
+Engaging with defensive tactics.
+Exit.
+Failure.
+Fantastic.
+Fight.
+Final fight.
+Final round.
+Fire in the hole!
+Flawless.
+Flawless victory.
+Follow me.
+Forward.
+Game over.
+Game start.
+Get down if you want to live.
+Get down!
+Get ready.
+Give up.
+Go away.
+Go go go!
+Go!
+Godlike.
+Green.
+Help.
+Highscore.
+Hold!
+Hurry up.
+I cannot build there.
+I cannot do that.
+I'm hit.
+I'm hurt.
+I'm too tired.
+Ignite.
+Insert coin.
+Insert coin to play.
+Its a tie.
+Jupiter.
+Kill her.
+Kill him.
+Kill it.
+Left.
+Lets Go.
+Lets fight.
+Level.
+Level complete.
+Level up.
+Life up.
+Load game.
+Lock on to my target.
+Look out!
+Loser.
+Lower your weapon.
+Mars.
+Medic!
+Mercury.
+Mission abandoned.
+Mission accomplished.
+Mission complete.
+Mission completed.
+Mission failed.
+Mission over.
+Moon.
+Multikill.
+Neptune.
+New game.
+New highscore.
+North.
+North east.
+North west.
+Objective failed.
+Objective achieved.
+Objective complete.
+Okay.
+On my way.
+Orders confirmed.
+Orders understood.
+Pause.
+Paused.
+Perfect.
+Perfection.
+Planet.
+Player 1.
+Player 2.
+Player 3.
+Player 4.
+Player lost.
+Player won.
+Pluto.
+Point captured.
+Power down.
+Power lost.
+Power up.
+Prepare for battle.
+Prepare yourself.
+RPG!
+Ready for battle.
+Ready?
+Red.
+Reloading.
+Requesting cover.
+Requesting permission to engage.
+Restart.
+Right.
+Round.
+Round 1.
+Round 2.
+Round 3.
+Round 4.
+Saturn.
+Save game.
+Set...
+Settings.
+Shields are back up.
+Shields down.
+Sniper!
+South.
+South east.
+South west.
+Special.
+Start game.
+Stop game.
+Stop.
+Story mode.
+Stun.
+Stunned.
+Success.
+Sudden death.
+Sun.
+Supressing fire!
+Surrender.
+Surrender or die.
+Survival mode.
+Taking fire.
+Target destroyed.
+Target engaged.
+Target in range.
+Target lost.
+There are no resources.
+Tie.
+Tie breaker.
+Time.
+Time over.
+Time up.
+Try again.
+Untouchable.
+Up.
+Upgrade.
+Uranus.
+Venus.
+Versus.
+Victory.
+Watch my back! 
+We need iron.
+We need stone.
+We need food.
+We need wood.
+We need power.
+We need more resources.
+Well done.
+West.
+Winner.
+Win.
+Wrong.
+Yellow.
+Yes.
+You lose.
+You need more credits.
+You win.
+Your score is.
+Battle mode.
+Congratulations.
+Enemy captured.
+Hostage freed.
+Hostages executed.
+Lets do this.
+Stealth termination confirmed.
+Target eliminated.

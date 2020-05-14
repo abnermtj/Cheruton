@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="blueCrystal.png"	x="41"	y="62"	width="32"	height="30" frameX="-0" frameY="-0" frameWidth="32" frameHeight="30"/>
+	<SubTexture name="blueGem.png"	x="99"	y="31"	width="22"	height="22" frameX="-0" frameY="-0" frameWidth="22" frameHeight="22"/>
+	<SubTexture name="blueJewel.png"	x="74"	y="54"	width="24"	height="22" frameX="-0" frameY="-0" frameWidth="24" frameHeight="22"/>
+	<SubTexture name="discGreen.png"	x="0"	y="199"	width="34"	height="35" frameX="-0" frameY="-0" frameWidth="34" frameHeight="35"/>
+	<SubTexture name="discRed.png"	x="37"	y="162"	width="34"	height="35" frameX="-0" frameY="-0" frameWidth="34" frameHeight="35"/>
+	<SubTexture name="greenCrystal.png"	x="41"	y="93"	width="32"	height="30" frameX="-0" frameY="-0" frameWidth="32" frameHeight="30"/>
+	<SubTexture name="greenGem.png"	x="99"	y="54"	width="22"	height="22" frameX="-0" frameY="-0" frameWidth="22" frameHeight="22"/>
+	<SubTexture name="greenJewel.png"	x="74"	y="77"	width="24"	height="22" frameX="-0" frameY="-0" frameWidth="24" frameHeight="22"/>
+	<SubTexture name="keyGreen.png"	x="74"	y="0"	width="29"	height="30" frameX="-0" frameY="-0" frameWidth="29" frameHeight="30"/>
+	<SubTexture name="keyRed.png"	x="72"	y="160"	width="29"	height="30" frameX="-0" frameY="-0" frameWidth="29" frameHeight="30"/>
+	<SubTexture name="outlineCrystal.png"	x="0"	y="125"	width="38"	height="36" frameX="-0" frameY="-0" frameWidth="38" frameHeight="36"/>
+	<SubTexture name="outlineDisc.png"	x="0"	y="42"	width="40"	height="41" frameX="-0" frameY="-0" frameWidth="40" frameHeight="41"/>
+	<SubTexture name="outlineDisc_alt.png"	x="0"	y="0"	width="40"	height="41" frameX="-0" frameY="-0" frameWidth="40" frameHeight="41"/>
+	<SubTexture name="outlineGem.png"	x="70"	y="227"	width="28"	height="28" frameX="-0" frameY="-0" frameWidth="28" frameHeight="28"/>
+	<SubTexture name="outlineJewel.png"	x="70"	y="198"	width="30"	height="28" frameX="-0" frameY="-0" frameWidth="30" frameHeight="28"/>
+	<SubTexture name="outlineKey.png"	x="0"	y="162"	width="36"	height="36" frameX="-0" frameY="-0" frameWidth="36" frameHeight="36"/>
+	<SubTexture name="outlinePuzzle.png"	x="0"	y="84"	width="40"	height="40" frameX="-0" frameY="-0" frameWidth="40" frameHeight="40"/>
+	<SubTexture name="puzzleGreen.png"	x="39"	y="125"	width="34"	height="34" frameX="-0" frameY="-0" frameWidth="34" frameHeight="34"/>
+	<SubTexture name="puzzleRed.png"	x="35"	y="199"	width="34"	height="34" frameX="-0" frameY="-0" frameWidth="34" frameHeight="34"/>
+	<SubTexture name="redCrystal.png"	x="41"	y="31"	width="32"	height="30" frameX="-0" frameY="-0" frameWidth="32" frameHeight="30"/>
+	<SubTexture name="redGem.png"	x="97"	y="123"	width="22"	height="22" frameX="-0" frameY="-0" frameWidth="22" frameHeight="22"/>
+	<SubTexture name="redJewel.png"	x="74"	y="100"	width="24"	height="22" frameX="-0" frameY="-0" frameWidth="24" frameHeight="22"/>
+	<SubTexture name="yellowCrystal.png"	x="41"	y="0"	width="32"	height="30" frameX="-0" frameY="-0" frameWidth="32" frameHeight="30"/>
+	<SubTexture name="yellowGem.png"	x="74"	y="123"	width="22"	height="22" frameX="-0" frameY="-0" frameWidth="22" frameHeight="22"/>
+	<SubTexture name="yellowJewel.png"	x="74"	y="31"	width="24"	height="22" frameX="-0" frameY="-0" frameWidth="24" frameHeight="22"/>
+</TextureAtlas>

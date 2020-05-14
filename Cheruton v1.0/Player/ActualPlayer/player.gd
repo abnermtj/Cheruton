@@ -20,6 +20,7 @@ var velocity = Vector2()
 var hook_dir = Vector2()
 var has_jumped = false
 var on_floor = false setget signal_on_floor
+
 signal state_changed
 signal grounded
 
@@ -50,3 +51,6 @@ func signal_on_floor(grounded):
 	on_floor = grounded
 	emit_signal("grounded", on_floor)
 	pass
+
+func _physics_process(delta):
+	DataResource.dict_player.player_pos = global_position

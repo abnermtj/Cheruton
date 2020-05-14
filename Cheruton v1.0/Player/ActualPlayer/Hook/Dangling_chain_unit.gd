@@ -1,7 +1,7 @@
 extends Node2D
-#class_name VerletLoopExtended
+
 # warning-ignore:unused_class_variable
-export( bool )var fixed := false
+export( bool )var fixed := false # don't use the word anchor
 # warning-ignore:unused_class_variable
 var pos_cur : Vector2
 # warning-ignore:unused_class_variable

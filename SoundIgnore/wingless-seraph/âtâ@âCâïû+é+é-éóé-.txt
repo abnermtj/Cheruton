@@ -1,0 +1,27 @@
+【ＲＰＧツクール システム効果音一覧】
+（項目名：ファイル名）
+
+↓
+カーソル移動：Cursor
+決定：kettei
+キャンセル：cancel
+ブザー：buzzer
+装備：soubi
+セーブ：save
+ロード：load
+戦闘開始：battle-start
+逃走：tousou
+敵の通常攻撃：enemy-attack
+敵ダメージ：damage
+敵消滅：teki-syoumetsu
+味方ダメージ：damage
+味方戦闘不能：sentoufunou
+回復：kaifuku
+ミス：miss
+攻撃回避：kougekikaihi
+ショップ：shop
+アイテム使用：item
+スキル使用：skill
+
+※ファイル番号は省略しております。複数存在する場合、お好みのほうをお使いください。
+　（例：damage01とdamage02は敵味方の区別はありません。）

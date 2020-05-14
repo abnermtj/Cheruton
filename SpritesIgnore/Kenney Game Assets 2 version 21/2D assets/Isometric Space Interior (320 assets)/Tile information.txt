@@ -1,0 +1,5 @@
+
+	
+
+	Image size : 240 x 192 px
+	Tile size  : 120 x  74 px

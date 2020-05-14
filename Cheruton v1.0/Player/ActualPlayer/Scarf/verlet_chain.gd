@@ -28,12 +28,12 @@ func setup_chain():
 
 	# set initial positions
 	for loop in loops:
-		print ("curr", loop, "chi ", loop.get_node("link").child , " parr ",loop.get_node("link").parent , "fix is ", loop.anchor)
+#		print ("curr", loop, "chi ", loop.get_node("link").child , " parr ",loop.get_node("link").parent , "fix is ", loop.anchor)
 		loop.pos_cur = loop.global_position
 		loop.pos_prv = loop.global_position
 	for link in links:
 		# note link position automatically set
-		print("current link parent is ", link.parent, "child is ", link.child)
+#		print("current link parent is ", link.parent, "child is ", link.child)
 		link.global_position = ( link.parent.global_position + link.child.global_position ) * 0.5 # middle between parent and child
 		link.global_rotation = link.parent.pos_cur.angle_to_point( link.child.pos_cur ) + PI / 2 # straight above means  angle to point is 0
 # we add PI/2 or 90 degrees because for global rotation 0 degrees is a vector pointing to the right. so to convert straight up being 0degrees to right

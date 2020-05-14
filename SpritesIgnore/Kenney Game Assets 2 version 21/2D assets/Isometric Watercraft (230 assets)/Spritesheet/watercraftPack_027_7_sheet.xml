@@ -1,0 +1,10 @@
+<TextureAtlas imagePath="watercraftPack_027_7_sheet.png">
+	<SubTexture name="watercraftPack_027_0.png" x="0" y="512" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_1.png" x="512" y="0" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_2.png" x="0" y="512" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_3.png" x="512" y="0" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_4.png" x="0" y="0" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_5.png" x="512" y="0" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_6.png" x="0" y="512" width="512" height="512"/>
+	<SubTexture name="watercraftPack_027_7.png" x="512" y="0" width="512" height="512"/>
+</TextureAtlas>

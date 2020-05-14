@@ -1,0 +1,14 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="hexagonTile@2_01.png" x="0" y="281" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_02.png" x="0" y="0" width="240" height="281"/>
+	<SubTexture name="hexagonTile@2_03.png" x="240" y="560" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_04.png" x="720" y="280" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_05.png" x="720" y="0" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_06.png" x="480" y="560" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_07.png" x="480" y="280" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_08.png" x="480" y="0" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_09.png" x="720" y="560" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_10.png" x="240" y="280" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_11.png" x="240" y="0" width="240" height="280"/>
+	<SubTexture name="hexagonTile@2_12.png" x="0" y="561" width="240" height="280"/>
+</TextureAtlas>

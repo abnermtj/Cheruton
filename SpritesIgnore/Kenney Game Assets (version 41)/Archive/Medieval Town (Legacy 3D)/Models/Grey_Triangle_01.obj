@@ -1,0 +1,43 @@
+# Alias OBJ Model File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+# File units = meters
+
+mtllib Grey_Triangle_01.mtl
+
+g Mesh1 Grey_Triangle Model
+
+usemtl Light_Stone
+v 0 2.2 -0.5
+vt -19.685 86.6142
+vn -1 0 -0
+v 0 1.7 -0.5
+vt -19.685 66.9291
+v 0 1.7 -0
+vt 0 66.9291
+v 0 2.2 -0
+vt 0 86.6142
+f 1/1/1 2/2/1 3/3/1 4/4/1 
+
+vn 0 0 -1
+v 0.5 1.7 -0.5
+f 2/3/2 1/4/2 5/2/2
+
+vt 0 61.2455
+vn 0.707107 0.707107 -0
+v 0.5 1.7 -0
+vt 0 33.4066
+vt 19.685 33.4066
+vt 19.685 61.2455
+f 4/5/3 6/6/3 5/7/3 1/8/3 
+
+vn 0 0 1
+vt 19.685 66.9291
+f 4/4/4 3/3/4 6/9/4
+
+vt -19.685 0
+vn 0 -1 -0
+vt 0 0
+vt 0 19.685
+vt -19.685 19.685
+f 6/10/5 3/11/5 2/12/5 5/13/5 
+

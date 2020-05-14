@@ -48,13 +48,13 @@ func load_data():
 	generate_list(consum_scroll, consum_list, 300)
 	generate_list(misc_scroll, misc_list, 400)
 	generate_list(key_items_scroll, key_items_list, 500)
-		
-		
+
+
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
-			print(str(tab_index + index))	
+			print(str(tab_index + index))
 			var instance_loc = load("res://Player/Inventory/InstancedScenes/" + str(tab_index + 1)+ ".tscn")
 			var instanced = instance_loc.instance()
 			get_node(scroll_tab).add_child(instanced)
@@ -92,7 +92,7 @@ func change_active_tab(new_tab, items_list, insp_panel):
 
 func change_tab_state(next_tab):
 	if(next_tab == "Weapons" && active_tab != get_node(tab + "/Weapons/Weapons")):
-			change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons")) 
+			change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
 	elif(next_tab == "Apparel" && active_tab != get_node(tab + "/Apparel/Apparel")):
 		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
 
