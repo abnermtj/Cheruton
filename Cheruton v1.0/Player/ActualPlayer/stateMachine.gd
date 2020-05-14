@@ -57,5 +57,5 @@ func _change_state(state_name):
 	current_state = states_stack[0]
 	emit_signal("state_changed", states_stack)
 
-	#if state_name != "previous": # didn't see the need for this treat previous entry as if just entered
-	current_state.enter()
+	if state_name != "previous":
+		current_state.enter()

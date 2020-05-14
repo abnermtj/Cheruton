@@ -198,7 +198,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 10 ), Vector2( 0, 3 ), Vector2( 0, 10 ), Vector2( 0, 6 ), Vector2( 0, 10 ) ]
+"values": [ Vector2( 0, 8 ), Vector2( 0, 1 ), Vector2( 0, 8 ), Vector2( 0, 6 ), Vector2( 0, 8 ) ]
 }
 
 [sub_resource type="CapsuleShape2D" id=7]
@@ -212,12 +212,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="chain" parent="." instance=ExtResource( 11 )]
+
 [node name="verletChain" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4.08786, -15.6908 )
-scale = Vector2( 5, 7 )
+position = Vector2( 0, 10 )
+scale = Vector2( 3, 3 )
 GRAVITY = 20.0
 RESISTANCE = 0.75
-CHAIN_LINK_LENGTH = 5.9
+CHAIN_LINK_LENGTH = 6.75
 
 [node name="bodyPivot" type="Position2D" parent="."]
 
@@ -226,7 +228,7 @@ position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1429, 1, 32, 36 )
+region_rect = Rect2( 783, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 1 )
@@ -273,10 +275,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="chain" parent="." instance=ExtResource( 11 )]
 [connection signal="direction_changed" from="." to="verletChain" method="_on_player_direction_changed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="states/fall" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="dangling_setup_done" from="chain" to="states/hook" method="_on_chain_dangling_setup_done"]
 [connection signal="animation_finished" from="AnimationPlayer" to="states/idle" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="states/fall" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

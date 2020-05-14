@@ -144,3 +144,14 @@ func free_the_inventory():
 #
 #func _on_CountDown_timeout():
 #	count = 0
+
+#consider delete buttons too
+
+func _on_VBoxCont_mouse_entered():
+	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+
+
+func _on_VBoxCont_mouse_exited():
+	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+
+

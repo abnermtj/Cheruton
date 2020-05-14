@@ -5,10 +5,10 @@ func _ready():
 		"idle": $idle,
 		"run": $run,
 		"jump": $jump,
-		"stagger": $stagger,
-		"attack": $attack,
+#		"stagger": $stagger,
+#		"attack": $attack,
 		"fall": $fall,
-		"roll": $roll,
+#		"roll": $roll,
 		"hook": $hook
 	}
 
