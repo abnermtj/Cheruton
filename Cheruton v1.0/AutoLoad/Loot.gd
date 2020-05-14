@@ -1,6 +1,6 @@
 extends Node
 
-var loot_dict = {}
+var loot_dict = {} # Items pending transfer to inventory
 
 
 # Determines the qty of tiems to be released
@@ -14,7 +14,7 @@ func determine_loot_count(map_name):
 	return loot_count
 	print(loot_count) #debug
 
-
+# Determines what items and their respective qty to be released
 func loot_selector(map_name, loot_count):
 	for i in range(1, loot_count + 1):
 		randomize()
@@ -36,9 +36,9 @@ func loot_selector(map_name, loot_count):
 				chosen_loot -= DataResource.dict_loot[map_name]["ItemChance" + str(index)]
 				index += 1
 	print(loot_dict)#-debug
-#
 
-func append_loot(map_name, loot_count):
+# Transfers all loot present in loot_dict to dict_inventory
+func append_loot(loot_count):
 	var index = 1
 	while(loot_count != 0):
 		# Append current_index of loot dict to the temp ivnentory dict
