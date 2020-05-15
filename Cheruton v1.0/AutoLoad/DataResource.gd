@@ -6,13 +6,12 @@ extends Node
 
 const MAIN = "res://SaveData/player-data.json"
 const INVENTORY = "res://SaveData/inventory-data.json"
-const LOOT = "res://SaveData/loot-data.json"
 
 var current_scene = null
 
 var dict_main = {}
 var dict_inventory = {}
-var dict_loot = {}
+var dict_item_spawn = {}
 var dict_player = {}
 var dict_settings = {}
 
@@ -25,7 +24,7 @@ func load_data():
 	dict_settings = dict_main.settings.main
 	
 	dict_inventory = load_dict(INVENTORY)
-	dict_loot = load_dict(LOOT)
+	dict_item_spawn = dict_main.item_spawn
 	temp_dict_player = dict_player
 
 
