@@ -5,17 +5,18 @@ var active_tab
 var active_tab_items
 var active_tab_inspector
 
+var item_state = "FREE"
+
 signal tab_changed(next_tab)
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
-
+onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png") # to be changed
 onready var tab = "BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"
 onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 
 func _ready():
-	ItemInstanced.connect("activate_item_insp", self, "item_inspector_new")
 	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
@@ -55,27 +56,45 @@ func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
-			print(str(tab_index + index))
-			var instance_loc = load("res://Player/Inventory/InstancedScenes/" + str(tab_index + 1)+ ".tscn")
+			var instance_loc = load("res://Player/Inventory/InstancedScenes/101.tscn")
 			var instanced = instance_loc.instance()
 			get_node(scroll_tab).add_child(instanced)
 			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
 
 		#need to add the pic of the item also
-		get_node(scroll_tab + str(tab_index + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
-		get_node(scroll_tab + str(tab_index + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
+		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemName").text = list_tab["Item" + str(index)].item_name
+		var new_node = get_node(scroll_tab + str(tab_index + index))
+
+		enable_mouse(new_node)
 		index += 1
 
-func item_inspector_default():
-	#show stats of current item - only for weapon/apparel
-	#show description of current item - rest
-	pass
+# Enable mouse functions of the item index
+func enable_mouse(new_node):
 
-func item_inspector_new():
-	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
-	get_node(insp).visible = !get_node(insp).is_visible()
-	pass
-#
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
+		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		
+		# For the TextureButton
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+
+func _on_Exit_pressed():
+	free_the_inventory()
+
+func change_tab_state(next_tab):
+	match next_tab:
+		"Weapons":   change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
+		"Apparel":   change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
+		"Consum":    change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
+		"Misc":      change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
+		"Key Items": change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
+
+	if(next_tab):
+		print("Current Tab: ")
+		print(next_tab)
+
 func change_active_tab(new_tab, items_list, insp_panel):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
@@ -92,68 +111,62 @@ func change_active_tab(new_tab, items_list, insp_panel):
 	active_tab_items.show()
 	active_tab_inspector.show()
 
-func change_tab_state(next_tab):
-	if(next_tab == "Weapons" && active_tab != get_node(tab + "/Weapons/Weapons")):
-			change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
-	elif(next_tab == "Apparel" && active_tab != get_node(tab + "/Apparel/Apparel")):
-		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
-
-	elif(next_tab == "Consum" && active_tab != get_node(tab + "/Consum/Consum")):
-		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
-
-	elif(next_tab == "Misc" && active_tab != get_node(tab + "/Misc/Misc")):
-		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
-
-	elif(next_tab == "Key Items" && active_tab != get_node(tab + "/KeyItems/KeyItems")):
-		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
-
-	if(next_tab):
-		print("Current Tab: ")
-		print(next_tab)
-
 func _on_Weapons_pressed():
-	emit_signal("tab_changed", "Weapons")
+	if(active_tab != get_node(tab + "/Weapons/Weapons")):
+		emit_signal("tab_changed", "Weapons")
 
 func _on_Apparel_pressed():
-	emit_signal("tab_changed", "Apparel")
+	if(active_tab != get_node(tab + "/Apparel/Apparel")):
+		emit_signal("tab_changed", "Apparel")
 
 func _on_Consum_pressed():
-	emit_signal("tab_changed", "Consum")
+	if(active_tab != get_node(tab + "/Consum/Consum")):
+		emit_signal("tab_changed", "Consum")
 
 func _on_Misc_pressed():
-	emit_signal("tab_changed", "Misc")
+	if(active_tab != get_node(tab + "/Misc/Misc")):
+		emit_signal("tab_changed", "Misc")
 
 func _on_KeyItems_pressed():
-	emit_signal("tab_changed", "Key Items")
-
-
-func _on_Exit_pressed():
-	free_the_inventory()
+	if(active_tab != get_node(tab + "/KeyItems/KeyItems")):
+		emit_signal("tab_changed", "Key Items")
 
 func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
-#func _on_Test_pressed(): # creates a double click signal and activates tooltips
-#	if(count == 0):
-#		$CountDown.start()
-#	count += 1
-#	if (count == 2):
-#		count = 0
-#
-#func tooltips(texture):
-#	$Tooltips/CurrItem.set_texture(texture)
-#
-#func _on_CountDown_timeout():
-#	count = 0
-
-#consider delete buttons too
-
-func _on_VBoxCont_mouse_entered():
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 
-func _on_VBoxCont_mouse_exited():
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+func _on_mouse_entered(node):
+	if(item_state == "FREE"):
+		var element_index = int(node.name)
+		node.get_child(0).texture = index_bg
+	
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+
+# Mouse leaves label section of the element
+func _on_mouse_exited(node):
+	if(item_state == "FREE"):
+		node.get_child(0).texture = null
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+
+func _on_pressed(node):
+	print("OK")
+	match item_state:
+		"FREE": item_state = "FIXED"
+		"FIXED": item_state = "FREE"
+	if(item_state == "FIXED"): # Highlight the button last pressed
+		node.get_child(0).texture = index_bg
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 
+
+func item_inspector_default():
+	#show stats of current item - only for weapon/apparel
+	#show description of current item - rest
+	pass
+
+func item_inspector_new():
+	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
+	get_node(insp).visible = !get_node(insp).is_visible()
+	pass

@@ -22,6 +22,7 @@ func _on_MainVolDown_pressed():
 func _on_Back_pressed():
 	var scene_to_free = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
 	scene_to_free.queue_free()
+	DataResource.save_settings()
 	if(KeyPress.last_key == KEY_ESCAPE):
 		DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).show()
 		DataResource.dict_settings.maj_scn = false
