@@ -75,20 +75,26 @@ func enable_mouse(new_node):
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
 		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		
 		# For the TextureButton
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
-func item_inspector_default():
-	#show stats of current item - only for weapon/apparel
-	#show description of current item - rest
-	pass
+func _on_Exit_pressed():
+	free_the_inventory()
 
-func item_inspector_new():
-	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
-	get_node(insp).visible = !get_node(insp).is_visible()
-	pass
-#
+func change_tab_state(next_tab):
+	match next_tab:
+		"Weapons":   change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
+		"Apparel":   change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
+		"Consum":    change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
+		"Misc":      change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
+		"Key Items": change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
+
+	if(next_tab):
+		print("Current Tab: ")
+		print(next_tab)
+
 func change_active_tab(new_tab, items_list, insp_panel):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
@@ -105,43 +111,25 @@ func change_active_tab(new_tab, items_list, insp_panel):
 	active_tab_items.show()
 	active_tab_inspector.show()
 
-func change_tab_state(next_tab):
-	if(next_tab == "Weapons" && active_tab != get_node(tab + "/Weapons/Weapons")):
-			change_active_tab(get_node(tab + "/Weapons/Weapons"), get_node(list + "/Weapons"), get_node(list + "/InspWeapons"))
-	elif(next_tab == "Apparel" && active_tab != get_node(tab + "/Apparel/Apparel")):
-		change_active_tab(get_node(tab + "/Apparel/Apparel"), get_node(list + "/Apparel"), get_node(list + "/InspApparel"))
-
-	elif(next_tab == "Consum" && active_tab != get_node(tab + "/Consum/Consum")):
-		change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
-
-	elif(next_tab == "Misc" && active_tab != get_node(tab + "/Misc/Misc")):
-		change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
-
-	elif(next_tab == "Key Items" && active_tab != get_node(tab + "/KeyItems/KeyItems")):
-		change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
-
-	if(next_tab):
-		print("Current Tab: ")
-		print(next_tab)
-
 func _on_Weapons_pressed():
-	emit_signal("tab_changed", "Weapons")
+	if(active_tab != get_node(tab + "/Weapons/Weapons")):
+		emit_signal("tab_changed", "Weapons")
 
 func _on_Apparel_pressed():
-	emit_signal("tab_changed", "Apparel")
+	if(active_tab != get_node(tab + "/Apparel/Apparel")):
+		emit_signal("tab_changed", "Apparel")
 
 func _on_Consum_pressed():
-	emit_signal("tab_changed", "Consum")
+	if(active_tab != get_node(tab + "/Consum/Consum")):
+		emit_signal("tab_changed", "Consum")
 
 func _on_Misc_pressed():
-	emit_signal("tab_changed", "Misc")
+	if(active_tab != get_node(tab + "/Misc/Misc")):
+		emit_signal("tab_changed", "Misc")
 
 func _on_KeyItems_pressed():
-	emit_signal("tab_changed", "Key Items")
-
-
-func _on_Exit_pressed():
-	free_the_inventory()
+	if(active_tab != get_node(tab + "/KeyItems/KeyItems")):
+		emit_signal("tab_changed", "Key Items")
 
 func free_the_inventory():
 	DataResource.dict_settings.game_on = true
@@ -170,3 +158,15 @@ func _on_pressed(node):
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+
+
+
+func item_inspector_default():
+	#show stats of current item - only for weapon/apparel
+	#show description of current item - rest
+	pass
+
+func item_inspector_new():
+	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
+	get_node(insp).visible = !get_node(insp).is_visible()
+	pass
