@@ -12,7 +12,6 @@ func determine_loot_count(map_name):
 	#randi() expects array, so factor + 1
 	var loot_count = randi()%((int(ItemMaxCount) - int(ItemMinCount))+ 1) + int(ItemMinCount)
 	return loot_count
-	print(loot_count) #debug
 
 # Determines what items and their respective qty to be released
 func loot_selector(map_name, loot_count):

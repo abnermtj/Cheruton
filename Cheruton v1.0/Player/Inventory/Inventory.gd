@@ -64,8 +64,8 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemName").text = list_tab["Item" + str(index)].item_name
 		var new_node = get_node(scroll_tab + str(tab_index + index))
 			# Enable its mouse_entered functions
-		new_node.connect("mouse_entered", self, "_on_mouse_entered")
-		new_node.connect("mouse_exited", self, "_on_mouse_exited")
+		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 		index += 1
 
 func item_inspector_default():
@@ -152,12 +152,18 @@ func free_the_inventory():
 #consider delete buttons too
 
 
-
-func _on_mouse_entered():
+# Mouse enters label section of the element
+func _on_mouse_entered(node):
+	var element_index = int(node.name)
+	var index_bg = load("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
+	#check if the node is just an address 
+	node.get_child(0).texture = index_bg
+	
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
-
-func _on_mouse_exited():
+# Mouse leaves label section of the element
+func _on_mouse_exited(node):
+	node.get_child(0).texture = null
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
 
 
