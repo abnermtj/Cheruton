@@ -5,11 +5,13 @@ var active_tab
 var active_tab_items
 var active_tab_inspector
 
+var item_state = "FREE"
+
 signal tab_changed(next_tab)
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
-
+onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png") # to be changed
 onready var tab = "BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs"
 onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
@@ -63,10 +65,19 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemName").text = list_tab["Item" + str(index)].item_name
 		var new_node = get_node(scroll_tab + str(tab_index + index))
-			# Enable its mouse_entered functions
+
+		enable_mouse(new_node)
+		index += 1
+
+# Enable mouse functions of the item index
+func enable_mouse(new_node):
+
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
 		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
-		index += 1
+		# For the TextureButton
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 func item_inspector_default():
 	#show stats of current item - only for weapon/apparel
@@ -136,34 +147,26 @@ func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
-#func _on_Test_pressed(): # creates a double click signal and activates tooltips
-#	if(count == 0):
-#		$CountDown.start()
-#	count += 1
-#	if (count == 2):
-#		count = 0
-#
-#func tooltips(texture):
-#	$Tooltips/CurrItem.set_texture(texture)
-#
-#func _on_CountDown_timeout():
-#	count = 0
-
-#consider delete buttons too
 
 
-# Mouse enters label section of the element
 func _on_mouse_entered(node):
-	var element_index = int(node.name)
-	var index_bg = load("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-	#check if the node is just an address 
-	node.get_child(0).texture = index_bg
+	if(item_state == "FREE"):
+		var element_index = int(node.name)
+		node.get_child(0).texture = index_bg
 	
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
-	node.get_child(0).texture = null
-	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+	if(item_state == "FREE"):
+		node.get_child(0).texture = null
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
 
-
+func _on_pressed(node):
+	print("OK")
+	match item_state:
+		"FREE": item_state = "FIXED"
+		"FIXED": item_state = "FREE"
+	if(item_state == "FIXED"): # Highlight the button last pressed
+		node.get_child(0).texture = index_bg
+		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()

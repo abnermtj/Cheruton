@@ -425,7 +425,7 @@ __meta__ = {
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
 margin_right = 300.0
-margin_bottom = 223.0
+margin_bottom = 450.0
 size_flags_vertical = 3
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1"]
@@ -438,18 +438,18 @@ text = "Current Item"
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 223.0
+margin_bottom = 450.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 186.0
+margin_bottom = 413.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 186.0
+margin_bottom = 413.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -518,14 +518,14 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp1/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 186.0
+margin_bottom = 413.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
-margin_top = 227.0
+margin_top = 454.0
 margin_right = 300.0
-margin_bottom = 247.0
+margin_bottom = 474.0
 rect_min_size = Vector2( 300, 20 )
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
@@ -646,7 +646,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons"]
+[node name="Equip" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons"]
 margin_left = 78.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -655,7 +655,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Compare"]
+[node name="Equip" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Equip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -668,12 +668,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Compare/Compare"]
+[node name="Equip" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Equip/Equip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Compare"
+text = "Equip"
 align = 1
 valign = 1
 __meta__ = {
@@ -918,7 +918,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons"]
+[node name="Equip" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons"]
 margin_left = 78.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -927,7 +927,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Compare"]
+[node name="Equip" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Equip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -940,12 +940,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Compare/Compare"]
+[node name="Equip" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Equip/Equip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Compare"
+text = "Equip"
 align = 1
 valign = 1
 __meta__ = {
@@ -968,7 +968,6 @@ __meta__ = {
 }
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
-visible = false
 margin_right = 300.0
 margin_bottom = 223.0
 size_flags_vertical = 3
@@ -1092,7 +1091,7 @@ rect_min_size = Vector2( 70, 70 )
 texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="Compare" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons"]
+[node name="Use" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons"]
 margin_left = 78.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -1101,7 +1100,7 @@ size_flags_horizontal = 3
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Compare" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Compare"]
+[node name="Use" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Use"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -1114,7 +1113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Compare" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Compare/Compare"]
+[node name="Use" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Use/Use"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
