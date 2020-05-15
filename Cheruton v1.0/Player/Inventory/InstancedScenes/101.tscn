@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Player/Inventory/InstancedScenes/ItemInstanced.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -16,7 +15,6 @@ font_data = ExtResource( 2 )
 margin_right = 923.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,5 +59,3 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 valign = 1
-[connection signal="mouse_entered" from="." to="." method="_on_101_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_101_mouse_exited"]

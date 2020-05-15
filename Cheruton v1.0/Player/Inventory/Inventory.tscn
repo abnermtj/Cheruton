@@ -335,7 +335,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="101" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" instance=ExtResource( 10 )]
+[node name="101" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" groups=[
+"10x",
+] instance=ExtResource( 10 )]
 
 [node name="Apparel" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -353,7 +355,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="201" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont" instance=ExtResource( 11 )]
+[node name="201" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont" groups=[
+"20x",
+] instance=ExtResource( 11 )]
 
 [node name="Consum" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -371,7 +375,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="301" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Consum/VBoxCont" instance=ExtResource( 12 )]
+[node name="301" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Consum/VBoxCont" groups=[
+"30x",
+] instance=ExtResource( 12 )]
 
 [node name="Misc" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -389,7 +395,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="401" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont" instance=ExtResource( 14 )]
+[node name="401" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont" groups=[
+"40x",
+] instance=ExtResource( 14 )]
 
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -407,7 +415,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="501" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont" instance=ExtResource( 13 )]
+[node name="501" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont" groups=[
+"50x",
+] instance=ExtResource( 13 )]
 
 [node name="InspWeapons" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
