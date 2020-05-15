@@ -26,9 +26,6 @@ func _ready():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
 
-	
-func debug():
-	print("dibs")
 
 func load_data():
 	# Get data according to relevant sections
@@ -57,18 +54,20 @@ func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
-			print(str(tab_index + index))
-			var instance_loc = load("res://Player/Inventory/InstancedScenes/" + str(tab_index + 1)+ ".tscn")
+			var instance_loc = load("res://Player/Inventory/InstancedScenes/101.tscn")
 			var instanced = instance_loc.instance()
 			get_node(scroll_tab).add_child(instanced)
 			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
-			get_node(scroll_tab + str(tab_index + index)).add_to_group(str(tab_index % 100) + "0x")
-		
+
 		#need to add the pic of the item also
-		get_node(scroll_tab + str(tab_index + index) + "/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
-		get_node(scroll_tab + str(tab_index + index) + "/ItemName").text = list_tab["Item" + str(index)].item_name
+		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		get_node(scroll_tab + str(tab_index + index) + "/Background/MainCont/ItemName").text = list_tab["Item" + str(index)].item_name
+		var new_node = get_node(scroll_tab + str(tab_index + index))
+			# Enable its mouse_entered functions
+		new_node.connect("mouse_entered", self, "_on_mouse_entered")
+		new_node.connect("mouse_exited", self, "_on_mouse_exited")
 		index += 1
-	print(get_tree().get_nodes_in_group("10x"))
+
 func item_inspector_default():
 	#show stats of current item - only for weapon/apparel
 	#show description of current item - rest
@@ -152,11 +151,13 @@ func free_the_inventory():
 
 #consider delete buttons too
 
-func _on_VBoxCont_mouse_entered():
+
+
+func _on_mouse_entered():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 
-func _on_VBoxCont_mouse_exited():
+func _on_mouse_exited():
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
 
 

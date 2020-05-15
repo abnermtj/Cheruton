@@ -19,14 +19,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemBg" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 923.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+
+[node name="MainCont" type="HBoxContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemBg" type="TextureRect" parent="Background/MainCont"]
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ItemBtn" type="TextureButton" parent="ItemBg"]
+[node name="ItemBtn" type="TextureButton" parent="Background/MainCont/ItemBg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 40, 40 )
@@ -34,7 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Qty" type="Label" parent="ItemBg/ItemBtn"]
+[node name="Qty" type="Label" parent="Background/MainCont/ItemBg/ItemBtn"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -51,7 +68,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemName" type="Label" parent="."]
+[node name="ItemName" type="Label" parent="Background/MainCont"]
 margin_left = 74.0
 margin_right = 923.0
 margin_bottom = 70.0
@@ -59,3 +76,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

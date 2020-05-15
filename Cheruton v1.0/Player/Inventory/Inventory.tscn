@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=2]
@@ -10,10 +10,6 @@
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Inventory/random_trash_bin.png" type="Texture" id=9]
 [ext_resource path="res://Player/Inventory/InstancedScenes/101.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Player/Inventory/InstancedScenes/201.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Player/Inventory/InstancedScenes/301.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Player/Inventory/InstancedScenes/501.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Player/Inventory/InstancedScenes/401.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -335,9 +331,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="101" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" groups=[
-"10x",
-] instance=ExtResource( 10 )]
+[node name="101" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Weapons/VBoxCont" instance=ExtResource( 10 )]
 
 [node name="Apparel" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -355,9 +349,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="201" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont" groups=[
-"20x",
-] instance=ExtResource( 11 )]
+[node name="201" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Apparel/VBoxCont" instance=ExtResource( 10 )]
+margin_left = -186.0
+margin_right = 737.0
 
 [node name="Consum" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -375,9 +369,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="301" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Consum/VBoxCont" groups=[
-"30x",
-] instance=ExtResource( 12 )]
+[node name="301" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Consum/VBoxCont" instance=ExtResource( 10 )]
+margin_left = -331.0
+margin_right = 592.0
 
 [node name="Misc" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -395,9 +389,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="401" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont" groups=[
-"40x",
-] instance=ExtResource( 14 )]
+[node name="401" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/Misc/VBoxCont" instance=ExtResource( 10 )]
+margin_left = -404.0
+margin_right = 519.0
 
 [node name="KeyItems" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
@@ -415,9 +409,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="501" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont" groups=[
-"50x",
-] instance=ExtResource( 13 )]
+[node name="501" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/KeyItems/VBoxCont" instance=ExtResource( 10 )]
+margin_left = -311.0
+margin_right = 612.0
 
 [node name="InspWeapons" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
