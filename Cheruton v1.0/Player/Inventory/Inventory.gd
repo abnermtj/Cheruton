@@ -54,7 +54,7 @@ func load_data():
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
-	for i in range(0, list_tab.size()):
+	for _i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
 			var instance_loc = load("res://Player/Inventory/101.tscn")
 			var instanced = instance_loc.instance()

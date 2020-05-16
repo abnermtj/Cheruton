@@ -89,5 +89,5 @@ __meta__ = {
 }
 [connection signal="pressed" from="MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
-[connection signal="toggled" from="Mute/MuteToggle" to="." method="_on_MuteToggle_toggled"]
+[connection signal="pressed" from="Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

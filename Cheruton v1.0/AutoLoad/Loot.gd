@@ -15,7 +15,7 @@ func determine_loot_count(map_name):
 
 # Determines what items and their respective qty to be released
 func loot_selector(map_name, loot_count):
-	for i in range(1, loot_count + 1):
+	for _i in range(1, loot_count + 1):
 		randomize()
 		var index = 1
 		var chosen_loot = randi() % 100 + 1
