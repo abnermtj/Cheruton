@@ -970,6 +970,7 @@ __meta__ = {
 }
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+visible = false
 margin_right = 300.0
 margin_bottom = 223.0
 size_flags_vertical = 3

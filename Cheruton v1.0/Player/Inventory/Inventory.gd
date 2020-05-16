@@ -139,17 +139,41 @@ func free_the_inventory():
 
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
-		var element_index = int(node.name)
+
 		node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
+		#Update Data
+		#Weapons/Apparel
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
+		#Consume curr
+		else: 
+			if(active_tab.name == "Consum"):
+				pass
+			#define_details(insp.get_node("ItemInsp1"), element_index
+		#Consume/Misc/KeyItems
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").show()
 		insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
+func define_inspector(defined_node, node):
+	var element_index = str(int(node.name)%100)
+	defined_node.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+	defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+	defined_node.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
+
+#func define_details(defined_node, element_node):
+	#defined_node.get_node("Description", element_index)
+	
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
+		
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
 		
@@ -172,10 +196,14 @@ func _on_pressed(node):
 		"FREE":
 			item_state = "FIXED"
 			fixed_node = node
+
 		"FIXED": 
 			if (node != fixed_node):
 				fixed_node.get_child(0).texture = null
 				fixed_node = node
+				if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+					var insp = retrieve_path_insp()
+					define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
 			else:
 				item_state = "FREE"
 	if(item_state == "FIXED"): # Highlight the button last pressed

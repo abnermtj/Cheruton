@@ -85,6 +85,7 @@ func insert_data(index, curr_size):
 				"item_statheal": DataResource.dict_item_masterlist[name].StatHeal,
 				"item_healval": DataResource.dict_item_masterlist[name].HealVal,
 				"item_value": DataResource.dict_item_masterlist[name].ItemValue,
+				"item_details": DataResource.dict_item_masterlist[name].ItemDetails,
 				"item_qty": loot_dict[index][2],
 		}
 	DataResource.dict_inventory[loot_dict[index][0]]["Item" + str(curr_size)] = style
