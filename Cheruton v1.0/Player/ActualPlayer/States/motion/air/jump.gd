@@ -9,6 +9,7 @@ var keypress_timer # timer that allaws paper to keep boosting jump height
 const JUMP_VEL = -670.0  # jump power 670 old
 
 func enter() -> void:
+	owner.get_node("jump").play()
 	owner.has_jumped = true
 	if get_parent().previous_state_name != "hook":
 		owner.velocity.y = JUMP_VEL # old speed kept

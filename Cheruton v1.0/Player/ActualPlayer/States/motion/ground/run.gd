@@ -20,7 +20,7 @@ func update(delta):
 	owner.velocity.x *= input_direction.x
 	owner.velocity.y = 5
 	owner.move_and_slide_with_snap(owner.velocity,Vector2.DOWN * 8, Vector2.UP) # look 8  tiles down for a tile to snap to
-
+	# note that the tilemap checks for collision with character, not the character itself checking the layer of the tile mask
 	if not owner.is_on_floor():
 		emit_signal("finished","fall")
 	if not input_direction.x :
