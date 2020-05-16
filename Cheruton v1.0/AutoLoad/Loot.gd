@@ -55,7 +55,7 @@ func append_loot(loot_count):
 					print("Item Not Present. Inserting...")
 					var curr_size = DataResource.dict_inventory.Weapons.size() + 1
 					insert_data(index, curr_size)
-					
+
 		elif(loot_dict[index][0] == "Apparel"):
 			print("Appending to Apparel")
 			for i in range(1, DataResource.dict_inventory.Apparel.size() + 1):
@@ -67,7 +67,7 @@ func append_loot(loot_count):
 					print("Item Not Present. Inserting...")
 					var curr_size = DataResource.dict_inventory.Apparel.size() + 1
 					insert_data(index, curr_size)
-					
+
 		elif(loot_dict[index][0] == "Consum"):
 			print("Appending to Consum")
 			for i in range(1, DataResource.dict_inventory.Consum.size() + 1):
@@ -79,7 +79,7 @@ func append_loot(loot_count):
 					print("Item Not Present. Inserting...")
 					var curr_size = DataResource.dict_inventory.Consum.size() + 1
 					insert_data(index, curr_size)
-					
+
 		elif(loot_dict[index][0] == "Misc"):
 			print("Appending to Misc")
 			for i in range(1, DataResource.dict_inventory.Misc.size() + 1):
@@ -91,7 +91,7 @@ func append_loot(loot_count):
 					print("Item Not Present. Inserting...")
 					var curr_size = DataResource.dict_inventory.Misc.size() + 1
 					insert_data(index, curr_size)
-					
+
 		elif(loot_dict[index][0] == "Key Items"):
 			print("Appending to Key Items")
 			for i in range(1, DataResource.dict_inventory["Key Items"].size() + 1):
@@ -119,33 +119,33 @@ func insert_data(index, curr_size):
 				"item_attack": 15,# stub - to update
 				"item_defense": 0,# stub - to update
 				"item_qty": loot_dict[index][2],
-		} 
+		}
 		if(loot_dict[index][0] == "Weapons"):
 			DataResource.dict_inventory.Weapons["Item" + str(curr_size)] = style
 		else:
 			DataResource.dict_inventory.Apparel["Item" + str(curr_size)] = style
-	
+
 	elif(loot_dict[index][0] == "Consum"):
 		style = {
 				"item_name": loot_dict[index][1],
 				"item_stat": 15,# stub - to update
 				"stat_increase": 0,# stub - to update
 				"item_qty": loot_dict[index][2],
-		} 
+		}
 		DataResource.dict_inventory.Consum["Item" + str(curr_size)] = style
-	
+
 	elif(loot_dict[index][0] == "Misc"):
 		style = {
 				"item_name": loot_dict[index][1],
 				#extra details to be revamped
 				"item_qty": loot_dict[index][2],
-		} 
-		DataResource.dict_inventory.Misc["Item" + str(curr_size)] = style		
-	
+		}
+		DataResource.dict_inventory.Misc["Item" + str(curr_size)] = style
+
 	else: #key_items
 		style = {
 				"item_name": loot_dict[index][1],
 				#extra details to be revamped
 				"item_qty": loot_dict[index][2],
-		} 
-		DataResource.dict_inventory["Key Items"]["Item" + str(curr_size)] = style	
+		}
+		DataResource.dict_inventory["Key Items"]["Item" + str(curr_size)] = style

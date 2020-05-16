@@ -75,7 +75,7 @@ func enable_mouse(new_node):
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
 		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
-		
+
 		# For the TextureButton
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
@@ -141,7 +141,7 @@ func _on_mouse_entered(node):
 	if(item_state == "FREE"):
 		var element_index = int(node.name)
 		node.get_child(0).texture = index_bg
-	
+
 		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
 
 # Mouse leaves label section of the element

@@ -22,7 +22,7 @@ func load_data():
 	dict_main = load_dict(MAIN)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
-	
+
 	dict_inventory = load_dict(INVENTORY)
 	dict_item_spawn = dict_main.item_spawn
 	temp_dict_player = dict_player
