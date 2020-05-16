@@ -54,7 +54,7 @@ func load_data():
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
-	for i in range(0, list_tab.size()):
+	for _i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
 			var instance_loc = load("res://Player/Inventory/101.tscn")
 			var instanced = instance_loc.instance()
@@ -139,17 +139,45 @@ func free_the_inventory():
 
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
-		var element_index = int(node.name)
+
 		node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
+		#Update Data
+		#Weapons/Apparel
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
+		#Consume curr
+		else: 
+			if(active_tab.name == "Consum"):
+				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
+			#define_details(insp.get_node("ItemInsp1"), node)
+		#Consume/Misc/KeyItems
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").show()
 		insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
+func define_inspector(defined_node, node):
+	var element_index = str(int(node.name)%100)
+	if(active_tab.name == "Consum"):
+		defined_node.get_node("StatInc/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal)
+		defined_node.get_node("Boost/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+	else:
+		defined_node.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+		defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+	defined_node.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
+
+#func define_details(defined_node, element_node):
+	#defined_node.get_node("Description", element_index)
+	
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
+		
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
 
@@ -172,10 +200,14 @@ func _on_pressed(node):
 		"FREE":
 			item_state = "FIXED"
 			fixed_node = node
-		"FIXED":
+
+		"FIXED": 
 			if (node != fixed_node):
 				fixed_node.get_child(0).texture = null
 				fixed_node = node
+				if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+					var insp = retrieve_path_insp()
+					define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
 			else:
 				item_state = "FREE"
 	if(item_state == "FIXED"): # Highlight the button last pressed
@@ -193,3 +225,18 @@ func item_inspector_new():
 	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
 	get_node(insp).visible = !get_node(insp).is_visible()
 	pass
+
+#Use a Consum item
+func _on_Use_pressed():
+	var element_index = str(int(fixed_node.name)%100)
+	var item_used = false
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "EXP"):
+		DataFunctions.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
+		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+	if(item_used):
+		DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		#delete index
+		get_node(list + "/Consum/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)

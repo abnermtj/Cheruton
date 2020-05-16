@@ -5,7 +5,7 @@ func _ready():
 	$MainVol/MainVolBar.value = (10 - ((10 - DataResource.dict_settings["audio"])/8)) * 10
 	DataFunctions.connect("change_audio_master", self, "change_master_vol")
 
-func _on_MuteToggle_toggled(button_pressed):
+func _on_MuteToggle_pressed():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), !(DataResource.dict_settings["is_mute"]))
 
 func change_master_vol():
@@ -27,3 +27,4 @@ func _on_Back_pressed():
 		DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).show()
 		DataResource.dict_settings.maj_scn = false
 	DataResource.current_scene.show()
+

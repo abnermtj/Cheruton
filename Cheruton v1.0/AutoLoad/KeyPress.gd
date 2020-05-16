@@ -7,7 +7,7 @@ onready var INVENTORY = preload("res://Player/Inventory/Inventory.tscn")
 var last_key
 
 #fix key closure to close only with assigned key! - find better check than getchild
-func _input(ev):
+func _input(_ev):
 	if(DataResource.dict_settings.maj_scn == false):
 		if Input.is_key_pressed(KEY_ESCAPE):
 			if (DataResource.dict_settings.game_on == true):

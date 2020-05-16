@@ -13,18 +13,23 @@ var dict_inventory = {}
 var dict_item_spawn = {}
 var dict_player = {}
 var dict_settings = {}
+var dict_item_masterlist = {}
 
 # Stores any unsaved data regarding player stats
 var temp_dict_player = {}
 
 func load_data():
+	#Editable
 	dict_main = load_dict(MAIN)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
 	dict_inventory = dict_main.inventory
-	#dict_inventory = load_dict(INVENTORY)
-	dict_item_spawn = dict_main.item_spawn
 	temp_dict_player = dict_player
+	
+	#Non-Editable
+	dict_item_spawn = dict_main.item_spawn
+	dict_item_masterlist = dict_main.item_masterlist
+	
 
 
 func load_dict(FilePath):

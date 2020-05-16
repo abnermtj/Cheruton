@@ -970,8 +970,9 @@ __meta__ = {
 }
 
 [node name="ItemInsp1" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+visible = false
 margin_right = 300.0
-margin_bottom = 223.0
+margin_bottom = 524.0
 size_flags_vertical = 3
 
 [node name="ItemName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1"]
@@ -984,26 +985,26 @@ text = "Current Item"
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1"]
 margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 223.0
+margin_bottom = 524.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer"]
 margin_right = 226.0
-margin_bottom = 186.0
+margin_bottom = 487.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Stats" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer"]
 margin_right = 226.0
-margin_bottom = 186.0
+margin_bottom = 487.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Stat Inc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+[node name="StatInc" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
 margin_right = 226.0
 margin_bottom = 33.0
 
-[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/StatInc"]
 margin_right = 111.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -1011,7 +1012,28 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Stat:"
 
-[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Stat Inc"]
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/StatInc"]
+margin_left = 115.0
+margin_right = 226.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Boost" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
+margin_top = 37.0
+margin_right = 226.0
+margin_bottom = 70.0
+
+[node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Boost"]
+margin_right = 111.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Boost:"
+
+[node name="StatVal" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Boost"]
 margin_left = 115.0
 margin_right = 226.0
 margin_bottom = 33.0
@@ -1020,9 +1042,9 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Val" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats"]
-margin_top = 37.0
+margin_top = 74.0
 margin_right = 226.0
-margin_bottom = 70.0
+margin_bottom = 107.0
 
 [node name="StatName" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer/ScrollContainer/Stats/Val"]
 margin_right = 111.0
@@ -1043,14 +1065,14 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 [node name="ItemIcon" type="TextureRect" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp1/HBoxContainer"]
 margin_left = 230.0
 margin_right = 300.0
-margin_bottom = 186.0
+margin_bottom = 487.0
 rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Margin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
-margin_top = 227.0
+margin_top = 528.0
 margin_right = 300.0
-margin_bottom = 247.0
+margin_bottom = 548.0
 rect_min_size = Vector2( 300, 20 )
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
@@ -1201,6 +1223,7 @@ __meta__ = {
 }
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+visible = false
 margin_right = 300.0
 margin_bottom = 548.0
 size_flags_horizontal = 3
@@ -1245,3 +1268,4 @@ rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Consum/Consum" to="." method="_on_Consum_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Misc/Misc" to="." method="_on_Misc_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/KeyItems/KeyItems" to="." method="_on_KeyItems_pressed"]
+[connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Use/Use" to="." method="_on_Use_pressed"]
