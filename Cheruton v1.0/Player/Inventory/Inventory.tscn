@@ -1201,6 +1201,7 @@ __meta__ = {
 }
 
 [node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+visible = false
 margin_right = 300.0
 margin_bottom = 548.0
 size_flags_horizontal = 3
