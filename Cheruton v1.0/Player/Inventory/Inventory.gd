@@ -24,6 +24,11 @@ func _ready():
 	connect("tab_changed", self, "change_tab_state")
 	emit_signal("tab_changed", "Weapons")
 
+	get_node(list + "/InspWeapons/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list +"/InspApparel/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list + "/InspConsum/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list + "/InspMisc/Buttons/Delete").connect("pressed", self,  "delete_item")
+
 	# Hide initbar() to view inventory directly
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
@@ -195,7 +200,6 @@ func retrieve_path_insp():
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
 
 func _on_pressed(node):
-	print("OK")
 	match item_state:
 		"FREE":
 			item_state = "FIXED"
@@ -236,7 +240,22 @@ func _on_Use_pressed():
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
 		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
+		
 	if(item_used):
-		DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		delete_item()
+	
+
+
+
+func delete_item():
+	var element_index = str(int(fixed_node.name)%100)
+	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
-		get_node(list + "/Consum/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
+		get_node(list + "/" + active_tab.name + "/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	else:
+		# Item Stock is empty:  Hide its data entry, delete it and shift all the indexes after it down by 1
+		_on_pressed(fixed_node)
+		_on_mouse_exited(fixed_node)
+		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(fixed_node.name).queue_free()
+		## shift indexes 
