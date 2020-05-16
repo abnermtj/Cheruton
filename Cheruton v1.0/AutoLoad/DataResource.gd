@@ -5,7 +5,6 @@ extends Node
 #   DataResource.dict_x.feature = value
 
 const MAIN = "res://SaveData/player-data.json"
-const INVENTORY = "res://SaveData/inventory-data.json"
 
 var current_scene = null
 
@@ -22,8 +21,8 @@ func load_data():
 	dict_main = load_dict(MAIN)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
-	
-	dict_inventory = load_dict(INVENTORY)
+	dict_inventory = dict_main.inventory
+	#dict_inventory = load_dict(INVENTORY)
 	dict_item_spawn = dict_main.item_spawn
 	temp_dict_player = dict_player
 
@@ -41,11 +40,8 @@ func save_player():
 	dict_player = temp_dict_player
 	save_data(MAIN, dict_main)
 
-func save_settings():
+func save_rest():
 	save_data(MAIN, dict_main)
-
-func save_inventory():
-	save_data(INVENTORY, dict_inventory)
 
 
 func save_data(FILE, dictionary):
@@ -72,4 +68,4 @@ func reset_settings():
 	dict_settings.is_mute = false
 	dict_settings.game_on = false
 	dict_settings.maj_scn = true
-	save_settings()
+	save_rest()

@@ -2,14 +2,17 @@
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=2]
-[ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
-[ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
+[ext_resource path="res://Player/Inventory/Icons/Exit.png" type="Texture" id=3]
+[ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=4]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=5]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/Inventory/random_trash_bin.png" type="Texture" id=9]
-[ext_resource path="res://Player/Inventory/InstancedScenes/101.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Inventory/Icons/random_trash_bin.png" type="Texture" id=9]
+[ext_resource path="res://Player/Inventory/101.tscn" type="PackedScene" id=10]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 50

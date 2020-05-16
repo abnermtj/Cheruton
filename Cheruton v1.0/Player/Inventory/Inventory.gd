@@ -6,7 +6,7 @@ var active_tab_items
 var active_tab_inspector
 
 var item_state = "FREE"
-
+var fixed_node
 signal tab_changed(next_tab)
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
@@ -56,7 +56,7 @@ func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
 	for i in range(0, list_tab.size()):
 		if(!has_node(scroll_tab + str(tab_index + index))):
-			var instance_loc = load("res://Player/Inventory/InstancedScenes/101.tscn")
+			var instance_loc = load("res://Player/Inventory/101.tscn")
 			var instanced = instance_loc.instance()
 			get_node(scroll_tab).add_child(instanced)
 			get_node(scroll_tab).get_child(get_node(scroll_tab).get_child_count() - 1).name = str(tab_index + index)
@@ -153,8 +153,15 @@ func _on_mouse_exited(node):
 func _on_pressed(node):
 	print("OK")
 	match item_state:
-		"FREE": item_state = "FIXED"
-		"FIXED": item_state = "FREE"
+		"FREE":
+			item_state = "FIXED"
+			fixed_node = node
+		"FIXED": 
+			if (node != fixed_node):
+				fixed_node.get_child(0).texture = null
+				fixed_node = node
+			else:
+				item_state = "FREE"
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()

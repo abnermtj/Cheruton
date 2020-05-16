@@ -108,7 +108,7 @@ func append_loot(loot_count):
 			DataFunctions.change_coins(int(loot_dict[index][2]))
 		index += 1
 		loot_count -= 1
-	DataResource.save_inventory()
+	DataResource.save_rest()
 	print(DataResource.dict_inventory)
 
 func insert_data(index, curr_size):
