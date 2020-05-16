@@ -141,10 +141,10 @@ func free_the_inventory():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 
-
+# mouse enters the area occupied by the node
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
-
+		print(node.name)
 		node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
 		#Update Data
@@ -162,6 +162,7 @@ func _on_mouse_entered(node):
 		insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
+# Displays the respective data corresponding to the item
 func define_inspector(defined_node, node):
 	var element_index = str(int(node.name)%100)
 	if(active_tab.name == "Consum"):
@@ -217,19 +218,6 @@ func _on_pressed(node):
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
-
-
-
-func item_inspector_default():
-	#show stats of current item - only for weapon/apparel
-	#show description of current item - rest
-	pass
-
-func item_inspector_new():
-	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
-	get_node(insp).visible = !get_node(insp).is_visible()
-	pass
-
 #Use a Consum item
 func _on_Use_pressed():
 	var element_index = str(int(fixed_node.name)%100)
@@ -243,8 +231,6 @@ func _on_Use_pressed():
 		
 	if(item_used):
 		delete_item()
-	
-
 
 
 func delete_item():
@@ -255,7 +241,18 @@ func delete_item():
 		get_node(list + "/" + active_tab.name + "/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
 		# Item Stock is empty:  Hide its data entry, delete it and shift all the indexes after it down by 1
+		var new_index = int(fixed_node.name)/10 * 10 # Convert ones digit to 0
 		_on_pressed(fixed_node)
 		_on_mouse_exited(fixed_node)
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(fixed_node.name).queue_free()
-		## shift indexes 
+		## shift indexes down by 1
+		new_index += int(element_index) +  1
+		element_index = int(element_index)
+		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+			# fix the node
+			get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(str(new_index)).name = str(new_index - 1)
+			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			new_index += 1
+			element_index += 1
+		DataResource.dict_inventory.erase(DataResource.dict_inventory[active_tab.name]["Item" + str(element_index - 1)])
+		print(DataResource.dict_inventory[active_tab.name].size())
