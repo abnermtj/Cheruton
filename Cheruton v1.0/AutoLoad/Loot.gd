@@ -112,40 +112,15 @@ func append_loot(loot_count):
 	print(DataResource.dict_inventory)
 
 func insert_data(index, curr_size):
-	var style
-	if(loot_dict[index][0] == "Weapons" || loot_dict[index][0] == "Apparel"):
-		style = {
-				"item_name": loot_dict[index][1],
-				"item_attack": 15,# stub - to update
-				"item_defense": 0,# stub - to update
+	var name = loot_dict[index][1]
+	var style =  {
+				"item_name": name,
+				"item_attack": DataResource.dict_item_masterlist.name.ItemAtk,
+				"item_defense": DataResource.dict_item_masterlist.name.ItemDef,# stub - to update
+				"item_statheal": DataResource.dict_item_masterlist.name.StatHeal,
+				"item_healval": DataResource.dict_item_masterlist.name.HealVal,
+				"item_value": DataResource.dict_item_masterlist.name.ItemValue,
 				"item_qty": loot_dict[index][2],
 		}
-		if(loot_dict[index][0] == "Weapons"):
-			DataResource.dict_inventory.Weapons["Item" + str(curr_size)] = style
-		else:
-			DataResource.dict_inventory.Apparel["Item" + str(curr_size)] = style
+	DataResource.dict_inventory[name]["Item" + str(curr_size)] = style
 
-	elif(loot_dict[index][0] == "Consum"):
-		style = {
-				"item_name": loot_dict[index][1],
-				"item_stat": 15,# stub - to update
-				"stat_increase": 0,# stub - to update
-				"item_qty": loot_dict[index][2],
-		}
-		DataResource.dict_inventory.Consum["Item" + str(curr_size)] = style
-
-	elif(loot_dict[index][0] == "Misc"):
-		style = {
-				"item_name": loot_dict[index][1],
-				#extra details to be revamped
-				"item_qty": loot_dict[index][2],
-		}
-		DataResource.dict_inventory.Misc["Item" + str(curr_size)] = style
-
-	else: #key_items
-		style = {
-				"item_name": loot_dict[index][1],
-				#extra details to be revamped
-				"item_qty": loot_dict[index][2],
-		}
-		DataResource.dict_inventory["Key Items"]["Item" + str(curr_size)] = style
