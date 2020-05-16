@@ -2,14 +2,14 @@
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=2]
-[ext_resource path="res://Player/Inventory/Exit.png" type="Texture" id=3]
-[ext_resource path="res://Player/Inventory/coin.png" type="Texture" id=4]
+[ext_resource path="res://Player/Inventory/Icons/Exit.png" type="Texture" id=3]
+[ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=4]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=5]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/Inventory/random_trash_bin.png" type="Texture" id=9]
-[ext_resource path="res://Player/Inventory/InstancedScenes/101.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Inventory/Icons/random_trash_bin.png" type="Texture" id=9]
+[ext_resource path="res://Player/Inventory/101.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -630,6 +630,7 @@ rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons"]
+visible = false
 margin_top = 478.0
 margin_right = 300.0
 margin_bottom = 548.0
@@ -902,6 +903,7 @@ rect_min_size = Vector2( 70, 70 )
 expand = true
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel"]
+visible = false
 margin_top = 478.0
 margin_right = 300.0
 margin_bottom = 548.0
@@ -1051,14 +1053,15 @@ margin_right = 300.0
 margin_bottom = 247.0
 rect_min_size = Vector2( 300, 20 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+visible = false
 margin_top = 251.0
 margin_right = 300.0
 margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/VBoxContainer"]
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -1066,7 +1069,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
-[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/VBoxContainer"]
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/ItemInsp2"]
 margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -1075,6 +1078,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum"]
+visible = false
 margin_top = 478.0
 margin_right = 300.0
 margin_bottom = 548.0
@@ -1140,13 +1144,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+visible = false
 margin_right = 300.0
 margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/VBoxContainer"]
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -1154,7 +1159,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
-[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/VBoxContainer"]
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc/ItemInsp2"]
 margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
@@ -1163,6 +1168,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc"]
+visible = false
 margin_top = 478.0
 margin_right = 300.0
 margin_bottom = 548.0
@@ -1186,21 +1192,21 @@ margin_bottom = 552.0
 
 [node name="InspKeyItems" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 visible = false
-margin_left = 846.0
-margin_right = 1146.0
+margin_left = 238.0
+margin_right = 538.0
 margin_bottom = 552.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
+[node name="ItemInsp2" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
 margin_right = 300.0
-margin_bottom = 474.0
+margin_bottom = 548.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/VBoxContainer"]
+[node name="Details" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp2"]
 margin_right = 300.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -1208,30 +1214,13 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Details:"
 
-[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/VBoxContainer"]
+[node name="Description" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/ItemInsp2"]
 margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="Buttons" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
-margin_top = 478.0
-margin_right = 300.0
-margin_bottom = 548.0
-
-[node name="Margin2" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
-margin_top = 28.0
-margin_bottom = 42.0
-
-[node name="Delete" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems/Buttons"]
-margin_left = 4.0
-margin_right = 74.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-texture_normal = ExtResource( 9 )
-expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyItems"]
 margin_top = 552.0
