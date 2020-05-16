@@ -21,10 +21,8 @@ var length_rope
 var tip_pos # tip of hook/ attach point
 var angle_set
 
-var link
 
 func enter():
-	link  = owner.get_node("link")
 	angle_set = false
 	zip_state = false
 
@@ -43,13 +41,6 @@ func enter():
 
 # Invariant : hook tip already planted
 func update(delta):
-	# drawing rope link
-	link.visible = true
-	link.rotation = owner.global_position.angle_to_point(tip_pos) - deg2rad(90)
-	link.global_position = tip_pos
-	link .global_position.y += 40 # DELTE THIS LATER
-	link.region_rect.size.y = (owner.global_position - tip_pos).length()
-
 	# let go of rope
 	release_timer -= delta
 	if Input.is_action_just_pressed("jump") and release_timer < 0: # bugs if jumping same frame as press
@@ -75,16 +66,14 @@ func update(delta):
 		_constrain( )
 		_adjust()
 	owner.move()
-
+	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
 func _update(delta):
-#	print("player", owner.global_position, " tip ", tip_pos, "cur pos", cur_pos, "prevpos", prev_pos)
 	var shift = cur_pos - prev_pos
 	cur_pos = owner.global_position # previous cur pos_ no longer matched the player position due to constrains
 	prev_pos = cur_pos
 	cur_pos += shift + get_input_direction() * SWING_CONTROL_STRENGTH
 	cur_pos.y += SWING_GRAVITY * delta
-	print ("le", length_rope)
 	length_rope = clamp(length_rope*.995, 300 , INF)
 
 func _constrain():
@@ -93,7 +82,6 @@ func _constrain():
 
 func _adjust(): # don't call move again, done in returning call
 	owner.velocity = (cur_pos - prev_pos )*SWING_SPEED
-	print(owner.velocity)
 
 
 func exit():

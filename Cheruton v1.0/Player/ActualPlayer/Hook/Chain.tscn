@@ -21,7 +21,7 @@ shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
 
-[node name="links" type="Sprite" parent="."]
+[node name="link" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 1 )
 centered = false

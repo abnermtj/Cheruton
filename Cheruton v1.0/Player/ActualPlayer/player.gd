@@ -46,15 +46,14 @@ func signal_on_floor(grounded):
 	pass
 
 func _physics_process(delta):
-#	MAX_VEL = 360 if fall_mode == 0 else 360*4
-	previous_position = global_position
+	previous_position = global_position # parent happens before children, so the current position is t
+	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
 
 func play_anim(string):
 	if animation_player:
 		animation_player.play(string)
 
 func start_hook():
-	print("start")
 	emit_signal("hook_command",0, hook_dir,global_position)
 
 func chain_release():
