@@ -149,8 +149,8 @@ func _on_mouse_entered(node):
 		#Consume curr
 		else: 
 			if(active_tab.name == "Consum"):
-				pass
-			#define_details(insp.get_node("ItemInsp1"), element_index
+				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
+			#define_details(insp.get_node("ItemInsp1"), node)
 		#Consume/Misc/KeyItems
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
@@ -159,8 +159,12 @@ func _on_mouse_entered(node):
 
 func define_inspector(defined_node, node):
 	var element_index = str(int(node.name)%100)
-	defined_node.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
-	defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+	if(active_tab.name == "Consum"):
+		defined_node.get_node("StatInc/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal)
+		defined_node.get_node("Boost/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+	else:
+		defined_node.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+		defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
 	defined_node.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
 
 #func define_details(defined_node, element_node):
@@ -221,3 +225,18 @@ func item_inspector_new():
 	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
 	get_node(insp).visible = !get_node(insp).is_visible()
 	pass
+
+#Use a Consum item
+func _on_Use_pressed():
+	var element_index = str(int(fixed_node.name)%100)
+	var item_used = false
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "EXP"):
+		DataFunctions.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
+		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+	if(item_used):
+		DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		#delete index
+		get_node(list + "/Consum/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
