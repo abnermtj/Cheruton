@@ -141,14 +141,30 @@ func _on_mouse_entered(node):
 	if(item_state == "FREE"):
 		var element_index = int(node.name)
 		node.get_child(0).texture = index_bg
-	
-		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+		var insp = retrieve_path_insp()
+		insp.get_node("ItemInsp2").show()
+		insp.get_node("Buttons").show()
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
-		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.hide()
+		var insp = retrieve_path_insp()
+		insp.get_node("ItemInsp2").hide()
+		insp.get_node("Buttons").hide()
+		
+func retrieve_path_insp():
+	match active_tab.name:
+		"Weapons":
+			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons
+		"Apparel":
+			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel
+		"Consum":
+			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum
+		"Misc":
+			pass
+		"KeyItems":
+			pass
 
 func _on_pressed(node):
 	print("OK")
@@ -164,7 +180,7 @@ func _on_pressed(node):
 				item_state = "FREE"
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
-		$BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2.show()
+
 
 
 
