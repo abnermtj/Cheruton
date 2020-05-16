@@ -3,14 +3,14 @@ extends baseState
 class_name motionState
 
 func handle_input(event):
-	if event.is_action_pressed("hook"):
+	if event.is_action_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"]:
 		owner.hook_dir = get_input_direction()
-		emit_signal("finished", "hook")
-#	if event.is_action_pressed("simulate_damage"):
-#		emit_signal("finished", "stagger")
+		if not owner.hook_dir:
+			owner.hook_dir = owner.look_direction
+		owner.start_hook()
 	pass
 
-# left and right at the same time calcels out
+# note left and right at the same time cancel out
 func get_input_direction():
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
@@ -21,7 +21,6 @@ func get_input_direction():
 func update_look_direction(direction):
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction
-	if not direction.x in [-1, 1]:
-		return
-	owner.get_node("bodyPivot").set_scale(Vector2(direction.x, 1))
+	if direction.x in [-1, 1]:
+		owner.get_node("bodyPivot").set_scale(Vector2(direction.x, 1)) # flips horizontally
 

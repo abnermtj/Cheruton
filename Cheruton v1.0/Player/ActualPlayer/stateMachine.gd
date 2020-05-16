@@ -12,6 +12,8 @@ var states_map = {}
 
 var states_stack = []
 var current_state = null
+var previous_state_name = null # for function
+
 var _active = false setget set_active
 
 func _ready():
@@ -57,5 +59,4 @@ func _change_state(state_name):
 	current_state = states_stack[0]
 	emit_signal("state_changed", states_stack)
 
-	if state_name != "previous":
-		current_state.enter()
+	current_state.enter()

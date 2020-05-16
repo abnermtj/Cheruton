@@ -152,7 +152,7 @@ func _on_mouse_exited(node):
 		var insp = retrieve_path_insp()
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
-		
+
 func retrieve_path_insp():
 	match active_tab.name:
 		"Weapons":
@@ -172,7 +172,7 @@ func _on_pressed(node):
 		"FREE":
 			item_state = "FIXED"
 			fixed_node = node
-		"FIXED": 
+		"FIXED":
 			if (node != fixed_node):
 				fixed_node.get_child(0).texture = null
 				fixed_node = node

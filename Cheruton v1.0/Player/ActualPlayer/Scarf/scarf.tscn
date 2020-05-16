@@ -5,12 +5,6 @@
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends VerletChain
-
-func _on_player_direction_changed(v):
-	pass
-#		$base.scale.x = v.x
-#		for loop in loops:
-#			loop.get_node( \"Sprite\" ).scale.x = v.x
 "
 
 [sub_resource type="GDScript" id=2]
