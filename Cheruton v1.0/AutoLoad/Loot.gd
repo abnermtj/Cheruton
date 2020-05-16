@@ -46,6 +46,12 @@ func append_loot(loot_count):
 
 		if(loot_dict[index][0] == "Weapons"):
 			print("Appending to Weapons")
+			if(DataResource.dict_inventory.Weapons.size() == 0):
+				print("Item Not Present. Inserting...")
+				var curr_size = DataResource.dict_inventory.Weapons.size() + 1
+				insert_data(index, curr_size)
+				pass
+			
 			for i in range(1, DataResource.dict_inventory.Weapons.size() + 1):
 				if(DataResource.dict_inventory.Weapons["Item" + str(i)].item_name == loot_dict[index][1]):
 					print("Item Present")
@@ -114,13 +120,13 @@ func append_loot(loot_count):
 func insert_data(index, curr_size):
 	var name = loot_dict[index][1]
 	var style =  {
-				"item_name": name,
-				"item_attack": DataResource.dict_item_masterlist.name.ItemAtk,
-				"item_defense": DataResource.dict_item_masterlist.name.ItemDef,# stub - to update
-				"item_statheal": DataResource.dict_item_masterlist.name.StatHeal,
-				"item_healval": DataResource.dict_item_masterlist.name.HealVal,
-				"item_value": DataResource.dict_item_masterlist.name.ItemValue,
+				"item_name": loot_dict[index][1],
+				"item_attack": DataResource.dict_item_masterlist[name].ItemAtk,
+				"item_defense": DataResource.dict_item_masterlist[name].ItemDef,# stub - to update
+				"item_statheal": DataResource.dict_item_masterlist[name].StatHeal,
+				"item_healval": DataResource.dict_item_masterlist[name].HealVal,
+				"item_value": DataResource.dict_item_masterlist[name].ItemValue,
 				"item_qty": loot_dict[index][2],
 		}
-	DataResource.dict_inventory[name]["Item" + str(curr_size)] = style
+	DataResource.dict_inventory[loot_dict[index][0]]["Item" + str(curr_size)] = style
 
