@@ -162,9 +162,9 @@ func retrieve_path_insp():
 		"Consum":
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum
 		"Misc":
-			pass
+			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc
 		"KeyItems":
-			pass
+			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
 
 func _on_pressed(node):
 	print("OK")
