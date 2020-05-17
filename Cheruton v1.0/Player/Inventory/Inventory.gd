@@ -246,13 +246,15 @@ func delete_item():
 		_on_mouse_exited(fixed_node)
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(fixed_node.name).queue_free()
 		## shift indexes down by 1
-		new_index += int(element_index) +  1
+		new_index += int(element_index) + 1
 		element_index = int(element_index)
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-			# fix the node
+			# erasure working, fix scene
 			get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(str(new_index)).name = str(new_index - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			new_index += 1
 			element_index += 1
-		DataResource.dict_inventory.erase(DataResource.dict_inventory[active_tab.name]["Item" + str(element_index - 1)])
+		print("element")
+		print(element_index)
+		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		print(DataResource.dict_inventory[active_tab.name].size())
