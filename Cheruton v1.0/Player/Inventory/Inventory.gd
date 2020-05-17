@@ -95,7 +95,8 @@ func change_tab_state(next_tab):
 		"Consum":    change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
 		"Misc":      change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
 		"Key Items": change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
-
+	_on_pressed(fixed_node)
+	
 	if(next_tab):
 		print("Current Tab: ")
 		print(next_tab)
@@ -201,6 +202,8 @@ func retrieve_path_insp():
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
 
 func _on_pressed(node):
+	if(!node):
+		return
 	match item_state:
 		"FREE":
 			item_state = "FIXED"
@@ -241,23 +244,20 @@ func delete_item():
 		get_node(list + "/" + active_tab.name + "/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
 		# Item Stock is empty:  Hide its data entry, delete it and shift all the indexes after it down by 1
-		var new_index = int(fixed_node.name)/10 * 10 # Convert ones digit to 0
+		element_index = int(element_index)
+		var scene_index = element_index - 1
+		
 		_on_pressed(fixed_node)
 		_on_mouse_exited(fixed_node)
-		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(fixed_node.name).queue_free()
-		## shift indexes down by 1
-		new_index += int(element_index) + 1
-		element_index = int(element_index)
+
+		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
+
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
 			# erasure working, fix scene
-
-			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(str(new_index))
-			print("Scene:")
-			print(str(int(scene_name.name) - 1))
-			scene_name.name = str(101)
-			print(scene_name.name)
+			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
+			scene_name.name = str(int(scene_name.name) - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
-			new_index += 1
+			scene_index += 1
 			element_index += 1
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
-		print(DataResource.dict_inventory[active_tab.name].size())
+
