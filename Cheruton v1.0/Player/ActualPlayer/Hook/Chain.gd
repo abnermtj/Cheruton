@@ -1,7 +1,7 @@
 extends Node2D
 
 const SPEED_TIP = 50
-const HOOK_TIMER = .6 # how long to shoot out hook
+const HOOK_TIMER = .4 # how long to shoot out hook more means perfeformance hits to draw
 
 var direction := Vector2(0,0)	# The direction in which the chain was shot
 

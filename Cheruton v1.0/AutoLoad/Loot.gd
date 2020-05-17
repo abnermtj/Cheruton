@@ -45,11 +45,11 @@ func append_loot(loot_count):
 		# else, create new data of its stats in dict_inventory
 		var name = loot_dict[index][0]
 		print("Appending to " + name)
-		
+
 		# Increase Coins
 		if(loot_dict[index][0] == "Money"):
 			DataFunctions.change_coins(int(loot_dict[index][2]))
-			
+
 		# Insert item in inventory
 		else:
 			# Empty Tab

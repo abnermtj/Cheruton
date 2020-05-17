@@ -5,11 +5,12 @@ const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow dow
 const JUMP_GRAVITY_SLOWDOWN = .42 # slows down gravity on top of jump more drifting ability for player
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
+var enter_velocity
 
 const JUMP_VEL = -670.0  # jump power 670 old
 
 func enter() -> void:
-#	owner.get_node("jump").play()
+
 	owner.has_jumped = true
 	if get_parent().previous_state_name != "hook":
 		owner.velocity.y = JUMP_VEL # old speed kept

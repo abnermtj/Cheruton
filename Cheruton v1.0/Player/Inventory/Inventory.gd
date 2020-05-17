@@ -147,7 +147,7 @@ func _on_mouse_entered(node):
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
 		#Consume curr
-		else: 
+		else:
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
 			#define_details(insp.get_node("ItemInsp1"), node)
@@ -169,13 +169,13 @@ func define_inspector(defined_node, node):
 
 #func define_details(defined_node, element_node):
 	#defined_node.get_node("Description", element_index)
-	
+
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
-		
+
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
@@ -201,7 +201,7 @@ func _on_pressed(node):
 			item_state = "FIXED"
 			fixed_node = node
 
-		"FIXED": 
+		"FIXED":
 			if (node != fixed_node):
 				fixed_node.get_child(0).texture = null
 				fixed_node = node

@@ -25,11 +25,11 @@ func load_data():
 	dict_settings = dict_main.settings.main
 	dict_inventory = dict_main.inventory
 	temp_dict_player = dict_player
-	
+
 	#Non-Editable
 	dict_item_spawn = dict_main.item_spawn
 	dict_item_masterlist = dict_main.item_masterlist
-	
+
 
 
 func load_dict(FilePath):

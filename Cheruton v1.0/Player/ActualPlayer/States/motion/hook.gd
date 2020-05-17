@@ -1,6 +1,5 @@
 extends motionState
 
-const PLAYER_ENTER_SLOWDOWN  = 1 # delete if don't need to slow player when entering hook state
 const PULL_DOWN_STRENGTH = 0.55 # lesser than pull up as gravity contributes
 const PULL_UP_STRENGTH = 1.65
 const CHAIN_PULL_SPEED = 1000
@@ -37,9 +36,6 @@ func enter():
 	if owner.hook_dir == Vector2(): # if no input on enter
 		owner.hook_dir = owner.look_direction
 
-	# Enter Slowdown
-	owner.velocity *= PLAYER_ENTER_SLOWDOWN
-
 	# Integration variables
 	cur_pos = owner.global_position
 	prev_pos = owner.previous_position
@@ -75,13 +71,14 @@ func update(delta):
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
 func _update(delta):
+	var input_dir = get_input_direction()
 	var shift = cur_pos - prev_pos
 	cur_pos = owner.global_position # previous cur pos_ no longer matched the player position due to constrains
 	prev_pos = cur_pos
-	cur_pos += shift + get_input_direction() * SWING_CONTROL_STRENGTH
+	cur_pos += shift + input_dir * SWING_CONTROL_STRENGTH
 	cur_pos.y += SWING_GRAVITY * delta
 
-	desired_length_rope += get_input_direction().y * delta * PLAYER_LENGTH_CONTROL
+	desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH  , MAX_WIRE_LENGTH)
 	length_rope = lerp(length_rope, desired_length_rope, delta*REEL_LERP_FACTOR)
 

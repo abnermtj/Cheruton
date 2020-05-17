@@ -16,8 +16,7 @@ func _set_player() -> void:
 		return
 	#player.global_position = startpos.global_position  #IMPT DO NOT DELETE
 	#player.dir_nxt = gamestate.state.current_dir
-
-	player.connect( "player_dead", self, "_on_player_dead" )
+	#player.connect( "player_dead", self, "_on_player_dead" )
 
 
 func _set_camera() -> void:

@@ -5,6 +5,8 @@ const SHOOT_OFFSET_INCREASE = -1
 const SHOOT_AMP_DECREASE = 1.8
 const SHOOT_WID_DECREASE = 2.3
 
+const LENGTH_DIVISOR = 1 # 1 means each x value is a point to draw
+
 var color = Color(0.756, 0.819, 0.858)
 export (Curve) var attachment_curve
 var stage
@@ -18,16 +20,17 @@ var a
 var rng = RandomNumberGenerator.new()
 
 # only called when visible, so if parents sets it to not visible, this won't be called
+# need to mae this function less
 func _draw(): # gets called once initially then again when update() is called
 		var points_arr = PoolVector2Array() # an array specifically to hold Vector2
 
 		length = c
 		var d = c/(w+(1-s)*w)
-		for point_idx in range (length):
+		for point_idx in range (length/LENGTH_DIVISOR):
 			var y_pos = (-4 * pow(2, point_idx/c - 0.5) + 1) * a * sin(((point_idx-c) * d * PI) / c) * s
-			points_arr.push_back(Vector2(point_idx, y_pos))
+			points_arr.push_back(Vector2(point_idx*LENGTH_DIVISOR, y_pos))
 
-		for line_end_idx in range(length-1):
+		for line_end_idx in range(length/LENGTH_DIVISOR-1):
 			draw_line(points_arr[line_end_idx], points_arr[line_end_idx + 1], color,4)
 		points_arr.resize(0) # same array is used in differennt function calls
 
