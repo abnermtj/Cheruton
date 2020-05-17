@@ -75,35 +75,43 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		index += 1
 
 # Updates the equipped item (Weapons/Apparel)
-func update_equipped_item(node, scenario):
+func update_equipped_item(scenario):
 	var insp_address = retrieve_path_insp().get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats")
 	var address = retrieve_path_insp().get_node("ItemInsp1")
-	var element_index = str(int(node.name)%100)
+	var element_index
 	#Update data displayed
 	match scenario:
 		"REPLACE":
-			#insp_address.get_node("Attack/StatVal").text = data
-			#insp_address.get_node("Defense/StatVal").text = data
-			#insp_address.get_node("Val/StatVal").text = data
-			continue
-		"INIT":
-			insp_address.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
-			insp_address.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
-			insp_address.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
+			DataResource.temp_dict_player[active_tab.name + "_item"] = fixed_node.name
+			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
+			slot_data(insp_address, element_index)
+			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = index_bg#stub-to be changed
 			address.show()
 
+		"INIT":
+			if(!DataResource.temp_dict_player[active_tab.name + "_item"]): # Item not equipped
+				return
+			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
+			slot_data(insp_address, element_index)
+			get_node(list + "/"  + active_tab.name + "/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = index_bg#stub-to be changed
+			address.show()
 
 		"REMOVE":
-			insp_address.get_node("Attack/StatVal").text = null
-			insp_address.get_node("Defense/StatVal").text = null
-			insp_address.get_node("Val/StatVal").text = null
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			get_node(list + "/"  + active_tab.name + "/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = null
 			address.hide()
-	#Update player stats
-	#if(scenario != "INIT"):
-		#DataResource.temp_dict_player.attack_weapon = x
-		#DataResource.temp_dict_player.defense_armor = x
 
+# Slots data into the equipped item's item inspector
+func slot_data(insp_address, element_index):
+	insp_address.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+	insp_address.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+	insp_address.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
 
+func _on_Equip_pressed():
+	if(fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		update_equipped_item("REPLACE")
+	else:
+		update_equipped_item("REMOVE")
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
@@ -130,8 +138,8 @@ func change_tab_state(next_tab):
 		fixed_node.get_child(0).texture = null
 		item_state = "FREE"
 		fixed_node = null
-
-
+	
+	
 	if(next_tab):
 		print("Current Tab: ")
 		print(next_tab)
@@ -188,7 +196,7 @@ func _on_mouse_entered(node):
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
 		#Consume/Misc/KeyItems
-		else:
+		else: 
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
 			var element_index = str(int(node.name)%100)
@@ -206,7 +214,7 @@ func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
-
+		
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
@@ -220,12 +228,12 @@ func _on_pressed(node):
 			item_state = "FIXED"
 			fixed_node = node
 
-		"FIXED":
+		"FIXED": 
 			if (node != fixed_node):
 				fixed_node = node
 			else:
 				item_state = "FREE"
-
+				
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
@@ -267,7 +275,7 @@ func _on_Use_pressed():
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
 		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
-
+		
 	if(item_used):
 		delete_item()
 
@@ -282,18 +290,21 @@ func delete_item():
 		# Item Stock is empty:  Hide its data entry, delete it immediately and shift all the indexes after it down by 1
 		element_index = int(element_index)
 		var scene_index = element_index - 1
-
+		
 		_on_pressed(fixed_node)
 		_on_mouse_exited(fixed_node)
 
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
 
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-
+	
 			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
 			scene_name.name = str(int(scene_name.name) - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			scene_index += 1
 			element_index += 1
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+
+
+
 
