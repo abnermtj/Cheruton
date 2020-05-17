@@ -241,7 +241,7 @@ __meta__ = {
 
 [node name="verletChain" parent="." instance=ExtResource( 9 )]
 position = Vector2( 0, 10 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 8, 4 )
 GRAVITY = 20.0
 RESISTANCE = 0.75
 CHAIN_LINK_LENGTH = 6.5

@@ -30,8 +30,7 @@ func _draw(): # gets called once initially then again when update() is called
 			var y_pos = (-4 * pow(2, point_idx/c - 0.5) + 1) * a * sin(((point_idx-c) * d * PI) / c) * s
 			points_arr.push_back(Vector2(point_idx*LENGTH_DIVISOR, y_pos))
 
-		for line_end_idx in range(length/LENGTH_DIVISOR-1):
-			draw_line(points_arr[line_end_idx], points_arr[line_end_idx + 1], color,4)
+		draw_polyline(points_arr,color,4)
 		points_arr.resize(0) # same array is used in differennt function calls
 
 func start():

@@ -3,10 +3,7 @@ extends KinematicBody2D
 # only put consts used by multiple states, no need to get owner each time
 const GRAVITY = 2400
 const TERM_VEL = 1000 # Terminal velocity when falling/ jumping straight up
-const AIR_ACCEL = 20  # increase in this >> increase in stearing power in air
-var MAX_VEL = 500  # when steering left and right during jump/ fall
-var MAX_ADD_VEL = 20  # when steering left and right during jump/ fall
-
+const AIR_ACCEL = 28.5  # increase in this >> increase in stearing power in air
 var velocity = Vector2()
 
 var tip_pos = Vector2()
@@ -15,7 +12,7 @@ var hook_dir = Vector2()
 var has_jumped = false
 var on_floor = false setget signal_on_floor
 var hooked = false
-#var fall_mode = 0 # 0 is default fall 1 is a fall with much higher max vel_
+
 onready var animation_player = $AnimationPlayer
 
 signal state_changed

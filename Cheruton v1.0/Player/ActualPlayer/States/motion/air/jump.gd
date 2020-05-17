@@ -7,9 +7,12 @@ const JUMP_GRAVITY_SLOWDOWN = .42 # slows down gravity on top of jump more drift
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity
 
-const JUMP_VEL = -670.0  # jump power 670 old
+const JUMP_VEL = -690  # jump power 670 old
 
 func enter() -> void:
+	enter_velocity = owner.velocity
+	if 500 > abs(enter_velocity.x):
+		enter_velocity.x = 500
 
 	owner.has_jumped = true
 	if get_parent().previous_state_name != "hook":
@@ -32,7 +35,7 @@ func update( delta ):
 	var dir = input_dir.x
 
 	if dir: # tend to input dir if steering
-		owner.velocity.x = lerp( owner.velocity.x, owner.MAX_VEL * dir, owner.AIR_ACCEL * delta ) # moves towards goal velocity LERP isn't good
+		owner.velocity.x = clamp ((owner.velocity.x + dir*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else: # tend .x to 0 if not steerings
 		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
 

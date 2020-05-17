@@ -18,8 +18,8 @@ script/source = "extends VerletLink
 [node name="VerletChain" type="Node2D"]
 scale = Vector2( 4, 4 )
 script = SubResource( 1 )
-GRAVITY = 5.0
-RESISTANCE = 0.9
+GRAVITY = 73.0
+RESISTANCE = 0.82
 CHAIN_LINK_LENGTH = 5.0
 
 [node name="anchor" type="Node2D" parent="."]

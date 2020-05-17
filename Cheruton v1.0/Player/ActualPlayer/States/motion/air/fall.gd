@@ -11,6 +11,9 @@ var enter_velocity
 
 func enter():
 	enter_velocity = owner.velocity
+	if 500 > abs(enter_velocity.x):
+		enter_velocity.x = 500
+
 	owner.play_anim("hover")
 	coyote_timer = COYOTE_TIME
 	jump_again = false
@@ -27,7 +30,7 @@ func update(delta):
 	var dir = input_dir.x
 
 	if dir:
-		owner.velocity.x = lerp( owner.velocity.x, abs(enter_velocity.x) + owner.MAX_ADD_VEL * dir, owner.AIR_ACCEL * delta )
+		owner.velocity.x = clamp ((owner.velocity.x + dir*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else:
 		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
 
