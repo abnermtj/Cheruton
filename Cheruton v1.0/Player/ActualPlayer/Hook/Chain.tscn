@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.gd" type="Script" id=2]
+[ext_resource path="res://Player/ActualPlayer/Hook/rope.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
+height = 4.39615
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.209424, 0 ), 0.0, 0.955, 0, 0, Vector2( 0.989529, 0.627273 ), 0.81995, 0.0, 0, 0 ]
 
 [node name="Chain" type="Node2D"]
 position = Vector2( 0, -1 )
@@ -21,10 +26,6 @@ shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
 
-[node name="link" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 1 )
-centered = false
-offset = Vector2( -10, 0 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 20, 400 )
+[node name="link" type="Node2D" parent="."]
+script = ExtResource( 3 )
+attachment_curve = SubResource( 2 )

@@ -4,11 +4,17 @@ const PLAYER_ENTER_SLOWDOWN  = 1 # delete if don't need to slow player when ente
 const PULL_DOWN_STRENGTH = 0.55 # lesser than pull up as gravity contributes
 const PULL_UP_STRENGTH = 1.65
 const CHAIN_PULL_SPEED = 1000
-const RELEASE_TIMER = .100 # time before player can zip/release rope from hands
+const RELEASE_TIMER = .05 # time before player can zip/release rope from hands
 
 const SWING_CONTROL_STRENGTH = .150
-const SWING_GRAVITY = 150 # increasing this will indirectly increase swing speed
-const SWING_SPEED = 90
+const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
+const SWING_SPEED = 70
+const MIN_WIRE_LENGTH = 300
+const MAX_WIRE_LENGTH = 2000
+const WIRE_REEL_SPEED = 100
+const PLAYER_LENGTH_CONTROL = 300 # players influence with REEL
+const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
+
 var release_timer
 
 var chain_velocity = Vector2()
@@ -17,7 +23,7 @@ var zip_state
 var prev_pos = Vector2()
 var cur_pos = Vector2()
 var length_rope
-
+var desired_length_rope
 var tip_pos # tip of hook/ attach point
 var angle_set
 
@@ -38,6 +44,7 @@ func enter():
 	cur_pos = owner.global_position
 	prev_pos = owner.previous_position
 	length_rope = (owner.global_position - tip_pos).length()
+	desired_length_rope = length_rope
 
 # Invariant : hook tip already planted
 func update(delta):
@@ -61,7 +68,6 @@ func update(delta):
 	if zip_state == true:
 		owner.velocity = chain_velocity
 	else: # chain in air or hooked and not zipped
-		# Verlet integration
 		_update( delta )
 		_constrain( )
 		_adjust()
@@ -74,10 +80,15 @@ func _update(delta):
 	prev_pos = cur_pos
 	cur_pos += shift + get_input_direction() * SWING_CONTROL_STRENGTH
 	cur_pos.y += SWING_GRAVITY * delta
-	length_rope = clamp(length_rope*.995, 300 , INF)
+
+	desired_length_rope += get_input_direction().y * delta * PLAYER_LENGTH_CONTROL
+	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH  , MAX_WIRE_LENGTH)
+	length_rope = lerp(length_rope, desired_length_rope, delta*REEL_LERP_FACTOR)
 
 func _constrain():
-	if (cur_pos - tip_pos).length() > length_rope: # constrains player to a circle ceneted at hook tip
+	var cur_length = (cur_pos - tip_pos).length()
+	# case where player below minimum distance, don't move him too much, make it as if hes fallign to gravity
+	if cur_length > length_rope or desired_length_rope > cur_length: # constrains player to a circle ceneted at hook tip
 		cur_pos = (cur_pos - tip_pos).normalized() * length_rope + tip_pos
 
 func _adjust(): # don't call move again, done in returning call

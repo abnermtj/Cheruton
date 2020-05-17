@@ -4,7 +4,7 @@ extends KinematicBody2D
 const GRAVITY = 2400
 const TERM_VEL = 1000 # Terminal velocity when falling/ jumping straight up
 const AIR_ACCEL = 20  # increase in this >> increase in stearing power in air
-var MAX_VEL = 360  # when steering left and right during jump/ fall
+var MAX_VEL = 500  # when steering left and right during jump/ fall
 
 var velocity = Vector2()
 
