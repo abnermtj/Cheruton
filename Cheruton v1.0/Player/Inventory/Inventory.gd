@@ -95,7 +95,11 @@ func change_tab_state(next_tab):
 		"Consum":    change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
 		"Misc":      change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
 		"Key Items": change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
-	_on_pressed(fixed_node)
+	if(fixed_node):
+		fixed_node.get_child(0).texture = null
+		item_state = "FREE"
+		fixed_node = null
+	
 	
 	if(next_tab):
 		print("Current Tab: ")
@@ -163,6 +167,37 @@ func _on_mouse_entered(node):
 		insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
+# Mouse leaves label section of the element
+func _on_mouse_exited(node):
+	if(!node):
+		return
+	if(item_state == "FREE"):
+		node.get_child(0).texture = null
+		var insp = retrieve_path_insp()
+		
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").hide()
+		insp.get_node("ItemInsp2").hide()
+		insp.get_node("Buttons").hide()
+
+func _on_pressed(node):
+	if(!node):
+		return
+	match item_state:
+		"FREE":
+			item_state = "FIXED"
+			fixed_node = node
+
+		"FIXED": 
+			if (node != fixed_node):
+				fixed_node = node
+			else:
+				item_state = "FREE"
+				
+	if(item_state == "FIXED"): # Highlight the button last pressed
+		node.get_child(0).texture = index_bg
+
+
 # Displays the respective data corresponding to the item
 func define_inspector(defined_node, node):
 	var element_index = str(int(node.name)%100)
@@ -177,16 +212,6 @@ func define_inspector(defined_node, node):
 #func define_details(defined_node, element_node):
 	#defined_node.get_node("Description", element_index)
 	
-# Mouse leaves label section of the element
-func _on_mouse_exited(node):
-	if(item_state == "FREE"):
-		node.get_child(0).texture = null
-		var insp = retrieve_path_insp()
-		
-		if(active_tab.name == "Consum"):
-			insp.get_node("ItemInsp1").hide()
-		insp.get_node("ItemInsp2").hide()
-		insp.get_node("Buttons").hide()
 
 func retrieve_path_insp():
 	match active_tab.name:
@@ -200,26 +225,8 @@ func retrieve_path_insp():
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc
 		"KeyItems":
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
+# occurs when the icon of the item is pressed
 
-func _on_pressed(node):
-	if(!node):
-		return
-	match item_state:
-		"FREE":
-			item_state = "FIXED"
-			fixed_node = node
-
-		"FIXED": 
-			if (node != fixed_node):
-				fixed_node.get_child(0).texture = null
-				fixed_node = node
-				if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-					var insp = retrieve_path_insp()
-					define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
-			else:
-				item_state = "FREE"
-	if(item_state == "FIXED"): # Highlight the button last pressed
-		node.get_child(0).texture = index_bg
 
 #Use a Consum item
 func _on_Use_pressed():
