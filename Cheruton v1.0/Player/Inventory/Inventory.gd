@@ -74,6 +74,37 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		enable_mouse(new_node)
 		index += 1
 
+# Updates the equipped item (Weapons/Apparel)
+func update_equipped_item(node, scenario):
+	var insp_address = retrieve_path_insp().get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats")
+	var address = retrieve_path_insp().get_node("ItemInsp1")
+	var element_index = str(int(node.name)%100)
+	#Update data displayed
+	match scenario:
+		"REPLACE":
+			#insp_address.get_node("Attack/StatVal").text = data
+			#insp_address.get_node("Defense/StatVal").text = data
+			#insp_address.get_node("Val/StatVal").text = data
+			continue
+		"INIT":
+			insp_address.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+			insp_address.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+			insp_address.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
+			address.show()
+			
+			
+		"REMOVE":
+			insp_address.get_node("Attack/StatVal").text = null
+			insp_address.get_node("Defense/StatVal").text = null
+			insp_address.get_node("Val/StatVal").text = null
+			address.hide()
+	#Update player stats
+	#if(scenario != "INIT"):
+		#DataResource.temp_dict_player.attack_weapon = x
+		#DataResource.temp_dict_player.defense_armor = x
+
+
+
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
 
@@ -248,7 +279,7 @@ func delete_item():
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		get_node(list + "/" + active_tab.name + "/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
-		# Item Stock is empty:  Hide its data entry, delete it and shift all the indexes after it down by 1
+		# Item Stock is empty:  Hide its data entry, delete it immediately and shift all the indexes after it down by 1
 		element_index = int(element_index)
 		var scene_index = element_index - 1
 		
@@ -258,7 +289,7 @@ func delete_item():
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
 
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-			# erasure working, fix scene
+	
 			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
 			scene_name.name = str(int(scene_name.name) - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
