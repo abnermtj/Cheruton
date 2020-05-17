@@ -250,11 +250,14 @@ func delete_item():
 		element_index = int(element_index)
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
 			# erasure working, fix scene
-			get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(str(new_index)).name = str(new_index - 1)
+
+			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont/").get_node(str(new_index))
+			print("Scene:")
+			print(str(int(scene_name.name) - 1))
+			scene_name.name = str(101)
+			print(scene_name.name)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			new_index += 1
 			element_index += 1
-		print("element")
-		print(element_index)
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		print(DataResource.dict_inventory[active_tab.name].size())
