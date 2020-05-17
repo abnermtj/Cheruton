@@ -2,7 +2,7 @@ extends Node2D
 
 # lerp coefficients
 const SHOOT_OFFSET_INCREASE = -1
-const SHOOT_AMP_DECREASE = 1.8
+const SHOOT_AMP_DECREASE = 2.3
 const SHOOT_WID_DECREASE = 2.3
 
 const LENGTH_DIVISOR = 1 # 1 means each x value is a point to draw
@@ -39,10 +39,11 @@ func start():
 	var rand_num2 = rng.randf_range(-4, 4)
 	var rand_num3 = rng.randf_range(-.1, .1)
 	stage = 1
-	w = 36.7 + rand_num1
+	w = 5.1 + rand_num1
 	a = 18 +rand_num2
 	s = .68 + rand_num3
 
+# didn't modify looked good enough
 func release():
 	rng.randomize()
 	var rand_num1 = rng.randf_range(-3, 3)
@@ -58,8 +59,8 @@ func _process(delta):
 		return
 	if stage == 1:
 		s = lerp(s,1,delta*SHOOT_OFFSET_INCREASE)
-		a = lerp(a, 0, delta*SHOOT_AMP_DECREASE)
-		w = lerp(w,w*4.4,delta*SHOOT_WID_DECREASE)
+		a = lerp(a, 1, delta*SHOOT_AMP_DECREASE)
+		w = lerp(w,w*16,delta*SHOOT_WID_DECREASE)
 
 		if owner.	hooked:
 			stage = 2

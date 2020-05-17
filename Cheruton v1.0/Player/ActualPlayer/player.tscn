@@ -304,5 +304,5 @@ __meta__ = {
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 [connection signal="animation_finished" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]

@@ -17,7 +17,7 @@ onready var animation_player = $AnimationPlayer
 
 signal state_changed
 signal hook_command
-signal grounded
+signal camera_command
 
 var look_direction = Vector2(1, 0) setget set_look_direction
 
@@ -40,7 +40,7 @@ func _on_states_state_changed(states_stack):
 
 func signal_on_floor(grounded):
 	on_floor = grounded
-	emit_signal("grounded", on_floor)
+	emit_signal("camera_command", 0, on_floor)
 	pass
 
 func _physics_process(delta):
@@ -54,13 +54,14 @@ func play_anim(string):
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 
-func chain_release():
-	emit_signal("hook_command", 1,Vector2(),Vector2())
 
 func _on_Chain_hooked(tip_p):
 	tip_pos = tip_p
 	hooked = true
 	$states._change_state("hook")
+
+func chain_release():
+	emit_signal("hook_command", 1,Vector2(),Vector2())
 
 func move():
 	move_and_slide(velocity, Vector2.UP)

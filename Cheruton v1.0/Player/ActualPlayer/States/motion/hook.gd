@@ -91,6 +91,5 @@ func _constrain():
 func _adjust(): # don't call move again, done in returning call
 	owner.velocity = (cur_pos - prev_pos )*SWING_SPEED
 
-
 func exit():
 	owner.chain_release()
