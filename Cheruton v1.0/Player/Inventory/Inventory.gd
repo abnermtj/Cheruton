@@ -156,12 +156,13 @@ func _on_mouse_entered(node):
 		#Weapons/Apparel
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
-		#Consume curr
+		#Consume/Misc/KeyItems
 		else: 
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
-			#define_details(insp.get_node("ItemInsp1"), node)
-		#Consume/Misc/KeyItems
+			var element_index = str(int(node.name)%100)
+			insp.get_node("ItemInsp2/Description").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_details)
+
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
 		insp.get_node("ItemInsp2").show()
@@ -209,9 +210,6 @@ func define_inspector(defined_node, node):
 		defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
 	defined_node.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
 
-#func define_details(defined_node, element_node):
-	#defined_node.get_node("Description", element_index)
-	
 
 func retrieve_path_insp():
 	match active_tab.name:
@@ -242,7 +240,7 @@ func _on_Use_pressed():
 	if(item_used):
 		delete_item()
 
-
+# Reduces qty of item by 1
 func delete_item():
 	var element_index = str(int(fixed_node.name)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
