@@ -24,6 +24,11 @@ func _ready():
 	connect("tab_changed", self, "change_tab_state")
 	emit_signal("tab_changed", "Weapons")
 
+	get_node(list + "/InspWeapons/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list +"/InspApparel/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list + "/InspConsum/Buttons/Delete").connect("pressed", self,  "delete_item")
+	get_node(list + "/InspMisc/Buttons/Delete").connect("pressed", self,  "delete_item")
+
 	# Hide initbar() to view inventory directly
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/ExpBar.initbar()
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/HealthBar.initbar()
@@ -69,6 +74,37 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		enable_mouse(new_node)
 		index += 1
 
+# Updates the equipped item (Weapons/Apparel)
+func update_equipped_item(node, scenario):
+	var insp_address = retrieve_path_insp().get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats")
+	var address = retrieve_path_insp().get_node("ItemInsp1")
+	var element_index = str(int(node.name)%100)
+	#Update data displayed
+	match scenario:
+		"REPLACE":
+			#insp_address.get_node("Attack/StatVal").text = data
+			#insp_address.get_node("Defense/StatVal").text = data
+			#insp_address.get_node("Val/StatVal").text = data
+			continue
+		"INIT":
+			insp_address.get_node("Attack/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack)
+			insp_address.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
+			insp_address.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
+			address.show()
+
+
+		"REMOVE":
+			insp_address.get_node("Attack/StatVal").text = null
+			insp_address.get_node("Defense/StatVal").text = null
+			insp_address.get_node("Val/StatVal").text = null
+			address.hide()
+	#Update player stats
+	#if(scenario != "INIT"):
+		#DataResource.temp_dict_player.attack_weapon = x
+		#DataResource.temp_dict_player.defense_armor = x
+
+
+
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
 
@@ -90,6 +126,11 @@ func change_tab_state(next_tab):
 		"Consum":    change_active_tab(get_node(tab + "/Consum/Consum"), get_node(list + "/Consum"), get_node(list + "/InspConsum"))
 		"Misc":      change_active_tab(get_node(tab + "/Misc/Misc"), get_node(list + "/Misc"), get_node(list + "/InspMisc"))
 		"Key Items": change_active_tab(get_node(tab + "/KeyItems/KeyItems"), get_node(list + "/KeyItems"), get_node(list + "/InspKeyItems"))
+	if(fixed_node):
+		fixed_node.get_child(0).texture = null
+		item_state = "FREE"
+		fixed_node = null
+
 
 	if(next_tab):
 		print("Current Tab: ")
@@ -136,27 +177,60 @@ func free_the_inventory():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 
-
+# mouse enters the area occupied by the node
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
-
+		print(node.name)
 		node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
 		#Update Data
 		#Weapons/Apparel
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
-		#Consume curr
+		#Consume/Misc/KeyItems
 		else:
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
-			#define_details(insp.get_node("ItemInsp1"), node)
-		#Consume/Misc/KeyItems
+			var element_index = str(int(node.name)%100)
+			insp.get_node("ItemInsp2/Description").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_details)
+
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
 		insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
+# Mouse leaves label section of the element
+func _on_mouse_exited(node):
+	if(!node):
+		return
+	if(item_state == "FREE"):
+		node.get_child(0).texture = null
+		var insp = retrieve_path_insp()
+
+		if(active_tab.name == "Consum"):
+			insp.get_node("ItemInsp1").hide()
+		insp.get_node("ItemInsp2").hide()
+		insp.get_node("Buttons").hide()
+
+func _on_pressed(node):
+	if(!node):
+		return
+	match item_state:
+		"FREE":
+			item_state = "FIXED"
+			fixed_node = node
+
+		"FIXED":
+			if (node != fixed_node):
+				fixed_node = node
+			else:
+				item_state = "FREE"
+
+	if(item_state == "FIXED"): # Highlight the button last pressed
+		node.get_child(0).texture = index_bg
+
+
+# Displays the respective data corresponding to the item
 func define_inspector(defined_node, node):
 	var element_index = str(int(node.name)%100)
 	if(active_tab.name == "Consum"):
@@ -167,19 +241,6 @@ func define_inspector(defined_node, node):
 		defined_node.get_node("Defense/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense)
 	defined_node.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
 
-#func define_details(defined_node, element_node):
-	#defined_node.get_node("Description", element_index)
-
-# Mouse leaves label section of the element
-func _on_mouse_exited(node):
-	if(item_state == "FREE"):
-		node.get_child(0).texture = null
-		var insp = retrieve_path_insp()
-
-		if(active_tab.name == "Consum"):
-			insp.get_node("ItemInsp1").hide()
-		insp.get_node("ItemInsp2").hide()
-		insp.get_node("Buttons").hide()
 
 func retrieve_path_insp():
 	match active_tab.name:
@@ -193,38 +254,8 @@ func retrieve_path_insp():
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc
 		"KeyItems":
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
+# occurs when the icon of the item is pressed
 
-func _on_pressed(node):
-	print("OK")
-	match item_state:
-		"FREE":
-			item_state = "FIXED"
-			fixed_node = node
-
-		"FIXED":
-			if (node != fixed_node):
-				fixed_node.get_child(0).texture = null
-				fixed_node = node
-				if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-					var insp = retrieve_path_insp()
-					define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
-			else:
-				item_state = "FREE"
-	if(item_state == "FIXED"): # Highlight the button last pressed
-		node.get_child(0).texture = index_bg
-
-
-
-
-func item_inspector_default():
-	#show stats of current item - only for weapon/apparel
-	#show description of current item - rest
-	pass
-
-func item_inspector_new():
-	var insp = "BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/ItemInsp2"
-	get_node(insp).visible = !get_node(insp).is_visible()
-	pass
 
 #Use a Consum item
 func _on_Use_pressed():
@@ -236,7 +267,33 @@ func _on_Use_pressed():
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
 		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
+
 	if(item_used):
-		DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		delete_item()
+
+# Reduces qty of item by 1
+func delete_item():
+	var element_index = str(int(fixed_node.name)%100)
+	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
-		get_node(list + "/Consum/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
+		get_node(list + "/" + active_tab.name + "/VBoxCont/" + fixed_node.name + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	else:
+		# Item Stock is empty:  Hide its data entry, delete it immediately and shift all the indexes after it down by 1
+		element_index = int(element_index)
+		var scene_index = element_index - 1
+
+		_on_pressed(fixed_node)
+		_on_mouse_exited(fixed_node)
+
+		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
+
+		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+
+			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
+			scene_name.name = str(int(scene_name.name) - 1)
+			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			scene_index += 1
+			element_index += 1
+		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+
