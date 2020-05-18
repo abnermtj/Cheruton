@@ -114,10 +114,15 @@ func slot_data(insp_address, element_index):
 	insp_address.get_node("Val/StatVal").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value)
 
 func _on_Equip_pressed():
-	if(fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+	var insp = retrieve_path_insp()
+	if(fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
 		update_equipped_item("REPLACE")
+		insp.get_node("ItemInsp2").hide()
+		insp.get_node("Buttons").hide()
 	else:
 		update_equipped_item("REMOVE")
+		insp.get_node("ItemInsp2").hide()
+		insp.get_node("Buttons").hide()
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
@@ -144,8 +149,8 @@ func change_tab_state(next_tab):
 		fixed_node.get_child(0).texture = null
 		item_state = "FREE"
 		fixed_node = null
-	
-	
+
+
 	if(next_tab):
 		print("Current Tab: ")
 		print(next_tab)
@@ -205,6 +210,10 @@ func _on_mouse_entered(node):
 		#Weapons/Apparel
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
+			if(node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"])): # Accessing item alr equipped
+				insp.get_node("Buttons/Equip/Equip/Equip").text = "Remove"
+			else:# Accessing item not equipped
+				insp.get_node("Buttons/Equip/Equip/Equip").text = "Equip"
 		#Consume/Misc/KeyItems
 		else: 
 			if(active_tab.name == "Consum"):
@@ -214,7 +223,8 @@ func _on_mouse_entered(node):
 
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
-		insp.get_node("ItemInsp2").show()
+		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+			insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
 # Mouse leaves label section of the element
@@ -275,7 +285,7 @@ func retrieve_path_insp():
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspMisc
 		"KeyItems":
 			return $BorderBackground/InnerBackground/VBoxContainer/MElements/InspKeyPass
-# occurs when the icon of the item is pressed
+
 
 
 #Use a Consum item
@@ -296,9 +306,9 @@ func _on_Use_pressed():
 func delete_item():
 	var name_node
 
-	if(fixed_node):
+	if(fixed_node): #Delete normal item
 		name_node = fixed_node.name
-	else:
+	else: #Delete equipped item
 		name_node = str(DataResource.temp_dict_player[active_tab.name + "_item"])
 	var element_index = str(int(name_node)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
@@ -308,7 +318,7 @@ func delete_item():
 	else:
 		# Item Stock is empty:  
 		# Item is currently equipped
-		if(fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		if(!fixed_node):
 			update_equipped_item("REMOVE")
 		element_index = int(element_index)
 		var scene_index = element_index - 1
