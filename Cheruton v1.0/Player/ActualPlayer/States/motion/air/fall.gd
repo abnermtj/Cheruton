@@ -1,4 +1,4 @@
-extends motionState
+extends airState
 
 const JUMP_AGAIN_MARGIN = 0.12 # seconds need to press jump this amout of time for it to input buffer
 const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
@@ -15,6 +15,7 @@ func enter():
 		enter_velocity.x = 500
 
 	owner.play_anim("hover")
+	owner.queue_anim("fall")
 	coyote_timer = COYOTE_TIME
 	jump_again = false
 
@@ -57,7 +58,4 @@ func update(delta):
 				emit_signal("finished", "idle")
 			else:
 				emit_signal("finished", "previous")
-
-func _on_animation_finished(anim_name):
-	if anim_name == "hover":
-		owner.play_anim("fall")
+	.update(delta)

@@ -56,7 +56,6 @@ func _physics_process(delta: float) -> void:
 					chain_in_air = false
 					emit_signal("hooked", tip.global_position)
 				else:
-					print ("here")
 					start_reel()
 
 	# drawing new rope link

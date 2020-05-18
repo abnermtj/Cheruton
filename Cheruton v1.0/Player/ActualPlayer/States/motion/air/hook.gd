@@ -1,4 +1,4 @@
-extends motionState
+extends airState
 
 const PULL_DOWN_STRENGTH = 0.55 # lesser than pull up as gravity contributes
 const PULL_UP_STRENGTH = 1.65
@@ -63,7 +63,9 @@ func update(delta):
 
 	if zip_state == true:
 		owner.velocity = chain_velocity
-	else: # chain in air or hooked and not zipped
+		if owner.global_position.distance_to(tip_pos) < 100:
+			emit_signal("finished", "previous")
+	else: # chain in air or hooked and not zipped SIMPLE PENDULUM MOtion
 		_update( delta )
 		_constrain( )
 		_adjust()
@@ -72,11 +74,13 @@ func update(delta):
 
 func _update(delta):
 	var input_dir = get_input_direction()
-	var shift = cur_pos - prev_pos
+	var vel = cur_pos - prev_pos
 	cur_pos = owner.global_position # previous cur pos_ no longer matched the player position due to constrains
 	prev_pos = cur_pos
-	cur_pos += shift + input_dir * SWING_CONTROL_STRENGTH
-	cur_pos.y += SWING_GRAVITY * delta
+
+
+	cur_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
+#	cur_pos.y += SWING_GRAVITY * delta
 
 	desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH  , MAX_WIRE_LENGTH)

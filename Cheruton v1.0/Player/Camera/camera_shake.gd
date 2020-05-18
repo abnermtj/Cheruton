@@ -2,12 +2,13 @@ extends Camera2D
 class_name ShakeCamera
 
 # from sealed bite github
-const LOOK_AHEAD_FACTOR = 0.1 # percentage of screen to shift for looking ahead when changing directions
+var LOOK_AHEAD_FACTOR = 0.28 # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_OUT
 const SHIFT_DURATION = 2.0
 const RIGHT_BIAS = 1.1 # show more of the screen when going right, ie forward in our game
 
+# SHAKE
 var _duration := 0.0
 var _period_in_ms := 0.0
 var _amplitude := 0.0
@@ -35,7 +36,7 @@ func _ready():
 
 func align_camera_now():
 	# delay below is so that camera not always following player
-	yield( get_tree().create_timer(0.1), 'timeout' ) #yeild freezess current fuction until told to resume
+#	yield( get_tree().create_timer(0.1), 'timeout' ) #yeild freezess current fuction until told to resume
 	# yield (object, signal signal from object to	 continue)
 	# yeild is a coroutine, which interupts function and allows it to complete before continiuing
 	align()
@@ -102,12 +103,10 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	shake_offset -= _last_offset
 	_last_offset = Vector2.ZERO
 
-
 # in target diretion until reached
 func pan_camera( pan : Vector2 ) -> void:
 	target_pan_offset = pan
 	pass
-
 
 func _check_facing():
 	var new_facing = sign(get_camera_position().x - prev_camera_pos.x) # +1 camera moves to the right else -1 if left else 0
@@ -121,6 +120,11 @@ func _check_facing():
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
-func _on_Player_grounded(grounded):
+func _on_player_camera_command(command, arg):
+	if command == 0: #not on floor
+		LOOK_AHEAD_FACTOR = .27
 
-	drag_margin_v_enabled = not grounded
+
+		drag_margin_v_enabled = not arg
+
+

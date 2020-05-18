@@ -1,4 +1,4 @@
-extends motionState
+extends airState
 #NOTE some keyboards cannot detect pressing up left and space simulatenously google NKRO
 
 const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow down by 0 to 1
@@ -40,10 +40,10 @@ func update( delta ):
 		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
 
 	owner.move()
-
 	if owner.is_on_ceiling():
 		owner.velocity.y = 0.0
 		emit_signal("finished","fall")
 	else:
 		if owner.velocity.y > 0:
 			emit_signal("finished","fall")
+	.update(delta)

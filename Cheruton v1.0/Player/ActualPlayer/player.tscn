@@ -9,7 +9,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
 [ext_resource path="res://Player/ActualPlayer/Scarf/scarf.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/ActualPlayer/States/motion/hook.gd" type="Script" id=10]
+[ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
 [ext_resource path="res://Player/ActualPlayer/Sfx/jumpv3.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
@@ -159,6 +159,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 4.08786, -15.6908 ) ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("jump")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "land"
@@ -224,7 +238,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 8 ), Vector2( 0, 1 ), Vector2( 0, 8 ), Vector2( 0, 6 ), Vector2( 0, 8 ) ]
 }
 
@@ -239,13 +253,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="verletChain" parent="." instance=ExtResource( 9 )]
-position = Vector2( 0, 10 )
-scale = Vector2( 8, 4 )
-GRAVITY = 20.0
-RESISTANCE = 0.75
-CHAIN_LINK_LENGTH = 6.5
-
 [node name="bodyPivot" type="Position2D" parent="."]
 
 [node name="sprite" type="Sprite" parent="bodyPivot"]
@@ -253,7 +260,14 @@ position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1429, 1, 32, 36 )
+region_rect = Rect2( 1293, 1, 32, 36 )
+
+[node name="verletChain" parent="." instance=ExtResource( 9 )]
+position = Vector2( 4.08786, -15.6908 )
+scale = Vector2( 8, 4 )
+GRAVITY = 20.0
+RESISTANCE = 0.75
+CHAIN_LINK_LENGTH = 6.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 1 )
@@ -303,6 +317,5 @@ __meta__ = {
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-[connection signal="animation_finished" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

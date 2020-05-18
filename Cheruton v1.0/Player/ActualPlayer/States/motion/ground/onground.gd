@@ -7,3 +7,6 @@ func handle_input(event):
 	if event.is_action_pressed("jump"):
 		emit_signal("finished", "jump")
 	return .handle_input(event) # everything below here not dealt twith
+
+func update(delta):
+	pass

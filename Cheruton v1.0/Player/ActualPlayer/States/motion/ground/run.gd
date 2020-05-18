@@ -22,3 +22,4 @@ func update(delta):
 		emit_signal("finished","fall")
 	if not input_direction.x and abs(owner.velocity.x) < 50 :
 		emit_signal("finished", "idle")
+	.update(delta)

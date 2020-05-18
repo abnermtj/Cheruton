@@ -138,8 +138,8 @@ func change_tab_state(next_tab):
 		fixed_node.get_child(0).texture = null
 		item_state = "FREE"
 		fixed_node = null
-	
-	
+
+
 	if(next_tab):
 		print("Current Tab: ")
 		print(next_tab)
@@ -196,7 +196,7 @@ func _on_mouse_entered(node):
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			define_inspector(insp.get_node("ItemInsp2/HBoxContainer/ScrollContainer/Stats"), node)
 		#Consume/Misc/KeyItems
-		else: 
+		else:
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
 			var element_index = str(int(node.name)%100)
@@ -214,7 +214,7 @@ func _on_mouse_exited(node):
 	if(item_state == "FREE"):
 		node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
-		
+
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
@@ -228,12 +228,12 @@ func _on_pressed(node):
 			item_state = "FIXED"
 			fixed_node = node
 
-		"FIXED": 
+		"FIXED":
 			if (node != fixed_node):
 				fixed_node = node
 			else:
 				item_state = "FREE"
-				
+
 	if(item_state == "FIXED"): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
@@ -275,7 +275,7 @@ func _on_Use_pressed():
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
 		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
-		
+
 	if(item_used):
 		delete_item()
 
@@ -290,14 +290,14 @@ func delete_item():
 		# Item Stock is empty:  Hide its data entry, delete it immediately and shift all the indexes after it down by 1
 		element_index = int(element_index)
 		var scene_index = element_index - 1
-		
+
 		_on_pressed(fixed_node)
 		_on_mouse_exited(fixed_node)
 
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
 
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-	
+
 			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
 			scene_name.name = str(int(scene_name.name) - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]

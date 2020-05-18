@@ -2,7 +2,7 @@ extends groundState
 
 func enter():
 	owner.play_anim("idle")
-
+	owner.queue_anim("idle_continious")
 func handle_input(event):
 	return .handle_input(event)
 
@@ -15,7 +15,4 @@ func update(delta):
 	var input_direction = get_input_direction()
 	if input_direction.x:
 		emit_signal("finished", "run")
-
-func _on_animation_finished(anim_name):
-	if anim_name == "idle":
-		owner.play_anim("idle_continious")
+	.update(delta)

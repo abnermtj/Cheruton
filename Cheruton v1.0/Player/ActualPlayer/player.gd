@@ -11,7 +11,7 @@ var previous_position
 var hook_dir = Vector2()
 var has_jumped = false
 var on_floor = false setget signal_on_floor
-var hooked = false
+var hooked
 
 onready var animation_player = $AnimationPlayer
 
@@ -50,14 +50,16 @@ func _physics_process(delta):
 func play_anim(string):
 	if animation_player:
 		animation_player.play(string)
-
+func queue_anim(string):
+	if animation_player:
+		animation_player.queue(string
+		)
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 
-
 func _on_Chain_hooked(tip_p):
+	hooked = 1
 	tip_pos = tip_p
-	hooked = true
 	$states._change_state("hook")
 
 func chain_release():
