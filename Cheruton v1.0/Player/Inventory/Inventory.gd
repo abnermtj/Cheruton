@@ -95,7 +95,7 @@ func update_equipped_item(scenario):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = mouse_node.name
 			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
 			slot_data(insp_address, element_index)
-			
+
 			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = equipped_bg#stub-to be changed
 			item_state = "FREE"
 			fixed_node = null			
