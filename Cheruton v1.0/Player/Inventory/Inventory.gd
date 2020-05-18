@@ -88,7 +88,7 @@ func update_equipped_item(scenario):
 			slot_data(insp_address, element_index)
 			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = equipped_bg#stub-to be changed
 			item_state = "FREE"
-			fixed_node = null			
+			fixed_node = null
 			address.show()
 
 		"INIT":
@@ -104,7 +104,7 @@ func update_equipped_item(scenario):
 			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = null
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			item_state = "FREE"
-			fixed_node = null		
+			fixed_node = null
 			address.hide()
 
 # Slots data into the equipped item's item inspector
@@ -256,7 +256,7 @@ func _on_pressed(node):
 				fixed_node = node
 			else:
 				item_state = "FREE"
-				
+
 	if(item_state == "FIXED" && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
@@ -316,7 +316,7 @@ func delete_item():
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		get_node(list + "/" + active_tab.name + "/VBoxCont/" + name_node + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
-		# Item Stock is empty:  
+		# Item Stock is empty:
 		# Item is currently equipped
 		if(!fixed_node):
 			update_equipped_item("REMOVE")
