@@ -24,6 +24,7 @@ func _ready():
 
 	connect("tab_changed", self, "change_tab_state")
 	emit_signal("tab_changed", "Weapons")
+	update_equipped_item("INIT")
 
 	get_node(list + "/InspWeapons/Buttons/Delete").connect("pressed", self,  "delete_item")
 	get_node(list +"/InspApparel/Buttons/Delete").connect("pressed", self,  "delete_item")
@@ -83,25 +84,31 @@ func update_equipped_item(scenario):
 	#Update data displayed
 	match scenario:
 		"REPLACE":
+			print("Replacing Item!")
+			if(DataResource.temp_dict_player[active_tab.name + "_item"]): #there is an item equipped
+				get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = null # bg of old texture
 			DataResource.temp_dict_player[active_tab.name + "_item"] = fixed_node.name
 			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
 			slot_data(insp_address, element_index)
-			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = equipped_bg#stub-to be changed
+			
+			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = equipped_bg#stub-to be changed
 			item_state = "FREE"
 			fixed_node = null
 			address.show()
 
 		"INIT":
-			if(DataResource.temp_dict_player[active_tab.name + "_item"] == null): # Item not equipped
-				print("not_displaying")
+			print("Displaying Item!")
+			if(!DataResource.temp_dict_player[active_tab.name + "_item"]): # Item not equipped
+				print("No item equipped")
 				return
 			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
 			slot_data(insp_address, element_index)
-			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = equipped_bg#stub-to be changed
+			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = equipped_bg#stub-to be changed
 			address.show()
 
 		"REMOVE":
-			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + DataResource.temp_dict_player[active_tab.name + "_item"]).get_child(0).texture = null
+			print("Removing Item!")
+			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = null
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			item_state = "FREE"
 			fixed_node = null
