@@ -1245,6 +1245,10 @@ margin_top = 611.0
 margin_right = 1185.0
 margin_bottom = 631.0
 rect_min_size = Vector2( 0, 20 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/Headers/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Weapons/Weapons" to="." method="_on_Weapons_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Apparel/Apparel" to="." method="_on_Apparel_pressed"]
@@ -1254,3 +1258,4 @@ rect_min_size = Vector2( 0, 20 )
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/InspWeapons/Buttons/Equip/Equip" to="." method="_on_Equip_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/InspApparel/Buttons/Equip/Equip" to="." method="_on_Equip_pressed"]
 [connection signal="pressed" from="BorderBackground/InnerBackground/VBoxContainer/MElements/InspConsum/Buttons/Use/Use" to="." method="_on_Use_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

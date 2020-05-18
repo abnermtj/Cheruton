@@ -4,6 +4,8 @@ var count = 0
 var active_tab
 var active_tab_items
 var active_tab_inspector
+var mouse_count = 0
+var mouse_node
 
 var item_state = "FREE"
 var fixed_node
@@ -87,13 +89,16 @@ func update_equipped_item(scenario):
 			print("Replacing Item!")
 			if(DataResource.temp_dict_player[active_tab.name + "_item"]): #there is an item equipped
 				get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = null # bg of old texture
-			DataResource.temp_dict_player[active_tab.name + "_item"] = fixed_node.name
+			if(fixed_node):
+				DataResource.temp_dict_player[active_tab.name + "_item"] = fixed_node.name
+			else:
+				DataResource.temp_dict_player[active_tab.name + "_item"] = mouse_node.name
 			element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"]) % 100)
 			slot_data(insp_address, element_index)
 			
 			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = equipped_bg#stub-to be changed
 			item_state = "FREE"
-			fixed_node = null
+			fixed_node = null			
 			address.show()
 
 		"INIT":
@@ -111,7 +116,7 @@ func update_equipped_item(scenario):
 			get_node(list + "/"  + active_tab.name + "/VBoxCont/" + str(DataResource.temp_dict_player[active_tab.name + "_item"])).get_child(0).texture = null
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			item_state = "FREE"
-			fixed_node = null
+			fixed_node = null		
 			address.hide()
 
 # Slots data into the equipped item's item inspector
@@ -122,7 +127,7 @@ func slot_data(insp_address, element_index):
 
 func _on_Equip_pressed():
 	var insp = retrieve_path_insp()
-	if(fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+	if((fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])) || !DataResource.temp_dict_player[active_tab.name + "_item"]):
 		update_equipped_item("REPLACE")
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
@@ -222,7 +227,7 @@ func _on_mouse_entered(node):
 			else:# Accessing item not equipped
 				insp.get_node("Buttons/Equip/Equip/Equip").text = "Equip"
 		#Consume/Misc/KeyItems
-		else:
+		else: 
 			if(active_tab.name == "Consum"):
 				define_inspector(insp.get_node("ItemInsp1/HBoxContainer/ScrollContainer/Stats"), node)
 			var element_index = str(int(node.name)%100)
@@ -242,7 +247,7 @@ func _on_mouse_exited(node):
 		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
 			node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
-
+		
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").hide()
 		insp.get_node("ItemInsp2").hide()
@@ -250,7 +255,22 @@ func _on_mouse_exited(node):
 
 # When the icon of a item is pressed
 func _on_pressed(node):
-	#activate double feature
+	if(mouse_count == 0):
+		$Timer.start()
+	mouse_count += 1
+	mouse_node = node
+	
+# Check if the doubleclick has happened
+func _on_Timer_timeout():
+	if(mouse_count == 1):
+		print("Single Clicked!")
+		change_state(mouse_node)
+	elif(mouse_count == 2):
+		print("Double Clicked!")
+		_on_Equip_pressed()
+	mouse_count = 0
+
+func change_state(node):
 	if(!node):
 		return
 	match item_state:
@@ -258,7 +278,7 @@ func _on_pressed(node):
 			item_state = "FIXED"
 			fixed_node = node
 
-		"FIXED":
+		"FIXED": 
 			if (node != fixed_node):
 				fixed_node = node
 			else:
@@ -305,7 +325,7 @@ func _on_Use_pressed():
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
 		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
-
+		
 	if(item_used):
 		delete_item()
 
@@ -323,26 +343,29 @@ func delete_item():
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		get_node(list + "/" + active_tab.name + "/VBoxCont/" + name_node + "/Background/MainCont/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
-		# Item Stock is empty:
+		# Item Stock is empty:  
 		# Item is currently equipped
 		if(!fixed_node):
 			update_equipped_item("REMOVE")
 		element_index = int(element_index)
 		var scene_index = element_index - 1
-
+		
 		_on_pressed(fixed_node)
 		_on_mouse_exited(fixed_node)
 		#Hide its data entry, delete it immediately and shift all the indexes after it down by 1
 		get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index).free()
 
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-
+	
 			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
 			scene_name.name = str(int(scene_name.name) - 1)
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			scene_index += 1
 			element_index += 1
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+
+
+
 
 
 
