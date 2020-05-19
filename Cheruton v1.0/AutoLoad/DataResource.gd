@@ -34,7 +34,8 @@ func load_data():
 
 func load_dict(FilePath):
 	var DataFile = File.new()
-	DataFile.open(FilePath, File.READ)
+	#DataFile.open(FilePath, File.READ)
+	var err = DataFile.open_encrypted_with_pass(FilePath, File.READ, "mypass")
 	var data = JSON.parse(DataFile.get_as_text())
 	DataFile.close()
 	print("Data Loaded!")
@@ -51,9 +52,11 @@ func save_rest():
 
 func save_data(FILE, dictionary):
 	var file = File.new()
-	file.open(FILE, File.WRITE)
+	#file.open(FILE, File.WRITE)
+	var err = file.open_encrypted_with_pass(FILE, File.WRITE, "mypass")
 	file.store_string(to_json(dictionary))
 	file.close()
+
 
 func restore_last_save():
 	temp_dict_player = dict_player
