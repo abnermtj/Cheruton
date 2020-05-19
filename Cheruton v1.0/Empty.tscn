@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://fog_default.shader" type="Shader" id=2]
+[ext_resource path="res://Mountainold1.png" type="Texture" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/color = Vector3( 0.33, 0.15, 0.82 )
+shader_param/colour = Vector3( 1, 1, 1 )
+shader_param/OCTAVE = 8
 
-[node name="Node2D" type="Node2D"]
+[node name="Control" type="Control"]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="Sprite" parent="."]
+position = Vector2( 662.039, 362.065 )
+scale = Vector2( 3.88178, 4.12554 )
+texture = ExtResource( 3 )
 
 [node name="Fog" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 642.848, 364.998 )
-scale = Vector2( 90.3591, 57.9953 )
+position = Vector2( 649.914, 370.722 )
+scale = Vector2( 19.8899, 11.3964 )
 texture = ExtResource( 1 )
