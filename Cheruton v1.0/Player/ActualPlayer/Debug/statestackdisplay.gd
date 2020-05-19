@@ -5,7 +5,7 @@ extends Panel
 func _ready():
 	set_as_toplevel(true)
 
-func _on_Player_state_changed(states_stack):
+func _on_player_state_changed(states_stack):
 	var states_names = ''
 	var numbers = ''
 	var index = 0
@@ -16,8 +16,3 @@ func _on_Player_state_changed(states_stack):
 
 	$States.text = states_names
 	$Numbers.text = numbers
-
-#
-#
-#func _on_states_state_changed(current_state):
-#	pass # Replace with function body.

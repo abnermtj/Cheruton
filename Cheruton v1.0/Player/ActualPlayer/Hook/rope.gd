@@ -54,6 +54,7 @@ func release():
 	a = 18 +rand_num2
 	s = .68 + rand_num3
 
+# dont use physics else chain will lag behind actauly frame rate
 func _process(delta):
 	if not self.visible:
 		return

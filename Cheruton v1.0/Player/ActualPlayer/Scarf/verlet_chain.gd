@@ -1,6 +1,6 @@
 extends Node2D
 class_name VerletChain
-# THIS CLASS IS THE TOP OF THE CHAIN
+
 # export is good so each node that extends from this has independant graity resistance..
 export (float) var GRAVITY := 100.0
 export (float) var RESISTANCE := 0.70
@@ -13,7 +13,6 @@ func _ready():
 	call_deferred( "setup_chain" )  # call it when apt
 
 func setup_chain():
-	# find anchor
 	loops = []
 	links = []
 	var children = get_children()
@@ -28,16 +27,13 @@ func setup_chain():
 
 	# set initial positions
 	for loop in loops:
-#		print ("curr", loop, "chi ", loop.get_node("link").child , " parr ",loop.get_node("link").parent , "fix is ", loop.anchor)
 		loop.pos_cur = loop.global_position
 		loop.pos_prv = loop.global_position
 	for link in links:
 		# note link position automatically set
-#		print("current link parent is ", link.parent, "child is ", link.child)
 		link.global_position = ( link.parent.global_position + link.child.global_position ) * 0.5 # middle between parent and child
 		link.global_rotation = link.parent.pos_cur.angle_to_point( link.child.pos_cur ) + PI / 2 # straight above means  angle to point is 0
-# we add PI/2 or 90 degrees because for global rotation 0 degrees is a vector pointing to the right. so to convert straight up being 0degrees to right
-# we have add 90 degrees to whatever value from angle to point
+# we add PI/2 or 90 degrees because for global rotation 0 degrees is a vector pointing to the right
 
 func create_chain( parent ):
 	var found_loop = false
@@ -59,8 +55,7 @@ func create_chain( parent ):
 
 func _physics_process( delta ):
 	_update_loops( delta )
-	for i in range(0,2):
-		_constrain_links( delta )
+	_constrain_links( delta ) # good enough one pass
 	_render_frame()
 
 #move loop in direction of loop above it
@@ -85,17 +80,13 @@ func _constrain_links( delta ):
 		if distance < 0.01: distance = 0.01 # since distance cannot equal to 0, we dividing below
 		var difference = CHAIN_LINK_LENGTH - distance # if distane is too large > chain link length
 		var percentage = difference / distance
-#
-#		if percentage > 1: percentage = 1   # move towards it 1 means to close gap completely child will be at parent noded
+
 		vector *= percentage
 		link.child.pos_cur += vector
-	pass
 
 func _render_frame():
 	for loop in loops:
-		loop.global_position = loop.pos_cur#.round()
+		loop.global_position = loop.pos_cur
 	for link in links:
-		link.global_position = ( ( link.parent.global_position + link.child.global_position ) * 0.5 )#.round()
+		link.global_position = ( ( link.parent.global_position + link.child.global_position ) * 0.5 )
 		link.global_rotation = link.parent.pos_cur.angle_to_point( link.child.pos_cur ) + PI / 2
-	pass # doesnt actaully do anythings no return value, not even null, lietrally pass
-
