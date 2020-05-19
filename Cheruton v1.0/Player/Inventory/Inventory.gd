@@ -214,6 +214,7 @@ func free_the_inventory():
 # mouse enters the area occupied by the node
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
+		mouse_node = node
 		print(node.name)
 		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
 			node.get_child(0).texture = index_bg
@@ -258,17 +259,18 @@ func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
-	mouse_node = node
+	if (mouse_count == 2):
+		print("Double Clicked!")
+		_on_Equip_pressed()
+		mouse_count = 0
+
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
 		print("Single Clicked!")
 		change_state(mouse_node)
-	elif(mouse_count == 2):
-		print("Double Clicked!")
-		_on_Equip_pressed()
-	mouse_count = 0
+
 
 func change_state(node):
 	if(!node):
