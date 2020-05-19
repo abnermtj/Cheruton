@@ -35,6 +35,9 @@ func load_data():
 func load_dict(FilePath):
 	var DataFile = File.new()
 	#DataFile.open(FilePath, File.READ)
+	if(!DataFile.file_exists(FilePath)):
+		save_data(FilePath, dict_main)
+		#reset_all()
 	var err = DataFile.open_encrypted_with_pass(FilePath, File.READ, "mypass")
 	var data = JSON.parse(DataFile.get_as_text())
 	DataFile.close()
@@ -61,6 +64,8 @@ func save_data(FILE, dictionary):
 func restore_last_save():
 	temp_dict_player = dict_player
 
+func reset_all():
+	reset_player()
 
 func reset_player():
 	dict_player.exp_curr = 0
