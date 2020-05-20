@@ -1,13 +1,13 @@
 shader_type canvas_item;
 
 uniform vec3 colour = vec3(1.0, 1.0, 1.0); // Grey
-uniform int OCTAVE = 8;
+uniform int OCTAVE = 4;
 
 
 // Get alpha_val to be btw 0 and 1
 // Fract: Obtains decimal val, Sin: Wavy Texture
 float rand(vec2 coord){
-	return fract(sin(dot(coord, vec2(66, 78))* 1000.0) * 1000.0);
+	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453123);
 }
 
 float noise(vec2 coord){
@@ -36,7 +36,6 @@ float fbm(vec2 coord){
 		coord *= 2.0;
 		scale /= 2.0;
 	}
-	
 	return val;
 }
 
