@@ -8,7 +8,7 @@ const RELEASE_TIMER = .05 # time before player can zip/release rope from hands
 const SWING_CONTROL_STRENGTH = .150
 const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 70
-const MIN_WIRE_LENGTH = 300
+const MIN_WIRE_LENGTH = 240
 const MAX_WIRE_LENGTH = 600
 const WIRE_REEL_SPEED = 100
 const PLAYER_LENGTH_CONTROL = 300 # players influence with REEL
@@ -48,7 +48,7 @@ func update(delta):
 	if Input.is_action_just_pressed("jump") and release_timer < 0: # bugs if jumping same frame as press
 		if owner.is_on_ceiling():
 			owner.velocity = Vector2.DOWN
-		emit_signal("finished", "previous")
+		emit_signal("finished", "fall")
 		return
 	# zip up
 	if Input.is_action_just_pressed("hook") and release_timer < 0 and owner.hooked:
@@ -59,11 +59,13 @@ func update(delta):
 			chain_velocity.y *= PULL_DOWN_STRENGTH
 		else:
 			chain_velocity.y *= PULL_UP_STRENGTH
+	if owner.global_position.y < tip_pos.y: # when player is above hook point
+		emit_signal("finished", "fall")
 
 	if zip_state == true:
 		owner.velocity = chain_velocity
 		if owner.global_position.distance_to(tip_pos) < 100:
-			emit_signal("finished", "previous")
+			emit_signal("finished", "fall")
 	else: # chain in air or hooked and not zipped SIMPLE PENDULUM MOtion
 		_update( delta )
 		_constrain( )

@@ -62,16 +62,11 @@ func update(delta):
 		owner.play_anim("land")
 		owner.play_anim_fx("land")
 		if (jump_again and jump_timer >= 0):
-			owner.get_node("states").states_stack.pop_front() # fixes a bug that stacked falls
 			emit_signal("finished", "jump")
 		elif (slide and slide_timer >= 0):
-			owner.get_node("states").states_stack.pop_front() # fixes a bug that stacked falls
 			emit_signal("finished", "slide")
 		else:
 			# land
 			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
-			if owner.get_node("states").states_stack.size() == 1:
-				emit_signal("finished", "idle")
-			else:
-				emit_signal("finished", "previous")
+			emit_signal("finished", "run")
 	.update(delta)

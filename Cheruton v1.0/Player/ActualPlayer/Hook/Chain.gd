@@ -24,6 +24,7 @@ func _on_player_hook_command (com, dir, player_pos):
 		chain_in_air = true
 		tip.global_position = player_pos
 		hook_timer = HOOK_TIMER
+		$tip/CollisionShape2D.disabled = false
 		$link.start()
 	else: # END
 		start_reel()
@@ -32,6 +33,7 @@ func start_reel():
 	chain_in_air = false
 	hooked = false
 	start_reel = true
+	$tip/CollisionShape2D.disabled = true
 
 func _physics_process(delta: float) -> void:
 	if not chain_in_air and not hooked and start_reel:

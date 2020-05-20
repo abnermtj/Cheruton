@@ -97,7 +97,7 @@ func reset_settings():
 func reset_inventory():
 	dict_inventory.Weapons =  {}
 	dict_inventory.Apparel = {}
-	dict_inventory.Consum = {} 
+	dict_inventory.Consum = {}
 	dict_inventory.Misc = {}
 	dict_inventory["Key Items"] = {}
 	save_rest()

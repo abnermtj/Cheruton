@@ -12,7 +12,7 @@ var states_map = {}
 
 var states_stack = []
 var current_state = null
-var previous_state_name = null # for function
+var previous_state = null # for function
 
 var _active = false setget set_active
 
@@ -51,10 +51,7 @@ func _change_state(state_name):
 		return
 	current_state.exit()
 
-	if state_name == "previous": # pop the current one to goto the new one
-		states_stack.pop_front()
-	else:
-		states_stack[0] = states_map[state_name]
+	states_stack[0] = states_map[state_name]
 
 	current_state = states_stack[0]
 	emit_signal("state_changed", states_stack)

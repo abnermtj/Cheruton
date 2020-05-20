@@ -6,22 +6,28 @@ const JUMP_GRAVITY_SLOWDOWN = .42 # slows down gravity on top of jump more drift
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity
-
-const JUMP_VEL = -690  # jump power 670 old
+var input_dir
+const JUMP_VEL = -690
 
 func enter() -> void:
 	enter_velocity = owner.velocity
-
 	if 500 > abs(enter_velocity.x):
 		enter_velocity.x = 500
 
 	owner.has_jumped = true
-	if get_parent().previous_state_name != "hook":
+
+	var prev_state_name = get_parent().previous_state.name
+
+	if prev_state_name != "hook":
 		owner.velocity.y = JUMP_VEL # old speed kept
-	owner.move()
-	owner.play_anim("jump")
-	if(get_parent().previous_state_name != "hook"):
 		owner.play_anim_fx("jump")
+
+	if prev_state_name == "wallslide":
+		input_dir = get_input_direction()
+		owner.velocity.x = -JUMP_VEL*input_dir.x
+
+	owner.move() # instant feedback
+	owner.play_anim("jump")
 	keypress_timer = 0.2
 
 func update( delta ):
@@ -33,12 +39,11 @@ func update( delta ):
 		owner.velocity.y *= JUMP_RELEASE_SLOWDOWN
 
 	# steering here
-	var input_dir = get_input_direction()
+	input_dir = get_input_direction()
 	update_look_direction(input_dir)
-	var dir = input_dir.x
 
-	if dir: # tend to input dir if steering
-		owner.velocity.x = clamp ((owner.velocity.x + dir*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
+	if input_dir.x: # tend to input dir if steering
+		owner.velocity.x = clamp ((owner.velocity.x + input_dir.x*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else: # tend .x to 0 if not steerings
 		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
 

@@ -37,10 +37,6 @@ func _ready():
 	call_deferred( "align_camera_now" )
 
 func align_camera_now():
-	# delay below is so that camera not always following player
-#	yield( get_tree().create_timer(0.1), 'timeout' ) #yeild freezess current fuction until told to resume
-	# yield (object, signal signal from object to	 continue)
-	# yeild is a coroutine, which interupts function and allows it to complete before continiuing
 	align()
 	reset_smoothing()
 
@@ -132,8 +128,7 @@ func _on_player_camera_command(command, arg):
 	else:
 		is_player_hooked = 0
 		smoothing_speed = 2.1
-		LOOK_AHEAD_FACTOR = .4
-
+		LOOK_AHEAD_FACTOR = .3
 
 func _on_player_shake(dur, freq, amp, dir):
 	shake(dur, freq, amp, dir)

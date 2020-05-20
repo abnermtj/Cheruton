@@ -1,12 +1,11 @@
 extends motionState
 
 class_name airState
+
+const WALL_SLIDE_THRESHHOLD = -100 # max y velocity to goto wall slide
 var already_hooked = false
 
 func update(delta):
-	pass
-#	print (owner.start_hook, already_hooked)
-#	if owner.start_hook == true and already_hooked == false :
-#		owner.start_hook = false
-#		already_hooked = true
-#		emit_signal("finished", "hook")
+	owner._update_wall_direction()
+	if owner.wall_direction != 0 and owner.velocity.y > WALL_SLIDE_THRESHHOLD:
+		emit_signal("finished", "wallslide")

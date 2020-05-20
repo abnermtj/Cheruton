@@ -131,7 +131,7 @@ func _on_Equip_pressed():
 		update_equipped_item("REPLACE")
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
-		
+
 	else:
 		update_equipped_item("REMOVE")
 		insp.get_node("ItemInsp2").hide()

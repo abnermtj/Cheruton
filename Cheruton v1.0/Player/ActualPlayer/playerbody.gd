@@ -15,16 +15,17 @@ var has_jumped = false
 var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var exit_slide_blocked = false
+var wall_direction = 0
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
+onready var left_wall_raycasts = $wallRaycasts/leftSide
+onready var right_wall_raycasts = $wallRaycasts/rightSide
 
 signal state_changed
 signal hook_command
 signal camera_command
 signal shake
-
-
 
 func take_damage(attacker, amount, effect=null):
 	if self.is_a_parent_of(attacker):
@@ -88,6 +89,27 @@ func _on_slideArea2D_body_exited(body):
 func _on_slideArea2D_body_entered(body):
 	exit_slide_blocked = true
 
+func _update_wall_direction():
+	var is_near_wall_left = _is_wall_raycast_colliding(left_wall_raycasts)
+	var is_near_wall_right = _is_wall_raycast_colliding(right_wall_raycasts)
+
+	if is_near_wall_left && is_near_wall_right:
+		wall_direction = wall_direction # change to get input CHANGECHANGE
+	else:
+		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
+	if not is_near_wall_left and not is_near_wall_right:
+		return false
+	else:
+		return true
+
+func _is_wall_raycast_colliding(wall_raycasts):
+	for raycast in wall_raycasts.get_children():
+			if raycast.is_colliding():
+				var angle =  acos(Vector2.UP.dot(raycast.get_collision_normal())) # this is dot product, accounts for slopes
+				if  angle > deg2rad(60) &&  angle < deg2rad(120):
+					return true
+	return false
+
 
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
@@ -97,7 +119,7 @@ func set_camera_mode_logic():
 	if hooked:
 		emit_signal("camera_command", 1, 0)
 	else:
-		if not ($states.previous_state_name == "hook" and $states.current_state is airState):
+		if not ($states.previous_state.name == "hook" and $states.current_state is airState):
 			emit_signal("camera_command", 0, on_floor)
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
