@@ -14,7 +14,7 @@ var hooked
 var has_jumped = false
 var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
-var slide_blocked = false
+var exit_slide_blocked = false
 
 onready var animation_player = $AnimationPlayer
 
@@ -76,9 +76,9 @@ func switch_col():
 		$bodyCollision.disabled = not $bodyCollision.disabled
 		$slideCollision.disabled = not $slideCollision.disabled
 func _on_slideArea2D_body_exited(body):
-	slide_blocked = false
+	exit_slide_blocked = false
 func _on_slideArea2D_body_entered(body):
-	slide_blocked = true
+	exit_slide_blocked = true
 
 
 func _process(delta):

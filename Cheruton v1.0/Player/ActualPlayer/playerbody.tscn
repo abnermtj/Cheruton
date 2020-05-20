@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/24fps_MC.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -12,6 +12,63 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
 [ext_resource path="res://Player/ActualPlayer/Sfx/jumpv3.wav" type="AudioStream" id=11]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
+[ext_resource path="res://Player/ActualPlayer/attack_ground.gd" type="Script" id=13]
+
+[sub_resource type="Animation" id=14]
+resource_name = "attack_air"
+length = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1429, 1, 32, 36 ), Rect2( 1463, 1, 32, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "attack_ground"
+length = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1429, 1, 32, 36 ), Rect2( 1463, 1, 32, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 length = 0.08
@@ -309,6 +366,8 @@ region_enabled = true
 region_rect = Rect2( 1429, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack_air = SubResource( 14 )
+anims/attack_ground = SubResource( 13 )
 anims/fall = SubResource( 1 )
 anims/hover = SubResource( 2 )
 anims/idle = SubResource( 3 )
@@ -349,6 +408,9 @@ script = ExtResource( 8 )
 
 [node name="hook" type="Node" parent="states"]
 script = ExtResource( 10 )
+
+[node name="attack" type="Node" parent="states"]
+script = ExtResource( 13 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
 margin_left = -43.0

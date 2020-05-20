@@ -7,7 +7,8 @@ func _ready():
 		"jump": $jump,
 		"fall": $fall,
 		"hook": $hook,
-		"slide" : $slide
+		"slide" : $slide,
+		"attack" : $attack
 	}
 
 func _change_state(state_name):
