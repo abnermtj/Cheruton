@@ -127,10 +127,11 @@ func slot_data(insp_address, element_index):
 
 func _on_Equip_pressed():
 	var insp = retrieve_path_insp()
-	if((fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])) || !DataResource.temp_dict_player[active_tab.name + "_item"]):
+	if(mouse_count == 2 || (fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])) || !DataResource.temp_dict_player[active_tab.name + "_item"]):
 		update_equipped_item("REPLACE")
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
+		
 	else:
 		update_equipped_item("REMOVE")
 		insp.get_node("ItemInsp2").hide()
@@ -214,8 +215,9 @@ func free_the_inventory():
 # mouse enters the area occupied by the node
 func _on_mouse_entered(node):
 	if(item_state == "FREE"):
+		mouse_node = node
 		print(node.name)
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		if(!((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))):
 			node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
 		#Update Data
@@ -235,7 +237,7 @@ func _on_mouse_entered(node):
 
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		elif(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
 			insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
@@ -244,7 +246,7 @@ func _on_mouse_exited(node):
 	if(!node):
 		return
 	if(item_state == "FREE"):
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		if(!((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))):
 			node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
 
@@ -258,17 +260,20 @@ func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
-	mouse_node = node
+	if (mouse_count == 2):
+		print("Double Clicked!")
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			_on_Equip_pressed()
+		mouse_count = 0
+
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
 		print("Single Clicked!")
 		change_state(mouse_node)
-	elif(mouse_count == 2):
-		print("Double Clicked!")
-		_on_Equip_pressed()
-	mouse_count = 0
+		mouse_count = 0
+
 
 func change_state(node):
 	if(!node):
@@ -284,7 +289,7 @@ func change_state(node):
 			else:
 				item_state = "FREE"
 
-	if(item_state == "FIXED" && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])): # Highlight the button last pressed
+	if(item_state == "FIXED" && !((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
 

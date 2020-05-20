@@ -34,7 +34,6 @@ func loot_selector(map_name, loot_count):
 			else:
 				chosen_loot -= DataResource.dict_item_spawn[map_name]["ItemChance" + str(index)]
 				index += 1
-	print(loot_dict)#-debug
 
 # Transfers all loot present in loot_dict to dict_inventory
 func append_loot(loot_count):
@@ -86,6 +85,7 @@ func insert_data(index, curr_size):
 				"item_healval": DataResource.dict_item_masterlist[name].HealVal,
 				"item_value": DataResource.dict_item_masterlist[name].ItemValue,
 				"item_details": DataResource.dict_item_masterlist[name].ItemDetails,
+				"item_png": DataResource.dict_item_masterlist[name].ItemPNG,
 				"item_qty": loot_dict[index][2],
 		}
 	DataResource.dict_inventory[loot_dict[index][0]]["Item" + str(curr_size)] = style

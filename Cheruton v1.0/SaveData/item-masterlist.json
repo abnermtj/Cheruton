@@ -1,0 +1,55 @@
+{
+  "item_spawn": {
+    "test": {
+      "ItemMinCount": 4,
+      "ItemMaxCount": 6,
+      "ItemName1": "Gold",
+      "ItemChance1": 80,
+      "ItemMinQ1": 2,
+      "ItemMaxQ1": 5,
+      "ItemType1": "Money",
+      "ItemName2": "Iron Sword",
+      "ItemChance2": 15,
+      "ItemMinQ2": 1,
+      "ItemMaxQ2": 1,
+      "ItemType2": "Weapons",
+      "ItemName3": "Potion Tube",
+      "ItemChance3": 40,
+      "ItemMinQ3": 1,
+      "ItemMaxQ3": 2,
+      "ItemType3": "Consum"
+    }
+  },
+  "item_masterlist": {
+    "Iron Sword": {
+      "ItemType": "Weapons",
+      "ItemAtk": 6,
+      "ItemDef": null,
+      "StatHeal": null,
+      "HealVal": null,
+      "ItemValue": 40,
+      "ItemDetails": null,
+      "ItemPNG": null
+    },
+    "Steel Sword": {
+      "ItemType": "Weapons",
+      "ItemAtk": 13,
+      "ItemDef": null,
+      "StatHeal": null,
+      "HealVal": null,
+      "ItemValue": 60,
+      "ItemDetails": null,
+      "ItemPNG": null
+    },
+    "Potion Tube": {
+      "ItemType": "Consum",
+      "ItemAtk": null,
+      "ItemDef": null,
+      "StatHeal": "HP",
+      "HealVal": 20,
+      "ItemValue": 30,
+      "ItemDetails": null,
+      "ItemPNG": null
+    }
+  }
+}
