@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/24fps_MC.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Player/ActualPlayer/Scarf/scarf.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
 [ext_resource path="res://Player/ActualPlayer/Sfx/jumpv3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.08
@@ -242,9 +243,47 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 8 ), Vector2( 0, 1 ), Vector2( 0, 8 ), Vector2( 0, 6 ), Vector2( 0, 8 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="Animation" id=8]
+resource_name = "slide"
+length = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1429, 1, 32, 36 ), Rect2( 1463, 1, 32, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 30.0
 height = 65.0
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 30.0
+height = 0.0
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 0 ), 0.0, 1.17104, 0, 0, Vector2( 1, 1 ), 0.938576, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 30, 17.889 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 2, 0 )
@@ -267,7 +306,7 @@ position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1293, 1, 32, 36 )
+region_rect = Rect2( 1429, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 1 )
@@ -277,23 +316,33 @@ anims/idle_continious = SubResource( 4 )
 anims/jump = SubResource( 5 )
 anims/land = SubResource( 6 )
 anims/run_continious = SubResource( 7 )
+anims/slide = SubResource( 8 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 10 )
-shape = SubResource( 8 )
+position = Vector2( -1, 9 )
+shape = SubResource( 9 )
+
+[node name="slideCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 42 )
+shape = SubResource( 10 )
+disabled = true
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 3 )
 START_STATE = NodePath("idle")
 
+[node name="slide" type="Node" parent="states"]
+script = ExtResource( 12 )
+attachment_curve = SubResource( 11 )
+
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
 
-[node name="run" type="Node" parent="states"]
-script = ExtResource( 6 )
-
 [node name="jump" type="Node" parent="states"]
 script = ExtResource( 7 )
+
+[node name="run" type="Node" parent="states"]
+script = ExtResource( 6 )
 
 [node name="fall" type="Node" parent="states"]
 script = ExtResource( 8 )
@@ -317,5 +366,22 @@ __meta__ = {
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+
+[node name="slideRay" type="RayCast2D" parent="."]
+position = Vector2( 0, 20 )
+scale = Vector2( 1, -1 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 4
+
+[node name="slideArea2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
+position = Vector2( -1, -5 )
+shape = SubResource( 12 )
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
+[connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]

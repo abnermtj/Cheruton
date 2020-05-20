@@ -6,7 +6,7 @@ const HOOK_TIMER = .33 # how long to shoot out hook more means perfeformance hit
 var direction := Vector2(0,0) # The direction in which the chain was shot
 
 var chain_in_air
-var hooked
+var hooked = false
 var start_reel = false
 onready var hook_timer = -1 # time before hook dissapears
 var player_pos
@@ -15,6 +15,7 @@ onready var  link  = $link
 onready var tip = $tip
 
 signal hooked(tip_pos)
+signal shake
 
 # com - command, 0 -start hook, 1 -release
 func _on_player_hook_command (com, dir, player_pos):
@@ -55,14 +56,17 @@ func _physics_process(delta: float) -> void:
 					hooked = true
 					chain_in_air = false
 					emit_signal("hooked", tip.global_position)
+					emit_signal("shake", .105, 6, 7, -(tip.global_position - player_pos).normalized()+ Vector2(.1,.1)) # .1. 1 for slide offset so that shake is more visible
 				else:
 					start_reel()
 
+func _process(delta):
 	# drawing new rope link
-	player_pos = DataResource.dict_player.player_pos
-	link.c = max((player_pos - tip.global_position).length(),1)
-	link.rotation = player_pos.angle_to_point(tip.global_position)
-	link.global_position = tip.global_position
+	if self.visible:
+		player_pos = DataResource.dict_player.player_pos
+		link.c = max((player_pos - tip.global_position).length(),1)
+		link.rotation = player_pos.angle_to_point(tip.global_position)
+		link.global_position = tip.global_position
 
-	tip.rotation = player_pos.angle_to_point(tip.global_position)
+		tip.rotation = player_pos.angle_to_point(tip.global_position)
 
