@@ -127,10 +127,11 @@ func slot_data(insp_address, element_index):
 
 func _on_Equip_pressed():
 	var insp = retrieve_path_insp()
-	if((fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])) || !DataResource.temp_dict_player[active_tab.name + "_item"]):
+	if(mouse_count == 2 || (fixed_node && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])) || !DataResource.temp_dict_player[active_tab.name + "_item"]):
 		update_equipped_item("REPLACE")
 		insp.get_node("ItemInsp2").hide()
 		insp.get_node("Buttons").hide()
+		
 	else:
 		update_equipped_item("REMOVE")
 		insp.get_node("ItemInsp2").hide()
@@ -261,7 +262,8 @@ func _on_pressed(node):
 	mouse_count += 1
 	if (mouse_count == 2):
 		print("Double Clicked!")
-		_on_Equip_pressed()
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			_on_Equip_pressed()
 		mouse_count = 0
 
 
@@ -270,6 +272,7 @@ func _on_Timer_timeout():
 	if(mouse_count == 1):
 		print("Single Clicked!")
 		change_state(mouse_node)
+		mouse_count = 0
 
 
 func change_state(node):
