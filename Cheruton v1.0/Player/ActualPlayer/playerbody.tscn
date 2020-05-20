@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/24fps_MC.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -328,6 +328,36 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.19 ),
+"transitions": PoolRealArray( 1.8025, 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 1.05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "land"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.392292, 1 ),
+"update": 0,
+"values": [ Vector2( 1.06, 0.83 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 30.0
 height = 65.0
@@ -363,7 +393,7 @@ position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1429, 1, 32, 36 )
+region_rect = Rect2( 1463, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_air = SubResource( 14 )
@@ -376,6 +406,10 @@ anims/jump = SubResource( 5 )
 anims/land = SubResource( 6 )
 anims/run_continious = SubResource( 7 )
 anims/slide = SubResource( 8 )
+
+[node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
+anims/jump = SubResource( 15 )
+anims/land = SubResource( 16 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 9 )

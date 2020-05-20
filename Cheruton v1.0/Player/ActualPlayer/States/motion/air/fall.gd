@@ -60,6 +60,7 @@ func update(delta):
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim("land")
+		owner.play_anim_fx("land")
 		if (jump_again and jump_timer >= 0):
 			owner.get_node("states").states_stack.pop_front() # fixes a bug that stacked falls
 			emit_signal("finished", "jump")

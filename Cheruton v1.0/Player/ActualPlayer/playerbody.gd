@@ -17,6 +17,7 @@ var look_direction = Vector2(1, 0) setget set_look_direction
 var exit_slide_blocked = false
 
 onready var animation_player = $AnimationPlayer
+onready var animation_player_fx = $AnimationPlayerFx
 
 signal state_changed
 signal hook_command
@@ -54,6 +55,13 @@ func play_anim(string):
 func queue_anim(string):
 	if animation_player:
 		animation_player.queue(string)
+func play_anim_fx(string):
+	if animation_player_fx:
+		animation_player_fx.play(string)
+func queue_anim_fx(string):
+	if animation_player_fx:
+		animation_player_fx.queue(string)
+
 
 # Hook mechanics
 func start_hook():

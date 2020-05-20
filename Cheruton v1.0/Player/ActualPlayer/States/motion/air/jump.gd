@@ -20,6 +20,8 @@ func enter() -> void:
 		owner.velocity.y = JUMP_VEL # old speed kept
 	owner.move()
 	owner.play_anim("jump")
+	if(get_parent().previous_state_name != "hook"):
+		owner.play_anim_fx("jump")
 	keypress_timer = 0.2
 
 func update( delta ):

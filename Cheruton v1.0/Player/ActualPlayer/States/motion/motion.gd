@@ -24,5 +24,5 @@ func update_look_direction(direction):
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction
 	if direction.x in [-1, 1]:
-		owner.get_node("bodyPivot").set_scale(Vector2(direction.x, 1)) # flips horizontally
+		owner.get_node("bodyPivot/sprite").flip_h = true if direction.x == -1 else false # flips horizontally
 
