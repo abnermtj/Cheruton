@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Effects/Fire/fire.shader" type="Shader" id=1]
+[ext_resource path="res://Effects/Transparent_bg.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/transparent = Color( 0, 0, 0, 0 )
+shader_param/inner = Color( 0.898039, 0.729412, 0.14902, 1 )
+shader_param/outer = Color( 1, 0.0235294, 0.0235294, 1 )
+shader_param/inner_threshold = 0.4
+shader_param/outer_threshold = 0.15
+shader_param/soft_edge = 0.04
+shader_param/center = Vector2( 0.5, 0.8 )
+shader_param/OCTAVE = 6
+
+[node name="Fire" type="Node2D"]
+position = Vector2( 205.36, 130.684 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 16.2858, 20.6552 )
+scale = Vector2( 2.01786, 2.29095 )
+texture = ExtResource( 2 )
