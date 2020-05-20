@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PM_GL_Spray Air Hiss Deodrant Release_4.wav-4b2645aacf289882a82e9034212516a1.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/slide/PM_GL_Spray Air Hiss Deodrant Release_4.wav"
+dest_files=[ "res://.import/PM_GL_Spray Air Hiss Deodrant Release_4.wav-4b2645aacf289882a82e9034212516a1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

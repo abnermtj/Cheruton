@@ -28,6 +28,7 @@ func enter() -> void:
 
 	owner.move() # instant feedback
 	owner.play_anim("jump")
+	owner.play_audio("jump")
 	keypress_timer = 0.2
 
 func update( delta ):

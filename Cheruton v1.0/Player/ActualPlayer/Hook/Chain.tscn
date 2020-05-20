@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player/ActualPlayer/Sprites/MC-hooktip.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.gd" type="Script" id=2]
 [ext_resource path="res://Player/ActualPlayer/Hook/rope.gd" type="Script" id=3]
 [ext_resource path="res://Player/ActualPlayer/Hook/link_retract_curve.tres" type="Curve" id=4]
+[ext_resource path="res://Player/ActualPlayer/Hook/trailsmoke.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 4.39615
@@ -12,18 +13,34 @@ height = 4.39615
 position = Vector2( 0, -1 )
 script = ExtResource( 2 )
 
+[node name="link" type="Node2D" parent="."]
+script = ExtResource( 3 )
+attachment_curve = ExtResource( 4 )
+
+[node name="trailsmoke" type="Line2D" parent="."]
+points = PoolVector2Array( 117.18, -4.35869 )
+default_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+target_path = NodePath("../tip")
+degen_rate = 100
+
 [node name="tip" type="KinematicBody2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
 [node name="tipSprite" type="Sprite" parent="tip"]
+position = Vector2( -10, 0 )
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+
+[node name="tipSprite2" type="Sprite" parent="tip"]
+position = Vector2( -10, 0 )
+rotation = -1.5708
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tip"]
 shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
-
-[node name="link" type="Node2D" parent="."]
-script = ExtResource( 3 )
-attachment_curve = ExtResource( 4 )

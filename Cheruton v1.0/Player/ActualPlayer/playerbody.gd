@@ -21,6 +21,7 @@ onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
+onready var sound_parent = $sounds
 
 signal state_changed
 signal hook_command
@@ -28,7 +29,7 @@ signal camera_command
 signal shake
 
 func take_damage(attacker, amount, effect=null):
-	if self.is_a_parent_of(attacker):
+	if is_a_parent_of(attacker):
 		return
 	$States/Stagger.knockback_direction = (attacker.global_position - global_position).normalized()
 	$Health.take_damage(amount, effect)
@@ -67,11 +68,14 @@ func queue_anim_fx(string):
 # Hook mechanics
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
-func _on_Chain_hooked(tip_p):
-	hooked = 1
-	tip_pos = tip_p
-	$states._change_state("hook")
-	set_camera_mode_logic()
+func _on_Chain_hooked(command, tip_p):
+	if command == 0:
+		hooked = 1
+		tip_pos = tip_p
+		$states._change_state("hook")
+		set_camera_mode_logic()
+	elif command == 1:
+		play_audio("hook_bad")
 func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
@@ -110,6 +114,11 @@ func _is_wall_raycast_colliding(wall_raycasts):
 					return true
 	return false
 
+func play_audio(string):
+	sound_parent.get_node(string).play()
+func stop_audio(string):
+	sound_parent.get_node(string).stop()
+
 
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
@@ -123,7 +132,6 @@ func set_camera_mode_logic():
 			emit_signal("camera_command", 0, on_floor)
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
-
 
 
 func _on_Area2D_body_entered(body):

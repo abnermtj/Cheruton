@@ -60,13 +60,12 @@ func release():
 
 # dont use physics else chain will lag behind actauly frame rate
 func _process(delta):
-	if not self.visible:
+	if not visible:
 		return
 	if stage == INITIAL_SHOOT:
 		s = lerp(s,1,delta*SHOOT_OFFSET_INCREASE)
 		a = lerp(a, 1, delta*SHOOT_AMP_DECREASE)
 		w = lerp(w,w*16,delta*SHOOT_WID_DECREASE)
-
 		if owner.hooked:
 			stage = JUST_HOOKED
 			s = .4

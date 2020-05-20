@@ -40,6 +40,7 @@ func enter():
 	prev_pos = owner.previous_position
 	length_rope = (owner.global_position - tip_pos).length()
 	desired_length_rope = length_rope
+	owner.play_audio("hook_hit")
 
 # Invariant : hook tip already planted
 func update(delta):

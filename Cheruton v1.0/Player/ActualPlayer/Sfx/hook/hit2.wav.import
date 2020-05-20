@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/jumpv3.wav-c4fa2374f57410132abffa5d93c3dc5d.sample"
+path="res://.import/hit2.wav-bd6acd1944ff30c0d51fc8a37e088536.sample"
 
 [deps]
 
-source_file="res://Player/ActualPlayer/Sfx/jumpv3.wav"
-dest_files=[ "res://.import/jumpv3.wav-c4fa2374f57410132abffa5d93c3dc5d.sample" ]
+source_file="res://Player/ActualPlayer/Sfx/hook/hit2.wav"
+dest_files=[ "res://.import/hit2.wav-bd6acd1944ff30c0d51fc8a37e088536.sample" ]
 
 [params]
 

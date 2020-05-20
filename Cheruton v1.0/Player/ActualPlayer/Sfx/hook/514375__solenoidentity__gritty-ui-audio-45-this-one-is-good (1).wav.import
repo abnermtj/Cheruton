@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/514375__solenoidentity__gritty-ui-audio-45-this-one-is-good (1).wav-2af90ed4eb5e770a30c4083997578efd.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/hook/514375__solenoidentity__gritty-ui-audio-45-this-one-is-good (1).wav"
+dest_files=[ "res://.import/514375__solenoidentity__gritty-ui-audio-45-this-one-is-good (1).wav-2af90ed4eb5e770a30c4083997578efd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

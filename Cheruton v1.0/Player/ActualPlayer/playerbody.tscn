@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/24fps_MC.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -10,12 +10,16 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
 [ext_resource path="res://Player/ActualPlayer/Scarf/scarf.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
-[ext_resource path="res://Player/ActualPlayer/Sfx/jumpv3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Player/ActualPlayer/Sfx/jump/DM-CGS-21.wav" type="AudioStream" id=11]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/attack_ground.gd" type="Script" id=13]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallslide.gd" type="Script" id=14]
+[ext_resource path="res://Player/ActualPlayer/Sfx/land/369909__germanio__mouth-bass.wav" type="AudioStream" id=15]
+[ext_resource path="res://Player/ActualPlayer/Sfx/hook/hit.wav" type="AudioStream" id=16]
+[ext_resource path="res://Player/ActualPlayer/Sfx/slide/PM_GL_Spray Air Hiss Deodrant Release_4.wav" type="AudioStream" id=17]
+[ext_resource path="res://Player/ActualPlayer/Sfx/New folder/Footstep-fast.wav" type="AudioStream" id=18]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=1]
 resource_name = "attack_air"
 length = 0.08
 tracks/0/type = "value"
@@ -43,7 +47,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
 resource_name = "attack_ground"
 length = 0.08
 tracks/0/type = "value"
@@ -71,7 +75,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -98,7 +102,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -125,7 +129,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.32
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -152,7 +156,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.61
 loop = true
 tracks/0/type = "value"
@@ -180,7 +184,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -218,23 +222,8 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 4.08786, -15.6908 ) ]
 }
-tracks/3/type = "audio"
-tracks/3/path = NodePath("jump")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 11 )
-} ],
-"times": PoolRealArray( 0 )
-}
 
-[sub_resource type="Animation" id=6]
-resource_name = "land"
+[sub_resource type="Animation" id=8]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -261,7 +250,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.61
 loop = true
 tracks/0/type = "value"
@@ -301,8 +290,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 8 ), Vector2( 0, 1 ), Vector2( 0, 8 ), Vector2( 0, 6 ), Vector2( 0, 8 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "slide"
+[sub_resource type="Animation" id=10]
 length = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/sprite:region_rect")
@@ -329,7 +317,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=11]
 resource_name = "wallslide"
 length = 0.08
 tracks/0/type = "value"
@@ -357,7 +345,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=12]
 resource_name = "jump"
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
@@ -372,7 +360,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.95, 1.05 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=13]
 resource_name = "land"
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
@@ -387,18 +375,18 @@ tracks/0/keys = {
 "values": [ Vector2( 1.06, 0.83 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=14]
 radius = 30.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=15]
 radius = 30.0
 height = 0.0
 
-[sub_resource type="Curve" id=11]
+[sub_resource type="Curve" id=16]
 _data = [ Vector2( 0, 0 ), 0.0, 1.17104, 0, 0, Vector2( 1, 1 ), 0.938576, 0.0, 0, 0 ]
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 30, 17.889 )
 
 [node name="player" type="KinematicBody2D"]
@@ -416,38 +404,39 @@ RESISTANCE = 0.75
 CHAIN_LINK_LENGTH = 6.5
 
 [node name="bodyPivot" type="Position2D" parent="."]
+scale = Vector2( 0.95, 1.05 )
 
 [node name="sprite" type="Sprite" parent="bodyPivot"]
 position = Vector2( -2, 0 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1463, 1, 32, 36 )
+region_rect = Rect2( 1293, 1, 32, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack_air = SubResource( 14 )
-anims/attack_ground = SubResource( 13 )
-anims/fall = SubResource( 1 )
-anims/hover = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/idle_continious = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/land = SubResource( 6 )
-anims/run_continious = SubResource( 7 )
-anims/slide = SubResource( 8 )
-anims/wallslide = SubResource( 17 )
+anims/attack_air = SubResource( 1 )
+anims/attack_ground = SubResource( 2 )
+anims/fall = SubResource( 3 )
+anims/hover = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/idle_continious = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/land = SubResource( 8 )
+anims/run_continious = SubResource( 9 )
+anims/slide = SubResource( 10 )
+anims/wallslide = SubResource( 11 )
 
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
-anims/jump = SubResource( 15 )
-anims/land = SubResource( 16 )
+anims/jump = SubResource( 12 )
+anims/land = SubResource( 13 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 9 )
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 42 )
-shape = SubResource( 10 )
+shape = SubResource( 15 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -456,7 +445,7 @@ START_STATE = NodePath("idle")
 
 [node name="slide" type="Node" parent="states"]
 script = ExtResource( 12 )
-attachment_curve = SubResource( 11 )
+attachment_curve = SubResource( 16 )
 
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
@@ -493,23 +482,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-
-[node name="slideRay" type="RayCast2D" parent="."]
-position = Vector2( 0, 20 )
-scale = Vector2( 1, -1 )
-enabled = true
-cast_to = Vector2( 0, 20 )
-collision_mask = 4
-
 [node name="slideArea2D" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( -1, -5 )
-shape = SubResource( 12 )
+shape = SubResource( 17 )
 
 [node name="wallRaycasts" type="Node2D" parent="."]
 
@@ -542,6 +521,31 @@ position = Vector2( 0, -20 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 collision_mask = 4
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="jump" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 11 )
+
+[node name="hook_bad" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 16 )
+volume_db = 15.0
+pitch_scale = 3.0
+
+[node name="hook_hit" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 16 )
+volume_db = 1.1
+pitch_scale = 1.79
+
+[node name="land" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 15 )
+pitch_scale = 1.4
+
+[node name="run" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 18 )
+
+[node name="slide" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 17 )
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]

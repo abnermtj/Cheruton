@@ -7,6 +7,7 @@ func handle_input(event):
 		owner.hook_dir = get_input_direction()
 		if not owner.hook_dir:
 			owner.hook_dir = owner.look_direction
+		owner.play_audio("hook_hit")
 		owner.start_hook()
 
 	if get_parent().current_state != get_parent().states_map["attack"] and event.is_action_pressed("attack") and owner.exit_slide_blocked == false:

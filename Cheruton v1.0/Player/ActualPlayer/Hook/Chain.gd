@@ -1,6 +1,7 @@
 extends Node2D
 
-const SPEED_TIP = 3900
+
+const SPEED_TIP = 3233 # old is 3900 but change timings so good sound
 const HOOK_TIMER = .33 # how long to shoot out hook more means perfeformance hits to draw
 
 var direction := Vector2(0,0) # The direction in which the chain was shot
@@ -40,12 +41,16 @@ func _physics_process(delta: float) -> void:
 		direction = player_pos - tip.global_position
 		tip.move_and_collide(direction.normalized() * SPEED_TIP * delta) # faster real
 		if (link.global_position - player_pos).length() < 100:
-			self.visible = false
+			$trailsmoke.trail_length = 0
+			visible = false
 	else:
 		hook_timer -= delta
-		self.visible = chain_in_air or hooked or (hook_timer>0)
-		if not self.visible:
+		visible = chain_in_air or hooked or (hook_timer>0)
+		if not visible:
+			$trailsmoke.trail_length = 0
 			return
+		else:
+			$trailsmoke.trail_length = 10
 
 		if hook_timer < 0 and not hooked:
 			start_reel()
@@ -57,14 +62,15 @@ func _physics_process(delta: float) -> void:
 				if  angle< deg2rad(-30)  and angle > deg2rad(-150) and col.normal.x == 0:
 					hooked = true
 					chain_in_air = false
-					emit_signal("hooked", tip.global_position)
+					emit_signal("hooked",0, tip.global_position)
 					emit_signal("shake", .105, 6, 7, -(tip.global_position - player_pos).normalized()+ Vector2(.1,.1)) # .1. 1 for slide offset so that shake is more visible
 				else:
 					start_reel()
+					emit_signal("hooked",1,Vector2())
 
 func _process(delta):
 	# drawing new rope link
-	if self.visible:
+	if visible:
 		player_pos = DataResource.dict_player.player_pos
 		link.c = max((player_pos - tip.global_position).length(),1)
 		link.rotation = player_pos.angle_to_point(tip.global_position)

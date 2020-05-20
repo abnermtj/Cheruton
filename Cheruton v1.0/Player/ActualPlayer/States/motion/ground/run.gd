@@ -23,3 +23,6 @@ func update(delta):
 	if Input.is_action_just_pressed("slide"):
 		emit_signal("finished", "slide")
 	.update(delta)
+
+func exit():
+	pass
