@@ -217,7 +217,7 @@ func _on_mouse_entered(node):
 	if(item_state == "FREE"):
 		mouse_node = node
 		print(node.name)
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		if(!((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))):
 			node.get_child(0).texture = index_bg
 		var insp = retrieve_path_insp()
 		#Update Data
@@ -237,7 +237,7 @@ func _on_mouse_entered(node):
 
 		if(active_tab.name == "Consum"):
 			insp.get_node("ItemInsp1").show()
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		elif(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
 			insp.get_node("ItemInsp2").show()
 		insp.get_node("Buttons").show()
 
@@ -246,7 +246,7 @@ func _on_mouse_exited(node):
 	if(!node):
 		return
 	if(item_state == "FREE"):
-		if(node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])):
+		if(!((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))):
 			node.get_child(0).texture = null
 		var insp = retrieve_path_insp()
 
@@ -289,7 +289,7 @@ func change_state(node):
 			else:
 				item_state = "FREE"
 
-	if(item_state == "FIXED" && fixed_node.name != str(DataResource.temp_dict_player[active_tab.name + "_item"])): # Highlight the button last pressed
+	if(item_state == "FIXED" && !((active_tab.name == "Weapons" || active_tab.name == "Apparel") && node.name == str(DataResource.temp_dict_player[active_tab.name + "_item"]))): # Highlight the button last pressed
 		node.get_child(0).texture = index_bg
 
 
