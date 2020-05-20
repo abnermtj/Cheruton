@@ -34,11 +34,11 @@ func load_data():
 
 func load_dict(FilePath):
 	var DataFile = File.new()
-	#DataFile.open(FilePath, File.READ)
-	if(!DataFile.file_exists(FilePath)):
-		save_data(FilePath, dict_main)
+	DataFile.open(FilePath, File.READ)
+	#if(!DataFile.file_exists(FilePath)):
+		#save_data(FilePath, dict_main)
 		#reset_all()
-	var err = DataFile.open_encrypted_with_pass(FilePath, File.READ, "mypass")
+	#var err = DataFile.open_encrypted_with_pass(FilePath, File.READ, "mypass")
 	var data = JSON.parse(DataFile.get_as_text())
 	DataFile.close()
 	print("Data Loaded!")
@@ -55,8 +55,8 @@ func save_rest():
 
 func save_data(FILE, dictionary):
 	var file = File.new()
-	#file.open(FILE, File.WRITE)
-	var err = file.open_encrypted_with_pass(FILE, File.WRITE, "mypass")
+	file.open(FILE, File.WRITE)
+	#file.open_encrypted_with_pass(FILE, File.WRITE, "mypass")
 	file.store_string(to_json(dictionary))
 	file.close()
 
