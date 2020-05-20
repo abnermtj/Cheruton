@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/Rain/the-cloud.jpg" type="Texture" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 310, 1 )
+flag_disable_z = true
+direction = Vector3( 30, 0, 0 )
+spread = 1.0
+gravity = Vector3( 30, 0, 0 )
+initial_velocity = 600.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 100.0
+tangential_accel_random = 1.0
+scale = 10.0
+scale_random = 0.3
+color = Color( 0.133333, 0.729412, 0.717647, 1 )
+
+[node name="Rain" type="Node2D"]
+
+[node name="RainParticles" type="Particles2D" parent="."]
+position = Vector2( 562.512, 253.48 )
+rotation = 1.5708
+amount = 50
+lifetime = 0.8
+process_material = SubResource( 1 )
+
+[node name="Cloud" type="Sprite" parent="."]
+position = Vector2( 568.239, 207.867 )
+scale = Vector2( 0.827322, 0.744745 )
+texture = ExtResource( 1 )
