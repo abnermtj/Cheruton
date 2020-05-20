@@ -21,7 +21,6 @@ float noise(vec2 coord){
 	
 	vec2 cubic = fraction * fraction * (3.0 - 2.0 * fraction);
 	
-	//Actual equation is longer
 	return mix(x1, x2,cubic.x) + (x3 - x1) * cubic.y * (1.0 - cubic.x) + (x4 - x2) * cubic.x * cubic.y;
 }
 
