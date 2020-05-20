@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const SPEED_TIP = 3233 # old is 3900 but change timings so good sound
 const HOOK_TIMER = .33 # how long to shoot out hook more means perfeformance hits to draw
 
@@ -41,16 +40,12 @@ func _physics_process(delta: float) -> void:
 		direction = player_pos - tip.global_position
 		tip.move_and_collide(direction.normalized() * SPEED_TIP * delta) # faster real
 		if (link.global_position - player_pos).length() < 100:
-			$trailsmoke.trail_length = 0
 			visible = false
 	else:
 		hook_timer -= delta
 		visible = chain_in_air or hooked or (hook_timer>0)
 		if not visible:
-			$trailsmoke.trail_length = 0
 			return
-		else:
-			$trailsmoke.trail_length = 10
 
 		if hook_timer < 0 and not hooked:
 			start_reel()

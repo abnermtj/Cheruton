@@ -14,7 +14,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/attack_ground.gd" type="Script" id=13]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallslide.gd" type="Script" id=14]
-[ext_resource path="res://Player/ActualPlayer/Sfx/land/369909__germanio__mouth-bass.wav" type="AudioStream" id=15]
+[ext_resource path="res://Player/ActualPlayer/sounds.gd" type="Script" id=15]
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hit.wav" type="AudioStream" id=16]
 [ext_resource path="res://Player/ActualPlayer/Sfx/slide/PM_GL_Spray Air Hiss Deodrant Release_4.wav" type="AudioStream" id=17]
 [ext_resource path="res://Player/ActualPlayer/Sfx/New folder/Footstep-fast.wav" type="AudioStream" id=18]
@@ -523,14 +523,16 @@ cast_to = Vector2( 10, 0 )
 collision_mask = 4
 
 [node name="sounds" type="Node" parent="."]
+script = ExtResource( 15 )
 
 [node name="jump" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 11 )
+volume_db = -10.0
 
 [node name="hook_bad" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 16 )
-volume_db = 15.0
-pitch_scale = 3.0
+volume_db = 1.0
+pitch_scale = 0.58
 
 [node name="hook_hit" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 16 )
@@ -538,8 +540,9 @@ volume_db = 1.1
 pitch_scale = 1.79
 
 [node name="land" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 15 )
-pitch_scale = 1.4
+stream = ExtResource( 11 )
+volume_db = -7.0
+pitch_scale = 1.2
 
 [node name="run" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 18 )

@@ -6,7 +6,6 @@ const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to
 var coyote_timer : float # here incase playeer walks off an edge
 var jump_timer : float
 var jump_again : bool # jump keypress bufered
-var jump_count : int
 var enter_velocity
 
 var slide_timer : float

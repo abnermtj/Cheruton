@@ -10,7 +10,6 @@ const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 70
 const MIN_WIRE_LENGTH = 240
 const MAX_WIRE_LENGTH = 600
-const WIRE_REEL_SPEED = 100
 const PLAYER_LENGTH_CONTROL = 300 # players influence with REEL
 const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
 
@@ -24,10 +23,8 @@ var cur_pos = Vector2()
 var length_rope
 var desired_length_rope
 var tip_pos # tip of hook/ attach point
-var angle_set
 
 func enter():
-	angle_set = false
 	zip_state = false
 
 	release_timer = RELEASE_TIMER
@@ -74,12 +71,16 @@ func update(delta):
 	owner.move()
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
+func _process(delta):
+	owner.get_node("bodyPivot").rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
+	 else 0
+
+# INTEGRATION
 func _update(delta):
 	var input_dir = get_input_direction()
 	var vel = cur_pos - prev_pos
 	cur_pos = owner.global_position # previous cur pos_ no longer matched the player position due to constrains
 	prev_pos = cur_pos
-
 
 	cur_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
 

@@ -1,6 +1,5 @@
 extends groundState
 
-const SLIDE_FRICTION = 2
 const MIN_VEL = 100 # should somewhat higher than min run speed (to not goto idle straight away)(in $run) before turning to run
 const SLIDE_PWR = 50
 export (Curve) var attachment_curve

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shotvilkas.wav-62a692af564ac2c200d8f80bad8dd97c.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/jump/shotvilkas.wav"
+dest_files=[ "res://.import/shotvilkas.wav-62a692af564ac2c200d8f80bad8dd97c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

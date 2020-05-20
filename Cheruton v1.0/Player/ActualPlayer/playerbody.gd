@@ -119,7 +119,6 @@ func play_audio(string):
 func stop_audio(string):
 	sound_parent.get_node(string).stop()
 
-
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
 
