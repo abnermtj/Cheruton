@@ -67,8 +67,8 @@ float egg_shaped(vec2 coord, float radius){
 		diff.y *= 2.0;
 	
 	float dist = sqrt(diff.x * diff.x + diff.y * diff.y) / radius;
-	float result = clamp(1.0 - dist, 0.0, 1.0);
-	return result * result;
+	float result = sqrt(1.0 - dist * dist);
+	return clamp(result, 0.0, 1.0);
 }
 
 void fragment() {

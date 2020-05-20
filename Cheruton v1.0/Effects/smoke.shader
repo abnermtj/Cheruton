@@ -1,7 +1,6 @@
 shader_type canvas_item;
 
 uniform vec2 center = vec2(0.5, 0.8);
-
 uniform int OCTAVE = 6;
 
 // Get alpha_val to be btw 0 and 1
@@ -53,7 +52,28 @@ float egg_shaped(vec2 coord, float radius){
 }
 
 void fragment() {
-	float egg = egg_shaped(UV, 0.4);
+	vec2 scaled_coord = UV * 6.0;
 	
-	COLOR = vec4(vec3(egg), 1.0);
+	float warp = UV.y;
+	float diff_center = abs(UV.x - 0.5) * 4.0;
+	
+	if(UV.x > 0.5)
+		warp = 1.0 - warp;
+	
+	vec2 warp_vec = vec2(warp, 0.0);
+	float motion_fbm = fbm(scaled_coord + vec2(TIME * 0.4, TIME * 1.3));
+	float smoke_fbm = fbm(scaled_coord + vec2(0, TIME * 1.0) + motion_fbm + warp_vec * diff_center);
+	
+	float egg = egg_shaped(UV, 0.5);
+	
+	smoke_fbm *= egg;
+	float threshold = 0.1;
+	smoke_fbm = clamp(smoke_fbm - threshold, 0, 1.0) / (1.0 - threshold);
+	if(smoke_fbm < 0.1)
+		smoke_fbm *= smoke_fbm/0.1;
+
+	smoke_fbm = sqrt(smoke_fbm/egg); // Dividing makes it more white
+	smoke_fbm = clamp(smoke_fbm, 0, 1.0);
+		
+	COLOR = vec4(smoke_fbm);
 }
