@@ -9,6 +9,9 @@ var jump_again : bool # jump keypress bufered
 var jump_count : int
 var enter_velocity
 
+var slide_timer : float
+var slide :bool
+
 func enter():
 	enter_velocity = owner.velocity
 	if 500 > abs(enter_velocity.x):
@@ -18,7 +21,7 @@ func enter():
 	owner.queue_anim("fall")
 	coyote_timer = COYOTE_TIME
 	jump_again = false
-
+	slide = false
 
 func update(delta):
 	coyote_timer -= delta
@@ -33,7 +36,7 @@ func update(delta):
 	if dir:
 		owner.velocity.x = clamp ((owner.velocity.x + dir*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else:
-		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
+		owner.velocity.x = lerp( owner.velocity.x, 0, delta )
 
 	owner.move_and_slide(owner.velocity, Vector2.UP)
 
@@ -44,16 +47,28 @@ func update(delta):
 		if coyote_timer > 0 and not owner.has_jumped:  # when accidentally falling off edges
 				emit_signal("finished", "jump")
 				return
+	# slide input buffering
+	if Input.is_action_just_pressed( "slide" ):
+		slide_timer = JUMP_AGAIN_MARGIN # reuse should be consistent
+		slide = true
 
+	# wall crash
+
+	if owner.is_on_wall():
+		owner.velocity.x = 0
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim("land")
 		if (jump_again and jump_timer >= 0):
-			owner.get_node("states").states_stack.pop_front()
+			owner.get_node("states").states_stack.pop_front() # fixes a bug that stacked falls
 			emit_signal("finished", "jump")
+		elif (slide and slide_timer >= 0):
+			owner.get_node("states").states_stack.pop_front() # fixes a bug that stacked falls
+			emit_signal("finished", "slide")
 		else:
 			# land
+			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
 			if owner.get_node("states").states_stack.size() == 1:
 				emit_signal("finished", "idle")
 			else:

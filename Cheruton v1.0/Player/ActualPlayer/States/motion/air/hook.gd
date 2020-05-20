@@ -9,7 +9,7 @@ const SWING_CONTROL_STRENGTH = .150
 const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 70
 const MIN_WIRE_LENGTH = 300
-const MAX_WIRE_LENGTH = 2000
+const MAX_WIRE_LENGTH = 600
 const WIRE_REEL_SPEED = 100
 const PLAYER_LENGTH_CONTROL = 300 # players influence with REEL
 const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
@@ -25,7 +25,6 @@ var length_rope
 var desired_length_rope
 var tip_pos # tip of hook/ attach point
 var angle_set
-
 
 func enter():
 	angle_set = false
@@ -80,7 +79,6 @@ func _update(delta):
 
 
 	cur_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
-#	cur_pos.y += SWING_GRAVITY * delta
 
 	desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH  , MAX_WIRE_LENGTH)
@@ -91,6 +89,7 @@ func _constrain():
 	# case where player below minimum distance, don't move him too much, make it as if hes fallign to gravity
 	if cur_length > length_rope or desired_length_rope > cur_length: # constrains player to a circle ceneted at hook tip
 		cur_pos = (cur_pos - tip_pos).normalized() * length_rope + tip_pos
+
 
 func _adjust(): # don't call move again, done in returning call
 	owner.velocity = (cur_pos - prev_pos )*SWING_SPEED

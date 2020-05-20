@@ -7,6 +7,10 @@ const SHOOT_WID_DECREASE = 2.3
 
 const LENGTH_DIVISOR = 1 # 1 means each x value is a point to draw
 
+const INITIAL_SHOOT = 1
+const JUST_HOOKED = 2
+const RETRACT = 3
+
 var color = Color(0.756, 0.819, 0.858)
 export (Curve) var attachment_curve
 var stage
@@ -58,18 +62,18 @@ func release():
 func _process(delta):
 	if not self.visible:
 		return
-	if stage == 1:
+	if stage == INITIAL_SHOOT:
 		s = lerp(s,1,delta*SHOOT_OFFSET_INCREASE)
 		a = lerp(a, 1, delta*SHOOT_AMP_DECREASE)
 		w = lerp(w,w*16,delta*SHOOT_WID_DECREASE)
 
-		if owner.	hooked:
-			stage = 2
+		if owner.hooked:
+			stage = JUST_HOOKED
 			s = .4
-	elif stage == 2:
+	elif stage == JUST_HOOKED:
 		s = attachment_curve.interpolate(s)
 		a = 40
-	elif stage == 3:
+	elif stage == RETRACT:
 		s = lerp(s,1,delta*SHOOT_OFFSET_INCREASE)
 		a = lerp(a, 0, delta*SHOOT_AMP_DECREASE)
 		w = lerp(w,w*4.4,delta*SHOOT_WID_DECREASE)

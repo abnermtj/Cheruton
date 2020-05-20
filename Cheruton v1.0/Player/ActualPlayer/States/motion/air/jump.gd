@@ -11,6 +11,7 @@ const JUMP_VEL = -690  # jump power 670 old
 
 func enter() -> void:
 	enter_velocity = owner.velocity
+
 	if 500 > abs(enter_velocity.x):
 		enter_velocity.x = 500
 

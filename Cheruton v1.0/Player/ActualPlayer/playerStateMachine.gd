@@ -6,13 +6,14 @@ func _ready():
 		"run": $run,
 		"jump": $jump,
 		"fall": $fall,
-		"hook": $hook
+		"hook": $hook,
+		"slide" : $slide
 	}
 
 func _change_state(state_name):
 	if not states_stack.empty(): # edge case when falling from platform without jump then jumping agin
 		previous_state_name = states_stack[0].name
-	if state_name == "fall" or state_name == "jump":
+	if state_name != "previous" and states_map[state_name] is airState:
 		owner.on_floor = false
 	else:
 		owner.on_floor = true

@@ -2,11 +2,10 @@ extends Camera2D
 class_name ShakeCamera
 
 # from sealed bite github
-var LOOK_AHEAD_FACTOR = 0.28 # percentage of screen to shift for looking ahead when changing directions
+var LOOK_AHEAD_FACTOR = 0.2  # DONT CHANGE HERE CHANGE BELOW # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_OUT
 const SHIFT_DURATION = 2.0
-const RIGHT_BIAS = 1.1 # show more of the screen when going right, ie forward in our game
 
 # SHAKE
 var _duration := 0.0
@@ -27,7 +26,10 @@ var pan_speed := 3.0
 var slowmo_target = Vector2()
 var slowmo_offset = Vector2()
 
+var is_player_hooked
+
 var facing = 0
+
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween # this caches a node no need to reload in downtimes between uses
 func _ready():
@@ -79,7 +81,6 @@ func _physics_process( delta ):
 		pan_offset.y = 0
 
 	slowmo_offset = lerp( slowmo_offset, slowmo_target, 10 * delta )
-	#print( slowmo_offset )
 
 	if _timer != 0:
 		if _shakedir == Vector2.ZERO:
@@ -97,8 +98,8 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	_timer = duration
 	_period_in_ms = 1.0 / frequency
 	_amplitude = amplitude
-	_previous_x = rand_range(-1.0, 1.0)
-	_previous_y = rand_range(-1.0, 1.0)
+	_previous_x = rand_range(-0.5, 0.5)
+	_previous_y = rand_range(-0.5, 0.5)
 	_shakedir = shakedir
 	shake_offset -= _last_offset
 	_last_offset = Vector2.ZERO
@@ -113,18 +114,29 @@ func _check_facing():
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
 		var target_offset = get_viewport_rect().size.x * facing * LOOK_AHEAD_FACTOR
-		if new_facing == 1:
-			target_offset *= RIGHT_BIAS
 		position.x = target_offset
 		# modify the self object propery position:x, from the current positino to the target and use the following parementers:
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
+#tries to aligpolate_property(self, "position:y", position.y, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
+
+# simpler state machine
 func _on_player_camera_command(command, arg):
-	if command == 0: #not on floor
-		LOOK_AHEAD_FACTOR = .27
-
-
+	if command == 0:
+		is_player_hooked = 1
 		drag_margin_v_enabled = not arg
+		drag_margin_h_enabled = true
+		smoothing_speed = 1
+		LOOK_AHEAD_FACTOR = .2
+	else:
+		is_player_hooked = 0
+		smoothing_speed = 2.1
+		LOOK_AHEAD_FACTOR = .4
 
 
+func _on_player_shake(dur, freq, amp, dir):
+	shake(dur, freq, amp, dir)
+
+func _on_Chain_shake(dur, freq, amp, dir):
+	shake(dur, freq, amp, dir)
