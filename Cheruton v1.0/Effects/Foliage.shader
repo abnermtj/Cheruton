@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform vec4 blue_colour : hint_color;
 
 uniform vec2 sprite_scale;
-uniform float scale_x = 0.68;
+uniform float scale_x = 0.3;
 
 // Get alpha_val to be btw 0 and 1
 // Fract: Obtains decimal val, Sin: Wavy Texture
@@ -27,11 +27,13 @@ float noise(vec2 coord){
 
 void fragment(){
 	
-	vec2 noisecoord1 = UV * sprite_scale * scale_x;
-	vec2 noisecoord2 = UV * sprite_scale * scale_x + 4.0;
 	
-	vec2 motion1 = vec2(TIME * 0.3, TIME * -0.4);
-	vec2 motion2 = vec2(TIME * 0.1, TIME * 0.5);
+	
+	vec2 noisecoord1 = UV * sprite_scale * scale_x / 2.0;
+	vec2 noisecoord2 = UV * sprite_scale * scale_x  + 4.0;
+	
+	vec2 motion1 = vec2(TIME * 0.3, TIME * -0.04);
+	vec2 motion2 = vec2(TIME * 0.1, TIME * 0.05);
 	
 	vec2 distort1 = vec2(noise(noisecoord1 + motion1), noise(noisecoord2 + motion1));
 	vec2 distort2 = vec2(noise(noisecoord1 + motion2), noise(noisecoord2 + motion2));
@@ -40,25 +42,6 @@ void fragment(){
 	vec2 distort_sum = (distort1 + distort2 - vec2(1.0)) / 60.0;
 	// More distort coord, more detail
 	vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV + distort_sum, 0);
-	
-	color = mix(color, blue_colour, 0.3);
-	color.rgb = mix(vec3(0.5), color.rgb, 1.4);
-	
-	// Set Surface
-	float near_top = (UV.y + distort_sum.y) / (0.2/sprite_scale.y);
-	near_top =  1.0 - clamp(near_top, 0, 1.0);
 
-	color = mix(color, vec4(1.0), near_top);
-	
-	float edge_lower = 0.6;
-	float edge_upper = edge_lower + 0.1;
-	
-	// Make the layer above the ripple transparent
-	if(near_top > edge_lower){
-		color.a = 0.0;
-		
-		if(near_top < edge_upper)//Interpolate alpha value
-			color.a = (edge_upper - near_top) / (edge_upper - edge_lower);
-	}
 	COLOR = color;
 }
