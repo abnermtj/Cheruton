@@ -26,7 +26,7 @@ func update(delta):
 		emit_signal("finished", "run")
 	owner.move_with_snap()
 	.update(delta)
-	owner.volume("slide", clamp(abs(owner.velocity.x/100)-6, -6 , 10))
+	owner.volume("slide", clamp(abs(owner.velocity.x/80)-30, -30 , 0))
 
 func exit():
 	owner.switch_col()

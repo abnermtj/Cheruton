@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/360942__gprosser__splat.ogg-6d2d77b0adf212a6a9f783404eb2745b.oggstr"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/hook/hook_hit2/360942__gprosser__splat.ogg"
+dest_files=[ "res://.import/360942__gprosser__splat.ogg-6d2d77b0adf212a6a9f783404eb2745b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

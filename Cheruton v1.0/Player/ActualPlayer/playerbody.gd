@@ -143,3 +143,6 @@ func shake_camera(dur, freq, amp, dir):
 func _on_Area2D_body_entered(body):
 	pass # Replace with function body.
 
+# sounds .77 start
+# .6 hit
+
