@@ -16,6 +16,7 @@ shader_param/OCTAVE = 6
 
 [node name="Fire" type="Node2D"]
 position = Vector2( 205.36, 130.684 )
+scale = Vector2( 4, 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
