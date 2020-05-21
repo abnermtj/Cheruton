@@ -22,6 +22,7 @@ onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var sound_parent = $sounds
+onready var body_sprite = $bodyPivot/sprite
 
 signal state_changed
 signal hook_command
@@ -74,8 +75,9 @@ func _on_Chain_hooked(command, tip_p):
 		tip_pos = tip_p
 		$states._change_state("hook")
 		set_camera_mode_logic()
-	elif command == 1:
-		play_audio("hook_bad")
+	elif command == 1: # bad hook
+		play_sound("hook_bad")
+
 func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
@@ -114,14 +116,19 @@ func _is_wall_raycast_colliding(wall_raycasts):
 					return true
 	return false
 
-func play_audio(string):
+func play_sound(string):
 	sound_parent.get_node(string).play()
-func stop_audio(string):
+func stop_sound(string):
 	sound_parent.get_node(string).stop()
+func volume(string, vol_db):
+	sound_parent.get_node(string).volume_db = vol_db
 
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
-
+	if hooked or not DataResource.dict_player.chain_in_air:
+		stop_sound("hook_start")
+	else:
+		print("here")
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
 	if hooked:

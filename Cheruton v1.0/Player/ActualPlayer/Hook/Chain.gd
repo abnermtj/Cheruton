@@ -26,21 +26,23 @@ func _on_player_hook_command (com, dir, player_pos):
 		hook_timer = HOOK_TIMER
 		$tip/CollisionShape2D.disabled = false
 		$link.start()
+		start_reel = false
 	else: # END
 		start_reel()
 
 func start_reel():
-	chain_in_air = false
+	chain_in_air = true
 	hooked = false
 	start_reel = true
 	$tip/CollisionShape2D.disabled = true
 
 func _physics_process(delta: float) -> void:
-	if not chain_in_air and not hooked and start_reel:
+	if  not hooked and start_reel:
 		direction = player_pos - tip.global_position
 		tip.move_and_collide(direction.normalized() * SPEED_TIP * delta) # faster real
 		if (link.global_position - player_pos).length() < 100:
 			visible = false
+			chain_in_air = false
 	else:
 		hook_timer -= delta
 		visible = chain_in_air or hooked or (hook_timer>0)
@@ -72,4 +74,5 @@ func _process(delta):
 		link.global_position = tip.global_position
 
 		tip.rotation = player_pos.angle_to_point(tip.global_position)
+	DataResource.dict_player.chain_in_air = chain_in_air
 

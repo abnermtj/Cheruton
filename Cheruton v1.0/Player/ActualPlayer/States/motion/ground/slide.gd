@@ -6,13 +6,13 @@ export (Curve) var attachment_curve
 
 var initial_vel
 var relative_vel
-
 # Animation Player handles collsion
 func enter():
 	owner.switch_col()
 	initial_vel = owner.velocity
 	relative_vel = 0.01
 	owner.play_anim("slide") # change to later on
+	owner.play_sound("slide")
 
 # WHEN MERGING REMEMBER TO CHECK INPUT IN PROJECT>GODOT
 func update(delta):
@@ -26,6 +26,7 @@ func update(delta):
 		emit_signal("finished", "run")
 	owner.move_with_snap()
 	.update(delta)
+	owner.volume("slide", clamp(abs(owner.velocity.x/100)-6, -6 , 10))
 
 func exit():
 	owner.switch_col()

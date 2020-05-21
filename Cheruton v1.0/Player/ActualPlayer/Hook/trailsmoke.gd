@@ -21,10 +21,6 @@
 extends Line2D
 class_name Trail2D#, "../icons/icon_trail_2d.svg"
 
-##### SIGNALS #####
-
-##### CONSTANTS #####
-
 enum Persistence {
 	OFF,         # Do not persist. Remove all points after the trail_length.
 	ALWAYS,	     # Always persist. Do not remove any points.
@@ -141,4 +137,4 @@ func set_target(p_value: Node2D):
 
 func set_target_path(p_value: NodePath):
 	target_path = p_value
-	target = get_node(p_value) as Node2D if has_node(p_value) else null
+	target = $p_value as Node2D if has_node(p_value) else null

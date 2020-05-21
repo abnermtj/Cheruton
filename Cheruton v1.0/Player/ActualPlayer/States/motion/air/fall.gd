@@ -66,8 +66,8 @@ func update(delta):
 			emit_signal("finished", "slide")
 		else:
 			# land
-			if abs(owner.velocity.length()) > 1000:
-				owner.play_audio("land")
+#			if abs(owner.velocity.length()) > 1000:
+#				owner.play_sound("land")
 			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
 			emit_signal("finished", "run")
 	.update(delta)

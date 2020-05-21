@@ -4,11 +4,12 @@ class_name motionState
 
 func handle_input(event):
 	if event.is_action_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"]:
+		owner.play_sound("hook_start")
 		owner.hook_dir = get_input_direction()
 		if not owner.hook_dir:
 			owner.hook_dir = owner.look_direction
-		owner.play_audio("hook_hit")
 		owner.start_hook()
+
 
 	if get_parent().current_state != get_parent().states_map["attack"] and event.is_action_pressed("attack") and owner.exit_slide_blocked == false:
 		emit_signal("finished", "attack")
@@ -25,5 +26,5 @@ func update_look_direction(direction):
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction
 	if direction.x in [-1, 1]:
-		owner.get_node("bodyPivot/sprite").flip_h = true if direction.x == -1 else false # flips horizontally
+		owner.body_sprite.flip_h = true if direction.x == -1 else false # flips horizontally
 

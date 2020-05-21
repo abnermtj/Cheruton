@@ -1,0 +1,61 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="hook_shoot_data" version="1.3.0" audacityversion="2.4.0" sel0="0.1641269028" sel1="0.1641269028" vpos="144" h="0.0000000000" zoom="225.4353148296" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Comment" value="Processed by SoX"/>
+		<tag name="Software" value="Lavf58.42.101"/>
+		<tag name="YEAR" value="2019-11-23T17:50"/>
+		<tag name="ARTIST" value="Alan McKinney"/>
+		<tag name="Copyright" value="Alan McKinney"/>
+	</tags>
+	<wavetrack name="bitch slap" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="44100" gain="1.995262" pan="0.0" colorindex="0">
+		<waveclip offset="-0.04201814" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="110912">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808222.au" len="110912" min="-0.299103" max="0.381775" rms="0.025228"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="grapple launch" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.122018" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="35407">
+				<waveblock start="0">
+					<simpleblockfile filename="e08084d9.au" len="35407" min="-0.384805" max="0.334968" rms="0.060467"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="grapple launch" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.122018" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="35407">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808483.au" len="35407" min="-0.317622" max="0.315485" rms="0.060872"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="zapsplat_household_iron_steam_release_punchy_001_10619" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="38136">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808176.au" len="38136" min="-0.872257" max="0.842848" rms="0.064573"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="zapsplat_household_iron_steam_release_punchy_001_10619" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="38136">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808701.au" len="38136" min="-0.868646" max="0.818628" rms="0.065668"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

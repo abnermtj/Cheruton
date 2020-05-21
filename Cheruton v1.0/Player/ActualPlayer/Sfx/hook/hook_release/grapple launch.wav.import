@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/grapple launch.wav-15f41268731b4e816f24ed548f212268.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/hook/hook_release/grapple launch.wav"
+dest_files=[ "res://.import/grapple launch.wav-15f41268731b4e816f24ed548f212268.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

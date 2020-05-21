@@ -37,7 +37,7 @@ func enter():
 	prev_pos = owner.previous_position
 	length_rope = (owner.global_position - tip_pos).length()
 	desired_length_rope = length_rope
-	owner.play_audio("hook_hit")
+	owner.play_sound("hook_hit")
 
 # Invariant : hook tip already planted
 func update(delta):
@@ -72,7 +72,7 @@ func update(delta):
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
 func _process(delta):
-	owner.get_node("bodyPivot").rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
+	owner.body_sprite.rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
 	 else 0
 
 # INTEGRATION
