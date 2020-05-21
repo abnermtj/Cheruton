@@ -51,7 +51,7 @@ func update(delta):
 	# zip up
 	if Input.is_action_just_pressed("hook") and release_timer < 0 and owner.hooked:
 		zip_state = true
-	else: # note that zip up only happens in frame after press, here
+	else: # note that ziep up only happens in frame after press, here
 		chain_velocity = (tip_pos-owner.global_position).normalized() * CHAIN_PULL_SPEED
 		if chain_velocity.y > 0:
 			chain_velocity.y *= PULL_DOWN_STRENGTH

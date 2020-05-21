@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/369007__flying-deer-fx__whoosh-02-mouth-fx.wav-99f0ec86f4493f3c08d7da76fb88ce47.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/hook/hook_zip/369007__flying-deer-fx__whoosh-02-mouth-fx.wav"
+dest_files=[ "res://.import/369007__flying-deer-fx__whoosh-02-mouth-fx.wav-99f0ec86f4493f3c08d7da76fb88ce47.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
