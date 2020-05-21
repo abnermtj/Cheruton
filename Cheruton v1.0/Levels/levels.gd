@@ -33,10 +33,6 @@ func _set_camera() -> void:
 		camera.limit_right = pos_SE.position.x
 		camera.limit_bottom = pos_SE.position.y
 
-func _process(delta):
-	if Input.is_action_just_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-
 # loads prev checkpoint
 func _on_player_dead() -> void:
 	pass
