@@ -41,7 +41,6 @@ func _process(delta):
 func _on_player_dead() -> void:
 	pass
 
-
 func set_music():
 	pass
 
