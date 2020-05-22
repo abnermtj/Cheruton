@@ -357,7 +357,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 0.75, 0 )
 region_enabled = true
-region_rect = Rect2( 3067, 1, 40, 36 )
+region_rect = Rect2( 5251, 1, 40, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_air = SubResource( 18 )
@@ -498,7 +498,7 @@ volume_db = -25.0
 [node name="slide" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 15 )
 volume_db = -3.0
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]

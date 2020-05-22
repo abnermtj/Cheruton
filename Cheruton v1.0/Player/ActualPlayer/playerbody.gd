@@ -17,6 +17,7 @@ var look_direction = Vector2(1, 0) setget set_look_direction
 var exit_slide_blocked = false
 var wall_direction = 0
 var bounce_boost = false
+var prev_camera_logic = 0
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -137,11 +138,15 @@ func _process(delta):
 
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
-	if hooked:
+	if hooked and prev_camera_logic != 0: # don't repeat unneccesary signals
 		emit_signal("camera_command", 1, 0)
-	else:
+		prev_camera_logic = 0
+	elif prev_camera_logic != 1:
+		prev_camera_logic = 1
 		if not ($states.previous_state.name == "hook" and $states.current_state is airState):
 			emit_signal("camera_command", 0, on_floor)
+
+
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
 

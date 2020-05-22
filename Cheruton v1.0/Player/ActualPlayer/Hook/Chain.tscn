@@ -9,6 +9,7 @@
 height = 4.39615
 
 [node name="Chain" type="Node2D"]
+visible = false
 position = Vector2( 0, -1 )
 script = ExtResource( 2 )
 
@@ -35,3 +36,6 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0

@@ -1,17 +1,18 @@
 extends Node2D
 
-const SPEED_TIP = 3233 # old is 3900 but change timings so good sound
-const HOOK_TIMER = .33 # how long to shoot out hook more means perfeformance hits to draw
+const SPEED_TIP_START = 4700
+const REEL_SPEED = 3650
+
+onready var chain_state = chain_states.HIDDEN
+enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN= 4}
 
 var direction := Vector2(0,0) # The direction in which the chain was shot
 
-var chain_in_air
-var hooked = false
-var start_reel = false
-onready var hook_timer = -1 # time before hook dissapears
-var player_pos
+var cur_player_pos
+var speed_tip
 
-onready var  link  = $link
+onready var tween = $Tween
+onready var link  = $link
 onready var tip = $tip
 
 signal hooked(tip_pos)
@@ -20,59 +21,67 @@ signal shake
 # com - command, 0 -start hook, 1 -release
 func _on_player_hook_command (com, dir, player_pos):
 	if com == 0: #START
-		direction = dir.normalized() # incase forgot to
-		chain_in_air = true
-		tip.global_position = player_pos
-		hook_timer = HOOK_TIMER
-		$tip/CollisionShape2D.disabled = false
-		$link.start()
-		start_reel = false
+		chain_state = chain_states.SHOOT
+
+		link.start() # link is the rope
+
+		visible = true
+		direction = dir.normalized()
+		tip.global_position = player_pos # start at player
+		cur_player_pos = player_pos
+
+
+		tween.interpolate_property(self, "speed_tip", SPEED_TIP_START, 0, .66, Tween.TRANS_SINE,Tween.EASE_OUT)
+		tween.start()
+
+		tip.get_node("CollisionShape2D").disabled = false
 	else: # END
 		start_reel()
 
 func start_reel():
-	chain_in_air = true
-	hooked = false
-	start_reel = true
-	$tip/CollisionShape2D.disabled = true
+	chain_state = chain_states.REEL
+	link.release()
+	tip.get_node("CollisionShape2D").disabled = true
 
 func _physics_process(delta: float) -> void:
-	if  not hooked and start_reel:
-		direction = player_pos - tip.global_position
-		tip.move_and_collide(direction.normalized() * SPEED_TIP * delta) # faster real
-		if (link.global_position - player_pos).length() < 100:
-			visible = false
-			chain_in_air = false
-	else:
-		hook_timer -= delta
-		visible = chain_in_air or hooked or (hook_timer>0)
-		if not visible:
-			return
+	match(chain_state):
+		chain_states.SHOOT:
+			visible = true
+			if speed_tip < 10:
+				start_reel()
 
-		if hook_timer < 0 and not hooked:
-			start_reel()
-
-		if chain_in_air:
-			var col = tip.move_and_collide(direction * SPEED_TIP * delta)
-			if col : #COLLISION
-				var angle = tip.global_position.angle_to_point(player_pos)
-				if  angle< deg2rad(-30)  and angle > deg2rad(-150) and col.normal.x == 0:
-					hooked = true
-					chain_in_air = false
+			var col = tip.move_and_collide(direction * speed_tip * delta) # in initial direction of player input
+			if col :
+				var angle = tip.global_position.angle_to_point(cur_player_pos) # remember 0 degrees is to the right
+				if  angle > deg2rad(-140) and angle < deg2rad(-40)  : # limits wall angles we can ancho to
+					chain_state = chain_states.HOOKED
 					emit_signal("hooked",0, tip.global_position)
-					emit_signal("shake", .105, 6, 7, -(tip.global_position - player_pos).normalized()+ Vector2(.1,.1)) # .1. 1 for slide offset so that shake is more visible
-				else:
+					emit_signal("shake", .105, 7, 7, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1)) # (.1, .1 ) is a small offset to direction  making the shake more pronounced
+				else: # not valid wall
 					start_reel()
 					emit_signal("hooked",1,Vector2())
+		chain_states.HOOKED:
+			pass
+		chain_states.REEL:
+			direction = cur_player_pos - tip.global_position # tip to player
+			tip.move_and_collide(direction.normalized() * REEL_SPEED * delta)
+			if (link.global_position - cur_player_pos).length() < 100:
+				chain_state = chain_states.HIDDEN
+				visible = false
+		chain_states.HIDDEN:
+			pass
 
 func _process(delta):
+	DataResource.dict_player.chain_in_air = visible
+
 	# drawing new rope link
 	if visible:
-		player_pos = DataResource.dict_player.player_pos
-		link.c = max((player_pos - tip.global_position).length(),1)
-		link.rotation = player_pos.angle_to_point(tip.global_position)
+		cur_player_pos = DataResource.dict_player.player_pos
+
+		link.c = max((cur_player_pos - tip.global_position).length(),1)
+		link.rotation = cur_player_pos.angle_to_point(tip.global_position)
 		link.global_position = tip.global_position
 
-		tip.rotation = player_pos.angle_to_point(tip.global_position)
-	DataResource.dict_player.chain_in_air = chain_in_air
+		tip.rotation = cur_player_pos.angle_to_point(tip.global_position)
+
 
