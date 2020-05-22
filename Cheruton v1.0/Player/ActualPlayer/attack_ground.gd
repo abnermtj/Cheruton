@@ -49,7 +49,6 @@ func update(delta):
 
 	elif attack_type == AIR:
 		owner.velocity = Vector2()
-		print("here")
 		match attack_count:
 			0:
 				if attack_again == true and attack_timer < 0:

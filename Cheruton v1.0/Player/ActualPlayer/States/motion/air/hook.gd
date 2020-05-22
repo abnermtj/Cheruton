@@ -72,7 +72,7 @@ func update(delta):
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
 func _process(delta):
-	owner.body_sprite.rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
+	owner.body_rotate.rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
 	 else 0
 
 # INTEGRATION

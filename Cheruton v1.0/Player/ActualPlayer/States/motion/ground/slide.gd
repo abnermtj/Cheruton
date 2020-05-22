@@ -12,9 +12,15 @@ func enter():
 	initial_vel = owner.velocity
 	relative_vel = 0.01
 	owner.play_anim("slide") # change to later on
+	owner.queue_anim("slide_continious")
 	owner.play_sound("slide")
 
-# WHEN MERGING REMEMBER TO CHECK INPUT IN PROJECT>GODOT
+	if initial_vel.x > 0:
+		update_look_direction(Vector2.RIGHT)
+	else:
+		update_look_direction(Vector2.LEFT)
+
+
 func update(delta):
 	relative_vel = attachment_curve.interpolate(relative_vel)
 
@@ -25,8 +31,7 @@ func update(delta):
 	 and not owner.exit_slide_blocked:
 		emit_signal("finished", "run")
 	owner.move_with_snap()
-	.update(delta)
 	owner.volume("slide", clamp(abs(owner.velocity.x/80)-30, -30 , 0))
-
+	.update(delta)
 func exit():
 	owner.switch_col()
