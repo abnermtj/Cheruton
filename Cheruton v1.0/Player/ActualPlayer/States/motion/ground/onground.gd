@@ -11,5 +11,6 @@ func handle_input(event):
 
 func update(delta):
 	if not owner.is_on_floor():
+		print("not on floor")
 		emit_signal("finished","fall")
 

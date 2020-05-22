@@ -12,7 +12,7 @@ func _physics_process(delta):
 #		max_vel = 0
 #	if owner.velocity.length() > max_vel:
 #		max_vel = owner.velocity.length()
-	text = str(owner.look_direction)
+	text = str(owner.velocity)
 #	text = str(owner.get_node("states/attack").attack_count)
 
 func _on_states_state_changed(states_stack):

@@ -11,20 +11,24 @@ const JUMP_VEL = -690
 
 func enter() -> void:
 	enter_velocity = owner.velocity
-	if 500 > abs(enter_velocity.x):
+	if 500 > abs(enter_velocity.x): # x can't go faster than enter velocity.x
 		enter_velocity.x = 500
 
 	owner.has_jumped = true
 
 	var prev_state_name = get_parent().previous_state.name
 
-	if prev_state_name != "hook":
+	if owner.bounce_boost:
+		owner.velocity.y = -owner.velocity.y  # reverse dir
+		owner.bounce_boost = false
+	elif prev_state_name != "hook":
 		owner.velocity.y = JUMP_VEL # old speed kept
 		owner.play_anim_fx("jump")
 
 	if prev_state_name == "wallslide":
 		input_dir = get_input_direction()
 		owner.velocity.x = -JUMP_VEL*input_dir.x
+
 
 	owner.move() # instant feedback
 	owner.play_anim("jump")

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # only put consts used by multiple states, no need to get owner each time
 const GRAVITY = 2400
-const TERM_VEL = 1000 # Terminal velocity when falling/ jumping straight up
+const TERM_VEL = 2400 # Terminal velocity when falling/ jumping straight up
 const AIR_ACCEL = 28.5  # increase in this >> increase in stearing power in air
 
 var velocity = Vector2()
@@ -16,6 +16,7 @@ var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var exit_slide_blocked = false
 var wall_direction = 0
+var bounce_boost = false
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -23,6 +24,8 @@ onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var sound_parent = $sounds
 onready var body_rotate = $bodyPivot/bodyRotate/
+onready var body_collision = $bodyCollision
+onready var slide_collision = $slideCollision
 
 signal state_changed
 signal hook_command
@@ -88,8 +91,8 @@ func move():
 func move_with_snap():
 	move_and_slide_with_snap(velocity,Vector2.DOWN * 10, Vector2.UP)
 func switch_col():
-		$bodyCollision.disabled = not $bodyCollision.disabled
-		$slideCollision.disabled = not $slideCollision.disabled
+		body_collision.disabled = not body_collision.disabled
+		slide_collision.disabled = not slide_collision.disabled
 func _on_slideArea2D_body_exited(body):
 	exit_slide_blocked = false
 func _on_slideArea2D_body_entered(body):
@@ -124,6 +127,9 @@ func stop_sound(string):
 func volume(string, vol_db):
 	sound_parent.get_node(string).volume_db = vol_db
 
+func _ready():
+	body_collision.disabled = false
+	slide_collision.disabled = true
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
 	if hooked or not DataResource.dict_player.chain_in_air:
@@ -142,7 +148,4 @@ func shake_camera(dur, freq, amp, dir):
 
 func _on_Area2D_body_entered(body):
 	pass # Replace with function body.
-
-# sounds .77 start
-# .6 hit
 

@@ -23,9 +23,8 @@ func enter():
 
 func update(delta):
 	relative_vel = attachment_curve.interpolate(relative_vel)
-
-	owner.velocity = initial_vel * (1-relative_vel) + SLIDE_PWR*Vector2(get_input_direction().x,0)
-
+	owner.velocity = initial_vel * (1-relative_vel) + SLIDE_PWR*Vector2(get_input_direction().x,0) + Vector2(0,10)
+	print (owner.velocity)
 	# player needss to move a certain time before can slide back up
 	if ((not Input.is_action_pressed("slide") and abs(owner.velocity.x) < abs(initial_vel.x)/2 or abs(owner.velocity.x) < MIN_VEL)) \
 	 and not owner.exit_slide_blocked:

@@ -52,7 +52,6 @@ func update(delta):
 		slide = true
 
 	# wall crash
-
 	if owner.is_on_wall():
 		owner.velocity.x = 0
 	# landing
@@ -69,4 +68,13 @@ func update(delta):
 			owner.play_sound("land")
 			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
 			emit_signal("finished", "run")
+
+	# bouncepad
+	var col
+	if owner.get_slide_count():
+		col = owner.get_slide_collision(0).get_collider()
+		if col.is_in_group("bouncePads"):
+			owner.bounce_boost = true
+			emit_signal("finished", "jump")
+
 	.update(delta)

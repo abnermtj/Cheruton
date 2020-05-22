@@ -333,6 +333,7 @@ extents = Vector2( 30, 17.889 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 2, 0 )
+collision_layer = 2
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -385,6 +386,7 @@ shape = SubResource( 14 )
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 41.5 )
 shape = SubResource( 15 )
+disabled = true
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -432,8 +434,7 @@ __meta__ = {
 [node name="slideArea2D" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
 gravity_vec = Vector2( 0, 0 )
-collision_layer = 8
-collision_mask = 4
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( 0, -5 )
@@ -449,13 +450,11 @@ position = Vector2( -25, 0 )
 position = Vector2( 0, 20 )
 enabled = true
 cast_to = Vector2( -10, 0 )
-collision_mask = 4
 
 [node name="leftside1" type="RayCast2D" parent="wallRaycasts/leftSide"]
 position = Vector2( 0, -12 )
 enabled = true
 cast_to = Vector2( -10, 0 )
-collision_mask = 4
 
 [node name="rightSide" type="Node2D" parent="wallRaycasts"]
 position = Vector2( 25, 0 )
@@ -464,13 +463,11 @@ position = Vector2( 25, 0 )
 position = Vector2( 0, 20 )
 enabled = true
 cast_to = Vector2( 10, 0 )
-collision_mask = 4
 
 [node name="rightside2" type="RayCast2D" parent="wallRaycasts/rightSide"]
 position = Vector2( 0, -12 )
 enabled = true
 cast_to = Vector2( 10, 0 )
-collision_mask = 4
 
 [node name="sounds" type="Node" parent="."]
 
@@ -501,7 +498,7 @@ volume_db = -25.0
 [node name="slide" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 15 )
 volume_db = -3.0
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
