@@ -12,6 +12,6 @@ shader_param/OCTAVE = 6
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 644.168, 440.018 )
-scale = Vector2( 6.65254, 6.55833 )
+position = Vector2( 631.086, 440.018 )
+scale = Vector2( 5.83489, 6.55833 )
 texture = ExtResource( 2 )

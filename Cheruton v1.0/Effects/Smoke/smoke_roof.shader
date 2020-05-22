@@ -42,9 +42,9 @@ float egg_shaped(vec2 coord, float radius){
 	vec2 diff = coord - center;
 	
 	if(coord.y < center.y)
-		diff.y /= 2.0;
+		diff.y /= 3.0;
 	else
-		diff.y *= 2.0;
+		diff.y = 0.0;
 	
 	float dist = (sqrt(diff.x * diff.x) - sqrt(diff.y * diff.y)) / (radius * radius);
 	
