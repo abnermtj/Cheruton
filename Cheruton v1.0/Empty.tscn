@@ -1,18 +1,26 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Effects/Fog/Fog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Smoke/Smoke.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mountainold1.png" type="Texture" id=3]
 [ext_resource path="res://Effects/Water/Water.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/Fire/Fire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Effects/Wind.shader" type="Shader" id=6]
+[ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=6]
 [ext_resource path="res://Empty.gd" type="Script" id=7]
+[ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.1
+shader_param/maxStrength = 0.4
+shader_param/strengthScale = 10.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = 0.0
 
 [node name="Control" type="Control"]
-material = SubResource( 1 )
 margin_left = -47.7747
 margin_top = -9.67926
 margin_right = 1232.23
@@ -62,4 +70,10 @@ margin_bottom = 381.23
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Leaf_test-Recovered" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 401.371, 564.156 )
+scale = Vector2( 8.66291, 6.60158 )
+texture = ExtResource( 8 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
