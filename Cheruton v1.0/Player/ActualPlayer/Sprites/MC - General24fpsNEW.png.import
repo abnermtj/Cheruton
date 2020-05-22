@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/24fps_MC.png-6a8db3190888fd087a80a64ce0bf6b21.stex"
+path="res://.import/MC - General24fpsNEW.png-618feba1b51047dcefe93b5a0b1724aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/ActualPlayer/Sprites/24fps_MC.png"
-dest_files=[ "res://.import/24fps_MC.png-6a8db3190888fd087a80a64ce0bf6b21.stex" ]
+source_file="res://Player/ActualPlayer/Sprites/MC - General24fpsNEW.png"
+dest_files=[ "res://.import/MC - General24fpsNEW.png-618feba1b51047dcefe93b5a0b1724aa.stex" ]
 
 [params]
 

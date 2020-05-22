@@ -58,7 +58,6 @@ func update(delta):
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false
-		owner.play_anim("land")
 		owner.play_anim_fx("land")
 		if (jump_again and jump_timer >= 0):
 			emit_signal("finished", "jump")
@@ -67,7 +66,7 @@ func update(delta):
 		else:
 			# land
 #			if abs(owner.velocity.length()) > 1000:
-#				owner.play_sound("land")
+			owner.play_sound("land")
 			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
 			emit_signal("finished", "run")
 	.update(delta)

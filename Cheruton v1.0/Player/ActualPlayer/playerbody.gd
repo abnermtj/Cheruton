@@ -22,7 +22,7 @@ onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var sound_parent = $sounds
-onready var body_sprite = $bodyPivot/sprite
+onready var body_rotate = $bodyPivot/bodyRotate/
 
 signal state_changed
 signal hook_command
@@ -117,7 +117,8 @@ func _is_wall_raycast_colliding(wall_raycasts):
 	return false
 
 func play_sound(string):
-	sound_parent.get_node(string).play()
+#	sound_parent.get_node(string).play()
+	pass
 func stop_sound(string):
 	sound_parent.get_node(string).stop()
 func volume(string, vol_db):
@@ -127,8 +128,7 @@ func _process(delta):
 	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
 	if hooked or not DataResource.dict_player.chain_in_air:
 		stop_sound("hook_start")
-	else:
-		print("here")
+
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
 	if hooked:
@@ -142,4 +142,7 @@ func shake_camera(dur, freq, amp, dir):
 
 func _on_Area2D_body_entered(body):
 	pass # Replace with function body.
+
+# sounds .77 start
+# .6 hit
 

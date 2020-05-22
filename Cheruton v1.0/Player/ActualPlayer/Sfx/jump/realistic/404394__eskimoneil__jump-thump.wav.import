@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/404394__eskimoneil__jump-thump.wav-7e0880bee7ae0410cd91a930c2575ce0.sample"
+
+[deps]
+
+source_file="res://Player/ActualPlayer/Sfx/jump/realistic/404394__eskimoneil__jump-thump.wav"
+dest_files=[ "res://.import/404394__eskimoneil__jump-thump.wav-7e0880bee7ae0410cd91a930c2575ce0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

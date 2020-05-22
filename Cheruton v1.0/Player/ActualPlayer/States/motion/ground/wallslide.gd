@@ -9,7 +9,7 @@ var gravity_strength = .02
 var slide_down : bool
 
 func enter():
-	owner.play_anim("wallslide")
+	owner.play_anim("wall_slide")
 	var gravity_strength = GRAVITY_STRENGTH_MIN
 	update_look_direction(Vector2(-owner.wall_direction,0))
 
