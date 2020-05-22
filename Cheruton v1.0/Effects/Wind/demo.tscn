@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=1]
+[ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.1
+shader_param/maxStrength = 0.4
+shader_param/strengthScale = 10.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = 0.0
+
+[node name="Node" type="Node"]
+
+[node name="Leaf_test-Recovered" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 684.133, 509.016 )
+scale = Vector2( 5.74178, 4.67426 )
+texture = ExtResource( 2 )

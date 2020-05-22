@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Effects/Fog/Fog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Smoke/Smoke.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mountainold1.png" type="Texture" id=3]
 [ext_resource path="res://Effects/Water/Water.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/Fire/Fire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Effects/Foliage.shader" type="Shader" id=6]
+[ext_resource path="res://Effects/Wind.shader" type="Shader" id=6]
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=7]
 [ext_resource path="res://Effects/Sprite-0001.png" type="Texture" id=8]
 [ext_resource path="res://Effects/Sprite-0002.png" type="Texture" id=9]
@@ -21,7 +21,19 @@ shader_param/detail = 1.0
 shader_param/distortion = null
 shader_param/heightOffset = 0.0
 
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/speed = 1.0
+shader_param/minStrength = null
+shader_param/maxStrength = null
+shader_param/strengthScale = 100.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = 0.0
+
 [node name="Control" type="Control"]
+material = SubResource( 1 )
 margin_left = -47.7747
 margin_top = -9.67926
 margin_right = 1232.23
@@ -68,13 +80,13 @@ position = Vector2( 188.838, 607.846 )
 texture = ExtResource( 8 )
 
 [node name="Sprite-0002" type="Sprite" parent="."]
+visible = false
 position = Vector2( 192.328, 534.946 )
 scale = Vector2( 1.25564, 1.13838 )
 texture = ExtResource( 9 )
 
 [node name="Leaf_test-Recovered2" type="Sprite" parent="."]
-visible = false
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 278.888, 534.232 )
 scale = Vector2( 7.02575, 5.6393 )
 texture = ExtResource( 7 )
