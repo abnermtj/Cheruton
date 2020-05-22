@@ -243,6 +243,14 @@ attack={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="player_hitbox"
+2d_physics/layer_4="enemy"
+2d_physics/layer_5="enemy_hitbox"
+
 [physics]
 
 common/physics_jitter_fix=0.1
