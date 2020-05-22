@@ -5,11 +5,9 @@ var arrow = preload("res://Display/MouseDesign/arrow.png")
 var beam = preload("res://Display/MouseDesign/beam.png")
 
 
-func init_default_cursor():
+func init_cursor():
 	
-	# Changes only the shapes of the cursor.
+	# Changes the shapes of the cursor for various functions.
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
 
-func set_cursor(cursor_type):
-	Input.set_default_cursor_shape(Input.CURSOR_IBEAM)
