@@ -37,7 +37,7 @@ float fbm(vec2 coord){
 	}
 	return val;
 }
-// Shapes the fire like an egg
+// Shapes the fire like a hyperbola
 float egg_shaped(vec2 coord, float radius){
 	vec2 diff = coord - center;
 	
@@ -46,8 +46,11 @@ float egg_shaped(vec2 coord, float radius){
 	else
 		diff.y *= 2.0;
 	
-	float dist = sqrt(diff.x * diff.x + diff.y * diff.y) / radius;
-	float result = clamp(1.0 - dist, 0.0, 1.0);
+	float dist = (sqrt(diff.x * diff.x) - sqrt(diff.y * diff.y)) / (radius * radius);
+	
+	float result = clamp(dist, 0.3, 1.0);
+	
+	result = clamp(1.0 - dist, 0.0, 1.0);
 	return result * result;
 }
 
