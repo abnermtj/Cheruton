@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General24fpsNEW.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/run.gd" type="Script" id=6]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
+[ext_resource path="res://Player/ActualPlayer/Sprites/MC - Arm.png" type="Texture" id=9]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
 [ext_resource path="res://Player/ActualPlayer/Sfx/jump/realistic/eskimoneil_mod.wav" type="AudioStream" id=11]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
@@ -20,7 +21,8 @@
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hook_fail_Real/interface1.wav" type="AudioStream" id=19]
 [ext_resource path="res://Player/ActualPlayer/Sfx/land/realisti/jumpland.wav" type="AudioStream" id=20]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=27]
+resource_name = "attack_air_1"
 length = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
@@ -130,6 +132,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 length = 0.32
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
 tracks/0/interp = 0
@@ -169,6 +172,34 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Rect2( 2857, 1, 40, 36 ), Rect2( 2899, 1, 40, 36 ), Rect2( 2941, 1, 40, 36 ), Rect2( 2983, 1, 40, 36 ), Rect2( 3025, 1, 40, 36 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "grapple_throw"
+length = 0.28
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.17, 0.21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 4663, 1, 40, 36 ), Rect2( 4705, 1, 40, 36 ), Rect2( 4747, 1, 40, 36 ), Rect2( 4789, 1, 40, 36 ), Rect2( 4831, 1, 40, 36 ), Rect2( 4873, 1, 40, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.17, 0.21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -413,6 +444,22 @@ tracks/1/keys = {
 "values": [ Vector2( 0.75, 0 ) ]
 }
 
+[sub_resource type="Animation" id=26]
+resource_name = "attack_ground_3"
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.19 ),
+"transitions": PoolRealArray( 1.7411, 1 ),
+"update": 0,
+"values": [ Vector2( 1.08, 0.95 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=20]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
@@ -456,7 +503,6 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.17104, 0, 0, Vector2( 1, 1 ), 0.938576, 0.0, 0
 extents = Vector2( 30, 17.889 )
 
 [node name="player" type="KinematicBody2D"]
-position = Vector2( 2, 0 )
 collision_layer = 2
 script = ExtResource( 5 )
 __meta__ = {
@@ -464,24 +510,36 @@ __meta__ = {
 }
 
 [node name="bodyPivot" type="Position2D" parent="."]
-scale = Vector2( 0.95, 1.05 )
+scale = Vector2( 1.08, 0.95 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
 position = Vector2( -6.6993, -0.316351 )
+scale = Vector2( 1, 1 )
 
 [node name="playerSprite" type="Sprite" parent="bodyPivot/bodyRotate"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+offset = Vector2( 1.75, 0 )
 region_enabled = true
-region_rect = Rect2( 3529, 1, 40, 36 )
+region_rect = Rect2( 1723, 1, 40, 36 )
+
+[node name="armSprite" type="Sprite" parent="bodyPivot"]
+visible = false
+position = Vector2( -10, 5.684 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( 0, -15 )
+region_rect = Rect2( 5167, 1, 40, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack_air_1 = SubResource( 1 )
+anims/attack_air_1 = SubResource( 27 )
 anims/attack_air_2 = SubResource( 2 )
 anims/attack_ground_1 = SubResource( 3 )
 anims/attack_ground_2 = SubResource( 4 )
 anims/attack_ground_3 = SubResource( 5 )
 anims/fall = SubResource( 6 )
+anims/grapple_throw = SubResource( 1 )
 anims/hover = SubResource( 7 )
 anims/idle = SubResource( 8 )
 anims/idle_continious = SubResource( 9 )
@@ -497,6 +555,7 @@ anims/wall_slide = SubResource( 18 )
 anims/wall_slide_fast = SubResource( 19 )
 
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
+anims/attack_ground_3 = SubResource( 26 )
 anims/jump = SubResource( 20 )
 anims/land = SubResource( 21 )
 
@@ -622,8 +681,12 @@ volume_db = -3.0
 
 [node name="attackCoolDown" type="Timer" parent="."]
 one_shot = true
+
+[node name="grappleCoolDown" type="Timer" parent="."]
+one_shot = true
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
 [connection signal="timeout" from="attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
+[connection signal="timeout" from="grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]

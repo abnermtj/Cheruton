@@ -1,7 +1,7 @@
 extends Node2D
 
-const SPEED_TIP_START = 4700
-const REEL_SPEED = 3650
+const SPEED_TIP_START = 5000
+const REEL_SPEED = 3850
 
 onready var chain_state = chain_states.HIDDEN
 enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN= 4}
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	match(chain_state):
 		chain_states.SHOOT:
 			visible = true
-			if speed_tip < 700:
+			if speed_tip < 1000:
 				start_reel()
 				return
 
@@ -71,6 +71,9 @@ func _physics_process(delta: float) -> void:
 				visible = false
 		chain_states.HIDDEN:
 			pass
+
+func _ready():
+	visible = false
 
 func _process(delta):
 	DataResource.dict_player.chain_in_air = visible

@@ -17,13 +17,16 @@ var exit_slide_blocked = false
 var wall_direction = 0
 var bounce_boost = false
 var can_attack = true
+var can_hook = true
+var previous_anim
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var sound_parent = $sounds
-onready var body_rotate = $bodyPivot/bodyRotate/
+onready var body_rotate = $bodyPivot/bodyRotate
+onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
 
@@ -57,10 +60,22 @@ func signal_on_floor(grounded):
 # Animation
 func play_anim(string):
 	if animation_player:
-		animation_player.play(string)
+		if string != "previous":
+			animation_player.play(string)
+			previous_anim = string
+		else:
+			animation_player.play(previous_anim)
 func queue_anim(string):
 	if animation_player:
-		animation_player.queue(string)
+		if string != "previous":
+			animation_player.queue(string)
+			previous_anim = string
+		else:
+			animation_player.queue(previous_anim)
+func play_and_return_anim(string):
+	if animation_player:
+		animation_player.play(string)
+		animation_player.queue(previous_anim)
 func stop_anim():
 	if animation_player:
 		animation_player.stop(false)
@@ -75,6 +90,10 @@ func queue_anim_fx(string):
 # Hook mechanics
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
+	can_hook = false
+	$grappleCoolDown.start(.5)
+func _on_grappleCoolDown_timeout():
+	can_hook = true
 func _on_Chain_hooked(command, tip_p):
 	if command == 0:
 		hooked = 1
@@ -123,7 +142,7 @@ func _is_wall_raycast_colliding(wall_raycasts):
 
 # ATTACK
 func start_attack_cool_down():
-	$attackCoolDown.start(.9)
+	$attackCoolDown.start(1	)
 func _on_attackCoolDown_timeout():
 	can_attack = true
 
@@ -138,9 +157,11 @@ func volume(string, vol_db):
 func _ready():
 	body_collision.disabled = false
 	slide_collision.disabled = true
+	arm_rotate.visible = false
+
 func _process(delta):
-	DataResource.dict_player.player_pos = global_position # this is previous, need to goto actual state physics to get current
-	if hooked or not DataResource.dict_player.chain_in_air:
+	DataResource.dict_player.player_pos = global_position+Vector2(0,12)  # minus to get the true middle that hook attaches from
+	if hooked or not DataResource.dict_player.chain_in_air: # chain node must be above player node in scene tree
 		stop_sound("hook_start")
 
 # CAMERA  CONTROL PART
@@ -151,4 +172,3 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
-

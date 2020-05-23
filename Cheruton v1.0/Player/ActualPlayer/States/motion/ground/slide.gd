@@ -39,5 +39,4 @@ func update(delta):
 	.update(delta)
 func exit():
 	owner.play_anim("slide_recover")
-	print("here")
 	owner.switch_col()

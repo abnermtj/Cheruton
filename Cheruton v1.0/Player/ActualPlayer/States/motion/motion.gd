@@ -2,12 +2,10 @@
 extends baseState
 class_name motionState
 
-const ATTACK_COOLDOWN_TIME = 10000 # miliseconds
-var next_attack_timer = 0
-
 func handle_input(event):
-	if event.is_action_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"]:
+	if Input.is_action_just_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"] and owner.can_hook: # used Input cuz bugs
 		owner.play_sound("hook_start")
+		owner.play_and_return_anim("grapple_throw")
 		owner.hook_dir = get_input_direction()
 		if not owner.hook_dir:
 			owner.hook_dir = owner.look_direction

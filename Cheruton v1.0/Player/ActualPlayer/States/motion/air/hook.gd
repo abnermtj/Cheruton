@@ -37,6 +37,8 @@ func enter():
 	prev_pos = owner.previous_position
 	length_rope = (owner.global_position - tip_pos).length()
 	desired_length_rope = length_rope
+	owner.arm_rotate.visible = true
+	owner.play_anim("swing")
 	owner.play_sound("hook_hit")
 
 # Invariant : hook tip already planted
@@ -70,8 +72,9 @@ func update(delta):
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow
 
 func _process(delta):
-	owner.body_rotate.rotation = owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked\
-	 else 0
+	owner.get_node("bodyPivot").rotation =  owner.global_position.angle_to_point(tip_pos) - PI/2 if owner.hooked else 0
+#	owner.body_rotate.rotation =  owner.global_position.angle_to_point(tip_pos)*.9 - PI/2\
+#	 if owner.hooked else 0
 
 # INTEGRATION
 func _update(delta):
@@ -97,4 +100,6 @@ func _adjust(): # don't call move again, done in returning call
 	owner.velocity = (cur_pos - prev_pos )*SWING_SPEED
 
 func exit():
+	owner.body_rotate.get_node("playerSprite").rotation =  0
+	owner.arm_rotate.visible = false
 	owner.chain_release()

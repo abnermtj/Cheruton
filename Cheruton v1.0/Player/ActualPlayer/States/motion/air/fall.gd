@@ -17,8 +17,11 @@ func enter():
 	if 500 > abs(enter_velocity.x):
 		enter_velocity.x = 500
 
-	owner.play_anim("hover")
-	owner.queue_anim("fall")
+	if owner.velocity.y < 10:
+		owner.play_anim("hover")
+		owner.queue_anim("fall")
+	else:
+		owner.play_anim("fall")
 	coyote_timer = COYOTE_TIME
 	jump_again = false
 	slide = false
