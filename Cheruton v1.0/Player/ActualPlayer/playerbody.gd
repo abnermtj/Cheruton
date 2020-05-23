@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 # only put consts used by multiple states, no need to get owner each time
 const GRAVITY = 2400
-const TERM_VEL = 2400 # Terminal velocity when falling/ jumping straight up
 const AIR_ACCEL = 28.5  # increase in this >> increase in stearing power in air
 
 var velocity = Vector2()
@@ -17,7 +16,7 @@ var look_direction = Vector2(1, 0) setget set_look_direction
 var exit_slide_blocked = false
 var wall_direction = 0
 var bounce_boost = false
-var prev_camera_logic = 0
+var can_attack = true
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -62,6 +61,9 @@ func play_anim(string):
 func queue_anim(string):
 	if animation_player:
 		animation_player.queue(string)
+func stop_anim():
+	if animation_player:
+		animation_player.stop(false)
 func play_anim_fx(string):
 	if animation_player_fx:
 		animation_player_fx.play(string)
@@ -111,7 +113,6 @@ func _update_wall_direction():
 		return false
 	else:
 		return true
-
 func _is_wall_raycast_colliding(wall_raycasts):
 	for raycast in wall_raycasts.get_children():
 			if raycast.is_colliding():
@@ -119,6 +120,12 @@ func _is_wall_raycast_colliding(wall_raycasts):
 				if  angle > deg2rad(60) &&  angle < deg2rad(120):
 					return true
 	return false
+
+# ATTACK
+func start_attack_cool_down():
+	$attackCoolDown.start(.9)
+func _on_attackCoolDown_timeout():
+	can_attack = true
 
 func play_sound(string):
 #	sound_parent.get_node(string).play()
@@ -138,19 +145,10 @@ func _process(delta):
 
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
-	if hooked and prev_camera_logic != 0: # don't repeat unneccesary signals
-		emit_signal("camera_command", 1, 0)
-		prev_camera_logic = 0
-	elif prev_camera_logic != 1:
-		prev_camera_logic = 1
-		if not ($states.previous_state.name == "hook" and $states.current_state is airState):
-			emit_signal("camera_command", 0, on_floor)
-
-
+	if hooked or $states.previous_state.name == "hook":
+		emit_signal("camera_command", 1, 0) # HOOK MODE
+	else:
+		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
-
-
-func _on_Area2D_body_entered(body):
-	pass # Replace with function body.
 

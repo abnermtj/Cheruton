@@ -1,6 +1,7 @@
 shader_type canvas_item;
 render_mode blend_mix;
 
+// IMPT: EDIT THE VALUES IN THE RHS SHADER PARAM!!!
 // Wind settings.
 uniform float speed = 1.0;
 uniform float minStrength : hint_range(0.0, 1.0);

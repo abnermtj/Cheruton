@@ -2,6 +2,9 @@
 extends baseState
 class_name motionState
 
+const ATTACK_COOLDOWN_TIME = 10000 # miliseconds
+var next_attack_timer = 0
+
 func handle_input(event):
 	if event.is_action_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"]:
 		owner.play_sound("hook_start")
@@ -11,7 +14,12 @@ func handle_input(event):
 		owner.start_hook()
 
 
-	if get_parent().current_state != get_parent().states_map["attack"] and event.is_action_pressed("attack") and owner.exit_slide_blocked == false:
+	if get_parent().current_state != get_parent().states_map["attack"]\
+	 and event.is_action_pressed("attack")\
+	 and owner.exit_slide_blocked == false\
+	 and owner.can_attack:
+		owner.can_attack = false
+		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
 
 # note left and right at the same time cancel out
@@ -27,4 +35,3 @@ func update_look_direction(direction):
 		owner.look_direction = direction
 	if direction.x in [-1, 1]:
 		owner.body_rotate.scale = Vector2(direction.x,1) # flips horizontally
-

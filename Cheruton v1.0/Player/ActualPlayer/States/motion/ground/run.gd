@@ -1,14 +1,17 @@
 extends groundState
 
 const MAX_RUN_SPEED = 500
-const PLAYER_DIR_CONTROL = 13 # lower means mario
+const PLAYER_DIR_CONTROL = 20 # lower means mario
 
 var previous_dir
 func enter():
 	var input_direction = get_input_direction()
 	previous_dir = input_direction
 	update_look_direction(input_direction)
-	owner.play_anim("run_continious")
+	if get_parent().previous_state.name == "slide":
+		owner.queue_anim("run_continious")
+	else:
+		owner.play_anim("run_continious")
 
 func handle_input(event):
 	return .handle_input(event)

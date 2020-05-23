@@ -1050,8 +1050,11 @@
    { "name": "slide", "from": 73, "to": 76, "direction": "forward" },
    { "name": "slide_continious", "from": 77, "to": 82, "direction": "forward" },
    { "name": "slide_recover", "from": 83, "to": 86, "direction": "forward" },
-   { "name": "attack_ground", "from": 87, "to": 110, "direction": "forward" },
-   { "name": "air_attack", "from": 111, "to": 122, "direction": "forward" },
+   { "name": "attack_ground_1", "from": 87, "to": 94, "direction": "forward" },
+   { "name": "attack_ground_2", "from": 95, "to": 102, "direction": "forward" },
+   { "name": "attack_ground_3", "from": 103, "to": 110, "direction": "forward" },
+   { "name": "attack_air_1", "from": 111, "to": 116, "direction": "forward" },
+   { "name": "attack_air_2", "from": 117, "to": 122, "direction": "forward" },
    { "name": "swing", "from": 123, "to": 123, "direction": "forward" },
    { "name": "wall_slide", "from": 124, "to": 128, "direction": "forward" }
   ],

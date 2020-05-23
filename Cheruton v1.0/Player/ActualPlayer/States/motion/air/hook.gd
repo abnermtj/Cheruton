@@ -9,7 +9,7 @@ const SWING_CONTROL_STRENGTH = .150
 const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 70
 const MIN_WIRE_LENGTH = 240
-const MAX_WIRE_LENGTH = 600
+const MAX_WIRE_LENGTH = 600 # 600 befor
 const PLAYER_LENGTH_CONTROL = 300 # players influence with REEL
 const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
 
@@ -44,8 +44,6 @@ func update(delta):
 	# let go of rope
 	release_timer -= delta
 	if Input.is_action_just_pressed("jump") and release_timer < 0: # bugs if jumping same frame as press
-		if owner.is_on_ceiling():
-			owner.velocity = Vector2.DOWN
 		emit_signal("finished", "fall")
 		return
 	# zip up

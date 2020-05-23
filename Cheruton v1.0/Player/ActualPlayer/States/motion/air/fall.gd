@@ -2,6 +2,7 @@ extends airState
 
 const JUMP_AGAIN_MARGIN = 0.12 # seconds need to press jump this amout of time for it to input buffer
 const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
+const TERM_VEL = 3000
 
 var coyote_timer : float # here incase playeer walks off an edge
 var jump_timer : float
@@ -26,7 +27,7 @@ func update(delta):
 	coyote_timer -= delta
 	jump_timer -= delta
 
-	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta ) # dunnid delta here by right, move and slide deals with it
+	owner.velocity.y = min( TERM_VEL, owner.velocity.y + owner.GRAVITY * delta ) # dunnid delta here by right, move and slide deals with it
 
 	var input_dir = get_input_direction()
 	update_look_direction(input_dir)
@@ -54,6 +55,8 @@ func update(delta):
 	# wall crash
 	if owner.is_on_wall():
 		owner.velocity.x = 0
+	if owner.is_on_ceiling():
+			owner.velocity.y = 0
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false
@@ -64,9 +67,7 @@ func update(delta):
 			emit_signal("finished", "slide")
 		else:
 			# land
-#			if abs(owner.velocity.length()) > 1000:
 			owner.play_sound("land")
-			owner.shake_camera(.1, 10, 1,Vector2.DOWN)
 			emit_signal("finished", "run")
 
 	# bouncepad

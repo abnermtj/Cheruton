@@ -47,8 +47,9 @@ func _physics_process(delta: float) -> void:
 	match(chain_state):
 		chain_states.SHOOT:
 			visible = true
-			if speed_tip < 10:
+			if speed_tip < 700:
 				start_reel()
+				return
 
 			var col = tip.move_and_collide(direction * speed_tip * delta) # in initial direction of player input
 			if col :
@@ -56,7 +57,7 @@ func _physics_process(delta: float) -> void:
 				if  angle > deg2rad(-140) and angle < deg2rad(-40)  : # limits wall angles we can ancho to
 					chain_state = chain_states.HOOKED
 					emit_signal("hooked",0, tip.global_position)
-					emit_signal("shake", .105, 7, 7, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1)) # (.1, .1 ) is a small offset to direction  making the shake more pronounced
+					emit_signal("shake", .105, 7, 3, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1)) # (.1, .1 ) is a small offset to direction  making the shake more pronounced
 				else: # not valid wall
 					start_reel()
 					emit_signal("hooked",1,Vector2())

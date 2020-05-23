@@ -2,12 +2,16 @@ extends airState
 #NOTE some keyboards cannot detect pressing up left and space simulatenously google NKRO
 
 const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow down by 0 to 1
-const JUMP_GRAVITY_SLOWDOWN = .42 # slows down gravity on top of jump more drifting ability for player
+const JUMP_TERMINAL_VELOCITY = 10000
+const NORMAL_GRAV_MULTIPLIER = .42
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity
 var input_dir
-const JUMP_VEL = -690
+var bounce_boost
+var grav_multiplier
+
+const JUMP_VEL = -665
 
 func enter() -> void:
 	enter_velocity = owner.velocity
@@ -18,9 +22,15 @@ func enter() -> void:
 
 	var prev_state_name = get_parent().previous_state.name
 
+	grav_multiplier = NORMAL_GRAV_MULTIPLIER
+	bounce_boost = false
 	if owner.bounce_boost:
-		owner.velocity.y = -owner.velocity.y  # reverse dir
+		owner.velocity.y = -owner.velocity.y*.7  # reverse dir
+		if abs(owner.velocity.y) < 670:
+			owner.velocity.y = 670 * sign(owner.velocity.y)
+		bounce_boost = true
 		owner.bounce_boost = false
+		grav_multiplier = 1
 	elif prev_state_name != "hook":
 		owner.velocity.y = JUMP_VEL # old speed kept
 		owner.play_anim_fx("jump")
@@ -36,12 +46,13 @@ func enter() -> void:
 	keypress_timer = 0.2
 
 func update( delta ):
-	owner.velocity.y = min( owner.TERM_VEL, owner.velocity.y + owner.GRAVITY * delta * JUMP_GRAVITY_SLOWDOWN)# use delta for all time based movements
+	owner.velocity.y = min( JUMP_TERMINAL_VELOCITY , owner.velocity.y + owner.GRAVITY * grav_multiplier * delta)# use delta for all acceleration based movements
 
 	keypress_timer -= delta
 	if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
 		keypress_timer = -1.0
-		owner.velocity.y *= JUMP_RELEASE_SLOWDOWN
+		if not bounce_boost:
+			owner.velocity.y *= JUMP_RELEASE_SLOWDOWN
 
 	# steering here
 	input_dir = get_input_direction()
@@ -53,7 +64,7 @@ func update( delta ):
 		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
 
 	owner.move()
-	if owner.is_on_ceiling():
+	if	 owner.is_on_ceiling():
 		owner.velocity.y = 0.0
 		emit_signal("finished","fall")
 	else:
