@@ -63,16 +63,20 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Label" parent="Border/Bg/Contents/Header"]
+margin_top = 2.0
 margin_right = 649.0
-margin_bottom = 33.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
-text = "                              Inventory"
+text = "Inventory"
+align = 1
+valign = 2
 
 [node name="Exit" type="TextureButton" parent="Border/Bg/Contents/Header"]
-margin_left = 653.0
-margin_right = 686.0
-margin_bottom = 33.0
+margin_left = 651.0
+margin_top = 2.0
+margin_right = 684.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
@@ -260,26 +264,21 @@ margin_top = 13.0
 margin_right = 684.0
 margin_bottom = 27.0
 
-[node name="Margin2" type="Label" parent="Border/Bg/Contents"]
-margin_top = 99.0
-margin_right = 686.0
-margin_bottom = 113.0
-
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 117.0
+margin_top = 99.0
 margin_right = 686.0
 margin_bottom = 409.0
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_top = 139.0
-margin_bottom = 153.0
+margin_top = 148.0
+margin_bottom = 162.0
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
 margin_left = 4.0
-margin_top = 139.0
+margin_top = 148.0
 margin_right = 4.0
-margin_bottom = 153.0
+margin_bottom = 162.0
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Contents"]
 margin_top = 413.0
