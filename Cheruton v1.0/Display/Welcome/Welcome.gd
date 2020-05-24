@@ -5,7 +5,7 @@ func _ready():
 	DataResource.load_data()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio)
-	Cursor.init_cursor()
+	#Cursor.init_cursor()
 	#Testing loot functionality
 	var map = "test"
 	var run = Loot.determine_loot_count(map)
