@@ -1,7 +1,8 @@
 extends groundState
 
-const MAX_RUN_SPEED = 500
-const PLAYER_DIR_CONTROL = 20 # lower means mario
+const MAX_RUN_SPEED = 250
+const PLAYER_DIR_CONTROL = 10 # lower means mario
+const MIN_RUN_SPEED = 25
 
 var previous_dir
 func enter():
@@ -25,9 +26,9 @@ func update(delta):
 		previous_dir = input_direction
 	owner.velocity.x = lerp(owner.velocity.x , MAX_RUN_SPEED * input_direction.x, delta*PLAYER_DIR_CONTROL)
 	owner.velocity.y = 5
-	owner.move_with_snap() # look tiles down for a tile to snap to
+	owner.move() # look tiles down for a tile to snap to
 	# note that the tilemap checks for collision with character, not the character itself checking the layer of the tile mask
-	if not input_direction.x and abs(owner.velocity.x) < 50 :
+	if not input_direction.x and abs(owner.velocity.x) < MIN_RUN_SPEED :
 		emit_signal("finished", "idle")
 	if Input.is_action_just_pressed("slide"):
 		emit_signal("finished", "slide")

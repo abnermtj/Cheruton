@@ -5,12 +5,12 @@ const AIR = 1
 const ATTACK_TIMER_BUFFER = .36
 const GRAVITY_MULTIPLIER =.1
 
-const GROUND_SPEED_H_1 = 200
-const GROUND_SPEED_H_2 = 890
-const GROUND_SPEED_H_3 = 2000
+const GROUND_SPEED_H_1 = 100
+const GROUND_SPEED_H_2 = 445
+const GROUND_SPEED_H_3 = 1000
 
-const AIR_SPEED_H_1 = 200
-const AIR_SPEED_H_2 = 1000
+const AIR_SPEED_H_1 = 100
+const AIR_SPEED_H_2 = 500
 
 var attack_timer
 var attack_count
@@ -107,3 +107,5 @@ func update(delta):
 	owner.move()
 	updated_once = true
 
+func update_idle(delta):
+	pass

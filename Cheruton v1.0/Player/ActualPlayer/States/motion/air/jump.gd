@@ -4,6 +4,9 @@ extends airState
 const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow down by 0 to 1
 const JUMP_TERMINAL_VELOCITY = 10000
 const NORMAL_GRAV_MULTIPLIER = .42
+const MIN_BOUNCE_POWER = 333
+const MIN_ENTER_VELOCITY_X = 225
+const JUMP_VEL = -333
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity
@@ -11,12 +14,11 @@ var input_dir
 var bounce_boost
 var grav_multiplier
 
-const JUMP_VEL = -665
 
 func enter() -> void:
 	enter_velocity = owner.velocity
-	if 500 > abs(enter_velocity.x): # x can't go faster than enter velocity.x
-		enter_velocity.x = 500
+	if MIN_ENTER_VELOCITY_X > abs(enter_velocity.x): # x can't go faster than enter velocity.x
+		enter_velocity.x = MIN_ENTER_VELOCITY_X
 
 	owner.has_jumped = true
 
@@ -26,8 +28,8 @@ func enter() -> void:
 	bounce_boost = false
 	if owner.bounce_boost:
 		owner.velocity.y = -owner.velocity.y*.7  # reverse dir
-		if abs(owner.velocity.y) < 670:
-			owner.velocity.y = 670 * sign(owner.velocity.y)
+		if abs(owner.velocity.y) < MIN_BOUNCE_POWER:
+			owner.velocity.y = MIN_BOUNCE_POWER * sign(owner.velocity.y)
 		bounce_boost = true
 		owner.bounce_boost = false
 		grav_multiplier = 1

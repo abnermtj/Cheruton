@@ -3,18 +3,20 @@ extends baseState
 class_name motionState
 
 func handle_input(event):
-	if Input.is_action_just_pressed("hook")  and get_parent().current_state != get_parent().states_map["hook"] and owner.can_hook: # used Input cuz bugs
-		owner.play_sound("hook_start")
-		owner.play_and_return_anim("grapple_throw")
-		owner.hook_dir = get_input_direction()
-		if not owner.hook_dir:
-			owner.hook_dir = owner.look_direction
-		owner.start_hook()
+	if Input.is_action_just_pressed("hook") and not ["slide"].has(get_parent().current_state.name):
+		if owner.can_hook and not owner.hooked:
+			owner.play_sound("hook_start")
+			owner.play_and_return_anim("grapple_throw")
+			owner.hook_dir = get_input_direction()
+			if not owner.hook_dir:
+				owner.hook_dir = owner.look_direction
+			owner.start_hook()
+		elif owner.hooked:
+			owner.chain_release()
+			emit_signal("finished", "fall")
 
-
-	if get_parent().current_state != get_parent().states_map["attack"]\
-	 and event.is_action_pressed("attack")\
-	 and owner.exit_slide_blocked == false\
+	if event.is_action_pressed("attack")\
+	 and not ["hook", "attack", "slide"].has(get_parent().current_state.name)\
 	 and owner.can_attack:
 		owner.can_attack = false
 		owner.start_attack_cool_down()

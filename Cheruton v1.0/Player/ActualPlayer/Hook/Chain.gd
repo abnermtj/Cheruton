@@ -1,10 +1,11 @@
 extends Node2D
 
-const SPEED_TIP_START = 5000
-const REEL_SPEED = 3850
+const SPEED_TIP_START = 2700
+const REEL_SPEED = 1925
+const MIN_TIP_SPEED = 600
 
 onready var chain_state = chain_states.HIDDEN
-enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN= 4}
+enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN = 4}
 
 var direction := Vector2(0,0) # The direction in which the chain was shot
 
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	match(chain_state):
 		chain_states.SHOOT:
 			visible = true
-			if speed_tip < 1000:
+			if speed_tip < MIN_TIP_SPEED:
 				start_reel()
 				return
 

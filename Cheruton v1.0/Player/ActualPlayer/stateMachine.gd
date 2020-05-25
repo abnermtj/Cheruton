@@ -41,6 +41,9 @@ func _input(event):
 func _physics_process(delta):
 	current_state.update(delta)
 
+func _process(delta):
+	current_state.update_idle(delta)
+
 func _on_animation_finished(anim_name):
 	if not _active:
 		return

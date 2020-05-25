@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 # only put consts used by multiple states, no need to get owner each time
-const GRAVITY = 2400
-const AIR_ACCEL = 28.5  # increase in this >> increase in stearing power in air
-
+const GRAVITY = 1200
+const AIR_ACCEL = 14.25  # increase in this >> increase in stearing power in air
+const MAX_WIRE_LENGTH_GROUND = 500
 var velocity = Vector2()
 
 var tip_pos = Vector2()
@@ -18,17 +18,21 @@ var wall_direction = 0
 var bounce_boost = false
 var can_attack = true
 var can_hook = true
+var rope_length = 0.0
 var previous_anim
+var vec_to_ground = Vector2()
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
+onready var floor_raycast = $floorRay
 onready var sound_parent = $sounds
 onready var body_rotate = $bodyPivot/bodyRotate
 onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
+onready var states = $states
 
 signal state_changed
 signal hook_command
@@ -47,7 +51,9 @@ func set_dead(value): # non zero means dead
 
 func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
-
+#	$visual_vel.cast_to = velocity *.5 # debugging
+	if floor_raycast.is_colliding():
+		vec_to_ground = global_position - floor_raycast.get_collision_point()
 # General Helper functions
 func set_look_direction(value): # vector
 	look_direction = value
@@ -96,22 +102,30 @@ func _on_grappleCoolDown_timeout():
 	can_hook = true
 func _on_Chain_hooked(command, tip_p):
 	if command == 0:
-		hooked = 1
+		hooked = true
 		tip_pos = tip_p
-		$states._change_state("hook")
+		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip
+		states._change_state("hook")
 		set_camera_mode_logic()
 	elif command == 1: # bad hook
 		play_sound("hook_bad")
-
+func close_to_floor():
+	return floor_raycast.is_colliding()
 func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
+	can_hook = false
+	$grappleCoolDown.start(.05)
 
 # Movement
 func move():
-	move_and_slide(velocity, Vector2.UP)
-func move_with_snap():
-	move_and_slide_with_snap(velocity,Vector2.DOWN * 10, Vector2.UP)
+	if hooked and states.current_state.name != "hook" and\
+	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND:
+			move_and_slide(Vector2(), Vector2.UP)
+	elif  ["run", "slide"].has(states.current_state.name):
+		move_and_slide_with_snap(velocity,Vector2.DOWN * 10, Vector2.UP)
+	else:
+		move_and_slide(velocity, Vector2.UP)
 func switch_col():
 		body_collision.disabled = not body_collision.disabled
 		slide_collision.disabled = not slide_collision.disabled
@@ -142,7 +156,7 @@ func _is_wall_raycast_colliding(wall_raycasts):
 
 # ATTACK
 func start_attack_cool_down():
-	$attackCoolDown.start(1	)
+	$attackCoolDown.start(1)
 func _on_attackCoolDown_timeout():
 	can_attack = true
 
@@ -160,13 +174,13 @@ func _ready():
 	arm_rotate.visible = false
 
 func _process(delta):
-	DataResource.dict_player.player_pos = global_position+Vector2(0,12)  # minus to get the true middle that hook attaches from
+	DataResource.dict_player.player_pos = global_position + Vector2(0,4)  # additional vector to correct middle of player
 	if hooked or not DataResource.dict_player.chain_in_air: # chain node must be above player node in scene tree
 		stop_sound("hook_start")
 
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
-	if hooked or $states.previous_state.name == "hook":
+	if hooked or states.previous_state.name == "hook":
 		emit_signal("camera_command", 1, 0) # HOOK MODE
 	else:
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE

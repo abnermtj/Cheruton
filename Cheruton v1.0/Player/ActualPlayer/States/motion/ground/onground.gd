@@ -12,3 +12,7 @@ func update(delta):
 	if not owner.is_on_floor():
 		emit_signal("finished","fall")
 
+func update_idle(delta):
+	pass
+
+

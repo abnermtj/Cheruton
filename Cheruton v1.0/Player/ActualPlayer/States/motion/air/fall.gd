@@ -2,7 +2,8 @@ extends airState
 
 const JUMP_AGAIN_MARGIN = 0.12 # seconds need to press jump this amout of time for it to input buffer
 const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
-const TERM_VEL = 3000
+const TERM_VEL = 1500
+const MIN_ENTER_VELOCITY_X = 225
 
 var coyote_timer : float # here incase playeer walks off an edge
 var jump_timer : float
@@ -14,8 +15,12 @@ var slide :bool
 
 func enter():
 	enter_velocity = owner.velocity
-	if 500 > abs(enter_velocity.x):
-		enter_velocity.x = 500
+
+	if owner.hooked:
+		emit_signal("finished", "hook")
+		return
+	if MIN_ENTER_VELOCITY_X > abs(enter_velocity.x):
+		enter_velocity.x = MIN_ENTER_VELOCITY_X
 
 	if owner.velocity.y < 10:
 		owner.play_anim("hover")
