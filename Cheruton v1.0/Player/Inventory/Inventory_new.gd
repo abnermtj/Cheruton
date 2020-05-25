@@ -44,7 +44,6 @@ func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
-
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 

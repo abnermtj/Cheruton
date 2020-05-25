@@ -38,7 +38,7 @@ float fbm(vec2 coord){
 	return val;
 }
 // Shapes the fire like a hyperbola
-float egg_shaped(vec2 coord, float radius){
+float hyperbola_shaped(vec2 coord, float radius){
 	vec2 diff = coord - center;
 	
 	if(coord.y < center.y)
@@ -67,16 +67,16 @@ void fragment() {
 	float motion_fbm = fbm(scaled_coord + vec2(TIME * 0.4, TIME * 1.3));
 	float smoke_fbm = fbm(scaled_coord + vec2(0, TIME * 1.0) + motion_fbm + warp_vec * diff_center);
 	
-	float egg = egg_shaped(UV, 0.5);
+	float hyperbola = hyperbola_shaped(UV, 0.5);
 	
-	smoke_fbm *= egg;
+	smoke_fbm *= hyperbola;
 	float threshold = 0.1;
 	smoke_fbm = clamp(smoke_fbm - threshold, 0, 1.0) / (1.0 - threshold);
 	if(smoke_fbm < 0.1)
 		smoke_fbm *= smoke_fbm/0.1;
 
-	smoke_fbm = sqrt(smoke_fbm/egg); // Dividing makes it more white
+	smoke_fbm = sqrt(smoke_fbm/hyperbola); // Dividing makes it more white
 	smoke_fbm = clamp(smoke_fbm, 0, 1.0);
-		
+	// add alpha that changes based on distance
 	COLOR = vec4(smoke_fbm);
 }
