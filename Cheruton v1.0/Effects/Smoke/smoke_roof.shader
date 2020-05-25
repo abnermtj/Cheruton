@@ -74,9 +74,13 @@ void fragment() {
 	smoke_fbm = clamp(smoke_fbm - threshold, 0, 1.0) / (1.0 - threshold);
 	if(smoke_fbm < 0.1)
 		smoke_fbm *= smoke_fbm/0.1;
-
-	smoke_fbm = sqrt(smoke_fbm/hyperbola); // Dividing makes it more white
+		
+	smoke_fbm = sqrt(smoke_fbm/hyperbola); 
 	smoke_fbm = clamp(smoke_fbm, 0, 1.0);
 	// add alpha that changes based on distance
-	COLOR = vec4(smoke_fbm);
+	vec4 result = vec4(smoke_fbm);
+	if(result.y < 0.8)
+		result.a = 0.0;
+		
+	COLOR = result;
 }
