@@ -1,5 +1,65 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/Grasslands-Mountain.png" type="Texture" id=1]
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/landscape_0001_2_trees.png" type="Texture" id=2]
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/Grasslands-Hills.png" type="Texture" id=3]
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/landscape_0000_1_trees.png" type="Texture" id=4]
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/Grasslands-Sky.png" type="Texture" id=5]
+[ext_resource path="res://Props/grassLandsParralaxBg/Sprites/landscape_0004_5_clouds.png" type="Texture" id=6]
 
 [node name="grassLandsParallaxBg" type="ParallaxBackground"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="sky"]
+scale = Vector2( 4, 2 )
+texture = ExtResource( 5 )
+centered = false
+region_rect = Rect2( 220, 0, 320, 180 )
+
+[node name="clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.01, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="clouds"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="mountain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.01, 0 )
+motion_mirroring = Vector2( 868, 0 )
+
+[node name="Sprite" type="Sprite" parent="mountain"]
+position = Vector2( 0, 200 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="trees1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0 )
+motion_mirroring = Vector2( 836, 0 )
+
+[node name="Sprite" type="Sprite" parent="trees1"]
+position = Vector2( 0, 400 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="trees2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.11, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="trees2"]
+visible = false
+texture = ExtResource( 2 )
+centered = false
+
+[node name="trees3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.12, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="trees3"]
+visible = false
+texture = ExtResource( 4 )
+centered = false
