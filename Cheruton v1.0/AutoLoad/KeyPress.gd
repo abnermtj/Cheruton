@@ -2,7 +2,7 @@ extends Node
 
 
 onready var PAUSE = preload("res://Display/Pause/Pause.tscn")
-onready var INVENTORY = preload("res://Player/Inventory/Inventory.tscn")
+onready var INVENTORY = preload("res://Player/Inventory/Inventory_new.tscn")#stub
 
 var last_key
 
@@ -26,6 +26,7 @@ func _input(_ev):
 				last_key = KEY_I
 			elif(last_key == KEY_I):
 				free_scene()
+				print("test")
 				last_key = null
 
 
