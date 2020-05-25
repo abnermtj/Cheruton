@@ -70,17 +70,17 @@ void fragment() {
 	float hyperbola = hyperbola_shaped(UV, 0.5);
 	
 	smoke_fbm *= hyperbola;
-	float threshold = 0.1;
+	float threshold = 0.15;
 	smoke_fbm = clamp(smoke_fbm - threshold, 0, 1.0) / (1.0 - threshold);
 	if(smoke_fbm < 0.1)
 		smoke_fbm *= smoke_fbm/0.1;
 		
 	smoke_fbm = sqrt(smoke_fbm/hyperbola); 
 	smoke_fbm = clamp(smoke_fbm, 0, 1.0);
+	
+	vec4 result = vec4(smoke_fbm * 1.1);
 	// add alpha that changes based on distance
-	vec4 result = vec4(smoke_fbm);
-	if(result.y < 0.8)
-		result.a = 0.0;
+	result.a *= UV.y * UV.y * UV.y;
 		
 	COLOR = result;
 }
