@@ -45,6 +45,23 @@ float fbm(vec2 coord){
 	return val;
 }
 
+// Shapes the fire like a hyperbola
+float hyperbola_shaped(vec2 coord, float radius){
+	vec2 diff = coord - center;
+	
+	if(coord.y < center.y)
+		diff.y /= 3.0;
+	else
+		diff.y = 0.0;
+	
+	float dist = (sqrt(diff.x * diff.x) - sqrt(diff.y * diff.y)) / (radius * radius);
+	
+	float result = clamp(dist, 0.3, 1.0);
+	
+	result = clamp(1.0 - dist, 0.0, 1.0);
+	return result * result;
+}
+
 void fragment() {
 	vec2 coordi = UV * 10.0;
 
@@ -52,11 +69,14 @@ void fragment() {
 	float noises1 = fbm(coordi + vec2(TIME * -0.2, TIME * 0.2));
 	float noises2 = fbm(coordi + vec2(0, TIME * -0.3));
 	float noises_combined = noises1 * noises2;
+	float hyperbola = hyperbola_shaped(UV, 0.5);
 	
+	noises_combined *= hyperbola;
 	
 	if(noises_combined > 0.2)
 		COLOR = mix(red, yellow, (noises_combined - 1.0) * 1.25 + 1.0);
 	else
 		COLOR = mix(yellow, red, noises_combined * 3.0);
+		
 
 }
