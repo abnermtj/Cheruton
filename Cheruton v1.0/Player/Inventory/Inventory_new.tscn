@@ -354,3 +354,4 @@ margin_bottom = 17.0
 margin_top = 144.0
 margin_right = 686.0
 margin_bottom = 158.0
+[connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]

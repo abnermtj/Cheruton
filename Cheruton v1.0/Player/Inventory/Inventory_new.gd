@@ -11,9 +11,19 @@ onready var tabs = $Border/Bg/Contents/Tabs
 onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
 
 func _ready():
+	DataResource.dict_settings.game_on = false
 	connect_tabs()
 	emit_signal("tab_changed", "Weapons")
+	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
+
+func _on_Exit_pressed():
+	free_the_inventory()
+
+func free_the_inventory():
+	DataResource.dict_settings.game_on = true
+	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
+	scene_to_free.queue_free()
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():

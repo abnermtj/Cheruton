@@ -2,7 +2,7 @@ extends Node
 
 
 onready var PAUSE = preload("res://Display/Pause/Pause.tscn")
-onready var INVENTORY = preload("res://Player/Inventory/Inventory.tscn")
+onready var INVENTORY = preload("res://Player/Inventory/Inventory_new.tscn")#stub
 
 var last_key
 
