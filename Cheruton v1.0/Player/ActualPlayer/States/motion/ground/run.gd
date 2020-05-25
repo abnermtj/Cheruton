@@ -1,7 +1,7 @@
 extends groundState
 
 const MAX_RUN_SPEED = 250
-const PLAYER_DIR_CONTROL = 10 # lower means mario
+const PLAYER_DIR_CONTROL = 9.25 # lower means mario
 const MIN_RUN_SPEED = 25
 
 var previous_dir

@@ -3,16 +3,15 @@ extends airState
 #const CHAIN_PULL_SPEED = 950
 const RELEASE_TIMER = .05 # time before player can zip/release rope from hands
 
-const SWING_CONTROL_STRENGTH = .045
-const SWING_GRAVITY = 71.5 # increasing this will indirectly increase swing speed
-const SWING_SPEED = 61.5
-const MIN_WIRE_LENGTH = 40
-var MAX_WIRE_LENGTH = 300 #
+const SWING_CONTROL_STRENGTH = .05
+const SWING_GRAVITY = 71 # increasing this will indirectly increase swing speed
+const SWING_SPEED = 60
+const MIN_WIRE_LENGTH = 100
+var MAX_WIRE_LENGTH = 400 #
 var PLAYER_LENGTH_CONTROL = 100 # players influence with REEL, too much may may make movements not smooth at the end
-const REEL_LERP_FACTOR = .7 # factor multiplied to delta for lep
+const REEL_LERP_FACTOR = 1.3 # factor multiplied to delta for lep
 const TOP_SPEED = 1000
-const APPROACHING_GROUND_REEL = 30
-
+const MAX_FLOOR_BOOST = 17	 # when getting close to floor how much to shorten length so player doesn't collide
 var release_timer
 
 #var zip_state
@@ -38,7 +37,7 @@ func enter():
 	cur_pos = owner.previous_position
 	length_rope = (owner.global_position - tip_pos).length()
 	MAX_WIRE_LENGTH = length_rope * 1.1
-	desired_length_rope = length_rope *.9 # make it hard for player to touch ground
+	desired_length_rope = length_rope
 
 	owner.arm_rotate.visible = true
 	owner.play_anim("swing")
@@ -92,7 +91,7 @@ func _update(delta):
 	cur_pos = owner.global_position # as next_pos no longer matched the player position due to constrains
 	next_pos = cur_pos
 
-	PLAYER_LENGTH_CONTROL  = 200 if vel.length() < 100 else 50 # player has more control of the length if still
+	PLAYER_LENGTH_CONTROL  = 300 if vel.length() < 200 else 25 # player has more control of the length if still
 	if not (hit_ceil or hit_wall or close_to_floor) and length_rope <= MAX_WIRE_LENGTH + 15:  # player control if no collision
 		desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 
@@ -104,7 +103,8 @@ func _update(delta):
 		hit_wall = false
 	if close_to_floor:
 		close_to_floor = false
-		desired_length_rope -= 50- owner.vec_to_ground.y
+		vel.y *= .7
+		desired_length_rope -= MAX_FLOOR_BOOST- clamp(owner.vec_to_ground.y,0, MAX_FLOOR_BOOST)
 
 	next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
 	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH, MAX_WIRE_LENGTH)
@@ -120,7 +120,6 @@ func _adjust():
 	owner.velocity = (next_pos - cur_pos )*SWING_SPEED
 	owner.velocity.x = clamp (owner.velocity.x, -TOP_SPEED, TOP_SPEED)
 	owner.velocity.y = clamp (owner.velocity.y, -TOP_SPEED, TOP_SPEED)
-
 func release_hook():
 	owner.chain_release()
 	emit_signal("finished", "fall")

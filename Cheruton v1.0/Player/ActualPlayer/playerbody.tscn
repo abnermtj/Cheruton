@@ -611,9 +611,9 @@ position = Vector2( 0, -5 )
 shape = SubResource( 27 )
 
 [node name="floorRay" type="RayCast2D" parent="."]
-position = Vector2( -5, 20 )
+position = Vector2( -5, 21.047 )
 enabled = true
-cast_to = Vector2( 0, 40 )
+cast_to = Vector2( 0, 30 )
 
 [node name="wallRaycasts" type="Node2D" parent="."]
 position = Vector2( -5, 0 )
@@ -681,6 +681,7 @@ one_shot = true
 one_shot = true
 
 [node name="visual_vel" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
