@@ -9,6 +9,10 @@ script = ExtResource( 2 )
 [node name="Gingerbread" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 82.7109
+margin_top = -16.8007
+margin_right = 82.7109
+margin_bottom = -16.8007
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {

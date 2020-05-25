@@ -34,7 +34,7 @@ func change_tab_state(next_tab):
 		"Apparel":   change_active_tab(tabs.get_node("Apparel/Apparel"))
 		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
 		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
-		"Key Items": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
+		"KeyItems": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
 
 	if(next_tab):
 		print("Current Tab: ")

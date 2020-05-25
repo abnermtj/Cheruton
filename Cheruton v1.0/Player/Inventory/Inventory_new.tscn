@@ -104,15 +104,17 @@ __meta__ = {
 [node name="Margin2" type="Label" parent="Border/Bg/Contents"]
 margin_top = 42.0
 margin_right = 686.0
-margin_bottom = 56.0
+margin_bottom = 43.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 60.0
+margin_top = 47.0
 margin_right = 686.0
-margin_bottom = 100.0
+margin_bottom = 87.0
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Tabs"]
 margin_top = 13.0
@@ -284,26 +286,44 @@ margin_top = 13.0
 margin_right = 684.0
 margin_bottom = 27.0
 
-[node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 104.0
+[node name="Margin3" type="Label" parent="Border/Bg/Contents"]
+margin_top = 91.0
 margin_right = 686.0
-margin_bottom = 409.0
-size_flags_vertical = 3
+margin_bottom = 92.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
+margin_top = 96.0
+margin_right = 686.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_top = 145.0
-margin_bottom = 159.0
+margin_bottom = 14.0
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
 margin_left = 4.0
-margin_top = 145.0
 margin_right = 4.0
-margin_bottom = 159.0
+margin_bottom = 14.0
+
+[node name="Margin4" type="Label" parent="Border/Bg/Contents"]
+margin_top = 114.0
+margin_right = 686.0
+margin_bottom = 115.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 413.0
+margin_top = 119.0
 margin_right = 686.0
-margin_bottom = 434.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
@@ -331,6 +351,6 @@ margin_right = 686.0
 margin_bottom = 17.0
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Contents"]
-margin_top = 438.0
+margin_top = 144.0
 margin_right = 686.0
-margin_bottom = 452.0
+margin_bottom = 158.0
