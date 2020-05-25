@@ -26,7 +26,6 @@ func _input(_ev):
 				last_key = KEY_I
 			elif(last_key == KEY_I):
 				free_scene()
-				print("test")
 				last_key = null
 
 

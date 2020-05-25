@@ -11,6 +11,7 @@ onready var tabs = $Border/Bg/Contents/Tabs
 onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
 
 func _ready():
+	DataResource.dict_settings.game_on = false
 	connect_tabs()
 	emit_signal("tab_changed", "Weapons")
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
