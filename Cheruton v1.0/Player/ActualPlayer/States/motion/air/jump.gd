@@ -4,9 +4,9 @@ extends airState
 const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow down by 0 to 1
 const JUMP_TERMINAL_VELOCITY = 10000
 const NORMAL_GRAV_MULTIPLIER = .42
-const MIN_BOUNCE_POWER = 333
-const MIN_ENTER_VELOCITY_X = 225
-const JUMP_VEL = -333
+const MIN_BOUNCE_POWER = 666
+const MIN_ENTER_VELOCITY_X = 450
+const JUMP_VEL = -666
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity

@@ -3,8 +3,8 @@ extends groundState
 const GRAVITY_STRENGTH_MIN = 0.009
 const GRAVITY_STRENGTH_MAX = 0.03
 const SPEED_UP_FACTOR = .01
-const FAST_SLIDE_ACCEL = 5
-const FAST_SLIDE_MAX_SPEED_INCREASE = 225
+const FAST_SLIDE_ACCEL = 10
+const FAST_SLIDE_MAX_SPEED_INCREASE = 450
 const SLIDE_DOWN_LERP_FACTOR = 8
 var gravity_strength = .02
 var slide_down : bool
@@ -31,6 +31,9 @@ func update(delta):
 	owner.velocity.x = 0
 	owner.velocity.y = lerp( owner.velocity.y, (owner.GRAVITY*gravity_strength)+int(slide_down)*FAST_SLIDE_MAX_SPEED_INCREASE, delta*SLIDE_DOWN_LERP_FACTOR) +int(slide_down)*FAST_SLIDE_ACCEL
 	owner.move()
+
+	if owner.is_on_floor():
+		emit_signal("finished", "idle")
 
 func exit():
 	owner.can_attack = true

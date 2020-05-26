@@ -1,8 +1,8 @@
 extends groundState
 
-const MAX_RUN_SPEED = 250
+const MAX_RUN_SPEED = 500
 const PLAYER_DIR_CONTROL = 9.25 # lower means mario
-const MIN_RUN_SPEED = 25
+const MIN_RUN_SPEED = 50
 
 var previous_dir
 func enter():

@@ -104,7 +104,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 0.32
+length = 0.48
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
 tracks/0/interp = 0
@@ -112,22 +112,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Rect2( 3991, 1, 40, 36 ), Rect2( 4033, 1, 40, 36 ), Rect2( 4075, 1, 40, 36 ), Rect2( 4117, 1, 40, 36 ), Rect2( 4159, 1, 40, 36 ), Rect2( 4201, 1, 40, 36 ), Rect2( 4243, 1, 40, 36 ), Rect2( 4285, 1, 40, 36 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -217,7 +205,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-length = 0.32
+length = 0.48
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
 tracks/0/interp = 0
@@ -225,14 +213,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Rect2( 1, 1, 40, 36 ), Rect2( 43, 1, 40, 36 ), Rect2( 85, 1, 40, 36 ), Rect2( 127, 1, 40, 36 ), Rect2( 169, 1, 40, 36 ), Rect2( 211, 1, 40, 36 ), Rect2( 253, 1, 40, 36 ), Rect2( 295, 1, 40, 36 ) ]
 }
 
 [sub_resource type="Animation" id=10]
-length = 1.32
+length = 1.98
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
@@ -241,7 +229,7 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12, 1.16, 1.2, 1.24, 1.28 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72, 0.78, 0.84, 0.9, 0.96, 1.02, 1.08, 1.14, 1.2, 1.26, 1.32, 1.38, 1.44, 1.5, 1.56, 1.62, 1.68, 1.74, 1.8, 1.86, 1.92 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Rect2( 337, 1, 40, 36 ), Rect2( 379, 1, 40, 36 ), Rect2( 421, 1, 40, 36 ), Rect2( 463, 1, 40, 36 ), Rect2( 505, 1, 40, 36 ), Rect2( 547, 1, 40, 36 ), Rect2( 589, 1, 40, 36 ), Rect2( 631, 1, 40, 36 ), Rect2( 673, 1, 40, 36 ), Rect2( 715, 1, 40, 36 ), Rect2( 757, 1, 40, 36 ), Rect2( 799, 1, 40, 36 ), Rect2( 841, 1, 40, 36 ), Rect2( 883, 1, 40, 36 ), Rect2( 925, 1, 40, 36 ), Rect2( 967, 1, 40, 36 ), Rect2( 1009, 1, 40, 36 ), Rect2( 1051, 1, 40, 36 ), Rect2( 1093, 1, 40, 36 ), Rect2( 1135, 1, 40, 36 ), Rect2( 1177, 1, 40, 36 ), Rect2( 1219, 1, 40, 36 ), Rect2( 1261, 1, 40, 36 ), Rect2( 1303, 1, 40, 36 ), Rect2( 1345, 1, 40, 36 ), Rect2( 1387, 1, 40, 36 ), Rect2( 1429, 1, 40, 36 ), Rect2( 1471, 1, 40, 36 ), Rect2( 1513, 1, 40, 36 ), Rect2( 1555, 1, 40, 36 ), Rect2( 1597, 1, 40, 36 ), Rect2( 1639, 1, 40, 36 ), Rect2( 1681, 1, 40, 36 ) ]
@@ -485,39 +473,39 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=24]
-radius = 15.0
-height = 33.0
+radius = 30.0
+height = 65.0
 
 [sub_resource type="CapsuleShape2D" id=25]
-radius = 15.0
+radius = 30.0
 height = 0.0
 
 [sub_resource type="Curve" id=26]
 _data = [ Vector2( 0, 0 ), 0.0, 1.17104, 0, 0, Vector2( 1, 1 ), 0.938576, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 15, 8.5 )
+extents = Vector2( 30, 18 )
 
 [node name="player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
-scale = Vector2( 1.08, 0.95 )
+scale = Vector2( 1.06889, 0.956942 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
-position = Vector2( 0, -0.316 )
+position = Vector2( -5, 0 )
 
 [node name="playerSprite" type="Sprite" parent="bodyPivot/bodyRotate"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 40, 36 )
+region_rect = Rect2( 43, 1, 40, 36 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
-position = Vector2( -5, 2.8 )
-scale = Vector2( 2, 2 )
+position = Vector2( -10, 5.6 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
 centered = false
 offset = Vector2( 0, -15 )
@@ -551,11 +539,11 @@ anims/jump = SubResource( 22 )
 anims/land = SubResource( 23 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -5, 3 )
+position = Vector2( -5, 9 )
 shape = SubResource( 24 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -5, 19.5 )
+position = Vector2( -5, 41.5 )
 shape = SubResource( 25 )
 disabled = true
 
@@ -602,45 +590,45 @@ __meta__ = {
 }
 
 [node name="slideArea2D" type="Area2D" parent="."]
-position = Vector2( -5, 0 )
+position = Vector2( -2, 0 )
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
-position = Vector2( 0, -5 )
+position = Vector2( -3, -5 )
 shape = SubResource( 27 )
 
 [node name="floorRay" type="RayCast2D" parent="."]
-position = Vector2( -5, 21.047 )
+position = Vector2( -5, 40 )
 enabled = true
-cast_to = Vector2( 0, 30 )
+cast_to = Vector2( 0, 50 )
 
 [node name="wallRaycasts" type="Node2D" parent="."]
-position = Vector2( -5, 0 )
+position = Vector2( -2, 0 )
 
 [node name="leftSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( -12.5, 0 )
+position = Vector2( -25, 0 )
 
 [node name="leftside2" type="RayCast2D" parent="wallRaycasts/leftSide"]
-position = Vector2( 0, 10 )
+position = Vector2( 0, 20 )
 enabled = true
-cast_to = Vector2( -5, 0 )
+cast_to = Vector2( -10, 0 )
 
 [node name="leftside1" type="RayCast2D" parent="wallRaycasts/leftSide"]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -12 )
 enabled = true
-cast_to = Vector2( -5, 0 )
+cast_to = Vector2( -10, 0 )
 
 [node name="rightSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( 12, 0 )
+position = Vector2( 25, 0 )
 
 [node name="rightside1" type="RayCast2D" parent="wallRaycasts/rightSide"]
-position = Vector2( 0, 10 )
+position = Vector2( 0, 20 )
 enabled = true
 cast_to = Vector2( 5, 0 )
 
 [node name="rightside2" type="RayCast2D" parent="wallRaycasts/rightSide"]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -12 )
 enabled = true
 cast_to = Vector2( 5, 0 )
 

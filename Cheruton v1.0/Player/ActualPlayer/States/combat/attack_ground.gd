@@ -5,12 +5,12 @@ const AIR = 1
 const ATTACK_TIMER_BUFFER = .36
 const GRAVITY_MULTIPLIER =.1
 
-const GROUND_SPEED_H_1 = 100
-const GROUND_SPEED_H_2 = 445
-const GROUND_SPEED_H_3 = 1000
+const GROUND_SPEED_H_1 = 200
+const GROUND_SPEED_H_2 = 890
+const GROUND_SPEED_H_3 = 2000
 
-const AIR_SPEED_H_1 = 100
-const AIR_SPEED_H_2 = 500
+const AIR_SPEED_H_1 = 200
+const AIR_SPEED_H_2 = 1000
 
 var attack_timer
 var attack_count
@@ -80,6 +80,7 @@ func update(delta):
 
 				if attack_timer< 0:
 					emit_signal("finished", "run")
+					return
 
 	elif attack_type == AIR:
 		owner.velocity.x *= .9
@@ -103,7 +104,6 @@ func update(delta):
 						emit_signal("finished", "run")
 					else:
 						emit_signal("finished", "fall")
-
 	owner.move()
 	updated_once = true
 

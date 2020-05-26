@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 # only put consts used by multiple states, no need to get owner each time
-const GRAVITY = 1200
-const AIR_ACCEL = 14.25  # increase in this >> increase in stearing power in air
-const MAX_WIRE_LENGTH_GROUND = 500
+const GRAVITY = 2400
+const AIR_ACCEL = 28  # increase in this >> increase in stearing power in air
+const MAX_WIRE_LENGTH_GROUND = 1000
 var velocity = Vector2()
 
 var tip_pos = Vector2()
@@ -123,7 +123,7 @@ func move():
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND:
 			move_and_slide(Vector2(), Vector2.UP)
 	elif  ["run", "slide"].has(states.current_state.name):
-		move_and_slide_with_snap(velocity,Vector2.DOWN * 10, Vector2.UP)
+		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
 		move_and_slide(velocity, Vector2.UP)
 func switch_col():
@@ -174,7 +174,7 @@ func _ready():
 	arm_rotate.visible = false
 
 func _process(delta):
-	DataResource.dict_player.player_pos = global_position + Vector2(0,4)  # additional vector to correct middle of player
+	DataResource.dict_player.player_pos = global_position  # additional vector to correct middle of player
 	if hooked or not DataResource.dict_player.chain_in_air: # chain node must be above player node in scene tree
 		stop_sound("hook_start")
 

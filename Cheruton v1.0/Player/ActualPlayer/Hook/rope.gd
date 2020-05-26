@@ -4,7 +4,7 @@ extends Node2D
 const SHOOT_OFFSET_INCREASE = -1
 const SHOOT_AMP_DECREASE = 2.3
 const SHOOT_WID_DECREASE = 2.4
-const LINE_WIDTH = 2
+const LINE_WIDTH = 4
 
 var length_divisor = 1 #used to get the number of points in the line, we then connect those points via polyline
 
@@ -44,7 +44,7 @@ func start():
 	stage = INITIAL_SHOOT
 	w = 7 + rand_num1
 	a = 18 +rand_num2
-	s = .44 + rand_num3
+	s = .68 + rand_num3
 
 func release():
 	stage = RETRACT

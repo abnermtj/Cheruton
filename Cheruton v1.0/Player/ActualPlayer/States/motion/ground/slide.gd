@@ -1,7 +1,7 @@
 extends groundState
 
-const MIN_VEL = 50 # should somewhat higher than min run speed (to not goto idle straight away)(in $run) before turning to run
-const SLIDE_PWR = 25
+const MIN_VEL = 100 # should somewhat higher than min run speed (to not goto idle straight away)(in $run) before turning to run
+const SLIDE_PWR = 50
 export (Curve) var attachment_curve
 
 var initial_vel
@@ -34,6 +34,7 @@ func update(delta):
 	if ((not Input.is_action_pressed("slide") and abs(owner.velocity.x) < abs(initial_vel.x)/2 or abs(owner.velocity.x) < MIN_VEL)) \
 	 and not owner.exit_slide_blocked:
 		emit_signal("finished", "run")
+		return
 	owner.move()
 	owner.volume("slide", clamp(abs(owner.velocity.x/80)-30, -30 , 0))
 	.update(delta)
