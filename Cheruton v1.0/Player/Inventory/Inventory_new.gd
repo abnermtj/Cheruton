@@ -106,8 +106,13 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		row.add_child(instanced)
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
 
-		#add data
-
+		#Add properties
+		var item = row.get_node(str(tab_index + index))
+		item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		var item_pict
+		if(list_tab["Item" + str(index)].item_png):
+			item_pict  = load(list_tab["Item" + str(index)].item_png)
+		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
 		index += 1
 	# Hide data
 	scroll_tab.get_parent().hide()
