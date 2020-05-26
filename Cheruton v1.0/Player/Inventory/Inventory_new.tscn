@@ -29,13 +29,20 @@ __meta__ = {
 }
 
 [node name="Border" type="TextureRect" parent="."]
-margin_left = 280.0
-margin_top = 120.0
-margin_right = 1000.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 720, 480 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -240.0
+margin_right = 440.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 800, 480 )
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Bg" type="TextureRect" parent="Border"]
 anchor_right = 1.0
@@ -58,7 +65,7 @@ __meta__ = {
 }
 
 [node name="Margin" type="Label" parent="Border/Bg/Contents"]
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 1.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -68,7 +75,7 @@ __meta__ = {
 
 [node name="Header" type="HBoxContainer" parent="Border/Bg/Contents"]
 margin_top = 5.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -76,7 +83,7 @@ __meta__ = {
 }
 
 [node name="Inventory" type="Label" parent="Border/Bg/Contents/Header"]
-margin_right = 645.0
+margin_right = 725.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -85,17 +92,17 @@ align = 1
 valign = 2
 
 [node name="Exit" type="TextureButton" parent="Border/Bg/Contents/Header"]
-margin_left = 649.0
-margin_right = 682.0
+margin_left = 729.0
+margin_right = 762.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
 
 [node name="Margin3" type="Label" parent="Border/Bg/Contents/Header"]
-margin_left = 686.0
+margin_left = 766.0
 margin_top = 9.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 23.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -103,7 +110,7 @@ __meta__ = {
 
 [node name="Margin2" type="Label" parent="Border/Bg/Contents"]
 margin_top = 42.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 43.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -113,7 +120,7 @@ __meta__ = {
 
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Contents"]
 margin_top = 47.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 87.0
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Tabs"]
@@ -122,7 +129,7 @@ margin_bottom = 27.0
 
 [node name="Weapons" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
 margin_left = 4.0
-margin_right = 136.0
+margin_right = 152.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -153,8 +160,8 @@ __meta__ = {
 }
 
 [node name="Apparel" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 140.0
-margin_right = 272.0
+margin_left = 156.0
+margin_right = 304.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -185,8 +192,8 @@ __meta__ = {
 }
 
 [node name="Consum" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 276.0
-margin_right = 408.0
+margin_left = 308.0
+margin_right = 456.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -217,8 +224,8 @@ __meta__ = {
 }
 
 [node name="Misc" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 412.0
-margin_right = 544.0
+margin_left = 460.0
+margin_right = 608.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -249,8 +256,8 @@ __meta__ = {
 }
 
 [node name="KeyItems" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 548.0
-margin_right = 680.0
+margin_left = 612.0
+margin_right = 760.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -281,14 +288,14 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Tabs"]
-margin_left = 684.0
+margin_left = 764.0
 margin_top = 13.0
-margin_right = 684.0
+margin_right = 764.0
 margin_bottom = 27.0
 
 [node name="Margin3" type="Label" parent="Border/Bg/Contents"]
 margin_top = 91.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 92.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -298,22 +305,75 @@ __meta__ = {
 
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
 margin_top = 96.0
-margin_right = 686.0
-margin_bottom = 110.0
+margin_right = 766.0
+margin_bottom = 404.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_bottom = 14.0
+margin_top = 147.0
+margin_bottom = 161.0
+
+[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+margin_left = 4.0
+margin_right = 152.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Weapons"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Weapons/Column"]
+
+[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+margin_left = 156.0
+margin_right = 304.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Apparel"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Apparel/Column"]
+
+[node name="Consum" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+margin_left = 308.0
+margin_right = 456.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Consum"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Consum/Column"]
+
+[node name="Misc" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+margin_left = 460.0
+margin_right = 608.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Misc"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Misc/Column"]
+
+[node name="KeyItems" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+margin_left = 612.0
+margin_right = 760.0
+margin_bottom = 308.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/KeyItems"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/KeyItems/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 14.0
+margin_left = 764.0
+margin_top = 147.0
+margin_right = 764.0
+margin_bottom = 161.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Contents"]
-margin_top = 114.0
-margin_right = 686.0
-margin_bottom = 115.0
+margin_top = 408.0
+margin_right = 766.0
+margin_bottom = 409.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -321,9 +381,9 @@ __meta__ = {
 }
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 119.0
-margin_right = 686.0
-margin_bottom = 140.0
+margin_top = 413.0
+margin_right = 766.0
+margin_bottom = 434.0
 size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
@@ -332,26 +392,26 @@ margin_bottom = 17.0
 
 [node name="Equipped" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
 margin_left = 4.0
-margin_right = 678.0
+margin_right = 758.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
 text = "Equipped Items:"
 
 [node name="CoinsVal" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 682.0
-margin_right = 682.0
+margin_left = 762.0
+margin_right = 762.0
 margin_bottom = 21.0
 custom_fonts/font = SubResource( 4 )
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 686.0
+margin_left = 766.0
 margin_top = 3.0
-margin_right = 686.0
+margin_right = 766.0
 margin_bottom = 17.0
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Contents"]
-margin_top = 144.0
-margin_right = 686.0
-margin_bottom = 158.0
+margin_top = 438.0
+margin_right = 766.0
+margin_bottom = 452.0
 [connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]

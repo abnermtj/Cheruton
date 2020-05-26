@@ -8,15 +8,15 @@ size = 22
 font_data = ExtResource( 1 )
 
 [node name="101" type="HBoxContainer"]
-margin_right = 923.0
+margin_right = 70.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 0, 70 )
+rect_min_size = Vector2( 70, 70 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 923.0
+margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 3
