@@ -8,47 +8,44 @@ size = 22
 font_data = ExtResource( 1 )
 
 [node name="101" type="HBoxContainer"]
-margin_right = 923.0
+margin_right = 70.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 0, 70 )
+rect_min_size = Vector2( 70, 70 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 923.0
+margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = true
 
-[node name="MainCont" type="HBoxContainer" parent="Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemBg" type="TextureRect" parent="Background/MainCont"]
+[node name="ItemBg" type="TextureRect" parent="Background"]
 margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemBtn" type="TextureButton" parent="Background/MainCont/ItemBg"]
+[node name="ItemBtn" type="TextureButton" parent="Background/ItemBg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Hello World"
+mouse_filter = 1
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Qty" type="Label" parent="Background/MainCont/ItemBg/ItemBtn"]
+[node name="Qty" type="Label" parent="Background/ItemBg/ItemBtn"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

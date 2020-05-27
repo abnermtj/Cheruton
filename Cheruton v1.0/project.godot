@@ -109,6 +109,7 @@ DataFunctions="*res://AutoLoad/DataFunctions.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
 Loot="*res://AutoLoad/Loot.gd"
+KeyPress="*res://AutoLoad/KeyPress.gd"
 
 [display]
 
@@ -123,6 +124,10 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "aseprite_importer" )
+
+[gui]
+
+timers/tooltip_delay_sec=0.05
 
 [importer_defaults]
 
