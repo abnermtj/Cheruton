@@ -4,7 +4,7 @@ extends Node2D
 const SHOOT_OFFSET_INCREASE = -1
 const SHOOT_AMP_DECREASE = 2.3
 const SHOOT_WID_DECREASE = 2.4
-const LINE_WIDTH = 4
+const LINE_WIDTH = 6
 
 var length_divisor = 1 #used to get the number of points in the line, we then connect those points via polyline
 
@@ -13,7 +13,7 @@ const INITIAL_SHOOT = 1
 const JUST_HOOKED = 2
 const RETRACT = 3
 
-var color = Color(0.756, 0.819, 0.858)
+var color = Color(0.07843, 0.0627, 0.125)
 export (Curve) var attachment_curve
 
 var length

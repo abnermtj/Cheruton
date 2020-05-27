@@ -484,7 +484,7 @@ height = 0.0
 _data = [ Vector2( 0, 0 ), 0.0, 1.17104, 0, 0, Vector2( 1, 1 ), 0.938576, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 30, 18 )
+extents = Vector2( 32, 18 )
 
 [node name="player" type="KinematicBody2D"]
 collision_layer = 2
