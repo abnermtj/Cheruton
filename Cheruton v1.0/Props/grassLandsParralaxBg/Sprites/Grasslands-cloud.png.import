@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/landscape_0004_5_clouds.png-f8ab6042cc005a59c2e7ce72966e2cfb.stex"
+path="res://.import/Grasslands-cloud.png-f1c0974b9e15dd6f3d607fb3d61edfff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/grassLandsParralaxBg/Sprites/landscape_0004_5_clouds.png"
-dest_files=[ "res://.import/landscape_0004_5_clouds.png-f8ab6042cc005a59c2e7ce72966e2cfb.stex" ]
+source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-cloud.png"
+dest_files=[ "res://.import/Grasslands-cloud.png-f1c0974b9e15dd6f3d607fb3d61edfff.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

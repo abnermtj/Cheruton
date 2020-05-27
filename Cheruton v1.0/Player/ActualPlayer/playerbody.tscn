@@ -494,7 +494,7 @@ script = ExtResource( 5 )
 scale = Vector2( 1.06889, 0.956942 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
-position = Vector2( -5, 0 )
+position = Vector2( -5, 1 )
 
 [node name="playerSprite" type="Sprite" parent="bodyPivot/bodyRotate"]
 scale = Vector2( 4, 4 )
@@ -577,10 +577,11 @@ script = ExtResource( 13 )
 script = ExtResource( 14 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
-margin_left = -26.0949
-margin_top = -42.7035
-margin_right = 11.9051
-margin_bottom = 40.2965
+margin_left = -44.8912
+margin_top = -83.7137
+margin_right = -6.89124
+margin_bottom = -0.713699
+rect_scale = Vector2( 2, 2 )
 text = "Test
 "
 align = 1

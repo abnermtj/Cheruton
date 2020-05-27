@@ -19,7 +19,8 @@ script = ExtResource( 5 )
 position = Vector2( 1212.97, -125.743 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
-position = Vector2( 0, -60 )
+position = Vector2( 0, -120 )
+zoom = Vector2( 1.2, 1.2 )
 process_mode = 1
 limit_right = 4000
 drag_margin_left = 0.17
@@ -53,9 +54,9 @@ position = Vector2( 1806.47, 701.02 )
 scale = Vector2( 10, 4 )
 
 [node name="grassLandsParallaxBg" parent="." instance=ExtResource( 8 )]
-offset = Vector2( 0, -100 )
-transform = Transform2D( 1, 0, 0, 1, 0, -100 )
-scroll_ignore_camera_zoom = true
+offset = Vector2( 0, -700 )
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, -700 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]

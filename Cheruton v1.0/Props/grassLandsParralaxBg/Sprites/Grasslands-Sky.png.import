@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grasslands-Sky.png-470c199d450deee3a0f9c963537b5b7d.stex"
+path="res://.import/Grasslands-sky.png-ea34d31e2be17b7261a0ffe7b39ab6b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-Sky.png"
-dest_files=[ "res://.import/Grasslands-Sky.png-470c199d450deee3a0f9c963537b5b7d.stex" ]
+source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-sky.png"
+dest_files=[ "res://.import/Grasslands-sky.png-ea34d31e2be17b7261a0ffe7b39ab6b3.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

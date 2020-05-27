@@ -1,12 +1,11 @@
 extends Camera2D
 class_name ShakeCamera
 
-# from sealed bite github
-var LOOK_AHEAD_FACTOR = 0.2  # DONT CHANGE HERE CHANGE BELOW # percentage of screen to shift for looking ahead when changing directions
+var LOOK_AHEAD_FACTOR = 10  # DONT CHANGE HERE CHANGE BELOW # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
-const SHIFT_EASE = Tween.EASE_OUT
-const SHIFT_DURATION = 2.0
-
+const SHIFT_EASE = Tween.EASE_IN_OUT
+const SHIFT_DURATION = 10000.0 # ms
+const SMOOTH_SPEED_FACTOR = .0001
 # SHAKE
 var _duration := 0.0
 var _period_in_ms := 0.0
@@ -26,32 +25,22 @@ var pan_speed := 3.0
 var slowmo_target = Vector2()
 var slowmo_offset = Vector2()
 
-var is_player_hooked
-
 var facing = 0
+var smoothing_speed_goal = 0
+var camera_state = 0
+enum camera_states { DEFAULT = 0, HOOK = 1}
 
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween # this caches a node no need to reload in downtimes between uses
-func _ready():
-#	game.camera = self
-	call_deferred( "align_camera_now" )
 
-func align_camera_now():
-	align()
-	reset_smoothing()
-
-
+# processes screenshake / pan
 func _physics_process( delta ):
-	# to make camera face forwards
-	_check_facing()
-	prev_camera_pos = get_camera_position()
+	camera_process(delta)
+
 	if _timer != 0:
-		# Only shake on certain frames.
 		_last_shook_timer = _last_shook_timer + delta
-		# Be mathematically correct in the face of lag; usually only happens once.
 		while _last_shook_timer >= _period_in_ms:
 			_last_shook_timer = _last_shook_timer - _period_in_ms
-			# Lerp between [amplitude] and 0.0 intensity based on remaining shake time.
 			var intensity = _amplitude * (1 - ((_duration - _timer) / _duration))
 			# Noise calculation logic from http://jonny.morrill.me/blog/view/14
 			var new_x = rand_range(-1.0, 1.0)
@@ -87,7 +76,7 @@ func _physics_process( delta ):
 		offset = pan_offset
 	offset += slowmo_offset
 
-# Kick off a new screenshake effect.
+# CAMERA EFFECTS
 func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	# Initialize variables.
 	_duration = duration
@@ -100,10 +89,15 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	shake_offset -= _last_offset
 	_last_offset = Vector2.ZERO
 
-# in target diretion until reached
 func pan_camera( pan : Vector2 ) -> void:
 	target_pan_offset = pan
 	pass
+
+# GAME CAMERA
+func camera_process(delta):
+	_check_facing()
+	prev_camera_pos = get_camera_position()
+	smoothing_speed = lerp(smoothing_speed, smoothing_speed_goal, delta * SMOOTH_SPEED_FACTOR)
 
 func _check_facing():
 	var new_facing = sign(get_camera_position().x - prev_camera_pos.x) # +1 camera moves to the right else -1 if left else 0
@@ -115,20 +109,32 @@ func _check_facing():
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
-#tries to aligpolate_property(self, "position:y", position.y, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
-
-# simpler state machine
 func _on_player_camera_command(command, arg):
-	if command == 0:
-		is_player_hooked = 1
-		drag_margin_v_enabled = not arg
-		drag_margin_h_enabled = true
-		smoothing_speed = 1
-		LOOK_AHEAD_FACTOR = .2
-	else:
-		is_player_hooked = 0
-		smoothing_speed = 2.1
-		LOOK_AHEAD_FACTOR = .3
+	print(command ,arg)
+	camera_state = command
+
+	var dist = (global_position - get_parent().global_position).length()
+	match (camera_state):
+		camera_states.DEFAULT:
+			drag_margin_left = .11
+			drag_margin_right = .11
+			drag_margin_top = 0.4
+			drag_margin_bottom = .2
+			drag_margin_v_enabled = not  arg
+			drag_margin_h_enabled = true
+#			zoom = Vector2(1.5,1.5)
+			smoothing_speed_goal = .5
+			LOOK_AHEAD_FACTOR = .2
+		camera_states.HOOK:
+			drag_margin_left = .32
+			drag_margin_right = .32
+			drag_margin_top = 0.4
+			drag_margin_bottom = .2
+			drag_margin_v_enabled = true
+			drag_margin_h_enabled = true
+#			zoom = Vector2(1.5,1.5)
+			smoothing_speed_goal = 2.5# 480x320 use 2.5 384 use 2.7
+			LOOK_AHEAD_FACTOR = .25
 
 func _on_player_shake(dur, freq, amp, dir):
 	shake(dur, freq, amp, dir)

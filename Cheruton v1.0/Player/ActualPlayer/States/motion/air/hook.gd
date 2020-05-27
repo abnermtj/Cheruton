@@ -1,17 +1,16 @@
 extends airState
 
-#const CHAIN_PULL_SPEED = 950
 const RELEASE_TIMER = .05 # time before player can zip/release rope from hands
 
 const SWING_CONTROL_STRENGTH = .15
 const SWING_GRAVITY = 135 # increasing this will indirectly increase swing speed
-const SWING_SPEED = 70
+const SWING_SPEED = 56.5 # 70 for funzz 56.5 for the realz
 const MIN_WIRE_LENGTH = 200
 var MAX_WIRE_LENGTH = 600 #
-var PLAYER_LENGTH_CONTROL = 300 # players influence with REEL, too much may may make movements not smooth at the end
+var PLAYER_LENGTH_CONTROL = 280 # 400 for fun 280 for realism 0 # players influence with REEL, too much may may make movements not smooth at the end
 const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
 const TOP_SPEED = 1500
-const MAX_FLOOR_BOOST = 34  # when getting close to floor how much to shorten length so player doesn't collide
+#const MAX_FLOOR_BOOST = 34  # when getting close to floor how much to shorten length so player doesn't collide
 var release_timer
 
 #var zip_state
@@ -58,21 +57,11 @@ func update(delta):
 	if Input.is_action_just_pressed("jump") and release_timer < 0:
 		release_hook()
 		return
-	# zip up
-#	if Input.is_action_just_pressed("hook") and release_timer < 0 and owner.hooked:
-#		zip_state = true
 
 	if owner.global_position.y < tip_pos.y: # release when player above hook point
 		release_hook()
 		return
 
-#	if zip_state == true:
-#		owner.velocity = (tip_pos-owner.global_position).normalized() * CHAIN_PULL_SPEED
-#		if owner.global_position.distance_to(tip_pos) < 100:
-#			release_hook()
-#			return
-#	else:
-	# chain in air or hooked and not zipped SIMPLE PENDULUM MOtion
 	_update( delta )
 	_constrain( )
 	_adjust()
@@ -92,8 +81,8 @@ func _update(delta):
 	next_pos = cur_pos
 
 #	PLAYER_LENGTH_CONTROL  = 300 if vel.length() < 200 else 50 # player has more control of the length if still
-#	if not (hit_ceil or hit_wall or close_to_floor) and length_rope <= MAX_WIRE_LENGTH + 15:  # player control if no collision
-	desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
+	if not (hit_ceil or hit_wall or close_to_floor) and length_rope <= MAX_WIRE_LENGTH + 15:  # player control if no collision
+		desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 
 	if hit_ceil:
 		vel.y = 0
@@ -103,7 +92,7 @@ func _update(delta):
 		hit_wall = false
 	if close_to_floor:
 		close_to_floor = false
-#		vel.y *= .7
+		vel.y *= .7
 #		desired_length_rope -= MAX_FLOOR_BOOST- clamp(owner.vec_to_ground.y,0, MAX_FLOOR_BOOST)
 
 	next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
