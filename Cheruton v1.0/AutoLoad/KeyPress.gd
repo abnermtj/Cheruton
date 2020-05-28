@@ -12,8 +12,8 @@ func _input(_ev):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if(DataResource.dict_settings.maj_scn == false):
 		if Input.is_key_pressed(KEY_ESCAPE):
+			yield(get_tree().create_timer(0.01), "timeout")
 			if (DataResource.dict_settings.game_on == true):
-				yield(get_tree().create_timer(0.05), "timeout")
 				instance_scene(PAUSE)
 				DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).popup()
 				last_key = KEY_ESCAPE
@@ -22,8 +22,8 @@ func _input(_ev):
 				last_key = null
 
 		elif Input.is_key_pressed(KEY_I):
+			yield(get_tree().create_timer(0.01), "timeout")
 			if (DataResource.dict_settings.game_on == true):
-				yield(get_tree().create_timer(0.05), "timeout")
 				instance_scene(INVENTORY)
 				last_key = KEY_I
 			elif(last_key == KEY_I):

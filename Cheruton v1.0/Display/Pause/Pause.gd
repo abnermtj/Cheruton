@@ -11,8 +11,8 @@ func _ready():
 
 
 func _on_ExitDirect_pressed():
-
 	get_tree().quit()
+
 
 
 func _on_Settings_pressed():
@@ -29,6 +29,7 @@ func _on_RMMenu_pressed():
 
 func _on_ExitPause_pressed():
 	free_the_pause()
+	KeyPress.last_key = null
 
 
 func free_the_pause():

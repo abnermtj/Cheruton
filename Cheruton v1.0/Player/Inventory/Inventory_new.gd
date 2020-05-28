@@ -38,6 +38,7 @@ func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
+	DataResource.save_rest()
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -169,6 +170,7 @@ func revert_item_state():
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 	else:
 		item_state = "HOVER"
+		mouse_node = null
 
 # Reduces qty of item by 1
 func delete_item():
@@ -180,23 +182,25 @@ func delete_item():
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
 
-		# Item Stock is empty
-
-		#Hide its data entry, delete it immediately and shift all the indexes after it down by 1
-		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
-		print(mouse_node.name)
-		main.find_node(mouse_node.name, true, false).free()
+		# Item Stock is empty:
+		#	Shift down all inventory entries by 1
+		#	Delete the last empty index
+		#	If the Row is empty (except Row0), delete it
 		
-#		element_index = int(element_index)
-#		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-#
-#			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
-#			scene_name.name = str(int(scene_name.name) - 1)
-#			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
-#			scene_index += 1
-#			element_index += 1
-#		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
-
+		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
+		
+		element_index = int(element_index)
+		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			element_index += 1
+			
+		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
+		revert_item_state()
+		main.find_node(deletion, true, false).queue_free()
+		if(element_index/10 != 0 && main.has_node("Column/Row" + str(element_index/10))):
+			main.find_node("Row" + str(element_index/10), true, false).queue_free()
+		
 
 
 
