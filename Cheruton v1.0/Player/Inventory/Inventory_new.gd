@@ -158,4 +158,11 @@ func _on_pressed(node):
 func _on_Timer_timeout():
 	if(mouse_count == 1):
 		print("Single Clicked!")
+		revert_item_state()
 		mouse_count = 0
+
+func revert_item_state():
+	if(item_state == "HOVER"):
+		item_state = "FIXED"
+		return
+	item_state = "HOVER"
