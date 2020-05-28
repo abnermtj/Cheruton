@@ -3,6 +3,7 @@ extends Control
 var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
+var mouse_node
 
 signal tab_changed(next_tab)
 
@@ -149,10 +150,11 @@ func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
+	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
 		mouse_count = 0
-
+	
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
@@ -164,5 +166,39 @@ func _on_Timer_timeout():
 func revert_item_state():
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
-		return
-	item_state = "HOVER"
+		mouse_node.get_node("Background/ItemBg").texture = index_bg
+	else:
+		item_state = "HOVER"
+
+# Reduces qty of item by 1
+func delete_item():
+
+	var element_index = str(int(mouse_node.name)%100)
+	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		#delete index
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
+		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	else:
+
+		# Item Stock is empty
+
+		#Hide its data entry, delete it immediately and shift all the indexes after it down by 1
+		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
+		print(mouse_node.name)
+		main.find_node(mouse_node.name, true, false).free()
+		
+#		element_index = int(element_index)
+#		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+#
+#			var scene_name = get_node(list + "/" + str(active_tab.name)+ "/VBoxCont").get_child(scene_index)
+#			scene_name.name = str(int(scene_name.name) - 1)
+#			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+#			scene_index += 1
+#			element_index += 1
+#		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+
+
+
+
+func _on_Button_pressed():
+	delete_item()

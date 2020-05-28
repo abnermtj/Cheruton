@@ -392,23 +392,29 @@ margin_bottom = 17.0
 
 [node name="Equipped" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
 margin_left = 4.0
-margin_right = 758.0
+margin_right = 379.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
 text = "Equipped Items:"
 
 [node name="CoinsVal" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 762.0
-margin_right = 762.0
+margin_left = 383.0
+margin_right = 383.0
 margin_bottom = 21.0
 custom_fonts/font = SubResource( 4 )
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 766.0
+margin_left = 387.0
 margin_top = 3.0
-margin_right = 766.0
+margin_right = 387.0
 margin_bottom = 17.0
+
+[node name="Button" type="Button" parent="Border/Bg/Contents/EquippedCoins"]
+margin_left = 391.0
+margin_right = 766.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Contents"]
 margin_top = 438.0
@@ -418,4 +424,5 @@ margin_bottom = 452.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 [connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Border/Bg/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
