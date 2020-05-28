@@ -1,6 +1,7 @@
 extends Level
 
 func _ready():
+#	$camera.target = $player # DELET IF NOT USING CUSTom smoothING
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

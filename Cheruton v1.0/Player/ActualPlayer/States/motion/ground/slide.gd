@@ -1,7 +1,7 @@
 extends groundState
 
 const MIN_VEL = 100 # should somewhat higher than min run speed (to not goto idle straight away)(in $run) before turning to run
-const SLIDE_PWR = 50
+const SLIDE_PWR = 300 # 50 is normal
 export (Curve) var attachment_curve
 
 var initial_vel
@@ -26,9 +26,9 @@ func update(delta):
 	owner.velocity = initial_vel * (1-relative_vel) + SLIDE_PWR*Vector2(get_input_direction().x,0) + Vector2(0,10)
 
 	if owner.velocity.x > 300:
-		owner.queue_anim("slide_continious_fast")
+		owner.play_anim("slide_continious_fast")
 	else:
-		owner.queue_anim("slide_continious")
+		owner.play_anim("slide_continious")
 
 	# player needss to move a certain time before can slide back up
 	if ((not Input.is_action_pressed("slide") and abs(owner.velocity.x) < abs(initial_vel.x)/2 or abs(owner.velocity.x) < MIN_VEL)) \

@@ -5,7 +5,7 @@ const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow dow
 const JUMP_TERMINAL_VELOCITY = 10000
 const NORMAL_GRAV_MULTIPLIER = .42
 const MIN_BOUNCE_POWER = 666
-const MIN_ENTER_VELOCITY_X = 450
+const MIN_ENTER_VELOCITY_X = 420
 const JUMP_VEL = -666
 
 var keypress_timer # timer that allaws paper to keep boosting jump height

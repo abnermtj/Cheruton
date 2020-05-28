@@ -35,7 +35,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 158 )
 
 [node name="mountain" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.04, 0 )
+motion_scale = Vector2( 0.04, 0.04 )
 motion_mirroring = Vector2( 766, 0 )
 
 [node name="Sprite" type="Sprite" parent="mountain"]
@@ -47,7 +47,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2000, 84 )
 
 [node name="trees1" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.08, 0.12 )
+motion_scale = Vector2( 0.08, 0.08 )
 motion_mirroring = Vector2( 696, 0 )
 
 [node name="Sprite" type="Sprite" parent="trees1"]

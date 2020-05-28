@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grasslands-mountain.png-b4d067ac0beadd34b7cac0921f86a2ce.stex"
+path="res://.import/HomeTown-ForegroundALL.png-20c5ab36eecfa33ab77ac097c3b1d00a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-mountain.png"
-dest_files=[ "res://.import/Grasslands-mountain.png-b4d067ac0beadd34b7cac0921f86a2ce.stex" ]
+source_file="res://Levels/levelAssets/HomeTown-ForegroundALL.png"
+dest_files=[ "res://.import/HomeTown-ForegroundALL.png-20c5ab36eecfa33ab77ac097c3b1d00a.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

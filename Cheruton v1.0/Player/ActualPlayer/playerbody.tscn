@@ -671,8 +671,8 @@ one_shot = true
 [node name="visual_vel" type="RayCast2D" parent="."]
 visible = false
 enabled = true
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
 [connection signal="timeout" from="attackCoolDown" to="." method="_on_attackCoolDown_timeout"]

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # only put consts used by multiple states, no need to get owner each time
 const GRAVITY = 2400
-const AIR_ACCEL = 28  # increase in this >> increase in stearing power in air
+const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 var velocity = Vector2()
 
