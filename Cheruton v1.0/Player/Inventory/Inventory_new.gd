@@ -1,11 +1,14 @@
 extends Control
 
 var active_tab
+var item_state = "HOVER"
+var mouse_count = 0
 
 signal tab_changed(next_tab)
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 
 onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
@@ -118,13 +121,41 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		enable_mouse(item)
 	# Hide data
 	scroll_tab.get_parent().hide()
-
+	
+# Enable mouse functions of the item index
 func enable_mouse(new_node):
-
-		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
+		new_node.get_node("Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
 		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 		# For the TextureButton
-		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+
+func _on_mouse_entered(node):
+	if(item_state == "HOVER"):
+		print(node.name)
+		node.get_node("Background/ItemBg").texture = index_bg
+
+
+# Mouse leaves label section of the element
+func _on_mouse_exited(node):
+	if(item_state == "HOVER"):
+		node.get_node("Background/ItemBg").texture = null
+
+
+# When the icon of a item is pressed
+func _on_pressed(node):
+	if(mouse_count == 0):
+		$Timer.start()
+	mouse_count += 1
+	if (mouse_count == 2):
+		print("Double Clicked!")
+		mouse_count = 0
+
+
+# Check if the doubleclick has happened
+func _on_Timer_timeout():
+	if(mouse_count == 1):
+		print("Single Clicked!")
+		mouse_count = 0

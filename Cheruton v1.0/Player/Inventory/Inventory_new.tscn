@@ -414,4 +414,8 @@ margin_bottom = 17.0
 margin_top = 438.0
 margin_right = 766.0
 margin_bottom = 452.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 [connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
