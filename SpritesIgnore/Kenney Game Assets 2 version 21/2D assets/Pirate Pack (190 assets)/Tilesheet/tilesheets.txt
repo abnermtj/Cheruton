@@ -1,2 +1,0 @@
-
-	Each tile is 64 x 64 in size, no margin between tiles.

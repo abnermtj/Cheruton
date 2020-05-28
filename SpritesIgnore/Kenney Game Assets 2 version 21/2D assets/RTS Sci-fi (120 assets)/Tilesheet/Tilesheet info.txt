@@ -1,4 +1,0 @@
-	
-
-	Tile size : 64 x 64 px
-	Margin	  : 0 px

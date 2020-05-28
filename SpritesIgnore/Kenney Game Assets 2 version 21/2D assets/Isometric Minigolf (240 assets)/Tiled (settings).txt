@@ -1,7 +1,0 @@
-
-
-	Tiled settings for using these assets (spritesheet):
-
-	Orientation: Isometric
-	Map tile size: 180 x 104 px
-	Tileset tile size: 180 x 256 px

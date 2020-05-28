@@ -1,9 +1,0 @@
-
-
-	This package has no spritesheet, the reason is that the source 3D objects
-	are a mix of tiles and regular objects. This makes it hard to create a spritesheet.
-
-	You can create your own spritesheet using ShoeBox (free) or TexturePacker
-
-	ShoeBox: http://renderhjs.net/shoebox/
-	TexturePacker: https://www.codeandweb.com/texturepacker
