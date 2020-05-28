@@ -21,6 +21,7 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+texture = ExtResource( 2 )
 expand = true
 
 [node name="ItemBg" type="TextureRect" parent="Background"]
@@ -28,7 +29,6 @@ margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 mouse_filter = 2
-texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
