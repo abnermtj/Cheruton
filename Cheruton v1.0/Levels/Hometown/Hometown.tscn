@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
+[ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=7]
+[ext_resource path="res://Props/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=8]
+
+[node name="Node" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 7 )
+
+[node name="Chain" parent="." instance=ExtResource( 4 )]
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1212.97, -125.743 )
+
+[node name="camera" parent="player" instance=ExtResource( 5 )]
+position = Vector2( 0, -175 )
+zoom = Vector2( 1.2, 1.2 )
+process_mode = 1
+limit_right = 4000
+drag_margin_left = 0.17
+drag_margin_top = 0.6
+drag_margin_right = 0.17
+drag_margin_bottom = 0.4
+editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+
+[node name="Panel" parent="CanvasLayer" instance=ExtResource( 1 )]
+
+[node name="Tiles" type="TileMap" parent="."]
+position = Vector2( 0, 478.334 )
+tile_set = ExtResource( 2 )
+cell_y_sort = true
+collision_mask = 2
+format = 1
+tile_data = PoolIntArray( -65520, 0, 327680, -65519, 0, 327682, -65518, 0, 327682, -65517, 0, 327682, -65516, 0, 327681, -65515, 0, 327681, -65514, 0, 327682, -65513, 0, 327682, -65512, 0, 327682, -65511, 0, 327682, -65510, 0, 327681, -65509, 0, 327682, -65508, 0, 327682, -65507, 0, 327681, -65506, 0, 327681, -65505, 0, 327681, -65504, 0, 327683, 0, 0, 327680, 1, 0, 327682, 2, 0, 327682, 3, 0, 327681, 4, 0, 327681, 5, 0, 327681, 6, 0, 327682, 7, 0, 327681, 8, 0, 327681, 9, 0, 327682, 10, 0, 327681, 11, 0, 327681, 12, 0, 327681, 13, 0, 327682, 14, 0, 327682, 15, 0, 327683 )
+
+[node name="Houses" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+
+[node name="camera_limit_SE" type="Position2D" parent="."]
+position = Vector2( 7542.09, 1418.07 )
+
+[node name="camera_limit_NW" type="Position2D" parent="."]
+position = Vector2( -571.234, -887.999 )
+
+[node name="grassLandsParallaxBg" parent="." instance=ExtResource( 8 )]
+offset = Vector2( 0, -650 )
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, -650 )
+[connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
+[connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
+[connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
+[connection signal="hook_command" from="player" to="Chain" method="_on_player_hook_command"]
+[connection signal="shake" from="player" to="player/camera" method="_on_player_shake"]
+[connection signal="state_changed" from="player" to="CanvasLayer/Panel" method="_on_player_state_changed"]
