@@ -39,6 +39,7 @@ func free_the_inventory():
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 	DataResource.save_rest()
+	yield(get_tree().create_timer(0.2), "timeout")
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -200,7 +201,7 @@ func delete_item():
 		main.find_node(deletion, true, false).queue_free()
 		if(element_index/10 != 0 && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
-		
+
 
 
 
