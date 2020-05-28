@@ -3,6 +3,7 @@ extends Control
 var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
+var mouse_node
 
 signal tab_changed(next_tab)
 
@@ -37,6 +38,8 @@ func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
+	DataResource.save_rest()
+	yield(get_tree().create_timer(0.2), "timeout")
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -149,10 +152,11 @@ func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
+	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
 		mouse_count = 0
-
+	
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
@@ -164,5 +168,42 @@ func _on_Timer_timeout():
 func revert_item_state():
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
-		return
-	item_state = "HOVER"
+		mouse_node.get_node("Background/ItemBg").texture = index_bg
+	else:
+		item_state = "HOVER"
+		mouse_node = null
+
+# Reduces qty of item by 1
+func delete_item():
+
+	var element_index = str(int(mouse_node.name)%100)
+	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
+		#delete index
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
+		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	else:
+
+		# Item Stock is empty:
+		#	Shift down all inventory entries by 1
+		#	Delete the last empty index
+		#	If the Row is empty (except Row0), delete it
+		
+		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
+		
+		element_index = int(element_index)
+		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			element_index += 1
+			
+		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
+		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
+		revert_item_state()
+		main.find_node(deletion, true, false).queue_free()
+		if(element_index/10 != 0 && main.has_node("Column/Row" + str(element_index/10))):
+			main.find_node("Row" + str(element_index/10), true, false).queue_free()
+
+
+
+
+func _on_Button_pressed():
+	delete_item()

@@ -12,29 +12,20 @@ func _input(_ev):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if(DataResource.dict_settings.maj_scn == false):
 		if Input.is_key_pressed(KEY_ESCAPE):
-			if (DataResource.dict_settings.game_on == true):
-				yield(get_tree().create_timer(0.00005), "timeout")
-				instance_scene(PAUSE)
-				DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).popup()
-				last_key = KEY_ESCAPE
-			elif(last_key == KEY_ESCAPE):
-				free_scene()
-				last_key = null
+			instance_scene(KEY_ESCAPE, PAUSE)
 
 		elif Input.is_key_pressed(KEY_I):
-			if (DataResource.dict_settings.game_on == true):
-				yield(get_tree().create_timer(0.00005), "timeout")
-				instance_scene(INVENTORY)
-				last_key = KEY_I
-			elif(last_key == KEY_I):
-				free_scene()
-				last_key = null
+			instance_scene(KEY_I, INVENTORY)
 
-
-
-func instance_scene(NEW):
-	var curr_scene = NEW.instance()
-	DataResource.current_scene.add_child(curr_scene)
+func instance_scene(key, SCENE):
+	yield(get_tree().create_timer(0.06), "timeout")
+	if (DataResource.dict_settings.game_on == true):
+		var curr_scene = SCENE.instance()
+		DataResource.current_scene.add_child(curr_scene)
+		last_key = key
+	elif(last_key == key):
+		free_scene()
+		last_key = null
 
 
 func free_scene():

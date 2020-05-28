@@ -1,19 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Display/Pause/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Display/Pause/Exit.png" type="Texture" id=2]
+[ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
 
-[node name="Pause" type="PopupMenu"]
-visible = true
+[node name="Pause" type="Control"]
 margin_left = 239.673
 margin_top = 123.692
 margin_right = 453.674
 margin_bottom = 247.693
 rect_scale = Vector2( 4, 4 )
-popup_exclusive = true
-hide_on_checkable_item_selection = false
-hide_on_state_item_selection = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1.00101
+margin_bottom = -0.000991821
+texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

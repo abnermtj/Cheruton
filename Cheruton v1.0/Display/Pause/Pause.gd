@@ -1,4 +1,4 @@
-extends Popup
+extends Control
 
 var SETTINGS = preload("res://Display/Settings/Settings.tscn")
 
@@ -11,8 +11,8 @@ func _ready():
 
 
 func _on_ExitDirect_pressed():
-
 	get_tree().quit()
+
 
 
 func _on_Settings_pressed():
@@ -31,10 +31,11 @@ func _on_ExitPause_pressed():
 	free_the_pause()
 
 
+
 func free_the_pause():
+	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
-	DataResource.dict_settings.game_on = true
 
 
