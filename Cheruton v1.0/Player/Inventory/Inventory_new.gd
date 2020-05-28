@@ -114,5 +114,17 @@ func generate_list(scroll_tab, list_tab, tab_index):
 			item_pict  = load(list_tab["Item" + str(index)].item_png)
 		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
 		index += 1
+		
+		enable_mouse(item)
 	# Hide data
 	scroll_tab.get_parent().hide()
+
+func enable_mouse(new_node):
+
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
+		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+
+		# For the TextureButton
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		new_node.get_node("Background/MainCont/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
