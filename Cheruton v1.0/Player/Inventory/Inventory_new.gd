@@ -76,7 +76,6 @@ func change_active_tab(new_tab):
 	active_tab = new_tab
 	active_tab.set_normal_texture(active_tab_image)
 	items.get_node(active_tab.name).show()
-	print("OK")
 
 func load_data():
 	#Find subnodes of each tab
@@ -199,7 +198,7 @@ func delete_item():
 		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
 		revert_item_state()
 		main.find_node(deletion, true, false).queue_free()
-		if(element_index/10 != 0 && main.has_node("Column/Row" + str(element_index/10))):
+		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
 
