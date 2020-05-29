@@ -154,6 +154,9 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			#check if 
+			pass
 		mouse_count = 0
 	
 
@@ -202,7 +205,11 @@ func delete_item():
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
 
-
-
+func _item_status(selected_node, status):
+	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
+	match status:
+		"EQUIP":	type.get_node("Background/ItemBg/ItemBtn").texture = selected_node.get_node("Background/ItemBg/ItemBtn").texture
+		"DEQUIP":	type.get_node("Background/ItemBg/ItemBtn").texture = null
+#Debug
 func _on_Button_pressed():
 	delete_item()
