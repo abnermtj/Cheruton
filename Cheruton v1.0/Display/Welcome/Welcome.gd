@@ -8,9 +8,8 @@ func _ready():
 	#Cursor.init_cursor()
 	#Testing loot functionality
 	var map = "test"
-	var run = Loot.determine_loot_count(map)
-	Loot.loot_selector(map, run)
-	Loot.append_loot(run)
+	var run = Loot.determine_loot(map)
+
 
 func _on_Timer_timeout():
 	LoadGlobal.goto_scene(MAINMENU)

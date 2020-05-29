@@ -76,7 +76,6 @@ func change_active_tab(new_tab):
 	active_tab = new_tab
 	active_tab.set_normal_texture(active_tab_image)
 	items.get_node(active_tab.name).show()
-	print("OK")
 
 func load_data():
 	#Find subnodes of each tab
@@ -155,6 +154,16 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+			# Item not equipped or Item Selected is a different weapon
+			if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+				_item_status(node, "EQUIP")
+			# Removing equipped item
+			else:
+				_item_status(node, "DEQUIP")
+		elif(active_tab.name == "Consum"):
+			use_item()
 		mouse_count = 0
 	
 
@@ -172,6 +181,19 @@ func revert_item_state():
 	else:
 		item_state = "HOVER"
 		mouse_node = null
+
+func use_item():
+	var element_index = str(int(mouse_node.name)%100)
+	var item_used = false
+	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "EXP"):
+		DataFunctions.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
+		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		item_used = true
+
+	if(item_used):
+		delete_item()
 
 # Reduces qty of item by 1
 func delete_item():
@@ -199,11 +221,21 @@ func delete_item():
 		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
 		revert_item_state()
 		main.find_node(deletion, true, false).queue_free()
-		if(element_index/10 != 0 && main.has_node("Column/Row" + str(element_index/10))):
+		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
 
-
-
+func _item_status(selected_node, status):
+	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
+	match status:
+		"EQUIP":
+			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+			type.show()
+			print("Show")
+		"DEQUIP":
+			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+			type.hide()
+			print("Hide")
+#Debug
 func _on_Button_pressed():
 	delete_item()
