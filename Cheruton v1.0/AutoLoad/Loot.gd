@@ -2,6 +2,10 @@ extends Node
 
 var loot_dict = {} # Items pending transfer to inventory
 
+func determine_loot(map):
+	var run = Loot.determine_loot_count(map)
+	Loot.loot_selector(map, run)
+	Loot.append_loot(run)
 
 # Determines the qty of tiems to be released
 func determine_loot_count(map_name):
