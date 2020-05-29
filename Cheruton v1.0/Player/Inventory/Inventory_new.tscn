@@ -307,18 +307,18 @@ __meta__ = {
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
 margin_top = 96.0
 margin_right = 766.0
-margin_bottom = 355.0
+margin_bottom = 404.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_top = 122.0
-margin_bottom = 136.0
+margin_top = 147.0
+margin_bottom = 161.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 4.0
 margin_right = 152.0
-margin_bottom = 259.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Weapons"]
@@ -328,7 +328,7 @@ size_flags_horizontal = 3
 [node name="Apparel" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 156.0
 margin_right = 304.0
-margin_bottom = 259.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Apparel"]
@@ -338,7 +338,7 @@ size_flags_horizontal = 3
 [node name="Consum" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 308.0
 margin_right = 456.0
-margin_bottom = 259.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Consum"]
@@ -348,7 +348,7 @@ size_flags_horizontal = 3
 [node name="Misc" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 460.0
 margin_right = 608.0
-margin_bottom = 259.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Misc"]
@@ -358,7 +358,7 @@ size_flags_horizontal = 3
 [node name="KeyItems" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 612.0
 margin_right = 760.0
-margin_bottom = 259.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/KeyItems"]
@@ -367,14 +367,14 @@ size_flags_horizontal = 3
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
 margin_left = 764.0
-margin_top = 122.0
+margin_top = 147.0
 margin_right = 764.0
-margin_bottom = 136.0
+margin_bottom = 161.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Contents"]
-margin_top = 359.0
+margin_top = 408.0
 margin_right = 766.0
-margin_bottom = 360.0
+margin_bottom = 409.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -382,43 +382,43 @@ __meta__ = {
 }
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 364.0
+margin_top = 413.0
 margin_right = 766.0
 margin_bottom = 434.0
 size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_top = 28.0
-margin_bottom = 42.0
+margin_top = 3.0
+margin_bottom = 17.0
 
 [node name="Equipped" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
 margin_left = 4.0
-margin_top = 24.0
 margin_right = 137.0
-margin_bottom = 45.0
+margin_bottom = 21.0
 custom_fonts/font = SubResource( 4 )
 text = "Equipped Items:"
 
-[node name="Weapon" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
+[node name="Weapons" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
+visible = false
 margin_left = 141.0
 margin_right = 211.0
 
-[node name="102" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
-margin_left = 215.0
-margin_right = 285.0
+[node name="Apparel" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
+visible = false
+margin_left = 141.0
+margin_right = 211.0
 
 [node name="CoinsVal" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 289.0
-margin_top = 24.0
-margin_right = 289.0
-margin_bottom = 45.0
+margin_left = 141.0
+margin_right = 141.0
+margin_bottom = 21.0
 custom_fonts/font = SubResource( 4 )
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 293.0
-margin_top = 28.0
-margin_right = 293.0
-margin_bottom = 42.0
+margin_left = 145.0
+margin_top = 3.0
+margin_right = 145.0
+margin_bottom = 17.0
 
 [node name="Button" type="Button" parent="Border/Bg/Contents/EquippedCoins"]
 visible = false
