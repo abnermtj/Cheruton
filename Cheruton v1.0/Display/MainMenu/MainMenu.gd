@@ -4,7 +4,7 @@ const EMPTY = "res://Empty.tscn"
 var SETTINGS = preload("res://Display/Settings/Settings.tscn")
 
 func _ready():
-	pass
+	DataResource.dict_settings["game_on"] = false
 
 
 func _on_Play_pressed():

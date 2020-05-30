@@ -27,6 +27,7 @@ func _ready():
 	connect_tabs()
 	load_data()
 	emit_signal("tab_changed", "Weapons")
+	init_equipped()
 	
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
@@ -34,6 +35,20 @@ func _ready():
 func _on_Exit_pressed():
 	free_the_inventory()
 
+func init_equipped():
+	if(DataResource.temp_dict_player.Weapons_item):
+		display_equipped("Weapons")
+
+	if(DataResource.temp_dict_player.Apparel_item):
+		display_equipped("Apparel")
+
+func display_equipped(name):
+	var main = get_node("Border/Bg/Contents/Items")
+	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
+	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+	type.show()
+		
 func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
@@ -230,10 +245,12 @@ func _item_status(selected_node, status):
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
 			type.show()
 			print("Show")
 		"DEQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			type.hide()
 			print("Hide")
 #Debug
