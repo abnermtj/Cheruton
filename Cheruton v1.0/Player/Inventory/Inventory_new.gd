@@ -230,6 +230,10 @@ func delete_item():
 	var element_index = str(int(mouse_node.name)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
+	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+		if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
@@ -247,7 +251,7 @@ func delete_item():
 			element_index += 1
 			
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
-		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
+		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)  
 		revert_item_state()
 		main.find_node(deletion, true, false).queue_free()
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
