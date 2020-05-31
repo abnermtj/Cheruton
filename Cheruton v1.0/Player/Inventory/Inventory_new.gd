@@ -86,8 +86,9 @@ func change_tab_state(next_tab):
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
 	if(mouse_node):
+		var temp = mouse_node
 		revert_item_state()
-		_on_mouse_exited(mouse_node)
+		_on_mouse_exited(temp)
 		
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
