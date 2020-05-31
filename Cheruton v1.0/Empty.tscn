@@ -21,10 +21,8 @@ shader_param/distortion = null
 shader_param/heightOffset = 0.0
 
 [node name="Control" type="Control"]
-margin_left = -47.7747
-margin_top = -9.67926
-margin_right = 1232.23
-margin_bottom = 710.321
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -49,6 +47,7 @@ __meta__ = {
 }
 
 [node name="Smoke" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 13.8724, 103.046 )
 
 [node name="Fire" parent="." instance=ExtResource( 5 )]
@@ -63,6 +62,7 @@ position = Vector2( 2.21606, 0 )
 visible = false
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 381.71
 margin_top = 152.23
 margin_right = 922.71
@@ -72,6 +72,7 @@ __meta__ = {
 }
 
 [node name="Leaf_test-Recovered" type="Sprite" parent="."]
+visible = false
 material = SubResource( 1 )
 position = Vector2( 401.371, 564.156 )
 scale = Vector2( 8.66291, 6.60158 )

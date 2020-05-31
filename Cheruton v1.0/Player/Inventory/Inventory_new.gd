@@ -10,6 +10,7 @@ signal tab_changed(next_tab)
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
+onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 
 onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
@@ -47,14 +48,15 @@ func display_equipped(name):
 	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
 	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
 	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+	node.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.show()
 		
 func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
-	scene_to_free.queue_free()
 	DataResource.save_rest()
 	yield(get_tree().create_timer(0.2), "timeout")
+	scene_to_free.queue_free()
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -158,7 +160,10 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "HOVER"):
-		node.get_node("Background/ItemBg").texture = null
+		if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) != node.name):
+			node.get_node("Background/ItemBg").texture = null
+		else:
+			node.get_node("Background/ItemBg").texture = index_equipped_bg
 
 
 # When the icon of a item is pressed
@@ -190,6 +195,7 @@ func _on_Timer_timeout():
 		mouse_count = 0
 
 func revert_item_state():
+
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
@@ -246,11 +252,13 @@ func _item_status(selected_node, status):
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
+			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			type.show()
 			print("Show")
 		"DEQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			selected_node.get_node("Background/ItemBg").texture = null
 			type.hide()
 			print("Hide")
 #Debug
