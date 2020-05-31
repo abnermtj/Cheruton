@@ -64,8 +64,8 @@ func update(delta):
 			1:# second attack
 
 				if attack_again == true and attack_timer < 0:
-					owner.queue_anim("attack_ground_3")
-					owner.queue_anim_fx("attack_ground_3")
+					owner.play_anim("attack_ground_3")
+					owner.play_anim_fx("attack_ground_3")
 					attack_count += 1
 					attack_timer = ATTACK_TIMER_BUFFER
 					attack_again = false
@@ -96,7 +96,8 @@ func update(delta):
 			1:
 				attack_count += 1
 				update_look_direction(input_dir)
-				owner.queue_anim("attack_air_2")
+				owner.play_anim("attack_air_2")
+				owner.play_anim_fx("attack_air_2")
 
 			2:
 				if attack_timer< 0:

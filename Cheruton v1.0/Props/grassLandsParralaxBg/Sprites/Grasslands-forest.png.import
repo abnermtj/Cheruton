@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pine1.png-723a4af7f9d72b54cf59530672a7aa58.stex"
+path="res://.import/Grasslands-forest.png-ea09f04b4994a9063c9adb169602390d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/grassLandsParralaxBg/Sprites/pine1.png"
-dest_files=[ "res://.import/pine1.png-723a4af7f9d72b54cf59530672a7aa58.stex" ]
+source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-forest.png"
+dest_files=[ "res://.import/Grasslands-forest.png-ea09f04b4994a9063c9adb169602390d.stex" ]
 
 [params]
 

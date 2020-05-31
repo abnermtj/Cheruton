@@ -50,6 +50,8 @@ func set_dead(value): # non zero means dead
 	$CollisionPolygon2D.disabled = value
 
 func _physics_process(delta):
+#	position = position.floor()
+#	print (global_position)
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 #	$visual_vel.cast_to = velocity *.5 # debugging
 	if floor_raycast.is_colliding():
@@ -127,12 +129,14 @@ func move():
 	else:
 		move_and_slide(velocity, Vector2.UP)
 func switch_col():
-		body_collision.disabled = not body_collision.disabled
 		slide_collision.disabled = not slide_collision.disabled
+		body_collision.disabled = not body_collision.disabled
 func _on_slideArea2D_body_exited(body):
-	exit_slide_blocked = false
+	if not body.is_in_group("non_blocking_objects"):
+		exit_slide_blocked = false
 func _on_slideArea2D_body_entered(body):
-	exit_slide_blocked = true
+	if not body.is_in_group("non_blocking_objects"):
+		exit_slide_blocked = true
 
 func _update_wall_direction():
 	var is_near_wall_left = _is_wall_raycast_colliding(left_wall_raycasts)
