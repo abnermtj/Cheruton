@@ -29,7 +29,7 @@
       "HealVal": null,
       "ItemValue": 40,
       "ItemDetails": null,
-      "ItemPNG": null
+      "ItemPNG": "res://Player/Inventory/Icons/Item_Icons/iron_sword.png"
     },
     "Steel Sword": {
       "ItemType": "Weapons",
@@ -49,7 +49,7 @@
       "HealVal": 20,
       "ItemValue": 30,
       "ItemDetails": null,
-      "ItemPNG": null
+      "ItemPNG": "res://Player/Inventory/Icons/Item_Icons/potion_tube.png"
     }
   }
 }

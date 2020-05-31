@@ -11,7 +11,10 @@ func _ready():
 
 
 func _on_ExitDirect_pressed():
+	DataFunctions.change_health(-30)
+	DataResource.save_player()
 	get_tree().quit()
+	
 
 
 

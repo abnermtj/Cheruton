@@ -85,6 +85,10 @@ func change_tab_state(next_tab):
 
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
+	if(mouse_node):
+		revert_item_state()
+		_on_mouse_exited(mouse_node)
+		
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
 		items.get_node(active_tab.name).hide()
@@ -160,10 +164,11 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "HOVER"):
-		if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) != node.name):
-			node.get_node("Background/ItemBg").texture = null
-		else:
-			node.get_node("Background/ItemBg").texture = index_equipped_bg
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
+				node.get_node("Background/ItemBg").texture = index_equipped_bg
+				return
+		node.get_node("Background/ItemBg").texture = null
 
 
 # When the icon of a item is pressed
@@ -185,7 +190,7 @@ func _on_pressed(node):
 		elif(active_tab.name == "Consum"):
 			use_item()
 		mouse_count = 0
-	
+
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
@@ -199,8 +204,10 @@ func revert_item_state():
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
+		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
 	else:
 		item_state = "HOVER"
+		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()
 		mouse_node = null
 
 func use_item():

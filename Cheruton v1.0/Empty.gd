@@ -3,4 +3,6 @@ extends Control
 var cursor_set_to = 0
 
 func _ready():
-	set_default_cursor_shape(15)
+	#set_default_cursor_shape(15)
+	$ExpBar.initbar()
+	$HealthBar.initbar()

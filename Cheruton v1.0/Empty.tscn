@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Effects/Fog/Fog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Smoke/Smoke.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=6]
 [ext_resource path="res://Empty.gd" type="Script" id=7]
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=8]
+[ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -77,4 +79,17 @@ material = SubResource( 1 )
 position = Vector2( 401.371, 564.156 )
 scale = Vector2( 8.66291, 6.60158 )
 texture = ExtResource( 8 )
+
+[node name="ExpBar" parent="." instance=ExtResource( 10 )]
+visible = false
+margin_left = 21.7124
+margin_top = 636.342
+margin_right = 231.712
+margin_bottom = 707.342
+
+[node name="HealthBar" parent="." instance=ExtResource( 9 )]
+margin_left = 222.135
+margin_top = 634.672
+margin_right = -847.865
+margin_bottom = -14.3285
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
