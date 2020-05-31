@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Effects/Fog/Fog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/Smoke/Smoke.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=6]
 [ext_resource path="res://Empty.gd" type="Script" id=7]
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=8]
+[ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -21,10 +23,8 @@ shader_param/distortion = null
 shader_param/heightOffset = 0.0
 
 [node name="Control" type="Control"]
-margin_left = -47.7747
-margin_top = -9.67926
-margin_right = 1232.23
-margin_bottom = 710.321
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -49,6 +49,7 @@ __meta__ = {
 }
 
 [node name="Smoke" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 13.8724, 103.046 )
 
 [node name="Fire" parent="." instance=ExtResource( 5 )]
@@ -63,6 +64,7 @@ position = Vector2( 2.21606, 0 )
 visible = false
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 381.71
 margin_top = 152.23
 margin_right = 922.71
@@ -72,8 +74,22 @@ __meta__ = {
 }
 
 [node name="Leaf_test-Recovered" type="Sprite" parent="."]
+visible = false
 material = SubResource( 1 )
 position = Vector2( 401.371, 564.156 )
 scale = Vector2( 8.66291, 6.60158 )
 texture = ExtResource( 8 )
+
+[node name="ExpBar" parent="." instance=ExtResource( 10 )]
+visible = false
+margin_left = 21.7124
+margin_top = 636.342
+margin_right = 231.712
+margin_bottom = 707.342
+
+[node name="HealthBar" parent="." instance=ExtResource( 9 )]
+margin_left = 222.135
+margin_top = 634.672
+margin_right = -847.865
+margin_bottom = -14.3285
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

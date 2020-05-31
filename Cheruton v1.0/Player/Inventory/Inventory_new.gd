@@ -10,6 +10,7 @@ signal tab_changed(next_tab)
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
+onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 
 onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
@@ -27,6 +28,7 @@ func _ready():
 	connect_tabs()
 	load_data()
 	emit_signal("tab_changed", "Weapons")
+	init_equipped()
 	
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
@@ -34,12 +36,27 @@ func _ready():
 func _on_Exit_pressed():
 	free_the_inventory()
 
+func init_equipped():
+	if(DataResource.temp_dict_player.Weapons_item):
+		display_equipped("Weapons")
+
+	if(DataResource.temp_dict_player.Apparel_item):
+		display_equipped("Apparel")
+
+func display_equipped(name):
+	var main = get_node("Border/Bg/Contents/Items")
+	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
+	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+	node.get_node("Background/ItemBg").texture = index_equipped_bg
+	type.show()
+		
 func free_the_inventory():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
-	scene_to_free.queue_free()
 	DataResource.save_rest()
 	yield(get_tree().create_timer(0.2), "timeout")
+	scene_to_free.queue_free()
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -68,6 +85,11 @@ func change_tab_state(next_tab):
 
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
+	if(mouse_node):
+		var temp = mouse_node
+		revert_item_state()
+		_on_mouse_exited(temp)
+		
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
 		items.get_node(active_tab.name).hide()
@@ -143,6 +165,10 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "HOVER"):
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
+				node.get_node("Background/ItemBg").texture = index_equipped_bg
+				return
 		node.get_node("Background/ItemBg").texture = null
 
 
@@ -165,7 +191,7 @@ func _on_pressed(node):
 		elif(active_tab.name == "Consum"):
 			use_item()
 		mouse_count = 0
-	
+
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
@@ -175,11 +201,14 @@ func _on_Timer_timeout():
 		mouse_count = 0
 
 func revert_item_state():
+
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
+		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
 	else:
 		item_state = "HOVER"
+		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()
 		mouse_node = null
 
 func use_item():
@@ -201,6 +230,10 @@ func delete_item():
 	var element_index = str(int(mouse_node.name)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
+	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+		if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
@@ -218,7 +251,7 @@ func delete_item():
 			element_index += 1
 			
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
-		var deletion = str(int(mouse_node.name)%100 * 100 + element_index)  
+		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)  
 		revert_item_state()
 		main.find_node(deletion, true, false).queue_free()
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
@@ -230,10 +263,14 @@ func _item_status(selected_node, status):
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
+			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			type.show()
 			print("Show")
 		"DEQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			selected_node.get_node("Background/ItemBg").texture = null
 			type.hide()
 			print("Hide")
 #Debug
