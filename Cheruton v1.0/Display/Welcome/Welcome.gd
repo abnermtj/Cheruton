@@ -8,8 +8,7 @@ func _ready():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio)
 	#Cursor.init_cursor()
 	#Testing loot functionality
-	var map = "test"
-	var run = Loot.determine_loot(map)
+	Loot.determine_loot("test")
 
 
 func _on_Timer_timeout():
