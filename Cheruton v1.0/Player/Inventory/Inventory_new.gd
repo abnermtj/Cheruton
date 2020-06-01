@@ -195,8 +195,6 @@ func _on_pressed(node):
 			# Removing equipped item
 			else:
 				_item_status(node, "DEQUIP")
-		elif(node.name == "Weapons" || node.name == "Apparel"):
-			return
 		elif(active_tab.name == "Consum"):
 			use_item()
 		mouse_count = 0
