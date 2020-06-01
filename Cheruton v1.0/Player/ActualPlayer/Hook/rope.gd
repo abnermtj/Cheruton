@@ -4,7 +4,7 @@ extends Node2D
 const SHOOT_OFFSET_INCREASE = -1
 const SHOOT_AMP_DECREASE = 2.3
 const SHOOT_WID_DECREASE = 2.4
-const LINE_WIDTH = 6
+const LINE_WIDTH = 12
 
 var length_divisor = 1 #used to get the number of points in the line, we then connect those points via polyline
 
@@ -13,7 +13,8 @@ const INITIAL_SHOOT = 1
 const JUST_HOOKED = 2
 const RETRACT = 3
 
-var color = Color(0.07843, 0.0627, 0.125)
+var color_outline = Color(0.07843, 0.0627, 0.125)
+var color_inner = Color(1,1,1)
 export (Curve) var attachment_curve
 
 var length
@@ -33,7 +34,8 @@ func _draw(): # gets called once initially then again when update() is called
 			var y_pos = (-4 * pow(2, point_idx/c - 0.5) + 1) * a * sin(((point_idx-c) * d * PI) / c) * s
 			points_arr.push_back(Vector2(point_idx*length_divisor, y_pos))
 		if points_arr.size()> 1:
-			draw_polyline(points_arr,color, LINE_WIDTH)
+			draw_polyline(points_arr,color_outline, LINE_WIDTH)
+			draw_polyline(points_arr,color_inner, LINE_WIDTH-10)
 		points_arr.resize(0) # same array is used in differennt function calls
 
 func start():

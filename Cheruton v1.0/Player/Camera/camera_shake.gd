@@ -1,11 +1,14 @@
 extends Camera2D
 class_name ShakeCamera
 
-var LOOK_AHEAD_FACTOR = 10  # DONT CHANGE HERE CHANGE BELOW # percentage of screen to shift for looking ahead when changing directions
 const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
 const SHIFT_EASE = Tween.EASE_IN_OUT
-const SHIFT_DURATION = 10000.0 # ms
-const SMOOTH_SPEED_FACTOR = .0001
+const SMOOTH_SPEED_FACTOR = .00001
+
+# DONT CHANGE HERE CHANGE BELOW
+var LOOK_AHEAD_FACTOR  # percentage of screen to shift for looking ahead when changing directions
+var SHIFT_DURATION # seconds
+
 # SHAKE
 var _duration := 0.0
 var _period_in_ms := 0.0
@@ -30,12 +33,17 @@ var smoothing_speed_goal = 0
 var camera_state = 0
 enum camera_states { DEFAULT = 0, HOOK = 1}
 
+# CUSTOM SMOOTING
+# The node to follow
+var target: Node2D = null
+onready var current_position = position
+var destination_position: Vector2
+
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween # this caches a node no need to reload in downtimes between uses
 
 # processes screenshake / pan
-func _physics_process( delta ):
-	camera_process(delta)
+func _process( delta ):
 
 	if _timer != 0:
 		_last_shook_timer = _last_shook_timer + delta
@@ -65,7 +73,7 @@ func _physics_process( delta ):
 	if abs( pan_offset.y ) < 0.5:
 		pan_offset.y = 0
 
-	slowmo_offset = lerp( slowmo_offset, slowmo_target, 10 * delta )
+	slowmo_offset =  lerp( slowmo_offset, slowmo_target, 10 * delta )
 
 	if _timer != 0:
 		if _shakedir == Vector2.ZERO:
@@ -75,6 +83,9 @@ func _physics_process( delta ):
 	else:
 		offset = pan_offset
 	offset += slowmo_offset
+
+	position = position.round() # prevents half pixel movements
+	force_update_scroll()
 
 # CAMERA EFFECTS
 func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
@@ -91,7 +102,6 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 
 func pan_camera( pan : Vector2 ) -> void:
 	target_pan_offset = pan
-	pass
 
 # GAME CAMERA
 func camera_process(delta):
@@ -104,36 +114,34 @@ func _check_facing():
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
 		var target_offset = get_viewport_rect().size.x * facing * LOOK_AHEAD_FACTOR
-		position.x = target_offset
 		# modify the self object propery position:x, from the current positino to the target and use the following parementers:
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
 func _on_player_camera_command(command, arg):
-	print(command ,arg)
 	camera_state = command
 
 	var dist = (global_position - get_parent().global_position).length()
 	match (camera_state):
 		camera_states.DEFAULT:
-			drag_margin_left = .11
-			drag_margin_right = .11
+			drag_margin_left = .06
+			drag_margin_right = .06
 			drag_margin_top = 0.4
 			drag_margin_bottom = .2
 			drag_margin_v_enabled = not  arg
 			drag_margin_h_enabled = true
-#			zoom = Vector2(1.5,1.5)
-			smoothing_speed_goal = .5
-			LOOK_AHEAD_FACTOR = .2
+			SHIFT_DURATION = 1
+			smoothing_speed_goal = 1
+			LOOK_AHEAD_FACTOR = .1
 		camera_states.HOOK:
-			drag_margin_left = .32
-			drag_margin_right = .32
-			drag_margin_top = 0.4
-			drag_margin_bottom = .2
+#			drag_margin_left = .32
+#			drag_margin_right = .32
+#			drag_margin_top = 0.4
+#			drag_margin_bottom = .2
 			drag_margin_v_enabled = true
 			drag_margin_h_enabled = true
-#			zoom = Vector2(1.5,1.5)
-			smoothing_speed_goal = 2.5# 480x320 use 2.5 384 use 2.7
+			SHIFT_DURATION = .5
+			smoothing_speed_goal = 10# 480x320 use 2.5 384 use 2.7
 			LOOK_AHEAD_FACTOR = .25
 
 func _on_player_shake(dur, freq, amp, dir):

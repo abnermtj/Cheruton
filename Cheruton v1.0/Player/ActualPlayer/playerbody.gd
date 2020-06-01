@@ -50,7 +50,7 @@ func set_dead(value): # non zero means dead
 	$CollisionPolygon2D.disabled = value
 
 func _physics_process(delta):
-#	position = position.floor()
+#	position = position.round() # delete if uselesss
 #	print (global_position)
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 #	$visual_vel.cast_to = velocity *.5 # debugging

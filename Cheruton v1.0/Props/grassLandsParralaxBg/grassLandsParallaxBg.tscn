@@ -15,7 +15,7 @@ motion_offset = Vector2( -1400, -130 )
 motion_mirroring = Vector2( 2000, 0 )
 
 [node name="Sprite" type="Sprite" parent="sky"]
-position = Vector2( 0, -235 )
+position = Vector2( 0, -245 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 centered = false
@@ -23,11 +23,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2000, 402 )
 
 [node name="mountain2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.03, 0 )
+motion_scale = Vector2( 0.075, 0 )
 motion_mirroring = Vector2( 732, 0 )
 
 [node name="Sprite" type="Sprite" parent="mountain2"]
-position = Vector2( 0, -70 )
+position = Vector2( 0, -75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 centered = false
@@ -35,11 +35,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 250 )
 
 [node name="mountain" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.04, 0 )
+motion_scale = Vector2( 0.08, 0 )
 motion_mirroring = Vector2( 768, 0 )
 
 [node name="Sprite" type="Sprite" parent="mountain"]
-position = Vector2( 0, -67 )
+position = Vector2( 0, -80 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 centered = false
@@ -47,11 +47,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 260 )
 
 [node name="hills" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.08, 0.12 )
+motion_scale = Vector2( 0.16, 0.08 )
 motion_mirroring = Vector2( 692, 0 )
 
 [node name="Sprite" type="Sprite" parent="hills"]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 15 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 centered = false
@@ -68,14 +68,14 @@ motion_scale = Vector2( 0.33, 0.3 )
 motion_mirroring = Vector2( 860, 0 )
 
 [node name="Sprite2" type="Sprite" parent="forest"]
-position = Vector2( 0, 240 )
+position = Vector2( 0, 220 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 184 )
 
 [node name="Sprite" type="Sprite" parent="forest"]
-position = Vector2( 0, 50 )
+position = Vector2( -1, 20 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false

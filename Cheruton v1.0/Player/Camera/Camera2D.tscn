@@ -4,9 +4,8 @@
 
 [node name="Camera2D" type="Camera2D"]
 current = true
-process_mode = 0
-limit_left = -600
-limit_right = 2000
+limit_left = -100000
+limit_right = 1000000
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true

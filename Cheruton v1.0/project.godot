@@ -109,25 +109,22 @@ DataFunctions="*res://AutoLoad/DataFunctions.gd"
 LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
 LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
 Loot="*res://AutoLoad/Loot.gd"
-KeyPress="*res://AutoLoad/KeyPress.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/width=1920
+window/size/height=1080
+window/size/resizable=false
 window/size/fullscreen=true
-window/size/test_width=1280
-window/size/test_height=720
+window/size/test_width=1920
+window/size/test_height=1080
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "aseprite_importer" )
-
-[gui]
-
-timers/tooltip_delay_sec=0.05
 
 [importer_defaults]
 
@@ -256,6 +253,7 @@ attack={
 2d_physics/layer_3="player_hitbox"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="enemy_hitbox"
+2d_physics/layer_6="hookable_terrain"
 
 [physics]
 
