@@ -10,7 +10,7 @@ var last_key
 func _input(_ev):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
-	if(DataResource.dict_settings.maj_scn == false):
+	if(DataResource.dict_main && DataResource.dict_settings.maj_scn == false):
 		if Input.is_key_pressed(KEY_ESCAPE):
 			instance_scene(KEY_ESCAPE, PAUSE)
 
