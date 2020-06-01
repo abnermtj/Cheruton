@@ -8,23 +8,19 @@ var last_key
 
 #fix key closure to close only with assigned key! - find better check than getchild
 func _input(_ev):
-	print("MajScn:", DataResource.dict_settings.maj_scn)
-	
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
-	
+
+	# TODO move to levels class
 	if(DataResource.dict_main && DataResource.dict_settings.maj_scn == false):
-		print("toodles")
 		if Input.is_action_just_pressed("escape"):
 			instance_scene("escape", PAUSE)
-			
-
 		elif Input.is_action_just_pressed("inventory"):
-			print("heerrree")
 			instance_scene("inventory", INVENTORY)
 
 func instance_scene(key, SCENE):
 	yield(get_tree().create_timer(0.06), "timeout")
+
 	if (DataResource.dict_settings.game_on):
 		var curr_scene = SCENE.instance()
 		DataResource.current_scene.add_child(curr_scene)
