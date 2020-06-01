@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grasslands-Mountain2.png-5ba720c2c1a5eeddcc2f04c445dea30e.stex"
+path="res://.import/Grasslands-mountain2.png-0d60036f0b32cf008dbd34bf2959a578.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-Mountain2.png"
-dest_files=[ "res://.import/Grasslands-Mountain2.png-5ba720c2c1a5eeddcc2f04c445dea30e.stex" ]
+source_file="res://Props/grassLandsParralaxBg/Sprites/Grasslands-mountain2.png"
+dest_files=[ "res://.import/Grasslands-mountain2.png-0d60036f0b32cf008dbd34bf2959a578.stex" ]
 
 [params]
 

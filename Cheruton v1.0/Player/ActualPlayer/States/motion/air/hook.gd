@@ -10,10 +10,9 @@ var MAX_WIRE_LENGTH = 600 #
 var PLAYER_LENGTH_CONTROL = 280 # 400 for fun 280 for realism 0 # players influence with REEL, too much may may make movements not smooth at the end
 const REEL_LERP_FACTOR = 3.4 # factor multiplied to delta for lep
 const TOP_SPEED = 1500
-#const MAX_FLOOR_BOOST = 34  # when getting close to floor how much to shorten length so player doesn't collide
+
 var release_timer
 
-#var zip_state
 var hit_ceil = false
 var hit_wall = false
 var close_to_floor = false
@@ -25,11 +24,8 @@ var desired_length_rope = 0.0
 var tip_pos # tip of hook/ attach point
 
 func enter():
-#	zip_state = false
 	release_timer = RELEASE_TIMER
 	tip_pos = owner.tip_pos
-	if owner.hook_dir == Vector2(): # if no input on enter
-		owner.hook_dir = owner.look_direction
 
 	# Integration variables
 	next_pos = owner.global_position
@@ -57,10 +53,10 @@ func update(delta):
 	if Input.is_action_just_pressed("jump") and release_timer < 0:
 		release_hook()
 		return
-
-	if owner.global_position.y < tip_pos.y: # release when player above hook point
-		release_hook()
-		return
+#
+#	if owner.global_position.y < tip_pos.y: # release when player above hook point
+#		release_hook()
+#		return
 
 	_update( delta )
 	_constrain( )
@@ -80,7 +76,6 @@ func _update(delta):
 	cur_pos = owner.global_position # as next_pos no longer matched the player position due to constrains
 	next_pos = cur_pos
 
-#	PLAYER_LENGTH_CONTROL  = 300 if vel.length() < 200 else 50 # player has more control of the length if still
 	if not (hit_ceil or hit_wall or close_to_floor) and length_rope <= MAX_WIRE_LENGTH + 15:  # player control if no collision
 		desired_length_rope += input_dir.y * delta * PLAYER_LENGTH_CONTROL
 
@@ -93,7 +88,6 @@ func _update(delta):
 	if close_to_floor:
 		close_to_floor = false
 		vel.y *= .7
-#		desired_length_rope -= MAX_FLOOR_BOOST- clamp(owner.vec_to_ground.y,0, MAX_FLOOR_BOOST)
 
 	next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
 	desired_length_rope = clamp(desired_length_rope, MIN_WIRE_LENGTH, MAX_WIRE_LENGTH)
