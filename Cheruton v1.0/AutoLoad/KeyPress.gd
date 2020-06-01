@@ -8,6 +8,7 @@ var last_key
 
 #fix key closure to close only with assigned key! - find better check than getchild
 func _input(_ev):
+	
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 

@@ -325,7 +325,7 @@ margin_bottom = 136.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 margin_left = 4.0
-margin_right = 152.0
+margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
@@ -334,6 +334,7 @@ size_flags_horizontal = 3
 [node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Weapons/Column"]
 
 [node name="Apparel" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+visible = false
 margin_left = 156.0
 margin_right = 304.0
 margin_bottom = 259.0
@@ -344,8 +345,9 @@ size_flags_horizontal = 3
 [node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Apparel/Column"]
 
 [node name="Consum" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
-margin_left = 308.0
-margin_right = 456.0
+visible = false
+margin_left = 194.0
+margin_right = 380.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
@@ -354,8 +356,9 @@ size_flags_horizontal = 3
 [node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Consum/Column"]
 
 [node name="Misc" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
-margin_left = 460.0
-margin_right = 608.0
+visible = false
+margin_left = 258.0
+margin_right = 508.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
@@ -364,8 +367,9 @@ size_flags_horizontal = 3
 [node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Misc/Column"]
 
 [node name="KeyItems" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
-margin_left = 612.0
-margin_right = 760.0
+visible = false
+margin_left = 385.0
+margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
@@ -374,9 +378,9 @@ size_flags_horizontal = 3
 [node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/KeyItems/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_left = 764.0
+margin_left = 766.0
 margin_top = 122.0
-margin_right = 764.0
+margin_right = 766.0
 margin_bottom = 136.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Contents"]
