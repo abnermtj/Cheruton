@@ -1,6 +1,6 @@
 extends Control
 
-const SCN1 = "res://Levels/Hometown/Hometown.tscn"
+const SCN1 = "res://Empty.tscn"
 var SETTINGS = preload("res://Display/Settings/Settings.tscn")
 
 func _ready():
