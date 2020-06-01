@@ -21,6 +21,8 @@ var can_hook = true
 var rope_length = 0.0
 var previous_anim
 var vec_to_ground = Vector2()
+var near_zip_post = false
+var nearest_zip_post_pos = Vector2()
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -50,10 +52,7 @@ func set_dead(value): # non zero means dead
 	$CollisionPolygon2D.disabled = value
 
 func _physics_process(delta):
-#	position = position.round() # delete if uselesss
-#	print (global_position)
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
-#	$visual_vel.cast_to = velocity *.5 # debugging
 	if floor_raycast.is_colliding():
 		vec_to_ground = global_position - floor_raycast.get_collision_point()
 # General Helper functions
@@ -95,7 +94,7 @@ func queue_anim_fx(string):
 		animation_player_fx.queue(string)
 
 
-# Hook mechanics
+# Hook
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 	can_hook = false
@@ -119,6 +118,13 @@ func chain_release():
 	can_hook = false
 	$grappleCoolDown.start(.05)
 
+# Zip
+func zip_command_handler(command, pos):
+	nearest_zip_post_pos = pos
+	if command == 0: # Near a zip post
+		near_zip_post = true
+	elif command == 1: # not near
+		near_zip_post = false
 # Movement
 func move():
 	if hooked and states.current_state.name != "hook" and\
@@ -190,3 +196,7 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
+
+
+func _on_zipPoints_zip_command_final():
+	pass # Replace with function body.

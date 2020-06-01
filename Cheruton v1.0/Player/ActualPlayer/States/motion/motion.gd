@@ -3,12 +3,14 @@ extends baseState
 class_name motionState
 
 func handle_input(event):
-	if Input.is_action_just_pressed("hook") and not ["slide"].has(get_parent().current_state.name):
+	if Input.is_action_just_pressed("hook") and not ["slide"].has(get_parent().current_state.name): # not currently sliding
 		if owner.can_hook and not owner.hooked:
 			owner.play_sound("hook_start")
 			owner.play_and_return_anim("grapple_throw")
 			owner.hook_dir = get_input_direction()
-			if not owner.hook_dir:
+			if owner.near_zip_post:
+				owner.hook_dir = owner.nearest_zip_post_pos - owner.global_position
+			elif not owner.hook_dir: #if not set
 				owner.hook_dir = owner.look_direction
 			owner.start_hook()
 		elif owner.hooked:

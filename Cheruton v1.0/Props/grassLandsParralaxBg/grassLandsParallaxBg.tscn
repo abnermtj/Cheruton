@@ -68,14 +68,13 @@ motion_scale = Vector2( 0.33, 0.3 )
 motion_mirroring = Vector2( 860, 0 )
 
 [node name="Sprite2" type="Sprite" parent="forest"]
-position = Vector2( 0, 220 )
+position = Vector2( 0, 200 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 184 )
 
 [node name="Sprite" type="Sprite" parent="forest"]
-position = Vector2( -1, 20 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false

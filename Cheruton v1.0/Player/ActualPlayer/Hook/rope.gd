@@ -14,7 +14,7 @@ const JUST_HOOKED = 2
 const RETRACT = 3
 
 var color_outline = Color(0.07843, 0.0627, 0.125)
-var color_inner = Color(1,1,1)
+var color_inner = Color(.9,.9,.9)
 export (Curve) var attachment_curve
 
 var length
