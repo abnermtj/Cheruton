@@ -24,7 +24,7 @@ var vec_to_ground = Vector2()
 var near_grapple_post = false
 var can_dash = true
 var nearest_grapple_post_pos = Vector2()
-var can_drop_down = false
+var is_between_tiles = true
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -37,7 +37,6 @@ onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
 onready var states = $states
-onready var drop_down_raycast = $dropDownRay
 
 signal state_changed
 signal hook_command
@@ -58,7 +57,6 @@ func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 	if floor_raycast.is_colliding():
 		vec_to_ground = global_position - floor_raycast.get_collision_point()
-	can_drop_down = true if drop_down_raycast.is_colliding() else false
 
 # General Helper functions
 func set_look_direction(value): # vector
@@ -142,15 +140,15 @@ func move():
 	else:
 		move_and_slide(velocity, Vector2.UP)
 func switch_col():
-		slide_collision.disabled = not slide_collision.disabled
-		body_collision.disabled = not body_collision.disabled
+	slide_collision.disabled = not slide_collision.disabled
+	body_collision.disabled = not body_collision.disabled
 func _on_slideArea2D_body_exited(body):
 	if not body.is_in_group("non_blocking_objects"):
 		exit_slide_blocked = false
 func _on_slideArea2D_body_entered(body):
 	if not body.is_in_group("non_blocking_objects"):
 		exit_slide_blocked = true
-
+# wall climb
 func _update_wall_direction():
 	var is_near_wall_left = _is_wall_raycast_colliding(left_wall_raycasts)
 	var is_near_wall_right = _is_wall_raycast_colliding(right_wall_raycasts)
@@ -170,7 +168,9 @@ func _is_wall_raycast_colliding(wall_raycasts):
 				if  angle > deg2rad(60) &&  angle < deg2rad(120):
 					return true
 	return false
-
+# dropdown jump
+func _on_dropDownArea_body_exited(body):
+	is_between_tiles = false
 # ATTACK
 func start_attack_cool_down():
 	$attackCoolDown.start(1)
@@ -203,4 +203,8 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
+
+
+
+
 

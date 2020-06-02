@@ -20,7 +20,7 @@ func handle_input(event):
 func update(delta):
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
-	if input_direction.x and input_direction != previous_dir:
+	if input_direction.x and input_direction.x != previous_dir.x:
 		owner.play_anim("run_change_dir")
 		owner.queue_anim("run_continious")
 		previous_dir = input_direction

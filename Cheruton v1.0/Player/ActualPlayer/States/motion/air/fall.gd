@@ -10,12 +10,13 @@ var jump_timer : float
 var jump_again : bool # jump keypress bufered
 var enter_velocity
 
+var updated_once
 var slide_timer : float
 var slide :bool
 
 func enter():
 	enter_velocity = owner.velocity
-
+	updated_once = false
 	if owner.hooked:
 		emit_signal("finished", "hook")
 		return
@@ -49,7 +50,7 @@ func update(delta):
 	owner.move_and_slide(owner.velocity, Vector2.UP)
 
 	# jump input buffering
-	if Input.is_action_just_pressed( "jump" ):
+	if Input.is_action_just_pressed("jump") and updated_once:
 		jump_timer = JUMP_AGAIN_MARGIN
 		jump_again = true
 		if coyote_timer > 0 and not owner.has_jumped:  # when accidentally falling off edges
@@ -88,7 +89,8 @@ func update(delta):
 			emit_signal("finished", "jump")
 
 	# dash
-	if Input.is_action_just_pressed("jump") and owner.can_dash:
+	if Input.is_action_just_pressed("jump") and owner.can_dash and updated_once:
 		emit_signal("finished", "dash")
 
+	updated_once = true
 	.update(delta)

@@ -47,7 +47,7 @@ func enter() -> void:
 	owner.play_anim("jump")
 	owner.play_sound("jump")
 	keypress_timer = 0.2
-	dash_timer = .2
+	dash_timer = .1
 
 func update( delta ):
 	owner.velocity.y = min( JUMP_TERMINAL_VELOCITY , owner.velocity.y + owner.GRAVITY * grav_multiplier * delta)# use delta for all acceleration based movements

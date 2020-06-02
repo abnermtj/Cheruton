@@ -1,7 +1,7 @@
 extends Node2D
 
 const SPEED_TIP_START = 5400
-const REEL_SPEED = 5000
+const REEL_SPEED = 4000
 const MIN_TIP_SPEED = 1900
 
 onready var chain_state = chain_states.HIDDEN
