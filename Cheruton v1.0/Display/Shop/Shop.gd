@@ -13,11 +13,15 @@ onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 
-onready var weapons_list = DataResource.dict_inventory.get("Weapons")
-onready var apparel_list = DataResource.dict_inventory.get("Apparel")
-onready var consum_list = DataResource.dict_inventory.get("Consum")
-onready var misc_list = DataResource.dict_inventory.get("Misc")
+onready var weapons_sell = DataResource.dict_inventory.get("Weapons")
+onready var apparel_sell = DataResource.dict_inventory.get("Apparel")
+onready var consum_sell = DataResource.dict_inventory.get("Consum")
+onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
+onready var weapons_buy = DataResource.dict_item_shop.get("Weapons")
+onready var apparel_buy = DataResource.dict_item_shop.get("Apparel")
+onready var consum_buy = DataResource.dict_item_shop.get("Consum")
+onready var misc_buy = DataResource.dict_item_shop.get("Misc")
 
 
 onready var contents = $Border/Bg/Main/Rest/Contents
@@ -34,7 +38,6 @@ func _ready():
 	load_data()
 	emit_signal("tab_changed", "Weapons")
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-	
 
 func _on_Exit_pressed():
 	free_the_shop()
@@ -97,16 +100,26 @@ func change_active_tab(new_tab):
 
 func load_data():
 	#Find subnodes of each tab
-	var weapons_sell = items_sell.get_node("Weapons/Column")
-	var apparel_sell = items_sell.get_node("Apparel/Column")
-	var consum_sell = items_sell.get_node("Consum/Column")
-	var misc_sell = items_sell.get_node("Misc/Column")
-
+	var weapons_scroll_sell = items_sell.get_node("Weapons/Column")
+	var apparel_scroll_sell = items_sell.get_node("Apparel/Column")
+	var consum_scroll_sell = items_sell.get_node("Consum/Column")
+	var misc_scroll_sell = items_sell.get_node("Misc/Column")
+	
+	var weapons_scroll_buy = items_buy.get_node("Weapons/Column")
+	var apparel_scroll_buy = items_buy.get_node("Apparel/Column")
+	var consum_scroll_buy = items_buy.get_node("Consum/Column")
+	var misc_scroll_buy = items_buy.get_node("Misc/Column")
+	
 	#Generate list of items based on tab
-	generate_list(weapons_sell, weapons_list, 100)
-	generate_list(apparel_sell, apparel_list, 200)
-	generate_list(consum_sell, consum_list, 300)
-	generate_list(misc_sell, misc_list, 400)
+	generate_list(weapons_scroll_sell, weapons_sell, 100)
+	generate_list(apparel_scroll_sell, apparel_sell, 200)
+	generate_list(consum_scroll_sell, consum_sell, 300)
+	generate_list(misc_scroll_sell, misc_sell, 400)
+	
+	generate_list(weapons_scroll_buy, weapons_buy, 100)
+	generate_list(apparel_scroll_sell, apparel_buy, 200)
+	generate_list(consum_scroll_sell, consum_buy, 300)
+	generate_list(misc_scroll_sell, misc_buy, 400)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
@@ -129,7 +142,8 @@ func generate_list(scroll_tab, list_tab, tab_index):
 
 		#Add properties
 		var item = row.get_node(str(tab_index + index))
-		item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		if(list_tab["Item" + str(index)].item_qty):
+			item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 		var item_pict
 		if(list_tab["Item" + str(index)].item_png):
 			item_pict  = load(list_tab["Item" + str(index)].item_png)
@@ -170,7 +184,8 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
-		sell_item()
+		match shop_setting:
+			"Sell": sell_item()
 		mouse_count = 0
 
 

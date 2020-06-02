@@ -22,8 +22,16 @@
   },
   "item_shop": {
     "stage1": {
-      "Item1":"Iron Sword",
-      "Item2": "Potion Tube"
+	"Weapons":{
+		"Item1":"Iron Sword",
+		},
+	"Apparel":{},
+	"Consum":{
+		"Item1": "Potion Tube"
+		},
+	"Key Items":{},
+	"Misc":{}
+      
     }
   },
   "item_masterlist": {
