@@ -4,7 +4,7 @@ var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
-var shop_setting = "Buy"
+var shop_setting
 
 signal tab_changed(next_tab)
 
@@ -17,7 +17,7 @@ onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
 onready var consum_list = DataResource.dict_inventory.get("Consum")
 onready var misc_list = DataResource.dict_inventory.get("Misc")
-onready var key_items_list = DataResource.dict_inventory.get("Key Items")
+
 
 
 onready var contents = $Border/Bg/Main/Rest/Contents
@@ -25,10 +25,12 @@ onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
 onready var items_buy = $Border/Bg/Main/Rest/Contents/ItemsBuy
 onready var equipped_coins = $Border/Bg/Main/Rest/Contents/EquippedCoins
+onready var item_dec = $Border/Bg/Main/Rest/ItemDec
 
 func _ready():
 	DataResource.dict_settings.game_on = false
 	connect_tabs()
+	set_state("Buy")
 	load_data()
 	emit_signal("tab_changed", "Weapons")
 
@@ -87,12 +89,12 @@ func change_active_tab(new_tab):
 		
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
-		contents.get_node("Item" + shop_setting + "/" + active_tab.name).hide()
+		contents.get_node("Items" + shop_setting + "/" + active_tab.name).hide()
 	
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 	active_tab.set_normal_texture(active_tab_image)
-	contents.get_node("Item" + shop_setting + "/" + active_tab.name).hide()
+	contents.get_node("Items" + shop_setting + "/" + active_tab.name).show()
 
 func load_data():
 	#Find subnodes of each tab
@@ -158,10 +160,6 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(item_state == "HOVER"):
-		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-			if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
-				node.get_node("Background/ItemBg").texture = index_equipped_bg
-				return
 		node.get_node("Background/ItemBg").texture = null
 
 
@@ -188,10 +186,10 @@ func revert_item_state():
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
+		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").show()
 	else:
 		item_state = "HOVER"
-		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()
+		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").hide()
 		mouse_node = null
 
 func use_item():
@@ -255,6 +253,9 @@ func _on_Sell_pressed():
 #Sets state of the option
 func set_state(types):
 	if(types != shop_setting):
-		contents.get_node("Item" + shop_setting).hide()
+		if(shop_setting):
+			item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(default_tab_image)
+			contents.get_node("Items" + shop_setting).hide()
 		shop_setting = types
-		contents.get_node("Item" + shop_setting).show()
+		item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(active_tab_image)
+		contents.get_node("Items" + shop_setting).show()

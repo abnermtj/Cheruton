@@ -2,7 +2,7 @@ extends Node
 
 
 onready var PAUSE = preload("res://Display/Pause/Pause.tscn")
-onready var INVENTORY = preload("res://Player/Inventory/Inventory_new.tscn")#stub
+onready var INVENTORY = preload("res://Display/Shop/Shop.tscn")#stub
 
 var last_key
 
@@ -18,6 +18,7 @@ func _input(_ev):
 			instance_scene("escape", PAUSE)
 		elif Input.is_action_just_pressed("inventory"):
 			instance_scene("inventory", INVENTORY)
+			
 
 func instance_scene(key, SCENE):
 	yield(get_tree().create_timer(0.06), "timeout")
