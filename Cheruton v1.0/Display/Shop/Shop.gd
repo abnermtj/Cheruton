@@ -111,17 +111,17 @@ func load_data():
 	var misc_scroll_buy = items_buy.get_node("Misc/Column")
 	
 	#Generate list of items based on tab
-	generate_list(weapons_scroll_sell, weapons_sell, 100)
-	generate_list(apparel_scroll_sell, apparel_sell, 200)
-	generate_list(consum_scroll_sell, consum_sell, 300)
-	generate_list(misc_scroll_sell, misc_sell, 400)
+	generate_list(weapons_scroll_sell, weapons_sell, 100, "Sell")
+	generate_list(apparel_scroll_sell, apparel_sell, 200, "Sell")
+	generate_list(consum_scroll_sell, consum_sell, 300, "Sell")
+	generate_list(misc_scroll_sell, misc_sell, 400, "Sell")
 	
-	generate_list(weapons_scroll_buy, weapons_buy, 100)
-	generate_list(apparel_scroll_sell, apparel_buy, 200)
-	generate_list(consum_scroll_sell, consum_buy, 300)
-	generate_list(misc_scroll_sell, misc_buy, 400)
+	generate_list(weapons_scroll_buy, weapons_buy, 100, "Buy")
+	generate_list(apparel_scroll_buy, apparel_buy, 200, "Buy")
+	generate_list(consum_scroll_buy, consum_buy, 300, "Buy")
+	generate_list(misc_scroll_buy, misc_buy, 400, "Buy")
 
-func generate_list(scroll_tab, list_tab, tab_index):
+func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 	var index = 1
 	var row_index = 0
 	for _i in range(0, list_tab.size()):
@@ -142,11 +142,20 @@ func generate_list(scroll_tab, list_tab, tab_index):
 
 		#Add properties
 		var item = row.get_node(str(tab_index + index))
-		if(list_tab["Item" + str(index)].item_qty):
-			item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 		var item_pict
-		if(list_tab["Item" + str(index)].item_png):
-			item_pict  = load(list_tab["Item" + str(index)].item_png)
+		match item_dec:
+			"Sell": 
+				if(list_tab["Item" + str(index)].item_qty):
+					item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+				
+				if(list_tab["Item" + str(index)].item_png):
+					item_pict  = load(list_tab["Item" + str(index)].item_png)
+				
+			"Buy":
+				var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
+				print(node)
+				if(node.ItemPNG):
+					item_pict = load(node.ItemPNG)
 		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
 		index += 1
 		
