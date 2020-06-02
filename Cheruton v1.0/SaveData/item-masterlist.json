@@ -20,6 +20,20 @@
       "ItemType3": "Consum"
     }
   },
+  "item_shop": {
+    "stage1": {
+	"Weapons":{
+		"Item1":"Iron Sword",
+		},
+	"Apparel":{},
+	"Consum":{
+		"Item1": "Potion Tube"
+		},
+	"Key Items":{},
+	"Misc":{}
+      
+    }
+  },
   "item_masterlist": {
     "Iron Sword": {
       "ItemType": "Weapons",

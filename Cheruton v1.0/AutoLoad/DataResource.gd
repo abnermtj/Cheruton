@@ -17,6 +17,7 @@ var dict_settings = {}
 var dict_masterlist = {}
 var dict_item_masterlist = {}
 var dict_item_spawn = {}
+var dict_item_shop = {}
 # Stores any unsaved data regarding player stats
 var temp_dict_player = {}
 
@@ -28,7 +29,8 @@ func load_data():
 	dict_settings = dict_main.settings.main
 	dict_inventory = dict_main.inventory
 	temp_dict_player = dict_player
-
+	dict_item_shop = dict_masterlist.item_shop[temp_dict_player.stage]
+	
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
@@ -85,6 +87,7 @@ func reset_player():
 	dict_player.coins = 10
 	dict_player.Weapons_item = null
 	dict_player.Apparel_item = null
+	dict_player.stage = "stage1"
 	save_player()
 
 func reset_settings():

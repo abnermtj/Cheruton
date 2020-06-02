@@ -200,6 +200,8 @@ __meta__ = {
 [node name="Buy" type="Label" parent="Border/Bg/Main/Rest/ItemDec/Buy/Buy"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.440186
+margin_right = -0.440186
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Buy"
@@ -449,6 +451,7 @@ __meta__ = {
 }
 
 [node name="ItemsSell" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+visible = false
 margin_top = 54.0
 margin_right = 748.0
 margin_bottom = 181.0
@@ -460,6 +463,7 @@ margin_top = 56.0
 margin_bottom = 70.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+visible = false
 margin_left = 4.0
 margin_right = 744.0
 margin_bottom = 127.0
@@ -509,20 +513,22 @@ margin_right = 748.0
 margin_bottom = 70.0
 
 [node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 185.0
+visible = false
+margin_top = 54.0
 margin_right = 748.0
-margin_bottom = 312.0
+margin_bottom = 313.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-margin_top = 56.0
-margin_bottom = 70.0
+margin_top = 122.0
+margin_bottom = 136.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+visible = false
 margin_left = 4.0
 margin_right = 744.0
-margin_bottom = 127.0
+margin_bottom = 259.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Weapons"]
@@ -564,14 +570,14 @@ size_flags_horizontal = 3
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
 margin_left = 748.0
-margin_top = 56.0
+margin_top = 122.0
 margin_right = 748.0
-margin_bottom = 70.0
+margin_bottom = 136.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 316.0
+margin_top = 54.0
 margin_right = 748.0
-margin_bottom = 317.0
+margin_bottom = 55.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -579,9 +585,9 @@ __meta__ = {
 }
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 321.0
+margin_top = 59.0
 margin_right = 748.0
-margin_bottom = 391.0
+margin_bottom = 129.0
 size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
@@ -623,12 +629,12 @@ margin_left = 496.0
 margin_right = 766.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-text = "Delete"
+text = "Sell"
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 395.0
+margin_top = 133.0
 margin_right = 748.0
-margin_bottom = 409.0
+margin_bottom = 147.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
