@@ -40,3 +40,5 @@ text = "Loading..."
 margin_top = 18.0
 margin_right = 61.0
 margin_bottom = 32.0
+
+[node name="Tween" type="Tween" parent="."]

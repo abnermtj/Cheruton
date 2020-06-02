@@ -44,7 +44,7 @@ func _process(_time):
 		var err = loader.poll()
 
 		if err == ERR_FILE_EOF: # load finished
-			progbar.value = 100
+			animate_expbar(progbar.value, 100.1)
 			var resource = loader.get_resource()
 			loader = null
 			DataResource.current_scene.queue_free()
@@ -56,10 +56,16 @@ func _process(_time):
 			loader = null
 			break
 
+
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count() * 100
-	progbar.value = progress
+	animate_expbar(progbar.value, progress)
 
+func animate_expbar(start, end):
+	$LoadScrn/Tween.interpolate_property($LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg, "value", start, end, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$LoadScrn/Tween.start()
+	
 func set_new_scene(scene_resource):
 	DataResource.current_scene = scene_resource.instance()
 	get_node("/root").add_child(DataResource.current_scene)
+
