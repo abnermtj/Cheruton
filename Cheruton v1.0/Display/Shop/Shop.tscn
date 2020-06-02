@@ -448,70 +448,130 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Items" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+[node name="ItemsSell" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
 margin_top = 54.0
 margin_right = 748.0
-margin_bottom = 313.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Items"]
-margin_top = 122.0
-margin_bottom = 136.0
+[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+margin_top = 56.0
+margin_bottom = 70.0
 
-[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/Items"]
+[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 margin_left = 4.0
 margin_right = 744.0
-margin_bottom = 259.0
+margin_bottom = 127.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Weapons"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Weapons"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Weapons/Column"]
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Weapons/Column"]
 
-[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/Items"]
+[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 171.0
 margin_right = 334.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Apparel"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Apparel"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Apparel/Column"]
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Apparel/Column"]
 
-[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/Items"]
+[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 226.0
 margin_right = 444.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Consum"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Consum"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Consum/Column"]
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Consum/Column"]
 
-[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/Items"]
+[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 338.0
 margin_right = 668.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Misc"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Misc"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/Items/Misc/Column"]
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Misc/Column"]
 
-[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Items"]
+[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 margin_left = 748.0
-margin_top = 122.0
+margin_top = 56.0
 margin_right = 748.0
-margin_bottom = 136.0
+margin_bottom = 70.0
+
+[node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+margin_top = 185.0
+margin_right = 748.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+margin_top = 56.0
+margin_bottom = 70.0
+
+[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+margin_left = 4.0
+margin_right = 744.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Weapons"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Weapons/Column"]
+
+[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+visible = false
+margin_left = 171.0
+margin_right = 334.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Apparel"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Apparel/Column"]
+
+[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+visible = false
+margin_left = 226.0
+margin_right = 444.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Consum"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Consum/Column"]
+
+[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+visible = false
+margin_left = 338.0
+margin_right = 668.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Misc"]
+
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Misc/Column"]
+
+[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+margin_left = 748.0
+margin_top = 56.0
+margin_right = 748.0
+margin_bottom = 70.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 317.0
+margin_top = 316.0
 margin_right = 748.0
-margin_bottom = 318.0
+margin_bottom = 317.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -519,9 +579,9 @@ __meta__ = {
 }
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 322.0
+margin_top = 321.0
 margin_right = 748.0
-margin_bottom = 392.0
+margin_bottom = 391.0
 size_flags_horizontal = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
@@ -566,12 +626,14 @@ size_flags_horizontal = 3
 text = "Delete"
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 396.0
+margin_top = 395.0
 margin_right = 748.0
-margin_bottom = 410.0
+margin_bottom = 409.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Border/Bg/Main/Rest/ItemDec/Buy/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Border/Bg/Main/Rest/ItemDec/Sell/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Rest/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

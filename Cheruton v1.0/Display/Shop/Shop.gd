@@ -4,6 +4,7 @@ var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
+var shop_setting = "Buy"
 
 signal tab_changed(next_tab)
 
@@ -19,29 +20,24 @@ onready var misc_list = DataResource.dict_inventory.get("Misc")
 onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 
-onready var tabs = $Border/Bg/Contents/Tabs
-onready var items = $Border/Bg/Contents/Items
-onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
+onready var contents = $Border/Bg/Main/Rest/Contents
+onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
+onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
+onready var items_buy = $Border/Bg/Main/Rest/Contents/ItemsBuy
+onready var equipped_coins = $Border/Bg/Main/Rest/Contents/EquippedCoins
 
 func _ready():
 	DataResource.dict_settings.game_on = false
 	connect_tabs()
 	load_data()
 	emit_signal("tab_changed", "Weapons")
-	init_equipped()
-	
+
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
 
 func _on_Exit_pressed():
-	free_the_inventory()
+	free_the_shop()
 
-func init_equipped():
-	if(DataResource.temp_dict_player.Weapons_item):
-		display_equipped("Weapons")
-
-	if(DataResource.temp_dict_player.Apparel_item):
-		display_equipped("Apparel")
 
 func display_equipped(name):
 	var main = get_node("Border/Bg/Contents/Items")
@@ -51,7 +47,7 @@ func display_equipped(name):
 	node.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.show()
 		
-func free_the_inventory():
+func free_the_shop():
 	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	DataResource.save_rest()
@@ -65,7 +61,7 @@ func connect_tabs():
 	tabs.get_node("Apparel/Apparel").connect("pressed", self,  "tab_pressed", ["Apparel"])
 	tabs.get_node("Consum/Consum").connect("pressed", self,  "tab_pressed", ["Consum"])
 	tabs.get_node("Misc/Misc").connect("pressed", self,  "tab_pressed", ["Misc"])
-	tabs.get_node("KeyItems/KeyItems").connect("pressed", self,  "tab_pressed", ["KeyItems"])
+
 	
 func tab_pressed(next_tab):
 	if(active_tab.name != next_tab):
@@ -77,7 +73,6 @@ func change_tab_state(next_tab):
 		"Apparel":   change_active_tab(tabs.get_node("Apparel/Apparel"))
 		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
 		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
-		"KeyItems": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
 
 	if(next_tab):
 		print("Current Tab: ")
@@ -92,27 +87,25 @@ func change_active_tab(new_tab):
 		
 	if(active_tab):
 		active_tab.set_normal_texture(default_tab_image)
-		items.get_node(active_tab.name).hide()
+		contents.get_node("Item" + shop_setting + "/" + active_tab.name).hide()
 	
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
 	active_tab.set_normal_texture(active_tab_image)
-	items.get_node(active_tab.name).show()
+	contents.get_node("Item" + shop_setting + "/" + active_tab.name).hide()
 
 func load_data():
 	#Find subnodes of each tab
-	var weapons_scroll = items.get_node("Weapons/Column")
-	var apparel_scroll = items.get_node("Apparel/Column")
-	var consum_scroll = items.get_node("Consum/Column")
-	var misc_scroll = items.get_node("Misc/Column")
-	var key_items_scroll = items.get_node("KeyItems/Column")
+	var weapons_sell = items_sell.get_node("Weapons/Column")
+	var apparel_sell = items_sell.get_node("Apparel/Column")
+	var consum_sell = items_sell.get_node("Consum/Column")
+	var misc_sell = items_sell.get_node("Misc/Column")
 
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list, 100)
-	generate_list(apparel_scroll, apparel_list, 200)
-	generate_list(consum_scroll, consum_list, 300)
-	generate_list(misc_scroll, misc_list, 400)
-	generate_list(key_items_scroll, key_items_list, 500)
+	generate_list(weapons_sell, weapons_list, 100)
+	generate_list(apparel_sell, apparel_list, 200)
+	generate_list(consum_sell, consum_list, 300)
+	generate_list(misc_sell, misc_list, 400)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
@@ -180,16 +173,6 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
-		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-			var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
-			# Item not equipped or Item Selected is a different weapon
-			if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
-				_item_status(node, "EQUIP")
-			# Removing equipped item
-			else:
-				_item_status(node, "DEQUIP")
-		elif(active_tab.name == "Consum"):
-			use_item()
 		mouse_count = 0
 
 
@@ -257,22 +240,21 @@ func delete_item():
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
-
-func _item_status(selected_node, status):
-	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
-	match status:
-		"EQUIP":
-			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
-			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
-			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
-			type.show()
-			print("Show")
-		"DEQUIP":
-			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
-			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			selected_node.get_node("Background/ItemBg").texture = null
-			type.hide()
-			print("Hide")
 #Debug
 func _on_Button_pressed():
 	delete_item()
+
+# Buy Option set
+func _on_Buy_pressed():
+	set_state("Buy")
+
+#Sell Option Set
+func _on_Sell_pressed():
+	set_state("Sell")
+
+#Sets state of the option
+func set_state(types):
+	if(types != shop_setting):
+		contents.get_node("Item" + shop_setting).hide()
+		shop_setting = types
+		contents.get_node("Item" + shop_setting).show()
