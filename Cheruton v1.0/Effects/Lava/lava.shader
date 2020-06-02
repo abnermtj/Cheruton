@@ -63,20 +63,20 @@ float hyperbola_shaped(vec2 coord, float radius){
 }
 
 void fragment() {
+	int increased;
 	vec2 coordi = UV * 10.0;
 
 	
 	float noises1 = fbm(coordi + vec2(TIME * -0.2, TIME * 0.2));
 	float noises2 = fbm(coordi + vec2(0, TIME * -0.3));
 	float noises_combined = noises1 * noises2;
-	//float hyperbola = hyperbola_shaped(UV, 0.5);
-	
-	//noises_combined *= hyperbola;
 	
 	if(noises_combined > 0.2)
 		COLOR = mix(red, yellow, (noises_combined - 1.0) * 1.25 + 1.0);
 	else
 		COLOR = mix(yellow, red, noises_combined * 3.0);
-		
+	
+	COLOR.a += 1.8;
+
 
 }
