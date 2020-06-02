@@ -239,21 +239,23 @@ func delete_item():
 	var element_index = str(int(mouse_node.name)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
-	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
+
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
 
 		# Item Stock is empty:
+		#	Dequip item if it is equipped
 		#	Shift down all inventory entries by 1
 		#	Delete the last empty index
 		#	If the Row is empty (except Row0), delete it
 		
-		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
 		
+		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
+				DataResource.temp_dict_player[active_tab.name + "_item"] = null
+				get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
 		element_index = int(element_index)
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]

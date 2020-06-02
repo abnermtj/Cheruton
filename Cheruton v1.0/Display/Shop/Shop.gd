@@ -33,7 +33,6 @@ func _ready():
 	set_state("Buy")
 	load_data()
 	emit_signal("tab_changed", "Weapons")
-
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
 
@@ -171,6 +170,7 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
+		sell_item()
 		mouse_count = 0
 
 
@@ -192,29 +192,14 @@ func revert_item_state():
 		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").hide()
 		mouse_node = null
 
-func use_item():
-	var element_index = str(int(mouse_node.name)%100)
-	var item_used = false
-	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "EXP"):
-		DataFunctions.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
-		item_used = true
-	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.dict_player.health_curr != DataResource.dict_player.health_max):
-		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
-		item_used = true
-
-	if(item_used):
-		delete_item()
-
 # Reduces qty of item by 1
-func delete_item():
-
+func sell_item():
+	
 	var element_index = str(int(mouse_node.name)%100)
+	DataFunctions.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
+	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index
-	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
 	else:
@@ -224,8 +209,10 @@ func delete_item():
 		#	Delete the last empty index
 		#	If the Row is empty (except Row0), delete it
 		
-		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
-		
+		var main = get_node("Border/Bg/Main/Rest/Contents/ItemsSell/" + active_tab.name)
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
+				DataResource.temp_dict_player[active_tab.name + "_item"] = null
 		element_index = int(element_index)
 		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
@@ -240,7 +227,7 @@ func delete_item():
 
 #Debug
 func _on_Button_pressed():
-	delete_item()
+	sell_item()
 
 # Buy Option set
 func _on_Buy_pressed():
@@ -255,7 +242,10 @@ func set_state(types):
 	if(types != shop_setting):
 		if(shop_setting):
 			item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(default_tab_image)
+			contents.get_node("Items" + shop_setting + "/" + active_tab.name).hide()
 			contents.get_node("Items" + shop_setting).hide()
 		shop_setting = types
 		item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(active_tab_image)
+		if(active_tab):
+			contents.get_node("Items" + shop_setting + "/" + active_tab.name).show()
 		contents.get_node("Items" + shop_setting).show()

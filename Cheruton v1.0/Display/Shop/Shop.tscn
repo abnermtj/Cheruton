@@ -629,7 +629,7 @@ margin_left = 496.0
 margin_right = 766.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-text = "Delete"
+text = "Sell"
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Rest/Contents"]
 margin_top = 133.0
