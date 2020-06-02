@@ -1,4 +1,4 @@
-extends Node
+wextends Node
 
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 func _ready():
