@@ -9,6 +9,7 @@ const MIN_ENTER_VELOCITY_X = 420
 const JUMP_VEL = -666
 
 var keypress_timer # timer that allaws paper to keep boosting jump height
+var dash_timer
 var enter_velocity
 var input_dir
 var bounce_boost
@@ -46,11 +47,13 @@ func enter() -> void:
 	owner.play_anim("jump")
 	owner.play_sound("jump")
 	keypress_timer = 0.2
+	dash_timer = .2
 
 func update( delta ):
 	owner.velocity.y = min( JUMP_TERMINAL_VELOCITY , owner.velocity.y + owner.GRAVITY * grav_multiplier * delta)# use delta for all acceleration based movements
 
 	keypress_timer -= delta
+	dash_timer -= delta
 	if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
 		keypress_timer = -1.0
 		if not bounce_boost:
@@ -72,4 +75,8 @@ func update( delta ):
 	else:
 		if owner.velocity.y > 0:
 			emit_signal("finished","fall")
+
+	if Input.is_action_just_pressed("jump") and owner.can_dash and dash_timer < 0:
+		emit_signal("finished", "dash")
 	.update(delta)
+

@@ -21,8 +21,10 @@ var can_hook = true
 var rope_length = 0.0
 var previous_anim
 var vec_to_ground = Vector2()
-var near_zip_post = false
-var nearest_zip_post_pos = Vector2()
+var near_grapple_post = false
+var can_dash = true
+var nearest_grapple_post_pos = Vector2()
+var can_drop_down = false
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -35,6 +37,7 @@ onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
 onready var states = $states
+onready var drop_down_raycast = $dropDownRay
 
 signal state_changed
 signal hook_command
@@ -55,6 +58,8 @@ func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 	if floor_raycast.is_colliding():
 		vec_to_ground = global_position - floor_raycast.get_collision_point()
+	can_drop_down = true if drop_down_raycast.is_colliding() else false
+
 # General Helper functions
 func set_look_direction(value): # vector
 	look_direction = value
@@ -63,6 +68,8 @@ func _on_states_state_changed(states_stack):
 func signal_on_floor(grounded):
 	on_floor = grounded
 	set_camera_mode_logic()
+	if grounded:
+		can_dash = true
 
 # Animation
 func play_anim(string):
@@ -110,24 +117,24 @@ func _on_Chain_hooked(command, tip_p):
 		set_camera_mode_logic()
 	elif command == 1: # bad hook
 		play_sound("hook_bad")
-func close_to_floor():
-	return floor_raycast.is_colliding()
+func get_close_to_floor_collider():
+	return floor_raycast.get_collider()
 func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
 	can_hook = false
 	$grappleCoolDown.start(.05)
 
-# Zip
-func zip_command_handler(command, pos):
-	nearest_zip_post_pos = pos
-	if command == 0: # Near a zip post
-		near_zip_post = true
+# grapple
+func _on_grapplePoints_grapple_command_final(command, pos):
+	if command == 0: # Near a grapple post
+		nearest_grapple_post_pos = pos
+		near_grapple_post = true
 	elif command == 1: # not near
-		near_zip_post = false
+		near_grapple_post = false
 # Movement
 func move():
-	if hooked and states.current_state.name != "hook" and\
+	if hooked and not ["hook"].has(states.current_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND:
 			move_and_slide(Vector2(), Vector2.UP)
 	elif  ["run", "slide"].has(states.current_state.name):
@@ -197,6 +204,3 @@ func set_camera_mode_logic():
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
 
-
-func _on_zipPoints_zip_command_final():
-	pass # Replace with function body.

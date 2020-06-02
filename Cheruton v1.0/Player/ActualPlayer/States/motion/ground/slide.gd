@@ -27,7 +27,6 @@ func enter():
 
 func _on_animation_finished(name):
 	if name == "slide":	initial_slide_anim_done = true
-	print()
 
 func update(delta):
 	curve_timer = clamp(curve_timer + delta/SLIDE_DURATION,0 , 1)

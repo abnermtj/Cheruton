@@ -8,21 +8,22 @@ func handle_input(event):
 			owner.play_sound("hook_start")
 			owner.play_and_return_anim("grapple_throw")
 			owner.hook_dir = get_input_direction()
-			if owner.near_zip_post:
-				owner.hook_dir = owner.nearest_zip_post_pos - owner.global_position
+			if owner.near_grapple_post:
+				owner.hook_dir = owner.nearest_grapple_post_pos - owner.global_position
 			elif not owner.hook_dir: #if not set
 				owner.hook_dir = owner.look_direction
 			owner.start_hook()
 		elif owner.hooked:
 			owner.chain_release()
 			emit_signal("finished", "fall")
-
-	if event.is_action_pressed("attack")\
+	elif event.is_action_pressed("attack")\
 	 and not ["hook", "attack", "slide"].has(get_parent().current_state.name)\
 	 and owner.can_attack:
 		owner.can_attack = false
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
+
+
 
 # note left and right at the same time cancel out
 func get_input_direction():

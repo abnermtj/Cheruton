@@ -5,11 +5,13 @@ func _ready():
 		"idle": $idle,
 		"run": $run,
 		"jump": $jump,
+		"jumpdown": $jumpdown,
 		"fall": $fall,
 		"hook": $hook,
 		"slide" : $slide,
 		"attack" : $attack,
-		"wallslide" : $wallslide
+		"wallslide" : $wallslide,
+		"dash" : $dash
 	}
 
 func _change_state(state_name):

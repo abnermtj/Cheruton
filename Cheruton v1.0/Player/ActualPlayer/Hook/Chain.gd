@@ -1,8 +1,8 @@
 extends Node2D
 
-const SPEED_TIP_START = 4000
-const REEL_SPEED = 4000
-const MIN_TIP_SPEED = 1200
+const SPEED_TIP_START = 5400
+const REEL_SPEED = 5000
+const MIN_TIP_SPEED = 1900
 
 onready var chain_state = chain_states.HIDDEN
 enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN = 4}
