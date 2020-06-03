@@ -4,9 +4,9 @@
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 18.4718
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
+radius = 1.0
 
 [node name="TestEnemy" type="KinematicBody2D"]
 collision_layer = 8
@@ -14,19 +14,21 @@ collision_mask = 11
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 56.3364, 50.6147 )
+visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 58.8068, 39.3895 )
-scale = Vector2( 4.67542, 3.46184 )
+position = Vector2( 0.227702, -0.197998 )
+scale = Vector2( 0.153942, 0.147018 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_right = 108.0
-margin_bottom = 40.0
+margin_left = 16.1155
+margin_top = 10.2553
+margin_right = 44.1155
+margin_bottom = 18.2553
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,9 +36,11 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="TextureProgress"]
 
 [node name="Sight" type="Area2D" parent="."]
-visible = false
+collision_layer = 8
+collision_mask = 11
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+position = Vector2( 0.0945206, 0.268112 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]

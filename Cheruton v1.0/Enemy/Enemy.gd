@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var hp_bar
-onready var player
+onready var player = get_parent().get_node("player")
 
 var max_HP = 400#stub
 var curr_HP
@@ -10,8 +10,8 @@ var can_heal = true
 var is_dead = false
 var state = "Ignore"
 
-var player_nearby
-var player_spotted
+var player_nearby 
+var player_spotted 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,13 +21,16 @@ func _ready():
 
 
 
+
 func _process(delta):
+	percent_HP = curr_HP/max_HP * 100
 	if(percent_HP <= 50 && can_heal):
 		heal_enemy()
 	else:
 		match state:
 			"Ignore":
-				print("Ignored")
+				print("zzzz")
+				#print("Ignored")
 			"Search":
 				pass
 			"Follow":
@@ -51,24 +54,26 @@ func _physics_process(delta):
 	LOSCheck()
 	
 func _on_Sight_body_entered(body):
-	if(body == player):
+	print("In")
+	print(body == player)
+	if body == player:
 		player_nearby = true
 	
 func _on_Sight_body_exited(body):
-	if(body == player):
+	print("Out")
+	print(body == player)
+	if body == player:
 		player_nearby = false
 
 #Checks if the player is close enough to be attaced
 func LOSCheck():
-	if player_nearby:
+	if player_nearby == true:
 		var space_state = get_world_2d().direct_space_state
 		var LOSight_id = space_state.intersect_ray(position, player.position)
 		if LOSight_id:
-			if (LOSight_id.collider.name == "Player"):
+			if (LOSight_id.collider.name == "player"):
 				player_spotted = true
 				state = "Attack"
 			else:
 				player_spotted = false
-				state = "Ignore" #Stub
-
-
+				state = "Ignore" #Stub	
