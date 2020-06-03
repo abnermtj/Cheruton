@@ -1,6 +1,6 @@
 extends airState
 
-const SPEED_BOOST = 1200
+const SPEED_BOOST = 1000
 const SLOW_DOWN_DURATION = .2
 const BOOST_DURATION = 1.23 # cannot be 0 else division by zero
 
@@ -18,11 +18,12 @@ func enter():
 	stage = 0
 	owner.velocity.y *= .6
 	dir = get_input_direction().normalized()
-
+	Engine.time_scale = .56
 	tween.interpolate_property(owner,"velocity", owner.velocity, owner.velocity * .8, SLOW_DOWN_DURATION, Tween.TRANS_SINE,Tween.EASE_OUT)
 	tween.start()
 
 func _on_Tween_tween_completed(object, key):
+	Engine.time_scale = 1
 	owner.velocity += dir* SPEED_BOOST
 	owner.velocity.y -= 80
 	pre_boost_vel = owner.velocity

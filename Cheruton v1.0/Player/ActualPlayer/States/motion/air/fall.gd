@@ -1,18 +1,13 @@
 extends airState
 
-const JUMP_AGAIN_MARGIN = 0.12 # seconds need to press jump this amout of time for it to input buffer
 const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
 const TERM_VEL = 3000
 const MIN_ENTER_VELOCITY_X = 420
 
 var coyote_timer : float # here incase playeer walks off an edge
-var jump_timer : float
-var jump_again : bool # jump keypress bufered
 var enter_velocity
 
 var updated_once
-var slide_timer : float
-var slide :bool
 
 func enter():
 	enter_velocity = owner.velocity
@@ -29,12 +24,9 @@ func enter():
 	else:
 		owner.play_anim("fall")
 	coyote_timer = COYOTE_TIME
-	jump_again = false
-	slide = false
 
 func update(delta):
 	coyote_timer -= delta
-	jump_timer -= delta
 
 	owner.velocity.y = min( TERM_VEL, owner.velocity.y + owner.GRAVITY * delta ) # dunnid delta here by right, move and slide deals with it
 
@@ -51,29 +43,25 @@ func update(delta):
 
 	# jump input buffering
 	if Input.is_action_just_pressed("jump") and updated_once:
-		jump_timer = JUMP_AGAIN_MARGIN
-		jump_again = true
+		owner.jump_buffer_start()
 		if coyote_timer > 0 and not owner.has_jumped:  # when accidentally falling off edges
 				emit_signal("finished", "jump")
 				return
-	# slide input buffering
-	if Input.is_action_just_pressed( "slide" ):
-		slide_timer = JUMP_AGAIN_MARGIN # reuse should be consistent
-		slide = true
 
 	# wall crash
 	if owner.is_on_wall():
 		owner.velocity.x = 0
+
 	if owner.is_on_ceiling():
 			owner.velocity.y = 0
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim_fx("land")
-		if (jump_again and jump_timer >= 0):
+		if (owner.jump_again):
 			emit_signal("finished", "jump")
 			owner.can_dash = true
-		elif (slide and slide_timer >= 0):
+		elif Input.is_action_pressed( "slide" ):
 			emit_signal("finished", "slide")
 		else:
 			# land
@@ -89,7 +77,7 @@ func update(delta):
 			emit_signal("finished", "jump")
 
 	# dash
-	if Input.is_action_just_pressed("jump") and owner.can_dash and updated_once:
+	if Input.is_action_just_pressed("dash") and owner.can_dash and updated_once:
 		emit_signal("finished", "dash")
 
 	updated_once = true

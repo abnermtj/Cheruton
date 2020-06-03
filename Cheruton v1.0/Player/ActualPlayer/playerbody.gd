@@ -4,6 +4,7 @@ extends KinematicBody2D
 const GRAVITY = 2400
 const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
+const INPUT_AGAIN_MARGIN = 0.12
 var velocity = Vector2()
 
 var tip_pos = Vector2()
@@ -21,15 +22,20 @@ var can_hook = true
 var rope_length = 0.0
 var previous_anim
 var vec_to_ground = Vector2()
-var near_grapple_post = false
+#var near_grapple_post = false
 var can_dash = true
 var nearest_grapple_post_pos = Vector2()
 var is_between_tiles = true
+var jump_again = false
+var general_input_again = false
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
+onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
+onready var corner_correction_raycast_right = $cornerCorrectionRaycasts/rightside
+onready var almost_reaching_platform_jump_boost = $almostReachingPlatformBoost
 onready var floor_raycast = $floorRay
 onready var sound_parent = $sounds
 onready var body_rotate = $bodyPivot/bodyRotate
@@ -123,13 +129,37 @@ func chain_release():
 	can_hook = false
 	$grappleCoolDown.start(.05)
 
-# grapple
-func _on_grapplePoints_grapple_command_final(command, pos):
-	if command == 0: # Near a grapple post
-		nearest_grapple_post_pos = pos
-		near_grapple_post = true
-	elif command == 1: # not near
-		near_grapple_post = false
+## grapple
+#func _on_grapplePoints_grapple_command_final(command, pos):
+#	if command == 0: # Near a grapple post
+#		nearest_grapple_post_pos = pos
+#		near_grapple_post = true
+#	elif command == 1: # not near
+#		near_grapple_post = false
+func get_nearest_hook_point():
+	var hook_points = $circleScan.get_overlapping_bodies()
+	var non_blocked_hook_points = []
+	var space_state = get_world_2d().direct_space_state
+
+	for hook_point in hook_points:
+		if hook_point.is_in_group("hook_points"):
+			var result = space_state.intersect_ray(hook_point.position, global_position)
+			if result.empty():
+				non_blocked_hook_points.append( weakref(hook_point)) # don't need to duplicate
+
+	if non_blocked_hook_points.empty():
+		return
+
+	var min_dist = INF
+	var closest_hook_point = null
+	for hook_point in non_blocked_hook_points:
+		var cur_dist = global_position.distance_to(hook_point.position)
+		# only hook to points in direction of character look
+		if sign(look_direction.x) == sign(hook_point.x - global_position.x) and  min_dist > cur_dist:
+			min_dist = cur_dist
+			closest_hook_point = hook_point
+	if closest_hook_point: return closest_hook_point
+
 # Movement
 func move():
 	if hooked and not ["hook"].has(states.current_state.name) and\
@@ -168,9 +198,31 @@ func _is_wall_raycast_colliding(wall_raycasts):
 				if  angle > deg2rad(60) &&  angle < deg2rad(120):
 					return true
 	return false
+# a little boost to the player incase barely missing the platform above
+func is_almost_at_a_platform():
+	return almost_reaching_platform_jump_boost.get_overlapping_bodies()
+
+# 1 if corner on the right -1 if left
+func is_there_corner_above():
+	var corner_dir = 0
+	if corner_correction_raycast_left.is_colliding(): corner_dir -= 1
+	if corner_correction_raycast_right.is_colliding():  corner_dir += 1
+	return corner_dir
 # dropdown jump
 func _on_dropDownArea_body_exited(body):
 	is_between_tiles = false
+# jump input buffering
+func jump_buffer_start():
+	jump_again = true
+	$jumpInputBuffer.start(INPUT_AGAIN_MARGIN)
+func _on_jumpInputBuffer_timeout():
+	jump_again = false
+func general_buffer_start(): # exact same as above, should probably make a system for it
+	general_input_again = true
+	$slideInputBuffer.start(INPUT_AGAIN_MARGIN)
+func _on_generalInputBuffer_timeout():
+	general_input_again = false
+
 # ATTACK
 func start_attack_cool_down():
 	$attackCoolDown.start(1)
@@ -203,6 +255,9 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
+
+
+
 
 
 

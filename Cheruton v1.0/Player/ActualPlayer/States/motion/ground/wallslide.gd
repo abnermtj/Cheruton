@@ -19,6 +19,9 @@ func enter():
 	owner.can_attack = false
 	grip_timer = GRIP_TIME
 
+	if owner.jump_again:
+		emit_signal("finished", "jump")
+
 func update(delta):
 	grip_timer -= delta
 	if owner.velocity.y > 75:
@@ -33,7 +36,7 @@ func update(delta):
 	slide_down = input_dir.y == 1 or grip_timer < 0
 
 	gravity_strength = lerp(gravity_strength, GRAVITY_STRENGTH_MAX, delta*SPEED_UP_FACTOR)
-	owner.velocity.x = 0
+	owner.velocity.x = owner.wall_direction * 200 # this move player to stick to wall
 	owner.velocity.y = lerp( owner.velocity.y, (owner.GRAVITY*gravity_strength)+int(slide_down)*FAST_SLIDE_MAX_SPEED_INCREASE, delta*SLIDE_DOWN_LERP_FACTOR) +int(slide_down)*FAST_SLIDE_ACCEL
 	owner.move()
 
