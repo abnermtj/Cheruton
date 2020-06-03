@@ -697,7 +697,7 @@ radius = 550.0
 
 [node name="player" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 385
+collision_mask = 393
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
@@ -928,8 +928,8 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
 shape = SubResource( 30 )
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="tween_completed" from="states/dash/Tween" to="states/dash" method="_on_Tween_tween_completed"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]

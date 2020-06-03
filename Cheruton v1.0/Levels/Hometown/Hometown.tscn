@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Levels/levelAssets/Hometown_foregroundt.tres" type="TileSet" id=9]
 [ext_resource path="res://Levels/levelAssets/Hometown_props.tres" type="TileSet" id=10]
 [ext_resource path="res://Props/zipPoint/ZipPoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Props/zipPoint/zipPointsMaster.gd" type="Script" id=12]
+[ext_resource path="res://Enemy/TestEnemyN.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 544, 1792, 544, 1792, 576, 0, 576 )
@@ -283,6 +285,11 @@ tile_set = ExtResource( 9 )
 cell_size = Vector2( 4, 4 )
 format = 1
 tile_data = PoolIntArray( -3407890, 4, 0, -2097159, 0, 0, 6095856, 3, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 13 )]
+position = Vector2( 5762.37, 242.448 )
+scale = Vector2( 16, 16 )
+collision/safe_margin = 0.001
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
 [connection signal="hook_command" from="player" to="Chain" method="_on_player_hook_command"]
