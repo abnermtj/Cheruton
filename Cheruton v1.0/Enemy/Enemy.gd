@@ -10,17 +10,14 @@ var can_heal = true
 var is_dead = false
 var state = "Ignore"
 
-var player_nearby 
-var player_spotted 
+var player_nearby
+var player_spotted
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimationPlayer.play("state_idle")
 	curr_HP = max_HP
-
-
-
 
 func _process(delta):
 	percent_HP = curr_HP/max_HP * 100
@@ -37,7 +34,7 @@ func _process(delta):
 				pass
 			"Attack":
 				print("BamBAM")
-		
+
 
 func heal_enemy():
 	can_heal = false
@@ -52,13 +49,13 @@ func heal_enemy():
 
 func _physics_process(delta):
 	LOSCheck()
-	
+
 func _on_Sight_body_entered(body):
 	print("In")
 	print(body == player)
 	if body == player:
 		player_nearby = true
-	
+
 func _on_Sight_body_exited(body):
 	print("Out")
 	print(body == player)
@@ -76,4 +73,4 @@ func LOSCheck():
 				state = "Attack"
 			else:
 				player_spotted = false
-				state = "Ignore" #Stub	
+				state = "Ignore" #Stub

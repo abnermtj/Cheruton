@@ -256,8 +256,6 @@ offset = Vector2( 0, -750 )
 scale = Vector2( 2, 2 )
 transform = Transform2D( 2, 0, 0, 2, 0, -750 )
 
-[node name="Chain" parent="." instance=ExtResource( 4 )]
-
 [node name="grapplePoints" type="Node2D" parent="."]
 
 [node name="grapplePoint0" parent="grapplePoints" instance=ExtResource( 11 )]
@@ -268,6 +266,8 @@ position = Vector2( 6656.82, -231.874 )
 
 [node name="grapplePoint2" parent="grapplePoints" instance=ExtResource( 11 )]
 position = Vector2( 7541.52, -231.874 )
+
+[node name="Chain" parent="." instance=ExtResource( 4 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 5201.55, -320 )

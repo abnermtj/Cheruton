@@ -49,11 +49,11 @@ func heal_enemy():
 
 func _physics_process(delta):
 	LOSCheck()
-	
+
 func _on_Sight_body_entered(body):
 	if(body == player):
 		player_nearby = true
-	
+
 func _on_Sight_body_exited(body):
 	if(body == player):
 		player_nearby = false
