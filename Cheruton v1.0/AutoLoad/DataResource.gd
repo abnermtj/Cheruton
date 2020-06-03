@@ -30,7 +30,7 @@ func load_data():
 	dict_inventory = dict_main.inventory
 	temp_dict_player = dict_player
 	dict_item_shop = dict_masterlist.item_shop[temp_dict_player.stage]
-	
+
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
@@ -94,7 +94,6 @@ func reset_settings():
 	dict_settings.audio = -10
 	dict_settings.is_mute = false
 	dict_settings.game_on = false
-	dict_settings.maj_scn = true
 	save_rest()
 
 func reset_inventory():

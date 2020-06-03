@@ -64,7 +64,7 @@ func update_progress():
 func animate_expbar(start, end):
 	$LoadScrn/Tween.interpolate_property($LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg, "value", start, end, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$LoadScrn/Tween.start()
-	
+
 func set_new_scene(scene_resource):
 	DataResource.current_scene = scene_resource.instance()
 	get_node("/root").add_child(DataResource.current_scene)

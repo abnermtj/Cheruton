@@ -71,11 +71,11 @@ __meta__ = {
 }
 
 [node name="Headers" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer"]
-margin_right = 1185.0
+margin_right = 1825.0
 margin_bottom = 51.0
 
 [node name="Menu" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
-margin_right = 1131.0
+margin_right = 1771.0
 margin_bottom = 51.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -84,8 +84,8 @@ custom_colors/font_color = Color( 0.156863, 0.168627, 0.152941, 1 )
 text = "                                Inventory"
 
 [node name="Exit" type="TextureButton" parent="BorderBackground/InnerBackground/VBoxContainer/Headers"]
-margin_left = 1135.0
-margin_right = 1185.0
+margin_left = 1775.0
+margin_right = 1825.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 50, 50 )
 texture_normal = ExtResource( 3 )
@@ -93,20 +93,20 @@ expand = true
 
 [node name="MElements" type="HBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer"]
 margin_top = 55.0
-margin_right = 1185.0
-margin_bottom = 607.0
+margin_right = 1825.0
+margin_bottom = 967.0
 size_flags_vertical = 3
 
 [node name="LeftMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
-margin_top = 269.0
+margin_top = 449.0
 margin_right = 20.0
-margin_bottom = 283.0
+margin_bottom = 463.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="Tabs" type="VBoxContainer" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 24.0
 margin_right = 234.0
-margin_bottom = 552.0
+margin_bottom = 912.0
 rect_min_size = Vector2( 210, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1236,15 +1236,15 @@ margin_bottom = 552.0
 
 [node name="RightMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer/MElements"]
 margin_left = 238.0
-margin_top = 269.0
+margin_top = 449.0
 margin_right = 258.0
-margin_bottom = 283.0
+margin_bottom = 463.0
 rect_min_size = Vector2( 20, 0 )
 
 [node name="BottomMargin" type="Label" parent="BorderBackground/InnerBackground/VBoxContainer"]
-margin_top = 611.0
-margin_right = 1185.0
-margin_bottom = 631.0
+margin_top = 971.0
+margin_right = 1825.0
+margin_bottom = 991.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Timer" type="Timer" parent="."]
