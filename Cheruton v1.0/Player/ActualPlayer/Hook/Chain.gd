@@ -57,14 +57,6 @@ func _physics_process(delta: float) -> void:
 				chain_state = chain_states.HOOKED
 				emit_signal("hooked",0, tip.global_position)
 				emit_signal("shake", .105, 7, 3, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1))
-#				var angle = tip.global_position.angle_to_point(cur_player_pos) # remember 0 degrees is to the right
-#				if  angle > deg2rad(-140) and angle < deg2rad(-40)  : # limits wall angles we can ancho to
-#					chain_state = chain_states.HOOKED
-#					emit_signal("hooked",0, tip.global_position)
-#					emit_signal("shake", .105, 7, 3, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1)) # (.1, .1 ) is a small offset to direction  making the shake more pronounced
-#				else: # not valid wall
-#					start_reel()
-#					emit_signal("hooked",1,Vector2())
 		chain_states.HOOKED:
 			pass
 		chain_states.REEL:

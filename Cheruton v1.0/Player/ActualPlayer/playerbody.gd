@@ -22,12 +22,11 @@ var can_hook = true
 var rope_length = 0.0
 var previous_anim
 var vec_to_ground = Vector2()
-#var near_grapple_post = false
 var can_dash = true
-var nearest_grapple_post_pos = Vector2()
 var is_between_tiles = true
 var jump_again = false
 var general_input_again = false
+var nearest_hook_point = Vector2()
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -63,6 +62,13 @@ func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 	if floor_raycast.is_colliding():
 		vec_to_ground = global_position - floor_raycast.get_collision_point()
+	var old_nearest_hook_point = nearest_hook_point
+	nearest_hook_point = get_nearest_hook_point()
+	if nearest_hook_point != old_nearest_hook_point:
+		if nearest_hook_point:
+			nearest_hook_point.active = true # visual indicator for player
+		if old_nearest_hook_point:
+			old_nearest_hook_point.active = false
 
 # General Helper functions
 func set_look_direction(value): # vector
@@ -130,12 +136,6 @@ func chain_release():
 	$grappleCoolDown.start(.05)
 
 ## grapple
-#func _on_grapplePoints_grapple_command_final(command, pos):
-#	if command == 0: # Near a grapple post
-#		nearest_grapple_post_pos = pos
-#		near_grapple_post = true
-#	elif command == 1: # not near
-#		near_grapple_post = false
 func get_nearest_hook_point():
 	var hook_points = $circleScan.get_overlapping_bodies()
 	var non_blocked_hook_points = []
@@ -143,9 +143,11 @@ func get_nearest_hook_point():
 
 	for hook_point in hook_points:
 		if hook_point.is_in_group("hook_points"):
-			var result = space_state.intersect_ray(hook_point.position, global_position)
+			var result = space_state.intersect_ray(hook_point.position, global_position + Vector2(0,-32),[self])
+			if result:
+				print(result.collider.name)
 			if result.empty():
-				non_blocked_hook_points.append( weakref(hook_point)) # don't need to duplicate
+				non_blocked_hook_points.append( hook_point)
 
 	if non_blocked_hook_points.empty():
 		return
@@ -153,9 +155,9 @@ func get_nearest_hook_point():
 	var min_dist = INF
 	var closest_hook_point = null
 	for hook_point in non_blocked_hook_points:
-		var cur_dist = global_position.distance_to(hook_point.position)
+		var cur_dist = global_position.distance_to(hook_point.global_position)
 		# only hook to points in direction of character look
-		if sign(look_direction.x) == sign(hook_point.x - global_position.x) and  min_dist > cur_dist:
+		if sign(look_direction.x) == sign(hook_point.global_position.x - global_position.x + look_direction.x*170) and  min_dist > cur_dist:
 			min_dist = cur_dist
 			closest_hook_point = hook_point
 	if closest_hook_point: return closest_hook_point

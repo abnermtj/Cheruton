@@ -87,6 +87,7 @@ func _update(delta):
 	if close_to_floor:
 		close_to_floor = false
 		vel.y *= .7
+
 	if owner.global_position.y > tip_pos.y:
 		next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
 	else:

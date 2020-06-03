@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Props/zipPoint/ZipPoint.gd" type="Script" id=2]
-[ext_resource path="res://Props/zipPoint/Sprites/Environment-dashPointIndicator.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
@@ -10,15 +9,13 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 360.0
 
-[node name="grapplePoint" type="StaticBody2D"]
+[node name="grapplePoint" type="StaticBody2D" groups=[
+"hook_points",
+]]
 scale = Vector2( 1.2, 1.2 )
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
-
-[node name="circleIndicator" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
 
 [node name="center" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -31,5 +28,3 @@ collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grappleArea"]
 shape = SubResource( 2 )
-[connection signal="body_entered" from="grappleArea" to="." method="_on_grappleArea_body_entered"]
-[connection signal="body_exited" from="grappleArea" to="." method="_on_grappleArea_body_exited"]
