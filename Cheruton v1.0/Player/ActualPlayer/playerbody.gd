@@ -143,7 +143,7 @@ func get_nearest_hook_point():
 
 	for hook_point in hook_points:
 		if hook_point.is_in_group("hook_points"):
-			var result = space_state.intersect_ray(hook_point.position, global_position + Vector2(0,-32),[self])
+			var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point])
 			if result:
 				print(result.collider.name)
 			if result.empty():
