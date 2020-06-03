@@ -194,7 +194,11 @@ func _on_pressed(node):
 		print("Double Clicked!")
 		match shop_setting:
 			"Sell": sell_item()
-			"Buy": buy_item()
+			"Buy": 
+				var index = int(mouse_node.name)%100
+				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop[active_tab.name]["Item" + str(index)]].ItemValue
+				if(coins_val <= DataResource.temp_dict_player["coins"]):
+					buy_item()
 		mouse_count = 0
 
 
@@ -254,6 +258,9 @@ func sell_item():
 func buy_item():
 	# contains item type, item name and quantity
 	var index = int(mouse_node.name)%100
+	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop[active_tab.name]["Item" + str(index)]].ItemValue
+	if(coins_val > DataResource.temp_dict_player["coins"]):
+		return
 	var item_data = []
 	#Append item to inventory
 	item_data.append(active_tab.name)
@@ -262,7 +269,7 @@ func buy_item():
 	Loot.loot_dict[1] = item_data
 	Loot.append_loot(1)
 	# Update coins val and item qty
-	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop[active_tab.name]["Item" + str(index)]].ItemValue
+	
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.name, true, false)
