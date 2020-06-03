@@ -210,6 +210,7 @@ func revert_item_state():
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
+		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").text = shop_setting
 		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").show()
 	else:
 		item_state = "HOVER"
@@ -251,15 +252,27 @@ func sell_item():
 
 #Debug
 func _on_Button_pressed():
-	sell_item()
+	match shop_setting:
+		"Sell": sell_item()
 
 # Buy Option set
 func _on_Buy_pressed():
 	set_state("Buy")
+	check_fixed()
+
 
 #Sell Option Set
 func _on_Sell_pressed():
 	set_state("Sell")
+	check_fixed()
+
+
+func check_fixed():
+	if(item_state == "FIXED"):
+		var temp = mouse_node
+		revert_item_state()
+		_on_mouse_exited(temp)
+	
 
 #Sets state of the option
 func set_state(types):
