@@ -153,7 +153,6 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 				
 			"Buy":
 				var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
-				print(node)
 				if(node.ItemPNG):
 					item_pict = load(node.ItemPNG)
 		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
@@ -195,6 +194,7 @@ func _on_pressed(node):
 		print("Double Clicked!")
 		match shop_setting:
 			"Sell": sell_item()
+			"Buy": buy_item()
 		mouse_count = 0
 
 
@@ -250,11 +250,30 @@ func sell_item():
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
+# Increases qty of item by 1
+func buy_item():
+	# contains item type, item name and quantity
+	var index = int(mouse_node.name)%100
+	var item_data = []
+	#Append item to inventory
+	item_data.append(active_tab.name)
+	item_data.append(DataResource.dict_item_shop[active_tab.name]["Item" + str(index)])
+	item_data.append(1)
+	Loot.loot_dict[1] = item_data
+	Loot.append_loot(1)
+	# Update coins val and item qty
+	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop[active_tab.name]["Item" + str(index)]].ItemValue
+	DataFunctions.change_coins(-coins_val)
+	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	var node = items_sell.find_node(mouse_node.name, true, false)
+	node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + str(index)].item_qty)
+
 #Debug
 func _on_Button_pressed():
 	match shop_setting:
 		"Sell": sell_item()
-
+		"Buy": buy_item()
+		
 # Buy Option set
 func _on_Buy_pressed():
 	set_state("Buy")
