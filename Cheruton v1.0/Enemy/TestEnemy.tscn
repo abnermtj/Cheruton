@@ -3,12 +3,13 @@
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1.0
 
 [node name="TestEnemy" type="KinematicBody2D"]
+scale = Vector2( 32, 32 )
 collision_layer = 8
 collision_mask = 11
 script = ExtResource( 1 )

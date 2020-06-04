@@ -17,6 +17,7 @@ script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1212.97, -125.743 )
+collision_mask = 393
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )
@@ -51,9 +52,8 @@ position = Vector2( -571.234, -887.999 )
 position = Vector2( 1806.47, 701.02 )
 scale = Vector2( 10, 4 )
 
-[node name="enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2421.88, 397.773 )
-scale = Vector2( 10, 10 )
+[node name="TestEnemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2160.63, 638.908 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]

@@ -38,23 +38,23 @@ func _process(delta):
 	else:
 		match state:
 			"Ignore":
-				#print("Ignore")
+				print("Ignore")
 				#animation = "Idle"
 				pass
 			"Search":
 				print("Search")
-				search_player(delta)
+				#search_player(delta)
 			"Return":
 				print("Return")
 				# Create pause to allow enemy to scan borders of search first
 				#animation = "Idle"
-				yield(get_tree().create_timer(3), "timeout")
-				if(state == "Return"):
-					return_enemy(delta)
+				#yield(get_tree().create_timer(3), "timeout")
+				#if(state == "Return"):
+				#	return_enemy(delta)
 			"Attack":
 				print("Attack")
-				if(can_fire == true):
-					attack_player()
+				#if(can_fire == true):
+				#	attack_player()
 
 
 func heal_enemy():
