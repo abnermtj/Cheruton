@@ -37,7 +37,6 @@ func _set_camera() -> void:
 
 func _input(event):
 	if Input.is_action_just_pressed("escape"):
-		print(instanced_packed_scenes_stack)
 		if instanced_packed_scenes_stack:
 			release_gui_scene()
 		else:
