@@ -82,6 +82,7 @@ func update( delta ):
 		owner.position.x -= CORNER_CORRECTION_DISPLACEMENT
 	elif corner_dir == -1: #left
 		owner.position.x += CORNER_CORRECTION_DISPLACEMENT
+
 	if input_dir.x: # tend to input dir if steering
 		owner.velocity.x = clamp ((owner.velocity.x + input_dir.x*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else: # tend .x to 0 if not steerings

@@ -20,7 +20,6 @@ onready var list = "BorderBackground/InnerBackground/VBoxContainer/MElements"
 
 
 func _ready():
-	DataResource.dict_settings.game_on = false
 	$BorderBackground/InnerBackground/VBoxContainer/MElements/Tabs/Coins/CoinsVal.text = str(DataResource.temp_dict_player["coins"])
 	load_data()
 
@@ -208,7 +207,6 @@ func _on_KeyItems_pressed():
 
 # Removes the instance of the whole inventory system
 func free_the_inventory():
-	DataResource.dict_settings.game_on = true
 	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	scene_to_free.queue_free()
 

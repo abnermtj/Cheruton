@@ -1,24 +1,21 @@
 extends Control
 
-const SCN1 = "res://Empty.tscn"
-var SETTINGS = preload("res://Display/Settings/Settings.tscn")
+#const SCN1 = "res://Empty.tscn"
+const SCN1 = "res://Levels/Hometown/Hometown.tscn"
+onready var SETTINGS = $Settings
 
 func _ready():
-	DataResource.dict_settings["game_on"] = false
-
+	LevelguiMaster.enabled = false
+	SETTINGS.visible = false
+	SETTINGS.connect("release_gui", self, "_exit_Settings")
 
 func _on_Play_pressed():
 	LoadScrnGlobal.goto_scene(SCN1)
-	DataResource.dict_settings.maj_scn = false
-	DataResource.dict_settings.game_on = true
 func _on_Settings_pressed():
-	var curr_scene = SETTINGS.instance()
-	DataResource.current_scene.hide()
-	get_tree().get_root().add_child(curr_scene)
+	SETTINGS.visible = true
+func _exit_Settings(gui_name):
+	SETTINGS.visible = false
 
 func _on_Exit_pressed():
-	#DataResource.save_player() #- can save before going back to mm??
 	get_tree().quit()
-
-
 

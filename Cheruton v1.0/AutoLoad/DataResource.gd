@@ -93,7 +93,6 @@ func reset_player():
 func reset_settings():
 	dict_settings.audio = -10
 	dict_settings.is_mute = false
-	dict_settings.game_on = false
 	save_rest()
 
 func reset_inventory():

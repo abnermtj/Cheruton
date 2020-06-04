@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
+[ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -49,7 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Button" parent="."]
+[node name="SettingsBtn" type="Button" parent="."]
 margin_left = 132.463
 margin_top = 95.0734
 margin_right = 195.463
@@ -76,6 +77,8 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Settings" parent="." instance=ExtResource( 1 )]
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="SettingsBtn" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

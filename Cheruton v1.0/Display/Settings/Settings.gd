@@ -1,5 +1,4 @@
-extends Node2D
-
+extends baseGui
 
 func _ready():
 	$MainVol/MainVolBar.value = (10 - ((10 - DataResource.dict_settings["audio"])/8)) * 10
@@ -20,11 +19,10 @@ func _on_MainVolDown_pressed():
 
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
-	var scene_to_free = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
-	scene_to_free.queue_free()
-	DataResource.save_rest()
-	if(KeyPress.last_key == KEY_ESCAPE):
-		DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1).show()
-		DataResource.dict_settings.maj_scn = false
-	DataResource.current_scene.show()
+	DataResource.save_rest() # so that the new settings persist on next save file
+	emit_signal("release_gui", "settings")
 
+
+func handle_input(event):
+	if is_active_gui and Input.is_action_just_pressed("escape"):
+		_on_Back_pressed()

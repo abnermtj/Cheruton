@@ -23,6 +23,7 @@ func _deferred_goto_scene(path):
 	DataResource.current_scene.free()
 
 	# Load the new scene.
+	print("path ", path)
 	var s = ResourceLoader.load(path)
 
 	# Instance the new scene.

@@ -1,4 +1,4 @@
-extends Control
+extends baseGui
 
 var active_tab
 var item_state = "HOVER"
@@ -24,7 +24,6 @@ onready var items = $Border/Bg/Contents/Items
 onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
 
 func _ready():
-	DataResource.dict_settings.game_on = false
 	connect_tabs()
 	load_data()
 	emit_signal("tab_changed", "Weapons")
@@ -32,7 +31,6 @@ func _ready():
 	set_equipped()
 
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-
 
 func _on_Exit_pressed():
 	free_the_inventory()
@@ -59,11 +57,8 @@ func display_equipped(name):
 	type.show()
 
 func free_the_inventory():
-	DataResource.dict_settings.game_on = true
-	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
 	DataResource.save_rest()
-	yield(get_tree().create_timer(0.2), "timeout")
-	scene_to_free.queue_free()
+	emit_signal("release_gui", "inventory")
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -293,3 +288,7 @@ func _item_status(selected_node, status):
 #Debug
 func _on_Button_pressed():
 	delete_item()
+
+func handle_input(event):
+	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
+		_on_Exit_pressed()
