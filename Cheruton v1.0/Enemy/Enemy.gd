@@ -26,9 +26,8 @@ func _process(delta):
 	else:
 		match state:
 			"Ignore":
-				#print("zzzz")
+				print("zzzz")
 				#print("Ignored")
-				pass
 			"Search":
 				pass
 			"Follow":
@@ -50,33 +49,28 @@ func heal_enemy():
 
 func _physics_process(delta):
 	LOSCheck()
-	pass
 	
 func _on_Sight_body_entered(body):
+	print("In")
+	print(body == player)
 	if body == player:
 		player_nearby = true
-		print("player_N" + str(player_nearby))
 	
 func _on_Sight_body_exited(body):
+	print("Out")
+	print(body == player)
 	if body == player:
 		player_nearby = false
-		print("player_Naa" + str(player_nearby))
 
-#Checks if the player is close enough to be attacked
+#Checks if the player is close enough to be attaced
 func LOSCheck():
 	if player_nearby == true:
 		var space_state = get_world_2d().direct_space_state
-		var LOSight_id = space_state.intersect_ray(position, player.position, [self], collision_mask)
-		print (LOSight_id)
-		print(1)
+		var LOSight_id = space_state.intersect_ray(position, player.position)
 		if LOSight_id:
-			print(0)
-			print(LOSight_id.collider.name)
 			if (LOSight_id.collider.name == "player"):
-				print(2)
 				player_spotted = true
 				state = "Attack"
 			else:
-				print(3)
 				player_spotted = false
 				state = "Ignore" #Stub	
