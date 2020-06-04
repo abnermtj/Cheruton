@@ -16,6 +16,21 @@ var input_dir
 var bounce_boost
 var grav_multiplier
 
+
+func handle_input(event):
+	if Input.is_action_just_pressed("hook"):
+			if owner.can_hook:
+				var nearest_hook_point = owner.nearest_hook_point
+				if not nearest_hook_point:
+					return
+
+				owner.hook_dir = ( nearest_hook_point.global_position - owner.global_position).normalized()
+
+				owner.play_sound("hook_start")
+				owner.play_and_return_anim("grapple_throw")
+				owner.start_hook()
+
+
 func enter() -> void:
 	enter_velocity = owner.velocity
 	if MIN_ENTER_VELOCITY_X > abs(enter_velocity.x): # x can't go faster than enter velocity.x
@@ -34,9 +49,9 @@ func enter() -> void:
 		bounce_boost = true
 		owner.bounce_boost = false
 		grav_multiplier = 1
-	elif prev_state_name != "hook":
-		owner.velocity.y = JUMP_VEL # old speed kept
-		owner.play_anim_fx("jump")
+
+	owner.velocity.y = JUMP_VEL # old speed kept
+	owner.play_anim_fx("jump")
 
 	if prev_state_name == "wallslide": # wall jump
 		input_dir = get_input_direction()

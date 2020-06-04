@@ -7,7 +7,7 @@ const SWING_GRAVITY = 110 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 60 # 70 for funzz 56.5 for the realz
 const MIN_WIRE_LENGTH = 100
 var MAX_WIRE_LENGTH = 600 #
-const PLAYER_LENGTH_CONTROL = 250	 #is strong# players influence with REEL, too much may may make movements not smooth at the end
+const PLAYER_LENGTH_CONTROL = 250	# player's influence with REEL, too much may may make movements not smooth at the end
 const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lep
 const TOP_SPEED = 1600
 
@@ -22,6 +22,12 @@ var next_pos = Vector2()
 var length_rope = 0.0
 var desired_length_rope = 0.0
 var tip_pos # tip of hook/ attach point
+
+func handle_input(event):
+	if Input.is_action_just_pressed("hook"):
+		owner.chain_release()
+		emit_signal("finished", "fall")
+
 
 func enter():
 	release_timer = RELEASE_TIMER
@@ -86,7 +92,8 @@ func _update(delta):
 		hit_wall = false
 	if close_to_floor:
 		close_to_floor = false
-		vel.y *= .7
+		length_rope -= 4.5
+		vel *= .98
 
 	if owner.global_position.y > tip_pos.y:
 		next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH

@@ -823,6 +823,7 @@ shape = SubResource( 28 )
 [node name="floorRay" type="RayCast2D" parent="."]
 position = Vector2( -5, 40 )
 enabled = true
+cast_to = Vector2( 0, 70 )
 collision_mask = 128
 
 [node name="wallRaycasts" type="Node2D" parent="."]

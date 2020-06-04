@@ -9,6 +9,21 @@ var enter_velocity
 
 var updated_once
 
+func handle_input(event):
+	if Input.is_action_just_pressed("hook"):
+			if owner.can_hook:
+				var nearest_hook_point = owner.nearest_hook_point
+				if not nearest_hook_point:
+					return
+
+				owner.hook_dir = ( nearest_hook_point.global_position - owner.global_position).normalized()
+
+				owner.play_sound("hook_start")
+				owner.play_and_return_anim("grapple_throw")
+				owner.start_hook()
+	.handle_input(event)
+
+
 func enter():
 	enter_velocity = owner.velocity
 	updated_once = false
@@ -82,3 +97,4 @@ func update(delta):
 
 	updated_once = true
 	.update(delta)
+
