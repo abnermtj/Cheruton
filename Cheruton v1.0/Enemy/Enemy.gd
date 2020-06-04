@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var hp_bar
 onready var player = get_parent().get_node("player")
-onready var map_nvg
+onready var map_nvg = get_parent().get_node("Navigator")
 
 
 var speed = 120
@@ -39,21 +39,20 @@ func _process(delta):
 		match state:
 			"Ignore":
 				print("Ignore")
-				print("Ignore")
-				print("Ignore")
 				#animation = "Idle"
 				pass
 			"Search":
 				print("Search")
-				#search_player(delta)
+				search_player(delta)
 			"Return":
 				print("Return")
 				# Create pause to allow enemy to scan borders of search first
 				#animation = "Idle"
-				#yield(get_tree().create_timer(3), "timeout")
-				#if(state == "Return"):
-				#	return_enemy(delta)
+				yield(get_tree().create_timer(3), "timeout")
+				if(state == "Return"):
+					return_enemy(delta)
 			"Attack":
+				move_enemy(delta, player.global_position, 2)
 				print("Attack")
 				#if(can_fire == true):
 				#	attack_player()
@@ -70,16 +69,15 @@ func heal_enemy():
 		yield(get_tree().create_timer(0.25), "timeout")
 		can_heal = true
 
+# Enemy searches for player
 func search_player(delta):
-	move_player(delta, destination)
-	pass
-#
+	move_enemy(delta, destination, 1.4)
+
 func return_enemy(delta):
-	move_player(delta, start_position)
-	pass
+	move_enemy(delta, start_position, 1)
 
-
-func move_player(delta, dest):
+# Enemy moves to desired location
+func move_enemy(delta, dest, factor):
 	pass
 	var dest_path = map_nvg.get_simple_path(get_global_position(), dest)
 	var start_pt = get_global_position()
@@ -92,7 +90,7 @@ func move_player(delta, dest):
 			var move_rotation = get_angle_to(start_pt.linear_interpolate(dest_path[0], dist_travel/next_pt_dist))
 			var motion = Vector2(speed, 0).rotated(move_rotation)
 			#animation = "Walk"
-			move_and_slide(motion)
+			move_and_slide(motion* factor)
 			break
 		#Moves to next point - this point is taken as the new start point
 		dist_travel -= next_pt_dist
@@ -101,11 +99,17 @@ func move_player(delta, dest):
 
 	if(dest_path.size() == 0):
 		# State: Return
-		if(dest == start_position):
+		if(state == "Return"):
 			state = "Ignore"
 		# State: Search
-		else:
-			should_set_ignore()
+		elif(state != "Attack"):
+			player_nearby = false
+			if(get_global_position() == start_position):
+				state = "Ignore"
+				#animation = Idle
+			else:
+				state = "Return"
+				
 
 func attack_player():
 	can_fire = false
@@ -125,39 +129,36 @@ func should_set_ignore():
 
 func _physics_process(delta):
 	LOSCheck()
-	pass
 
+# Player has entered enemies guard radius
 func _on_Sight_body_entered(body):
 	if body == player:
 		player_nearby = true
-		print("player_Yeeee" + str(player_nearby))
 
+
+# Player has exited enemies guard radius
 func _on_Sight_body_exited(body):
 	if body == player:
 		player_nearby = false
 		if(player_spotted):
 			state = "Search"
-		print("player_Naa" + str(player_nearby))
+
 
 #Checks if the player is close enough to be attacked
 func LOSCheck():
 	if player_nearby == true:
 		var space_state = get_world_2d().direct_space_state
-		var LOSight_id = space_state.intersect_ray(position, player.position, [self], collision_mask)
-		print (LOSight_id)
-		print(1)
+		var LOSight_id = space_state.intersect_ray(global_position, player.global_position, [self], 2)
+
 		if LOSight_id:
-			print(0)
 			print(LOSight_id.collider.name)
 			if (LOSight_id.collider.name == "player"):
-				print(2)
 				player_sight = true
 				player_spotted = true
 				player_position = player.get_global_position()
-				#dest = map_nvg.get_closest_point(player_position)
+				destination = map_nvg.get_closest_point(player_position)
 				state = "Attack"
 			else:
-				print(3)
 				player_sight = false
 				if(player_spotted):
 					state = "Search"
