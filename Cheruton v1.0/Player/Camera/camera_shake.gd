@@ -121,7 +121,6 @@ func _check_facing():
 func _on_player_camera_command(command, arg):
 	camera_state = command
 
-	var dist = (global_position - get_parent().global_position).length()
 	match (camera_state):
 		camera_states.DEFAULT:
 			drag_margin_left = .06

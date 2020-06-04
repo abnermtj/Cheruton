@@ -71,7 +71,7 @@ func heal_enemy():
 func search_player(delta):
 	move_player(delta, destination)
 	pass
-#						
+#
 func return_enemy(delta):
 	move_player(delta, start_position)
 	pass
@@ -96,7 +96,7 @@ func move_player(delta, dest):
 		dist_travel -= next_pt_dist
 		start_pt = dest_path[0]
 		dest_path.remove(0)
-		
+
 	if(dest_path.size() == 0):
 		# State: Return
 		if(dest == start_position):
@@ -120,11 +120,11 @@ func should_set_ignore():
 		state = "Return"
 	else:
 		state = "Ignore"
-	
+
 func _physics_process(delta):
 	LOSCheck()
 	pass
-	
+
 func _on_Sight_body_entered(body):
 	if body == player:
 		player_nearby = true
