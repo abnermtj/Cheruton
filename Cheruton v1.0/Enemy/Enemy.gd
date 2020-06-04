@@ -52,7 +52,7 @@ func _process(delta):
 				if(state == "Return"):
 					return_enemy(delta)
 			"Attack":
-				move_enemy(delta, player.global_position)
+				move_enemy(delta, player.global_position, 2)
 				print("Attack")
 				#if(can_fire == true):
 				#	attack_player()
@@ -71,14 +71,14 @@ func heal_enemy():
 
 # Enemy searches for player
 func search_player(delta):
-	move_enemy(delta, destination)
+	move_enemy(delta, destination, 1.4)
 
 # Enemy moves back to spawn_point
 func return_enemy(delta):
-	move_enemy(delta, start_position)
+	move_enemy(delta, start_position, 1)
 
 # Enemy moves to desired location
-func move_enemy(delta, dest):
+func move_enemy(delta, dest, factor):
 	pass
 	var dest_path = map_nvg.get_simple_path(get_global_position(), dest)
 	var start_pt = get_global_position()
@@ -91,7 +91,7 @@ func move_enemy(delta, dest):
 			var move_rotation = get_angle_to(start_pt.linear_interpolate(dest_path[0], dist_travel/next_pt_dist))
 			var motion = Vector2(speed, 0).rotated(move_rotation)
 			#animation = "Walk"
-			move_and_slide(motion)
+			move_and_slide(motion* factor)
 			break
 		#Moves to next point - this point is taken as the new start point
 		dist_travel -= next_pt_dist
