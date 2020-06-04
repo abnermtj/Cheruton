@@ -143,21 +143,17 @@ func _on_Sight_body_exited(body):
 func LOSCheck():
 	if player_nearby == true:
 		var space_state = get_world_2d().direct_space_state
-		var LOSight_id = space_state.intersect_ray(position, player.position, [self], collision_mask)
-		print (LOSight_id)
-		print(1)
+		var LOSight_id = space_state.intersect_ray(global_position, player.global_position, [self], 2)
+
 		if LOSight_id:
-			print(0)
 			print(LOSight_id.collider.name)
 			if (LOSight_id.collider.name == "player"):
-				print(2)
 				player_sight = true
 				player_spotted = true
 				player_position = player.get_global_position()
 				#dest = map_nvg.get_closest_point(player_position)
 				state = "Attack"
 			else:
-				print(3)
 				player_sight = false
 				if(player_spotted):
 					state = "Search"
