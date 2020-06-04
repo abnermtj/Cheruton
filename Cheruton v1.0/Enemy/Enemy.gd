@@ -39,6 +39,8 @@ func _process(delta):
 		match state:
 			"Ignore":
 				print("Ignore")
+				print("Ignore")
+				print("Ignore")
 				#animation = "Idle"
 				pass
 			"Search":
