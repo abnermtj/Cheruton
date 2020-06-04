@@ -697,7 +697,7 @@ radius = 550.0
 
 [node name="player" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 393
+collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
