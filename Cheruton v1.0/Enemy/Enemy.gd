@@ -51,12 +51,12 @@ func heal_enemy():
 func _physics_process(delta):
 	LOSCheck()
 	pass
-	
+
 func _on_Sight_body_entered(body):
 	if body == player:
 		player_nearby = true
 		print("player_N" + str(player_nearby))
-	
+
 func _on_Sight_body_exited(body):
 	if body == player:
 		player_nearby = false
@@ -79,4 +79,4 @@ func LOSCheck():
 			else:
 				print(3)
 				player_spotted = false
-				state = "Ignore" #Stub	
+				state = "Ignore" #Stub
