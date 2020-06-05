@@ -9,6 +9,20 @@ func handle_input(event):
 		owner.can_attack = false
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
+	if event.is_action_pressed("sword_throw"):
+		if owner.can_throw_sword:
+			owner.throw_sword_dir = get_input_direction().normalized()
+			if owner.throw_sword_dir == Vector2():
+				owner.throw_sword_dir = owner.look_direction
+			owner.start_sword_throw()
+		elif owner.sword_stuck:
+			owner.return_sword_throw()
+	if event.is_action_pressed("dash") and owner.can_dash:
+		owner.can_dash = false
+		emit_signal("finished", "dash")
+
+
+
 
 # note left and right at the same time cancel out
 func get_input_direction():

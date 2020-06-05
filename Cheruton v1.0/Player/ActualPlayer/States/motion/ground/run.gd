@@ -22,6 +22,8 @@ func update(delta):
 	update_look_direction(input_direction)
 	if input_direction.x and input_direction.x != previous_dir.x:
 		owner.play_anim("run_change_dir")
+		var string_dir = "left" if input_direction.x == -1 else "right"
+		owner.play_anim_fx("run_change_dir_"+ string_dir)
 		owner.queue_anim("run_continious")
 		previous_dir = input_direction
 	owner.velocity.x = lerp(owner.velocity.x , MAX_RUN_SPEED * input_direction.x, delta*PLAYER_DIR_CONTROL)

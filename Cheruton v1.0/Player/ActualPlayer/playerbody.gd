@@ -1,32 +1,42 @@
 extends KinematicBody2D
 
-# only put consts used by multiple states, no need to get owner each time
 const GRAVITY = 2400
 const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
-var velocity = Vector2()
 
-var tip_pos = Vector2()
-var previous_position
-var hook_dir = Vector2()
-var hooked
-var has_jumped = false
+var velocity = Vector2()
 var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
-var exit_slide_blocked = false
-var wall_direction = 0
+var previous_anim
+var general_input_again = false
+
+var has_jumped = false
+var jump_again = false
 var bounce_boost = false
+
+var previous_position
+var tip_pos = Vector2()
+var hook_dir = Vector2()
+var hooked
+var rope_length = 0.0
+var is_between_tiles = true
+var nearest_hook_point = Vector2()
+
+var exit_slide_blocked = false
+
+var wall_direction = 0
+
+var throw_sword_dir = Vector2()
+var sword_stuck = false
+var sword_pos = Vector2()
+
+var can_dash = true
 var can_attack = true
 var can_hook = true
-var rope_length = 0.0
-var previous_anim
-var vec_to_ground = Vector2()
-var can_dash = true
-var is_between_tiles = true
-var jump_again = false
-var general_input_again = false
-var nearest_hook_point = Vector2()
+var can_throw_sword = true
+
+var close_bodies = [] # scanning
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -45,6 +55,7 @@ onready var states = $states
 
 signal state_changed
 signal hook_command
+signal flying_sword_command
 signal camera_command
 signal shake
 
@@ -60,8 +71,7 @@ func set_dead(value): # non zero means dead
 
 func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
-	if floor_raycast.is_colliding():
-		vec_to_ground = global_position - floor_raycast.get_collision_point()
+
 	var old_nearest_hook_point = nearest_hook_point
 	nearest_hook_point = get_nearest_hook_point()
 	if nearest_hook_point != old_nearest_hook_point:
@@ -69,6 +79,9 @@ func _physics_process(delta):
 			nearest_hook_point.active = true # visual indicator for player
 		if old_nearest_hook_point:
 			old_nearest_hook_point.active = false
+
+	close_bodies = $cicleScanSmall.get_overlapping_bodies() # use in future for npc interaction
+
 
 # General Helper functions
 func set_look_direction(value): # vector
@@ -78,8 +91,6 @@ func _on_states_state_changed(states_stack):
 func signal_on_floor(grounded):
 	on_floor = grounded
 	set_camera_mode_logic()
-	if grounded:
-		can_dash = true
 
 # Animation
 func play_anim(string):
@@ -111,7 +122,7 @@ func queue_anim_fx(string):
 		animation_player_fx.queue(string)
 
 
-# Hook
+# Grapple
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 	can_hook = false
@@ -119,7 +130,7 @@ func start_hook():
 func _on_grappleCoolDown_timeout():
 	can_hook = true
 func _on_Chain_hooked(command, tip_p):
-	if command == 0:
+	if command == 0: # good hook
 		hooked = true
 		tip_pos = tip_p
 		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip
@@ -134,8 +145,6 @@ func chain_release():
 	emit_signal("hook_command", 1,Vector2(),Vector2())
 	can_hook = false
 	$grappleCoolDown.start(.05)
-
-## grapple
 func get_nearest_hook_point():
 	var hook_points = $circleScan.get_overlapping_bodies()
 	var non_blocked_hook_points = []
@@ -160,6 +169,21 @@ func get_nearest_hook_point():
 			min_dist = cur_dist
 			closest_hook_point = hook_point
 	if closest_hook_point: return closest_hook_point
+
+# swordThrow
+func start_sword_throw():
+	can_throw_sword = false
+	sword_stuck = false
+	emit_signal("flying_sword_command", 0, throw_sword_dir)
+func on_sword_result(result, pos):
+	if result == 0: # hit
+		sword_stuck = true
+		sword_pos = pos
+		can_dash = true
+	elif result == 1: # returned
+		can_throw_sword = true
+func return_sword_throw():
+	emit_signal("flying_sword_command", 1, Vector2())
 
 # Movement
 func move():
@@ -245,8 +269,7 @@ func _ready():
 
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position  # additional vector to correct middle of player
-	if hooked or not DataResource.dict_player.chain_in_air: # chain node must be above player node in scene tree
-		stop_sound("hook_start")
+
 
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
@@ -256,11 +279,3 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
-
-
-
-
-
-
-
-

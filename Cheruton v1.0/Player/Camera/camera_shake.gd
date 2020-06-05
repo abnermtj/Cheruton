@@ -133,14 +133,14 @@ func _on_player_camera_command(command, arg):
 			smoothing_speed_goal = 1
 			LOOK_AHEAD_FACTOR = .1
 		camera_states.HOOK:
-#			drag_margin_left = .32
+#			drag_margin_left = .32 # Changing these causes abjust camera shifts
 #			drag_margin_right = .32
 #			drag_margin_top = 0.4
 #			drag_margin_bottom = .2
 			drag_margin_v_enabled = true
 			drag_margin_h_enabled = true
 			SHIFT_DURATION = .5
-			smoothing_speed_goal = 10# 480x320 use 2.5 384 use 2.7
+			smoothing_speed_goal = 10
 			LOOK_AHEAD_FACTOR = .25
 
 func _on_player_shake(dur, freq, amp, dir):

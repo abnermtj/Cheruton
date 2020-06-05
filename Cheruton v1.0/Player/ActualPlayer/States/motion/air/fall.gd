@@ -75,7 +75,6 @@ func update(delta):
 		owner.play_anim_fx("land")
 		if (owner.jump_again):
 			emit_signal("finished", "jump")
-			owner.can_dash = true
 		elif Input.is_action_pressed( "slide" ):
 			emit_signal("finished", "slide")
 		else:
@@ -90,10 +89,6 @@ func update(delta):
 		if col.is_in_group("bouncePads"):
 			owner.bounce_boost = true
 			emit_signal("finished", "jump")
-
-	# dash
-	if Input.is_action_just_pressed("dash") and owner.can_dash and updated_once:
-		emit_signal("finished", "dash")
 
 	updated_once = true
 	.update(delta)

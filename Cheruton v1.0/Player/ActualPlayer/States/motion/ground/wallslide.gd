@@ -2,10 +2,9 @@ extends groundState
 
 const GRAVITY_STRENGTH_MIN = 0.0009
 const GRAVITY_STRENGTH_MAX = 0.03
-const SPEED_UP_FACTOR = .01
-const FAST_SLIDE_ACCEL = 10
-const FAST_SLIDE_MAX_SPEED_INCREASE = 450
-const SLIDE_DOWN_LERP_FACTOR = 8
+const SPEED_UP_FACTOR = .001
+const FAST_SLIDE_MAX_SPEED_INCREASE = 600
+const SLIDE_DOWN_LERP_FACTOR = 7
 const GRIP_TIME = 3 # how long character can stay still
 
 var gravity_strength = .02
@@ -35,9 +34,10 @@ func update(delta):
 	var input_dir = get_input_direction()
 	slide_down = input_dir.y == 1 or grip_timer < 0
 
-	gravity_strength = lerp(gravity_strength, GRAVITY_STRENGTH_MAX, delta*SPEED_UP_FACTOR)
+	if slide_down:
+		gravity_strength = lerp(gravity_strength, GRAVITY_STRENGTH_MAX, delta*SPEED_UP_FACTOR)
 	owner.velocity.x = owner.wall_direction * 200 # this move player to stick to wall
-	owner.velocity.y = lerp( owner.velocity.y, (owner.GRAVITY*gravity_strength)+int(slide_down)*FAST_SLIDE_MAX_SPEED_INCREASE, delta*SLIDE_DOWN_LERP_FACTOR) +int(slide_down)*FAST_SLIDE_ACCEL
+	owner.velocity.y = lerp( owner.velocity.y, (owner.GRAVITY*gravity_strength)+int(slide_down)*FAST_SLIDE_MAX_SPEED_INCREASE, delta*SLIDE_DOWN_LERP_FACTOR * (1.4-int(slide_down)))
 	owner.move()
 
 	if owner.is_on_floor():

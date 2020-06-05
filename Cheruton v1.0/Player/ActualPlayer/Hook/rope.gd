@@ -67,7 +67,7 @@ func _process(delta):
 	elif stage == JUST_HOOKED:
 		s = attachment_curve.interpolate(s)
 		a = 40
-		length_divisor = lerp(length_divisor,c/100,delta) # this boosts performance
+		length_divisor = lerp(length_divisor,c/100,delta) # this boosts performance by reducing point
 	elif stage == RETRACT:
 		length_divisor = 1
 	update()

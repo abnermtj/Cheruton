@@ -33,7 +33,7 @@ func enter():
 	attack_count = 0
 	attack_again = false
 	attack_timer = ATTACK_TIMER_BUFFER
-	updated_once = false
+	updated_once = false # otherwise attack input triggered twice from initial call
 	enter_vel = owner.velocity
 
 # 3 hit combo

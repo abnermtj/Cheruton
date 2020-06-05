@@ -5,7 +5,7 @@ const REEL_SPEED = 4000
 const MIN_TIP_SPEED = 1900
 
 onready var chain_state = chain_states.HIDDEN
-enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HOOKED = 3, HIDDEN = 4}
+enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HIDDEN = 3}
 
 var direction := Vector2(0,0) # The direction in which the chain was shot
 
@@ -23,14 +23,12 @@ signal shake
 func _on_player_hook_command (com, dir, player_pos):
 	if com == 0: #START
 		chain_state = chain_states.SHOOT
-
 		link.start() # link is the rope
 
 		visible = true
 		direction = dir.normalized()
 		tip.global_position = player_pos # start at player
 		cur_player_pos = player_pos
-
 
 		tween.interpolate_property(self, "speed_tip", SPEED_TIP_START, 0, .66, Tween.TRANS_SINE,Tween.EASE_OUT)
 		tween.start()
@@ -47,7 +45,6 @@ func start_reel():
 func _physics_process(delta: float) -> void:
 	match(chain_state):
 		chain_states.SHOOT:
-			visible = true
 			if speed_tip < MIN_TIP_SPEED:
 				start_reel()
 				return
@@ -72,9 +69,6 @@ func _ready():
 	visible = false
 
 func _process(delta):
-	DataResource.dict_player.chain_in_air = visible
-
-	# drawing new rope link
 	if visible:
 		cur_player_pos = DataResource.dict_player.player_pos
 
