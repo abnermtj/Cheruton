@@ -126,7 +126,8 @@ func move_enemy(delta, dest, factor):
 	for point in range(dest_path.size()):
 		var next_pt_dist = start_pt.distance_to(dest_path[0])
 		if(dist_travel <= next_pt_dist):
-			var move_rotation = get_angle_to(start_pt.linear_interpolate(dest_path[0], dist_travel/next_pt_dist))
+			var ratio = dist_travel/next_pt_dist if (dist_travel/next_pt_dist) else 0
+			var move_rotation = get_angle_to(start_pt.linear_interpolate(dest_path[0], ratio))
 			var motion = Vector2(speed, 0).rotated(move_rotation)
 			#animation = "Walk"
 			move_and_slide(motion * factor)
