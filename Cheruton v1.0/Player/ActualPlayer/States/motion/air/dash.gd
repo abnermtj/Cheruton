@@ -6,6 +6,9 @@ var dir
 var save_col_layer
 var save_col_mask
 
+func handle_input(event): # disables all inputs
+	pass
+
 func enter():
 	owner.can_dash = false
 	save_col_layer = owner.collision_layer

@@ -173,6 +173,7 @@ func get_nearest_hook_point():
 # swordThrow
 func start_sword_throw():
 	can_throw_sword = false
+	can_dash = false
 	sword_stuck = false
 	emit_signal("flying_sword_command", 0, throw_sword_dir)
 func on_sword_result(result, pos):

@@ -18,7 +18,6 @@ func handle_input(event):
 		elif owner.sword_stuck:
 			owner.return_sword_throw()
 	if event.is_action_pressed("dash") and owner.can_dash:
-		owner.can_dash = false
 		emit_signal("finished", "dash")
 
 
