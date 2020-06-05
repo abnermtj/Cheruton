@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var hp_bar
 onready var player = get_parent().get_node("player")
 onready var map_nvg = get_parent().get_node("Navigator")
-onready var enemy_node = get_parent().get_node(self.name)
+
 
 var speed = 120
 var max_HP = 400#stub
@@ -38,8 +38,7 @@ func _ready():
 ##### State Machine #####
 
 func _process(delta):
-	print(self.name)
-	if($HealthBar.value <= 50 && can_heal && !is_dead):
+	if($HealthBar.value <= 50 && can_heal):
 		heal_enemy()
 	else:
 		match state:
@@ -60,7 +59,7 @@ func _process(delta):
 			"Attack":
 				move_enemy(delta, player.global_position, 2)
 				print("Attack")
-				#if(can_fire):
+				#if(can_fire == true):
 				#	attack_player()
 
 ##### Enemy Status #####
@@ -78,19 +77,11 @@ func heal_enemy():
 		yield(get_tree().create_timer(0.25), "timeout")
 		can_heal = true
 
-func enemy_dead():
-	#animation = dead
-	enemy_node.queue_free()
-
-
 # Updates healthbar of player
 func change_healthbar(new_health):
-	if(new_health > curr_HP):
-		is_dead = false
 	curr_HP = clamp(curr_HP + new_health, 0, 100)
 	animate_healthbar($HealthBar.value, curr_HP/max_HP * 100)
-	if($HealthBar.value == 0):
-		enemy_dead()
+
 
 # Sets color of the healthbar of enemy
 func _on_HealthBar_value_changed(value):
@@ -101,7 +92,7 @@ func _on_HealthBar_value_changed(value):
 	else:
 		$HealthBar.set_tint_progress(Color(0.768627, 0.172549, 0.211765))
 
-# Animates the healthbar
+
 func animate_healthbar(start, end):
 	$TextureProgress/Tween.interpolate_property($HealthBar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
@@ -171,13 +162,13 @@ func _physics_process(delta):
 
 # Player has entered enemies guard radius
 func _on_Sight_body_entered(body):
-	if (body == player):
+	if body == player:
 		player_nearby = true
 
 
 # Player has exited enemies guard radius
 func _on_Sight_body_exited(body):
-	if (body == player):
+	if body == player:
 		player_nearby = false
 		if(player_spotted):
 			state = "Search"
@@ -185,7 +176,7 @@ func _on_Sight_body_exited(body):
 
 #Checks if the player is close enough to be attacked
 func LOSCheck():
-	if (player_nearby):
+	if player_nearby == true:
 		var space_state = get_world_2d().direct_space_state
 		var LOSight_id = space_state.intersect_ray(global_position, player.global_position, [self], 2)
 
