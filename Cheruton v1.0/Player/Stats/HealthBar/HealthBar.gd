@@ -14,8 +14,6 @@ func initbar():
 	$HealthRect/HealthStats/HealthVal.text = str(DataResource.temp_dict_player.health_curr, "/",DataResource.temp_dict_player.health_max)
 
 func change_healthbar(new_health):
-	if(new_health < 0):
-		new_health = 0
 	animate_healthbar($HealthRect/HealthBar.value, new_health/health_max * 100)
 
 

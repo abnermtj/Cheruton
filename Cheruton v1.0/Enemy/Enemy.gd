@@ -7,7 +7,7 @@ onready var map_nvg = get_parent().get_node("Navigator")
 
 var speed = 120
 var max_HP = 400#stub
-var curr_HP
+var curr_HP 
 var percent_HP = 100
 var can_fire = true
 var can_heal = true
@@ -23,17 +23,22 @@ var player_nearby
 var player_sight
 var player_spotted
 
+signal change_health(value)
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimationPlayer.play("state_idle")
+	connect("change_health", self, "change_healthbar")
 	curr_HP = max_HP
+	$HealthBar.value = 100
 	start_position = get_global_position()
 
+##### State Machine #####
+
 func _process(delta):
-	percent_HP = curr_HP/max_HP * 100
-	if(percent_HP <= 50 && can_heal):
+	if($HealthBar.value <= 50 && can_heal):
 		heal_enemy()
 	else:
 		match state:
@@ -57,7 +62,9 @@ func _process(delta):
 				#if(can_fire == true):
 				#	attack_player()
 
+##### Enemy Status #####
 
+# Heal Function of enemy - customizable
 func heal_enemy():
 	can_heal = false
 	yield(get_tree().create_timer(0.25), "timeout")
@@ -66,8 +73,31 @@ func heal_enemy():
 		var skill_instance = skill.instance()
 		skill_instance.skill_name = "Heal"
 		add_child(skill_instance)
+		emit_signal("change_health", 40)
 		yield(get_tree().create_timer(0.25), "timeout")
 		can_heal = true
+
+# Updates healthbar of player
+func change_healthbar(new_health):
+	curr_HP = clamp(curr_HP + new_health, 0, 100)
+	animate_healthbar($HealthBar.value, curr_HP/max_HP * 100)
+
+
+# Sets color of the healthbar of enemy
+func _on_HealthBar_value_changed(value):
+	if(value > 49):
+		$HealthBar.set_tint_progress(Color(0.180392, 0.415686, 0.258824))
+	elif(value > 19):
+		$HealthBar.set_tint_progress(Color(0.968627, 0.67451, 0.215686))
+	else:
+		$HealthBar.set_tint_progress(Color(0.768627, 0.172549, 0.211765))
+
+
+func animate_healthbar(start, end):
+	$TextureProgress/Tween.interpolate_property($HealthBar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+##### Enemy AI #####
 
 # Enemy searches for player
 func search_player(delta):
