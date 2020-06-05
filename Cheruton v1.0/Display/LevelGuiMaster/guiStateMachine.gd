@@ -13,7 +13,8 @@ func _ready():
 		"emptygui": $emptygui,
 		"inventory": $inventory,
 		"pause": $pause,
-		"settings": $settings
+		"settings": $settings,
+		"shop": $shop
 	}
 
 	soft_reset()

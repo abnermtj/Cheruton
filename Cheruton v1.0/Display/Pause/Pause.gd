@@ -17,7 +17,6 @@ func _on_ExitPause_pressed():
 	DataResource.save_player()
 	emit_signal("release_gui", "pause")
 
-
 func handle_input(event):
 	if is_active_gui and Input.is_action_just_pressed("escape"):
 		_on_ExitPause_pressed()

@@ -71,8 +71,18 @@ func heal_enemy():
 
 # Enemy searches for player
 func search_player(delta):
+<<<<<<< HEAD
+	move_player(delta, destination)
+	pass
+#
+func return_enemy(delta):
+	move_player(delta, start_position)
+	pass
+=======
 	move_enemy(delta, destination, 1.4)
+>>>>>>> c4373f465080ff27821d2dd047415a8bbad515e2
 
+# Enemy moves back to spawn_point
 func return_enemy(delta):
 	move_enemy(delta, start_position, 1)
 
@@ -109,7 +119,7 @@ func move_enemy(delta, dest, factor):
 				#animation = Idle
 			else:
 				state = "Return"
-
+				
 
 func attack_player():
 	can_fire = false
@@ -129,8 +139,13 @@ func should_set_ignore():
 
 func _physics_process(delta):
 	LOSCheck()
+<<<<<<< HEAD
+	pass
+
+=======
 
 # Player has entered enemies guard radius
+>>>>>>> c4373f465080ff27821d2dd047415a8bbad515e2
 func _on_Sight_body_entered(body):
 	if body == player:
 		player_nearby = true

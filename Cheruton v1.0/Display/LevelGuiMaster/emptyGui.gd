@@ -10,5 +10,3 @@ func handle_input(event):
 			emit_signal("new_gui", "inventory")
 		elif Input.is_action_just_pressed("escape"):
 			emit_signal("new_gui", "pause")
-
-
