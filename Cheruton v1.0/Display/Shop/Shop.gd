@@ -51,10 +51,7 @@ func display_equipped(name):
 	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 	node.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.show()
-		
-func free_the_shop():
-	DataResource.save_rest()
-	emit_signal("release_gui", "shop")
+
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -286,11 +283,6 @@ func _on_Buy_pressed():
 		set_state("Buy")
 		check_fixed()
 
-func _input(event):
-	pass
-
-
-
 #Sell Option Set
 func _on_Sell_pressed():
 	if(shop_setting == "Buy"):
@@ -310,11 +302,9 @@ func check_fixed():
 func set_state(types):
 	if(types != shop_setting):
 		if(shop_setting):
-			item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(default_tab_image)
 			contents.get_node("Items" + shop_setting + "/" + active_tab.name).hide()
 			contents.get_node("Items" + shop_setting).hide()
 		shop_setting = types
-		item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(active_tab_image)
 		if(active_tab):
 			contents.get_node("Items" + shop_setting + "/" + active_tab.name).show()
 		contents.get_node("Items" + shop_setting).show()
@@ -330,3 +320,7 @@ func handle_input(event):
 			
 func _on_ExitShop_pressed():
 	free_the_shop()
+
+func free_the_shop():
+	DataResource.save_rest()
+	emit_signal("release_gui", "shop")
