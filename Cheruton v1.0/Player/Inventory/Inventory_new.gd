@@ -296,7 +296,7 @@ func _item_status(selected_node, status):
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				type.hide()
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			
+			mouse_node = null
 			print("Hide")
 
 
