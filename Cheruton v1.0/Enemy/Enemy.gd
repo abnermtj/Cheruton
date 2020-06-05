@@ -3,11 +3,12 @@ extends KinematicBody2D
 onready var hp_bar
 onready var player = get_parent().get_node("player")
 onready var map_nvg = get_parent().get_node("Navigator")
+onready var enemy_node = get_parent().get_node(self.name)
 
 
 var speed = 120
 var max_HP = 400#stub
-var curr_HP
+var curr_HP 
 var percent_HP = 100
 var can_fire = true
 var can_heal = true
@@ -23,17 +24,22 @@ var player_nearby
 var player_sight
 var player_spotted
 
+signal change_health(value)
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$AnimationPlayer.play("state_idle")
+	connect("change_health", self, "change_healthbar")
 	curr_HP = max_HP
+	$HealthBar.value = 100
 	start_position = get_global_position()
 
+##### State Machine #####
+
 func _process(delta):
-	percent_HP = curr_HP/max_HP * 100
-	if(percent_HP <= 50 && can_heal):
+	if($HealthBar.value <= 50 && can_heal && !is_dead):
 		heal_enemy()
 	else:
 		match state:
@@ -57,7 +63,9 @@ func _process(delta):
 				#if(can_fire == true):
 				#	attack_player()
 
+##### Enemy Status #####
 
+# Heal Function of enemy - customizable
 func heal_enemy():
 	can_heal = false
 	yield(get_tree().create_timer(0.25), "timeout")
@@ -66,8 +74,40 @@ func heal_enemy():
 		var skill_instance = skill.instance()
 		skill_instance.skill_name = "Heal"
 		add_child(skill_instance)
+		emit_signal("change_health", 40)
 		yield(get_tree().create_timer(0.25), "timeout")
 		can_heal = true
+
+# Enemy has died
+func enemy_dead():
+	#animation = dead
+	#generate loot
+	print("Enemy Dead")
+	enemy_node.queue_free()
+
+# Updates healthbar of player
+func change_healthbar(new_health):
+	if(abs(new_health) > curr_HP || new_health < 0):
+		is_dead = true
+	curr_HP = clamp(curr_HP + new_health, 0, 100)
+	animate_healthbar($HealthBar.value, curr_HP/max_HP * 100)
+
+
+# Sets color of the healthbar of enemy
+func _on_HealthBar_value_changed(value):
+	if(value > 49):
+		$HealthBar.set_tint_progress(Color(0.180392, 0.415686, 0.258824))
+	elif(value > 19):
+		$HealthBar.set_tint_progress(Color(0.968627, 0.67451, 0.215686))
+	else:
+		$HealthBar.set_tint_progress(Color(0.768627, 0.172549, 0.211765))
+
+# Animates the healthbar
+func animate_healthbar(start, end):
+	$TextureProgress/Tween.interpolate_property($HealthBar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+##### Enemy AI #####
 
 # Enemy searches for player
 func search_player(delta):
@@ -78,7 +118,6 @@ func return_enemy(delta):
 
 # Enemy moves to desired location
 func move_enemy(delta, dest, factor):
-	pass
 	var dest_path = map_nvg.get_simple_path(get_global_position(), dest)
 	var start_pt = get_global_position()
 	var dist_travel = speed * delta
@@ -90,7 +129,7 @@ func move_enemy(delta, dest, factor):
 			var move_rotation = get_angle_to(start_pt.linear_interpolate(dest_path[0], dist_travel/next_pt_dist))
 			var motion = Vector2(speed, 0).rotated(move_rotation)
 			#animation = "Walk"
-			move_and_slide(motion* factor)
+			move_and_slide(motion * factor)
 			break
 		#Moves to next point - this point is taken as the new start point
 		dist_travel -= next_pt_dist
@@ -132,13 +171,13 @@ func _physics_process(delta):
 
 # Player has entered enemies guard radius
 func _on_Sight_body_entered(body):
-	if body == player:
+	if (body == player):
 		player_nearby = true
 
 
 # Player has exited enemies guard radius
 func _on_Sight_body_exited(body):
-	if body == player:
+	if (body == player):
 		player_nearby = false
 		if(player_spotted):
 			state = "Search"
@@ -146,7 +185,7 @@ func _on_Sight_body_exited(body):
 
 #Checks if the player is close enough to be attacked
 func LOSCheck():
-	if player_nearby == true:
+	if (player_nearby):
 		var space_state = get_world_2d().direct_space_state
 		var LOSight_id = space_state.intersect_ray(global_position, player.global_position, [self], 2)
 

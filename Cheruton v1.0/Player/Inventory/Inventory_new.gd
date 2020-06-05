@@ -6,6 +6,11 @@ var mouse_count = 0
 var mouse_node
 
 signal tab_changed(next_tab)
+const WEAPONS = 1
+const APPAREL = 2
+const CONSUM = 3
+const MISC = 4
+const KEYITEMS = 5
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
@@ -49,12 +54,12 @@ func init_equipped():
 		display_equipped("Apparel")
 
 func display_equipped(name):
-	var main = get_node("Border/Bg/Contents/Items")
-	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
-	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	var type = equipped_coins.get_node(name)
+	var node = items.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
 	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 	node.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.show()
+
 
 func free_the_inventory():
 	DataResource.save_rest()
@@ -110,11 +115,11 @@ func load_data():
 	var key_items_scroll = items.get_node("KeyItems/Column")
 
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list, 100)
-	generate_list(apparel_scroll, apparel_list, 200)
-	generate_list(consum_scroll, consum_list, 300)
-	generate_list(misc_scroll, misc_list, 400)
-	generate_list(key_items_scroll, key_items_list, 500)
+	generate_list(weapons_scroll, weapons_list, WEAPONS * 100)
+	generate_list(apparel_scroll, apparel_list, APPAREL * 100)
+	generate_list(consum_scroll, consum_list, CONSUM * 100)
+	generate_list(misc_scroll, misc_list, MISC * 100)
+	generate_list(key_items_scroll, key_items_list, KEYITEMS * 100)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
@@ -182,20 +187,26 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
-		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-			var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
-			# Item not equipped or Item Selected is a different weapon
-			if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
-				_item_status(node, "EQUIP")
-			# Removing equipped item
-			else:
-				_item_status(node, "DEQUIP")
-		elif(node.name == "Weapons" || node.name == "Apparel"):
-			return
-		elif(active_tab.name == "Consum"):
-			use_item()
+		utilize_item(node)
 		mouse_count = 0
 
+# Use the item that has been double clicked
+func utilize_item(node):
+	# Dequipping item
+	print(node.name)
+	if(node.name == "Weapons" || node.name == "Apparel"):
+		_item_status(node, "DEQUIP")
+
+	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+		var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		# Item not equipped or Item Selected is a different weapon
+		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+			_item_status(node, "EQUIP")
+		# Removing equipped item
+		else:
+			_item_status(node, "DEQUIP")
+	elif(active_tab.name == "Consum"):
+		use_item()
 
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
@@ -263,7 +274,7 @@ func delete_item():
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
 
-
+# Handles equipping of the item
 func _item_status(selected_node, status):
 	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
 	match status:
@@ -275,16 +286,21 @@ func _item_status(selected_node, status):
 			type.show()
 			print("Show")
 		"DEQUIP":
-			print(selected_node.name)
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
-				var actual = items.get_node(selected_node.name + "/Column").find_node(str(DataResource.temp_dict_player[active_tab.name + "_item"]), true, false)
+				var actual = items.get_node(selected_node.name + "/Column").find_node(str(DataResource.temp_dict_player[selected_node.name + "_item"]), true, false)
 				actual.get_node("Background/ItemBg").texture = null
+				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+				selected_node.hide()
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
-			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
+				type.hide()
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			type.hide()
+			mouse_node = null
 			print("Hide")
+
+
+
 #Debug
 func _on_Button_pressed():
 	delete_item()

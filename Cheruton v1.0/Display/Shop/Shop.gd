@@ -1,4 +1,4 @@
-extends Control
+extends baseGui
 
 var active_tab
 var item_state = "HOVER"
@@ -36,6 +36,7 @@ func _ready():
 	set_state("Buy")
 	load_data()
 	emit_signal("tab_changed", "Weapons")
+	tabs.hide()
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 func _on_Exit_pressed():
@@ -50,11 +51,6 @@ func display_equipped(name):
 	node.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.show()
 
-func free_the_shop():
-	var scene_to_free = DataResource.current_scene.get_child(DataResource.current_scene.get_child_count() - 1)
-	DataResource.save_rest()
-	yield(get_tree().create_timer(0.2), "timeout")
-	scene_to_free.queue_free()
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -281,14 +277,17 @@ func _on_Button_pressed():
 
 # Buy Option set
 func _on_Buy_pressed():
-	set_state("Buy")
-	check_fixed()
-
+	if(shop_setting == "Sell"):
+		tabs.hide()
+		set_state("Buy")
+		check_fixed()
 
 #Sell Option Set
 func _on_Sell_pressed():
-	set_state("Sell")
-	check_fixed()
+	if(shop_setting == "Buy"):
+		tabs.show()
+		set_state("Sell")
+		check_fixed()
 
 
 func check_fixed():
@@ -302,11 +301,25 @@ func check_fixed():
 func set_state(types):
 	if(types != shop_setting):
 		if(shop_setting):
-			item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(default_tab_image)
 			contents.get_node("Items" + shop_setting + "/" + active_tab.name).hide()
 			contents.get_node("Items" + shop_setting).hide()
 		shop_setting = types
-		item_dec.get_node(shop_setting + "/" + shop_setting).set_normal_texture(active_tab_image)
 		if(active_tab):
 			contents.get_node("Items" + shop_setting + "/" + active_tab.name).show()
 		contents.get_node("Items" + shop_setting).show()
+
+func handle_input(event):
+	if is_active_gui:
+		if Input.is_action_just_pressed("escape"):
+			_on_ExitShop_pressed()
+		elif Input.is_action_just_pressed("shop_buy"):
+			_on_Buy_pressed()
+		elif Input.is_action_just_pressed("shop_sell"):
+			_on_Sell_pressed()
+			
+func _on_ExitShop_pressed():
+	free_the_shop()
+
+func free_the_shop():
+	DataResource.save_rest()
+	emit_signal("release_gui", "shop")
