@@ -27,11 +27,11 @@ texture = ExtResource( 2 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -1.0
-margin_top = -1.0
+margin_top = -1.2
 margin_right = 189.0
-margin_bottom = 52.0
+margin_bottom = 51.8
 rect_min_size = Vector2( 1, 1 )
-rect_scale = Vector2( 0.01, 0.005 )
+rect_scale = Vector2( 0.01, 0.009 )
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 __meta__ = {

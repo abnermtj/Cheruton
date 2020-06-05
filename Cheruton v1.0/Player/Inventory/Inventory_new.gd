@@ -6,6 +6,11 @@ var mouse_count = 0
 var mouse_node
 
 signal tab_changed(next_tab)
+const WEAPONS = 1
+const APPAREL = 2
+const CONSUM = 3
+const MISC = 4
+const KEYITEMS = 5
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
@@ -110,11 +115,11 @@ func load_data():
 	var key_items_scroll = items.get_node("KeyItems/Column")
 
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list, 100)
-	generate_list(apparel_scroll, apparel_list, 200)
-	generate_list(consum_scroll, consum_list, 300)
-	generate_list(misc_scroll, misc_list, 400)
-	generate_list(key_items_scroll, key_items_list, 500)
+	generate_list(weapons_scroll, weapons_list, WEAPONS * 100)
+	generate_list(apparel_scroll, apparel_list, APPAREL * 100)
+	generate_list(consum_scroll, consum_list, CONSUM * 100)
+	generate_list(misc_scroll, misc_list, MISC * 100)
+	generate_list(key_items_scroll, key_items_list, KEYITEMS * 100)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
@@ -182,7 +187,9 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
+		print(node.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			#if(node.name !)
 			var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 			# Item not equipped or Item Selected is a different weapon
 			if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
@@ -191,6 +198,7 @@ func _on_pressed(node):
 			else:
 				_item_status(node, "DEQUIP")
 		elif(node.name == "Weapons" || node.name == "Apparel"):
+			mouse_count = 0
 			return
 		elif(active_tab.name == "Consum"):
 			use_item()
