@@ -79,10 +79,11 @@ func _physics_process(delta):
 func _process(delta):
 	if active:
 		cur_player_pos = DataResource.dict_player.player_pos
+		var bodies_in_collection_area = $collectionArea.get_overlapping_bodies()
+		var bodies_in_limit_area = $limitArea.get_overlapping_bodies()
 
-func _on_collectionArea_body_entered(body): # only player would be detected due to mask layer
-	if state == sword_states.HIT:
-		state = sword_states.HIDDEN
-
-func _on_limitArea_body_exited(body):
-	state = sword_states.RETURN
+		if state == sword_states.HIT:
+			if bodies_in_collection_area:
+				state = sword_states.RETURN
+			if not bodies_in_limit_area:
+				state = sword_states.RETURN

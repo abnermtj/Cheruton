@@ -47,12 +47,6 @@ func enter():
 
 # Invariant : hook tip already planted
 func update(delta):
-	if owner.is_on_ceiling():
-		hit_ceil = true
-	if owner.is_on_wall():
-		hit_wall = true
-	if owner.is_on_floor():
-		emit_signal("finished", "run")
 	if owner.get_close_to_floor_collider():
 		close_to_floor = true
 
@@ -66,6 +60,13 @@ func update(delta):
 	_constrain( )
 	_adjust()
 	owner.move()
+
+	if owner.is_on_ceiling():
+		hit_ceil = true
+	if owner.is_on_wall():
+		hit_wall = true
+	if owner.is_on_floor():
+		emit_signal("finished", "run")
 
 	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags
 
