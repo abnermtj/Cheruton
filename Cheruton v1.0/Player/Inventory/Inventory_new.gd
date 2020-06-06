@@ -143,6 +143,7 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		#Add properties
 		var item = row.get_node(str(tab_index + index))
 		item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+		item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
 		var item_pict
 		if(list_tab["Item" + str(index)].item_png):
 			item_pict  = load(list_tab["Item" + str(index)].item_png)

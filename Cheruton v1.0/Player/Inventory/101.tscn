@@ -24,6 +24,18 @@ size_flags_vertical = 3
 texture = ExtResource( 2 )
 expand = true
 
+[node name="ItemName" type="Label" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 65, 35 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ItemBg" type="TextureRect" parent="Background"]
 margin_right = 70.0
 margin_bottom = 70.0

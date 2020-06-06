@@ -18,9 +18,6 @@ onready var apparel_sell = DataResource.dict_inventory.get("Apparel")
 onready var consum_sell = DataResource.dict_inventory.get("Consum")
 onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
-
-
-
 onready var contents = $Border/Bg/Main/Rest/Contents
 onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
@@ -126,10 +123,11 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
 
 		#Add properties
-		var item = row.get_node(str(tab_index + index))
+		var item = row.get_node(str(tab_index + index))	
 		var item_pict
 		match item_dec:
 			"Sell":
+				item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
 				if(list_tab["Item" + str(index)].item_qty):
 					item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
 
@@ -138,6 +136,7 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 
 			"Buy":
 				var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
+				item.get_node("Background/ItemName").name = list_tab["Item" + str(index)]
 				if(node.ItemPNG):
 					item_pict = load(node.ItemPNG)
 		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
@@ -259,7 +258,7 @@ func buy_item():
 
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-	var node = items_sell.find_node(mouse_node.name, true, false)
+	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
 	print (node.name)
 	#node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
 
