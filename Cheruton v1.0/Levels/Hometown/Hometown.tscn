@@ -267,6 +267,12 @@ position = Vector2( 6656.82, -231.874 )
 [node name="grapplePoint2" parent="grapplePoints" instance=ExtResource( 11 )]
 position = Vector2( 7541.52, -231.874 )
 
+[node name="grapplePoint3" parent="grapplePoints" instance=ExtResource( 11 )]
+position = Vector2( 8237.79, -231.874 )
+
+[node name="grapplePoint4" parent="grapplePoints" instance=ExtResource( 11 )]
+position = Vector2( 7853.87, -218.86 )
+
 [node name="grapple_hook" parent="." instance=ExtResource( 4 )]
 
 [node name="flying_sword" parent="." instance=ExtResource( 12 )]

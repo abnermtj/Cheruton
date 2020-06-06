@@ -8,7 +8,6 @@ func handle_input(event):
 		if Input.is_action_pressed("move_down"):
 			owner.is_between_tiles = true
 			owner.global_position.y += 1
-			emit_signal("finished", "fall")
 		else:
 			emit_signal("finished", "jump")
 	return .handle_input(event) # everything below here not dealt twith

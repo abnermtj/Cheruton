@@ -316,7 +316,7 @@ func handle_input(event):
 			_on_Buy_pressed()
 		elif Input.is_action_just_pressed("shop_sell"):
 			_on_Sell_pressed()
-			
+
 func _on_ExitShop_pressed():
 	free_the_shop()
 

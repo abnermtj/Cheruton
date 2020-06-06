@@ -8,7 +8,7 @@ onready var enemy_node = get_parent().get_node(self.name)
 
 var speed = 120
 var max_HP = 400#stub
-var curr_HP 
+var curr_HP
 var percent_HP = 100
 var can_fire = true
 var can_heal = true

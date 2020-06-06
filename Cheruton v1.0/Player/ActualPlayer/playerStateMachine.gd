@@ -5,7 +5,6 @@ func _ready():
 		"idle": $idle,
 		"run": $run,
 		"jump": $jump,
-		"jumpdown": $jumpdown,
 		"fall": $fall,
 		"hook": $hook,
 		"slide" : $slide,

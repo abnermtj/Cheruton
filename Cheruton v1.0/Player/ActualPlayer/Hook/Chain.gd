@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			var col = tip.move_and_collide(direction * speed_tip * delta) # in initial direction of player input
 			if col :
 				chain_state = chain_states.HOOKED
-				emit_signal("hooked",0, tip.global_position)
+				emit_signal("hooked",0, tip.global_position, col.collider)
 				emit_signal("shake", .105, 7, 3, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1))
 		chain_states.HOOKED:
 			pass

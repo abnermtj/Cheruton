@@ -21,7 +21,8 @@ var hook_dir = Vector2()
 var hooked
 var rope_length = 0.0
 var is_between_tiles = true
-var nearest_hook_point = Vector2()
+var nearest_hook_point
+var previous_hook_point
 
 var exit_slide_blocked = false
 
@@ -31,7 +32,7 @@ var throw_sword_dir = Vector2()
 var sword_stuck = false
 var sword_pos = Vector2()
 
-var can_dash = true
+var can_dash = false
 var can_attack = true
 var can_hook = true
 var can_throw_sword = true
@@ -129,13 +130,14 @@ func start_hook():
 	$grappleCoolDown.start(.5)
 func _on_grappleCoolDown_timeout():
 	can_hook = true
-func _on_Chain_hooked(command, tip_p):
+func _on_Chain_hooked(command, tip_p, node):
 	if command == 0: # good hook
 		hooked = true
 		tip_pos = tip_p
 		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip
 		states._change_state("hook")
 		set_camera_mode_logic()
+		previous_hook_point = node
 	elif command == 1: # bad hook
 		play_sound("hook_bad")
 func get_close_to_floor_collider():
@@ -162,13 +164,37 @@ func get_nearest_hook_point():
 
 	var min_dist = INF
 	var closest_hook_point = null
+
+	# nearest point in direction of character look
 	for hook_point in non_blocked_hook_points:
+		if hook_point == previous_hook_point: continue
+
+		print (previous_hook_point)
+		print(hook_point)
+
 		var cur_dist = global_position.distance_to(hook_point.global_position)
 		# only hook to points in direction of character look
 		if sign(look_direction.x) == sign(hook_point.global_position.x - global_position.x + look_direction.x*170) and  min_dist > cur_dist:
 			min_dist = cur_dist
 			closest_hook_point = hook_point
-	if closest_hook_point: return closest_hook_point
+
+	# nothing in the direction of character look, redo above but behind character
+	if not closest_hook_point:
+		for hook_point in non_blocked_hook_points:
+			if hook_point == previous_hook_point: continue
+
+			var cur_dist = global_position.distance_to(hook_point.global_position)
+			if sign(look_direction.x) != sign(hook_point.global_position.x - global_position.x + -look_direction.x*170) and  min_dist > cur_dist:
+				min_dist = cur_dist
+				closest_hook_point = hook_point
+
+	# Last option is to hook to old hook point if in range
+	if not closest_hook_point:
+		var result = space_state.intersect_ray(global_position + Vector2(0,-100), previous_hook_point.global_position ,[self,previous_hook_point])
+		if not result:
+			closest_hook_point = previous_hook_point
+	if closest_hook_point:
+		return closest_hook_point
 
 # swordThrow
 func start_sword_throw():
@@ -183,6 +209,7 @@ func on_sword_result(result, pos):
 		can_dash = true
 	elif result == 1: # returned
 		can_throw_sword = true
+		can_dash = false
 func return_sword_throw():
 	emit_signal("flying_sword_command", 1, Vector2())
 

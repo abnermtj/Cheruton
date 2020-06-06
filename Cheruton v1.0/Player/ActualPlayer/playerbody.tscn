@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General24fpsNEW.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hook_fail_Real/interface1.wav" type="AudioStream" id=19]
 [ext_resource path="res://Player/ActualPlayer/Sfx/land/realisti/jumpland.wav" type="AudioStream" id=20]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/dash.gd" type="Script" id=21]
-[ext_resource path="res://Player/ActualPlayer/States/motion/air/jumpdown.gd" type="Script" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack_air_1"
@@ -831,9 +830,6 @@ script = ExtResource( 4 )
 
 [node name="jump" type="Node" parent="states"]
 script = ExtResource( 7 )
-
-[node name="jumpdown" type="Node" parent="states"]
-script = ExtResource( 22 )
 
 [node name="run" type="Node" parent="states"]
 script = ExtResource( 6 )
