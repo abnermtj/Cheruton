@@ -219,7 +219,7 @@ __meta__ = {
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
 visible = false
 margin_top = 5.0
-margin_right = 748.0
+margin_right = 758.0
 margin_bottom = 45.0
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs"]
@@ -228,7 +228,7 @@ margin_bottom = 27.0
 
 [node name="Weapons" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
 margin_left = 4.0
-margin_right = 186.0
+margin_right = 188.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -260,8 +260,8 @@ __meta__ = {
 }
 
 [node name="Apparel" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 190.0
-margin_right = 372.0
+margin_left = 192.0
+margin_right = 376.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -293,8 +293,8 @@ __meta__ = {
 }
 
 [node name="Consum" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 376.0
-margin_right = 558.0
+margin_left = 380.0
+margin_right = 564.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -326,8 +326,8 @@ __meta__ = {
 }
 
 [node name="Misc" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 562.0
-margin_right = 744.0
+margin_left = 568.0
+margin_right = 752.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
@@ -359,9 +359,9 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 748.0
+margin_left = 756.0
 margin_top = 13.0
-margin_right = 748.0
+margin_right = 756.0
 margin_bottom = 27.0
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Rest/Contents"]
@@ -375,6 +375,7 @@ __meta__ = {
 }
 
 [node name="ItemsSell" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+visible = false
 margin_top = 10.0
 margin_right = 758.0
 margin_bottom = 313.0
@@ -435,66 +436,31 @@ margin_right = 758.0
 margin_bottom = 158.0
 
 [node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
-visible = false
-margin_top = 54.0
-margin_right = 748.0
+margin_top = 10.0
+margin_right = 758.0
 margin_bottom = 313.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-margin_top = 122.0
-margin_bottom = 136.0
+margin_top = 144.0
+margin_bottom = 158.0
 
-[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-visible = false
+[node name="General" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
 margin_left = 4.0
-margin_right = 744.0
-margin_bottom = 259.0
+margin_right = 754.0
+margin_bottom = 303.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Weapons"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/General"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Weapons/Column"]
-
-[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-visible = false
-margin_left = 171.0
-margin_right = 334.0
-margin_bottom = 259.0
-size_flags_horizontal = 3
-
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Apparel"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Apparel/Column"]
-
-[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-visible = false
-margin_left = 226.0
-margin_right = 444.0
-margin_bottom = 259.0
-size_flags_horizontal = 3
-
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Consum"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Consum/Column"]
-
-[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-visible = false
-margin_left = 338.0
-margin_right = 668.0
-margin_bottom = 259.0
-size_flags_horizontal = 3
-
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Misc"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/Misc/Column"]
+[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/General/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-margin_left = 748.0
-margin_top = 122.0
-margin_right = 748.0
-margin_bottom = 136.0
+margin_left = 758.0
+margin_top = 144.0
+margin_right = 758.0
+margin_bottom = 158.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Rest/Contents"]
 margin_top = 317.0
