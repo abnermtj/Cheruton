@@ -425,33 +425,34 @@ margin_right = 211.0
 [node name="MMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
 margin_left = 141.0
 margin_top = 28.0
-margin_right = 410.0
+margin_right = 684.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 
 [node name="Coins" type="TextureRect" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 414.0
-margin_right = 484.0
+margin_left = 688.0
+margin_right = 758.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 7 )
 expand = true
 
 [node name="CoinsVal" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 488.0
+margin_left = 762.0
 margin_top = 24.0
-margin_right = 488.0
+margin_right = 762.0
 margin_bottom = 45.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 492.0
+margin_left = 766.0
 margin_top = 28.0
-margin_right = 492.0
+margin_right = 766.0
 margin_bottom = 42.0
 
 [node name="Button" type="Button" parent="Border/Bg/Contents/EquippedCoins"]
+visible = false
 margin_left = 496.0
 margin_right = 766.0
 margin_bottom = 70.0
