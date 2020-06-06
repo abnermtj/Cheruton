@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Chest.gd" type="Script" id=1]
+[ext_resource path="res://Props/Chest/Chest.gd" type="Script" id=1]
 [ext_resource path="res://Props/Chest/ref2.png" type="Texture" id=2]
 [ext_resource path="res://Props/Chest/ref6.png" type="Texture" id=3]
 [ext_resource path="res://Props/Chest/ref3.png" type="Texture" id=4]
 [ext_resource path="res://Props/Chest/ref4.png" type="Texture" id=5]
 [ext_resource path="res://Props/Chest/ref1.png" type="Texture" id=6]
 [ext_resource path="res://Props/Chest/ref5.png" type="Texture" id=7]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
