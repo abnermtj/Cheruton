@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Stats/HealthBar/playerhealthbar_fill.png" type="Texture" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/playerhealthbar_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.gd" type="Script" id=3]
+[ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
 
-
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
 
 [node name="HealthBar" type="Control"]
 anchor_right = 1.0
@@ -26,30 +29,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthStats" type="HBoxContainer" parent="HealthRect"]
+[node name="HealthBarDesign" type="HBoxContainer" parent="HealthRect"]
 margin_right = 190.0
-margin_bottom = 14.0
-
-[node name="HealthName" type="Label" parent="HealthRect/HealthStats"]
-margin_right = 46.0
-margin_bottom = 14.0
-text = "Health:"
+margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthVal" type="Label" parent="HealthRect/HealthStats"]
-margin_left = 50.0
-margin_right = 50.0
-margin_bottom = 14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Heart" type="AnimationPlayer" parent="HealthRect/HealthBarDesign"]
 
-[node name="HealthBar" type="TextureProgress" parent="HealthRect"]
-margin_top = 18.0
+[node name="HealthBar" type="TextureProgress" parent="HealthRect/HealthBarDesign"]
 margin_right = 190.0
-margin_bottom = 71.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 50, 50 )
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
@@ -57,4 +48,20 @@ tint_over = Color( 1, 1, 0.980392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="HealthRect/HealthBar" to="." method="_on_HealthBar_value_changed"]
+
+[node name="HealthStats" type="HBoxContainer" parent="HealthRect"]
+margin_top = 57.0
+margin_right = 190.0
+margin_bottom = 90.0
+
+[node name="HealthVal" type="Label" parent="HealthRect/HealthStats"]
+margin_right = 190.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "50/50"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="HealthRect/HealthBarDesign/HealthBar" to="." method="_on_HealthBar_value_changed"]

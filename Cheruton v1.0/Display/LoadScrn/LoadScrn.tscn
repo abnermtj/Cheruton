@@ -1,9 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
 
 [node name="LoadScrn" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 4, 4 )
+rect_scale = Vector2( 6, 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,9 +33,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
 margin_left = 19.0
-margin_top = 33.0
+margin_top = 32.0
 margin_right = 80.0
-margin_bottom = 65.0
+margin_bottom = 67.0
 
 [node name="LoadWord" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_right = 61.0
@@ -39,6 +45,8 @@ text = "Loading..."
 [node name="LoadProg" type="ProgressBar" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 61.0
-margin_bottom = 32.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="Tween" type="Tween" parent="."]
