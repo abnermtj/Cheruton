@@ -41,27 +41,7 @@ func _ready():
 func _process(delta):
 	if($HealthBar.value <= 50 && can_heal && !is_dead):
 		heal_enemy()
-	else:
-		match state:
-			"Ignore":
-				print("Ignore")
-				#animation = "Idle"
-				pass
-			"Search":
-				print("Search")
-				search_player(delta)
-			"Return":
-				print("Return")
-				# Create pause to allow enemy to scan borders of search first
-				#animation = "Idle"
-				yield(get_tree().create_timer(3), "timeout")
-				if(state == "Return"):
-					return_enemy(delta)
-			"Attack":
-				move_enemy(delta, player.global_position, 2)
-				print("Attack")
-				#if(can_fire == true):
-				#	attack_player()
+
 
 ##### Enemy Status #####
 
@@ -169,6 +149,26 @@ func should_set_ignore():
 		state = "Ignore"
 
 func _physics_process(delta):
+	match state:
+		"Ignore":
+			print("Ignore")
+			#animation = "Idle"
+			pass
+		"Search":
+			print("Search")
+			search_player(delta)
+		"Return":
+			print("Return")
+			# Create pause to allow enemy to scan borders of search first
+			#animation = "Idle"
+			yield(get_tree().create_timer(3), "timeout")
+			if(state == "Return"):
+				return_enemy(delta)
+		"Attack":
+			move_enemy(delta, player.global_position, 2)
+			print("Attack")
+			#if(can_fire == true):
+			#	attack_player()
 	LOSCheck()
 
 # Player has entered enemies guard radius
