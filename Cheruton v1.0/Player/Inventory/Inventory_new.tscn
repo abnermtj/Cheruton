@@ -47,7 +47,7 @@ margin_top = -240.0
 margin_right = 440.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 800, 480 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,7 +60,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
