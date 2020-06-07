@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
 [ext_resource path="res://Display/Shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Player/Inventory/Icons/Exit.png" type="Texture" id=5]
+[ext_resource path="res://Display/Shop/selling_item.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
@@ -526,6 +527,10 @@ margin_bottom = 410.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Transaction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 6.0
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Rest/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

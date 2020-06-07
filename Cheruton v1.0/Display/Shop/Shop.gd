@@ -238,7 +238,7 @@ func sell_item():
 		main.find_node(deletion, true, false).queue_free()
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
-
+	$Transaction.play()
 # Increases qty of item by 1
 func buy_item():
 	# contains item type, item name and quantity
@@ -260,6 +260,7 @@ func buy_item():
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
 	print (node.name)
+	$Transaction.play()
 	#node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
 
 #Debug
