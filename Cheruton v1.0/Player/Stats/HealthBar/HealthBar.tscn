@@ -38,6 +38,8 @@ __meta__ = {
 
 [node name="Heart" type="AnimationPlayer" parent="HealthRect/HealthBarDesign"]
 
+[node name="HeartSprite" type="Sprite" parent="HealthRect/HealthBarDesign"]
+
 [node name="HealthBar" type="TextureProgress" parent="HealthRect/HealthBarDesign"]
 margin_right = 190.0
 margin_bottom = 53.0
