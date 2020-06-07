@@ -91,7 +91,8 @@ func reset_player():
 	save_player()
 
 func reset_settings():
-	dict_settings.audio = -10
+	dict_settings.audio_master = -10
+	dict_settings.audio_sfx = -10
 	dict_settings.is_mute = false
 	save_rest()
 

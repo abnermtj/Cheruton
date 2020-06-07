@@ -259,7 +259,6 @@ func buy_item():
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
-	print (node.name)
 	$Transaction.play()
 	#node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
 

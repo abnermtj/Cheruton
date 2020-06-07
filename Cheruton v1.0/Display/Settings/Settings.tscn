@@ -8,11 +8,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Label" parent="."]
+[node name="List" type="VBoxContainer" parent="."]
 margin_left = 135.482
 margin_top = 10.7641
-margin_right = 186.482
-margin_bottom = 41.7641
+margin_right = 175.482
+margin_bottom = 50.7641
+
+[node name="Settings" type="Label" parent="List"]
+margin_right = 51.0
+margin_bottom = 31.0
 text = "Settings
 "
 __meta__ = {
@@ -59,6 +63,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SFXVol" type="Label" parent="."]
+margin_left = 29.8537
+margin_top = 72.5013
+margin_right = 121.854
+margin_bottom = 103.501
+text = "SFX Volume: 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolBar" type="ProgressBar" parent="SFXVol"]
+margin_left = 112.418
+margin_top = -0.327515
+margin_right = 202.418
+margin_bottom = 13.6725
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolUp" type="Button" parent="SFXVol"]
+margin_left = 221.237
+margin_top = -3.09061
+margin_right = 241.237
+margin_bottom = 16.9094
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolDown" type="Button" parent="SFXVol"]
+margin_left = 249.237
+margin_top = -3.09061
+margin_right = 269.237
+margin_bottom = 16.9094
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mute" type="Label" parent="."]
 margin_left = 24.8363
 margin_top = 125.363
@@ -91,5 +135,7 @@ __meta__ = {
 }
 [connection signal="pressed" from="MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
+[connection signal="pressed" from="SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
 [connection signal="pressed" from="Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

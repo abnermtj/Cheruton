@@ -531,6 +531,7 @@ wait_time = 0.25
 [node name="Transaction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = 6.0
+bus = "SFX"
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Rest/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
