@@ -240,28 +240,27 @@ func sell_item():
 	$Transaction.play()
 # Increases qty of item by 1
 func buy_item():
-	pass
-#	# contains item type, item name and quantity
-#	var index = int(mouse_node.name)%100
-#	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
-#	if(coins_val > DataResource.temp_dict_player["coins"]):
-#		return
-#	var item_data = []
-#	#Append item to inventory
-#	var current_tab_name = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemType
-#	item_data.append(current_tab_name)
-#	item_data.append(DataResource.dict_item_shop["Item" + str(index)])
-#	item_data.append(1)
-#	Loot.loot_dict[1] = item_data
-#	Loot.append_loot(1)
-#	# Update coins val and item qty
-#
-#	DataFunctions.change_coins(-coins_val)
-#	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-#	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
-#	$Transaction.play()
-#	#node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
+	# contains item type, item name and quantity
+	var index = int(mouse_node.name)%100
+	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
+	if(coins_val > DataResource.temp_dict_player["coins"]):
+		return
+	var item_data = []
+	#Append item to inventory
+	var current_tab_name = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemType
+	item_data.append(current_tab_name)
+	item_data.append(DataResource.dict_item_shop["Item" + str(index)])
+	item_data.append(1)
+	Loot.loot_dict[1] = item_data
+	Loot.append_loot(1)
+	# Update coins val and item qty
 
+	DataFunctions.change_coins(-coins_val)
+	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
+	print(node.name)
+	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
+	$Transaction.play()
 #Debug
 func _on_Button_pressed():
 	match shop_setting:
