@@ -8,7 +8,6 @@ func _ready():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 	#Cursor.init_cursor()
 	#Testing loot functionality
-	Loot.determine_loot("test")
 	LevelguiMaster.enabled = false
 
 
