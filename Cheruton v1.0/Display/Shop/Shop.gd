@@ -259,7 +259,7 @@ func buy_item():
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
 	print(node.name)
-	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[current_tab_name]["Item" + str(index)].item_qty)
+	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(int(node.get_parent().get_node("ItemBg/ItemBtn/Qty").text) + 1)
 	$Transaction.play()
 #Debug
 func _on_Button_pressed():
