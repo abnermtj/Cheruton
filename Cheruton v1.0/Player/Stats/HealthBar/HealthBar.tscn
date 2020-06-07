@@ -4,8 +4,6 @@
 [ext_resource path="res://Player/Stats/HealthBar/playerhealthbar_bg.png" type="Texture" id=2]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.gd" type="Script" id=3]
 
-
-
 [node name="HealthBar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,10 +44,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" type="TextureProgress" parent="HealthRect"]
+[node name="HealthBarDesign" type="HBoxContainer" parent="HealthRect"]
 margin_top = 18.0
 margin_right = 190.0
 margin_bottom = 71.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HealthRect/HealthBarDesign"]
+margin_right = 190.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 50, 50 )
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
@@ -57,4 +62,4 @@ tint_over = Color( 1, 1, 0.980392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="HealthRect/HealthBar" to="." method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="HealthRect/HealthBarDesign/HealthBar" to="." method="_on_HealthBar_value_changed"]

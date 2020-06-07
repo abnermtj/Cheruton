@@ -150,7 +150,7 @@ func move_enemy(delta, dest, factor):
 			else:
 				state = "Return"
 
-
+# Attacks the player
 func attack_player():
 	can_fire = false
 	speed = 0
@@ -161,6 +161,7 @@ func attack_player():
 	can_fire = true
 	speed = 120
 
+# Checks if the enemy is at his original position
 func should_set_ignore():
 	if(get_global_position() != start_position):
 		state = "Return"
