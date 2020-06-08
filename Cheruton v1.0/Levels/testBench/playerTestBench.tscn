@@ -7,8 +7,9 @@
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
 [ext_resource path="res://Levels/levelAssets/bouncePad/bouncePad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy/TestEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 2351.12, 679.702, 535.844, 692.653, 4.60406, 663.083, 11.4203, 613.098, 976.173, 440.111, 6588.6, 600.499, 0.542603, 481.122, 6589.89, 661.24 )
