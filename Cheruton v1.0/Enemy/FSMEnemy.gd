@@ -9,12 +9,12 @@ var state_prev = null
 var object = null
 
 
-func _init( input_object, parent_node, initial_state, self_debug = false ):
+func _init( input_object, initial_state, self_debug = false ):
 	self.object = input_object
 	#self.debug = self_debug
-	_set_states_parent_node(parent_node)
+	_set_states_parent_node(initial_state.get_parent())
 	state_next = initial_state
-	pass
+
 
 func _set_states_parent_node(p_node):
 	#if debug: print( "Found ", p_node.get_child_count(), " states" )

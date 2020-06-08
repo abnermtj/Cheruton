@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
-[ext_resource path="res://Props/bouncePad/bouncePad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=8]
 
@@ -47,12 +46,8 @@ position = Vector2( 7542.09, 1418.07 )
 [node name="camera_limit_NW" type="Position2D" parent="."]
 position = Vector2( -571.234, -887.999 )
 
-[node name="bouncePad" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1806.47, 701.02 )
-scale = Vector2( 10, 4 )
-
 [node name="Slime" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1617.83, 589.708 )
+position = Vector2( 5435.02, 612.977 )
 scale = Vector2( 4, 4 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
