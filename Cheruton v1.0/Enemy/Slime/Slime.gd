@@ -1,6 +1,6 @@
 extends Enemy
 
-onready var fsm = FSM_Enemy.new(self, $States, $States/Run, false)
+onready var fsm = FSM_Enemy.new(self, $States/Run, false)
 
 var anim_curr = ""
 var anim_next = "run"
@@ -21,7 +21,7 @@ func _exit_tree():
 
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
-	
+
 	if(anim_curr != anim_next):
 		anim_curr = anim_next
 		#$Animation.play(anim_current)
@@ -33,12 +33,10 @@ func _physics_process(delta) -> void:
 	
 
 # Checks if the node is colliding against a wall
-func check_wall() -> bool:
-	if find_node("Rotate/RayDown"):
-		if(!$Rotate/RayDown.is_colliding() && !$Rotate/RayFront.is_colliding()):
-			return true
-	elif $Rotate/RayFront.is_colliding():
+func check_horizontal_wall() -> bool:
+	if $Rotate/RayFront.is_colliding():
 		return true
+		
 	return false
 
 
@@ -52,7 +50,7 @@ func _on_HitBox_area_entered(area):
 	if (!is_hit):
 		is_hit = true
 		#if fsm.state_cur == fsm.states.dead: return
-		#print( "slime hit" )
+		#print("slime hit")
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
 		energy -= 1
