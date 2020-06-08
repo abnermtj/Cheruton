@@ -1,18 +1,14 @@
 extends State_Enemy
 
 
-
 func initialize():
-	#node.anim_nxt = "run"
-	pass
+	obj.anim_next = "run"
 
 
-func run( _delta ):
-	if node.check_wall():
-		node.dir_nxt = -node.dir_cur
+func run(_delta):
+	if (obj.check_wall()):
+		obj.dir_next = -obj.dir_curr
 	
-	node.vel.x = node.dir_cur * 20
-	node.vel.y = 0#min( node.vel.y + 500 * delta, 160 )
-	node.vel = node.move_and_slide_with_snap( node.vel, \
-			Vector2.DOWN * 8, \
-			Vector2.UP )
+	obj.velocity.x = obj.dir_curr * 20
+	obj.velocity.y = 0#min( obj.vel.y + 500 * delta, 160 )
+	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)

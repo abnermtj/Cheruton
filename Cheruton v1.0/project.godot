@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FSM_Enemy",
 "language": "GDScript",
-"path": "res://Enemy/FSM.gd"
+"path": "res://Enemy/FSMEnemy.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
