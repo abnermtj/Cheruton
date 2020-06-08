@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
-[ext_resource path="res://Levels/levelAssets/bouncePad/bouncePad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Props/bouncePad/bouncePad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=8]
 
