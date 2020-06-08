@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
+"base": "Node",
+"class": "FSM_Enemy",
+"language": "GDScript",
+"path": "res://Enemy/FSM.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -38,6 +43,11 @@ _global_script_classes=[ {
 "class": "ShakeCamera",
 "language": "GDScript",
 "path": "res://Player/Camera/camera_shake.gd"
+}, {
+"base": "Node",
+"class": "State_Enemy",
+"language": "GDScript",
+"path": "res://Enemy/StateEnemy.gd"
 }, {
 "base": "Line2D",
 "class": "Trail2D",
@@ -79,8 +89,10 @@ _global_script_class_icons={
 "AsepriteImporter": "",
 "EditorTheme": "",
 "Enemy": "",
+"FSM_Enemy": "",
 "Level": "",
 "ShakeCamera": "",
+"State_Enemy": "",
 "Trail2D": "",
 "airState": "",
 "baseFSM": "",

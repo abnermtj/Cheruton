@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemy/Slime/Slime.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Slime/State/Run.gd" type="Script" id=2]
+[ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -25,6 +27,7 @@ shape = SubResource( 1 )
 [node name="Rotate" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Rotate"]
+texture = ExtResource( 3 )
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
 visible = false
@@ -41,6 +44,7 @@ collision_mask = 1025
 [node name="States" type="Node" parent="."]
 
 [node name="Bob" type="Node" parent="States"]
+script = ExtResource( 2 )
 
 [node name="DamageBox" type="Area2D" parent="."]
 collision_layer = 4
