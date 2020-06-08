@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Camera/camera_shake.gd" type="Script" id=1]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="camera" type="Camera2D"]
 current = true
 limit_left = -100000
 limit_right = 1000000

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grasslands.png-8f63f67ddea432be46f5c9979f25c8a7.stex"
+path="res://.import/HomeTown-ForegroundALL.png-28ba3d1e750f3df279a5df0258e436a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/levelAssets/Grasslands.png"
-dest_files=[ "res://.import/Grasslands.png-8f63f67ddea432be46f5c9979f25c8a7.stex" ]
+source_file="res://Levels/levelAssets/Sprites/HomeTown-ForegroundALL.png"
+dest_files=[ "res://.import/HomeTown-ForegroundALL.png-28ba3d1e750f3df279a5df0258e436a3.stex" ]
 
 [params]
 

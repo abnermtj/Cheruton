@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HomeTown-BuidingsALL.png-32763b8c157d254357309918975ffca3.stex"
+path="res://.import/HomeTown-BuidingsALL.png-c560467171373765585bad0960bf363f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/levelAssets/HomeTown-BuidingsALL.png"
-dest_files=[ "res://.import/HomeTown-BuidingsALL.png-32763b8c157d254357309918975ffca3.stex" ]
+source_file="res://Levels/levelAssets/Sprites/HomeTown-BuidingsALL.png"
+dest_files=[ "res://.import/HomeTown-BuidingsALL.png-c560467171373765585bad0960bf363f.stex" ]
 
 [params]
 

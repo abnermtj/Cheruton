@@ -9,7 +9,7 @@
 radius = 5.0
 height = 2.0
 
-[node name="Chain" type="Node2D"]
+[node name="grapple_hook" type="Node2D"]
 position = Vector2( 0, -1 )
 script = ExtResource( 2 )
 

@@ -10,6 +10,7 @@ var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var previous_anim
 var general_input_again = false
+var is_invunerable = false
 
 var has_jumped = false
 var jump_again = false
@@ -48,6 +49,7 @@ onready var corner_correction_raycast_right = $cornerCorrectionRaycasts/rightsid
 onready var almost_reaching_platform_jump_boost = $almostReachingPlatformBoost
 onready var floor_raycast = $floorRay
 onready var sound_parent = $sounds
+onready var body_pivot = $bodyPivot
 onready var body_rotate = $bodyPivot/bodyRotate
 onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
@@ -82,7 +84,6 @@ func _physics_process(delta):
 			old_nearest_hook_point.active = false
 
 	close_bodies = $cicleScanSmall.get_overlapping_bodies() # use in future for npc interaction
-
 
 # General Helper functions
 func set_look_direction(value): # vector
@@ -127,7 +128,7 @@ func queue_anim_fx(string):
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 	can_hook = false
-	$grappleCoolDown.start(.5)
+	$timers/grappleCoolDown.start(.5)
 func _on_grappleCoolDown_timeout():
 	can_hook = true
 func _on_Chain_hooked(command, tip_p, node):
@@ -146,7 +147,7 @@ func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
 	can_hook = false
-	$grappleCoolDown.start(.05)
+	$timers/grappleCoolDown.start(.05)
 func get_nearest_hook_point():
 	var hook_points = $circleScan.get_overlapping_bodies()
 	var non_blocked_hook_points = []
@@ -168,9 +169,6 @@ func get_nearest_hook_point():
 	# nearest point in direction of character look
 	for hook_point in non_blocked_hook_points:
 		if hook_point == previous_hook_point: continue
-
-		print (previous_hook_point)
-		print(hook_point)
 
 		var cur_dist = global_position.distance_to(hook_point.global_position)
 		# only hook to points in direction of character look
@@ -212,6 +210,21 @@ func on_sword_result(result, pos):
 		can_dash = false
 func return_sword_throw():
 	emit_signal("flying_sword_command", 1, Vector2())
+
+# player damaged
+func _on_hitBox_area_entered(area):
+	if states.current_state.name == "hit": return
+
+	var hit_dir = global_position - area.global_position
+	velocity = hit_dir.normalized() * 100
+	move()
+	states._change_state("hit")
+
+func set_player_invunerable(time):
+	is_invunerable = true
+	$timers/invunerableTimer.start(time)
+func _on_invunerableTimer_timeout():
+	is_invunerable = false
 
 # Movement
 func move():
@@ -267,18 +280,18 @@ func _on_dropDownArea_body_exited(body):
 # jump input buffering
 func jump_buffer_start():
 	jump_again = true
-	$jumpInputBuffer.start(INPUT_AGAIN_MARGIN)
+	$timers/jumpInputBuffer.start(INPUT_AGAIN_MARGIN)
 func _on_jumpInputBuffer_timeout():
 	jump_again = false
 func general_buffer_start(): # exact same as above, should probably make a system for it
 	general_input_again = true
-	$slideInputBuffer.start(INPUT_AGAIN_MARGIN)
+	$timers/slideInputBuffer.start(INPUT_AGAIN_MARGIN)
 func _on_generalInputBuffer_timeout():
 	general_input_again = false
 
 # ATTACK
 func start_attack_cool_down():
-	$attackCoolDown.start(1)
+	$timers/attackCoolDown.start(1)
 func _on_attackCoolDown_timeout():
 	can_attack = true
 
@@ -293,7 +306,7 @@ func volume(string, vol_db):
 func _ready():
 	body_collision.disabled = false
 	slide_collision.disabled = true
-	arm_rotate.visible = false
+	arm_rotate.hide()
 
 func _process(delta):
 	DataResource.dict_player.player_pos = global_position  # additional vector to correct middle of player
@@ -307,3 +320,6 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
+
+
+

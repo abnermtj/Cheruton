@@ -20,5 +20,4 @@ wait_time = 2.5
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Music"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

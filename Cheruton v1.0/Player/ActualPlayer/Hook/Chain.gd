@@ -25,7 +25,7 @@ func _on_player_hook_command (com, dir, player_pos):
 		chain_state = chain_states.SHOOT
 		link.start() # link is the rope
 
-		visible = true
+		show()
 		direction = dir.normalized()
 		tip.global_position = player_pos # start at player
 		cur_player_pos = player_pos
@@ -61,12 +61,12 @@ func _physics_process(delta: float) -> void:
 			tip.move_and_collide(direction.normalized() * REEL_SPEED * delta)
 			if (link.global_position - cur_player_pos).length() < 100:
 				chain_state = chain_states.HIDDEN
-				visible = false
+				hide()
 		chain_states.HIDDEN:
 			pass
 
 func _ready():
-	visible = false
+	hide()
 
 func _process(delta):
 	if visible:

@@ -23,15 +23,15 @@ var air_timer
 signal sword_result
 
 func _ready():
-	bodyRotation.visible = false
+	bodyRotation.hide()
 	state = sword_states.HIDDEN
 	angular_velocity = SPIN_SPEED
 
 
 func _on_flyingSword_command(command, arg):
-	hitSprite.visible = false
-	airSprite.visible = true
-	bodyRotation.visible = true
+	hitSprite.hide()
+	airSprite.show()
+	bodyRotation.show()
 
 	if command == 0:
 		set_collision_mask_bit(0,1)
@@ -56,8 +56,8 @@ func _physics_process(delta):
 				var col = move_and_collide(velocity*delta)
 
 				if col:
-					hitSprite.visible = true
-					airSprite.visible = false
+					hitSprite.show()
+					airSprite.hide()
 					state = sword_states.HIT
 					emit_signal("sword_result", 0, global_position)
 
@@ -72,7 +72,7 @@ func _physics_process(delta):
 				if (global_position - cur_player_pos).length() < 20:
 					state = sword_states.HIDDEN
 			sword_states.HIDDEN:
-				bodyRotation.visible = false
+				bodyRotation.hide()
 				active = false
 				emit_signal("sword_result", 1, Vector2())
 

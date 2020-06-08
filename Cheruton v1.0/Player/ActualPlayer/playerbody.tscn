@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General24fpsNEW.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hook_fail_Real/interface1.wav" type="AudioStream" id=19]
 [ext_resource path="res://Player/ActualPlayer/Sfx/land/realisti/jumpland.wav" type="AudioStream" id=20]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/dash.gd" type="Script" id=21]
+[ext_resource path="res://Player/ActualPlayer/States/combat/hit.gd" type="Script" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack_air_1"
@@ -750,14 +751,16 @@ radius = 550.0
 [sub_resource type="CircleShape2D" id=33]
 radius = 100.0
 
+[sub_resource type="CapsuleShape2D" id=34]
+radius = 20.0
+height = 65.0
+
 [node name="player" type="KinematicBody2D"]
 collision_layer = 6
 collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
-position = Vector2( -6, 4 )
-scale = Vector2( 1.04, 0.96 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
 position = Vector2( -5, 2 )
@@ -767,7 +770,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 6 )
 region_enabled = true
-region_rect = Rect2( 1939, 1, 32, 48 )
+region_rect = Rect2( 3935, 1, 32, 48 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
@@ -777,6 +780,20 @@ texture = ExtResource( 9 )
 centered = false
 offset = Vector2( 0, -15 )
 region_rect = Rect2( 5167, 1, 40, 36 )
+
+[node name="stateNameDisplay" type="Label" parent="."]
+margin_left = -44.8912
+margin_top = -83.7137
+margin_right = -6.89124
+margin_bottom = -0.713699
+rect_scale = Vector2( 2, 2 )
+text = "Test
+"
+align = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_air_1 = SubResource( 1 )
@@ -849,29 +866,8 @@ script = ExtResource( 10 )
 [node name="dash" type="Node" parent="states"]
 script = ExtResource( 21 )
 
-[node name="stateNameDisplay" type="Label" parent="."]
-margin_left = -44.8912
-margin_top = -83.7137
-margin_right = -6.89124
-margin_bottom = -0.713699
-rect_scale = Vector2( 2, 2 )
-text = "Test
-"
-align = 1
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="slideArea2D" type="Area2D" parent="."]
-position = Vector2( -2, 0 )
-gravity_vec = Vector2( 0, 0 )
-collision_layer = 2
-collision_mask = 129
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
-position = Vector2( -2, -18 )
-shape = SubResource( 30 )
+[node name="hit" type="Node" parent="states"]
+script = ExtResource( 22 )
 
 [node name="floorRay" type="RayCast2D" parent="."]
 position = Vector2( -5, 40 )
@@ -927,6 +923,62 @@ enabled = true
 cast_to = Vector2( 25, -50 )
 collision_mask = 32
 
+[node name="timers" type="Node2D" parent="."]
+
+[node name="attackCoolDown" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="grappleCoolDown" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="jumpInputBuffer" type="Timer" parent="timers"]
+
+[node name="generalInputBuffer" type="Timer" parent="timers"]
+
+[node name="invunerableTimer" type="Timer" parent="timers"]
+
+[node name="slideArea2D" type="Area2D" parent="."]
+position = Vector2( -2, 0 )
+gravity_vec = Vector2( 0, 0 )
+collision_layer = 2
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
+position = Vector2( -2, -18 )
+shape = SubResource( 30 )
+
+[node name="almostReachingPlatformBoost" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
+position = Vector2( -5, 61.5 )
+shape = SubResource( 31 )
+
+[node name="circleScan" type="Area2D" parent="."]
+position = Vector2( -5, 0 )
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
+shape = SubResource( 32 )
+
+[node name="cicleScanSmall" type="Area2D" parent="."]
+position = Vector2( -5, 0 )
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
+shape = SubResource( 33 )
+
+[node name="hitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
+position = Vector2( -5, 10 )
+shape = SubResource( 34 )
+
 [node name="sounds" type="Node" parent="."]
 
 [node name="jump" type="AudioStreamPlayer" parent="sounds"]
@@ -956,45 +1008,14 @@ volume_db = -25.0
 [node name="slide" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 15 )
 volume_db = -3.0
-
-[node name="attackCoolDown" type="Timer" parent="."]
-one_shot = true
-
-[node name="grappleCoolDown" type="Timer" parent="."]
-one_shot = true
-
-[node name="jumpInputBuffer" type="Timer" parent="."]
-
-[node name="generalInputBuffer" type="Timer" parent="."]
-
-[node name="almostReachingPlatformBoost" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
-position = Vector2( -5, 61.5 )
-shape = SubResource( 31 )
-
-[node name="circleScan" type="Area2D" parent="."]
-position = Vector2( -5, 0 )
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
-shape = SubResource( 32 )
-
-[node name="cicleScanSmall" type="Area2D" parent="."]
-position = Vector2( -5, 0 )
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
-shape = SubResource( 33 )
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
+[connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
+[connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]
+[connection signal="timeout" from="timers/generalInputBuffer" to="." method="_on_generalInputBuffer_timeout"]
+[connection signal="timeout" from="timers/invunerableTimer" to="." method="_on_invunerableTimer_timeout"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
-[connection signal="timeout" from="attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
-[connection signal="timeout" from="grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
-[connection signal="timeout" from="jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]
-[connection signal="timeout" from="generalInputBuffer" to="." method="_on_generalInputBuffer_timeout"]
+[connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
