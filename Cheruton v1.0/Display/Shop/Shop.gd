@@ -94,7 +94,7 @@ func load_data():
 	var misc_scroll_sell = items_sell.get_node("Misc/Column")
 
 	var scroll_buy = items_buy.get_node("General/Column")
-	
+
 	#Generate list of items based on tab
 	generate_list(weapons_scroll_sell, weapons_sell, 100, "Sell")
 	generate_list(apparel_scroll_sell, apparel_sell, 200, "Sell")
@@ -123,7 +123,7 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
 
 		#Add properties
-		var item = row.get_node(str(tab_index + index))	
+		var item = row.get_node(str(tab_index + index))
 		var item_pict
 		match item_dec:
 			"Sell":
