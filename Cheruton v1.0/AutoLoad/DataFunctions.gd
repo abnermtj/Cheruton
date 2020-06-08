@@ -4,6 +4,7 @@ signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
 
 signal change_audio_master
+signal change_audio_music
 signal change_audio_sfx
 
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
@@ -34,6 +35,11 @@ func change_audio_master(var audio_change):
 	DataResource.dict_settings.audio_master = clamp(DataResource.dict_settings.audio_master + audio_change, -60, 12)
 	print(DataResource.dict_settings.audio_master)
 	emit_signal("change_audio_master")
+
+func change_audio_music(var audio_change):
+	DataResource.dict_settings.audio_music = clamp(DataResource.dict_settings.audio_music + audio_change, -60, 12)
+	print(DataResource.dict_settings.audio_music)
+	emit_signal("change_audio_music")
 
 func change_audio_sfx(var audio_change):
 	DataResource.dict_settings.audio_sfx = clamp(DataResource.dict_settings.audio_sfx + audio_change, -60, 12)

@@ -63,11 +63,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVol" type="Label" parent="."]
+[node name="MusicVol" type="Label" parent="."]
 margin_left = 29.8537
 margin_top = 72.5013
 margin_right = 121.854
 margin_bottom = 103.501
+text = "Music Volume: 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolBar" type="ProgressBar" parent="MusicVol"]
+margin_left = 112.418
+margin_top = -0.327515
+margin_right = 202.418
+margin_bottom = 13.6725
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolUp" type="Button" parent="MusicVol"]
+margin_left = 221.237
+margin_top = -3.09061
+margin_right = 241.237
+margin_bottom = 16.9094
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolDown" type="Button" parent="MusicVol"]
+margin_left = 249.237
+margin_top = -3.09061
+margin_right = 269.237
+margin_bottom = 16.9094
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVol" type="Label" parent="."]
+margin_left = 29.8537
+margin_top = 99.5013
+margin_right = 121.854
+margin_bottom = 130.501
 text = "SFX Volume: 
 "
 __meta__ = {
@@ -135,6 +175,8 @@ __meta__ = {
 }
 [connection signal="pressed" from="MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
+[connection signal="pressed" from="MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
 [connection signal="pressed" from="SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
 [connection signal="pressed" from="SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
 [connection signal="pressed" from="Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
