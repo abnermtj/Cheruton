@@ -31,3 +31,4 @@ func _on_HealthBar_value_changed(value):
 		$HealthRect/HealthBarDesign/HealthBar.set_tint_progress(Color(0.968627, 0.67451, 0.215686))
 	else:
 		$HealthRect/HealthBarDesign/HealthBar.set_tint_progress(Color(0.768627, 0.172549, 0.211765))
+		$HealthRect/HealthBarDesign/Heart.play("HeartBeatFast")

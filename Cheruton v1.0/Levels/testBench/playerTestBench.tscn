@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
@@ -7,12 +7,7 @@
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
 [ext_resource path="res://Levels/levelAssets/bouncePad/bouncePad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy/TestEnemy.tscn" type="PackedScene" id=8]
-
-[sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 2351.12, 679.702, 535.844, 692.653, 4.60406, 663.083, 11.4203, 613.098, 976.173, 440.111, 6588.6, 600.499, 0.542603, 481.122, 6589.89, 661.24 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 3, 6, 4 ), PoolIntArray( 0, 5, 7 ) ]
-outlines = [ PoolVector2Array( 976.173, 440.111, 0.542603, 481.122, 11.4203, 613.098, 4.60406, 663.083, 535.844, 692.653, 2351.12, 679.702, 6589.89, 661.24, 6588.6, 600.499 ) ]
+[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -56,15 +51,9 @@ position = Vector2( -571.234, -887.999 )
 position = Vector2( 1806.47, 701.02 )
 scale = Vector2( 10, 4 )
 
-[node name="Navigator" type="Navigation2D" parent="."]
-
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigator"]
-position = Vector2( -1, 0 )
-navpoly = SubResource( 1 )
-
-[node name="enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1791.16, 598.641 )
-scale = Vector2( 32, 32 )
+[node name="Slime" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1617.83, 589.708 )
+scale = Vector2( 4, 4 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
