@@ -1,5 +1,7 @@
 extends Enemy
+
 signal change_enemy_health(new_val)
+
 onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
 onready var initial_position = global_position
 onready var healthbar = $HealthBar
@@ -22,6 +24,8 @@ var max_health
 
 func _ready():
 	healthbar.initbar()
+	max_health = 4000000
+	curr_health = max_health
 
 
 func _exit_tree():
@@ -54,21 +58,20 @@ func change_patrol_dirn() -> bool:
 
 # Slime has been hit
 func _on_HitBox_area_entered(area):
-	if (!is_hit && fsm.state_cur != fsm.states.dead):
+	print("Attacked")
+	if (!is_hit && fsm.state_curr != fsm.states.Dead):
 		is_hit = true
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
-		var damage
+		var damage = -40
 		# Enemy will die
-		emit_signal("change_enemy_health",damage)
-		if(damage > curr_health):
+		if(abs(damage) > curr_health):
 			fsm.state_next = fsm.states.Dead
 		else:
-#			if filename.find( "cave_slime" ) != -1:
-#				fsm.state_next = fsm.states.cave_dead
-#			else:
+			curr_health -= damage
 			fsm.state_next = fsm.states.Hit
-
+		emit_signal("change_enemy_health",damage)
+		
 #func _on_JumpBox_area_entered(_area):
 #	if (!is_hit):
 #		if fsm.state_cur == fsm.states.hit or fsm.state_nxt == fsm.states.hit or \
@@ -121,3 +124,7 @@ func _on_HitBox_area_entered(area):
 #	#x.scale.x = dir_cur
 #	#get_parent().add_child( x )
 #	#fsm.state_nxt = fsm.states.cave_dead
+
+
+func _on_HitBox_body_entered(body):
+	print("Lul")

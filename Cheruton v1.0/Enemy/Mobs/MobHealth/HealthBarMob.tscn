@@ -35,4 +35,3 @@ tint_progress = Color( 0.929412, 0.0862745, 0.0862745, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="HealthRect/HealthBar" to="." method="_on_HealthBar_value_changed"]

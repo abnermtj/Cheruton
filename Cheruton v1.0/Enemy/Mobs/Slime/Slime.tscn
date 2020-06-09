@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemy/Mobs/Slime/State/Hit.gd" type="Script" id=4]
 [ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=5]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Mobs/Slime/State/ProcessHit.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -73,6 +74,9 @@ __meta__ = {
 [node name="Patrol" type="Node" parent="States"]
 script = ExtResource( 2 )
 
+[node name="ProcessHit" type="Node" parent="States"]
+script = ExtResource( 7 )
+
 [node name="Hit" type="Node" parent="States"]
 script = ExtResource( 4 )
 
@@ -95,6 +99,7 @@ __meta__ = {
 }
 
 [node name="JumpBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 0
 __meta__ = {
@@ -110,13 +115,13 @@ __meta__ = {
 }
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 18
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox"]
+[node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, -2 )
 shape = SubResource( 4 )
 __meta__ = {

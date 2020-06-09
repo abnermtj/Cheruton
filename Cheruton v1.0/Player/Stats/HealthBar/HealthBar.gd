@@ -5,9 +5,7 @@ onready var healthbar = $HealthRect/HealthBar
 var health_max
 
 func _ready():	
-	connect("change_enemy_health", self, "change_healthbar")
-
-	
+	self.get_parent().connect("change_enemy_health", self, "change_healthbar")
 
 func initbar():
 	health_max = 400
@@ -19,6 +17,6 @@ func change_healthbar(new_health):
 
 
 func animate_healthbar(start, end):
-	$Tween.interpolate_property(healthbar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(healthbar, "value", start, end, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	
