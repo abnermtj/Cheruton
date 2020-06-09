@@ -4,7 +4,7 @@ var timer : float
 
 func initialize():
 	timer = 0.15
-	obj.anim_next = "hit"
+	obj.anim_next = "Patrol"#debug
 
 
 func run(delta):

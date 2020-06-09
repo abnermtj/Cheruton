@@ -3,7 +3,7 @@ extends State_Enemy
 var speed = 105
 
 func initialize():
-	obj.anim_next = "patrol"
+	obj.anim_next = "Patrol"
 
 
 func run(_delta):

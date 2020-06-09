@@ -1,0 +1,67 @@
+{ "frames": {
+   "Slime 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 3.aseprite": {
+    "frame": { "x": 1, "y": 35, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 4.aseprite": {
+    "frame": { "x": 35, "y": 35, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 5.aseprite": {
+    "frame": { "x": 69, "y": 35, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Slime.png",
+  "format": "RGBA8888",
+  "size": { "w": 132, "h": 68 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Patrol", "from": 0, "to": 5, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Slime", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

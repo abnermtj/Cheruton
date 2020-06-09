@@ -1,13 +1,13 @@
 extends Enemy
 
-onready var fsm = FSM_Enemy.new(self, $States/Search, false)
+onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
 onready var initial_position = global_position
 onready var player = get_parent().get_node("player")
 onready var healthbar = $HealthBar
 onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
 var anim_curr = ""
-var anim_next = "run"
+var anim_next = "Patrol"
 
 var dir_curr = 1
 export(int) var dir_next = 1
@@ -39,7 +39,7 @@ func _physics_process(delta) -> void:
 
 	if(anim_curr != anim_next):
 		anim_curr = anim_next
-		#$Animation.play(anim_current)
+		$Animation.play(anim_curr)
 	
 	if (dir_curr != dir_next):
 		dir_curr = dir_next
