@@ -9,7 +9,7 @@ func initialize():
 
 func run(delta):
 	timer -= delta
-	if timer <= 0:
+	if (timer <= 0):
 		fsm.state_next = fsm.states.Patrol#stub
 
 func terminate():

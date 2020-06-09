@@ -1,7 +1,8 @@
 extends Enemy
 
-onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
+onready var fsm = FSM_Enemy.new(self, $States/Search, false)
 onready var initial_position = global_position
+onready var player = get_parent().get_node("player")
 onready var healthbar = $HealthBar
 onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
@@ -20,6 +21,9 @@ var energy = 1
 var curr_health
 var max_health
 
+var player_nearby
+var player_sight
+var player_spotted
 
 func _ready():
 	max_health = 150
@@ -127,4 +131,16 @@ func _on_HitBox_area_entered(area):
 #	#get_parent().add_child( x )
 #	#fsm.state_nxt = fsm.states.cave_dead
 
+
+
+# Player has entered enemies guard radius
+func _on_AOSBox_body_entered(body):
+	if (body == player):
+		pass
+		#fsm.state_next = fsm.states.Attack
+
+# Player has left enemies guard radius
+func _on_AOSBox_body_exited(body):
+	if (body == player):
+		fsm.state_next = fsm.states.Search
 
