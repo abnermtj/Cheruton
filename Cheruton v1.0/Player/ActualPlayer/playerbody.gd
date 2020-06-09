@@ -42,6 +42,7 @@ var close_bodies = [] # scanning
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
+onready var animation_player_fx_color = $AnimationPlayerFxColor
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
@@ -62,16 +63,6 @@ signal flying_sword_command
 signal camera_command
 signal shake
 
-func take_damage(attacker, amount, effect=null):
-	if is_a_parent_of(attacker):
-		return
-	$States/Stagger.knockback_direction = (attacker.global_position - global_position).normalized()
-	$Health.take_damage(amount, effect)
-func set_dead(value): # non zero means dead
-	set_process_input(not value)
-	set_physics_process(not value)
-	$CollisionPolygon2D.disabled = value
-
 func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 
@@ -80,10 +71,8 @@ func _physics_process(delta):
 	nearest_hook_point = get_nearest_hook_point()
 	if nearest_hook_point != old_nearest_hook_point: # only when there is change
 		if nearest_hook_point:
-			print("new",nearest_hook_point.name)
 			nearest_hook_point.active = true # visual indicator for player
 		if old_nearest_hook_point:
-			print("oled",old_nearest_hook_point.name)
 			old_nearest_hook_point.active = false
 
 	close_bodies = $cicleScanSmall.get_overlapping_bodies() # use in future for npc interaction
@@ -125,6 +114,9 @@ func play_anim_fx(string):
 func queue_anim_fx(string):
 	if animation_player_fx:
 		animation_player_fx.queue(string)
+func play_anim_fx_color(string):
+	if animation_player_fx_color:
+		animation_player_fx_color.play(string)
 
 
 # Grapple
@@ -159,7 +151,7 @@ func get_nearest_hook_point():
 	for hook_point in hook_points:
 		if hook_point.is_in_group("hook_points"):
 			var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point], 32)
-			if result:	print("name", result.collider.name) #debug
+#			if result:	print("name", result.collider.name) #debug
 			if result.empty():
 				non_blocked_hook_points.append( hook_point)
 
@@ -234,10 +226,17 @@ func move():
 	if hooked and not ["hook"].has(states.current_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND:
 			move_and_slide(Vector2(), Vector2.UP)
-	elif  ["run", "slide"].has(states.current_state.name):
+	elif  ["run", "slide", "idle"].has(states.current_state.name):
 		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
 		move_and_slide(velocity, Vector2.UP)
+
+	for i in get_slide_count():
+		var col = get_slide_collision(i)
+		if col.collider..has_method("handle_collision"): # dont work since i moved the node FIX THIS PROPERLY TMR
+			col.collider.handle_collision(col, self)
+
+
 func switch_col():
 	slide_collision.disabled = not slide_collision.disabled
 	body_collision.disabled = not body_collision.disabled
