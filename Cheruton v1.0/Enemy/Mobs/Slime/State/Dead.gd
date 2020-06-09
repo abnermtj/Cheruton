@@ -42,7 +42,7 @@ func initialize():
 
 
 func run(delta):
-	pass
+	fsm.state_next = null
 #	if timer > 0:
 #		timer -= delta
 #	else:
@@ -51,7 +51,9 @@ func run(delta):
 #			fsm.state_nxt = fsm.states.run
 
 func terminate():
-	pass
+	print(1)
+	obj._exit_tree()
+	obj.free()
 #	obj.get_node( "anim" ).play()
 #	obj.get_node( "collision" ).disabled = false
 #	obj.get_node( "damagebox/damage_collision" ).disabled = false

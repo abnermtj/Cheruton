@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy/Slime/Slime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/Mobs/Slime/Slime.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -47,8 +47,8 @@ position = Vector2( 7542.09, 1418.07 )
 position = Vector2( -571.234, -887.999 )
 
 [node name="Slime" parent="." instance=ExtResource( 8 )]
-position = Vector2( 5435.02, 612.977 )
-scale = Vector2( 4, 4 )
+position = Vector2( 1298.25, 667.787 )
+scale = Vector2( 12, 22 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]

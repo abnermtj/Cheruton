@@ -9,7 +9,7 @@ var state_prev = null
 var object = null
 
 
-func _init( input_object, initial_state, self_debug = false ):
+func _init(input_object, initial_state, self_debug = false ):
 	self.object = input_object
 	#self.debug = self_debug
 	_set_states_parent_node(initial_state.get_parent())
@@ -28,6 +28,12 @@ func _set_states_parent_node(p_node):
 
 
 func run_machine(delta):
+	match state_curr:
+		states.Patrol: print("patrol")
+		states.Hit:	print("hit")
+		states.ProcessHit: print("prohit")
+		states.Dead: print("prodead")
+
 	if(state_next != state_curr):
 		# Terminate current state if it is still running
 		if(state_curr):
@@ -39,6 +45,8 @@ func run_machine(delta):
 		# Assign the next state and initiaize it
 		state_prev = state_curr
 		state_curr = state_next
+		if(!state_curr):
+			return
 		state_curr.initialize()
 	# run state
 	state_curr.run(delta)

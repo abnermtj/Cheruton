@@ -1,6 +1,9 @@
 extends Enemy
 
-onready var fsm = FSM_Enemy.new(self, $States/Run, false)
+onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
+onready var initial_position = global_position
+onready var healthbar = $HealthBar
+onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
 var anim_curr = ""
 var anim_next = "run"
@@ -14,10 +17,18 @@ var hit_dir : Vector2
 var is_hit := false
 var energy = 1
 
-onready var initial_position = global_position
+var curr_health
+var max_health
+
+
+func _ready():
+	max_health = 150
+	curr_health = max_health
+	healthbar.initbar(max_health)
+
 
 func _exit_tree():
-	fsm.free()
+	fsm.call_deferred("free")
 
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
@@ -32,11 +43,10 @@ func _physics_process(delta) -> void:
 	
 	
 
-# Checks if the node is colliding against a wall
-func check_horizontal_wall() -> bool:
-	if $Rotate/RayFront.is_colliding():
+# Checks if the node is colliding against a wall or is reaching the edge of his path
+func change_patrol_dirn() -> bool:
+	if ($Rotate/RayFront.is_colliding() || !$Rotate/RayDown.is_colliding()):
 		return true
-		
 	return false
 
 
@@ -45,22 +55,24 @@ func check_horizontal_wall() -> bool:
 #	$damagebox/damage_collision.disabled = true
 #	$jumpbox/jumpcollision.disabled = true
 
-
+# Slime has been hit
 func _on_HitBox_area_entered(area):
+	# Damage processed if the node has not been previously hit or not dead
 	if (!is_hit):
 		is_hit = true
-		#if fsm.state_cur == fsm.states.dead: return
-		#print("slime hit")
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
-		energy -= 1
-		if energy > 0:
-			fsm.state_next = fsm.states.Hit
-		else:
-#			if filename.find( "cave_slime" ) != -1:
-#				fsm.state_next = fsm.states.cave_dead
-#			else:
+		var damage = -40#stub
+		# Enemy will die
+		if(abs(damage) > curr_health):
+			pass
 			fsm.state_next = fsm.states.Dead
+		else:
+			curr_health += damage
+			fsm.state_next = fsm.states.Hit
+		healthbar.animate_healthbar(healthbar_act.value, healthbar_act.value + damage)
+
+
 
 #func _on_JumpBox_area_entered(_area):
 #	if (!is_hit):
@@ -114,3 +126,5 @@ func _on_HitBox_area_entered(area):
 #	#x.scale.x = dir_cur
 #	#get_parent().add_child( x )
 #	#fsm.state_nxt = fsm.states.cave_dead
+
+
