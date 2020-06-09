@@ -9,9 +9,11 @@ func initialize():
 
 func run(delta):
 	timer -= delta
-	if timer <= 0:
-		fsm.state_next = fsm.states.Patrol#stub
+	if (timer <= 0):
+		if(fsm.state_prev == fsm.states.Attack):
+			fsm.state_next = fsm.states.Attack
+		else:
+			fsm.state_next = fsm.states.Search#stub
 
 func terminate():
-	print(122)
 	obj.get_node("DamageBox/DamageCollision").disabled = false
