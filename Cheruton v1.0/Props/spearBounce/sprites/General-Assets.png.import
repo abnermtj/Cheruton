@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/General-Assets.png-75154a7e52c1cf0246c0f81d5c6881ab.stex"
+path="res://.import/General-Assets.png-9ca23f8ed8bda432de4d40a493f445d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Props/bouncePad/sprites/General-Assets.png"
-dest_files=[ "res://.import/General-Assets.png-75154a7e52c1cf0246c0f81d5c6881ab.stex" ]
+source_file="res://Props/spearBounce/sprites/General-Assets.png"
+dest_files=[ "res://.import/General-Assets.png-9ca23f8ed8bda432de4d40a493f445d6.stex" ]
 
 [params]
 

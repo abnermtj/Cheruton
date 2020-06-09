@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General24fpsNEW.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -634,7 +634,37 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=36]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
 [sub_resource type="Animation" id=23]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.378929, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -648,7 +678,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.81, 1.19 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -674,8 +704,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 18 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=25]
-resource_name = "run_change_dir_left"
+[sub_resource type="Animation" id=26]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -701,8 +730,7 @@ tracks/1/keys = {
 "values": [ Vector2( -6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=26]
-resource_name = "run_change_dir_right"
+[sub_resource type="Animation" id=27]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -728,30 +756,30 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=27]
+[sub_resource type="CapsuleShape2D" id=28]
 radius = 30.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=28]
+[sub_resource type="CapsuleShape2D" id=29]
 radius = 30.0
 height = 3.0
 
-[sub_resource type="Curve" id=29]
+[sub_resource type="Curve" id=30]
 _data = [ Vector2( 0, 0 ), 0.0, 0.293435, 0, 0, Vector2( 1, 1 ), 0.304409, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=30]
+[sub_resource type="CircleShape2D" id=31]
 radius = 30.0
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 30, 10 )
 
-[sub_resource type="CircleShape2D" id=32]
+[sub_resource type="CircleShape2D" id=33]
 radius = 550.0
 
-[sub_resource type="CircleShape2D" id=33]
+[sub_resource type="CircleShape2D" id=34]
 radius = 100.0
 
-[sub_resource type="CapsuleShape2D" id=34]
+[sub_resource type="CapsuleShape2D" id=35]
 radius = 20.0
 height = 65.0
 
@@ -770,7 +798,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 6 )
 region_enabled = true
-region_rect = Rect2( 3935, 1, 32, 48 )
+region_rect = Rect2( 4105, 1, 32, 48 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
@@ -820,18 +848,20 @@ anims/wall_slide_fast = SubResource( 20 )
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
 anims/attack_air_2 = SubResource( 21 )
 anims/attack_ground_3 = SubResource( 22 )
-anims/jump = SubResource( 23 )
-anims/land = SubResource( 24 )
-anims/run_change_dir_left = SubResource( 25 )
-anims/run_change_dir_right = SubResource( 26 )
+anims/default = SubResource( 36 )
+anims/hit = SubResource( 23 )
+anims/jump = SubResource( 24 )
+anims/land = SubResource( 25 )
+anims/run_change_dir_left = SubResource( 26 )
+anims/run_change_dir_right = SubResource( 27 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 9 )
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 40 )
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -840,7 +870,7 @@ START_STATE = NodePath("idle")
 
 [node name="slide" type="Node" parent="states"]
 script = ExtResource( 12 )
-attachment_curve = SubResource( 29 )
+attachment_curve = SubResource( 30 )
 
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
@@ -945,14 +975,14 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( -2, -18 )
-shape = SubResource( 30 )
+shape = SubResource( 31 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
 position = Vector2( -5, 61.5 )
-shape = SubResource( 31 )
+shape = SubResource( 32 )
 
 [node name="circleScan" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -960,7 +990,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
-shape = SubResource( 32 )
+shape = SubResource( 33 )
 
 [node name="cicleScanSmall" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -968,7 +998,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
-shape = SubResource( 33 )
+shape = SubResource( 34 )
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -977,7 +1007,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( -5, 10 )
-shape = SubResource( 34 )
+shape = SubResource( 35 )
 
 [node name="sounds" type="Node" parent="."]
 
@@ -1009,8 +1039,8 @@ volume_db = -25.0
 stream = ExtResource( 15 )
 volume_db = -3.0
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]

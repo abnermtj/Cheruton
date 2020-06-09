@@ -22,5 +22,8 @@ func handle_input(event):
 func update(delta):
 	return
 
+func update_idle(delta):
+	return
+
 func _on_animation_finished(anim_name):
 	return

@@ -107,6 +107,3 @@ func update(delta):
 						emit_signal("finished", "fall")
 	owner.move()
 	updated_once = true
-
-func update_idle(delta):
-	pass

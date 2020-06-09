@@ -96,7 +96,7 @@ func _update(delta):
 		desired_length_rope -= 8
 		owner.global_position.y -= 2
 
-	if owner.global_position.y > tip_pos.y:
+	if owner.global_position.y > tip_pos.y+50:
 		next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
 	else:
 		next_pos += vel + Vector2(0,SWING_GRAVITY*delta*.4) + input_dir * SWING_CONTROL_STRENGTH # physics is wrong but high gravity needed for the speed up

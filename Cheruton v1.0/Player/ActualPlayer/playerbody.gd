@@ -76,11 +76,14 @@ func _physics_process(delta):
 	previous_position = global_position # needs to be under physics# parent physcis happens before children
 
 	var old_nearest_hook_point = nearest_hook_point
+
 	nearest_hook_point = get_nearest_hook_point()
-	if nearest_hook_point != old_nearest_hook_point:
+	if nearest_hook_point != old_nearest_hook_point: # only when there is change
 		if nearest_hook_point:
+			print("new",nearest_hook_point.name)
 			nearest_hook_point.active = true # visual indicator for player
 		if old_nearest_hook_point:
+			print("oled",old_nearest_hook_point.name)
 			old_nearest_hook_point.active = false
 
 	close_bodies = $cicleScanSmall.get_overlapping_bodies() # use in future for npc interaction
@@ -156,24 +159,24 @@ func get_nearest_hook_point():
 	for hook_point in hook_points:
 		if hook_point.is_in_group("hook_points"):
 			var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point], 32)
-			if result:	print(result.collider.name) #debug
+			if result:	print("name", result.collider.name) #debug
 			if result.empty():
 				non_blocked_hook_points.append( hook_point)
 
 	if non_blocked_hook_points.empty():
 		return
-
 	var min_dist = INF
 	var closest_hook_point = null
 
+	var facing_dir_x = sign(body_rotate.scale.x)
 	# nearest point in direction of character look
 	for hook_point in non_blocked_hook_points:
-		if hook_point == previous_hook_point: continue
 
 		var cur_dist = global_position.distance_to(hook_point.global_position)
 		# only hook to points in direction of character look
-		if sign(look_direction.x) == sign(hook_point.global_position.x - global_position.x + look_direction.x*170) and  min_dist > cur_dist:
-			min_dist = cur_dist
+		# used scale to determine direction character is facing
+		if facing_dir_x == sign(hook_point.global_position.x - global_position.x + facing_dir_x*170) and min_dist > cur_dist:
+			min_dist = cur_dist # PROBELM HERE
 			closest_hook_point = hook_point
 
 	# nothing in the direction of character look, redo above but behind character
@@ -182,15 +185,10 @@ func get_nearest_hook_point():
 			if hook_point == previous_hook_point: continue
 
 			var cur_dist = global_position.distance_to(hook_point.global_position)
-			if sign(look_direction.x) != sign(hook_point.global_position.x - global_position.x + -look_direction.x*170) and  min_dist > cur_dist:
+			if facing_dir_x != sign(hook_point.global_position.x - global_position.x + -facing_dir_x*170) and  min_dist > cur_dist:
 				min_dist = cur_dist
 				closest_hook_point = hook_point
 
-	# Last option is to hook to old hook point if in range
-	if not closest_hook_point:
-		var result = space_state.intersect_ray(global_position + Vector2(0,-100), previous_hook_point.global_position ,[self,previous_hook_point])
-		if not result:
-			closest_hook_point = previous_hook_point
 	if closest_hook_point:
 		return closest_hook_point
 
@@ -215,8 +213,9 @@ func return_sword_throw():
 func _on_hitBox_area_entered(area):
 	if states.current_state.name == "hit": return
 
+	if hooked: chain_release()
 	var hit_dir = global_position - area.global_position
-	velocity = hit_dir.normalized() * 100
+	velocity = hit_dir.normalized() * 400
 	move()
 	states._change_state("hit")
 
@@ -224,7 +223,11 @@ func set_player_invunerable(time):
 	is_invunerable = true
 	$timers/invunerableTimer.start(time)
 func _on_invunerableTimer_timeout():
-	is_invunerable = false
+	var col = $hitBox.get_overlapping_areas()
+	if col:
+		_on_hitBox_area_entered(col[0]) # may need to decide which overlapping bodies to use in the future
+	else:
+		is_invunerable = false
 
 # Movement
 func move():

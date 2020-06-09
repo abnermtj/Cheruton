@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED_TIP_START = 5400
+const SPEED_TIP_START = 5300
 const REEL_SPEED = 4000
 const MIN_TIP_SPEED = 1900
 

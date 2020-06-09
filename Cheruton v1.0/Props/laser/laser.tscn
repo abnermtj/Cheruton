@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Props/laser/laser.gd" type="Script" id=2]
@@ -13,7 +13,12 @@ initial_velocity = 70.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
-[node name="laser" type="Node2D"]
+[sub_resource type="SegmentShape2D" id=2]
+b = Vector2( 100, 0 )
+
+[node name="laser" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="laser_sprite_center" type="Sprite" parent="."]
@@ -31,3 +36,6 @@ scale = Vector2( 4, 4 )
 amount = 80
 lifetime = 0.4
 process_material = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
