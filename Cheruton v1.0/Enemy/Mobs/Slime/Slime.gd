@@ -136,8 +136,7 @@ func _on_HitBox_area_entered(area):
 # Player has entered enemies guard radius
 func _on_AOSBox_body_entered(body):
 	if (body == player):
-		pass
-		#fsm.state_next = fsm.states.Attack
+		fsm.state_next = fsm.states.Attack
 
 # Player has left enemies guard radius
 func _on_AOSBox_body_exited(body):

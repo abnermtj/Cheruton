@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy/Mobs/Slime/State/ProcessHit.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Search.gd" type="Script" id=8]
+[ext_resource path="res://Enemy/Mobs/Slime/State/Attack.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -70,21 +71,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
-visible = false
-position = Vector2( 6, -2 )
-enabled = true
-cast_to = Vector2( 1080, 0 )
-collision_mask = 1026
-collide_with_areas = true
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="RayPlayerBack" type="RayCast2D" parent="Rotate"]
 position = Vector2( 6, -2 )
 enabled = true
-cast_to = Vector2( -1080, 0 )
+cast_to = Vector2( -90, 0 )
 collision_mask = 1026
 collide_with_areas = true
 __meta__ = {
@@ -109,6 +99,9 @@ script = ExtResource( 3 )
 
 [node name="Search" type="Node" parent="States"]
 script = ExtResource( 8 )
+
+[node name="Attack" type="Node" parent="States"]
+script = ExtResource( 9 )
 
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 4

@@ -33,6 +33,8 @@ func run_machine(delta):
 		states.Hit:	print("hit")
 		states.ProcessHit: print("prohit")
 		states.Dead: print("prodead")
+		states.Attack: print("Attack")
+		states.Search: print("search")
 
 	if(state_next != state_curr):
 		# Terminate current state if it is still running

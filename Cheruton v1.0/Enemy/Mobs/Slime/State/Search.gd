@@ -1,10 +1,9 @@
 extends State_Enemy
 
-var state : int
-var timer : float
 
+var timer : float
+var speed = 160
 var player
-var ray_cast_front
 var ray_cast_back
 
 func initialize():
@@ -16,18 +15,16 @@ func initialize():
 
 func run(delta):
 	timer -= delta
-	if(ray_cast_front.get_collider == player):
-		ray_cast_front.get_collision_point()
-	elif(ray_cast_back.get_collider == player):
-		ray_cast_back.get_collision_point()
-		
+	var collision_pt
+	if(ray_cast_back.get_collider() == player):
+		obj.dir_next = -obj.dir_curr
+	obj.velocity.x = obj.dir_curr * speed
+	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)
+	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	# Provided the player cannot be found in time
 	if (timer <= 0 && fsm.state_curr == fsm.states.Search):
 		fsm.state_next = fsm.states.Patrol
 
-
-func terminate():
-	pass
 
 func randomize_timer():
 	var rng = RandomNumberGenerator.new()
@@ -37,5 +34,4 @@ func randomize_timer():
 
 func fix_locations():
 	player = obj.get_parent().get_node("player")
-	ray_cast_front = obj.get_node("Rotate/RayPlayerFront")
 	ray_cast_back = obj.get_node("Rotate/RayPlayerBack")

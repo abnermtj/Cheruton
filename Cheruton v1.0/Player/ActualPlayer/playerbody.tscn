@@ -634,7 +634,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=36]
+[sub_resource type="Animation" id=23]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate:modulate")
@@ -649,8 +649,7 @@ tracks/0/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=23]
-resource_name = "hit"
+[sub_resource type="Animation" id=24]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate:modulate")
 tracks/0/interp = 1
@@ -664,7 +663,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -678,7 +677,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.81, 1.19 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -704,7 +703,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 18 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=27]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -730,7 +729,7 @@ tracks/1/keys = {
 "values": [ Vector2( -6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=28]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -756,30 +755,30 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=28]
+[sub_resource type="CapsuleShape2D" id=29]
 radius = 30.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=29]
+[sub_resource type="CapsuleShape2D" id=30]
 radius = 30.0
 height = 3.0
 
-[sub_resource type="Curve" id=30]
+[sub_resource type="Curve" id=31]
 _data = [ Vector2( 0, 0 ), 0.0, 0.293435, 0, 0, Vector2( 1, 1 ), 0.304409, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=32]
 radius = 30.0
 
-[sub_resource type="RectangleShape2D" id=32]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 30, 10 )
 
-[sub_resource type="CircleShape2D" id=33]
+[sub_resource type="CircleShape2D" id=34]
 radius = 550.0
 
-[sub_resource type="CircleShape2D" id=34]
+[sub_resource type="CircleShape2D" id=35]
 radius = 100.0
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=36]
 radius = 20.0
 height = 65.0
 
@@ -848,20 +847,20 @@ anims/wall_slide_fast = SubResource( 20 )
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
 anims/attack_air_2 = SubResource( 21 )
 anims/attack_ground_3 = SubResource( 22 )
-anims/default = SubResource( 36 )
-anims/hit = SubResource( 23 )
-anims/jump = SubResource( 24 )
-anims/land = SubResource( 25 )
-anims/run_change_dir_left = SubResource( 26 )
-anims/run_change_dir_right = SubResource( 27 )
+anims/default = SubResource( 23 )
+anims/hit = SubResource( 24 )
+anims/jump = SubResource( 25 )
+anims/land = SubResource( 26 )
+anims/run_change_dir_left = SubResource( 27 )
+anims/run_change_dir_right = SubResource( 28 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 9 )
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 40 )
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -870,7 +869,7 @@ START_STATE = NodePath("idle")
 
 [node name="slide" type="Node" parent="states"]
 script = ExtResource( 12 )
-attachment_curve = SubResource( 30 )
+attachment_curve = SubResource( 31 )
 
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
@@ -975,14 +974,14 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( -2, -18 )
-shape = SubResource( 31 )
+shape = SubResource( 32 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
 position = Vector2( -5, 61.5 )
-shape = SubResource( 32 )
+shape = SubResource( 33 )
 
 [node name="circleScan" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -990,7 +989,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
-shape = SubResource( 33 )
+shape = SubResource( 34 )
 
 [node name="cicleScanSmall" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -998,7 +997,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
-shape = SubResource( 34 )
+shape = SubResource( 35 )
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -1007,7 +1006,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( -5, 10 )
-shape = SubResource( 35 )
+shape = SubResource( 36 )
 
 [node name="sounds" type="Node" parent="."]
 
@@ -1039,8 +1038,8 @@ volume_db = -25.0
 stream = ExtResource( 15 )
 volume_db = -3.0
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]

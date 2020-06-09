@@ -15,7 +15,7 @@ script = ExtResource( 5 )
 [node name="Chain" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 740.264, 601.664 )
+position = Vector2( 1915.63, 630.232 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )
@@ -47,7 +47,7 @@ position = Vector2( 7542.09, 1418.07 )
 position = Vector2( -571.234, -887.999 )
 
 [node name="Slime" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2052.82, 675.543 )
+position = Vector2( 3384.29, 653.509 )
 scale = Vector2( 12, 22 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
