@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Enemy/Slime/Slime.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Slime/State/Run.gd" type="Script" id=2]
-[ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/Slime/State/Hit.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Slime/State/Dead.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/Mobs/Slime/State/Dead.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/Mobs/Slime/State/Hit.gd" type="Script" id=4]
+[ext_resource path="res://Effects/Leaf_test-Recovered.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -19,67 +20,113 @@ extents = Vector2( 5, 1 )
 extents = Vector2( 5, 2 )
 
 [node name="Slime" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
 collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -2 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Rotate" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Rotate"]
-texture = ExtResource( 3 )
+position = Vector2( 0, -3 )
+scale = Vector2( 1, 0.3 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 7, -1 )
+enabled = true
 cast_to = Vector2( 0, 2 )
 collision_mask = 1025
 collide_with_areas = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RayFront" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 6, -2 )
-cast_to = Vector2( 5, 0 )
+enabled = true
+cast_to = Vector2( 2, 0 )
 collision_mask = 1025
 collide_with_areas = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 
 [node name="States" type="Node" parent="."]
 
-[node name="Run" type="Node" parent="States"]
+[node name="Patrol" type="Node" parent="States"]
 script = ExtResource( 2 )
 
 [node name="Hit" type="Node" parent="States"]
 script = ExtResource( 4 )
 
 [node name="Dead" type="Node" parent="States"]
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="DamageBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="JumpBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
 shape = SubResource( 3 )
 one_way_collision = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, -2 )
 shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = -1.5
+margin_top = -5.0
+margin_right = -1.5
+margin_bottom = -5.0
+rect_scale = Vector2( 0.02, 0.02 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]

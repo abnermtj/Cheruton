@@ -1,6 +1,8 @@
 extends Enemy
-
-onready var fsm = FSM_Enemy.new(self, $States/Run, false)
+signal change_enemy_health(new_val)
+onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
+onready var initial_position = global_position
+onready var healthbar = $HealthBar
 
 var anim_curr = ""
 var anim_next = "run"
@@ -14,7 +16,13 @@ var hit_dir : Vector2
 var is_hit := false
 var energy = 1
 
-onready var initial_position = global_position
+var curr_health
+var max_health
+
+
+func _ready():
+	healthbar.initbar()
+
 
 func _exit_tree():
 	fsm.free()
@@ -32,11 +40,10 @@ func _physics_process(delta) -> void:
 	
 	
 
-# Checks if the node is colliding against a wall
-func check_horizontal_wall() -> bool:
-	if $Rotate/RayFront.is_colliding():
+# Checks if the node is colliding against a wall or is reaching the edge of his path
+func change_patrol_dirn() -> bool:
+	if ($Rotate/RayFront.is_colliding() || !$Rotate/RayDown.is_colliding()):
 		return true
-		
 	return false
 
 
@@ -45,22 +52,22 @@ func check_horizontal_wall() -> bool:
 #	$damagebox/damage_collision.disabled = true
 #	$jumpbox/jumpcollision.disabled = true
 
-
+# Slime has been hit
 func _on_HitBox_area_entered(area):
-	if (!is_hit):
+	if (!is_hit && fsm.state_cur != fsm.states.dead):
 		is_hit = true
-		#if fsm.state_cur == fsm.states.dead: return
-		#print("slime hit")
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
-		energy -= 1
-		if energy > 0:
-			fsm.state_next = fsm.states.Hit
+		var damage
+		# Enemy will die
+		emit_signal("change_enemy_health",damage)
+		if(damage > curr_health):
+			fsm.state_next = fsm.states.Dead
 		else:
 #			if filename.find( "cave_slime" ) != -1:
 #				fsm.state_next = fsm.states.cave_dead
 #			else:
-			fsm.state_next = fsm.states.Dead
+			fsm.state_next = fsm.states.Hit
 
 #func _on_JumpBox_area_entered(_area):
 #	if (!is_hit):
