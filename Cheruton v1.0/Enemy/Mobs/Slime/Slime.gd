@@ -1,10 +1,9 @@
 extends Enemy
 
-signal change_enemy_health(new_val)
-
 onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)
 onready var initial_position = global_position
 onready var healthbar = $HealthBar
+onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
 var anim_curr = ""
 var anim_next = "run"
@@ -23,13 +22,13 @@ var max_health
 
 
 func _ready():
-	healthbar.initbar()
-	max_health = 4000000
+	max_health = 150
 	curr_health = max_health
+	healthbar.initbar(max_health)
 
 
 func _exit_tree():
-	fsm.free()
+	fsm.call_deferred("free")
 
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
@@ -58,20 +57,23 @@ func change_patrol_dirn() -> bool:
 
 # Slime has been hit
 func _on_HitBox_area_entered(area):
-	print("Attacked")
-	if (!is_hit && fsm.state_curr != fsm.states.Dead):
+	# Damage processed if the node has not been previously hit or not dead
+	if (!is_hit):
 		is_hit = true
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
-		var damage = -40
+		var damage = -40#stub
 		# Enemy will die
 		if(abs(damage) > curr_health):
+			pass
 			fsm.state_next = fsm.states.Dead
 		else:
-			curr_health -= damage
+			curr_health += damage
 			fsm.state_next = fsm.states.Hit
-		emit_signal("change_enemy_health",damage)
-		
+		healthbar.animate_healthbar(healthbar_act.value, healthbar_act.value + damage)
+
+
+
 #func _on_JumpBox_area_entered(_area):
 #	if (!is_hit):
 #		if fsm.state_cur == fsm.states.hit or fsm.state_nxt == fsm.states.hit or \
@@ -126,5 +128,3 @@ func _on_HitBox_area_entered(area):
 #	#fsm.state_nxt = fsm.states.cave_dead
 
 
-func _on_HitBox_body_entered(body):
-	print("Lul")

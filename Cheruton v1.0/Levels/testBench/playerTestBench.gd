@@ -7,7 +7,7 @@ func _input(event):
 		$player.velocity = Vector2()
 		$player.position = save_position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#'delta': time passed since the previous frame.
 func _physics_process(delta):
 	pass
 

@@ -1,6 +1,6 @@
 extends State_Enemy
 
-var speed = 0#105
+var speed = 105
 
 func initialize():
 	obj.anim_next = "patrol"
