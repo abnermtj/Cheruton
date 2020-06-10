@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
@@ -14,6 +14,33 @@
 extents = Vector2( 6, 2 )
 
 [sub_resource type="Animation" id=2]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 205, 1, 32, 32 ), Rect2( 1, 35, 32, 32 ), Rect2( 35, 35, 32, 16 ), Rect2( 69, 35, 32, 16 ), Rect2( 103, 35, 32, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 8 ), Vector2( 6, 8 ), Vector2( 6, 8 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -26,7 +53,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 1, 35, 32, 32 ), Rect2( 35, 35, 32, 32 ), Rect2( 69, 35, 32, 32 ) ]
+"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 103, 1, 32, 32 ), Rect2( 137, 1, 32, 32 ), Rect2( 171, 1, 32, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -41,17 +68,17 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 9.0
 height = 6.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4, 1 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 3, 3.5 )
 
 [node name="Slime" type="KinematicBody2D"]
@@ -113,7 +140,8 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/Patrol = SubResource( 2 )
+anims/Dead = SubResource( 2 )
+anims/Patrol = SubResource( 3 )
 
 [node name="States" type="Node" parent="."]
 
@@ -144,7 +172,7 @@ __meta__ = {
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
 position = Vector2( 0, -3.1 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -159,7 +187,7 @@ __meta__ = {
 
 [node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2( 0, -1 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -174,7 +202,7 @@ __meta__ = {
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
@@ -189,7 +217,7 @@ __meta__ = {
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, -3.3 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }

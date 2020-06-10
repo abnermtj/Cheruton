@@ -5,7 +5,8 @@ var timer : float
 
 
 func initialize():
-	pass
+	timer = 0.7
+	obj.anim_next = "Dead"
 #	state = 0
 #	# dead animation
 #	obj.get_node("Animation").stop()
@@ -42,9 +43,11 @@ func initialize():
 
 
 func run(delta):
-	fsm.state_next = null
-#	if timer > 0:
-#		timer -= delta
+	if timer > 0:
+		timer -= delta
+	else:
+		fsm.state_next = null
+
 #	else:
 #		obj.position = obj.initial_position
 #		if not game.am_i_visible(obj, Vector2( 0, -4 )):

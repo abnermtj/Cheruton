@@ -24,7 +24,7 @@
     "duration": 100
    },
    "Slime 3.aseprite": {
-    "frame": { "x": 1, "y": 35, "w": 32, "h": 32 },
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -32,7 +32,7 @@
     "duration": 100
    },
    "Slime 4.aseprite": {
-    "frame": { "x": 35, "y": 35, "w": 32, "h": 32 },
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -40,10 +40,58 @@
     "duration": 100
    },
    "Slime 5.aseprite": {
-    "frame": { "x": 69, "y": 35, "w": 32, "h": 32 },
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 6.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": -2, "h": -2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 0, "h": 0 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 7.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 8.aseprite": {
+    "frame": { "x": 1, "y": 35, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 9.aseprite": {
+    "frame": { "x": 35, "y": 35, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 10.aseprite": {
+    "frame": { "x": 69, "y": 35, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 20, "h": 32 },
+    "duration": 100
+   },
+   "Slime 11.aseprite": {
+    "frame": { "x": 103, "y": 35, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
     "sourceSize": { "w": 20, "h": 32 },
     "duration": 100
    }
@@ -53,10 +101,11 @@
   "version": "1.2.15-x64",
   "image": "Slime.png",
   "format": "RGBA8888",
-  "size": { "w": 132, "h": 68 },
+  "size": { "w": 264, "h": 68 },
   "scale": "1",
   "frameTags": [
-   { "name": "Patrol", "from": 0, "to": 5, "direction": "forward" }
+   { "name": "Patrol", "from": 0, "to": 5, "direction": "forward" },
+   { "name": "Dead", "from": 7, "to": 11, "direction": "forward" }
   ],
   "layers": [
    { "name": "Slime", "opacity": 255, "blendMode": "normal" }
