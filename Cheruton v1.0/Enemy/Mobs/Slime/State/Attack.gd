@@ -8,21 +8,21 @@ var can_fire = false
 var fire_dir
 var player
 var player_position 
-var ray_cast_back 
+var ray_cast_front
 var speed = 200
 
 func initialize():
 	can_fire = true
 	player = obj.get_parent().get_node("player")
-	ray_cast_back = obj.get_node("Rotate/RayPlayerBack")
+	ray_cast_front = obj.get_node("Rotate/RayPlayerFront")
 	
 
 
 func run(delta):
 	player_position = player.global_position
-	if(ray_cast_back.get_collider() == player):
+	if(player_position.x >= obj.global_position.x && obj.dir_curr < 0 ||player_position.x < obj.global_position.x && obj.dir_curr > 0):
 		obj.dir_next = -obj.dir_curr
-	print(obj.change_patrol_dirn())
+	print(obj.global_position)
 	if (obj.change_patrol_dirn()):
 		speed = 0
 	else: 

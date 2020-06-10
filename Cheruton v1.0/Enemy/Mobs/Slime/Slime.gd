@@ -44,8 +44,7 @@ func _physics_process(delta) -> void:
 	if (dir_curr != dir_next):
 		dir_curr = dir_next
 		$Rotate.scale.x = dir_curr
-	
-	
+		
 
 # Checks if the node is colliding against a wall or is reaching the edge of his path
 func change_patrol_dirn() -> bool:

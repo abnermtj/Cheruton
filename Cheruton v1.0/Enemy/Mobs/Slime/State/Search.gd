@@ -9,7 +9,6 @@ var ray_cast_back
 func initialize():
 	fix_locations()
 	timer = randomize_timer()
-	obj.anim_next = "Patrol"#seacrh
 
 
 
