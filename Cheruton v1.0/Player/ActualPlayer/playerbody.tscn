@@ -635,7 +635,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=23]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -649,7 +649,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.81, 1.19 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=24]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -675,7 +675,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 18 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=25]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -701,7 +701,7 @@ tracks/1/keys = {
 "values": [ Vector2( -6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=26]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -727,7 +727,7 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=27]
 resource_name = "hit"
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:material")
@@ -742,21 +742,21 @@ tracks/0/keys = {
 "values": [ ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null ]
 }
 
-[sub_resource type="CapsuleShape2D" id=29]
+[sub_resource type="CapsuleShape2D" id=28]
 radius = 30.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=30]
+[sub_resource type="CapsuleShape2D" id=29]
 radius = 30.0
 height = 3.0
 
-[sub_resource type="Curve" id=31]
+[sub_resource type="Curve" id=30]
 _data = [ Vector2( 0, 0 ), 0.0, 0.293435, 0, 0, Vector2( 1, 1 ), 0.304409, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=32]
+[sub_resource type="CircleShape2D" id=31]
 radius = 30.0
 
-[sub_resource type="CapsuleShape2D" id=36]
+[sub_resource type="CapsuleShape2D" id=32]
 radius = 20.0
 height = 65.0
 
@@ -784,7 +784,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 6 )
 region_enabled = true
-region_rect = Rect2( 4105, 1, 32, 48 )
+region_rect = Rect2( 3935, 1, 32, 48 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
@@ -835,21 +835,21 @@ anims/wall_slide_fast = SubResource( 20 )
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
 anims/attack_air_2 = SubResource( 21 )
 anims/attack_ground_3 = SubResource( 22 )
-anims/jump = SubResource( 25 )
-anims/land = SubResource( 26 )
-anims/run_change_dir_left = SubResource( 27 )
-anims/run_change_dir_right = SubResource( 28 )
+anims/jump = SubResource( 23 )
+anims/land = SubResource( 24 )
+anims/run_change_dir_left = SubResource( 25 )
+anims/run_change_dir_right = SubResource( 26 )
 
 [node name="AnimationPlayerFxColor" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 37 )
+anims/hit = SubResource( 27 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 9 )
-shape = SubResource( 29 )
+shape = SubResource( 28 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -5, 40 )
-shape = SubResource( 30 )
+shape = SubResource( 29 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -858,7 +858,7 @@ START_STATE = NodePath("idle")
 
 [node name="slide" type="Node" parent="states"]
 script = ExtResource( 12 )
-attachment_curve = SubResource( 31 )
+attachment_curve = SubResource( 30 )
 
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
@@ -963,7 +963,7 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( -2, -18 )
-shape = SubResource( 32 )
+shape = SubResource( 31 )
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -972,7 +972,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( -5, 10 )
-shape = SubResource( 36 )
+shape = SubResource( 32 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
 collision_layer = 0

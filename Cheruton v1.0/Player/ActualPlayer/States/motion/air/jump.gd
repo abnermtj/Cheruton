@@ -2,9 +2,9 @@ extends airState
 #NOTE some keyboards cannot detect pressing up,left and space simulatenously google NKRO
 
 const JUMP_RELEASE_SLOWDOWN = .72 #after releasing jump key how much to slow down by 0 to 1
-const JUMP_TERMINAL_VELOCITY = 10000
+const JUMP_TERMINAL_VELOCITY = 7000
 const NORMAL_GRAV_MULTIPLIER = .42
-const MIN_BOUNCE_POWER = 666
+#const MIN_BOUNCE_POWER = 666
 const MIN_ENTER_VELOCITY_X = 420
 const JUMP_VEL = -666
 const CORNER_CORRECTION_DISPLACEMENT = 7
@@ -12,7 +12,6 @@ const CORNER_CORRECTION_DISPLACEMENT = 7
 var keypress_timer # timer that allaws paper to keep boosting jump height
 var enter_velocity
 var input_dir
-var bounce_boost
 var grav_multiplier
 
 
@@ -41,16 +40,13 @@ func enter() -> void:
 	var prev_state_name = get_parent().previous_state.name
 
 	grav_multiplier = NORMAL_GRAV_MULTIPLIER
-	bounce_boost = false
-	if owner.bounce_boost:
-		owner.velocity.y = -owner.velocity.y*.7  # reverse dir
-		if abs(owner.velocity.y) < MIN_BOUNCE_POWER:
-			owner.velocity.y = MIN_BOUNCE_POWER * sign(owner.velocity.y)
-		bounce_boost = true
-		owner.bounce_boost = false
-		grav_multiplier = 1
 
-	owner.velocity.y = JUMP_VEL # old speed kept
+	owner.velocity.y = JUMP_VEL
+
+	if owner.bounce_boost:
+		owner.velocity.y = -1600  # reverse dir
+
+		grav_multiplier = 1
 	owner.play_anim_fx("jump")
 
 	if prev_state_name == "wallslide": # wall jump
@@ -68,7 +64,7 @@ func update( delta ):
 	keypress_timer -= delta
 	if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
 		keypress_timer = -1.0
-		if not bounce_boost:
+		if not owner.bounce_boost:
 			owner.velocity.y *= JUMP_RELEASE_SLOWDOWN
 
 	# steering here
@@ -100,3 +96,5 @@ func update( delta ):
 
 	.update(delta)
 
+func exit():
+	owner.bounce_boost = false

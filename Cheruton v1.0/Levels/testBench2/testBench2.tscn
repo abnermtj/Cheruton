@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/testBench2/testBench2.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Props/laser/laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Props/spike0/spike0.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Props/movingPlatforms/movingPlatform0.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Props/spearBounce/spearBounce.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Props/movingTrap0/movingTrap0.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -24,14 +28,14 @@ script = ExtResource( 1 )
 tile_set = ExtResource( 6 )
 collision_layer = 161
 format = 1
-tile_data = PoolIntArray( 786431, 0, 131077, 720938, 0, 131077, 851967, 0, 131078, 786474, 0, 196613, 917503, 0, 196613, 852010, 0, 131078, 983039, 0, 131078, 917546, 0, 131078, 1048575, 0, 131078, 983082, 0, 131078, 1114111, 0, 131078, 1048618, 0, 131078, 1179647, 0, 0, 1114112, 0, 327681, 1114113, 0, 327681, 1114114, 0, 327681, 1114115, 0, 327682, 1114116, 0, 327682, 1114117, 0, 327682, 1114118, 0, 327682, 1114119, 0, 327682, 1114120, 0, 327682, 1114121, 0, 327682, 1114122, 0, 327681, 1114123, 0, 327682, 1114124, 0, 327682, 1114125, 0, 327681, 1114126, 0, 327682, 1114127, 0, 327682, 1114128, 0, 327681, 1114129, 0, 327682, 1114130, 0, 327682, 1114131, 0, 327682, 1114132, 0, 327682, 1114133, 0, 327682, 1114134, 0, 327682, 1114135, 0, 327681, 1114136, 0, 327681, 1114137, 0, 327682, 1114138, 0, 327682, 1114139, 0, 327682, 1114140, 0, 327681, 1114141, 0, 327682, 1114142, 0, 327681, 1114143, 0, 327681, 1114144, 0, 327682, 1114145, 0, 327682, 1114146, 0, 327681, 1114147, 0, 327681, 1114148, 0, 327681, 1114149, 0, 327682, 1114150, 0, 327681, 1114151, 0, 327682, 1114152, 0, 327682, 1114153, 0, 327681, 1114154, 0, 0 )
+tile_data = PoolIntArray( 393215, 0, 131077, 458751, 0, 196613, 524287, 0, 131078, 589823, 0, 196613, 655359, 0, 196613, 720895, 0, 131078, 786431, 0, 196613, 720938, 0, 131077, 851967, 0, 131078, 786474, 0, 196613, 917503, 0, 196613, 852010, 0, 131078, 983039, 0, 131078, 917520, 0, 131077, 917546, 0, 131078, 1048575, 0, 131078, 983056, 0, 196613, 983082, 0, 131078, 1114111, 0, 131078, 1048592, 0, 196613, 1048618, 0, 131078, 1179647, 0, 0, 1114112, 0, 327681, 1114113, 0, 327681, 1114114, 0, 327681, 1114115, 0, 327682, 1114116, 0, 327682, 1114117, 0, 327682, 1114118, 0, 327682, 1114119, 0, 327682, 1114120, 0, 327682, 1114121, 0, 327682, 1114122, 0, 327681, 1114123, 0, 327682, 1114124, 0, 327682, 1114125, 0, 327681, 1114126, 0, 327682, 1114127, 0, 327681, 1114128, 0, 0, 1114129, 0, 327682, 1114130, 0, 327682, 1114131, 0, 327682, 1114132, 0, 327682, 1114133, 0, 327682, 1114134, 0, 327682, 1114135, 0, 327681, 1114136, 0, 327681, 1114137, 0, 327681, 1114138, 0, 327681, 1114139, 0, 327681, 1114140, 0, 327682, 1114141, 0, 327682, 1114142, 0, 327681, 1114143, 0, 327681, 1114144, 0, 327682, 1114145, 0, 327682, 1114146, 0, 327681, 1114147, 0, 327681, 1114148, 0, 327681, 1114149, 0, 327682, 1114150, 0, 327681, 1114151, 0, 327682, 1114152, 0, 327682, 1114153, 0, 327681, 1114154, 0, 0 )
 
 [node name="grapple_hook" parent="." instance=ExtResource( 5 )]
 
 [node name="flying_sword" parent="." instance=ExtResource( 2 )]
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1188.28, 866.036 )
+position = Vector2( 1364.04, 876.375 )
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
 
@@ -49,13 +53,47 @@ position = Vector2( 2084.53, 508.545 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="laser" parent="." instance=ExtResource( 8 )]
+[node name="traps" type="Node2D" parent="."]
+
+[node name="laser0" parent="traps" instance=ExtResource( 8 )]
 modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 1141.18, 364.618 )
+rotating = true
 max_dist = 1300.0
-starting_rot_deg = 50.0
-
-[node name="traps" type="Node2D" parent="."]
 
 [node name="spike0" parent="traps" instance=ExtResource( 9 )]
 position = Vector2( 1678.01, 1084.01 )
+
+[node name="movingTrap0" parent="traps" instance=ExtResource( 13 )]
+position = Vector2( 2221.28, 909.824 )
+move_to = Vector2( 300, 0 )
+radius = 300.0
+speed = 100.0
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="movingPlatform" parent="platforms" instance=ExtResource( 10 )]
+position = Vector2( 535.039, 1002.87 )
+move_to = Vector2( 400, -300 )
+speed = 350.0
+
+[node name="movingPlatform2" parent="platforms" instance=ExtResource( 10 )]
+position = Vector2( 126.652, 1054.57 )
+move_to = Vector2( 0, -500 )
+speed = 350.0
+
+[node name="fallingPlatform" parent="platforms" instance=ExtResource( 11 )]
+position = Vector2( 1170.88, 871.594 )
+
+[node name="fallingPlatform2" parent="platforms" instance=ExtResource( 11 )]
+position = Vector2( 1356.98, 874.179 )
+
+[node name="fallingPlatform3" parent="platforms" instance=ExtResource( 11 )]
+position = Vector2( 1801.55, 894.857 )
+
+[node name="fallingPlatform4" parent="platforms" instance=ExtResource( 11 )]
+position = Vector2( 1625.79, 879.348 )
+
+[node name="bouncePad" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2546.78, 1048.46 )
+scale = Vector2( 16, 4 )
