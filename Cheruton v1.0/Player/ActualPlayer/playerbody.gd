@@ -233,7 +233,7 @@ func move():
 
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
-		if col.collider..has_method("handle_collision"): # dont work since i moved the node FIX THIS PROPERLY TMR
+		if col.collider.has_method("handle_collision"): # dont work since i moved the node FIX THIS PROPERLY TMR
 			col.collider.handle_collision(col, self)
 
 
