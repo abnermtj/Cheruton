@@ -1,5 +1,7 @@
 extends State_Enemy
 
+# ATTACK: Enemy is currently attacking the player, who is in close range
+
 var state : int
 var timer : float
 
@@ -20,14 +22,18 @@ func initialize():
 
 func run(delta):
 	player_position = player.global_position
+	# Position of player not in direction enemy is facing
 	if(player_position.x >= obj.global_position.x && obj.dir_curr < 0 ||player_position.x < obj.global_position.x && obj.dir_curr > 0):
 		obj.dir_next = -obj.dir_curr
-	print(obj.global_position)
+	# Player has reached area enemy cannot reach
 	if (obj.change_patrol_dirn()):
 		speed = 0
-	else: 
-		speed = 200
-
+	elif(speed < 200): 
+		speed *= 3
+	# Another enemy in front of original enemy
+	if(ray_cast_front.is_colliding()):
+		print(true)
+		speed /= 2
 	obj.velocity.x = obj.dir_curr * speed
 	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)

@@ -1,5 +1,7 @@
 extends State_Enemy
 
+#HIT: Enemy has been just hit by an external attack by player
+
 var timer : float
 
 func initialize():

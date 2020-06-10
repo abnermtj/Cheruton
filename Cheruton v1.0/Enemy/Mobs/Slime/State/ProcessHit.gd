@@ -1,5 +1,7 @@
 extends State_Enemy
 
+# PROCESSHIT: Short period of time to process the damage status of the enemy
+
 var timer : float
 
 func initialize():
@@ -8,6 +10,7 @@ func initialize():
 func run(delta):
 	timer -= delta
 	if (timer <= 0):
+		# Player was sighted recently - Attack
 		if(obj.player_sight):
 			fsm.state_next = fsm.states.Attack
 		else:

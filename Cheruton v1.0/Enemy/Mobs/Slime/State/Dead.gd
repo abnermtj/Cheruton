@@ -1,5 +1,7 @@
 extends State_Enemy
 
+# DEAD: Enemy has been killed
+
 var state : int
 var timer : float
 

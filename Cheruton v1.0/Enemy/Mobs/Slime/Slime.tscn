@@ -85,7 +85,6 @@ extents = Vector2( 3, 3.5 )
 ]]
 scale = Vector2( 3, 3 )
 collision_layer = 8
-collision_mask = 9
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -143,10 +142,10 @@ __meta__ = {
 }
 
 [node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
-position = Vector2( 6, -2 )
+position = Vector2( 3, -2 )
 enabled = true
-cast_to = Vector2( 90, 0 )
-collision_mask = 1026
+cast_to = Vector2( 15, 0 )
+collision_mask = 8
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true

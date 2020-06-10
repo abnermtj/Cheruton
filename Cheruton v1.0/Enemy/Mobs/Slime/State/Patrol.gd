@@ -1,11 +1,14 @@
 extends State_Enemy
 
+# PATROL: Enemy moves around the terrain it is limited to
+
 var speed = 105
 
 func initialize():
 	obj.anim_next = "Patrol"
 
 func run(_delta):
+	# Wall or empty gap encountered
 	if (obj.change_patrol_dirn()):
 		obj.dir_next = -obj.dir_curr
 	obj.velocity.x = obj.dir_curr * speed
