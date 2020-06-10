@@ -10,7 +10,7 @@ func initialize():
 func run(delta):
 	timer -= delta
 	if (timer <= 0):
-		if(fsm.state_prev == fsm.states.Attack):
+		if(obj.player_sight):
 			fsm.state_next = fsm.states.Attack
 		else:
 			fsm.state_next = fsm.states.Search#stub

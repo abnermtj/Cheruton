@@ -35,6 +35,8 @@ func run_machine(delta):
 		states.Dead: print("prodead")
 		states.Attack: print("Attack")
 		states.Search: print("search")
+	if(!state_next && !state_curr):
+		return
 
 	if(state_next != state_curr):
 		# Terminate current state if it is still running
@@ -47,9 +49,9 @@ func run_machine(delta):
 		# Assign the next state and initiaize it
 		state_prev = state_curr
 		state_curr = state_next
-		if(!state_curr):
-			return
-		state_curr.initialize()
+		if(state_curr):
+			state_curr.initialize()
 	# run state
-	state_curr.run(delta)
+	if(state_curr):
+		state_curr.run(delta)
 

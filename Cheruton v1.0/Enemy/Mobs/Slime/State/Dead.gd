@@ -7,6 +7,7 @@ var timer : float
 func initialize():
 	timer = 0.7
 	obj.anim_next = "Dead"
+
 #	state = 0
 #	# dead animation
 #	obj.get_node("Animation").stop()
@@ -47,6 +48,7 @@ func run(delta):
 		timer -= delta
 	else:
 		fsm.state_next = null
+		
 
 #	else:
 #		obj.position = obj.initial_position

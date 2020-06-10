@@ -68,9 +68,8 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 9.0
-height = 6.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 25.0
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4, 1 )
@@ -81,7 +80,9 @@ extents = Vector2( 5, 1 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 3, 3.5 )
 
-[node name="Slime" type="KinematicBody2D"]
+[node name="Slime" type="KinematicBody2D" groups=[
+"Enemy",
+]]
 scale = Vector2( 3, 3 )
 collision_layer = 8
 script = ExtResource( 1 )
@@ -164,8 +165,8 @@ script = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="AOSBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 8
+collision_mask = 2
 __meta__ = {
 "_edit_lock_": true
 }

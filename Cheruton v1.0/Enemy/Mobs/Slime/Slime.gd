@@ -22,7 +22,7 @@ var curr_health
 var max_health
 
 var player_nearby
-var player_sight
+var player_sight = false
 var player_spotted
 
 func _ready():
@@ -135,11 +135,18 @@ func _on_HitBox_area_entered(area):
 
 # Player has entered enemies guard radius
 func _on_AOSBox_body_entered(body):
+	if(fsm.state_curr == fsm.states.Dead):
+		return
 	if (body == player):
+		player_sight = true
+		print(player_sight)
 		fsm.state_next = fsm.states.Attack
 
 # Player has left enemies guard radius
 func _on_AOSBox_body_exited(body):
+	if(fsm.state_curr == fsm.states.Dead):
+		return
 	if (body == player):
+		player_sight = false
 		fsm.state_next = fsm.states.Search
 
