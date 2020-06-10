@@ -51,7 +51,7 @@ position = Vector2( 2343, 671.923 )
 scale = Vector2( 12, 12 )
 
 [node name="Slime2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2549.72, 670.193 )
+position = Vector2( 2419.32, 669.193 )
 scale = Vector2( 12, 12 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]

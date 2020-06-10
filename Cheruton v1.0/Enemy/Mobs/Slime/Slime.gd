@@ -66,7 +66,7 @@ func _on_HitBox_area_entered(area):
 		is_hit = true
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
-		var damage = -40#stub
+		var damage = -20#stub
 		# Enemy will die
 		if(abs(damage) > curr_health):
 			pass

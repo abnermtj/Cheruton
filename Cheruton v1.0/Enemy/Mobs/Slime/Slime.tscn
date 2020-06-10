@@ -140,6 +140,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
+position = Vector2( 6, -2 )
+enabled = true
+cast_to = Vector2( 90, 0 )
+collision_mask = 1034
+collide_with_areas = true
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Dead = SubResource( 2 )
 anims/Patrol = SubResource( 3 )
@@ -211,7 +221,7 @@ __meta__ = {
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 18
+collision_mask = 2
 __meta__ = {
 "_edit_lock_": true
 }
