@@ -1,17 +1,44 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/Mobs/Slime/State/Dead.gd" type="Script" id=3]
-[ext_resource path="res://Enemy/Mobs/Slime/State/Hit.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Mobs/Slime/Slime.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemy/Mobs/Slime/State/ProcessHit.gd" type="Script" id=7]
-[ext_resource path="res://Enemy/Mobs/Slime/State/Search.gd" type="Script" id=8]
-[ext_resource path="res://Enemy/Mobs/Slime/State/Attack.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Mobs/Serpent/Serpent.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Hit.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Dead.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Attack.gd" type="Script" id=4]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Search.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Patrol.gd" type="Script" id=6]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/ProcessHit.gd" type="Script" id=7]
+[ext_resource path="res://Enemy/Mobs/Serpent/Serpent.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
+
+[sub_resource type="Animation" id=8]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 349, 1, 32, 32 ), Rect2( 383, 1, 48, 32 ), Rect2( 433, 1, 32, 32 ), Rect2( 467, 1, 32, 32 ), Rect2( 501, 1, 32, 32 ), Rect2( 535, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.5
@@ -25,7 +52,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 205, 1, 32, 32 ), Rect2( 1, 35, 32, 32 ), Rect2( 35, 35, 32, 16 ), Rect2( 69, 35, 32, 16 ), Rect2( 103, 35, 32, 16 ) ]
+"values": [ Rect2( 569, 1, 32, 32 ), Rect2( 603, 1, 32, 32 ), Rect2( 637, 1, 32, 32 ), Rect2( 671, 1, 48, 32 ), Rect2( 721, 1, 64, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -37,7 +64,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 8 ), Vector2( 6, 8 ), Vector2( 6, 8 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -53,7 +80,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 103, 1, 32, 32 ), Rect2( 137, 1, 32, 32 ), Rect2( 171, 1, 32, 32 ) ]
+"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 48, 32 ), Rect2( 85, 1, 64, 32 ), Rect2( 151, 1, 64, 32 ), Rect2( 217, 1, 64, 32 ), Rect2( 283, 1, 64, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -65,7 +92,34 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 535, 1, 32, 32 ), Rect2( 501, 1, 32, 32 ), Rect2( 467, 1, 32, 32 ), Rect2( 433, 1, 32, 32 ), Rect2( 383, 1, 48, 32 ), Rect2( 349, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=4]
@@ -80,7 +134,7 @@ extents = Vector2( 5, 1 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 3, 3.5 )
 
-[node name="Slime" type="KinematicBody2D" groups=[
+[node name="Serpent" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 scale = Vector2( 3, 3 )
@@ -103,10 +157,9 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Rotate"]
 position = Vector2( 0, -3 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
-offset = Vector2( 6, 0 )
+texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 32 )
+region_rect = Rect2( 569, 1, 32, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -152,28 +205,30 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimationPlayer" parent="."]
+anims/AttackPrep = SubResource( 8 )
 anims/Dead = SubResource( 2 )
 anims/Patrol = SubResource( 3 )
+anims/PatrolPrep = SubResource( 9 )
 
 [node name="States" type="Node" parent="."]
 
 [node name="Patrol" type="Node" parent="States"]
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 
 [node name="ProcessHit" type="Node" parent="States"]
 script = ExtResource( 7 )
 
 [node name="Hit" type="Node" parent="States"]
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource( 3 )
 
 [node name="Search" type="Node" parent="States"]
-script = ExtResource( 8 )
+script = ExtResource( 5 )
 
 [node name="Attack" type="Node" parent="States"]
-script = ExtResource( 9 )
+script = ExtResource( 4 )
 
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 8
@@ -234,7 +289,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+[node name="HealthBar" parent="." instance=ExtResource( 9 )]
 margin_left = -2.10403
 margin_top = -7.59821
 margin_right = -2.10403
