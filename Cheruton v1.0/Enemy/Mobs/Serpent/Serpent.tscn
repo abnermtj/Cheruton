@@ -11,9 +11,9 @@
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 2 )
+extents = Vector2( 8.8, 2.7 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -40,7 +40,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -67,7 +67,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -95,7 +95,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -122,17 +122,17 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=6]
 radius = 25.0
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 4, 1 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 3, 3.5 )
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 4.4, 4.7 )
 
 [node name="Serpent" type="KinematicBody2D" groups=[
 "Enemy",
@@ -142,7 +142,7 @@ collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -3.1 )
+position = Vector2( 0, -2.9 )
 scale = Vector2( 0.5, 1.7 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -156,19 +156,18 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Rotate"]
 position = Vector2( 0, -3 )
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( -0.3, 0.3 )
 texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 569, 1, 32, 32 )
+region_rect = Rect2( 1, 1, 32, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
-visible = false
 position = Vector2( 7, -1 )
 enabled = true
-cast_to = Vector2( 0, 2 )
+cast_to = Vector2( 0, 3 )
 collision_mask = 1025
 collide_with_areas = true
 __meta__ = {
@@ -205,10 +204,10 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/AttackPrep = SubResource( 8 )
-anims/Dead = SubResource( 2 )
-anims/Patrol = SubResource( 3 )
-anims/PatrolPrep = SubResource( 9 )
+anims/AttackPrep = SubResource( 2 )
+anims/Dead = SubResource( 3 )
+anims/Patrol = SubResource( 4 )
+anims/PatrolPrep = SubResource( 5 )
 
 [node name="States" type="Node" parent="."]
 
@@ -239,7 +238,7 @@ __meta__ = {
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
 position = Vector2( 0, -3.1 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -254,7 +253,7 @@ __meta__ = {
 
 [node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2( 0, -1 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -269,7 +268,7 @@ __meta__ = {
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
@@ -283,17 +282,17 @@ __meta__ = {
 }
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( 0, -3.3 )
-shape = SubResource( 7 )
+position = Vector2( 0.1, -3.1 )
+shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HealthBar" parent="." instance=ExtResource( 9 )]
 margin_left = -2.10403
-margin_top = -7.59821
+margin_top = -9.09711
 margin_right = -2.10403
-margin_bottom = -7.59821
+margin_bottom = -9.09711
 rect_scale = Vector2( 0.02, 0.02 )
 [connection signal="body_entered" from="AOSBox" to="." method="_on_AOSBox_body_entered"]
 [connection signal="body_exited" from="AOSBox" to="." method="_on_AOSBox_body_exited"]
