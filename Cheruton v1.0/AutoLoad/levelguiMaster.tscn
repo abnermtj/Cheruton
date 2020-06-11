@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Display/Pause/Pause.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Display/LevelGuiMaster/levelguiMaster.gd" type="Script" id=5]
 [ext_resource path="res://Display/LevelGuiMaster/emptyGui.gd" type="Script" id=6]
 [ext_resource path="res://Display/Shop/Shop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Display/Dialouge/dialog.tscn" type="PackedScene" id=8]
 
 [node name="masterGui" type="CanvasLayer"]
 pause_mode = 2
@@ -50,3 +51,9 @@ margin_left = 882.608
 margin_top = 535.551
 margin_right = 882.608
 margin_bottom = 535.551
+
+[node name="dialog" parent="gui" instance=ExtResource( 8 )]
+margin_left = 1000.88
+margin_top = 997.866
+margin_right = 1000.88
+margin_bottom = 997.866

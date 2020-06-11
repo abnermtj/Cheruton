@@ -58,7 +58,6 @@ environment = SubResource( 1 )
 [node name="laser0" parent="traps" instance=ExtResource( 8 )]
 modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 1141.18, 364.618 )
-rotating = true
 max_dist = 1300.0
 
 [node name="spike0" parent="traps" instance=ExtResource( 9 )]

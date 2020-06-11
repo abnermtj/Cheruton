@@ -12,4 +12,5 @@ func handle_input(event):
 			emit_signal("new_gui", "pause")
 		elif Input.is_action_just_pressed("ui_focus_next"):#stub
 			emit_signal("new_gui", "shop")
+		elif Input.is_action_just_pressed()
 
