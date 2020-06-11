@@ -14,6 +14,8 @@ var ray_cast_front
 var speed = 200
 
 func initialize():
+	timer = 0.6
+	#obj.anim_next = "AttackPrep"
 	can_fire = true
 	player = obj.get_parent().get_node("player")
 	ray_cast_front = obj.get_node("Rotate/RayPlayerFront")
@@ -21,6 +23,10 @@ func initialize():
 
 
 func run(delta):
+	if(timer <= 0):
+		obj.anim_next = "Attack"
+	else: 
+		timer -= delta
 	player_position = player.global_position
 	# Position of player not in direction enemy is facing
 	if(player_position.x >= obj.global_position.x && obj.dir_curr < 0 ||player_position.x < obj.global_position.x && obj.dir_curr > 0):

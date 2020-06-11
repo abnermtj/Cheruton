@@ -1,0 +1,175 @@
+{ "frames": {
+   "Serpent 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 2.aseprite": {
+    "frame": { "x": 85, "y": 1, "w": 64, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 3.aseprite": {
+    "frame": { "x": 151, "y": 1, "w": 64, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 4.aseprite": {
+    "frame": { "x": 217, "y": 1, "w": 64, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 5.aseprite": {
+    "frame": { "x": 283, "y": 1, "w": 64, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 6.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": -2, "h": -2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 0, "h": 0 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 7.aseprite": {
+    "frame": { "x": 349, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 8.aseprite": {
+    "frame": { "x": 383, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 9.aseprite": {
+    "frame": { "x": 433, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 10.aseprite": {
+    "frame": { "x": 467, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 11.aseprite": {
+    "frame": { "x": 501, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 12.aseprite": {
+    "frame": { "x": 535, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 13.aseprite": {
+    "frame": { "x": 569, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 14.aseprite": {
+    "frame": { "x": 603, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 15.aseprite": {
+    "frame": { "x": 637, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 16.aseprite": {
+    "frame": { "x": 671, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 17.aseprite": {
+    "frame": { "x": 705, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   },
+   "Serpent 18.aseprite": {
+    "frame": { "x": 755, "y": 1, "w": 64, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 32 },
+    "sourceSize": { "w": 64, "h": 32 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Serpent.png",
+  "format": "RGBA8888",
+  "size": { "w": 1254, "h": 34 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Patrol", "from": 0, "to": 5, "direction": "forward" },
+   { "name": "AttackPrep", "from": 7, "to": 12, "direction": "forward" },
+   { "name": "PatrolPrep", "from": 7, "to": 12, "direction": "reverse" },
+   { "name": "Attack", "from": 13, "to": 13, "direction": "forward" },
+   { "name": "Dead", "from": 14, "to": 18, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Flattened", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

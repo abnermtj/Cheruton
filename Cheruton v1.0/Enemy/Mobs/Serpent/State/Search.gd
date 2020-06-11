@@ -8,6 +8,7 @@ var player
 var ray_cast_back
 
 func initialize():
+	#obj.anim_next = "PatrolPrep"
 	fix_locations()
 	timer = randomize_timer()
 

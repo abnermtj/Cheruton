@@ -1,19 +1,73 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Dead.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/ProcessHit.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Patrol.gd" type="Script" id=3]
 [ext_resource path="res://Enemy/Mobs/Serpent/Serpent.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Mobs/Slime/Slime.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Mobs/Serpent/Serpent.png" type="Texture" id=5]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Hit.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Search.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Attack.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 2 )
+extents = Vector2( 9, 3 )
 
 [sub_resource type="Animation" id=2]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 569, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 349, 1, 32, 32 ), Rect2( 383, 1, 48, 32 ), Rect2( 433, 1, 32, 32 ), Rect2( 467, 1, 32, 32 ), Rect2( 501, 1, 32, 32 ), Rect2( 535, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -25,7 +79,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 205, 1, 32, 32 ), Rect2( 1, 35, 32, 32 ), Rect2( 35, 35, 32, 16 ), Rect2( 69, 35, 32, 16 ), Rect2( 103, 35, 32, 16 ) ]
+"values": [ Rect2( 603, 1, 32, 32 ), Rect2( 637, 1, 32, 32 ), Rect2( 671, 1, 32, 32 ), Rect2( 705, 1, 48, 32 ), Rect2( 755, 1, 64, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -37,10 +91,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 8 ), Vector2( 6, 8 ), Vector2( 6, 8 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -53,7 +107,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 103, 1, 32, 32 ), Rect2( 137, 1, 32, 32 ), Rect2( 171, 1, 32, 32 ) ]
+"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 48, 32 ), Rect2( 85, 1, 64, 32 ), Rect2( 151, 1, 64, 32 ), Rect2( 217, 1, 64, 32 ), Rect2( 283, 1, 64, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -65,20 +119,47 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 535, 1, 32, 32 ), Rect2( 501, 1, 32, 32 ), Rect2( 467, 1, 32, 32 ), Rect2( 433, 1, 32, 32 ), Rect2( 383, 1, 48, 32 ), Rect2( 349, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -8, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
 radius = 25.0
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 4, 1 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 3, 3.5 )
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 4, 5 )
 
 [node name="Serpent" type="KinematicBody2D" groups=[
 "Enemy",
@@ -102,11 +183,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Rotate"]
 position = Vector2( 0, -3 )
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( -0.3, 0.3 )
 texture = ExtResource( 5 )
-offset = Vector2( 6, 0 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 32 )
+region_rect = Rect2( 535, 1, 32, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -142,6 +222,7 @@ __meta__ = {
 }
 
 [node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 3, -2 )
 enabled = true
 cast_to = Vector2( 15, 0 )
@@ -152,8 +233,11 @@ __meta__ = {
 }
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/Dead = SubResource( 2 )
-anims/Patrol = SubResource( 3 )
+anims/Attack = SubResource( 2 )
+anims/AttackPrep = SubResource( 3 )
+anims/Dead = SubResource( 4 )
+anims/Patrol = SubResource( 5 )
+anims/PatrolPrep = SubResource( 6 )
 
 [node name="States" type="Node" parent="."]
 
@@ -184,7 +268,7 @@ __meta__ = {
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
 position = Vector2( 0, -3.1 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -199,7 +283,7 @@ __meta__ = {
 
 [node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2( 0, -1 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -214,7 +298,7 @@ __meta__ = {
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
@@ -228,8 +312,8 @@ __meta__ = {
 }
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( 0, -3.3 )
-shape = SubResource( 7 )
+position = Vector2( 0.5, -3 )
+shape = SubResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
