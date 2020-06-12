@@ -154,7 +154,6 @@ __meta__ = {
 }
 
 [node name="RayGround" type="RayCast2D" parent="Rotate"]
-visible = false
 enabled = true
 cast_to = Vector2( 0, 1 )
 __meta__ = {

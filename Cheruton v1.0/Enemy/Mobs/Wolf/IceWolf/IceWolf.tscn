@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Wolf/IceWolf/IceWolf.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Attack.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Dead.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Hit.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/Mobs/Wolf/State/Fall.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.5, 2.2 )
@@ -150,6 +151,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RayGround" type="RayCast2D" parent="Rotate"]
+position = Vector2( 0, 3.4 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Dead = SubResource( 2 )
 anims/Patrol = SubResource( 3 )
@@ -173,6 +182,9 @@ script = ExtResource( 6 )
 
 [node name="Attack" type="Node" parent="States"]
 script = ExtResource( 2 )
+
+[node name="Fall" type="Node" parent="States"]
+script = ExtResource( 10 )
 
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 8
