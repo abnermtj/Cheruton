@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Wolf/IceWolf/IceWolf.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Attack.gd" type="Script" id=2]
@@ -9,11 +9,12 @@
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Dead.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Wolf/State/Hit.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/Mobs/Wolf/State/Fall.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.5, 2.2 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -40,7 +41,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -68,16 +69,16 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=4]
 radius = 20.0
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6, 3.8 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 5.8, 3.6 )
 
 [node name="IceWolf" type="KinematicBody2D" groups=[
@@ -150,9 +151,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RayGround" type="RayCast2D" parent="Rotate"]
+position = Vector2( 0, 3.4 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/Dead = SubResource( 12 )
-anims/Patrol = SubResource( 13 )
+anims/Dead = SubResource( 2 )
+anims/Patrol = SubResource( 3 )
 
 [node name="States" type="Node" parent="."]
 
@@ -174,6 +183,9 @@ script = ExtResource( 6 )
 [node name="Attack" type="Node" parent="States"]
 script = ExtResource( 2 )
 
+[node name="Fall" type="Node" parent="States"]
+script = ExtResource( 10 )
+
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
@@ -183,7 +195,7 @@ __meta__ = {
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
 position = Vector2( 0, -3.1 )
-shape = SubResource( 11 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -198,7 +210,7 @@ __meta__ = {
 
 [node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2( 0, -1 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -213,7 +225,7 @@ __meta__ = {
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
@@ -228,7 +240,7 @@ __meta__ = {
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( -0.6, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Serpent/Serpent.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Serpent/State/Hit.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy/Mobs/Serpent/State/ProcessHit.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Serpent/Serpent.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/Mobs/Serpent/State/Fall.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.8, 2.7 )
@@ -203,6 +204,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RayGround" type="RayCast2D" parent="Rotate"]
+position = Vector2( 0, 1.1 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/AttackPrep = SubResource( 2 )
 anims/Dead = SubResource( 3 )
@@ -228,6 +234,9 @@ script = ExtResource( 5 )
 
 [node name="Attack" type="Node" parent="States"]
 script = ExtResource( 4 )
+
+[node name="Fall" type="Node" parent="States"]
+script = ExtResource( 10 )
 
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 8
