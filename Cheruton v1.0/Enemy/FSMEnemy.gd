@@ -35,6 +35,7 @@ func run_machine(delta):
 		states.Dead: print("prodead")
 		states.Attack: print("Attack")
 		states.Search: print("search")
+		states.Fall: print("fall")
 	if(!state_next && !state_curr):
 		return
 

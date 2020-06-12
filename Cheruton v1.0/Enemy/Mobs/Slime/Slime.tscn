@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy/Mobs/Slime/State/ProcessHit.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Search.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Attack.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Mobs/Slime/State/Fall.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -106,13 +107,12 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
 offset = Vector2( 6, 0 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 32 )
+region_rect = Rect2( 205, 1, 32, 32 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
-visible = false
 position = Vector2( 7, -1 )
 enabled = true
 cast_to = Vector2( 0, 2 )
@@ -151,6 +151,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="RayGround" type="RayCast2D" parent="Rotate"]
+enabled = true
+cast_to = Vector2( 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Dead = SubResource( 2 )
 anims/Patrol = SubResource( 3 )
@@ -159,6 +166,9 @@ anims/Patrol = SubResource( 3 )
 
 [node name="Patrol" type="Node" parent="States"]
 script = ExtResource( 2 )
+
+[node name="Fall" type="Node" parent="States"]
+script = ExtResource( 10 )
 
 [node name="ProcessHit" type="Node" parent="States"]
 script = ExtResource( 7 )

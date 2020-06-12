@@ -13,3 +13,8 @@ func terminate():
 	
 func run(_delta):
 	pass
+
+func should_fall():
+	if(obj && !obj.get_node("Rotate/RayGround").is_colliding()):
+		fsm.state_next = fsm.states.Fall
+
