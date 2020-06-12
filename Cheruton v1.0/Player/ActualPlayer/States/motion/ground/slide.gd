@@ -35,7 +35,10 @@ func update(delta):
 	owner.velocity = initial_vel * (1-relative_vel) + Vector2(0,10)
 
 	if abs(owner.velocity.x) < SLIDE_PWR: # don't want a stationary character during slide
-		owner.velocity.x = SLIDE_PWR * owner.look_direction.x
+		if not input_dir.x:
+			owner.velocity.x = SLIDE_PWR * owner.look_direction.x
+		else:
+			owner.velocity.x = SLIDE_PWR * input_dir.x
 
 	if initial_slide_anim_done:
 		if owner.velocity.x > 300:

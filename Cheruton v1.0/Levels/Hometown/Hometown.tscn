@@ -13,9 +13,6 @@
 [ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=12]
 
-
-
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 544, 1792, 544, 1792, 576, 0, 576 )
 
