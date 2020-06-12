@@ -113,6 +113,7 @@ __meta__ = {
 }
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 7, -1 )
 enabled = true
 cast_to = Vector2( 0, 2 )
@@ -142,6 +143,7 @@ __meta__ = {
 }
 
 [node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 3, -2 )
 enabled = true
 cast_to = Vector2( 15, 0 )
@@ -152,6 +154,7 @@ __meta__ = {
 }
 
 [node name="RayGround" type="RayCast2D" parent="Rotate"]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 1 )
 __meta__ = {
