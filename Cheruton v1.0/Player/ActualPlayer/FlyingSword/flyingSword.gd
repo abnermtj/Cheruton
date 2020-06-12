@@ -18,7 +18,7 @@ var angular_velocity
 var cur_player_pos
 var state
 var active
-var air_timer
+var air_timer : float
 
 signal sword_result
 

@@ -9,14 +9,14 @@ var initial_vel
 var relative_vel
 var initial_slide_anim_done : bool
 var input_dir
-var curve_timer
+var curve_timer : float
 # Animation Player handles collsion
 func enter():
 	owner.switch_col()
 	initial_vel = owner.velocity
 	relative_vel = 0.01
 	initial_slide_anim_done = false
-	curve_timer = 0
+	curve_timer = 0.0
 	owner.play_anim("slide")
 	owner.queue_anim("slide_continious")
 	owner.play_sound("slide")

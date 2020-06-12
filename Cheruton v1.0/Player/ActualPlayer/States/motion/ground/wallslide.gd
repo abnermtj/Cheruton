@@ -5,11 +5,11 @@ const GRAVITY_STRENGTH_MAX = 0.03
 const SPEED_UP_FACTOR = .001
 const FAST_SLIDE_MAX_SPEED_INCREASE = 600
 const SLIDE_DOWN_LERP_FACTOR = 7
-const GRIP_TIME = 3 # how long character can stay still
+const GRIP_TIME = 3.0 # how long character can stay still
 
 var gravity_strength = .02
 var slide_down : bool
-var grip_timer
+var grip_timer : float
 
 func enter():
 	owner.play_anim("wall_slide")

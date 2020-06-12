@@ -12,7 +12,7 @@ const GROUND_SPEED_H_3 = 2000
 const AIR_SPEED_H_1 = 200
 const AIR_SPEED_H_2 = 1000
 
-var attack_timer
+var attack_timer : float
 var attack_count
 var attack_type
 var attack_again

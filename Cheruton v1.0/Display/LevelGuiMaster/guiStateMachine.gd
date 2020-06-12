@@ -14,7 +14,8 @@ func _ready():
 		"inventory": $inventory,
 		"pause": $pause,
 		"settings": $settings,
-		"shop": $shop
+		"shop": $shop,
+		"dialog": $dialog
 	}
 
 	soft_reset()
