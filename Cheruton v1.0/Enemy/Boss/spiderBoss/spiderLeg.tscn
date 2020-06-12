@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemy/Boss/spiderBoss/Sprite/MpK8sk3.png" type="Texture" id=4]
 
 [node name="leg" type="Position2D"]
+position = Vector2( 398.889, 115.395 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
