@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemy/Mobs/Serpent/Serpent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/Mobs/Slime/Slime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/Mobs/Wolf/IceWolf/IceWolf.tscn" type="PackedScene" id=9]
 
 [node name="Node" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -51,8 +52,12 @@ position = Vector2( -571.234, -887.999 )
 position = Vector2( 2512.49, 647.927 )
 scale = Vector2( 12, 12 )
 
+[node name="IceWolf" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2271.78, 624.546 )
+scale = Vector2( 12, 12 )
+
 [node name="Slime" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2369.55, 665.872 )
+position = Vector2( 2888.56, 667.501 )
 scale = Vector2( 12, 12 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
