@@ -1,5 +1,19 @@
 extends KinematicBody2D
 
+# Some Code Rules
+# 1 - no using getNode/$ except for in the root, no owner.get_node("asd")
+# 2 - use owner. or signals to tell root nodeto do something
+# 3 - nested if statements MAX 3, if statements should be one liners with 3-4 conditions max
+# 4 - CAPS for CONSTS,
+# 5 - snake_case for variable_names and function_names
+# 6 - all FileNames in PascalCase
+# 7 - nodes in camelCase
+# 8 - General Order of variables
+######TOP of script#######
+#	- Consts
+# 	-  vars
+#	- onready vars
+#	- signals
 const GRAVITY = 2400
 const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
@@ -8,7 +22,7 @@ const INPUT_AGAIN_MARGIN = 0.12
 var velocity = Vector2()
 var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
-var previous_anim
+var previous_anim : String
 var general_input_again = false
 var is_invunerable = false
 
@@ -16,10 +30,10 @@ var has_jumped = false
 var jump_again = false
 var bounce_boost = false
 
-var previous_position
-var tip_pos = Vector2()
-var hook_dir = Vector2()
-var hooked
+var previous_position : Vector2
+var tip_pos : Vector2
+var hook_dir : Vector2
+var hooked : bool
 var rope_length = 0.0
 var is_between_tiles = true
 var nearest_hook_point
@@ -27,7 +41,7 @@ var previous_hook_point
 
 var exit_slide_blocked = false
 
-var wall_direction = 0
+var wall_direction = 0 # 0 or 1
 
 var throw_sword_dir = Vector2()
 var sword_stuck = false
@@ -118,7 +132,6 @@ func play_anim_fx_color(string):
 	if animation_player_fx_color:
 		animation_player_fx_color.play(string)
 
-
 # Grapple
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
@@ -165,10 +178,9 @@ func get_nearest_hook_point():
 	for hook_point in non_blocked_hook_points:
 
 		var cur_dist = global_position.distance_to(hook_point.global_position)
-		# only hook to points in direction of character look
-		# used scale to determine direction character is facing
+		# look for hooks in the direction character is facing
 		if facing_dir_x == sign(hook_point.global_position.x - global_position.x + facing_dir_x*170) and min_dist > cur_dist:
-			min_dist = cur_dist # PROBELM HERE
+			min_dist = cur_dist
 			closest_hook_point = hook_point
 
 	# nothing in the direction of character look, redo above but behind character

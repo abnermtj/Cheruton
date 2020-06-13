@@ -18,8 +18,8 @@ func _change_state(state_name):
 	if not _active:
 		return
 
-	if not states_stack.empty(): # edge case when falling from platform without jump then jumping agin
-		previous_state = states_stack[0]
+	if not states_stack.empty():
+		previous_state = states_stack[-1]
 
 	if ["jump", "fall"].has(state_name):
 		owner.on_floor = false

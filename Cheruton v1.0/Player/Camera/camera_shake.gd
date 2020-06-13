@@ -1,11 +1,10 @@
 extends Camera2D
 class_name ShakeCamera
 
-const SHIFT_TRANS = Tween.TRANS_SINE # choose transition here
+const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_IN_OUT
 const SMOOTH_SPEED_FACTOR = .00001
 
-# DONT CHANGE HERE CHANGE BELOW
 var LOOK_AHEAD_FACTOR  # percentage of screen to shift for looking ahead when changing directions
 var SHIFT_DURATION # seconds
 
@@ -33,14 +32,8 @@ var smoothing_speed_goal = 0
 var camera_state = 0
 enum camera_states { DEFAULT = 0, HOOK = 1}
 
-# CUSTOM SMOOTING
-# The node to follow
-var target: Node2D = null
-onready var current_position = position
-var destination_position: Vector2
-
 onready var prev_camera_pos = get_camera_position()
-onready var tween = $ShiftTween # this caches a node no need to reload in downtimes between uses
+onready var tween = $ShiftTween
 
 # processes screenshake / pan
 func _process( delta ):
@@ -109,12 +102,12 @@ func camera_process(delta):
 	prev_camera_pos = get_camera_position()
 	smoothing_speed = lerp(smoothing_speed, smoothing_speed_goal, delta * SMOOTH_SPEED_FACTOR)
 
+# This function causes the camera to look ahead in the direction player is running
 func _check_facing():
-	var new_facing = sign(get_camera_position().x - prev_camera_pos.x) # +1 camera moves to the right else -1 if left else 0
+	var new_facing = sign(get_camera_position().x - prev_camera_pos.x)
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
 		var target_offset = get_viewport_rect().size.x * facing * LOOK_AHEAD_FACTOR
-		# modify the self object propery position:x, from the current positino to the target and use the following parementers:
 		tween.interpolate_property(self, "position:x", position.x, target_offset, SHIFT_DURATION, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
@@ -133,10 +126,6 @@ func _on_player_camera_command(command, arg):
 			smoothing_speed_goal = 1
 			LOOK_AHEAD_FACTOR = .1
 		camera_states.HOOK:
-#			drag_margin_left = .32 # Changing these causes abjust camera shifts
-#			drag_margin_right = .32
-#			drag_margin_top = 0.4
-#			drag_margin_bottom = .2
 			drag_margin_v_enabled = true
 			drag_margin_h_enabled = true
 			SHIFT_DURATION = .5

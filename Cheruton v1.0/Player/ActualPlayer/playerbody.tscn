@@ -784,7 +784,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 6 )
 region_enabled = true
-region_rect = Rect2( 3935, 1, 32, 48 )
+region_rect = Rect2( 1, 1, 32, 48 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
@@ -856,21 +856,21 @@ disabled = true
 script = ExtResource( 3 )
 START_STATE = NodePath("idle")
 
-[node name="slide" type="Node" parent="states"]
-script = ExtResource( 12 )
-attachment_curve = SubResource( 30 )
-
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 4 )
-
-[node name="jump" type="Node" parent="states"]
-script = ExtResource( 7 )
 
 [node name="run" type="Node" parent="states"]
 script = ExtResource( 6 )
 
+[node name="jump" type="Node" parent="states"]
+script = ExtResource( 7 )
+
 [node name="fall" type="Node" parent="states"]
 script = ExtResource( 8 )
+
+[node name="slide" type="Node" parent="states"]
+script = ExtResource( 12 )
+attachment_curve = SubResource( 30 )
 
 [node name="attack" type="Node" parent="states"]
 script = ExtResource( 13 )
