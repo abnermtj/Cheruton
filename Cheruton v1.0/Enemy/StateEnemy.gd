@@ -20,8 +20,8 @@ func should_fall():
 		fsm.state_next = fsm.states.Fall
 
 func aerial_pos_edit():
-	if(abs(obj.pos - obj.global_position.y) > 418):
-		print(100110001)
-		
+	print(obj.pos)
+	#print(abs(obj.pos - obj.global_position.y))
+	if(abs(obj.pos - obj.global_position.y) > 20):		
 		obj.velocity.y = -obj.velocity.y
 

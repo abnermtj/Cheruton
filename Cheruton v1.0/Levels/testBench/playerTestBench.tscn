@@ -47,7 +47,7 @@ position = Vector2( 7542.09, 1418.07 )
 position = Vector2( -571.234, -887.999 )
 
 [node name="CaveBat" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2229.08, 416.428 )
+position = Vector2( 2034.95, 489.646 )
 scale = Vector2( 6, 6 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]

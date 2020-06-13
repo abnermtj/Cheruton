@@ -16,7 +16,7 @@ var velocity = Vector2()
 
 var hit_dir : Vector2
 var is_hit := false
-var pos = self.global_position.y
+var pos
 
 var curr_health
 var max_health
@@ -26,6 +26,7 @@ var player_sight = false
 var player_spotted
 
 func _ready():
+	pos = self.global_position.y
 	max_health = 150
 	curr_health = max_health
 	healthbar.initbar(max_health)
