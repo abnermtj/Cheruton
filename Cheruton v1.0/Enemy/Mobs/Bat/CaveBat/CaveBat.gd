@@ -16,7 +16,7 @@ var velocity = Vector2()
 
 var hit_dir : Vector2
 var is_hit := false
-var energy = 1
+var pos = self.global_position.y
 
 var curr_health
 var max_health

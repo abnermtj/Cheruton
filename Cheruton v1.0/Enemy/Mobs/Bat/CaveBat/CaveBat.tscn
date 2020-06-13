@@ -153,7 +153,7 @@ __meta__ = {
 [node name="RayGround" type="RayCast2D" parent="Rotate"]
 position = Vector2( 0, 3.4 )
 enabled = true
-cast_to = Vector2( 0, 1 )
+cast_to = Vector2( 0, 40 )
 __meta__ = {
 "_edit_lock_": true
 }

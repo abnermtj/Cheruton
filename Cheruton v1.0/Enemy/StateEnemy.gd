@@ -16,7 +16,12 @@ func run(_delta):
 	pass
 
 func should_fall():
-	print(obj)
-	if(obj && !obj.get_node("Rotate/RayGround").is_colliding()):
+	if(obj.get_node("Rotate/RayGround").is_colliding()):
 		fsm.state_next = fsm.states.Fall
+
+func aerial_pos_edit():
+	if(abs(obj.pos - obj.global_position.y) > 418):
+		print(100110001)
+		
+		obj.velocity.y = -obj.velocity.y
 
