@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Slime.png-22511b8be24007a85e3e70094a11d530.stex"
+path="res://.import/IceSlime.png-cb134ce6ef92c89f22980008a8391ed0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Mobs/Slime/Slime.png"
-dest_files=[ "res://.import/Slime.png-22511b8be24007a85e3e70094a11d530.stex" ]
+source_file="res://Enemy/Mobs/Slime/IceSlime/IceSlime.png"
+dest_files=[ "res://.import/IceSlime.png-cb134ce6ef92c89f22980008a8391ed0.stex" ]
 
 [params]
 

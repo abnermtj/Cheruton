@@ -28,14 +28,7 @@ func _set_states_parent_node(p_node):
 
 
 func run_machine(delta):
-	match state_curr:
-		states.Patrol: print("patrol")
-		states.Hit:	print("hit")
-		states.ProcessHit: print("prohit")
-		states.Dead: print("prodead")
-		states.Attack: print("Attack")
-		states.Search: print("search")
-		states.Fall: print("fall")
+
 	if(!state_next && !state_curr):
 		return
 
@@ -56,5 +49,7 @@ func run_machine(delta):
 	if(state_curr):
 		state_curr.run(delta)
 		if(state_curr != states.Dead):
-			state_curr.should_fall()
-
+			if(states.has("Fall")):
+				state_curr.should_fall()
+			else:
+				state_curr.aerial_pos_edit()
