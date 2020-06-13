@@ -28,7 +28,7 @@ var player_spotted
 func _ready():
 	max_health = 150
 	curr_health = max_health
-	healthbar.initbar(max_health)
+	healthbar.init_bar(max_health)
 
 
 func _exit_tree():

@@ -83,6 +83,11 @@ _global_script_classes=[ {
 "class": "motionState",
 "language": "GDScript",
 "path": "res://Player/ActualPlayer/States/motion/motion.gd"
+}, {
+"base": "baseState",
+"class": "spiderBaseAttack",
+"language": "GDScript",
+"path": "res://Enemy/Boss/spiderBoss/states/spiderbaseattackstate.gd"
 } ]
 _global_script_class_icons={
 "AsepriteImportData": "",
@@ -99,7 +104,8 @@ _global_script_class_icons={
 "baseGui": "",
 "baseState": "",
 "groundState": "",
-"motionState": ""
+"motionState": "",
+"spiderBaseAttack": ""
 }
 
 [application]

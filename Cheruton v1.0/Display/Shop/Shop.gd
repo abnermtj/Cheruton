@@ -149,13 +149,14 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
+		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.connect("pressed", self, "_on_pressed", [new_node])
 		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 		# For the TextureButton
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+		btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 func _on_mouse_entered(node):
 	if(item_state == "HOVER"):
@@ -195,15 +196,15 @@ func _on_Timer_timeout():
 		mouse_count = 0
 
 func revert_item_state():
-
+	var btn_node = get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button")
 	if(item_state == "HOVER"):
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").text = shop_setting
-		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").show()
+		btn_node.text = shop_setting
+		btn_node.show()
 	else:
 		item_state = "HOVER"
-		get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button").hide()
+		btn_node.hide()
 		mouse_node = null
 
 # Reduces qty of item by 1
