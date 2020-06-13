@@ -1,0 +1,92 @@
+{ "frames": {
+   "IceWolf 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 1.aseprite": {
+    "frame": { "x": 51, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 2.aseprite": {
+    "frame": { "x": 101, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 3.aseprite": {
+    "frame": { "x": 151, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 4.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": -2, "h": -2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 0, "h": 0 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 5.aseprite": {
+    "frame": { "x": 201, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 6.aseprite": {
+    "frame": { "x": 251, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 7.aseprite": {
+    "frame": { "x": 301, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "IceWolf 8.aseprite": {
+    "frame": { "x": 351, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 48, "h": 32 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "IceWolf.png",
+  "format": "RGBA8888",
+  "size": { "w": 450, "h": 50 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Patrol", "from": 0, "to": 3, "direction": "forward" },
+   { "name": "Dead", "from": 5, "to": 8, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
