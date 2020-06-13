@@ -4,11 +4,11 @@ func _ready():
 	states_map = {
 		"idle": $idle,
 		"run": $run,
-		"jumpattack" : $jumpattack,
-		"legsweep" : $legsweep,
-		"webshoot" : $webshoot,
-		"stabattack" : $stabattack,
-		"dashattack" : $dashattack
+		"jumpAttack" : $jumpAttack,
+		"legSweep" : $legSweep,
+		"webShoot" : $webShoot,
+		"stabAttack" : $stabAttack,
+		"dashAttack" : $dashAttack
 	}
 
 func _change_state(state_name):

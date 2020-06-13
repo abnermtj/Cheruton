@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Display/Dialouge/dialog.gd" type="Script" id=1]
+[ext_resource path="res://Display/Dialouge/Sprites/next-indicator.png" type="Texture" id=2]
+[ext_resource path="res://Display/Dialouge/Sprites/menu_section_9patch.png" type="Texture" id=3]
+[ext_resource path="res://Display/Dialouge/Fonts/GaramondPremrPro-Smbd.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1518.79, 145 ), Vector2( 1518.79, 150 ) ]
+}
+
+[node name="dialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialogBox" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="speaker_background" type="NinePatchRect" parent="dialogBox"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -750.0
+margin_top = -270.0
+margin_right = -500.0
+rect_min_size = Vector2( 200, 50 )
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="dialogBox/speaker_background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 210, 50 )
+custom_constants/margin_right = -30
+custom_constants/margin_top = 200
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="speaker_name" type="RichTextLabel" parent="dialogBox/speaker_background/MarginContainer"]
+margin_left = 30.0
+margin_top = 200.0
+margin_right = 280.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 200, 50 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "speaker
+"
+text = "speaker
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body_background" type="NinePatchRect" parent="dialogBox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -270.0
+margin_right = 700.0
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="dialogBox/body_background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body_text" type="RichTextLabel" parent="dialogBox/body_background/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 1168.0
+margin_bottom = 238.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "this is a test, lets get it."
+text = "this is a test, lets get it."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next_indicator" type="Sprite" parent="dialogBox/body_background/MarginContainer"]
+position = Vector2( 1133.19, 222.563 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="dialogBox/body_background/MarginContainer/next_indicator"]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="dialogBox/body_background/MarginContainer"]
+[connection signal="tween_completed" from="dialogBox/body_background/MarginContainer/Tween" to="." method="_on_Tween_tween_completed"]

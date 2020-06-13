@@ -810,7 +810,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_air_1 = SubResource( 1 )
 anims/attack_air_2 = SubResource( 2 )
 anims/attack_ground_1 = SubResource( 3 )
@@ -832,7 +832,7 @@ anims/swing = SubResource( 18 )
 anims/wall_slide = SubResource( 19 )
 anims/wall_slide_fast = SubResource( 20 )
 
-[node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
+[node name="animationPlayerFx" type="AnimationPlayer" parent="."]
 anims/attack_air_2 = SubResource( 21 )
 anims/attack_ground_3 = SubResource( 22 )
 anims/jump = SubResource( 23 )
@@ -840,7 +840,7 @@ anims/land = SubResource( 24 )
 anims/run_change_dir_left = SubResource( 25 )
 anims/run_change_dir_right = SubResource( 26 )
 
-[node name="AnimationPlayerFxColor" type="AnimationPlayer" parent="."]
+[node name="animationPlayerFxColor" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 27 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
@@ -875,7 +875,7 @@ attachment_curve = SubResource( 30 )
 [node name="attack" type="Node" parent="states"]
 script = ExtResource( 13 )
 
-[node name="wallslide" type="Node" parent="states"]
+[node name="wallSlide" type="Node" parent="states"]
 script = ExtResource( 14 )
 
 [node name="hook" type="Node" parent="states"]
@@ -1026,7 +1026,7 @@ volume_db = -25.0
 [node name="slide" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 15 )
 volume_db = -3.0
-[connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
+[connection signal="animation_changed" from="animationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
@@ -1037,3 +1037,5 @@ volume_db = -3.0
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
+[connection signal="body_entered" from="circleScan" to="." method="_on_circleScan_body_entered"]
+[connection signal="body_exited" from="circleScan" to="." method="_on_circleScan_body_exited"]

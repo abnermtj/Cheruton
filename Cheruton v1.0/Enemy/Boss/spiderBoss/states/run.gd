@@ -9,7 +9,7 @@ func update(delta):
 	owner.move()
 
 	if (DataResource.dict_player.player_pos - owner.global_position).length() < 200:
-		emit_signal("finished","jumpattack")
+		emit_signal("finished","jumpAttack")
 	.update(delta)
 
 func exit():

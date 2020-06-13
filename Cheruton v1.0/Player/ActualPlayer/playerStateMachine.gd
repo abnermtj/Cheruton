@@ -9,7 +9,7 @@ func _ready():
 		"hook": $hook,
 		"slide" : $slide,
 		"attack" : $attack,
-		"wallslide" : $wallslide,
+		"wallSlide" : $wallSlide,
 		"dash" : $dash,
 		"hit" : $hit
 	}

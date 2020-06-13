@@ -4,7 +4,7 @@ class_name motionState
 
 func handle_input(event):
 	if event.is_action_pressed("attack")\
-	 and not ["hook", "attack", "slide"].has(get_parent().current_state.name)\
+	 and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
 	 and owner.can_attack:
 		owner.can_attack = false
 		owner.start_attack_cool_down()

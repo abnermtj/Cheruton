@@ -19,6 +19,7 @@ const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 
+var cur_state : Node
 var velocity = Vector2()
 var on_floor = false setget signal_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
@@ -30,7 +31,6 @@ var has_jumped = false
 var jump_again = false
 var bounce_boost = false
 
-var previous_position : Vector2
 var tip_pos : Vector2
 var hook_dir : Vector2
 var hooked : bool
@@ -38,6 +38,7 @@ var rope_length = 0.0
 var is_between_tiles = true
 var nearest_hook_point
 var previous_hook_point
+var near_hook_points = []
 
 var exit_slide_blocked = false
 
@@ -52,11 +53,9 @@ var can_attack = true
 var can_hook = true
 var can_throw_sword = true
 
-var close_bodies = [] # scanning
-
-onready var animation_player = $AnimationPlayer
-onready var animation_player_fx = $AnimationPlayerFx
-onready var animation_player_fx_color = $AnimationPlayerFxColor
+onready var animation_player = $animationPlayer
+onready var animation_player_fx = $animationPlayerFx
+onready var animation_player_fx_color = $animationPlayerFxColor
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
@@ -71,31 +70,35 @@ onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
 onready var states = $states
 
-signal state_changed
 signal hook_command
 signal flying_sword_command
 signal camera_command
 signal shake
 
+func _ready():
+	cur_state = states.current_state
+	body_collision.disabled = false
+	slide_collision.disabled = true
+	arm_rotate.hide()
+
+func _process(delta):
+	DataResource.dict_player.player_pos = global_position # for objects that target player, it needs to be as often as fps
+
 func _physics_process(delta):
-	previous_position = global_position # needs to be under physics# parent physcis happens before children
-
 	var old_nearest_hook_point = nearest_hook_point
-
+#
 	nearest_hook_point = get_nearest_hook_point()
-	if nearest_hook_point != old_nearest_hook_point: # only when there is change
+	if nearest_hook_point != old_nearest_hook_point:
 		if nearest_hook_point:
-			nearest_hook_point.active = true # visual indicator for player
+			nearest_hook_point.active = true # just a visual indicator
 		if old_nearest_hook_point:
 			old_nearest_hook_point.active = false
 
-	close_bodies = $cicleScanSmall.get_overlapping_bodies() # use in future for npc interaction
-
 # General Helper functions
-func set_look_direction(value): # vector
+func set_look_direction(value : Vector2):
 	look_direction = value
 func _on_states_state_changed(states_stack):
-	emit_signal("state_changed", states_stack)
+	cur_state = states_stack[-1]
 func signal_on_floor(grounded):
 	on_floor = grounded
 	set_camera_mode_logic()
@@ -103,34 +106,24 @@ func signal_on_floor(grounded):
 # Animation
 func play_anim(string):
 	if animation_player:
-		if string != "previous":
 			animation_player.play(string)
 			previous_anim = string
-		else:
-			animation_player.play(previous_anim)
 func queue_anim(string):
 	if animation_player:
-		if string != "previous":
 			animation_player.queue(string)
 			previous_anim = string
-		else:
-			animation_player.queue(previous_anim)
 func play_and_return_anim(string):
 	if animation_player:
 		animation_player.play(string)
 		animation_player.queue(previous_anim)
 func stop_anim():
-	if animation_player:
-		animation_player.stop(false)
+	if animation_player: animation_player.stop(false)
 func play_anim_fx(string):
-	if animation_player_fx:
-		animation_player_fx.play(string)
+	if animation_player_fx: animation_player_fx.play(string)
 func queue_anim_fx(string):
-	if animation_player_fx:
-		animation_player_fx.queue(string)
+	if animation_player_fx: animation_player_fx.queue(string)
 func play_anim_fx_color(string):
-	if animation_player_fx_color:
-		animation_player_fx_color.play(string)
+	if animation_player_fx_color: animation_player_fx_color.play(string)
 
 # Grapple
 func start_hook():
@@ -156,45 +149,48 @@ func chain_release():
 	emit_signal("hook_command", 1,Vector2(),Vector2())
 	can_hook = false
 	$timers/grappleCoolDown.start(.05)
+
+func _on_circleScan_body_entered(body):
+	if body.is_in_group("hook_points"):
+		near_hook_points.append(body)
+func _on_circleScan_body_exited(body):
+	if body.is_in_group("hook_points"):
+		near_hook_points.erase(body)
+
 func get_nearest_hook_point():
-	var hook_points = $circleScan.get_overlapping_bodies()
 	var non_blocked_hook_points = []
 	var space_state = get_world_2d().direct_space_state
 
-	for hook_point in hook_points:
-		if hook_point.is_in_group("hook_points"):
-			var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point], 32)
-#			if result:	print("name", result.collider.name) #debug
-			if result.empty():
-				non_blocked_hook_points.append( hook_point)
+	for hook_point in near_hook_points:
+		var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point], 32)
+#		if result:	print("name", result.collider.name) #debugging
+		if result.empty(): non_blocked_hook_points.append( hook_point)
 
 	if non_blocked_hook_points.empty():
 		return
-	var min_dist = INF
-	var closest_hook_point = null
+
+	var min_dist_facing = INF
+	var min_dist_opp = INF
+	var closest_hook_point_facing_dir = null
+	var closest_hook_point_opp_dir = null
+
 
 	var facing_dir_x = sign(body_rotate.scale.x)
-	# nearest point in direction of character look
+
+	# get nearest hook point in front and behind sepearately
 	for hook_point in non_blocked_hook_points:
-
 		var cur_dist = global_position.distance_to(hook_point.global_position)
-		# look for hooks in the direction character is facing
-		if facing_dir_x == sign(hook_point.global_position.x - global_position.x + facing_dir_x*170) and min_dist > cur_dist:
-			min_dist = cur_dist
-			closest_hook_point = hook_point
-
-	# nothing in the direction of character look, redo above but behind character
-	if not closest_hook_point:
-		for hook_point in non_blocked_hook_points:
-			if hook_point == previous_hook_point: continue
-
-			var cur_dist = global_position.distance_to(hook_point.global_position)
-			if facing_dir_x != sign(hook_point.global_position.x - global_position.x + -facing_dir_x*170) and  min_dist > cur_dist:
-				min_dist = cur_dist
-				closest_hook_point = hook_point
-
-	if closest_hook_point:
-		return closest_hook_point
+		# look for hooks in the direction character faces
+		if facing_dir_x == sign(hook_point.global_position.x - global_position.x) and min_dist_facing > cur_dist:
+			min_dist_facing = cur_dist
+			closest_hook_point_facing_dir = hook_point
+		elif facing_dir_x != sign(hook_point.global_position.x - global_position.x) and min_dist_opp > cur_dist:
+			min_dist_opp = cur_dist
+			closest_hook_point_opp_dir = hook_point
+	if closest_hook_point_facing_dir:
+		return closest_hook_point_facing_dir
+	elif closest_hook_point_opp_dir:
+		return closest_hook_point_opp_dir
 
 # swordThrow
 func start_sword_throw():
@@ -215,7 +211,7 @@ func return_sword_throw():
 
 # player damaged
 func _on_hitBox_area_entered(area):
-	if states.current_state.name == "hit": return
+	if cur_state.name == "hit": return
 
 	if hooked: chain_release()
 	var hit_dir = global_position - area.global_position
@@ -235,10 +231,10 @@ func _on_invunerableTimer_timeout():
 
 # Movement
 func move():
-	if hooked and not ["hook"].has(states.current_state.name) and\
+	if hooked and not ["hook"].has(cur_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND:
 			move_and_slide(Vector2(), Vector2.UP)
-	elif  ["run", "slide", "idle"].has(states.current_state.name):
+	elif  ["run", "slide", "idle"].has(cur_state.name):
 		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
 		move_and_slide(velocity, Vector2.UP)
@@ -317,15 +313,6 @@ func stop_sound(string):
 func volume(string, vol_db):
 	sound_parent.get_node(string).volume_db = vol_db
 
-func _ready():
-	body_collision.disabled = false
-	slide_collision.disabled = true
-	arm_rotate.hide()
-
-func _process(delta):
-	DataResource.dict_player.player_pos = global_position  # additional vector to correct middle of player
-
-
 # CAMERA  CONTROL PART
 func set_camera_mode_logic():
 	if hooked or states.previous_state.name == "hook":
@@ -334,6 +321,7 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
+
 
 
 

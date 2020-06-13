@@ -6,7 +6,7 @@ const SWING_CONTROL_STRENGTH = .11
 const SWING_GRAVITY = 110 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 60 # 70 for funzz 56.5 for the realz
 const MIN_WIRE_LENGTH = 100
-var MAX_WIRE_LENGTH = 600 #
+const MAX_WIRE_LENGTH = 1200
 const PLAYER_LENGTH_CONTROL = 250	# player's influence with REEL, too much may may make movements not smooth at the end
 const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lep
 const TOP_SPEED = 1600
@@ -36,10 +36,9 @@ func enter():
 	owner.set_collision_mask_bit(0, false) # to not collidewith random props
 	# Integration variables
 	next_pos = owner.global_position
-	cur_pos = owner.previous_position
+	cur_pos = owner.global_position - owner.velocity *.0146
 	length_rope = (owner.global_position - tip_pos).length()
-	MAX_WIRE_LENGTH = length_rope * 1.1
-	desired_length_rope = length_rope * .98
+	desired_length_rope = length_rope * .977
 
 	owner.arm_rotate.show()
 	owner.play_anim("swing")

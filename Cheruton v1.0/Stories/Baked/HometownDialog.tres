@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>weirdo</speaker>
+<dialog>lovelypeople dieee</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": " <speaker>weirdo</speaker>
+<dialog>ice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice cream</dialog>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+}
+}
+names = {
+"Hometown/Moneygirl": 1
+}

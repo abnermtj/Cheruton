@@ -1,10 +1,11 @@
 extends Enemy
 
-var velocity
+var velocity : Vector2
 var player_found = false
-var start_pos
+var start_pos : Vector2
 var attacking = false
 var previous_anim
+var cur_state : Node
 
 onready var states = $states
 onready var animation_player = $AnimationPlayer
@@ -38,3 +39,7 @@ func move():
 		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
 		move_and_slide(velocity, Vector2.UP)
+
+
+func _on_states_state_changed(states_stack):
+	cur_state = states_stack[-1]

@@ -3,7 +3,7 @@
 [ext_resource path="res://Enemy/Boss/spiderBoss/Sprite/RxVufNs.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBoss/states/idle.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBoss/spiderBoss.gd" type="Script" id=3]
-[ext_resource path="res://Enemy/Boss/spiderBoss/states/states.gd" type="Script" id=4]
+[ext_resource path="res://Enemy/Boss/spiderBoss/states/StateMachine.gd" type="Script" id=4]
 [ext_resource path="res://Enemy/Boss/spiderBoss/states/run.gd" type="Script" id=5]
 [ext_resource path="res://Enemy/Boss/spiderBoss/states/jumpattack.gd" type="Script" id=6]
 [ext_resource path="res://Enemy/Boss/spiderBoss/states/legsweep.gd" type="Script" id=7]
@@ -14,7 +14,7 @@ height = 400.0
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 550, 400 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "jump_attack_fall"
 tracks/0/type = "value"
 tracks/0/path = NodePath("fallDamageArea/CollisionShape2D:disabled")
@@ -29,10 +29,10 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 300, 20 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 100, 10 )
 
 [node name="spiderBoss" type="KinematicBody2D"]
@@ -57,17 +57,17 @@ script = ExtResource( 2 )
 [node name="run" type="Node" parent="states"]
 script = ExtResource( 5 )
 
-[node name="jumpattack" type="Node" parent="states"]
+[node name="jumpAttack" type="Node" parent="states"]
 script = ExtResource( 6 )
 
-[node name="legsweep" type="Node" parent="states"]
+[node name="legSweep" type="Node" parent="states"]
 script = ExtResource( 7 )
 
-[node name="webshoot" type="Node" parent="states"]
+[node name="webShoot" type="Node" parent="states"]
 
-[node name="stabattack" type="Node" parent="states"]
+[node name="stabAttack" type="Node" parent="states"]
 
-[node name="dashattack" type="Node" parent="states"]
+[node name="dashAttack" type="Node" parent="states"]
 
 [node name="playerFindArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -79,13 +79,13 @@ shape = SubResource( 2 )
 [node name="aggroTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/jump_attack_fall = SubResource( 4 )
+anims/jump_attack_fall = SubResource( 3 )
 
 [node name="sweepArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sweepArea"]
 position = Vector2( 0, 380 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="fallDamageArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -93,6 +93,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fallDamageArea"]
 position = Vector2( 0, 400 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = true
 [connection signal="timeout" from="aggroTimer" to="." method="_on_aggroTimer_timeout"]
