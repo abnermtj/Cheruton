@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IceWolf.png-f093196ae58726426cd6c28335e42974.stex"
+path="res://.import/CaveBat.png-05255610d35607d667b169079c06b086.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Mobs/Bat/CaveBat/IceWolf.png"
-dest_files=[ "res://.import/IceWolf.png-f093196ae58726426cd6c28335e42974.stex" ]
+source_file="res://Enemy/Mobs/Bat/CaveBat/CaveBat.png"
+dest_files=[ "res://.import/CaveBat.png-05255610d35607d667b169079c06b086.stex" ]
 
 [params]
 
