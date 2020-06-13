@@ -48,8 +48,7 @@ func run_machine(delta):
 	# run state
 	if(state_curr):
 		state_curr.run(delta)
-		if(state_curr != states.Dead):
-			if(states.has("Fall")):
-				state_curr.should_fall()
-			else:
-				state_curr.aerial_pos_edit()
+		if(states.has("Fall") &&state_curr != states.Dead):
+			state_curr.should_fall()
+		else:
+			state_curr.aerial_pos_edit()

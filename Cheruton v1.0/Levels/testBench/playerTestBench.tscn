@@ -5,8 +5,8 @@
 [ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.tscn" type="PackedScene" id=10]
 
 [node name="Node" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -46,9 +46,8 @@ position = Vector2( 7542.09, 1418.07 )
 [node name="camera_limit_NW" type="Position2D" parent="."]
 position = Vector2( -571.234, -887.999 )
 
-[node name="CaveBat" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2034.95, 489.646 )
-scale = Vector2( 6, 6 )
+[node name="Slime" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2083.82, 357.064 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]

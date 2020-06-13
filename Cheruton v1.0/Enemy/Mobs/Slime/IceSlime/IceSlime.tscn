@@ -1,15 +1,18 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Enemy/Mobs/Slime/Slime.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Dead.gd" type="Script" id=3]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Hit.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Mobs/Slime/Slime.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.png" type="Texture" id=5]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy/Mobs/Slime/State/ProcessHit.gd" type="Script" id=7]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Search.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Attack.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Fall.gd" type="Script" id=10]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -81,10 +84,10 @@ extents = Vector2( 5, 1 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 3, 3.5 )
 
-[node name="Slime" type="KinematicBody2D" groups=[
+[node name="IceSlime" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
-scale = Vector2( 3, 3 )
+scale = Vector2( 12, 12 )
 collision_layer = 8
 script = ExtResource( 1 )
 
