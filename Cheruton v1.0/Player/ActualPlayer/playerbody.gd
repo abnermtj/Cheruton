@@ -18,7 +18,7 @@ extends KinematicBody2D
 const GRAVITY = 2400
 const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
-const INPUT_AGAIN_MARGIN = 0.11
+const INPUT_AGAIN_MARGIN = 0.12
 
 var cur_state : Node
 var prev_state : Node
@@ -81,7 +81,7 @@ func _ready():
 	arm_rotate.hide()
 
 func _process(delta):
-	DataResource.dict_player.player_pos = global_position # for objects that target player, it needs to be as often as fps
+	DataResource.temp_dict_player.player_pos = global_position # for objects that target player, it needs to be as often as fps
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point

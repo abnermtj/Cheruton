@@ -1,18 +1,16 @@
 extends Node
 
-# Adding data to the game dictionary:
-#	DataResource.dict_x["feature x"] = value
-#   DataResource.dict_x.feature = value
-
 const MAIN = "res://SaveData/player-data.json"
 const MASTERLIST = "res://SaveData/item-masterlist.json"
 
 var current_scene = null
+
 # Main Dict
 var dict_main = {}
 var dict_inventory = {}
 var dict_player = {}
 var dict_settings = {}
+
 # Masterlist Dict
 var dict_masterlist = {}
 var dict_item_masterlist = {}
@@ -35,8 +33,6 @@ func load_data():
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
 
-
-
 func load_dict(FilePath):
 	var DataFile = File.new()
 	if(FilePath == MAIN && !DataFile.file_exists(FilePath)): # create new save
@@ -48,7 +44,6 @@ func load_dict(FilePath):
 	DataFile.close()
 	print("Data Loaded!")
 	return data.result
-
 
 func save_player():
 	dict_player = temp_dict_player
@@ -64,7 +59,6 @@ func save_data(FILE, dictionary):
 	#file.open_encrypted_with_pass(FILE, File.WRITE, "mypass")
 	file.store_string(to_json(dictionary))
 	file.close()
-
 
 func restore_last_save():
 	temp_dict_player = dict_player

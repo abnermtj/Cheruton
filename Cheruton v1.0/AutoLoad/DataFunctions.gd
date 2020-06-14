@@ -1,10 +1,5 @@
 extends Node
 
-const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
-const WELCOME = "res://Display/Welcome/Welcome.tscn"
-const SETTINGS = "res://Display/Settings/Settings.tscn"
-const LOADSCRN = "res://Display/LoadScrn/LoadScrn.tscn"
-
 signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
 
@@ -30,21 +25,14 @@ func change_health(var health_change):
 func change_coins(coins_change):
 	DataResource.temp_dict_player.coins += coins_change
 
-
 func change_audio_master(var audio_change):
 	DataResource.dict_settings.audio_master = clamp(DataResource.dict_settings.audio_master + audio_change, -60, 12)
-	print(DataResource.dict_settings.audio_master)
 	emit_signal("change_audio_master")
 
 func change_audio_music(var audio_change):
 	DataResource.dict_settings.audio_music = clamp(DataResource.dict_settings.audio_music + audio_change, -60, 12)
-	print(DataResource.dict_settings.audio_music)
 	emit_signal("change_audio_music")
 
 func change_audio_sfx(var audio_change):
 	DataResource.dict_settings.audio_sfx = clamp(DataResource.dict_settings.audio_sfx + audio_change, -60, 12)
-	print(DataResource.dict_settings.audio_sfx)
 	emit_signal("change_audio_sfx")
-#beta
-#func anim_foilage(scene):
-#	pass

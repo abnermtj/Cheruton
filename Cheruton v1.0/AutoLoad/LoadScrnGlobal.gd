@@ -6,11 +6,10 @@ var loader
 var wait_frames
 var time_max = 100 # msec
 var tween
-var progress_fill 
+var progress_fill
 var progbar
 
 onready var load_scrn = preload("res://Display/LoadScrn/LoadScrn.tscn")
-
 
 func _ready():
 	var root = get_tree().get_root()
@@ -28,7 +27,7 @@ func goto_scene(path): # game requests to switch to this scene
 	progbar = DataResource.current_scene.get_node(PROGBAR)
 	tween = $LoadScrn/Tween
 	progress_fill = $LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg
-	
+
 	wait_frames = 1
 
 func _process(_time):
@@ -62,7 +61,6 @@ func _process(_time):
 			loader = null
 			break
 
-
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count() * 100
 	animate_expbar(progbar.value, progress)
@@ -77,4 +75,3 @@ func animate_expbar(start, end):
 func set_new_scene(scene_resource):
 	DataResource.current_scene = scene_resource.instance()
 	get_node("/root").add_child(DataResource.current_scene)
-

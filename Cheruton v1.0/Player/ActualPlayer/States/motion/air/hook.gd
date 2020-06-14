@@ -65,7 +65,7 @@ func update(delta):
 	if owner.is_on_wall():
 		hit_wall = true
 
-	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags behind player
+	DataResource.temp_dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags behind player
 
 func update_idle(delta):
 	owner.body_pivot.rotation =  owner.global_position.angle_to_point(tip_pos) - PI/2

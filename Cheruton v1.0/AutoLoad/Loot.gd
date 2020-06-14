@@ -3,9 +3,9 @@ extends Node
 var loot_dict = {} # Items pending transfer to inventory
 
 func determine_loot(map):
-	var run = Loot.determine_loot_count(map)
-	Loot.loot_selector(map, run)
-	Loot.append_loot(run)
+	var run = determine_loot_count(map)
+	loot_selector(map, run)
+	append_loot(run)
 
 # Determines the qty of tiems to be released
 func determine_loot_count(map_name):
@@ -93,4 +93,3 @@ func insert_data(index, curr_size):
 				"item_qty": loot_dict[index][2],
 		}
 	DataResource.dict_inventory[loot_dict[index][0]]["Item" + str(curr_size)] = style
-
