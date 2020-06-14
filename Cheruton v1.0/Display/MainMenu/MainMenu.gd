@@ -1,6 +1,5 @@
 extends Control
 
-#const SCN1 = "res://Empty.tscn"
 const SCN1 = "res://Levels/Hometown/Hometown.tscn"
 onready var SETTINGS = $Settings
 

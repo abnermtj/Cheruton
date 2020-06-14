@@ -49,7 +49,6 @@ func _process(_time):
 		if err == ERR_FILE_EOF: # load finished
 			animate_expbar(progbar.value, 100.2)
 
-			print(1)
 			var resource = loader.get_resource()
 			loader = null
 			DataResource.current_scene.queue_free()

@@ -66,10 +66,6 @@ func change_tab_state(next_tab):
 		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
 		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
 
-	if(next_tab):
-		print("Current Tab: ")
-		print(next_tab)
-
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
 	if(mouse_node):
@@ -160,7 +156,6 @@ func enable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(item_state == "HOVER"):
-		print(node.name)
 		node.get_node("Background/ItemBg").texture = index_bg
 
 
@@ -259,7 +254,7 @@ func buy_item():
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
-	print(node.name)
+
 	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(int(node.get_parent().get_node("ItemBg/ItemBtn/Qty").text) + 1)
 	$Transaction.play()
 #Debug
@@ -282,13 +277,11 @@ func _on_Sell_pressed():
 		set_state("Sell")
 		check_fixed()
 
-
 func check_fixed():
 	if(item_state == "FIXED"):
 		var temp = mouse_node
 		revert_item_state()
 		_on_mouse_exited(temp)
-
 
 #Sets state of the option
 func set_state(types):
