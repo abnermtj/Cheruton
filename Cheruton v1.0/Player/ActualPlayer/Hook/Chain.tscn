@@ -9,13 +9,10 @@
 radius = 5.0
 height = 2.0
 
-[node name="grapple_hook" type="Node2D"]
+[node name="grappleHook" type="Node2D"]
+visible = false
 position = Vector2( 0, -1 )
 script = ExtResource( 2 )
-
-[node name="link" type="Node2D" parent="."]
-script = ExtResource( 3 )
-attachment_curve = ExtResource( 4 )
 
 [node name="tip" type="KinematicBody2D" parent="."]
 collision_layer = 4
@@ -32,6 +29,10 @@ position = Vector2( 5, 0 )
 shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
+
+[node name="link" type="Node2D" parent="tip"]
+script = ExtResource( 3 )
+attachment_curve = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0

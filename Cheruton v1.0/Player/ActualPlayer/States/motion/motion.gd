@@ -1,4 +1,3 @@
-# Collection of important methods to handle direction and animation
 extends baseState
 class_name motionState
 
@@ -12,16 +11,12 @@ func handle_input(event):
 	if event.is_action_pressed("sword_throw"):
 		if owner.can_throw_sword:
 			owner.throw_sword_dir = get_input_direction().normalized()
-			if owner.throw_sword_dir == Vector2():
-				owner.throw_sword_dir = owner.look_direction
+			if not owner.throw_sword_dir: owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()
 		elif owner.sword_stuck:
 			owner.return_sword_throw()
-	if event.is_action_pressed("dash") and owner.can_dash:
+	if event.is_action_pressed("dash") and owner.sword_stuck:
 		emit_signal("finished", "dash")
-
-
-
 
 # note left and right at the same time cancel out
 func get_input_direction():

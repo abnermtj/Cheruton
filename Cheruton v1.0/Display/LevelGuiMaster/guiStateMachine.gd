@@ -18,16 +18,20 @@ func _ready():
 		"dialog": $dialog
 	}
 
-	soft_reset()
+	reset()
 
-
-func soft_reset():
+func reset():
 	state_name_stack.resize(0)
 	state_name_stack.append("emptygui")
 	for child in get_children():
 		child.hide()
 		child.is_active_gui = false
 	states_map[state_name_stack[0]].is_active_gui = true
+
+func _input(event):
+	if active and state_name_stack:
+		states_map[state_name_stack[-1]].handle_input(event)
+
 
 func new_gui(gui_name):
 	if active == false:
@@ -38,6 +42,7 @@ func new_gui(gui_name):
 	for child in get_children():
 		child.is_active_gui = false
 	states_map[gui_name].is_active_gui = true
+	on_gui_changed()
 
 func release_gui(gui_name):
 	if active == false:
@@ -47,15 +52,11 @@ func release_gui(gui_name):
 	states_map[gui_name].is_active_gui = false
 	state_name_stack.pop_back()
 	states_map[state_name_stack[-1]].is_active_gui = true
+	on_gui_changed()
 
-func _input(event):
-	if active and state_name_stack:
-		states_map[state_name_stack[-1]].handle_input(event)
-
-func _physics_process(delta):
+func on_gui_changed():
 	if active:
 		if state_name_stack.has("pause"):
 			get_tree().paused = true
 		else:
 			get_tree().paused = false
-

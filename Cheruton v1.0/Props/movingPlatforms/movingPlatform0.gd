@@ -7,7 +7,7 @@ export var speed = 3.0
 
 var goal_pos = Vector2()
 var switch = true
-var duration
+var duration : float
 
 onready var platform = $platformBody
 onready var tween = $Tween

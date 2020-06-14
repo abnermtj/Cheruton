@@ -11,7 +11,7 @@ const PLAYER_LENGTH_CONTROL = 250	# player's influence with REEL, too much may m
 const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lep
 const TOP_SPEED = 1600
 
-var release_timer
+var release_timer : float
 
 var hit_ceil = false
 var hit_wall = false
@@ -19,15 +19,14 @@ var close_to_floor = false
 
 var cur_pos = Vector2()
 var next_pos = Vector2()
+var tip_pos : Vector2 # tip of hook/ attach point
 var length_rope = 0.0
 var desired_length_rope = 0.0
-var tip_pos # tip of hook/ attach point
 
 func handle_input(event):
 	if Input.is_action_just_pressed("hook"):
 		owner.chain_release()
 		emit_signal("finished", "fall")
-
 
 func enter():
 	release_timer = RELEASE_TIMER
@@ -46,9 +45,6 @@ func enter():
 
 # Invariant : hook tip already planted
 func update(delta):
-	if owner.get_close_to_floor_collider():
-		close_to_floor = true
-
 	release_timer -= delta
 	if Input.is_action_just_pressed("jump") and release_timer < 0:
 		owner.chain_release()
@@ -60,19 +56,20 @@ func update(delta):
 	_adjust()
 	owner.move()
 
+	if owner.get_close_to_floor_collider():
+		close_to_floor = true
+	if owner.is_on_floor():
+		emit_signal("finished", "run")
 	if owner.is_on_ceiling():
 		hit_ceil = true
 	if owner.is_on_wall():
 		hit_wall = true
-	if owner.is_on_floor():
-		emit_signal("finished", "run")
 
-	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags
+	DataResource.dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags behind player
 
 func update_idle(delta):
 	owner.body_pivot.rotation =  owner.global_position.angle_to_point(tip_pos) - PI/2
 
-# INTEGRATION
 func _update(delta):
 	var input_dir = get_input_direction()
 	var vel = next_pos - cur_pos # uses previous values to calculate current
@@ -114,7 +111,7 @@ func _adjust():
 
 func exit():
 	owner.body_pivot.rotation =  0
-	if owner.velocity.length() < 750: # help player when starting from still
+	if owner.velocity.length() < 760: # boos when swinging slowly
 		owner.velocity.x *= 1.6
 	owner.arm_rotate.hide()
 	owner.set_collision_mask_bit(0, true)

@@ -6,9 +6,5 @@ func set_gui_enabled(val):
 	$gui.active = val
 	$gui.visible = val
 	if val == false:
-		get_tree().paused = false
-		$gui.soft_reset()
-
-
-
-
+		get_tree().paused = false # if disabling from pause menu
+		$gui.reset()

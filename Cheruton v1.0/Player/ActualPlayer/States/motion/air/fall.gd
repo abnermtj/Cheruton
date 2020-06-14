@@ -1,6 +1,6 @@
 extends airState
 
-const COYOTE_TIME = 0.08 # time after leaving edge before you are not allowed to jump
+const COYOTE_TIME = 0.085 # time window after leaving edge where you are allowed to jump
 const TERM_VEL = 3000
 const MIN_ENTER_VELOCITY_X = 420
 
@@ -21,12 +21,19 @@ func handle_input(event):
 				owner.play_sound("hook_start")
 				owner.play_and_return_anim("grapple_throw")
 				owner.start_hook()
+
+	if Input.is_action_just_pressed("jump"):
+		owner.jump_buffer_start() # used for input buffering
+		if coyote_timer > 0 and not owner.has_jumped:
+				emit_signal("finished", "jump")
+
 	.handle_input(event)
 
 
 func enter():
 	enter_velocity = owner.velocity
 	updated_once = false
+
 	if owner.hooked:
 		emit_signal("finished", "hook")
 		return
@@ -38,31 +45,24 @@ func enter():
 		owner.queue_anim("fall")
 	else:
 		owner.play_anim("fall")
+
 	coyote_timer = COYOTE_TIME
 
 func update(delta):
 	coyote_timer -= delta
 
-	owner.velocity.y = min( TERM_VEL, owner.velocity.y + owner.GRAVITY * delta ) # dunnid delta here by right, move and slide deals with it
+	owner.velocity.y = min(TERM_VEL, owner.velocity.y + owner.GRAVITY * delta) # dunnid delta here by right, move and slide deals with it
 
+	# Air steering
 	var input_dir = get_input_direction()
 	update_look_direction(input_dir)
-	var dir = input_dir.x
 
-	if dir:
-		owner.velocity.x = clamp ((owner.velocity.x + dir*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
+	if input_dir.x:
+		owner.velocity.x = clamp ((owner.velocity.x + input_dir.x*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
 	else:
-		owner.velocity.x = lerp( owner.velocity.x, 0, delta )
+		owner.velocity.x = lerp(owner.velocity.x, 0, delta)
 
-	owner.move_and_slide(owner.velocity, Vector2.UP)
-
-	# jump input buffering
-	if Input.is_action_just_pressed("jump") and updated_once:
-		owner.jump_buffer_start()
-		if coyote_timer > 0 and not owner.has_jumped:  # when accidentally falling off edges
-				emit_signal("finished", "jump")
-				return
-
+	owner.move()
 	# wall crash
 	if owner.is_on_wall():
 		owner.velocity.x = 0
@@ -73,23 +73,20 @@ func update(delta):
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim_fx("land")
-		if (owner.jump_again):
-			emit_signal("finished", "jump")
-		elif Input.is_action_pressed( "slide" ):
-			emit_signal("finished", "slide")
-		else:
-			# land
-			owner.play_sound("land")
-			emit_signal("finished", "run")
 
-	# bouncepad
-	var col
-	if owner.get_slide_count():
-		col = owner.get_slide_collision(0).get_collider()
+		var col = owner.get_slide_collision(0).get_collider() # bounce pad
 		if col.is_in_group("bouncePads"):
 			owner.bounce_boost = true
 			emit_signal("finished", "jump")
+			return
+
+		if (owner.jump_again):
+			emit_signal("finished", "jump")
+		elif Input.is_action_pressed("slide"):
+			emit_signal("finished", "slide")
+		else:
+			owner.play_sound("land")
+			emit_signal("finished", "run")
 
 	updated_once = true
 	.update(delta)
-

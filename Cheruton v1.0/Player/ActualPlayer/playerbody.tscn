@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
 [ext_resource path="res://Player/ActualPlayer/playerStateMachine.gd" type="Script" id=3]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/idle.gd" type="Script" id=4]
-[ext_resource path="res://Player/ActualPlayer/playerbody.gd" type="Script" id=5]
+[ext_resource path="res://Player/ActualPlayer/playerBody.gd" type="Script" id=5]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/run.gd" type="Script" id=6]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Player/ActualPlayer/Sfx/jump/realistic/eskimoneil_mod.wav" type="AudioStream" id=11]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/States/combat/attack_ground.gd" type="Script" id=13]
-[ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallslide.gd" type="Script" id=14]
+[ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallSlide.gd" type="Script" id=14]
 [ext_resource path="res://Player/ActualPlayer/Sfx/slide/slide.wav" type="AudioStream" id=15]
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hok_rel.wav" type="AudioStream" id=16]
 [ext_resource path="res://Player/ActualPlayer/Sfx/hook/hook_shoot_sofer.wav" type="AudioStream" id=17]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/dash.gd" type="Script" id=21]
 [ext_resource path="res://Player/ActualPlayer/States/combat/hit.gd" type="Script" id=22]
 [ext_resource path="res://Player/ActualPlayer/Shaders/blinkWhite.tres" type="Material" id=23]
+[ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide_curve.tres" type="Curve" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack_air_1"
@@ -546,7 +547,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 6 ) ]
+"values": [ Vector2( -3, 6 ) ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -572,10 +573,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 6 ), Vector2( -4, 6 ), Vector2( -4, 6 ), Vector2( -4, 6 ), Vector2( -4, 6 ) ]
+"values": [ Vector2( -3, 6 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -729,44 +730,43 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=27]
 resource_name = "hit"
+length = 0.35
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:material")
+tracks/0/path = NodePath("bodyPivot:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.00102992, 0.0491786, 0.1, 0.148308, 0.2, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null ]
+"values": [ ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null ]
 }
 
 [sub_resource type="CapsuleShape2D" id=28]
-radius = 30.0
+radius = 28.0
 height = 65.0
 
 [sub_resource type="CapsuleShape2D" id=29]
-radius = 30.0
-height = 3.0
+radius = 28.0
+height = 30.0
 
-[sub_resource type="Curve" id=30]
-_data = [ Vector2( 0, 0 ), 0.0, 0.293435, 0, 0, Vector2( 1, 1 ), 0.304409, 0.0, 0, 0 ]
+[sub_resource type="CircleShape2D" id=30]
+radius = 28.0
 
-[sub_resource type="CircleShape2D" id=31]
-radius = 30.0
-
-[sub_resource type="CapsuleShape2D" id=32]
+[sub_resource type="CapsuleShape2D" id=31]
 radius = 20.0
 height = 65.0
 
-[sub_resource type="RectangleShape2D" id=33]
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 30, 10 )
 
-[sub_resource type="CircleShape2D" id=34]
+[sub_resource type="CircleShape2D" id=33]
 radius = 550.0
 
-[sub_resource type="CircleShape2D" id=35]
+[sub_resource type="CircleShape2D" id=34]
 radius = 100.0
 
 [node name="player" type="KinematicBody2D"]
@@ -775,19 +775,24 @@ collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
+position = Vector2( 1, 0 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
+show_behind_parent = true
+use_parent_material = true
 position = Vector2( -5, 2 )
 
 [node name="playerSprite" type="Sprite" parent="bodyPivot/bodyRotate"]
+use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( -4, 6 )
+offset = Vector2( -3, 6 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 48 )
+region_rect = Rect2( 4457, 1, 32, 48 )
 
 [node name="armSprite" type="Sprite" parent="bodyPivot"]
 visible = false
+use_parent_material = true
 position = Vector2( -10, 5.6 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
@@ -796,7 +801,6 @@ offset = Vector2( 0, -15 )
 region_rect = Rect2( 5167, 1, 40, 36 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
-visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124
@@ -848,7 +852,7 @@ position = Vector2( -5, 9 )
 shape = SubResource( 28 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -5, 40 )
+position = Vector2( -5, 26.5 )
 shape = SubResource( 29 )
 disabled = true
 
@@ -870,7 +874,7 @@ script = ExtResource( 8 )
 
 [node name="slide" type="Node" parent="states"]
 script = ExtResource( 12 )
-attachment_curve = SubResource( 30 )
+slide_curve = ExtResource( 24 )
 
 [node name="attack" type="Node" parent="states"]
 script = ExtResource( 13 )
@@ -897,33 +901,33 @@ collision_mask = 128
 position = Vector2( -2, 0 )
 
 [node name="leftSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( -32, 0 )
-
-[node name="leftside2" type="RayCast2D" parent="wallRaycasts/leftSide"]
-position = Vector2( 0, 20 )
-enabled = true
-cast_to = Vector2( -10, 0 )
-collision_mask = 128
+position = Vector2( -30, 0 )
 
 [node name="leftside1" type="RayCast2D" parent="wallRaycasts/leftSide"]
 position = Vector2( 0, -12 )
 enabled = true
-cast_to = Vector2( -10, 0 )
+cast_to = Vector2( -12, 0 )
+collision_mask = 128
+
+[node name="leftside2" type="RayCast2D" parent="wallRaycasts/leftSide"]
+position = Vector2( 0, 20 )
+enabled = true
+cast_to = Vector2( -12, 0 )
 collision_mask = 128
 
 [node name="rightSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( 27, 0 )
+position = Vector2( 24, 0 )
 
 [node name="rightside1" type="RayCast2D" parent="wallRaycasts/rightSide"]
 position = Vector2( 0, 20 )
 enabled = true
-cast_to = Vector2( 10, 0 )
+cast_to = Vector2( 12, 0 )
 collision_mask = 128
 
 [node name="rightside2" type="RayCast2D" parent="wallRaycasts/rightSide"]
 position = Vector2( 0, -12 )
 enabled = true
-cast_to = Vector2( 10, 0 )
+cast_to = Vector2( 12, 0 )
 collision_mask = 128
 
 [node name="cornerCorrectionRaycasts" type="Node2D" parent="."]
@@ -951,35 +955,36 @@ one_shot = true
 
 [node name="jumpInputBuffer" type="Timer" parent="timers"]
 
-[node name="generalInputBuffer" type="Timer" parent="timers"]
-
 [node name="invunerableTimer" type="Timer" parent="timers"]
 
 [node name="slideArea2D" type="Area2D" parent="."]
+visible = false
 position = Vector2( -2, 0 )
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
-position = Vector2( -2, -18 )
-shape = SubResource( 31 )
+position = Vector2( -3, -18 )
+shape = SubResource( 30 )
 
 [node name="hitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( -5, 10 )
-shape = SubResource( 32 )
+shape = SubResource( 31 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
 position = Vector2( -5, 61.5 )
-shape = SubResource( 33 )
+shape = SubResource( 32 )
 
 [node name="circleScan" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -987,7 +992,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
-shape = SubResource( 34 )
+shape = SubResource( 33 )
 
 [node name="cicleScanSmall" type="Area2D" parent="."]
 position = Vector2( -5, 0 )
@@ -995,7 +1000,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
-shape = SubResource( 35 )
+shape = SubResource( 34 )
 
 [node name="sounds" type="Node" parent="."]
 
@@ -1027,15 +1032,12 @@ volume_db = -25.0
 stream = ExtResource( 15 )
 volume_db = -3.0
 [connection signal="animation_changed" from="animationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]
-[connection signal="timeout" from="timers/generalInputBuffer" to="." method="_on_generalInputBuffer_timeout"]
 [connection signal="timeout" from="timers/invunerableTimer" to="." method="_on_invunerableTimer_timeout"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
-[connection signal="body_entered" from="circleScan" to="." method="_on_circleScan_body_entered"]
-[connection signal="body_exited" from="circleScan" to="." method="_on_circleScan_body_exited"]

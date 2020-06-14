@@ -1,12 +1,12 @@
 extends Node2D
 
-const GRAVITY = 30
 
 onready var animation_player = $AnimationPlayer
 onready var timer = $resetTimer
 onready var body = $body
 
 export var reset_time : float = 1.0
+export var gravity = 30
 
 var velocity = Vector2()
 var is_triggered = false
@@ -15,7 +15,7 @@ func _ready():
 	set_physics_process(false)
 
 func _physics_process(delta):
-	velocity.y += GRAVITY * delta
+	velocity.y += gravity * delta
 	body.position += velocity
 
 # called by player

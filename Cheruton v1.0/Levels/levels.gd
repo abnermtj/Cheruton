@@ -19,13 +19,13 @@ func _ready() -> void:
 
 func _set_player() -> void:
 	player = find_node( "player" )
-#	if player == null:
-#		print( "Level: player not found" )
+	if player == null:
+		print( "Level: player not found" )
 
 func _set_camera() -> void:
 	camera = find_node( "camera" )
-#	if camera == null:
-#		print( "Level: camera not found" )
+	if camera == null:
+		print( "Level: camera not found" )
 	var pos_NW = find_node( "camera_limit_NW" )
 	if pos_NW:
 		camera.limit_left = pos_NW.position.x
@@ -42,20 +42,19 @@ func _set_player_objects() -> void:
 	if camera:
 		player.connect("camera_command", camera, "_on_player_camera_command")
 
-	var grapple_hook = find_node ("grapple_hook")
+	var grapple_hook = find_node ("grappleHook")
 	if grapple_hook == null:
-		print( "Level: grapple_hook not found" )
+		print( "Level: grappleHook not found" )
 	else:
 		grapple_hook.connect("hooked", player, "_on_Chain_hooked")
 		player.connect("hook_command", grapple_hook, "_on_player_hook_command")
 
-	var flying_sword = find_node("flying_sword")
+	var flying_sword = find_node("flyingSword")
 	if flying_sword == null:
-		print( "Level: flying_sword not found" )
+		print( "Level: flyingSword not found" )
 	else:
 		flying_sword.connect("sword_result", player, "on_sword_result")
 		player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
-
 
 # loads prev checkpoint
 func _on_player_dead() -> void:

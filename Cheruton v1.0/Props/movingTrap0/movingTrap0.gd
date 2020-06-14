@@ -28,8 +28,8 @@ func _on_Tween_tween_completed(object, key):
 	if not cicular_path:
 		if switch: tween.interpolate_property(self, "goal_pos", move_to, Vector2(), duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, iDLE_DURATION) # waits till previous one is done
 		else: tween.interpolate_property(self, "goal_pos", Vector2(), move_to, duration,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, iDLE_DURATION)
-		switch = not switch
 		tween.start()
+		switch = not switch
 	else:
 		trap.position = Vector2(0, -radius) # starts pointing up
 

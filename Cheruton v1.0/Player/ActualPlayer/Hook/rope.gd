@@ -20,23 +20,21 @@ export (Curve) var attachment_curve
 var length
 var c = 1 # set in player function # similar to offset
 var s = .68 #  inverse wave length # 2
-var w # wave length
-var a # amplitude
+var w = 1# wave length
+var a = 1# amplitude
 var rng = RandomNumberGenerator.new()
 
-# only called when visible, so if parents sets it to not visible, this won't be called
 func _draw(): # gets called once initially then again when update() is called
-		var points_arr = PoolVector2Array() # an array specifically to hold Vector2
+	var points_arr = PoolVector2Array() # an array specifically to hold Vector2
 
-		length = c
-		var d = c/(w+(1-s)*w)
-		for point_idx in range (length/length_divisor):
-			var y_pos = (-4 * pow(2, point_idx/c - 0.5) + 1) * a * sin(((point_idx-c) * d * PI) / c) * s
-			points_arr.push_back(Vector2(point_idx*length_divisor, y_pos))
-		if points_arr.size()> 1:
-			draw_polyline(points_arr,color_outline, LINE_WIDTH)
-			draw_polyline(points_arr,color_inner, LINE_WIDTH-10)
-		points_arr.resize(0) # same array is used in differennt function calls
+	length = c
+	var d = c/(w+(1-s)*w)
+	for point_idx in range (length/length_divisor):
+		var y_pos = (-4 * pow(2, point_idx/c - 0.5) + 1) * a * sin(((point_idx-c) * d * PI) / c) * s # makes the link wobble during travel
+		points_arr.push_back(Vector2(point_idx*length_divisor, y_pos))
+	if points_arr.size()> 1:
+		draw_polyline(points_arr,color_outline, LINE_WIDTH)
+		draw_polyline(points_arr,color_inner, LINE_WIDTH-10)
 
 func start():
 	rng.randomize()
@@ -52,24 +50,21 @@ func release():
 	stage = RETRACT
 	a = 0
 
-# dont use physics else chain will lag behind actauly frame rate
 func _process(delta):
 	if not visible:
 		return
 	if stage == INITIAL_SHOOT:
 		length_divisor = 1
-		s = lerp(s,1,delta*SHOOT_OFFSET_INCREASE)
+		s = lerp(s, 1, delta*SHOOT_OFFSET_INCREASE)
 		a = lerp(a, 1, delta*SHOOT_AMP_DECREASE)
-		w = lerp(w,w*16,delta*SHOOT_WID_DECREASE)
+		w = lerp(w, w*16, delta*SHOOT_WID_DECREASE)
 		if owner.chain_state == owner.chain_states.HOOKED:
 			stage = JUST_HOOKED
 			s = .4
 	elif stage == JUST_HOOKED:
 		s = attachment_curve.interpolate(s)
 		a = 40
-		length_divisor = lerp(length_divisor,c/100,delta) # this boosts performance by reducing point
+		length_divisor = lerp(length_divisor,c/100,delta) # 'c' boosts performance by reducing points
 	elif stage == RETRACT:
 		length_divisor = 1
 	update()
-
-

@@ -53,6 +53,7 @@ margin_right = 882.608
 margin_bottom = 535.551
 
 [node name="dialog" parent="gui" instance=ExtResource( 8 )]
+visible = false
 margin_left = 1000.88
 margin_top = 997.866
 margin_right = 1000.88

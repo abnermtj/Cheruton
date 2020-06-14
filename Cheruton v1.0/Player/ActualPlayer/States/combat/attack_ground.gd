@@ -13,12 +13,12 @@ const AIR_SPEED_H_1 = 200
 const AIR_SPEED_H_2 = 1000
 
 var attack_timer : float
-var attack_count
-var attack_type
-var attack_again
-var charge_dir
+var attack_count : int
+var attack_type : int
+var attack_again : bool
+var charge_dir : int
 var updated_once = false
-var enter_vel
+var enter_vel : Vector2
 
 func enter():
 	if get_parent().previous_state is groundState:
