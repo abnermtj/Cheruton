@@ -16,7 +16,7 @@ func _init(input_object, initial_state, self_debug = false ):
 	state_next = initial_state
 
 
-func _set_states_parent_node(p_node):
+func _set_states_parent_node(p_node) -> void:
 	#if debug: print( "Found ", p_node.get_child_count(), " states" )
 	if p_node.get_child_count() > 0:
 		var state_nodes = p_node.get_children()
@@ -27,7 +27,7 @@ func _set_states_parent_node(p_node):
 			state_node.obj = self.object
 
 
-func run_machine(delta):
+func run_machine(delta) -> void:
 
 	if(!state_next && !state_curr):
 		return

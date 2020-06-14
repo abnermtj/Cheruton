@@ -1,14 +1,16 @@
 extends Control
 
+const PROGBAR = "ColorRect/CenterContainer/VBoxContainer/LoadProg"
 
 var loader
 var wait_frames
 var time_max = 100 # msec
-
+var tween
+var progress_fill 
 var progbar
+
 onready var load_scrn = preload("res://Display/LoadScrn/LoadScrn.tscn")
 
-const PROGBAR = "ColorRect/CenterContainer/VBoxContainer/LoadProg"
 
 func _ready():
 	var root = get_tree().get_root()
@@ -24,7 +26,9 @@ func goto_scene(path): # game requests to switch to this scene
 	DataResource.current_scene = load_scrn.instance()
 	add_child(DataResource.current_scene)
 	progbar = DataResource.current_scene.get_node(PROGBAR)
-
+	tween = $LoadScrn/Tween
+	progress_fill = $LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg
+	
 	wait_frames = 1
 
 func _process(_time):
@@ -65,12 +69,10 @@ func update_progress():
 
 
 func animate_expbar(start, end):
-	$LoadScrn/Tween.interpolate_property($LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$LoadScrn/Tween.start()
-	while(!$LoadScrn/Tween.is_active()):
+	tween.interpolate_property(progress_fill, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	while(!tween.is_active()):
 		pass
-
-
 
 func set_new_scene(scene_resource):
 	DataResource.current_scene = scene_resource.instance()

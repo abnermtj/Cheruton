@@ -8,7 +8,7 @@ var rax = 1
 func initialize():
 	random.randomize()
 	obj.anim_next = "Patrol"
-	obj.velocity.y = random.randf_range(300, 500)
+	obj.velocity.y = random.randf_range(100, 200)
 
 func run(_delta):
 	

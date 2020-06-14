@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Patrol.gd" type="Script" id=2]
@@ -10,9 +10,6 @@
 [ext_resource path="res://Enemy/Mobs/Slime/State/Search.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Attack.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/Mobs/Slime/State/Fall.gd" type="Script" id=10]
-
-
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 2 )
@@ -76,12 +73,9 @@ tracks/1/keys = {
 radius = 25.0
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4, 1 )
-
-[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 3, 3.5 )
 
 [node name="IceSlime" type="KinematicBody2D" groups=[
@@ -204,21 +198,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="DamageBox" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-collision_mask = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="DamageCollision" type="CollisionShape2D" parent="DamageBox"]
-position = Vector2( 0, -1 )
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="JumpBox" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -229,7 +208,7 @@ __meta__ = {
 
 [node name="JumpCollision" type="CollisionShape2D" parent="JumpBox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 one_way_collision = true
 __meta__ = {
 "_edit_lock_": true
@@ -244,7 +223,7 @@ __meta__ = {
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, -3.3 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }

@@ -1,16 +1,16 @@
 extends Node
 
+const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
+const WELCOME = "res://Display/Welcome/Welcome.tscn"
+const SETTINGS = "res://Display/Settings/Settings.tscn"
+const LOADSCRN = "res://Display/LoadScrn/LoadScrn.tscn"
+
 signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
 
 signal change_audio_master
 signal change_audio_music
 signal change_audio_sfx
-
-const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
-const WELCOME = "res://Display/Welcome/Welcome.tscn"
-const SETTINGS = "res://Display/Settings/Settings.tscn"
-const LOAD_SCRN = "res://Display/LoadScrn/LoadScrn.tscn"
 
 func add_exp(var exp_gain):
 	DataResource.temp_dict_player.exp_curr += exp_gain

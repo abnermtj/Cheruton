@@ -17,4 +17,4 @@ func run(delta):
 			fsm.state_next = fsm.states.Search#stub
 
 func terminate():
-	obj.get_node("DamageBox/DamageCollision").disabled = false
+	pass

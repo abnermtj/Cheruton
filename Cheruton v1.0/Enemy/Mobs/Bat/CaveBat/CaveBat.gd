@@ -29,7 +29,7 @@ func _ready():
 	pos = self.global_position.y
 	max_health = 150
 	curr_health = max_health
-	healthbar.initbar(max_health)
+	healthbar.init_bar(max_health)
 
 
 func _exit_tree():
@@ -60,7 +60,7 @@ func change_patrol_dirn() -> bool:
 #	$jumpbox/jumpcollision.disabled = true
 
 # Slime has been hit
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(area)-> void:
 	# Damage processed if the node has not been previously hit or not dead
 	if (!is_hit):
 		is_hit = true
