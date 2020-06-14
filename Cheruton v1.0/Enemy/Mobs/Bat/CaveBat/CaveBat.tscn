@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 601, 1, 48, 48 ), Rect2( 651, 1, 48, 48 ), Rect2( 701, 1, 48, 48 ), Rect2( 751, 1, 48, 48 ), Rect2( 801, 1, 48, 32 ), Rect2( 851, 1, 48, 32 ), Rect2( 901, 1, 48, 32 ) ]
+"values": [ Rect2( 201, 1, 48, 48 ), Rect2( 251, 1, 48, 48 ), Rect2( 301, 1, 48, 48 ), Rect2( 351, 1, 48, 48 ), Rect2( 401, 1, 48, 32 ), Rect2( 451, 1, 48, 32 ), Rect2( 501, 1, 48, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -41,7 +41,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-length = 1.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Rotate/Sprite:region_rect")
@@ -50,10 +50,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 1, 48, 48 ), Rect2( 51, 1, 48, 48 ), Rect2( 101, 1, 48, 32 ), Rect2( 151, 1, 48, 32 ), Rect2( 201, 1, 48, 32 ), Rect2( 251, 1, 48, 48 ), Rect2( 301, 1, 48, 48 ), Rect2( 351, 1, 48, 32 ), Rect2( 401, 1, 48, 32 ), Rect2( 451, 1, 48, 32 ), Rect2( 501, 1, 48, 32 ), Rect2( 551, 1, 48, 32 ) ]
+"values": [ Rect2( 1, 1, 48, 48 ), Rect2( 51, 1, 48, 48 ), Rect2( 101, 1, 48, 48 ), Rect2( 151, 1, 48, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Rotate/Sprite:offset")
@@ -62,10 +62,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, -8 ), Vector2( 0, -8 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=4]
@@ -100,9 +100,8 @@ __meta__ = {
 position = Vector2( 0, -3 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
-offset = Vector2( 0, 8 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 48, 32 )
+region_rect = Rect2( 201, 1, 48, 48 )
 __meta__ = {
 "_edit_lock_": true
 }

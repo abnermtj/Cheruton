@@ -45,11 +45,11 @@ position = Vector2( 7542.09, 1418.07 )
 position = Vector2( -571.234, -887.999 )
 
 [node name="CaveBat" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2173.57, 269.872 )
+position = Vector2( 2711.03, 384.272 )
 scale = Vector2( 12, 12 )
 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2711.03, 384.272 )
+position = Vector2( 2719.17, 490.973 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
