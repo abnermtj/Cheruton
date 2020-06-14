@@ -5,12 +5,11 @@ const PROGBAR = "ColorRect/CenterContainer/VBoxContainer/LoadProg"
 var loader
 var wait_frames
 var time_max = 100 # msec
-
+var tween
+var progress_fill 
 var progbar
-onready var load_scrn = preload("res://Display/LoadScrn/LoadScrn.tscn")
-onready var tween = $LoadScrn/Tween
-onready var progress_fill = $LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg
 
+onready var load_scrn = preload("res://Display/LoadScrn/LoadScrn.tscn")
 
 
 func _ready():
@@ -27,7 +26,9 @@ func goto_scene(path): # game requests to switch to this scene
 	DataResource.current_scene = load_scrn.instance()
 	add_child(DataResource.current_scene)
 	progbar = DataResource.current_scene.get_node(PROGBAR)
-
+	tween = $LoadScrn/Tween
+	progress_fill = $LoadScrn/ColorRect/CenterContainer/VBoxContainer/LoadProg
+	
 	wait_frames = 1
 
 func _process(_time):

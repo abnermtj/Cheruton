@@ -17,7 +17,7 @@ func initialize():
 	else:
 		print(20)
 	#game.camera_shake( 0.10, 60, 4, obj.hit_dir.normalized() )
-	obj.get_node("DamageBox/DamageCollision").disabled = true
+
 	obj.get_node("HitBox/HitCollision").disabled = true
 
 func run(delta):
