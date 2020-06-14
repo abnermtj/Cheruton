@@ -77,12 +77,17 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
 "language": "GDScript",
 "path": "res://Player/ActualPlayer/States/motion/motion.gd"
+}, {
+"base": "baseState",
+"class": "spiderBaseAttack",
+"language": "GDScript",
+"path": "res://Enemy/Boss/spiderBoss/states/spiderbaseattackstate.gd"
 } ]
 _global_script_class_icons={
 "AsepriteImportData": "",
@@ -99,7 +104,8 @@ _global_script_class_icons={
 "baseGui": "",
 "baseState": "",
 "groundState": "",
-"motionState": ""
+"motionState": "",
+"spiderBaseAttack": ""
 }
 
 [application]
@@ -122,8 +128,6 @@ LevelguiMaster="*res://AutoLoad/levelguiMaster.tscn"
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
-window/size/borderless=true
 window/size/test_width=1920
 window/size/test_height=1080
 window/dpi/allow_hidpi=true
@@ -132,7 +136,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "aseprite_importer" )
+enabled=PoolStringArray( "EXP-System-Dialog", "aseprite_importer" )
 
 [importer_defaults]
 
@@ -265,6 +269,11 @@ dash={
 sword_throw={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
 
