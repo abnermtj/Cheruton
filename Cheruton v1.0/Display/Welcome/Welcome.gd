@@ -11,6 +11,7 @@ func _ready():
 	#Testing loot functionality
 	LevelguiMaster.enabled = false
 
+	Loot.determine_loot("test")
 
 func _on_Timer_timeout():
 	LoadGlobal.goto_scene(MAINMENU)
