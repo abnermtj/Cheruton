@@ -230,6 +230,8 @@ func sell_item():
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)
 		revert_item_state()
+		equipped_coins.get_node("Button").hide()
+		
 		main.find_node(deletion, true, false).queue_free()
 		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
 			main.find_node("Row" + str(element_index/10), true, false).queue_free()
