@@ -125,14 +125,13 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 		var item = row.get_node(str(tab_index + index))
 		
 		# Populates the boxes based on the no. of items in that particular tab
-		if(index < dict_size):
+		if(index <= dict_size):
 			#Add properties
 			var item_pict
 			match item_dec:
 				"Sell":
-					item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
-					if(list_tab["Item" + str(index)].item_qty):
-						item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+					#loaddata
+					generate_specific_data(item, index, list_tab)
 	
 					if(list_tab["Item" + str(index)].item_png):
 						item_pict  = load(list_tab["Item" + str(index)].item_png)
@@ -145,10 +144,17 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 			item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
 			enable_mouse(item)
 		index += 1
-		
-	# Hide data
-	if(item_dec == "Buy"):
-		scroll_tab.get_parent().show()
+
+# Generates the specific statistics relevant to the item node
+func generate_specific_data(item_index_node, item_index, list_tab):
+	item_index_node.get_node("Background/ItemName").name = list_tab["Item" + str(item_index)].item_name
+	if(list_tab["Item" + str(item_index)].item_qty):
+		item_index_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(item_index)].item_qty)
+	
+	if(list_tab["Item" + str(item_index)].item_png):
+		var item_pict  = load(list_tab["Item" + str(item_index)].item_png)
+		item_index_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
@@ -160,6 +166,22 @@ func enable_mouse(new_node):
 		# For the TextureButton
 		btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 		btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+
+# Disable mouse functions of the item index
+func disable_mouse(new_node):
+		# Clear item stats
+		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_node("Qty").text = "0"
+		btn.get_node("Qty").hide()
+		btn.set_normal_texture(null)
+		
+		btn.disconnect("pressed", self, "_on_pressed")
+		new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
+		new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
+
+		# For the TextureButton
+		btn.disconnect("mouse_entered", self, "_on_mouse_entered")
+		btn.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 func _on_mouse_entered(node):
 	if(item_state == "HOVER"):
@@ -211,38 +233,49 @@ func revert_item_state():
 
 # Reduces qty of item by 1
 func sell_item():
-
+	
 	var element_index = str(int(mouse_node.name)%100)
+	print("e_index", element_index)
 	DataFunctions.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
-		#delete index
+	
+	# Item Stock is empty: Update node containing item
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty != 0):
 		mouse_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty)
+	
+	# Item Stock is empty:
 	else:
-		# Item Stock is empty:
-		#	Shift down all inventory entries by 1
-		#	Delete the last empty index
-		#	If the Row is empty (except Row0), delete it
-
-		var main = get_node("Border/Bg/Main/Rest/Contents/ItemsSell/" + active_tab.name)
+		var dict_size = DataResource.dict_inventory[active_tab.name].size()
+		# Deactivate item held if that node is a held item
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
-		element_index = int(element_index)
-		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
-			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
-			element_index += 1
 
+		# From deleted item's index upwards, shift affected indexes down by 1
+		element_index = int(element_index)
+		for _i in range(element_index, dict_size):
+			#loaddata
+			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
+			var updating_node = items_sell.get_node(active_tab.name).find_node(updating_node_index, true, false)
+			var list_tab = DataResource.dict_inventory.get(active_tab.name)
+			generate_specific_data(updating_node, updating_node_index, list_tab)
+						
+			element_index += 1
+			
+		print(element_index)
+		# Clear the last entry of dict and disable/clear its last node 
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)
-		revert_item_state()
-		equipped_coins.get_node("Button").hide()
+		var emptied_node = items_sell.get_node(active_tab.name).find_node(deletion, true, false)
+		check_fixed()
+		disable_mouse(emptied_node)
 		
-		main.find_node(deletion, true, false).queue_free()
-		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
-			main.find_node("Row" + str(element_index/10), true, false).queue_free()
+		equipped_coins.get_node("Button").hide()
+
 	$Transaction.play()
+
 # Increases qty of item by 1
 func buy_item():
 	# contains item type, item name and quantity
@@ -258,8 +291,8 @@ func buy_item():
 	item_data.append(1)
 	Loot.loot_dict[1] = item_data
 	Loot.append_loot(1)
+	
 	# Update coins val and item qty
-
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
