@@ -395,8 +395,6 @@ size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Weapons"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Weapons/Column"]
-
 [node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 171.0
@@ -405,8 +403,6 @@ margin_bottom = 259.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Apparel"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Apparel/Column"]
 
 [node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
@@ -417,8 +413,6 @@ size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Consum"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Consum/Column"]
-
 [node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 338.0
@@ -427,8 +421,6 @@ margin_bottom = 259.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Misc"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Misc/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
 margin_left = 758.0
@@ -454,8 +446,6 @@ margin_bottom = 303.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/General"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/General/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
 margin_left = 758.0
