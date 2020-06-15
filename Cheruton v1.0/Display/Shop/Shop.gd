@@ -1,5 +1,7 @@
 extends baseGui
 
+const BOXES = 50
+
 var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
@@ -12,6 +14,7 @@ onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/i
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
+onready var instance_loc = preload("res://Player/Inventory/101.tscn")
 
 onready var weapons_sell = DataResource.dict_inventory.get("Weapons")
 onready var apparel_sell = DataResource.dict_inventory.get("Apparel")
@@ -101,44 +104,48 @@ func load_data():
 
 func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 	var index = 1
-	var row_index = 0
-	for _i in range(0, list_tab.size()):
-		# New Row
+	var row_index = -1
+	var dict_size = list_tab.size()
+	for _i in range(0, BOXES):
+		
+		# Creates New Row every 10 items
 		if(index / 10 != row_index && index % 10 != 0):
-			row_index += 1
 			var new_row = HBoxContainer.new()
+			row_index += 1
 			scroll_tab.add_child(new_row)
-			scroll_tab.get_child(get_node(scroll_tab).get_child_count() - 1).name = "Row" + str(row_index)
+			scroll_tab.get_child(scroll_tab.get_child_count() - 1).name = "Row" + str(row_index)
 
 		var row = scroll_tab.get_node("Row" + str(row_index))
 
-		# New Item
-		var instance_loc = load("res://Player/Inventory/101.tscn")
+		# Creates a new box in the particular row
 		var instanced = instance_loc.instance()
 		row.add_child(instanced)
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
-
-		#Add properties
+		
 		var item = row.get_node(str(tab_index + index))
-		var item_pict
-		match item_dec:
-			"Sell":
-				item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
-				if(list_tab["Item" + str(index)].item_qty):
-					item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
-
-				if(list_tab["Item" + str(index)].item_png):
-					item_pict  = load(list_tab["Item" + str(index)].item_png)
-
-			"Buy":
-				var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
-				item.get_node("Background/ItemName").name = list_tab["Item" + str(index)]
-				if(node.ItemPNG):
-					item_pict = load(node.ItemPNG)
-		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+		
+		# Populates the boxes based on the no. of items in that particular tab
+		if(index < dict_size):
+			#Add properties
+			var item_pict
+			match item_dec:
+				"Sell":
+					item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
+					if(list_tab["Item" + str(index)].item_qty):
+						item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
+	
+					if(list_tab["Item" + str(index)].item_png):
+						item_pict  = load(list_tab["Item" + str(index)].item_png)
+	
+				"Buy":
+					var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
+					item.get_node("Background/ItemName").name = list_tab["Item" + str(index)]
+					if(node.ItemPNG):
+						item_pict = load(node.ItemPNG)
+			item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+			enable_mouse(item)
 		index += 1
-
-		enable_mouse(item)
+		
 	# Hide data
 	if(item_dec == "Buy"):
 		scroll_tab.get_parent().show()
