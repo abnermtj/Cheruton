@@ -19,7 +19,7 @@ func enter():
 func update(delta):
 	match cur_state:
 		jump_states.JUMP:
-			var dir = (DataResource.dict_player.player_pos - owner.global_position).normalized()
+			var dir = (DataResource.temp_dict_player.player_pos - owner.global_position).normalized()
 			owner.velocity = dir * JUMP_TRACK_SPEED
 			fall_timer -= delta
 			if fall_timer < 0:
