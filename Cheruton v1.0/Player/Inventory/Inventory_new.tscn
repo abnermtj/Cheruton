@@ -337,8 +337,6 @@ size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Weapons"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Weapons/Column"]
-
 [node name="Apparel" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
@@ -347,8 +345,6 @@ margin_bottom = 259.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Apparel"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Apparel/Column"]
 
 [node name="Consum" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 visible = false
@@ -359,8 +355,6 @@ size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Consum"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Consum/Column"]
-
 [node name="Misc" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
@@ -370,8 +364,6 @@ size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Misc"]
 
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/Misc/Column"]
-
 [node name="KeyItems" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
@@ -380,8 +372,6 @@ margin_bottom = 259.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/KeyItems"]
-
-[node name="Row0" type="HBoxContainer" parent="Border/Bg/Contents/Items/KeyItems/Column"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
 margin_left = 780.0
@@ -472,6 +462,7 @@ margin_bottom = 460.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+[connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

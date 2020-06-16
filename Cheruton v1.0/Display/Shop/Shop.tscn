@@ -23,7 +23,7 @@ font_data = ExtResource( 4 )
 size = 20
 font_data = ExtResource( 4 )
 
-[node name="Control" type="Control"]
+[node name="Shop" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1.62903
@@ -522,6 +522,7 @@ wait_time = 0.25
 stream = ExtResource( 6 )
 volume_db = 6.0
 bus = "SFX"
+[connection signal="visibility_changed" from="." to="." method="_on_Shop_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Rest/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

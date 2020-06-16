@@ -1,21 +1,22 @@
 extends baseGui
 
+const WEAPONS = 100
+const APPAREL = 200
+const CONSUM = 300
+const MISC = 400
+const KEYITEMS = 500
+const BOXES = 50
+
 var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
 
-signal tab_changed(next_tab)
-const WEAPONS = 1
-const APPAREL = 2
-const CONSUM = 3
-const MISC = 4
-const KEYITEMS = 5
-
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
+onready var instance_loc = preload("res://Player/Inventory/101.tscn")
 
 onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
@@ -23,10 +24,11 @@ onready var consum_list = DataResource.dict_inventory.get("Consum")
 onready var misc_list = DataResource.dict_inventory.get("Misc")
 onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
-
 onready var tabs = $Border/Bg/Contents/Tabs
 onready var items = $Border/Bg/Contents/Items
 onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
+
+signal tab_changed(next_tab)
 
 func _ready():
 	connect_tabs()
@@ -115,54 +117,83 @@ func load_data():
 	var key_items_scroll = items.get_node("KeyItems/Column")
 
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list, WEAPONS * 100)
-	generate_list(apparel_scroll, apparel_list, APPAREL * 100)
-	generate_list(consum_scroll, consum_list, CONSUM * 100)
-	generate_list(misc_scroll, misc_list, MISC * 100)
-	generate_list(key_items_scroll, key_items_list, KEYITEMS * 100)
+	generate_list(weapons_scroll, weapons_list, WEAPONS)
+	generate_list(apparel_scroll, apparel_list, APPAREL)
+	generate_list(consum_scroll, consum_list, CONSUM)
+	generate_list(misc_scroll, misc_list, MISC)
+	generate_list(key_items_scroll, key_items_list, KEYITEMS)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
-	var row_index = 0
-	for _i in range(0, list_tab.size()):
-		# New Row
+	var row_index = -1
+	var dict_size = list_tab.size()
+	for _i in range(0, BOXES):
+		
+		# Creates New Row every 10 items
 		if(index / 10 != row_index && index % 10 != 0):
-			row_index += 1
 			var new_row = HBoxContainer.new()
+			row_index += 1
 			scroll_tab.add_child(new_row)
-			scroll_tab.get_child(get_node(scroll_tab).get_child_count() - 1).name = "Row" + str(row_index)
+			scroll_tab.get_child(scroll_tab.get_child_count() - 1).name = "Row" + str(row_index)
 
 		var row = scroll_tab.get_node("Row" + str(row_index))
 
-		# New Item
-		var instance_loc = load("res://Player/Inventory/101.tscn")
+		# Creates a new box in the particular row
 		var instanced = instance_loc.instance()
 		row.add_child(instanced)
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
-
-		#Add properties
+		
 		var item = row.get_node(str(tab_index + index))
-		item.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(index)].item_qty)
-		item.get_node("Background/ItemName").name = list_tab["Item" + str(index)].item_name
-		var item_pict
-		if(list_tab["Item" + str(index)].item_png):
-			item_pict  = load(list_tab["Item" + str(index)].item_png)
-		item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+
+		# Populates the boxes based on the no. of items in that particular tab
+		if(index <= dict_size):
+			#Add properties
+			var item_pict
+			enable_mouse(item)
+			generate_specific_data(item, index, list_tab)
+
 		index += 1
 
-		enable_mouse(item)
-	# Hide data
-	scroll_tab.get_parent().hide()
+# Generates the specific statistics relevant to the item node
+func generate_specific_data(item_index_node, item_index, list_tab):
+	item_index_node.get_child(0).get_child(0).name = list_tab["Item" + str(item_index)].item_name
+	if(list_tab["Item" + str(item_index)].item_qty):
+		item_index_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(item_index)].item_qty)
+	
+	if(list_tab["Item" + str(item_index)].item_png):
+		var item_pict  = load(list_tab["Item" + str(item_index)].item_png)
+		item_index_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [new_node])
-		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_node("Qty").show()
+		if(!btn.get_normal_texture()):
+			btn.connect("pressed", self, "_on_pressed", [new_node])
+			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+	
+			# For the TextureButton
+			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+
+# Disable mouse functions of the item index
+func disable_mouse(new_node):
+		# Clear item stats
+		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_node("Qty").text = "0"
+		btn.get_node("Qty").hide()
+		btn.set_normal_texture(null)
+		
+		btn.disconnect("pressed", self, "_on_pressed")
+		new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
+		new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 		# For the TextureButton
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.get_node("Background/ItemBg/ItemBtn").connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		btn.disconnect("mouse_entered", self, "_on_mouse_entered")
+		btn.disconnect("mouse_exited", self, "_on_mouse_exited")
+
 
 func _on_mouse_entered(node):
 	if(item_state == "HOVER"):
@@ -188,8 +219,17 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
+		if(item_state == "HOVER"):
+			revert_item_state()
 		utilize_item(node)
+		check_fixed()	# Revert back to hover status
 		mouse_count = 0
+
+func check_fixed():
+	if(item_state == "FIXED"):
+		var temp = mouse_node
+		revert_item_state()
+		_on_mouse_exited(temp)
 
 # Use the item that has been double clicked
 func utilize_item(node):
@@ -256,24 +296,34 @@ func delete_item():
 		#	Shift down all inventory entries by 1
 		#	Delete the last empty index
 		#	If the Row is empty (except Row0), delete it
-
-
+		
+		# Dequips active item
 		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
 				get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
+				
+		# From deleted item's index upwards, shift affected indexes down by 1
+		var list_tab = DataResource.dict_inventory[active_tab.name]
+		var dict_size = list_tab.size()
 		element_index = int(element_index)
-		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+		for _i in range(element_index, dict_size):
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
+			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
+			var updating_node = items.get_node(active_tab.name).find_node(updating_node_index, true, false)
+			
+			generate_specific_data(updating_node, element_index, list_tab)
 			element_index += 1
 
+		# Disabled the last node which is emptied
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)
-		revert_item_state()
-		main.find_node(deletion, true, false).queue_free()
-		if(element_index/10 != 0 && element_index  %10 != 0  && main.has_node("Column/Row" + str(element_index/10))):
-			main.find_node("Row" + str(element_index/10), true, false).queue_free()
+		var emptied_node = items.get_node(active_tab.name).find_node(deletion, true, false)
+		check_fixed()
+		disable_mouse(emptied_node)
+		
+		equipped_coins.get_node("Button").hide()
 
 # Handles equipping of the item
 func _item_status(selected_node, status):
@@ -309,3 +359,24 @@ func _on_Button_pressed():
 func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
 		_on_Exit_pressed()
+
+# Updates inventory changes to the Shop items to sell for future
+func _on_Inventory_visibility_changed():
+	if(!self.visible):
+		var shop_sell = self.get_parent().find_node("ItemsSell", true, false)
+		print(shop_sell)
+		update_tab_items(WEAPONS, shop_sell, "Weapons")
+		update_tab_items(APPAREL, shop_sell, "Apparel")
+		update_tab_items(CONSUM, shop_sell, "Consum")
+		update_tab_items(MISC, shop_sell, "Misc")
+		
+# Updates a particular tabs item stock
+func update_tab_items(tab_constant, updating_path, tab_name):
+		var element_index = 1
+		var list_tab = DataResource.dict_inventory[tab_name]
+		var dict_size = list_tab.size() + 1
+		for _i in range(element_index, dict_size):
+			var updating_node_index = str(int(tab_constant + element_index))
+			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			generate_specific_data(updating_node, element_index, list_tab)
+			element_index += 1

@@ -1,5 +1,9 @@
 extends baseGui
 
+const WEAPONS = 100
+const APPAREL = 200
+const CONSUM = 300
+const MISC = 400
 const BOXES = 50
 
 var active_tab
@@ -128,26 +132,23 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 		if(index <= dict_size):
 			#Add properties
 			var item_pict
+			enable_mouse(item)
 			match item_dec:
 				"Sell":
-					#loaddata
 					generate_specific_data(item, index, list_tab)
-	
-					if(list_tab["Item" + str(index)].item_png):
-						item_pict  = load(list_tab["Item" + str(index)].item_png)
 	
 				"Buy":
 					var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
 					item.get_node("Background/ItemName").name = list_tab["Item" + str(index)]
 					if(node.ItemPNG):
 						item_pict = load(node.ItemPNG)
-			item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
-			enable_mouse(item)
+					item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+			
 		index += 1
 
 # Generates the specific statistics relevant to the item node
 func generate_specific_data(item_index_node, item_index, list_tab):
-	item_index_node.get_node("Background/ItemName").name = list_tab["Item" + str(item_index)].item_name
+	item_index_node.get_child(0).get_child(0).name = list_tab["Item" + str(item_index)].item_name
 	if(list_tab["Item" + str(item_index)].item_qty):
 		item_index_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(item_index)].item_qty)
 	
@@ -159,13 +160,15 @@ func generate_specific_data(item_index_node, item_index, list_tab):
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
-		btn.connect("pressed", self, "_on_pressed", [new_node])
-		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
-
-		# For the TextureButton
-		btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		btn.get_node("Qty").show()
+		if(!btn.get_normal_texture()):
+			btn.connect("pressed", self, "_on_pressed", [new_node])
+			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+	
+			# For the TextureButton
+			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 # Disable mouse functions of the item index
 func disable_mouse(new_node):
@@ -203,12 +206,18 @@ func _on_pressed(node):
 	if (mouse_count == 2):
 		print("Double Clicked!")
 		match shop_setting:
-			"Sell": sell_item()
-			"Buy":
+			"Sell": 	# Sell item: fix the item, then sell it
+				if(item_state == "HOVER"):
+					revert_item_state()
+				sell_item()
+			"Buy":		# Buy item: get node details, fix the item, then sell it
 				var index = int(mouse_node.name)%100
 				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
+				if(item_state == "HOVER"):
+					revert_item_state()
 				if(coins_val <= DataResource.temp_dict_player["coins"]):
 					buy_item()
+		check_fixed()	# Revert back to hover status
 		mouse_count = 0
 
 
@@ -235,7 +244,6 @@ func revert_item_state():
 func sell_item():
 	
 	var element_index = str(int(mouse_node.name)%100)
-	print("e_index", element_index)
 	DataFunctions.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
@@ -260,11 +268,10 @@ func sell_item():
 			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
 			var updating_node = items_sell.get_node(active_tab.name).find_node(updating_node_index, true, false)
 			var list_tab = DataResource.dict_inventory.get(active_tab.name)
-			generate_specific_data(updating_node, updating_node_index, list_tab)
+			generate_specific_data(updating_node, element_index, list_tab)
 						
 			element_index += 1
-			
-		print(element_index)
+
 		# Clear the last entry of dict and disable/clear its last node 
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)
@@ -295,9 +302,25 @@ func buy_item():
 	# Update coins val and item qty
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
-
-	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(int(node.get_parent().get_node("ItemBg/ItemBtn/Qty").text) + 1)
+	
+	var dict_size = DataResource.dict_inventory[current_tab_name].size()
+	var element_index = 1
+	var node_multiplier
+	match current_tab_name:
+		"Weapons": node_multiplier = WEAPONS
+		"Weapons": node_multiplier = APPAREL
+		"Consum": node_multiplier = CONSUM
+		"Misc": node_multiplier = MISC
+		
+	# Update item_data of all items in tab of updated item, enable mouse for new node if created
+	for _i in range(1, dict_size + 1):
+			#loaddata
+			var updating_node_index = node_multiplier + element_index
+			var updating_node = items_sell.get_node(current_tab_name).find_node(str(updating_node_index), true, false)
+			var list_tab = DataResource.dict_inventory.get(current_tab_name)
+			enable_mouse(updating_node)
+			generate_specific_data(updating_node, element_index, list_tab)
+					
 	$Transaction.play()
 #Debug
 func _on_Button_pressed():
@@ -347,3 +370,25 @@ func _on_ExitShop_pressed():
 func free_the_shop():
 	DataResource.save_rest()
 	emit_signal("release_gui", "shop")
+
+
+func _on_Shop_visibility_changed():
+	if(!self.visible):
+		var shop_sell = self.get_parent().find_node("Items", true, false)
+		print(shop_sell)
+		update_tab_items(WEAPONS, shop_sell, "Weapons")
+		update_tab_items(APPAREL, shop_sell, "Apparel")
+		update_tab_items(CONSUM, shop_sell, "Consum")
+		update_tab_items(MISC, shop_sell, "Misc")
+		
+# Updates a particular tabs item stock
+func update_tab_items(tab_constant, updating_path, tab_name):
+		var element_index = 1
+		var list_tab = DataResource.dict_inventory[tab_name]
+		var dict_size = list_tab.size() + 1
+		for _i in range(element_index, dict_size):
+			var updating_node_index = str(int(tab_constant + element_index))
+			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			generate_specific_data(updating_node, element_index, list_tab)
+			element_index += 1
+
