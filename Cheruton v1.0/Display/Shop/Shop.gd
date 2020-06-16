@@ -206,12 +206,18 @@ func _on_pressed(node):
 	if (mouse_count == 2):
 		print("Double Clicked!")
 		match shop_setting:
-			"Sell": sell_item()
-			"Buy":
+			"Sell": 	# Sell item: fix the item, then sell it
+				if(item_state == "HOVER"):
+					revert_item_state()
+				sell_item()
+			"Buy":		# Buy item: get node details, fix the item, then sell it
 				var index = int(mouse_node.name)%100
 				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
+				if(item_state == "HOVER"):
+					revert_item_state()
 				if(coins_val <= DataResource.temp_dict_player["coins"]):
 					buy_item()
+		check_fixed()	# Revert back to hover status
 		mouse_count = 0
 
 
@@ -238,7 +244,6 @@ func revert_item_state():
 func sell_item():
 	
 	var element_index = str(int(mouse_node.name)%100)
-	print("e_index", element_index)
 	DataFunctions.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
@@ -306,17 +311,16 @@ func buy_item():
 		"Weapons": node_multiplier = 200
 		"Consum": node_multiplier = 300
 		"Misc": node_multiplier = 400
-	# Update item_data of all items in tab of updated item
+		
+	# Update item_data of all items in tab of updated item, enable mouse for new node if created
 	for _i in range(1, dict_size + 1):
 			#loaddata
-			print(current_tab_name)
 			var updating_node_index = node_multiplier + element_index
-			print(updating_node_index)
 			var updating_node = items_sell.get_node(current_tab_name).find_node(str(updating_node_index), true, false)
 			var list_tab = DataResource.dict_inventory.get(current_tab_name)
 			enable_mouse(updating_node)
 			generate_specific_data(updating_node, element_index, list_tab)
-						
+					
 	$Transaction.play()
 #Debug
 func _on_Button_pressed():
