@@ -131,18 +131,14 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 			enable_mouse(item)
 			match item_dec:
 				"Sell":
-					#loaddata
 					generate_specific_data(item, index, list_tab)
-	
-					if(list_tab["Item" + str(index)].item_png):
-						item_pict  = load(list_tab["Item" + str(index)].item_png)
 	
 				"Buy":
 					var node = DataResource.dict_item_masterlist.get(list_tab["Item" + str(index)])
 					item.get_node("Background/ItemName").name = list_tab["Item" + str(index)]
 					if(node.ItemPNG):
 						item_pict = load(node.ItemPNG)
-			item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
+					item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
 			
 		index += 1
 
