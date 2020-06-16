@@ -128,6 +128,7 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 		if(index <= dict_size):
 			#Add properties
 			var item_pict
+			enable_mouse(item)
 			match item_dec:
 				"Sell":
 					#loaddata
@@ -142,12 +143,12 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 					if(node.ItemPNG):
 						item_pict = load(node.ItemPNG)
 			item.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
-			enable_mouse(item)
+			
 		index += 1
 
 # Generates the specific statistics relevant to the item node
 func generate_specific_data(item_index_node, item_index, list_tab):
-	item_index_node.get_node("Background/ItemName").name = list_tab["Item" + str(item_index)].item_name
+	item_index_node.get_child(0).get_child(0).name = list_tab["Item" + str(item_index)].item_name
 	if(list_tab["Item" + str(item_index)].item_qty):
 		item_index_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(item_index)].item_qty)
 	
@@ -159,13 +160,15 @@ func generate_specific_data(item_index_node, item_index, list_tab):
 # Enable mouse functions of the item index
 func enable_mouse(new_node):
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
-		btn.connect("pressed", self, "_on_pressed", [new_node])
-		new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
-
-		# For the TextureButton
-		btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-		btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+		btn.get_node("Qty").show()
+		if(!btn.get_normal_texture()):
+			btn.connect("pressed", self, "_on_pressed", [new_node])
+			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+	
+			# For the TextureButton
+			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 # Disable mouse functions of the item index
 func disable_mouse(new_node):
@@ -263,8 +266,7 @@ func sell_item():
 			generate_specific_data(updating_node, updating_node_index, list_tab)
 						
 			element_index += 1
-			
-		print(element_index)
+
 		# Clear the last entry of dict and disable/clear its last node 
 		DataResource.dict_inventory[active_tab.name].erase("Item" + str(element_index))
 		var deletion = str(int(mouse_node.name)/100 * 100 + element_index)
@@ -295,9 +297,26 @@ func buy_item():
 	# Update coins val and item qty
 	DataFunctions.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
-	var node = items_sell.find_node(mouse_node.get_child(0).get_child(0).name, true, false)
-
-	node.get_parent().get_node("ItemBg/ItemBtn/Qty").text = str(int(node.get_parent().get_node("ItemBg/ItemBtn/Qty").text) + 1)
+	
+	var dict_size = DataResource.dict_inventory[current_tab_name].size()
+	var element_index = 1
+	var node_multiplier
+	match current_tab_name:
+		"Weapons": node_multiplier = 100
+		"Weapons": node_multiplier = 200
+		"Consum": node_multiplier = 300
+		"Misc": node_multiplier = 400
+	# Update item_data of all items in tab of updated item
+	for _i in range(1, dict_size + 1):
+			#loaddata
+			print(current_tab_name)
+			var updating_node_index = node_multiplier + element_index
+			print(updating_node_index)
+			var updating_node = items_sell.get_node(current_tab_name).find_node(str(updating_node_index), true, false)
+			var list_tab = DataResource.dict_inventory.get(current_tab_name)
+			enable_mouse(updating_node)
+			generate_specific_data(updating_node, element_index, list_tab)
+						
 	$Transaction.play()
 #Debug
 func _on_Button_pressed():
