@@ -462,6 +462,7 @@ margin_bottom = 460.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+[connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

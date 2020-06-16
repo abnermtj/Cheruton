@@ -1,10 +1,10 @@
 extends baseGui
 
-const WEAPONS = 1
-const APPAREL = 2
-const CONSUM = 3
-const MISC = 4
-const KEYITEMS = 5
+const WEAPONS = 100
+const APPAREL = 200
+const CONSUM = 300
+const MISC = 400
+const KEYITEMS = 500
 const BOXES = 50
 
 var active_tab
@@ -117,11 +117,11 @@ func load_data():
 	var key_items_scroll = items.get_node("KeyItems/Column")
 
 	#Generate list of items based on tab
-	generate_list(weapons_scroll, weapons_list, WEAPONS * 100)
-	generate_list(apparel_scroll, apparel_list, APPAREL * 100)
-	generate_list(consum_scroll, consum_list, CONSUM * 100)
-	generate_list(misc_scroll, misc_list, MISC * 100)
-	generate_list(key_items_scroll, key_items_list, KEYITEMS * 100)
+	generate_list(weapons_scroll, weapons_list, WEAPONS)
+	generate_list(apparel_scroll, apparel_list, APPAREL)
+	generate_list(consum_scroll, consum_list, CONSUM)
+	generate_list(misc_scroll, misc_list, MISC)
+	generate_list(key_items_scroll, key_items_list, KEYITEMS)
 
 func generate_list(scroll_tab, list_tab, tab_index):
 	var index = 1
@@ -296,7 +296,7 @@ func delete_item():
 		#	Shift down all inventory entries by 1
 		#	Delete the last empty index
 		#	If the Row is empty (except Row0), delete it
-
+		
 		# Dequips active item
 		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
@@ -305,13 +305,15 @@ func delete_item():
 				get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
 				
 		# From deleted item's index upwards, shift affected indexes down by 1
+		var list_tab = DataResource.dict_inventory[active_tab.name]
+		var dict_size = list_tab.size()
 		element_index = int(element_index)
-		for _i in range(element_index, DataResource.dict_inventory[active_tab.name].size()):
+		for _i in range(element_index, dict_size):
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
 			var updating_node = items.get_node(active_tab.name).find_node(updating_node_index, true, false)
-			var list_tab = DataResource.dict_inventory.get(active_tab.name)
-			generate_specific_data(updating_node, updating_node_index, list_tab)
+			
+			generate_specific_data(updating_node, element_index, list_tab)
 			element_index += 1
 
 		# Disabled the last node which is emptied
@@ -357,3 +359,24 @@ func _on_Button_pressed():
 func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
 		_on_Exit_pressed()
+
+# Updates inventory changes to the Shop items to sell for future
+func _on_Inventory_visibility_changed():
+	if(!self.visible):
+		var shop_sell = self.get_parent().find_node("ItemsSell", true, false)
+		print(shop_sell)
+		update_tab_items(WEAPONS, shop_sell, "Weapons")
+		update_tab_items(APPAREL, shop_sell, "Apparel")
+		update_tab_items(CONSUM, shop_sell, "Consum")
+		update_tab_items(MISC, shop_sell, "Misc")
+		
+# Updates a particular tabs item stock
+func update_tab_items(tab_constant, updating_path, tab_name):
+		var element_index = 1
+		var list_tab = DataResource.dict_inventory[tab_name]
+		var dict_size = list_tab.size() + 1
+		for _i in range(element_index, dict_size):
+			var updating_node_index = str(int(tab_constant + element_index))
+			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			generate_specific_data(updating_node, element_index, list_tab)
+			element_index += 1

@@ -1,5 +1,9 @@
 extends baseGui
 
+const WEAPONS = 100
+const APPAREL = 200
+const CONSUM = 300
+const MISC = 400
 const BOXES = 50
 
 var active_tab
@@ -264,7 +268,7 @@ func sell_item():
 			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
 			var updating_node = items_sell.get_node(active_tab.name).find_node(updating_node_index, true, false)
 			var list_tab = DataResource.dict_inventory.get(active_tab.name)
-			generate_specific_data(updating_node, updating_node_index, list_tab)
+			generate_specific_data(updating_node, element_index, list_tab)
 						
 			element_index += 1
 
@@ -303,10 +307,10 @@ func buy_item():
 	var element_index = 1
 	var node_multiplier
 	match current_tab_name:
-		"Weapons": node_multiplier = 100
-		"Weapons": node_multiplier = 200
-		"Consum": node_multiplier = 300
-		"Misc": node_multiplier = 400
+		"Weapons": node_multiplier = WEAPONS
+		"Weapons": node_multiplier = APPAREL
+		"Consum": node_multiplier = CONSUM
+		"Misc": node_multiplier = MISC
 		
 	# Update item_data of all items in tab of updated item, enable mouse for new node if created
 	for _i in range(1, dict_size + 1):
@@ -366,3 +370,25 @@ func _on_ExitShop_pressed():
 func free_the_shop():
 	DataResource.save_rest()
 	emit_signal("release_gui", "shop")
+
+
+func _on_Shop_visibility_changed():
+	if(!self.visible):
+		var shop_sell = self.get_parent().find_node("Items", true, false)
+		print(shop_sell)
+		update_tab_items(WEAPONS, shop_sell, "Weapons")
+		update_tab_items(APPAREL, shop_sell, "Apparel")
+		update_tab_items(CONSUM, shop_sell, "Consum")
+		update_tab_items(MISC, shop_sell, "Misc")
+		
+# Updates a particular tabs item stock
+func update_tab_items(tab_constant, updating_path, tab_name):
+		var element_index = 1
+		var list_tab = DataResource.dict_inventory[tab_name]
+		var dict_size = list_tab.size() + 1
+		for _i in range(element_index, dict_size):
+			var updating_node_index = str(int(tab_constant + element_index))
+			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			generate_specific_data(updating_node, element_index, list_tab)
+			element_index += 1
+
