@@ -49,7 +49,7 @@ func run(delta):
 	if timer > 0:
 		timer -= delta
 	else:
-		fsm.state_next = null
+		terminate()
 		
 
 #	else:

@@ -8,6 +8,7 @@ func initialize():
 	timer = 0.15
 
 func run(delta):
+	should_fall()
 	timer -= delta
 	if (timer <= 0):
 		# Player was sighted recently - Attack

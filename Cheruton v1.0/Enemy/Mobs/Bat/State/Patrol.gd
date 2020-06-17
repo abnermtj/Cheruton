@@ -11,7 +11,7 @@ func initialize():
 	obj.velocity.y = random.randf_range(100, 200)
 
 func run(_delta):
-	
+	aerial_pos_edit()
 	# Wall or empty gap encountered
 	if (obj.change_patrol_dirn()):
 		obj.dir_next = -obj.dir_curr

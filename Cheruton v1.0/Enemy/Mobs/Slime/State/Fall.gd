@@ -17,7 +17,6 @@ func initialize():
 	timer = 2
 
 func run(delta):
-	print(11223)
 	if(ray_ground.is_colliding()):
 		if(fsm.state_prev):
 			fsm.state_next = fsm.state_prev
