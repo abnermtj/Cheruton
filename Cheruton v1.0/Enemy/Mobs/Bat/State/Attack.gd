@@ -34,8 +34,7 @@ func run(delta):
 		speed *= 3
 	# Another enemy in front of original enemy
 	if(ray_cast_front.is_colliding()):
-		print(true)
-		speed /= 2
+		speed /= 4
 	obj.velocity.x = obj.dir_curr * speed
 	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)

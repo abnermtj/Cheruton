@@ -6,6 +6,7 @@ onready var player = get_parent().get_node("player")
 onready var healthbar = $HealthBar
 onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
+
 var anim_curr = ""
 var anim_next = "Patrol"
 
@@ -59,7 +60,7 @@ func change_patrol_dirn() -> bool:
 #	$jumpbox/jumpcollision.disabled = true
 
 # Slime has been hit
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(area) -> void:
 	# Damage processed if the node has not been previously hit or not dead
 	if (!is_hit):
 		is_hit = true
@@ -68,7 +69,6 @@ func _on_HitBox_area_entered(area):
 		var damage = -20#stub
 		# Enemy will die
 		if(abs(damage) > curr_health):
-			pass
 			fsm.state_next = fsm.states.Dead
 		else:
 			curr_health += damage
