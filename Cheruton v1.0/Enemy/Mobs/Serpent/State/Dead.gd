@@ -49,7 +49,7 @@ func run(delta):
 	if timer > 0:
 		timer -= delta
 	else:
-		fsm.state_next = null
+		terminate()
 		
 
 #	else:
@@ -58,7 +58,6 @@ func run(delta):
 #			fsm.state_nxt = fsm.states.run
 
 func terminate():
-	print(1)
 	obj._exit_tree()
 	obj.free()
 #	obj.get_node( "anim" ).play()

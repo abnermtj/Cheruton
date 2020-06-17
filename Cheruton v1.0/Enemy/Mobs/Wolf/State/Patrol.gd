@@ -8,6 +8,7 @@ func initialize():
 	obj.anim_next = "Patrol"
 
 func run(_delta):
+	should_fall()
 	# Wall or empty gap encountered
 	if (obj.change_patrol_dirn()):
 		obj.dir_next = -obj.dir_curr

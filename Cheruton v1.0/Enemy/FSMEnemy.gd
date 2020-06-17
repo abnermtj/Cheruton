@@ -29,8 +29,7 @@ func _set_states_parent_node(p_node) -> void:
 
 func run_machine(delta) -> void:
 
-	if(!state_next && !state_curr):
-		return
+
 
 	if(state_next != state_curr):
 		# Terminate current state if it is still running
@@ -43,13 +42,8 @@ func run_machine(delta) -> void:
 		# Assign the next state and initiaize it
 		state_prev = state_curr
 		state_curr = state_next
-		if(state_curr):
-			state_curr.initialize()
+		state_curr.initialize()
 	# run state
 	if(state_curr):
 		state_curr.run(delta)
-		if(state_curr != states.Dead):
-			if(states.has("Fall")):
-				state_curr.should_fall()
-			else:
-				state_curr.aerial_pos_edit()
+

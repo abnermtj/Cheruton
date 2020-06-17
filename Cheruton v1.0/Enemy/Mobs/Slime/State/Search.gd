@@ -14,6 +14,7 @@ func initialize():
 
 
 func run(delta):
+	should_fall()
 	timer -= delta
 	var collision_pt
 	# Player is detected behind the enemy - change its direction

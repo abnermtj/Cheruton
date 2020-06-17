@@ -21,6 +21,7 @@ func initialize():
 
 
 func run(delta):
+	should_fall()
 	player_position = player.global_position
 	# Position of player not in direction enemy is facing
 	if(player_position.x >= obj.global_position.x && obj.dir_curr < 0 ||player_position.x < obj.global_position.x && obj.dir_curr > 0):
