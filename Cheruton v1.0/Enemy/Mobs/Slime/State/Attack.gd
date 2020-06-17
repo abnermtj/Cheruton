@@ -40,10 +40,10 @@ func run(delta):
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	if(can_fire):
 		can_fire = false
-#		var speed = 0
-#		fire_dir = (obj.get_angle_to(player_position/3.14))* 180
-		#obj.get_node("Rotate").rotation = obj.get_angle_to(player_position)
-		#load and instance skill, give its properties and add it as a child of its parent
+		var speed = 0
+		fire_dir = (obj.get_angle_to(player_position/3.14))* 180
+		obj.get_node("Rotate").rotation = obj.get_angle_to(player_position)
+#		load and instance skill, give its properties and add it as a child of its parent
 		yield(get_tree().create_timer(0.8), "timeout")
 		can_fire = true
 #		speed = 120
