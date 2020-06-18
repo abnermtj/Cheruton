@@ -43,9 +43,10 @@ func run(delta):
 		var speed_attack = 200
 		var instanced = attack_instance.instance()
 		obj.add_child(instanced)
-		obj.get_child(obj.get_child_count() - 1).velocity.x = speed_attack * obj.dir_curr
-#		load and instance skill, give its properties and add it as a child of its parent
-		yield(get_tree().create_timer(0.8), "timeout")
+		
+#		
+
+		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
 #		speed = 120
 # case for player death!

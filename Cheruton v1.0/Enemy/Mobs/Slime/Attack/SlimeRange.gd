@@ -1,18 +1,17 @@
 extends KinematicBody2D
 
-var velocity = Vector2()
-var speed = 200
+const SPEED = 400
 
-onready var attack_node = get_parent().get_node(self.name)
+var velocity = Vector2()
 
 
 func _ready():
 	velocity.y = 0
+	velocity.x = get_parent().dir_curr * SPEED
 
 func _process(delta):
-	if(velocity.x != 0):
-		velocity = move_and_slide_with_snap(velocity, Vector2.DOWN * 8, Vector2.UP)
+	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN * 8, Vector2.UP)
 
 func _on_HitBox_body_entered(body):
-	attack_node.queue_free()
+	self.queue_free()
 
