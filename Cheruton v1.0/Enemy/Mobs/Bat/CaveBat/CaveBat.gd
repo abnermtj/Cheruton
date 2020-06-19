@@ -5,7 +5,7 @@ onready var initial_position = global_position
 onready var player = get_parent().get_node("player")
 onready var healthbar = $HealthBar
 onready var healthbar_act = $HealthBar/HealthRect/HealthBar
-
+	
 var anim_curr = ""
 var anim_next = "Patrol"
 

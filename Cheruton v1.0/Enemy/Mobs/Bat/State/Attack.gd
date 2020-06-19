@@ -1,7 +1,7 @@
 extends State_Enemy
 
 # ATTACK: Enemy is currently attacking the player, who is in close range
-onready var attack_instance = preload("res://Enemy/Mobs/Slime/Attack/SlimeRange.tscn")
+onready var attack_instance = preload("res://Enemy/Mobs/Bat/Attack/BatRange.tscn")
 
 var state : int
 var timer : float
