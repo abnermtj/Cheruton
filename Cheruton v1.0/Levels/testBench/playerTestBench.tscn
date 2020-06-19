@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
@@ -45,6 +46,10 @@ position = Vector2( -571.234, -887.999 )
 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2719.17, 490.973 )
+
+[node name="CaveBat" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1955.17, 285.355 )
+scale = Vector2( 12, 12 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
