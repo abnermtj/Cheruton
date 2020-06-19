@@ -18,4 +18,3 @@ func _process(delta):
 func _on_HitBox_body_entered(body):
 	print("QueuedFree")
 	self.queue_free()
-

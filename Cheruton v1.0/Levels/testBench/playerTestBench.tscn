@@ -45,10 +45,10 @@ position = Vector2( 7542.09, 1418.07 )
 position = Vector2( -571.234, -887.999 )
 
 [node name="Slime" parent="." instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 2719.17, 490.973 )
 
 [node name="CaveBat" parent="." instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 2241.7, 469.417 )
 scale = Vector2( 12, 12 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
