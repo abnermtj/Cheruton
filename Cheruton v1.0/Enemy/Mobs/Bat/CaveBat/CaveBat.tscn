@@ -92,6 +92,7 @@ __meta__ = {
 }
 
 [node name="Rotate" type="Node2D" parent="."]
+position = Vector2( -0.5, 2.5 )
 __meta__ = {
 "_edit_lock_": true
 }

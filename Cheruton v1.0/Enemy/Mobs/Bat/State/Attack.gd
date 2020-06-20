@@ -1,6 +1,7 @@
 extends State_Enemy
 
 # ATTACK: Enemy is currently attacking the player, who is in close range
+onready var attack_instance = preload("res://Enemy/Mobs/Bat/Attack/BatRange.tscn")
 
 var state : int
 var timer : float
@@ -40,11 +41,13 @@ func run(delta):
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	if(can_fire):
 		can_fire = false
-#		var speed = 0
-#		fire_dir = (obj.get_angle_to(player_position/3.14))* 180
-		#obj.get_node("Rotate").rotation = obj.get_angle_to(player_position)
-		#load and instance skill, give its properties and add it as a child of its parent
-		yield(get_tree().create_timer(0.8), "timeout")
+		var speed_attack = 200
+		var instanced = attack_instance.instance()
+		obj.add_child(instanced)
+		
+#		
+
+		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
 #		speed = 120
 # case for player death!
