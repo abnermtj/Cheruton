@@ -1,0 +1,163 @@
+{ "frames": {
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 4.aseprite": {
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 5.aseprite": {
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 6.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 7.aseprite": {
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 8.aseprite": {
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 9.aseprite": {
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 10.aseprite": {
+    "frame": { "x": 341, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 11.aseprite": {
+    "frame": { "x": 375, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 12.aseprite": {
+    "frame": { "x": 409, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 13.aseprite": {
+    "frame": { "x": 443, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 14.aseprite": {
+    "frame": { "x": 477, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 15.aseprite": {
+    "frame": { "x": 511, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 16.aseprite": {
+    "frame": { "x": 545, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_chad 17.aseprite": {
+    "frame": { "x": 579, "y": 1, "w": 32, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 64 },
+    "sourceSize": { "w": 60, "h": 60 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "22fps_limitPallete_PIL_HomeTown_NPC_chad.png",
+  "format": "RGBA8888",
+  "size": { "w": 1116, "h": 66 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 17, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

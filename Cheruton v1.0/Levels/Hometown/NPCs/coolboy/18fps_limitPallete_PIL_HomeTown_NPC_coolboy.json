@@ -1,0 +1,164 @@
+{ "frames": {
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 1.aseprite": {
+    "frame": { "x": 51, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 2.aseprite": {
+    "frame": { "x": 101, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 3.aseprite": {
+    "frame": { "x": 151, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 4.aseprite": {
+    "frame": { "x": 201, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 5.aseprite": {
+    "frame": { "x": 235, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 6.aseprite": {
+    "frame": { "x": 269, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 7.aseprite": {
+    "frame": { "x": 303, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 8.aseprite": {
+    "frame": { "x": 337, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 9.aseprite": {
+    "frame": { "x": 371, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 10.aseprite": {
+    "frame": { "x": 405, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 11.aseprite": {
+    "frame": { "x": 439, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 12.aseprite": {
+    "frame": { "x": 473, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 13.aseprite": {
+    "frame": { "x": 507, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 14.aseprite": {
+    "frame": { "x": 541, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 15.aseprite": {
+    "frame": { "x": 575, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 16.aseprite": {
+    "frame": { "x": 609, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_coolboy 17.aseprite": {
+    "frame": { "x": 643, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "18fps_limitPallete_PIL_HomeTown_NPC_coolboy.png",
+  "format": "RGBA8888",
+  "size": { "w": 756, "h": 50 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "sweep", "from": 1, "to": 17, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

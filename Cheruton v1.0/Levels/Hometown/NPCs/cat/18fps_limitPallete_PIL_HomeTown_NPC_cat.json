@@ -1,0 +1,140 @@
+{ "frames": {
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 4.aseprite": {
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 5.aseprite": {
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 6.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 7.aseprite": {
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 8.aseprite": {
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 9.aseprite": {
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 10.aseprite": {
+    "frame": { "x": 341, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 11.aseprite": {
+    "frame": { "x": 375, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 12.aseprite": {
+    "frame": { "x": 409, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 13.aseprite": {
+    "frame": { "x": 443, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_cat 14.aseprite": {
+    "frame": { "x": 477, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "18fps_limitPallete_PIL_HomeTown_NPC_cat.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 152 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "walk", "from": 1, "to": 14, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

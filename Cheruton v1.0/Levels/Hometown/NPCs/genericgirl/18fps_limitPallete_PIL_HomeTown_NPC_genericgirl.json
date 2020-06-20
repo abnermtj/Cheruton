@@ -1,0 +1,164 @@
+{ "frames": {
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 4.aseprite": {
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 5.aseprite": {
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 6.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 7.aseprite": {
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 8.aseprite": {
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 9.aseprite": {
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 10.aseprite": {
+    "frame": { "x": 341, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 11.aseprite": {
+    "frame": { "x": 375, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 12.aseprite": {
+    "frame": { "x": 409, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 13.aseprite": {
+    "frame": { "x": 443, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 14.aseprite": {
+    "frame": { "x": 477, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 15.aseprite": {
+    "frame": { "x": 511, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 16.aseprite": {
+    "frame": { "x": 545, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   },
+   "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl 17.aseprite": {
+    "frame": { "x": 579, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "18fps_limitPallete_PIL_HomeTown_NPC_genericgirl.png",
+  "format": "RGBA8888",
+  "size": { "w": 756, "h": 50 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "walk", "from": 1, "to": 17, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

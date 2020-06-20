@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/Hometown/NPCs/captain/23fps_limitPallete_PIL_HomeTown_NPC_captain.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Hometown/NPCs/captain/captain.gd" type="Script" id=2]
+[ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 32 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/width = null
+shader_param/outline_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 64, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 6 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 67, 1, 64, 80 ), Rect2( 133, 1, 64, 80 ), Rect2( 199, 1, 64, 80 ), Rect2( 265, 1, 64, 80 ), Rect2( 331, 1, 64, 80 ), Rect2( 397, 1, 64, 80 ), Rect2( 463, 1, 64, 80 ), Rect2( 529, 1, 64, 80 ), Rect2( 595, 1, 64, 80 ), Rect2( 661, 1, 64, 80 ), Rect2( 727, 1, 64, 80 ), Rect2( 793, 1, 64, 80 ), Rect2( 859, 1, 64, 80 ), Rect2( 925, 1, 64, 80 ), Rect2( 991, 1, 64, 80 ), Rect2( 1057, 1, 64, 80 ), Rect2( 1123, 1, 64, 80 ), Rect2( 1189, 1, 64, 80 ), Rect2( 1255, 1, 80, 80 ), Rect2( 1337, 1, 80, 80 ), Rect2( 1419, 1, 80, 80 ), Rect2( 1501, 1, 80, 80 ), Rect2( 1583, 1, 80, 80 ), Rect2( 1665, 1, 64, 80 ), Rect2( 1731, 1, 64, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ), Vector2( 5, 6 ), Vector2( 5, 6 ), Vector2( 5, 6 ), Vector2( 5, 6 ), Vector2( 5, 6 ), Vector2( -3, 6 ), Vector2( -3, 6 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 40, 30 )
+
+[node name="captain" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -12 )
+shape = SubResource( 1 )
+
+[node name="bodyRotate" type="Position2D" parent="."]
+position = Vector2( 0, -20 )
+
+[node name="Sprite" type="Sprite" parent="bodyRotate"]
+material = SubResource( 2 )
+texture = ExtResource( 1 )
+offset = Vector2( -3, 6 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 64, 80 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
+
+[node name="playerDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetectionArea"]
+position = Vector2( 0, -5 )
+shape = SubResource( 5 )
+
+[node name="rayLeft" type="RayCast2D" parent="."]
+position = Vector2( -40, 0 )
+enabled = true
+cast_to = Vector2( 0, 21 )
+
+[node name="rayRight" type="RayCast2D" parent="."]
+position = Vector2( 58, 0 )
+enabled = true
+cast_to = Vector2( 0, 21 )
