@@ -40,7 +40,9 @@ func enter():
 	if MIN_ENTER_VELOCITY_X > abs(enter_velocity.x):
 		enter_velocity.x = MIN_ENTER_VELOCITY_X
 
-	if owner.velocity.y < 20:
+	if owner.prev_state.name == "hook":
+		 owner.queue_anim("fall")
+	elif owner.velocity.y < 20:
 		owner.play_anim("hover")
 		owner.queue_anim("fall")
 	else:

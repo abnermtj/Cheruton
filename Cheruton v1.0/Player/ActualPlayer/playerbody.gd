@@ -14,6 +14,8 @@ extends KinematicBody2D
 # 	-  vars
 #	- onready vars
 #	- signals
+# IMPT NOTES
+# -anmation player connects to states -> ON ANIMATION CHANGED
 
 const GRAVITY = 2400
 const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
@@ -63,11 +65,11 @@ onready var floor_raycast = $floorRay
 onready var sound_parent = $sounds
 onready var body_pivot = $bodyPivot
 onready var body_rotate = $bodyPivot/bodyRotate
-onready var arm_rotate = $bodyPivot/armSprite
 onready var body_collision = $bodyCollision
 onready var slide_collision = $slideCollision
 onready var states = $states
 onready var circle_scan = $circleScan
+onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
 
 signal hook_command
 signal flying_sword_command
@@ -78,10 +80,10 @@ func _ready():
 	cur_state = states.current_state
 	body_collision.disabled = false
 	slide_collision.disabled = true
-	arm_rotate.hide()
 
 func _process(delta):
 	DataResource.temp_dict_player.player_pos = global_position # for objects that target player, it needs to be as often as fps
+	DataResource.temp_dict_player.player_shoulder_pos = shoulder_position.global_position
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
@@ -106,8 +108,10 @@ func signal_on_floor(grounded):
 # Animation
 func play_anim(string):
 	if animation_player:
+			animation_player.clear_queue()
 			animation_player.play(string)
 			previous_anim = string
+			animation_player.advance(0)
 func queue_anim(string):
 	if animation_player:
 			animation_player.queue(string)
@@ -118,7 +122,8 @@ func play_and_return_anim(string):
 		animation_player.queue(previous_anim)
 func stop_anim():
 	if animation_player: animation_player.stop(false)
-
+func set_anim_speed (val : float):
+	if animation_player: animation_player.playback_speed = val
 func play_anim_fx(string):
 	if animation_player_fx: animation_player_fx.play(string)
 func queue_anim_fx(string):

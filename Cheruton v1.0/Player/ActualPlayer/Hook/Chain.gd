@@ -67,6 +67,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta):
 	if visible:
-		cur_player_pos = DataResource.temp_dict_player.player_pos
+		cur_player_pos = DataResource.temp_dict_player.player_shoulder_pos #so that the hook come from  shoulder
 		link.c = max((cur_player_pos - tip.global_position).length(),1)
 		tip.rotation = cur_player_pos.angle_to_point(tip.global_position)

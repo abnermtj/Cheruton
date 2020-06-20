@@ -16,7 +16,7 @@ func enter():
 	relative_vel = 0.01
 	initial_slide_anim_done = false
 	curve_timer = 0.0
-	owner.play_anim("slide")
+	owner.play_anim("slide_begin")
 	owner.queue_anim("slide_continious")
 	owner.play_sound("slide")
 	if initial_vel.x > 0:

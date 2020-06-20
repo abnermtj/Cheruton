@@ -1,6 +1,6 @@
 extends groundState
 
-const MAX_RUN_SPEED = 420
+const MAX_RUN_SPEED = 800 # 420 is normal
 const PLAYER_DIR_CONTROL = 9.25 # lower means mario
 const MIN_RUN_SPEED = 50
 
