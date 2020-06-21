@@ -76,11 +76,10 @@ collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -18 )
+position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="bodyRotate" type="Position2D" parent="."]
-position = Vector2( 0, -20 )
 
 [node name="Sprite" type="Sprite" parent="bodyRotate"]
 material = SubResource( 2 )
@@ -102,7 +101,7 @@ position = Vector2( 0, -5 )
 shape = SubResource( 5 )
 
 [node name="rayLeft" type="RayCast2D" parent="."]
-position = Vector2( -40, 0 )
+position = Vector2( -50, 0 )
 enabled = true
 cast_to = Vector2( 0, 21 )
 

@@ -14,7 +14,7 @@ var timer
 func _ready():
 	dir = -1
 	body_rotate.scale.x = -1
-	timer = DIR_CHANGE_TIME
+	timer = DIR_CHANGE_TIME # remember to set this when overwriting dir change time in virtual funcs
 	$AnimationPlayer.play("walk")
 	$playerDetectionArea.connect("body_entered", self, "player_entered")
 	$playerDetectionArea.connect("body_exited", self, "player_exited")
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		flip_dir()
 
 func flip_dir():
-	dir = - dir
+	dir = -dir
 	body_rotate.scale.x = -body_rotate.scale.x
 
 func player_entered(body):
