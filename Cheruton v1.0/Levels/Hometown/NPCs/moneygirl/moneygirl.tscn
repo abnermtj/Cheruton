@@ -53,9 +53,10 @@ material = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 7 )
 region_enabled = true
-region_rect = Rect2( 171, 1, 32, 48 )
+region_rect = Rect2( 1, 1, 32, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
 anims/idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

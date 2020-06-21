@@ -84,6 +84,7 @@ region_enabled = true
 region_rect = Rect2( 1, 1, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
 anims/idle = SubResource( 2 )
 anims/sweep = SubResource( 3 )
 

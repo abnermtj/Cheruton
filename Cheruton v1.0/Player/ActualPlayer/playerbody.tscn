@@ -984,10 +984,10 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.06, 0.15 ),
-"transitions": PoolRealArray( 1, 0.59, 1 ),
+"times": PoolRealArray( 0, 0.06, 0.28 ),
+"transitions": PoolRealArray( 1, 0.45, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.6, 0.8 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 0.8 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot:position")
@@ -996,10 +996,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.06, 0.15 ),
-"transitions": PoolRealArray( 1, 0.59, 1 ),
+"times": PoolRealArray( 0, 0.06, 0.28 ),
+"transitions": PoolRealArray( 1, 0.45, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 24, 10 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=37]
@@ -1016,7 +1016,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15 ),
 "transitions": PoolRealArray( 1.8025, 1 ),
 "update": 0,
-"values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1.8, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -6 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=38]
@@ -1032,7 +1044,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.07, 0.17 ),
 "transitions": PoolRealArray( 1, 0.594603, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.5, 0.8 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot:position")
@@ -1044,7 +1056,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.07, 0.17 ),
 "transitions": PoolRealArray( 1, 0.59, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=39]
@@ -1185,8 +1197,6 @@ collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
-position = Vector2( 0, 6.85714 )
-scale = Vector2( 1.28571, 0.885714 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
 show_behind_parent = true
@@ -1197,9 +1207,9 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( 2.5, 19.5 )
+offset = Vector2( 18.5, 11.5 )
 region_enabled = true
-region_rect = Rect2( 215, 167, 64, 48 )
+region_rect = Rect2( 1103, 167, 96, 64 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1458,8 +1468,8 @@ volume_db = -25.0
 stream = ExtResource( 15 )
 volume_db = -3.0
 [connection signal="animation_changed" from="animationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]

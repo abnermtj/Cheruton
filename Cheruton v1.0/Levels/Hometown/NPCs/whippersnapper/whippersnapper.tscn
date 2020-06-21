@@ -56,6 +56,7 @@ region_enabled = true
 region_rect = Rect2( 1, 1, 32, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.66
 anims/idle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -165,7 +165,7 @@ func get_nearest_hook_point():
 #	print(near_hook_points)
 	for hook_point in near_hook_points:
 		if not hook_point.is_in_group("hook_points"): continue
-		var result = space_state.intersect_ray(global_position + Vector2(0,-100), hook_point.global_position ,[self,hook_point], 32)
+		var result = space_state.intersect_ray(global_position + Vector2(0,-50), hook_point.global_position ,[self,hook_point], 32)
 		if result.empty(): non_blocked_hook_points.append( hook_point)
 
 	if non_blocked_hook_points.empty():

@@ -76,10 +76,18 @@ func update(delta):
 	DataResource.temp_dict_player.player_pos = owner.global_position # main update in owner is too slow rope lags behind player
 	DataResource.temp_dict_player.player_shoulder_pos = owner.shoulder_position.global_position
 
-# warning-ignore:unused_argument
 func update_idle(delta):
 	var angle_deg = rad2deg(owner.global_position.angle_to_point(tip_pos) - PI/2)
-	owner.body_pivot.rotation_degrees = angle_deg
+
+	var cur_body_rot_deg = owner.body_pivot.rotation_degrees
+
+	var angular_dist = angle_deg - cur_body_rot_deg
+	# the way angles work in the game engines mean there is a huge jump from 0 to -180, whhhih causes the player to rotate 360
+	if abs(angular_dist) >= 180:
+		cur_body_rot_deg += 360 * sign(angular_dist)  # else will do 360's
+		owner.body_pivot.rotation_degrees  += 360 * sign(angular_dist)
+
+	owner.body_pivot.rotation_degrees = lerp (cur_body_rot_deg, angle_deg, delta * 16)
 	if initial_swing_anim_done:
 		var flip_swing_frame_order = int (owner.look_direction.x == 1)
 
