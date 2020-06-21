@@ -81,7 +81,7 @@ extents = Vector2( 3, 3.5 )
 [node name="IceSlime" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
-scale = Vector2( 12, 12 )
+scale = Vector2( 16, 16 )
 collision_layer = 8
 script = ExtResource( 1 )
 
