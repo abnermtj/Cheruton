@@ -1,24 +1,26 @@
 extends Position2D
 
-const MIN_DIST = 100
+const MIN_DIST = 118 # used so it doesn't dissapear
 
 onready var joint1 = $joint1
 onready var joint2 = $joint1/joint2
 onready var tip = $joint1/joint2/tip
 
-var length_upper = 0 # length of each of the sections
+var length_upper = 0
 var length_middle = 0
 var length_lower = 0
 
 export var flipped = true
 
+var tip_pos : Vector2
 var start_pos = Vector2()
 var middle_pos = Vector2()
 var cur_goal_pos = Vector2()
-var step_height = 40 # max distance from ground btween each step
-var step_rate = 0.3 # affects how long each step takes
+var step_height = 30
+var step_rate = 0.2 # actual time taken to complete a step
 var step_time = 0.0
 var is_grounded = false
+var total_rotation = 0.0
 
 func _ready():
 	length_upper = joint1.position.x
@@ -33,8 +35,10 @@ func _ready():
 func step(goal_pos):
 	if goal_pos == cur_goal_pos: return
 
+	is_grounded = false
+
 	cur_goal_pos = goal_pos
-	var tip_pos = tip.global_position
+	tip_pos = tip.global_position
 
 	var highest_y = max (goal_pos.y, tip_pos.y)
 
@@ -49,15 +53,16 @@ func _process(delta):
 	var step_percent = step_time / step_rate # percentage of the step completed
 
 	if step_percent < .5:
-		target_pos = start_pos.linear_interpolate(middle_pos, step_time/0.5)
+		target_pos = start_pos.linear_interpolate(middle_pos, step_percent /.5)
 	elif step_percent < 1.0:
-		target_pos = middle_pos.linear_interpolate(cur_goal_pos, step_time/0.5)
+		target_pos = middle_pos.linear_interpolate(cur_goal_pos, step_percent)
 	else:
 		target_pos = cur_goal_pos
+		is_grounded = true
 
-	is_grounded = true if tip.global_position.distance_to(cur_goal_pos) < 5 else false # not sure about this
 #	target_pos = get_viewport().get_mouse_position()
 	update_ik(target_pos)
+	total_rotation = joint1.rotation_degrees + joint2.rotation_degrees
 
 func update_ik(target_pos):
 	var offset = target_pos - global_position #from shoulder to foot
@@ -68,13 +73,12 @@ func update_ik(target_pos):
 
 	var base_r = offset.angle() # used to make the bottom triangle in the diagram flat on the floor
 	var length_total = length_lower + length_middle + length_upper
-	var length_dummy_side = (length_upper + length_middle) * clamp(dist_to_target/length_total, 0.0 , 1.0) # this is
+	var length_dummy_side = (length_upper + length_middle) * clamp(dist_to_target / length_total, 0.0, 1.0)
 
-	var base_angles = angles_of_triangle(length_dummy_side, length_lower, dist_to_target) # calculates all the angles of the triangle
+	var base_angles = angles_of_triangle(length_dummy_side, length_lower, dist_to_target)
 	var next_angles = angles_of_triangle(length_upper, length_middle, length_dummy_side)
 
-
-	global_rotation = base_angles.B + next_angles.B + base_r # r sets base direction to point directly right
+	global_rotation = base_angles.B + next_angles.B + base_r
 	joint1.rotation = next_angles.C
 	joint2.rotation = base_angles.C + next_angles.A
 
@@ -95,8 +99,11 @@ func angles_of_triangle(side_a, side_b, side_c):
 
 # returns an angle in radians of a angle in a triangle
 func law_of_cos(a, b, c):
-	if 2 * a * b == 0:
+	if a * b == 0:
 		return 0
 	return acos( (a * a + b * b - c * c) / ( 2 * a * b) )
+
+func get_dist_tip_to_point(point: Vector2):
+	return (tip.global_position - point).length()
 
 

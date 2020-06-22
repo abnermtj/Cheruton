@@ -1,34 +1,37 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemy/Boss/spiderBoss/spiderLeg.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBoss/Sprite/Vzb1280.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBoss/Sprite/odcvMly.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/Boss/spiderBoss/Sprite/MpK8sk3.png" type="Texture" id=4]
 
 [node name="leg" type="Position2D"]
-position = Vector2( 398.889, 115.395 )
+position = Vector2( 216.183, 38.7425 )
 script = ExtResource( 1 )
+flipped = false
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 40.7144, 0 )
+position = Vector2( 17.8563, 1.54962 )
 rotation = -1.5708
+scale = Vector2( 1, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="joint1" type="Position2D" parent="."]
-position = Vector2( 87.4161, 0 )
+position = Vector2( 50, 0 )
 
 [node name="Sprite" type="Sprite" parent="joint1"]
-position = Vector2( 66.9407, -2.77391 )
-rotation = -1.5708
+position = Vector2( 37.1087, -0.44928 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="joint2" type="Position2D" parent="joint1"]
-position = Vector2( 130.929, 0 )
+position = Vector2( 75, -1.55 )
 
 [node name="Sprite" type="Sprite" parent="joint1/joint2"]
-position = Vector2( 73.7861, -3.88348 )
+position = Vector2( 73.7862, -3.10873 )
 rotation = -1.5708
 texture = ExtResource( 3 )
 
 [node name="tip" type="Position2D" parent="joint1/joint2"]
-position = Vector2( 144.798, 0 )
+position = Vector2( 140, 2.712 )
