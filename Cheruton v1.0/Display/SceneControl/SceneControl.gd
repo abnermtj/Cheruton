@@ -10,7 +10,7 @@ const WELCOME = "res://Display/Welcome/Welcome.tscn"
 
 
 func _ready():
-	load_screen(WELCOME)
+	load_screen(WELCOME, false)
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
 
@@ -19,9 +19,9 @@ func _ready():
 # Load Screen
 #==================================
 var curr_screen
-func load_screen( scrn := "" ):
-	if (!scrn.empty()):
-		curr_screen = scrn
+func load_screen(scene, game_scene:= false, loading_screen:= false):
+	if (!game_scene):
+		curr_screen = scene
 
 	print( "LOADING SCREEN: ", curr_screen )
 	get_tree().paused = true
@@ -31,7 +31,7 @@ func load_screen( scrn := "" ):
 	if (!children.empty()):
 		children[0].queue_free()
 		
-	var new_level = load(curr_screen).instance()
+	var new_level = load(scene).instance()
 	$Levels.add_child(new_level)
 
 	#$fade_layer/fadeanim.play( "fade_in")
@@ -41,19 +41,19 @@ func load_screen( scrn := "" ):
 #==================================
 # Load GameState
 #==================================
-func load_gamestate() -> void:
-
-	get_tree().paused = true
-	$fade_layer/fadeanim.play( "fade_out" )
-
-	$hud_layer/hud.hide()
-	var children = $Levels.get_children()
-	if not children.empty():
-		children[0].queue_free()
-		
-	var new_level# = load( gamestate.state.current_lvl ).instance()
-	$Levels.add_child( new_level )
-	get_tree().paused = false
+#func load_gamestate() -> void:
+#
+#	get_tree().paused = true
+#	$fade_layer/fadeanim.play( "fade_out" )
+#
+#	$hud_layer/hud.hide()
+#	var children = $Levels.get_children()
+#	if not children.empty():
+#		children[0].queue_free()
+#
+#	var new_level# = load( gamestate.state.current_lvl ).instance()
+#	$Levels.add_child( new_level )
+#	get_tree().paused = false
 #	$hud_layer/hud/game_map.call_deferred( "_update_map" )
 #	$hud_layer/hud.show()
 	
