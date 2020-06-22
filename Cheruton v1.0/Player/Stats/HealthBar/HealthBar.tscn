@@ -1,47 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Stats/HealthBar/playerhealthbar_fill.png" type="Texture" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/playerhealthbar_bg.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.gd" type="Script" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Player/Stats/HealthBar/Heart.png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=1]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Heart/HeartSprite:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Rect2( 1, 1, 16, 16 ), Rect2( 19, 1, 16, 16 ), Rect2( 37, 1, 16, 16 ), Rect2( 55, 1, 16, 16 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Heart/HeartSprite:offset")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )
 
 [node name="HealthBar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1070.0
-margin_bottom = -649.0
+margin_right = -1712.0
+margin_bottom = -1008.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,15 +22,15 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="HealthRect" type="VBoxContainer" parent="."]
-margin_right = 180.0
-margin_bottom = 40.0
+margin_right = 209.0
+margin_bottom = 90.0
 rect_min_size = Vector2( 180, 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthBarDesign" type="HBoxContainer" parent="HealthRect"]
-margin_right = 190.0
+margin_right = 209.0
 margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,27 +47,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Heart" type="AnimationPlayer" parent="HealthRect/HealthBarDesign"]
-anims/HeartBeatFast = SubResource( 1 )
-
-[node name="HeartSprite" type="Sprite" parent="HealthRect/HealthBarDesign/Heart"]
-position = Vector2( 232.07, 34.6967 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 5 )
-region_enabled = true
-region_rect = Rect2( 1, 1, 16, 16 )
-
 [node name="HealthStats" type="HBoxContainer" parent="HealthRect"]
 margin_top = 57.0
-margin_right = 190.0
+margin_right = 209.0
 margin_bottom = 90.0
 
 [node name="HealthVal" type="Label" parent="HealthRect/HealthStats"]
-margin_right = 190.0
+margin_right = 209.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "50/50"
+custom_fonts/font = SubResource( 1 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

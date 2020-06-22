@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Levels/levels.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "MovingNPC",
+"language": "GDScript",
+"path": "res://Levels/Hometown/NPCs/movingNPC.gd"
+}, {
 "base": "Camera2D",
 "class": "ShakeCamera",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "State_Enemy",
 "language": "GDScript",
 "path": "res://Enemy/StateEnemy.gd"
+}, {
+"base": "Node2D",
+"class": "StaticNPC",
+"language": "GDScript",
+"path": "res://Levels/Hometown/NPCs/staticNPC.gd"
 }, {
 "base": "Line2D",
 "class": "Trail2D",
@@ -96,8 +106,10 @@ _global_script_class_icons={
 "Enemy": "",
 "FSM_Enemy": "",
 "Level": "",
+"MovingNPC": "",
 "ShakeCamera": "",
 "State_Enemy": "",
+"StaticNPC": "",
 "Trail2D": "",
 "airState": "",
 "baseFSM": "",
@@ -111,7 +123,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cheruton v1.0"
-run/main_scene="res://Display/Welcome/Welcome.tscn"
+run/main_scene="res://Display/SceneControl/SceneControl.tscn"
 config/icon="res://icon.png"
 
 [autoload]
