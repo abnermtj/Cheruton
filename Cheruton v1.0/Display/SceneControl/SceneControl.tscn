@@ -37,11 +37,11 @@ rect_min_size = Vector2( 0, 90 )
 margin_top = 94.0
 margin_bottom = 165.0
 
-[node name="load_layer" type="CanvasLayer" parent="."]
+[node name="LoadLayer" type="CanvasLayer" parent="."]
 
-[node name="load" type="Node2D" parent="load_layer"]
+[node name="Load" type="Node2D" parent="LoadLayer"]
 visible = false
 
-[node name="LoadScrn" parent="load_layer/load" instance=ExtResource( 1 )]
+[node name="LoadScrn" parent="LoadLayer/Load" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-[connection signal="visibility_changed" from="load_layer/load/LoadScrn" to="load_layer/load/LoadScrn" method="_on_LoadScrn_visibility_changed"]
+[connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

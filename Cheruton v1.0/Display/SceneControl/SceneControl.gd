@@ -4,9 +4,10 @@ const WELCOME = "res://Display/Welcome/Welcome.tscn"
 
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
-onready var load_layer = $load_layer/load
+onready var load_layer = $LoadLayer/Load
 
 var curr_screen
+
 ## warning-ignore:unused_class_variable
 #onready var hud_chrystalpos = [ \
 #	$hud_layer/hud/chrystals/green.position, \
@@ -16,6 +17,7 @@ var curr_screen
 
 func _ready():
 	load_screen(WELCOME)
+
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
 # Loads the next scene 
@@ -30,25 +32,35 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	
 	if(hud_elements.visible):
 		hud_elements.hide()
-
+		
+	if(loading_screen):
+		yield(get_tree().create_timer(0.2), "timeout")
+	#
 	#$hud_layer/hud.hide()
 	var children = levels.get_children()
 	if (!children.empty()):
 		children[0].queue_free()
-		
+	
+	if(loading_screen):
+		yield(get_tree().create_timer(0.05), "timeout")
+	
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
-
+	
+	if(loading_screen):
+		yield(get_tree().create_timer(0.6), "timeout")
+	
 	if(game_scene):
 		hud_elements.show()
 		
 	if(loading_screen):
 		load_layer.hide()
 	
-	
 	#$fade_layer/fadeanim.play( "fade_in")
 	get_tree().paused = false
-	
+
+
+
 
 #==================================
 # Load GameState
