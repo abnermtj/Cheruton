@@ -11,30 +11,37 @@ script = ExtResource( 2 )
 
 [node name="Levels" type="Node2D" parent="."]
 
-[node name="LoadScrn" parent="." instance=ExtResource( 1 )]
-visible = false
-script = ExtResource( 3 )
+[node name="HudLayer" type="CanvasLayer" parent="."]
 
-[node name="StatBars" type="VBoxContainer" parent="."]
-visible = false
+[node name="Hud" type="Node2D" parent="HudLayer"]
+
+[node name="StatBars" type="VBoxContainer" parent="HudLayer/Hud"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.62903
-margin_top = 953.669
-margin_right = 208.371
-margin_bottom = 1078.67
+margin_left = 3.78745
+margin_top = 913.433
+margin_right = 213.787
+margin_bottom = 1078.43
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" parent="StatBars" instance=ExtResource( 5 )]
+[node name="HealthBar" parent="HudLayer/Hud/StatBars" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 210.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 90 )
 
-[node name="ExpBar" parent="StatBars" instance=ExtResource( 4 )]
-margin_top = 54.0
-margin_bottom = 125.0
-[connection signal="visibility_changed" from="LoadScrn" to="LoadScrn" method="_on_LoadScrn_visibility_changed"]
+[node name="ExpBar" parent="HudLayer/Hud/StatBars" instance=ExtResource( 4 )]
+margin_top = 94.0
+margin_bottom = 165.0
+
+[node name="load_layer" type="CanvasLayer" parent="."]
+
+[node name="load" type="Node2D" parent="load_layer"]
+visible = false
+
+[node name="LoadScrn" parent="load_layer/load" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+[connection signal="visibility_changed" from="load_layer/load/LoadScrn" to="load_layer/load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

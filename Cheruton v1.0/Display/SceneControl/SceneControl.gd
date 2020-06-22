@@ -3,8 +3,8 @@ extends Node2D
 const WELCOME = "res://Display/Welcome/Welcome.tscn"
 
 onready var levels = $Levels
-onready var statbars = $StatBars
-onready var load_scrn = $LoadScrn
+onready var hud_elements = $HudLayer/Hud
+onready var load_layer = $load_layer/load
 
 var curr_screen
 ## warning-ignore:unused_class_variable
@@ -15,7 +15,7 @@ var curr_screen
 
 
 func _ready():
-	load_screen(WELCOME, false)
+	load_screen(WELCOME)
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
 # Loads the next scene 
@@ -26,10 +26,10 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	print( "LOADING SCREEN: ", curr_screen)
 	get_tree().paused = true
 	if(loading_screen):
-		load_scrn.show()
+		load_layer.show()
 	
-	if(statbars.visible):
-		statbars.hide()
+	if(hud_elements.visible):
+		hud_elements.hide()
 
 	#$hud_layer/hud.hide()
 	var children = levels.get_children()
@@ -40,10 +40,10 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	levels.add_child(new_level)
 
 	if(game_scene):
-		statbars.show()
+		hud_elements.show()
 		
 	if(loading_screen):
-		load_scrn.hide()
+		load_layer.hide()
 	
 	
 	#$fade_layer/fadeanim.play( "fade_in")
