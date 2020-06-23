@@ -1,6 +1,6 @@
 extends Position2D
 
-const MIN_DIST = 118 # used so it doesn't dissapear
+const MIN_DIST = 130 # used so it doesn't dissapear 118 min
 
 onready var joint1 = $joint1
 onready var joint2 = $joint1/joint2
@@ -17,16 +17,15 @@ var start_pos = Vector2()
 var middle_pos = Vector2()
 var cur_goal_pos = Vector2()
 var step_height = 30
-var step_rate = 0.2 # actual time taken to complete a step
+var step_rate = 0.24 # actual time taken to complete a step default i .2
 var step_time = 0.0
-var is_grounded = false
+var is_step_over = false
 var total_rotation = 0.0
 
 func _ready():
 	length_upper = joint1.position.x
 	length_middle = joint2.position.x
 	length_lower = tip.position.x
-
 	if flipped:
 		$Sprite.flip_h = true
 		joint1.get_node("Sprite").flip_h = true
@@ -35,7 +34,7 @@ func _ready():
 func step(goal_pos):
 	if goal_pos == cur_goal_pos: return
 
-	is_grounded = false
+	is_step_over = false
 
 	cur_goal_pos = goal_pos
 	tip_pos = tip.global_position
@@ -53,12 +52,13 @@ func _process(delta):
 	var step_percent = step_time / step_rate # percentage of the step completed
 
 	if step_percent < .5:
-		target_pos = start_pos.linear_interpolate(middle_pos, step_percent /.5)
+		target_pos = start_pos.linear_interpolate(middle_pos, step_percent * 2)
 	elif step_percent < 1.0:
-		target_pos = middle_pos.linear_interpolate(cur_goal_pos, step_percent)
+		target_pos = middle_pos.linear_interpolate(cur_goal_pos, (step_percent-.5) * 2)
 	else:
 		target_pos = cur_goal_pos
-		is_grounded = true
+		is_step_over = true
+		tip_pos = target_pos
 
 #	target_pos = get_viewport().get_mouse_position()
 	update_ik(target_pos)
@@ -105,5 +105,3 @@ func law_of_cos(a, b, c):
 
 func get_dist_tip_to_point(point: Vector2):
 	return (tip.global_position - point).length()
-
-

@@ -11,27 +11,28 @@ script = ExtResource( 1 )
 flipped = false
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 17.8563, 1.54962 )
+position = Vector2( 64.6813, 0.384583 )
 rotation = -1.5708
-scale = Vector2( 1, 0.6 )
+scale = Vector2( 1, 1.5 )
 texture = ExtResource( 2 )
 
 [node name="joint1" type="Position2D" parent="."]
-position = Vector2( 50, 0 )
+position = Vector2( 130, 0 )
 
 [node name="Sprite" type="Sprite" parent="joint1"]
-position = Vector2( 37.1087, -0.44928 )
+position = Vector2( 105.987, -0.976318 )
 rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.5, 1.5 )
 texture = ExtResource( 4 )
 
 [node name="joint2" type="Position2D" parent="joint1"]
-position = Vector2( 75, -1.55 )
+position = Vector2( 200, 0 )
 
 [node name="Sprite" type="Sprite" parent="joint1/joint2"]
-position = Vector2( 73.7862, -3.10873 )
+position = Vector2( 172.816, -5.3279 )
 rotation = -1.5708
+scale = Vector2( 1, 2.3 )
 texture = ExtResource( 3 )
 
 [node name="tip" type="Position2D" parent="joint1/joint2"]
-position = Vector2( 140, 2.712 )
+position = Vector2( 350, 0 )
