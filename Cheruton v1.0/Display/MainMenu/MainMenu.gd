@@ -14,9 +14,7 @@ func _ready():
 	SETTINGS.connect("release_gui", self, "_exit_Settings")
 
 func _on_Play_pressed():
-#	scene_control.get_node(HEALTHBAR).init_bar()
-#	scene_control.get_node(EXPBAR).init_bar()
-	
+	scene_control.emit_signal("init_statbar")
 	SceneControl.load_screen(SCN1, true, true)
 func _on_Settings_pressed():
 	SETTINGS.show()

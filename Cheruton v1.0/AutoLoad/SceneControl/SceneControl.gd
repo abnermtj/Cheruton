@@ -56,10 +56,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
-	
-	if(new_level.name == "MainMenu"):
-		emit_signal("init_statbar")
-	
+
 	if(loading_screen):
 		yield(get_tree().create_timer(0.6), "timeout")
 	
