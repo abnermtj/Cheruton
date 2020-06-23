@@ -56,7 +56,7 @@ func save_rest():
 func save_data(FILE, dictionary):
 	var file = File.new()
 	file.open(FILE, File.WRITE)
-	#file.open_encrypted_with_pass(FILE, File.WRITE, "mypass")
+	#file.open_encrypted_with_pass(FILE, File.WRITE, OS.get_unique_id())
 	file.store_string(to_json(dictionary))
 	file.close()
 

@@ -44,4 +44,7 @@ visible = false
 
 [node name="LoadScrn" parent="LoadLayer/Load" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 [connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

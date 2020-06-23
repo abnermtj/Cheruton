@@ -5,6 +5,7 @@ const WELCOME = "res://Display/Welcome/Welcome.tscn"
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var load_layer = $LoadLayer/Load
+onready var bg_music = $BgMusic
 
 var curr_screen
 
@@ -15,8 +16,8 @@ var curr_screen
 #	$hud_layer/hud/chrystals/red.position ]
 
 
-func _ready():
-	load_screen(WELCOME)
+#func _ready():
+#	load_screen(WELCOME)
 
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
@@ -24,6 +25,9 @@ func _ready():
 func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if (!game_scene):
 		curr_screen = scene
+
+	if(bg_music):
+		bg_music.stop()
 
 	print( "LOADING SCREEN: ", curr_screen)
 	get_tree().paused = true
@@ -55,6 +59,8 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		
 	if(loading_screen):
 		load_layer.hide()
+	
+	#bg_music.set_stream(levels.find_node("background_music", true, false)
 	
 	#$fade_layer/fadeanim.play( "fade_in")
 	get_tree().paused = false
