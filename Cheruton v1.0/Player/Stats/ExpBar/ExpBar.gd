@@ -6,7 +6,7 @@ onready var exp_bar = $ExpRect/ExpBar
 
 func _ready():
 	DataFunctions.connect("update_exp", self, "update_expbar")
-	init_bar()
+	SceneControl.connect("init_statbar", self, "init_bar")
 
 
 

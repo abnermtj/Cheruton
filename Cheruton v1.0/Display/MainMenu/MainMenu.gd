@@ -9,7 +9,7 @@ onready var scene_control = self.get_parent().get_parent()
 
 
 func _ready():
-	LevelguiMaster.enabled = false
+	SceneControl.get_node("masterGui").enabled = false
 	SETTINGS.hide()
 	SETTINGS.connect("release_gui", self, "_exit_Settings")
 

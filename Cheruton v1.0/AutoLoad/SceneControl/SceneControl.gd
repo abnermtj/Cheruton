@@ -10,6 +10,8 @@ onready var bg_music = $BgMusic
 var curr_screen
 var loot_dict = {} # Items pending transfer to inventory
 
+signal init_statbar
+
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 ## warning-ignore:unused_class_variable
@@ -26,6 +28,7 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 # Loads the next scene 
 func load_screen(scene, game_scene:= false, loading_screen:= false):
+
 	if (!game_scene):
 		curr_screen = scene
 
@@ -54,6 +57,9 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
 	
+	if(new_level.name == "MainMenu"):
+		emit_signal("init_statbar")
+	
 	if(loading_screen):
 		yield(get_tree().create_timer(0.6), "timeout")
 	
@@ -68,8 +74,9 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	#$fade_layer/fadeanim.play( "fade_in")
 	get_tree().paused = false
 
-
-
+#######
+# LOOT
+#######
 
 func determine_loot(map):
 	var loot_count = determine_loot_count(map)
@@ -155,7 +162,9 @@ func insert_data(item_id, insert_index):
 		}
 	DataResource.dict_inventory[loot_dict[item_id][item.TYPE]]["Item" + str(insert_index)] = stats
 
-
+func _input(_ev):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
 #==================================
 # Load GameState
 #==================================

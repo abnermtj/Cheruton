@@ -1,16 +1,15 @@
 extends Control
 
-var health_max
 
 onready var healthbar = $HealthRect/HealthBarDesign/HealthBar
 onready var healthstat = $HealthRect/HealthStats/HealthVal
 #onready var heart = $HealthRect/HealthBarDesign/Heart
 
+var health_max
 
 func _ready():	
 	DataFunctions.connect("change_health", self, "change_healthbar")
-	init_bar()
-	
+	SceneControl.connect("init_statbar", self, "init_bar")
 
 func init_bar():
 	var old_health = DataResource.temp_dict_player.health_curr

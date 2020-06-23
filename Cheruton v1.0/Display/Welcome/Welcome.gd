@@ -7,7 +7,7 @@ func _ready():
 	init_music()
 	#Cursor.init_cursor()
 	#Testing loot functionality
-	LevelguiMaster.enabled = false
+	SceneControl.get_node("masterGui").enabled = false
 
 
 func _on_Timer_timeout():
