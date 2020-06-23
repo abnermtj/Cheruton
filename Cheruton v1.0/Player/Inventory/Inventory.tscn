@@ -10,7 +10,6 @@
 [ext_resource path="res://Player/Inventory/old_paper.jpg" type="Texture" id=8]
 [ext_resource path="res://Player/Inventory/pink_wooden_border.jpg" type="Texture" id=9]
 
-
 [sub_resource type="DynamicFont" id=1]
 
 [sub_resource type="DynamicFont" id=2]

@@ -296,8 +296,8 @@ func buy_item():
 	item_data.append(current_tab_name)
 	item_data.append(DataResource.dict_item_shop["Item" + str(index)])
 	item_data.append(1)
-	Loot.loot_dict[1] = item_data
-	Loot.append_loot(1)
+	SceneControl.loot_dict[1] = item_data
+	SceneControl.append_loot(1)
 	
 	# Update coins val and item qty
 	DataFunctions.change_coins(-coins_val)

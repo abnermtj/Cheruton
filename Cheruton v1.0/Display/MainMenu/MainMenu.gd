@@ -17,7 +17,7 @@ func _on_Play_pressed():
 #	scene_control.get_node(HEALTHBAR).init_bar()
 #	scene_control.get_node(EXPBAR).init_bar()
 	
-	scene_control.load_screen(SCN1, true, true)
+	SceneControl.load_screen(SCN1, true, true)
 func _on_Settings_pressed():
 	SETTINGS.show()
 func _exit_Settings(gui_name):

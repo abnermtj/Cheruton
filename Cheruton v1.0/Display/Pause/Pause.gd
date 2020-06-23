@@ -11,7 +11,7 @@ func _on_Settings_pressed():
 	emit_signal("new_gui", "settings")
 
 func _on_RMMenu_pressed():
-	LoadGlobal.goto_scene(MAINMENU)
+	SceneControl.load_screen(MAINMENU)
 
 func _on_ExitPause_pressed():
 	DataResource.save_player()
