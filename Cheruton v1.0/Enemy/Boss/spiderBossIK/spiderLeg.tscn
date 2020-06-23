@@ -17,7 +17,7 @@ scale = Vector2( 1, 1.5 )
 texture = ExtResource( 2 )
 
 [node name="joint1" type="Position2D" parent="."]
-position = Vector2( 130, 0 )
+position = Vector2( 142, 0 )
 
 [node name="Sprite" type="Sprite" parent="joint1"]
 position = Vector2( 105.987, -0.976318 )
@@ -26,13 +26,15 @@ scale = Vector2( 0.5, 1.5 )
 texture = ExtResource( 4 )
 
 [node name="joint2" type="Position2D" parent="joint1"]
-position = Vector2( 200, 0 )
+position = Vector2( 195, 0 )
 
 [node name="Sprite" type="Sprite" parent="joint1/joint2"]
-position = Vector2( 172.816, -5.3279 )
+position = Vector2( 178.086, -6.85156 )
 rotation = -1.5708
-scale = Vector2( 1, 2.3 )
+scale = Vector2( 1, 2.4 )
 texture = ExtResource( 3 )
 
 [node name="tip" type="Position2D" parent="joint1/joint2"]
-position = Vector2( 350, 0 )
+position = Vector2( 365, 0 )
+
+[node name="Tween" type="Tween" parent="."]

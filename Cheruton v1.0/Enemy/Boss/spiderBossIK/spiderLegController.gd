@@ -46,7 +46,6 @@ func get_collision_point():
 		if col_point:
 			var normal = diag_ray_cast.get_collision_normal()
 			var angle = rad2deg(acos(normal.dot(Vector2.UP)))
-			print(angle)
 			if abs(angle) < 60: #  floor or wall
 					col_point = null
 
@@ -57,20 +56,12 @@ func get_collision_point():
 
 # used to increase offset with the speed of the spider
 func set_offset(vel):
-	ray_cast.position.x = base_offset + vel.x * 1.9
-	ray_cast.cast_to.x = base_cast.x + .9 * vel.x
-	diag_ray_cast.position.y =  base_offset_diag + vel.y  * 4
-#	print(is_colliding_ground())
+	ray_cast.position.x = base_offset + vel.x * 1.91
+	ray_cast.cast_to.x = base_cast.x + .3 * vel.x
+	diag_ray_cast.position.y =  base_offset_diag + clamp(vel.y  * 2.6, -250, INF) # clamp so scaling up doesn't make spider reach very far
 	diag_ray_cast.cast_to = base_cast_diag + sign(base_cast_diag.x) *  Vector2(clamp(abs(vel.x)*.5  + int(not is_colliding_ground()) * 400, 0, INF), 0)  # if no where to place foot , boost diagonal vector
-#	print(diag_ray_cast.cast_to)
 	force_raycast_update()
 
 #Relaying funtionsin
 func step(pos):
 	leg.step(pos)
-
-## Setters
-#func enable_diag_ray():
-#	diag_ray_enabled = true
-#func disable_diag_ray():
-#	diag_ray_enabled = false

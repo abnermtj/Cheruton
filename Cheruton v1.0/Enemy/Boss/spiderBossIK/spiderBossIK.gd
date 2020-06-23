@@ -1,14 +1,20 @@
 extends KinematicBody2D
 
-const SPEED = 460	 # faster than player
-const LEG_DIST_MARGIN = 850
+const SPEED = 465  # faster than player
+const LEG_DIST_MARGIN = 720
 const LEG_MOVE_COOLDOWN = .4 # default is
 const LEG_RAY_OFFSET_ADJUSTER = .5
 
 onready var a_legs = $ALegs.get_children()
 onready var b_legs = $BLegs.get_children()
 onready var legs = a_legs + b_legs
-#onready var ground_check = $GroundCheck
+onready var head_sprite = $head
+onready var feelers_sprite = $head/feelers
+onready var mid_body_sprite = $midBody
+onready var butt_sprite = $butt
+onready var ground_check = $groundCheck
+
+onready var default_sprite_pos = []
 
 var flip_legs = false
 var is_scaling_walls = false
@@ -21,11 +27,8 @@ var desired_velocity = Vector2()
 
 
 # logical problems to solve
-# multiple legs, multiple rays for each
-# have legs alternate
-# make leg hover when cannot dcide
-# NO NEED body pos is the average of leg positions NO NEED I LOIKE FOLLOWING CURSOR
-#making head move with velocity
+# WHEN MOVING  the body is lifter up to make su body don't crash into things
+# SIde check so when crawling wall
 
 # FOR EACH LEG. MOVE EACH LEG INDIVIDUALLY, cannot move legs until timer runs out .1s
 # this way you can only send out the next leg once the current leg is .1 s lifter off already
@@ -35,6 +38,7 @@ func _ready():
 	leg_move_timer = LEG_MOVE_COOLDOWN
 	for leg in legs:
 		init_leg(leg)
+	default_sprite_pos = [head_sprite.position, feelers_sprite.position, mid_body_sprite.position, butt_sprite.position]
 
 func init_leg(leg):
 	leg.force_raycast_update()
@@ -42,27 +46,30 @@ func init_leg(leg):
 	if col_point: leg.step(col_point)
 
 func _physics_process(delta):
-#	if not ground_check.is_colliding() and  is_scaling_walls = true
-#	desired_velocity = Vector2(clamp((get_global_mouse_position().x - global_position.x), -SPEED, SPEED),0)
-#
-#	var highest_tip_pos_y = get_highest_tip_y()
-#	if highest_tip_pos_y:
-#		position.y = lerp(position.y, (highest_tip_pos_y -150) , 2* delta)
-	desired_velocity = SPEED * (get_global_mouse_position() - global_position).normalized()
-#	desired_velocity =  0.9*(get_parent().get_node("player").global_position - global_position)
+	var next_position =  0.9*((get_parent().get_node("player")).global_position ) + Vector2(0, -200) # the offset account for the spider never touching the player due to hitbox
+
+#	next_position = get_global_mouse_position()
+
+	if ground_check.is_colliding() and velocity.length() > SPEED/3:
+		next_position.y -= ground_check.get_collision_point().y - global_position.y + 10 # const makes it bob less jittery
+
+	desired_velocity =  next_position - global_position
+
 	if desired_velocity.length() > SPEED:
 		desired_velocity = desired_velocity.normalized() * SPEED
-	velocity = lerp(velocity, desired_velocity, 2 * delta) # head follows mouse
 
-#	if velocity.x > 0 :# moving to the right, disable all wall reaching rays on opposite side side
-#		for leg in legs:
-#			if not leg.is_flipped(): leg.disable_diag_ray()
-#			else: leg.enable_diag_ray()
-#	else:
-#		for leg in legs:
-#			if leg.is_flipped(): leg.disable_diag_ray()
-#			else: leg.enable_diag_ray()
+
+	velocity = lerp(velocity, desired_velocity, 2 * delta)
+
 	velocity = move_and_slide(velocity)
+	move_body_sprites()
+
+# moves the parts of the body according to the velocity
+func move_body_sprites():
+	head_sprite.position = default_sprite_pos[0] + (velocity * 0.02).clamped(15)
+	feelers_sprite.position = default_sprite_pos[1] + (velocity * 0.01).clamped(0)
+	mid_body_sprite.position = default_sprite_pos[2] + velocity.clamped(0)
+	butt_sprite.position = default_sprite_pos[3] - (velocity * 0.032).clamped(48)
 
 func get_highest_tip_y():
 	var highest_tip_y = INF

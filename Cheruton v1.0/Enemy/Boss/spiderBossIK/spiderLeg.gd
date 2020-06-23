@@ -1,6 +1,8 @@
 extends Position2D
 
 const MIN_DIST = 130 # used so it doesn't dissapear 118 min
+const step_rate = 0.38 # actual time taken to complete a step default i .2
+const step_height = 100
 
 onready var joint1 = $joint1
 onready var joint2 = $joint1/joint2
@@ -11,13 +13,10 @@ var length_middle = 0
 var length_lower = 0
 
 export var flipped = true
-
 var tip_pos : Vector2
 var start_pos = Vector2()
 var middle_pos = Vector2()
 var cur_goal_pos = Vector2()
-var step_height = 30
-var step_rate = 0.24 # actual time taken to complete a step default i .2
 var step_time = 0.0
 var is_step_over = false
 var total_rotation = 0.0
@@ -53,6 +52,7 @@ func _process(delta):
 
 	if step_percent < .5:
 		target_pos = start_pos.linear_interpolate(middle_pos, step_percent * 2)
+#		target_pos = start_pos + step_percent*  PI /2
 	elif step_percent < 1.0:
 		target_pos = middle_pos.linear_interpolate(cur_goal_pos, (step_percent-.5) * 2)
 	else:

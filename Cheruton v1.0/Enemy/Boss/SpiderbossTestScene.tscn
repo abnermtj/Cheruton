@@ -49,12 +49,9 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( -2173.76, 1145.02 )
+position = Vector2( -3118.95, 1199.55 )
 scale = Vector2( 5, 40 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite4"]
 
@@ -106,3 +103,4 @@ position = Vector2( -520.846, 0.139984 )
 [node name="player" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+current = true
