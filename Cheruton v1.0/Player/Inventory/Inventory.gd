@@ -219,8 +219,6 @@ func _on_pressed(node):
 	mouse_node = node
 	if (mouse_count == 2):
 		print("Double Clicked!")
-		if(item_state == "HOVER"):
-			revert_item_state()
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
 		mouse_count = 0
