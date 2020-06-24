@@ -120,7 +120,7 @@ func append_loot(loot_count):
 
 		# Money
 		if(loot_dict[index][0] == "Money"):
-			DataFunctions.change_coins(int(loot_dict[index][item.AMOUNT]))
+			DataResource.change_coins(int(loot_dict[index][item.AMOUNT]))
 
 		# Non Money
 		else:

@@ -19,6 +19,13 @@ var dict_item_shop = {}
 # Stores any unsaved data regarding player stats
 var temp_dict_player = {}
 
+signal update_exp(new_exp, new_exp_max, new_level)
+signal change_health(new_health)
+
+signal change_audio_master
+signal change_audio_music
+signal change_audio_sfx
+
 func load_data():
 	#Editable
 	dict_main = load_dict(MAIN)
@@ -98,3 +105,35 @@ func reset_inventory():
 	dict_inventory.Misc = {}
 	dict_inventory["Key Items"] = {}
 	save_rest()
+
+
+
+func add_exp(var exp_gain):
+	temp_dict_player.exp_curr += exp_gain
+
+	# Next Level Reached
+	if(temp_dict_player.exp_curr >= temp_dict_player.exp_max):
+		temp_dict_player.level += 1
+		temp_dict_player.exp_curr -= temp_dict_player.exp_max
+		temp_dict_player.exp_max *= 1.5
+
+	emit_signal("update_exp", temp_dict_player.exp_curr, temp_dict_player.exp_max, temp_dict_player.level)
+
+func change_health(var health_change):
+	temp_dict_player.health_curr = clamp(temp_dict_player.health_curr + health_change, 0, temp_dict_player.health_max)
+	emit_signal("change_health", temp_dict_player.health_curr)
+
+func change_coins(coins_change):
+	temp_dict_player.coins += coins_change
+
+func change_audio_master(var audio_change):
+	dict_settings.audio_master = clamp(dict_settings.audio_master + audio_change, -60, 12)
+	emit_signal("change_audio_master")
+
+func change_audio_music(var audio_change):
+	dict_settings.audio_music = clamp(dict_settings.audio_music + audio_change, -60, 12)
+	emit_signal("change_audio_music")
+
+func change_audio_sfx(var audio_change):
+	dict_settings.audio_sfx = clamp(dict_settings.audio_sfx + audio_change, -60, 12)
+	emit_signal("change_audio_sfx")

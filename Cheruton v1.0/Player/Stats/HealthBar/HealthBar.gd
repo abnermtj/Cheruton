@@ -8,7 +8,7 @@ onready var healthstat = $HealthRect/HealthStats/HealthVal
 var health_max
 
 func _ready():	
-	DataFunctions.connect("change_health", self, "change_healthbar")
+	DataResource.connect("change_health", self, "change_healthbar")
 	SceneControl.connect("init_statbar", self, "init_bar")
 
 func init_bar():
