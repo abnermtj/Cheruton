@@ -128,7 +128,7 @@ func generate_list(scroll_tab, list_tab, tab_index):
 	var row_index = -1
 	var dict_size = list_tab.size()
 	for _i in range(0, BOXES):
-		
+
 		# Creates New Row every 10 items
 		if(index / 10 != row_index && index % 10 != 0):
 			var new_row = HBoxContainer.new()
@@ -142,7 +142,7 @@ func generate_list(scroll_tab, list_tab, tab_index):
 		var instanced = instance_loc.instance()
 		row.add_child(instanced)
 		row.get_child(row.get_child_count() - 1).name = str(tab_index + index)
-		
+
 		var item = row.get_node(str(tab_index + index))
 
 		# Populates the boxes based on the no. of items in that particular tab
@@ -159,7 +159,7 @@ func generate_specific_data(item_index_node, item_index, list_tab):
 	item_index_node.get_child(0).get_child(0).name = list_tab["Item" + str(item_index)].item_name
 	if(list_tab["Item" + str(item_index)].item_qty):
 		item_index_node.get_node("Background/ItemBg/ItemBtn/Qty").text = str(list_tab["Item" + str(item_index)].item_qty)
-	
+
 	if(list_tab["Item" + str(item_index)].item_png):
 		var item_pict  = load(list_tab["Item" + str(item_index)].item_png)
 		item_index_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(item_pict)
@@ -173,7 +173,7 @@ func enable_mouse(new_node):
 			btn.connect("pressed", self, "_on_pressed", [new_node])
 			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
-	
+
 			# For the TextureButton
 			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
 			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
@@ -185,7 +185,7 @@ func disable_mouse(new_node):
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
-		
+
 		btn.disconnect("pressed", self, "_on_pressed")
 		new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
 		new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
@@ -296,14 +296,14 @@ func delete_item():
 		#	Shift down all inventory entries by 1
 		#	Delete the last empty index
 		#	If the Row is empty (except Row0), delete it
-		
+
 		# Dequips active item
 		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
 				get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
-				
+
 		# From deleted item's index upwards, shift affected indexes down by 1
 		var list_tab = DataResource.dict_inventory[active_tab.name]
 		var dict_size = list_tab.size()
@@ -312,7 +312,7 @@ func delete_item():
 			DataResource.dict_inventory[active_tab.name]["Item" + str(element_index)] = DataResource.dict_inventory[active_tab.name]["Item" + str(element_index + 1)]
 			var updating_node_index = str(int(mouse_node.name)/100 * 100 + element_index)
 			var updating_node = items.get_node(active_tab.name).find_node(updating_node_index, true, false)
-			
+
 			generate_specific_data(updating_node, element_index, list_tab)
 			element_index += 1
 
@@ -322,7 +322,7 @@ func delete_item():
 		var emptied_node = items.get_node(active_tab.name).find_node(deletion, true, false)
 		check_fixed()
 		disable_mouse(emptied_node)
-		
+
 		equipped_coins.get_node("Button").hide()
 
 # Handles equipping of the item
@@ -369,7 +369,7 @@ func _on_Inventory_visibility_changed():
 		update_tab_items(APPAREL, shop_sell, "Apparel")
 		update_tab_items(CONSUM, shop_sell, "Consum")
 		update_tab_items(MISC, shop_sell, "Misc")
-		
+
 # Updates a particular tabs item stock
 func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
