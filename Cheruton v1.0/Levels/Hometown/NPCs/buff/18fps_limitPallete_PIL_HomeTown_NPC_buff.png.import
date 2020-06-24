@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/18fps_limitPallete_PIL_HomeTown_NPC_buff.png-30339a6b86fcc524181dad07e44e18c1.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Levels/Hometown/NPCs/buff/18fps_limitPallete_PIL_HomeTown_NPC_buff.png"
+dest_files=[ "res://.import/18fps_limitPallete_PIL_HomeTown_NPC_buff.png-30339a6b86fcc524181dad07e44e18c1.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
