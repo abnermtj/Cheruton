@@ -11,6 +11,7 @@ var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
 var shop_setting = "Buy"
+var temp_mouse_node
 
 signal tab_changed(next_tab)
 
@@ -55,11 +56,11 @@ func display_equipped(name):
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
-	connect("tab_changed", self, "change_tab_state")
-	tabs.get_node("Weapons/Weapons").connect("pressed", self,  "tab_pressed", ["Weapons"])
-	tabs.get_node("Apparel/Apparel").connect("pressed", self,  "tab_pressed", ["Apparel"])
-	tabs.get_node("Consum/Consum").connect("pressed", self,  "tab_pressed", ["Consum"])
-	tabs.get_node("Misc/Misc").connect("pressed", self,  "tab_pressed", ["Misc"])
+	var _conn0 = connect("tab_changed", self, "change_tab_state")
+	var _conn1 = tabs.get_node("Weapons/Weapons").connect("pressed", self,  "tab_pressed", ["Weapons"])
+	var _conn2 = tabs.get_node("Apparel/Apparel").connect("pressed", self,  "tab_pressed", ["Apparel"])
+	var _conn3 = tabs.get_node("Consum/Consum").connect("pressed", self,  "tab_pressed", ["Consum"])
+	var _conn4 = tabs.get_node("Misc/Misc").connect("pressed", self,  "tab_pressed", ["Misc"])
 
 
 func tab_pressed(next_tab):
@@ -162,13 +163,13 @@ func enable_mouse(new_node):
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
 		btn.get_node("Qty").show()
 		if(!btn.get_normal_texture()):
-			btn.connect("pressed", self, "_on_pressed", [new_node])
-			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn0 = btn.connect("pressed", self, "_on_pressed", [new_node])
+			var _conn1 = new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			var _conn2 = new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 	
 			# For the TextureButton
-			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn3 = btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			var _conn4 = btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 # Disable mouse functions of the item index
 func disable_mouse(new_node):
@@ -178,22 +179,22 @@ func disable_mouse(new_node):
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
 		
-		btn.disconnect("pressed", self, "_on_pressed")
-		new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
-		new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
+		var _disconn1 = btn.disconnect("pressed", self, "_on_pressed")
+		var _disconn2 = new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
+		var _disconn3 = new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 		# For the TextureButton
-		btn.disconnect("mouse_entered", self, "_on_mouse_entered")
+		var _disconn4 = btn.disconnect("mouse_entered", self, "_on_mouse_entered")
 		btn.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 func _on_mouse_entered(node):
-	if(item_state == "HOVER"):
+	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = index_bg
 
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
-	if(item_state == "HOVER"):
+	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = null
 
 
@@ -202,8 +203,10 @@ func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
-	mouse_node = node
+	temp_mouse_node = node
 	if (mouse_count == 2):
+		check_fixed()
+		mouse_node = temp_mouse_node
 		print("Double Clicked!")
 		match shop_setting:
 			"Sell": 	# Sell item: fix the item, then sell it
@@ -231,14 +234,21 @@ func _on_Timer_timeout():
 func revert_item_state():
 	var btn_node = get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button")
 	if(item_state == "HOVER"):
+		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		btn_node.text = shop_setting
 		btn_node.show()
+	
+	elif(mouse_node != temp_mouse_node):
+		mouse_node.get_node("Background/ItemBg").texture = null
+		mouse_node = temp_mouse_node
+	
 	else:
 		item_state = "HOVER"
 		btn_node.hide()
 		mouse_node = null
+
 
 # Reduces qty of item by 1
 func sell_item():

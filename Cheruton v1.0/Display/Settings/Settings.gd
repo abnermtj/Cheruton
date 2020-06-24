@@ -8,9 +8,9 @@ func _ready():
 	main_bar.value = (10 - ((10 - DataResource.dict_settings.audio_master)/8)) * 10
 	music_bar.value = (10 - ((10 - DataResource.dict_settings.audio_master)/8)) * 10
 	sfx_bar.value = (10 - ((10 - DataResource.dict_settings.audio_sfx)/8)) * 10
-	DataResource.connect("change_audio_master", self, "change_master_vol")
-	DataResource.connect("change_audio_music", self, "change_music_vol")
-	DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
+	var _conn1 = DataResource.connect("change_audio_master", self, "change_master_vol")
+	var _conn2 = DataResource.connect("change_audio_music", self, "change_music_vol")
+	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
 
 func _on_MuteToggle_pressed():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), !(DataResource.dict_settings.is_mute))

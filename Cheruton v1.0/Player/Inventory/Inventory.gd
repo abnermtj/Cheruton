@@ -11,6 +11,7 @@ var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
+var temp_mouse_node
 
 onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
@@ -43,8 +44,8 @@ func _on_Exit_pressed():
 	free_the_inventory()
 
 func set_equipped():
-	equipped_coins.get_node("Weapons/Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [equipped_coins.get_node("Weapons")])
-	equipped_coins.get_node("Apparel/Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [equipped_coins.get_node("Apparel")])
+	var _conn1 = equipped_coins.get_node("Weapons/Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [equipped_coins.get_node("Weapons")])
+	var _conn2 = equipped_coins.get_node("Apparel/Background/ItemBg/ItemBtn").connect("pressed", self, "_on_pressed", [equipped_coins.get_node("Apparel")])
 	equipped_coins.get_node("Weapons/Background/ItemBg").texture = index_equipped_bg
 	equipped_coins.get_node("Apparel/Background/ItemBg").texture = index_equipped_bg
 
@@ -69,7 +70,7 @@ func free_the_inventory():
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
-	connect("tab_changed", self, "change_tab_state")
+	var _conn1 = connect("tab_changed", self, "change_tab_state")
 	tabs.get_node("Weapons/Weapons").connect("pressed", self,  "tab_pressed", ["Weapons"])
 	tabs.get_node("Apparel/Apparel").connect("pressed", self,  "tab_pressed", ["Apparel"])
 	tabs.get_node("Consum/Consum").connect("pressed", self,  "tab_pressed", ["Consum"])
@@ -170,13 +171,13 @@ func enable_mouse(new_node):
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
 		btn.get_node("Qty").show()
 		if(!btn.get_normal_texture()):
-			btn.connect("pressed", self, "_on_pressed", [new_node])
-			new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn_0 = btn.connect("pressed", self, "_on_pressed", [new_node])
+			var _conn_1 = new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			var _conn_2 = new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 			# For the TextureButton
-			btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn_3 = btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
+			var _conn_4 = btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
 
 # Disable mouse functions of the item index
 func disable_mouse(new_node):
@@ -186,38 +187,43 @@ func disable_mouse(new_node):
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
 
-		btn.disconnect("pressed", self, "_on_pressed")
-		new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
-		new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
+		var _disconn_1 = btn.disconnect("pressed", self, "_on_pressed")
+		var _disconn_2 = new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
+		var _disconn_3 = new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 		# For the TextureButton
-		btn.disconnect("mouse_entered", self, "_on_mouse_entered")
-		btn.disconnect("mouse_exited", self, "_on_mouse_exited")
+		var _disconn_4 = btn.disconnect("mouse_entered", self, "_on_mouse_entered")
+		var _disconn_5 = btn.disconnect("mouse_exited", self, "_on_mouse_exited")
 
 
 func _on_mouse_entered(node):
-	if(item_state == "HOVER"):
+	if(mouse_node != node):
 		print(node.name)
 		node.get_node("Background/ItemBg").texture = index_bg
 
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
-	if(item_state == "HOVER"):
-		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-			if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
-				node.get_node("Background/ItemBg").texture = index_equipped_bg
-				return
-		node.get_node("Background/ItemBg").texture = null
+	if(mouse_node != node):
+		change_mouse_bg(node)
 
-
+# Changes based on whether if the item is equipped or not
+func change_mouse_bg(node):
+	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+		if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
+			node.get_node("Background/ItemBg").texture = index_equipped_bg
+			return
+	node.get_node("Background/ItemBg").texture = null
+	
 # When the icon of a item is pressed
 func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
-	mouse_node = node
+	temp_mouse_node = node
+	
 	if (mouse_count == 2):
+		mouse_node = temp_mouse_node
 		print("Double Clicked!")
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
@@ -234,16 +240,16 @@ func utilize_item(node):
 	# Dequipping item
 	print(node.name)
 	if(node.name == "Weapons" || node.name == "Apparel"):
-		_item_status(node, "DEQUIP")
+		item_status(node, "DEQUIP")
 
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 		var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
 		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
-			_item_status(node, "EQUIP")
+			item_status(node, "EQUIP")
 		# Removing equipped item
 		else:
-			_item_status(node, "DEQUIP")
+			item_status(node, "DEQUIP")
 	elif(active_tab.name == "Consum"):
 		use_item()
 
@@ -255,11 +261,17 @@ func _on_Timer_timeout():
 		mouse_count = 0
 
 func revert_item_state():
-
+	# Initially Hover
 	if(item_state == "HOVER"):
+		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
+	
+	# Initially Fixed
+	elif(mouse_node != temp_mouse_node):
+		change_mouse_bg(mouse_node)
+		
 	else:
 		item_state = "HOVER"
 		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()
@@ -324,7 +336,7 @@ func delete_item():
 		equipped_coins.get_node("Button").hide()
 
 # Handles equipping of the item
-func _item_status(selected_node, status):
+func item_status(selected_node, status):
 	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
 	match status:
 		"EQUIP":

@@ -5,8 +5,8 @@ var old_level
 onready var exp_bar = $ExpRect/ExpBar
 
 func _ready():
-	DataResource.connect("update_exp", self, "update_expbar")
-	SceneControl.connect("init_statbar", self, "init_bar")
+	var _conn1 = DataResource.connect("update_exp", self, "update_expbar")
+	var _conn2 = SceneControl.connect("init_statbar", self, "init_bar")
 
 
 
