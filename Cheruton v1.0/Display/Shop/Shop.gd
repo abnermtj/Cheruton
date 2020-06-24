@@ -244,7 +244,7 @@ func revert_item_state():
 func sell_item():
 	
 	var element_index = str(int(mouse_node.name)%100)
-	DataFunctions.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
+	DataResource.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 	
@@ -296,11 +296,11 @@ func buy_item():
 	item_data.append(current_tab_name)
 	item_data.append(DataResource.dict_item_shop["Item" + str(index)])
 	item_data.append(1)
-	Loot.loot_dict[1] = item_data
-	Loot.append_loot(1)
+	SceneControl.loot_dict[1] = item_data
+	SceneControl.append_loot(1)
 	
 	# Update coins val and item qty
-	DataFunctions.change_coins(-coins_val)
+	DataResource.change_coins(-coins_val)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	
 	var dict_size = DataResource.dict_inventory[current_tab_name].size()

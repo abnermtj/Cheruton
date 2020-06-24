@@ -135,12 +135,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DataResource="*res://AutoLoad/DataResource.gd"
-DataFunctions="*res://AutoLoad/DataFunctions.gd"
-LoadGlobal="*res://AutoLoad/LoadGlobal.gd"
-LoadScrnGlobal="*res://AutoLoad/LoadScrnGlobal.gd"
-Loot="*res://AutoLoad/Loot.gd"
-KeyPress="*res://AutoLoad/KeyPress.gd"
-LevelguiMaster="*res://AutoLoad/levelguiMaster.tscn"
+SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 
 [display]
 

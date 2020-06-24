@@ -271,10 +271,10 @@ func use_item():
 	var element_index = str(int(mouse_node.name)%100)
 	var item_used = false
 	if (DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "EXP"):
-		DataFunctions.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		DataResource.add_exp(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.temp_dict_player.health_curr != DataResource.temp_dict_player.health_max):
-		DataFunctions.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
+		DataResource.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
 		item_used = true
 
 	if(item_used):

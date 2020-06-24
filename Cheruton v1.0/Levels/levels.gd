@@ -10,7 +10,7 @@ func _ready() -> void:
 	DataResource.current_scene = self
 	DataResource.load_data()
 
-	LevelguiMaster.enabled = true
+	SceneControl.get_node("masterGui").enabled = true
 
 	call_deferred( "_set_camera" )
 	call_deferred( "_set_player" )
