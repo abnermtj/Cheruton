@@ -11,7 +11,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 240.0
-height = 170.0
+height = 500.0
 
 [node name="spiderBossIK" type="KinematicBody2D"]
 collision_layer = 0
@@ -53,7 +53,7 @@ flipped = true
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( 300, -5 )
 enabled = true
-cast_to = Vector2( -44, 650 )
+cast_to = Vector2( -44, 600 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( -46, -113 )
@@ -61,7 +61,7 @@ enabled = true
 cast_to = Vector2( 400, 250 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg1"]
-position = Vector2( 205, -1 )
+position = Vector2( 190, -1 )
 enabled = true
 cast_to = Vector2( 0, 600 )
 
@@ -100,7 +100,7 @@ position = Vector2( 0, 20 )
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( -300, 5 )
 enabled = true
-cast_to = Vector2( 44, 650 )
+cast_to = Vector2( 44, 600 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( 46, -113 )
@@ -108,7 +108,7 @@ enabled = true
 cast_to = Vector2( -400, 250 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg1"]
-position = Vector2( -205, -1 )
+position = Vector2( -190, -1 )
 enabled = true
 cast_to = Vector2( 0, 600 )
 

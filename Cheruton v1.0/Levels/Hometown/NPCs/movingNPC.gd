@@ -18,6 +18,7 @@ func _ready():
 	$AnimationPlayer.play("walk")
 	$playerDetectionArea.connect("body_entered", self, "player_entered")
 	$playerDetectionArea.connect("body_exited", self, "player_exited")
+	add_to_group("NPCs")
 
 func _physics_process(delta):
 	timer -= delta

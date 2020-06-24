@@ -5,7 +5,6 @@ const SPEED_RETURN = 1450
 const MAX_AIR_TIME = .6
 const SPIN_SPEED = 2 # spins /s
 const Y_LEVEL_FACTOR = 3 # swords tends to the player.pos.y during return
-
 enum sword_states { SHOOT = 0, HIT = 1, RETURN = 2, HIDDEN = 3}
 
 onready var sword_state = sword_states.HIDDEN

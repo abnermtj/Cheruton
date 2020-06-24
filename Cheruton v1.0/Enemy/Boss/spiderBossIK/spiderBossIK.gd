@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const SPEED = 465  # faster than player
-const LEG_DIST_MARGIN = 720
+const LEG_DIST_MARGIN = 700
 const LEG_MOVE_COOLDOWN = .4 # default is
 const LEG_RAY_OFFSET_ADJUSTER = .5
 
@@ -33,7 +33,6 @@ var desired_velocity = Vector2()
 # FOR EACH LEG. MOVE EACH LEG INDIVIDUALLY, cannot move legs until timer runs out .1s
 # this way you can only send out the next leg once the current leg is .1 s lifter off already
 # each time you move a leg only move the one currently farthest from the goal
-
 func _ready():
 	leg_move_timer = LEG_MOVE_COOLDOWN
 	for leg in legs:
@@ -48,7 +47,7 @@ func init_leg(leg):
 func _physics_process(delta):
 	var next_position =  0.9*((get_parent().get_node("player")).global_position ) + Vector2(0, -200) # the offset account for the spider never touching the player due to hitbox
 
-#	next_position = get_global_mouse_position()
+	next_position = get_global_mouse_position()
 
 	if ground_check.is_colliding() and velocity.length() > SPEED/3:
 		next_position.y -= ground_check.get_collision_point().y - global_position.y + 10 # const makes it bob less jittery
@@ -57,7 +56,6 @@ func _physics_process(delta):
 
 	if desired_velocity.length() > SPEED:
 		desired_velocity = desired_velocity.normalized() * SPEED
-
 
 	velocity = lerp(velocity, desired_velocity, 2 * delta)
 

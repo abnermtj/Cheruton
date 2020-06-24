@@ -68,9 +68,7 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32.5, 12.5 )
 
-[node name="coolboy" type="Area2D" groups=[
-"NPCs",
-]]
+[node name="coolboy" type="Area2D"]
 scale = Vector2( 4, 4 )
 collision_layer = 0
 collision_mask = 2

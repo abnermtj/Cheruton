@@ -5,10 +5,9 @@ const JUMP_HEIGHT = 1000
 const JUMP_TRACK_SPEED = 30
 const GRAVITY = 300
 const INITIAL_VEL_DOWN = Vector2(0,50)
+enum jump_states {JUMP = 0, FALL = 1, LAND = 2}
 
 var fall_timer
-
-enum jump_states {JUMP =0, FALL =1, LAND = 2}
 var cur_state
 
 func enter():

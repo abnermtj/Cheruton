@@ -59,7 +59,7 @@ func set_offset(vel):
 	ray_cast.position.x = base_offset + vel.x * 1.91
 	ray_cast.cast_to.x = base_cast.x + .3 * vel.x
 	diag_ray_cast.position.y =  base_offset_diag + clamp(vel.y  * 2.6, -250, INF) # clamp so scaling up doesn't make spider reach very far
-	diag_ray_cast.cast_to = base_cast_diag + sign(base_cast_diag.x) *  Vector2(clamp(abs(vel.x)*.5  + int(not is_colliding_ground()) * 400, 0, INF), 0)  # if no where to place foot , boost diagonal vector
+	diag_ray_cast.cast_to = base_cast_diag + sign(base_cast_diag.x) *  Vector2(clamp(abs(vel.x)*.75 + int(not is_colliding_ground()) * 550, 0, INF), 0)  # if no where to place foot , boost diagonal vector
 	force_raycast_update()
 
 #Relaying funtionsin

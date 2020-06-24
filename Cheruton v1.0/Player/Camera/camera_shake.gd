@@ -4,6 +4,7 @@ class_name ShakeCamera
 const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_IN_OUT
 const SMOOTH_SPEED_FACTOR = .00001
+enum camera_states { DEFAULT = 0, HOOK = 1}
 
 var LOOK_AHEAD_FACTOR  # percentage of screen to shift for looking ahead when changing directions
 var SHIFT_DURATION # seconds
@@ -30,7 +31,6 @@ var slowmo_offset = Vector2()
 var facing = 0
 var smoothing_speed_goal = 0
 var camera_state = 0
-enum camera_states { DEFAULT = 0, HOOK = 1}
 
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween
