@@ -1,17 +1,36 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_head.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLegController.gd" type="Script" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/spideBossStateMachine.gd" type="Script" id=5]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_feelers.png" type="Texture" id=6]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_midbody.png" type="Texture" id=7]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_butt.png" type="Texture" id=8]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/idle.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/run.gd" type="Script" id=10]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/jumpAttack.gd" type="Script" id=11]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/debugLabel.gd" type="Script" id=12]
+[ext_resource path="res://Display/Font/Wilson hawk italic.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 100.0
+height = 100.0
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 240.0
 height = 500.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 125, 200 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 13 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1000, 25 )
 
 [node name="spiderBossIK" type="KinematicBody2D"]
 collision_layer = 0
@@ -27,6 +46,158 @@ position = Vector2( 0, -140 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 
+[node name="smallerBodyCollision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="bodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 50 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="ALegs" type="Node2D" parent="."]
+
+[node name="leg1" type="Position2D" parent="ALegs"]
+position = Vector2( 206, -8.50046 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="ALegs/leg1" instance=ExtResource( 3 )]
+position = Vector2( 0, 20 )
+flipped = true
+
+[node name="RayCast2D" type="RayCast2D" parent="ALegs/leg1"]
+position = Vector2( 224.169, -5 )
+enabled = true
+cast_to = Vector2( -44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg1"]
+position = Vector2( 100.907, -77.1101 )
+enabled = true
+cast_to = Vector2( 500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg1"]
+position = Vector2( 305.641, 160.441 )
+enabled = true
+cast_to = Vector2( -950, 600 )
+
+[node name="leg2" type="Position2D" parent="ALegs"]
+position = Vector2( -192.128, -109.081 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="ALegs/leg2" instance=ExtResource( 3 )]
+position = Vector2( 0, 55.8384 )
+
+[node name="RayCast2D" type="RayCast2D" parent="ALegs/leg2"]
+position = Vector2( -389.844, 121.991 )
+enabled = true
+cast_to = Vector2( 44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg2"]
+position = Vector2( -109.138, -21.128 )
+enabled = true
+cast_to = Vector2( -500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg2"]
+position = Vector2( -336.115, 332.144 )
+enabled = true
+cast_to = Vector2( 950, 600 )
+
+[node name="leg3" type="Position2D" parent="ALegs"]
+position = Vector2( 160.566, -130.267 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="ALegs/leg3" instance=ExtResource( 3 )]
+position = Vector2( 0, 20 )
+flipped = true
+
+[node name="RayCast2D" type="RayCast2D" parent="ALegs/leg3"]
+position = Vector2( 346.011, 117.028 )
+enabled = true
+cast_to = Vector2( -44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg3"]
+position = Vector2( 159.198, -52.4726 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg3"]
+position = Vector2( 394.232, 380.58 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( -950, 600 )
+
+[node name="BLegs" type="Node2D" parent="."]
+
+[node name="leg1" type="Position2D" parent="BLegs"]
+position = Vector2( -209.258, 2.90265 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="BLegs/leg1" instance=ExtResource( 3 )]
+position = Vector2( 0, 20 )
+
+[node name="RayCast2D" type="RayCast2D" parent="BLegs/leg1"]
+position = Vector2( -239.645, 8.09512 )
+enabled = true
+cast_to = Vector2( 44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg1"]
+position = Vector2( -80.8382, -94.6984 )
+enabled = true
+cast_to = Vector2( -500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg1"]
+position = Vector2( -293.494, 156.895 )
+enabled = true
+cast_to = Vector2( 950, 600 )
+
+[node name="leg2" type="Position2D" parent="BLegs"]
+position = Vector2( 188.422, -88.4825 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="BLegs/leg2" instance=ExtResource( 3 )]
+position = Vector2( 0, 20 )
+flipped = true
+
+[node name="RayCast2D" type="RayCast2D" parent="BLegs/leg2"]
+position = Vector2( 272.702, 76.7147 )
+enabled = true
+cast_to = Vector2( -44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg2"]
+position = Vector2( 125.792, -42.7495 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg2"]
+position = Vector2( 353.06, 301.026 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( -950, 600 )
+
+[node name="leg3" type="Position2D" parent="BLegs"]
+position = Vector2( -161.177, -146.222 )
+script = ExtResource( 4 )
+
+[node name="leg" parent="BLegs/leg3" instance=ExtResource( 3 )]
+position = Vector2( 0, 55.8384 )
+
+[node name="RayCast2D" type="RayCast2D" parent="BLegs/leg3"]
+position = Vector2( -373.737, 160.438 )
+enabled = true
+cast_to = Vector2( 44, 600 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg3"]
+position = Vector2( -147.872, -39.4197 )
+enabled = true
+cast_to = Vector2( -500, 300 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg3"]
+position = Vector2( -376.522, 406.611 )
+enabled = true
+cast_to = Vector2( 950, 600 )
+
 [node name="head" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
@@ -35,115 +206,56 @@ texture = ExtResource( 2 )
 position = Vector2( 0, 40 )
 texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 50 )
-rotation = 1.5708
-shape = SubResource( 1 )
+[node name="states" type="Node" parent="."]
+script = ExtResource( 5 )
+START_STATE = NodePath("idle")
 
-[node name="ALegs" type="Node2D" parent="."]
+[node name="idle" type="Node" parent="states"]
+script = ExtResource( 9 )
 
-[node name="leg1" type="Position2D" parent="ALegs"]
-position = Vector2( 206, -59 )
-script = ExtResource( 4 )
+[node name="run" type="Node" parent="states"]
+script = ExtResource( 10 )
 
-[node name="leg" parent="ALegs/leg1" instance=ExtResource( 3 )]
-position = Vector2( 0, 20 )
-flipped = true
-
-[node name="RayCast2D" type="RayCast2D" parent="ALegs/leg1"]
-position = Vector2( 300, -5 )
-enabled = true
-cast_to = Vector2( -44, 600 )
-
-[node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg1"]
-position = Vector2( -46, -113 )
-enabled = true
-cast_to = Vector2( 400, 250 )
-
-[node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg1"]
-position = Vector2( 190, -1 )
-enabled = true
-cast_to = Vector2( 0, 600 )
-
-[node name="leg2" type="Position2D" parent="ALegs"]
-visible = false
-position = Vector2( -143.004, -135.378 )
-script = ExtResource( 4 )
-
-[node name="leg" parent="ALegs/leg2" instance=ExtResource( 3 )]
-position = Vector2( 0, 20 )
-
-[node name="RayCast2D" type="RayCast2D" parent="ALegs/leg2"]
-position = Vector2( -70, 0 )
-enabled = true
-cast_to = Vector2( 25, 400 )
-
-[node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg2"]
-position = Vector2( 32.77, 0 )
-enabled = true
-cast_to = Vector2( -200, 125 )
-
-[node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg2"]
-position = Vector2( -130, 0 )
-enabled = true
-cast_to = Vector2( 0, 300 )
-
-[node name="BLegs" type="Node2D" parent="."]
-
-[node name="leg1" type="Position2D" parent="BLegs"]
-position = Vector2( -206, -59 )
-script = ExtResource( 4 )
-
-[node name="leg" parent="BLegs/leg1" instance=ExtResource( 3 )]
-position = Vector2( 0, 20 )
-
-[node name="RayCast2D" type="RayCast2D" parent="BLegs/leg1"]
-position = Vector2( -300, 5 )
-enabled = true
-cast_to = Vector2( 44, 600 )
-
-[node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg1"]
-position = Vector2( 46, -113 )
-enabled = true
-cast_to = Vector2( -400, 250 )
-
-[node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg1"]
-position = Vector2( -190, -1 )
-enabled = true
-cast_to = Vector2( 0, 600 )
-
-[node name="leg2" type="Position2D" parent="BLegs"]
-visible = false
-position = Vector2( 152.584, -137.353 )
-script = ExtResource( 4 )
-
-[node name="leg" parent="BLegs/leg2" instance=ExtResource( 3 )]
-position = Vector2( 0, 20 )
-flipped = true
-
-[node name="RayCast2D" type="RayCast2D" parent="BLegs/leg2"]
-position = Vector2( 70, 0 )
-enabled = true
-cast_to = Vector2( -25, 400 )
-
-[node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg2"]
-position = Vector2( -47.559, 0 )
-enabled = true
-exclude_parent = false
-cast_to = Vector2( 200, 125 )
-
-[node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg2"]
-position = Vector2( 130, 0 )
-enabled = true
-exclude_parent = false
-cast_to = Vector2( 0, 300 )
+[node name="jumpAttack" type="Node" parent="states"]
+script = ExtResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="Sprite2" type="Sprite" parent="."]
-texture = ExtResource( 5 )
-
 [node name="groundCheck" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 0, 400 )
+cast_to = Vector2( 0, 380 )
+
+[node name="nextPosColCheck" type="RayCast2D" parent="."]
+enabled = true
+
+[node name="smallPlayerLookArea" type="Area2D" parent="."]
+position = Vector2( -1, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="smallPlayerLookArea"]
+position = Vector2( 0, 230.82 )
+shape = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "asd"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jumpHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
+position = Vector2( 0, 75 )
+shape = SubResource( 5 )
+disabled = true
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

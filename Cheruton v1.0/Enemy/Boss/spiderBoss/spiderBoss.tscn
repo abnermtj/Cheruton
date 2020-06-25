@@ -97,4 +97,5 @@ collision_mask = 4
 position = Vector2( 0, 400 )
 shape = SubResource( 5 )
 disabled = true
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="timeout" from="aggroTimer" to="." method="_on_aggroTimer_timeout"]

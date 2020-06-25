@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Camera/camera_shake.gd"
 }, {
-"base": "Position2D",
-"class": "SpiderLegController",
-"language": "GDScript",
-"path": "res://Enemy/Boss/spiderBossIK/spiderLegController.gd"
-}, {
 "base": "Node",
 "class": "State_Enemy",
 "language": "GDScript",
@@ -92,7 +87,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
@@ -113,7 +108,6 @@ _global_script_class_icons={
 "Level": "",
 "MovingNPC": "",
 "ShakeCamera": "",
-"SpiderLegController": "",
 "State_Enemy": "",
 "StaticNPC": "",
 "Trail2D": "",

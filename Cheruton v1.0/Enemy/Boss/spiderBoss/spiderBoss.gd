@@ -42,4 +42,4 @@ func move():
 
 
 func _on_states_state_changed(states_stack):
-	cur_state = states_stack[-1]
+	cur_state = states_stack[0]

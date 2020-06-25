@@ -12,8 +12,6 @@ onready var base_cast = $RayCast2D.cast_to
 onready var base_offset_diag = $RayCast2D2.position.y
 onready var base_cast_diag = $RayCast2D2.cast_to
 
-#var diag_ray_enabled = true
-
 func force_raycast_update():
 	ray_cast.force_raycast_update()
 	diag_ray_cast.force_raycast_update()
@@ -37,31 +35,35 @@ func get_leg_extension_deg():
 # Collision checks
 func is_colliding_ground():
 	return true if ray_cast.is_colliding() else false
-# this function checks if the ray cast is actually colliding, so calling functions do not need to check
+# this function returns null if ray cast is not colliding
 func get_collision_point():
 	var col_point
 
-	if not col_point and  diag_ray_cast.is_colliding():
+	# I used not col_point condition here as it allows for shifting the order of checks
+	if not col_point and owner.diag_ray_cast_enable and diag_ray_cast.is_colliding():
 		col_point = diag_ray_cast.get_collision_point()
 		if col_point:
 			var normal = diag_ray_cast.get_collision_normal()
 			var angle = rad2deg(acos(normal.dot(Vector2.UP)))
 			if abs(angle) < 60: #  floor or wall
 					col_point = null
-
-	if not col_point and ray_cast.is_colliding(): col_point = ray_cast.get_collision_point()
-
-	if not col_point and floor_ray_cast.is_colliding(): col_point = floor_ray_cast.get_collision_point()
+	if not col_point and owner.norm_ray_cast_enable and ray_cast.is_colliding():
+		col_point = ray_cast.get_collision_point()
+		if col_point:
+			var normal = diag_ray_cast.get_collision_normal()
+			var angle = rad2deg(acos(normal.dot(Vector2.UP)))
+			if abs(angle) != 0: #  floor
+					col_point = null
+	if not col_point and owner.floor_ray_cast_enable and floor_ray_cast.is_colliding(): col_point = floor_ray_cast.get_collision_point()
 	return col_point
 
-# used to increase offset with the speed of the spider
 func set_offset(vel):
-	ray_cast.position.x = base_offset + vel.x * 1.91
-	ray_cast.cast_to.x = base_cast.x + .3 * vel.x
+	ray_cast.position.x = base_offset + vel.x * 1.5
+	ray_cast.cast_to.x = base_cast.x + .2 * vel.x
 	diag_ray_cast.position.y =  base_offset_diag + clamp(vel.y  * 2.6, -250, INF) # clamp so scaling up doesn't make spider reach very far
-	diag_ray_cast.cast_to = base_cast_diag + sign(base_cast_diag.x) *  Vector2(clamp(abs(vel.x)*.75 + int(not is_colliding_ground()) * 550, 0, INF), 0)  # if no where to place foot , boost diagonal vector
+	diag_ray_cast.cast_to = base_cast_diag + sign(vel.x)* (1 if sign(vel.x) == sign(base_cast_diag.x) else 0 ) *  Vector2(clamp(abs(vel.x)*.75 + int(not is_colliding_ground()) * 400, 0, INF), 0)  # if no where to place foot , boost diagonal vector
 	force_raycast_update()
 
-#Relaying funtionsin
+#Relaying funtion
 func step(pos):
 	leg.step(pos)
