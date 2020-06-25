@@ -313,5 +313,6 @@ func shake_camera(dur, freq, amp, dir):
 	emit_signal("shake", dur, freq, amp, dir)
 
 
-
+func handle_enemy_attack_collision():
+	print("Player hit!")
 

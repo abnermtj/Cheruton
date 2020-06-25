@@ -18,12 +18,3 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 1024
-collision_mask = 2
-
-[node name="HitBox" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( -0.460125, 0.511431 )
-shape = SubResource( 1 )
-[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

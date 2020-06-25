@@ -14,7 +14,7 @@ script = ExtResource( 5 )
 [node name="Chain" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -842.104, 2153.31 )
+position = Vector2( -1063.87, 5147.19 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )
