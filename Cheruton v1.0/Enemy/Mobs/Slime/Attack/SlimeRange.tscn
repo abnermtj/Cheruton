@@ -1,31 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Enemy/Mobs/Slime/Attack/SlimeRange.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Mobs/Slime/Attack/SlimeRange.png" type="Texture" id=2]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends KinematicBody2D
-
-const SPEED = 600
-
-onready var player = get_parent().get_parent().get_node(\"player\")
-
-var velocity = Vector2()
-
-
-func _ready():
-	velocity = global_position.direction_to(player.global_position)
-	#velocity *= SPEED
-	print(velocity)
-
-func _physics_process(delta):
-	var colliders = move_and_collide(velocity)
-	if(colliders && colliders.collider):
-		var hit_id = colliders.collider
-		self.queue_free()
-		if(hit_id.has_method(\"handle_enemy_attack_collision\")):
-			hit_id.handle_enemy_attack_collision()
-
-"
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 2.0
@@ -34,7 +10,7 @@ radius = 2.0
 position = Vector2( 0, -3 )
 collision_layer = 1024
 collision_mask = 3
-script = SubResource( 1 )
+script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.460125, 0.511431 )

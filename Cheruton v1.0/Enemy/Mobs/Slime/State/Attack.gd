@@ -46,7 +46,7 @@ func run(delta):
 		
 #		
 
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
 #		speed = 120
 # case for player death!
