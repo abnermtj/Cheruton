@@ -42,10 +42,14 @@ func run(delta):
 		can_fire = false
 		var speed_attack = 200
 		var instanced = attack_instance.instance()
-		obj.add_child(instanced)
+		print("obj", obj.global_position)
+		instanced.global_position = obj.global_position
+		var parent = obj.get_parent()
+		parent.add_child(instanced)
+		var attack_node = parent.get_child(parent.get_child_count() - 1)
+		attack_node.global_position = obj.global_position
+		attack_node.show()
 		
-#		
-
 		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
 #		speed = 120
