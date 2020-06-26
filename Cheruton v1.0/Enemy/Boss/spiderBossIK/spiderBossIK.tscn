@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_head.png" type="Texture" id=2]
@@ -10,22 +10,24 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_butt.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/idle.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/run.gd" type="Script" id=10]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/jumpAttack.gd" type="Script" id=11]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/jumpAttack.gd" type="Script" id=11]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/debugLabel.gd" type="Script" id=12]
 [ext_resource path="res://Display/Font/Wilson hawk italic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/stabAttack.gd" type="Script" id=14]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/stepBack.gd" type="Script" id=15]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 100.0
 height = 100.0
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 240.0
 height = 500.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 125, 200 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 64
 font_data = ExtResource( 13 )
 
@@ -44,21 +46,32 @@ texture = ExtResource( 8 )
 [node name="midBody" type="Sprite" parent="."]
 position = Vector2( 0, -140 )
 scale = Vector2( 4, 4 )
+z_index = 2
 texture = ExtResource( 7 )
+
+[node name="head" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+z_index = 4
+texture = ExtResource( 2 )
+
+[node name="feelers" type="Sprite" parent="head"]
+position = Vector2( 0, 40 )
+texture = ExtResource( 6 )
 
 [node name="smallerBodyCollision" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 50 )
+position = Vector2( 0, 60 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="ALegs" type="Node2D" parent="."]
 
 [node name="leg1" type="Position2D" parent="ALegs"]
 position = Vector2( 206, -8.50046 )
+z_index = 3
 script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg1" instance=ExtResource( 3 )]
@@ -82,6 +95,7 @@ cast_to = Vector2( -950, 600 )
 
 [node name="leg2" type="Position2D" parent="ALegs"]
 position = Vector2( -192.128, -109.081 )
+z_index = 2
 script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg2" instance=ExtResource( 3 )]
@@ -104,6 +118,7 @@ cast_to = Vector2( 950, 600 )
 
 [node name="leg3" type="Position2D" parent="ALegs"]
 position = Vector2( 160.566, -130.267 )
+z_index = 1
 script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg3" instance=ExtResource( 3 )]
@@ -131,6 +146,7 @@ cast_to = Vector2( -950, 600 )
 
 [node name="leg1" type="Position2D" parent="BLegs"]
 position = Vector2( -209.258, 2.90265 )
+z_index = 3
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg1" instance=ExtResource( 3 )]
@@ -153,6 +169,7 @@ cast_to = Vector2( 950, 600 )
 
 [node name="leg2" type="Position2D" parent="BLegs"]
 position = Vector2( 188.422, -88.4825 )
+z_index = 2
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg2" instance=ExtResource( 3 )]
@@ -178,6 +195,7 @@ cast_to = Vector2( -950, 600 )
 
 [node name="leg3" type="Position2D" parent="BLegs"]
 position = Vector2( -161.177, -146.222 )
+z_index = 1
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg3" instance=ExtResource( 3 )]
@@ -198,14 +216,6 @@ position = Vector2( -376.522, 406.611 )
 enabled = true
 cast_to = Vector2( 950, 600 )
 
-[node name="head" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
-
-[node name="feelers" type="Sprite" parent="head"]
-position = Vector2( 0, 40 )
-texture = ExtResource( 6 )
-
 [node name="states" type="Node" parent="."]
 script = ExtResource( 5 )
 START_STATE = NodePath("idle")
@@ -218,6 +228,12 @@ script = ExtResource( 10 )
 
 [node name="jumpAttack" type="Node" parent="states"]
 script = ExtResource( 11 )
+
+[node name="stabAttack" type="Node" parent="states"]
+script = ExtResource( 14 )
+
+[node name="stepBack" type="Node" parent="states"]
+script = ExtResource( 15 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -236,14 +252,14 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smallPlayerLookArea"]
 position = Vector2( 0, 230.82 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "asd"
 script = ExtResource( 12 )
 __meta__ = {

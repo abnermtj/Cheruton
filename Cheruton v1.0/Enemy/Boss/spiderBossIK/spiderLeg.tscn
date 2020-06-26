@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legmid.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legfront.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legback.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 100, 40 )
 
 [node name="leg" type="Position2D"]
 position = Vector2( 907.432, 390.611 )
@@ -36,3 +39,12 @@ texture = ExtResource( 3 )
 
 [node name="tip" type="Position2D" parent="joint1/joint2"]
 position = Vector2( 365, 0 )
+
+[node name="Area2D" type="Area2D" parent="joint1/joint2/tip"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="joint1/joint2/tip/Area2D"]
+position = Vector2( -80, 0 )
+shape = SubResource( 1 )
+disabled = true

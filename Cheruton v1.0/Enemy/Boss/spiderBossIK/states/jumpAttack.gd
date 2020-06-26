@@ -2,15 +2,12 @@ extends baseState
 
 const JUMP_VEL = -4000
 const GRAVITY = 2500
-enum stages {ANTICIPATION  = 0, JUMP = 1, LAND = 2, RECOVER = 4}
+enum stages {ANTICIPATION  = 0, JUMP = 1, LAND = 2, RECOVER = 3}
 
-var timers_dict = {"ANTICIPATION" : 1.5,
-				 "JUMP" : 2,
-				 "LAND" : .5,
-				 "RECOVER" : .5}
+var timers_dict = {"ANTICIPATION" : 1.5}
 var stage
-
 var timer
+
 func enter():
 	stage = stages.ANTICIPATION
 
@@ -28,7 +25,6 @@ func update(delta):
 		stages.ANTICIPATION:
 			timer -= delta
 			if timer < 0:
-				timer = timers_dict["JUMP"]
 				stage = stages.JUMP
 				owner.velocity = Vector2(0, JUMP_VEL)
 				owner.move()
@@ -57,7 +53,6 @@ func update(delta):
 				stage = stages.RECOVER
 		stages.RECOVER:
 			emit_signal("finished", "run")
-			pass
 
 func exit():
 	owner.set_body_collision(0)

@@ -24,7 +24,8 @@ var step_time = 0.0
 var is_step_over = false
 var total_rotation = 0.0
 var step_rate = DEFAULT_STEP_RATE
-
+var hold = false # used to hold to maintain relative distance to parent
+var relative_position : Vector2
 
 func _ready():
 	length_upper = joint1.position.x
@@ -36,6 +37,8 @@ func _ready():
 		joint2.get_node("Sprite").flip_h = true
 
 func step(target_pos):
+	hold = false
+
 	randomize() # makes it more natural my varying step rate
 	step_rate = DEFAULT_STEP_RATE + clamp(rand_range(0,1000)/1000 * .08 ,-.08,.08)
 	if target_pos == cur_target_pos: return
@@ -51,13 +54,25 @@ func step(target_pos):
 	var highest_y = min (target_pos.y, tip_pos.y)
 
 	var mid_x = (target_pos.x + tip_pos.x)/ 2.0
-	middle_pos	 = Vector2(mid_x, highest_y - STEP_HEIGHT)
+	middle_pos = Vector2(mid_x, highest_y - STEP_HEIGHT)
 	step_time = 0.0
+
+func timed_step(target_pos, time):
+	step(target_pos)
+	step_rate = time
+func step_and_hold(pos, time):
+	step(pos)
+
+	step_rate = time
+	hold = true # NOTE needs to after step()
+	relative_position = pos - get_parent().global_position
 
 func _process(delta):
 	step_time += delta
 	var target_pos = Vector2()
 	var step_percent = step_time / step_rate # percentage of the step completed
+
+	if hold: cur_target_pos = get_parent().global_position + relative_position
 
 	if step_percent < .5:
 		target_pos = start_pos.linear_interpolate(middle_pos, step_percent * 2)
@@ -69,6 +84,7 @@ func _process(delta):
 		tip_pos = target_pos
 
 #	target_pos = get_viewport().get_mouse_position()
+#	print(target_pos-global_position)
 	update_ik(target_pos)
 
 	total_rotation = joint1.rotation_degrees + joint2.rotation_degrees
@@ -116,6 +132,8 @@ func law_of_cos(a, b, c):
 func get_dist_tip_to_point(point: Vector2):
 	return (tip.global_position - point).length()
 
+func set_tip_hurt_box_disabled(val):
+	tip.get_node("Area2D/CollisionShape2D").disabled = val
 # FABRIK IMPLMENTATION TEST
 
 # used for FABRIK

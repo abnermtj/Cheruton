@@ -5,9 +5,9 @@ func _ready():
 		"idle": $idle,
 		"run": $run,
 		"jumpAttack" : $jumpAttack,
-		"legSweep" : $legSweep,
-		"webShoot" : $webShoot,
 		"stabAttack" : $stabAttack,
+		"stepBack" : $stepBack,
+		"webShoot" : $webShoot,
 		"dashAttack" : $dashAttack
 	}
 
