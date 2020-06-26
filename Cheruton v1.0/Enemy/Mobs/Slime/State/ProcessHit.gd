@@ -12,7 +12,10 @@ func run(delta):
 	timer -= delta
 	if (timer <= 0):
 		# Player was sighted recently - Attack
-		fsm.state_next = fsm.states.Search#stub
-
+		if(fsm.state_prev.prev_state == fsm.states.Search):
+			fsm.state_next = fsm.states.Search#stub
+		else:
+			fsm.state_next = fsm.states.Attack#stub
+		
 func terminate():
 	pass

@@ -64,6 +64,7 @@ position = Vector2( 393.652, 5207.68 )
 position = Vector2( 1207.92, 4633.77 )
 
 [node name="CaveBat" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -737.302, 4935.97 )
 
 [node name="IceSlime7" parent="." instance=ExtResource( 1 )]

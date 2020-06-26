@@ -2,6 +2,7 @@ extends State_Enemy
 
 #HIT: Enemy has been just hit by an external attack by player
 
+var prev_state
 var timer : float
 
 func initialize():
@@ -23,4 +24,5 @@ func run(delta):
 func terminate():
 	obj.get_node("HitBox/HitCollision").disabled = false
 	obj.is_hit = false
+	prev_state = fsm.state_prev
 
