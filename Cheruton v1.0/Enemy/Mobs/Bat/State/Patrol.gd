@@ -1,6 +1,7 @@
 extends State_Enemy
 
 # PATROL: Enemy moves around the terrain it is limited to
+
 var random = RandomNumberGenerator.new()
 var speed = 105
 var rax = 1

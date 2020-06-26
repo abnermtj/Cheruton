@@ -15,7 +15,6 @@ func initialize():
 func run(delta):
 	aerial_pos_edit()
 	timer -= delta
-	var collision_pt
 	# Enemy has encountered wall or empty gap - wait for player to come back
 	if (obj.change_patrol_dirn()):
 		speed = 0
@@ -33,4 +32,4 @@ func randomize_timer():
 	rng.randomize()
 	var my_random_number = rng.randf_range(2.4, 5.0)	
 	return my_random_number
-	
+

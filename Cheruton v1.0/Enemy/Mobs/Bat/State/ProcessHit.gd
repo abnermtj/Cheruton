@@ -5,11 +5,11 @@ extends State_Enemy
 var timer : float
 
 func initialize():
-	timer = 0.05
+	timer = 0.10
 
 func run(delta):
+	#print(20000002)
 	aerial_pos_edit()
-	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	timer -= delta
 	if (timer <= 0):
 		# Player was not sighted recently - Search
@@ -17,6 +17,7 @@ func run(delta):
 			fsm.state_next = fsm.states.Search#stub
 		else:
 			fsm.state_next = fsm.states.Attack#stub
-
+		
 func terminate():
-	pass
+	obj.get_node("HitBox/HitCollision").disabled = false
+	obj.is_hit = false

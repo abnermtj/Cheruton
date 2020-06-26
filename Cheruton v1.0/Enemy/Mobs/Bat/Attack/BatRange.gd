@@ -8,7 +8,7 @@ var velocity = Vector2()
 
 
 func _physics_process(delta):
-	print(velocity)
+	
 	var colliders = move_and_collide(velocity)
 	if(colliders):
 		var hit_id = colliders.collider
@@ -17,6 +17,6 @@ func _physics_process(delta):
 			hit_id.handle_enemy_attack_collision()
 
 
-func _on_BatRange_visibility_changed():
+func _on_SlimeRange_visibility_changed():
 	if(self.visible):
 		velocity = global_position.direction_to(player.global_position) * SPEED

@@ -7,7 +7,6 @@
 radius = 2.0
 
 [node name="BatRange" type="KinematicBody2D"]
-visible = false
 scale = Vector2( 12, 12 )
 collision_layer = 1024
 collision_mask = 3
@@ -19,4 +18,4 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-[connection signal="visibility_changed" from="." to="." method="_on_BatRange_visibility_changed"]
+[connection signal="visibility_changed" from="." to="." method="_on_SlimeRange_visibility_changed"]

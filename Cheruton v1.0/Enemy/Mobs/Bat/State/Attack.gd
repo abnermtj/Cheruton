@@ -1,12 +1,12 @@
 extends State_Enemy
 
 # ATTACK: Enemy is currently attacking the player, who is in close range
-onready var attack_instance = preload("res://Enemy/Mobs/Bat/Attack/BatRange.tscn")
+onready var attack_instance = preload("res://Enemy/Mobs/Slime/Attack/SlimeRange.tscn")
 
 var state : int
 var timer : float
 
-var can_fire := false
+var can_fire = false
 
 var fire_dir
 var player
@@ -31,28 +31,28 @@ func run(delta):
 	# Player has reached area enemy cannot reach
 	if (obj.change_patrol_dirn()):
 		speed = 0
+	elif(speed < 200): 
+		speed *= 3
 	# Another enemy in front of original enemy
 	if(ray_cast_front.is_colliding()):
 		speed /= 4
 	obj.velocity.x = obj.dir_curr * speed
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	if(can_fire):
-		create_attack_instance()
-
-# case for player death!
-func terminate():
-	can_fire = false
-#
-	
-func create_attack_instance():
 		can_fire = false
 		var instanced = attack_instance.instance()
 		
 		var parent = obj.get_parent()
 		parent.add_child(instanced)
 		var attack_node = parent.get_child(parent.get_child_count() - 1)
-		attack_node.global_position = obj.global_position + Vector2(0, -10)
+		attack_node.global_position = obj.global_position + Vector2(0, -50)
 		attack_node.show()
 		
 		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
+
+# case for player death!
+func terminate():
+	can_fire = false
+#
+	

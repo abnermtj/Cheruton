@@ -15,10 +15,8 @@ func run(delta):
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	#obj.get_node( "hitbox/hitbox_collision" ).disabled = false
 	timer -= delta
-#	if (timer <= 0):
-#		fsm.state_next = fsm.states.ProcessHit
+	if (timer <= 0):
+		fsm.state_next = fsm.states.ProcessHit
 		
 func terminate():
-	obj.get_node("HitBox/HitCollision").disabled = false
-	obj.is_hit = false
 	prev_state = fsm.state_prev

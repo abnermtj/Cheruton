@@ -58,6 +58,7 @@ func run(delta):
 #			fsm.state_nxt = fsm.states.run
 
 func terminate():
+
 	obj._exit_tree()
 	obj.free()
 #	obj.get_node( "anim" ).play()

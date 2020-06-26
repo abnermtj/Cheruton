@@ -5,10 +5,9 @@ extends State_Enemy
 var timer : float
 var speed = 160
 var player
-var ray_cast_back
 
 func initialize():
-	fix_locations()
+	player = obj.get_parent().get_node("player")
 	timer = randomize_timer()
 
 
@@ -36,6 +35,3 @@ func randomize_timer():
 	var my_random_number = rng.randf_range(2.4, 5.0)	
 	return my_random_number
 
-func fix_locations():
-	player = obj.get_parent().get_node("player")
-	ray_cast_back = obj.get_node("Rotate/RayPlayerBack")

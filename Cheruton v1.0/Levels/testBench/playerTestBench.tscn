@@ -9,13 +9,13 @@
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
 
 [node name="Node" type="Node2D"]
-position = Vector2( -133.414, 230.498 )
+position = Vector2( -127.414, 230.498 )
 script = ExtResource( 5 )
 
 [node name="Chain" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -1612.71, 5125.45 )
+position = Vector2( -1744.59, 5153.5 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )
@@ -63,11 +63,11 @@ position = Vector2( 393.652, 5207.68 )
 [node name="IceSlime6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1207.92, 4633.77 )
 
-[node name="CaveBat" parent="." instance=ExtResource( 6 )]
-position = Vector2( -737.302, 4935.97 )
-
 [node name="IceSlime7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2179.5, 4767.72 )
+
+[node name="CaveBat" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1072.59, 4969.5 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
