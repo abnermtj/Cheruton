@@ -1,3 +1,4 @@
+
 extends Enemy
 
 onready var fsm = FSM_Enemy.new(self, $States/Patrol, false)

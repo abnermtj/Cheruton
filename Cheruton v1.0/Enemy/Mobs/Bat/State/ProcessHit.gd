@@ -5,10 +5,11 @@ extends State_Enemy
 var timer : float
 
 func initialize():
-	timer = 0.10
+	timer = 0.05
 
 func run(delta):
 	aerial_pos_edit()
+	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	timer -= delta
 	if (timer <= 0):
 		# Player was not sighted recently - Search
