@@ -9,8 +9,7 @@ var timer : float
 var ray_ground
 
 func initialize():
-	obj.velocity.x = 0
-	obj.velocity.y = 10000
+	obj.velocity = Vector2(0, 10000)
 	obj.anim_next = "Patrol"
 	ray_ground = obj.get_node("Rotate/RayGround")
 

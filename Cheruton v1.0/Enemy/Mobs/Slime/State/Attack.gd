@@ -40,10 +40,8 @@ func run(delta):
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	if(can_fire):
 		can_fire = false
-		var speed_attack = 200
 		var instanced = attack_instance.instance()
-		print("obj", obj.global_position)
-		instanced.global_position = obj.global_position
+		
 		var parent = obj.get_parent()
 		parent.add_child(instanced)
 		var attack_node = parent.get_child(parent.get_child_count() - 1)
@@ -52,7 +50,7 @@ func run(delta):
 		
 		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
-#		speed = 120
+
 # case for player death!
 func terminate():
 	can_fire = false

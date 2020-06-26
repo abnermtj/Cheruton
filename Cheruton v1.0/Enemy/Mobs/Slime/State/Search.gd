@@ -16,10 +16,6 @@ func initialize():
 func run(delta):
 	should_fall()
 	timer -= delta
-	var collision_pt
-	# Player is detected behind the enemy - change its direction
-	if(ray_cast_back.get_collider() == player):
-		obj.dir_next = -obj.dir_curr
 	# Enemy has encountered wall or empty gap - wait for player to come back
 	if (obj.change_patrol_dirn()):
 		speed = 0

@@ -113,7 +113,6 @@ __meta__ = {
 position = Vector2( 2.1, -1 )
 enabled = true
 cast_to = Vector2( 0, 2 )
-collision_mask = 1025
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true
@@ -123,7 +122,6 @@ __meta__ = {
 position = Vector2( 1.1, -2 )
 enabled = true
 cast_to = Vector2( 2, 0 )
-collision_mask = 1025
 collide_with_areas = true
 
 [node name="RayPlayerBack" type="RayCast2D" parent="Rotate"]
@@ -131,7 +129,7 @@ visible = false
 position = Vector2( 6, -2 )
 enabled = true
 cast_to = Vector2( -90, 0 )
-collision_mask = 1026
+collision_mask = 2
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true

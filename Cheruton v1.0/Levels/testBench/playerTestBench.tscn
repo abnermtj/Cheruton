@@ -60,7 +60,7 @@ position = Vector2( 52.7489, 4890.16 )
 position = Vector2( 393.652, 5207.68 )
 
 [node name="IceSlime6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1207.92, 4625.22 )
+position = Vector2( 1207.92, 4633.77 )
 
 [node name="IceSlime7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2179.5, 4767.72 )
