@@ -13,6 +13,7 @@ func initialize():
 	obj.get_node("HitBox/HitCollision").disabled = true
 
 func run(delta):
+	#print(20000001)
 	#obj.get_node( "hitbox/hitbox_collision" ).disabled = false
 	timer -= delta
 	if (timer <= 0):

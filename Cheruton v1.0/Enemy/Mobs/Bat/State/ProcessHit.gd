@@ -5,14 +5,17 @@ extends State_Enemy
 var timer : float
 
 func initialize():
-	timer = 0.15
+	timer = 0.10
 
 func run(delta):
 	aerial_pos_edit()
 	timer -= delta
 	if (timer <= 0):
-		# Player was sighted recently - Attack
-		fsm.state_next = fsm.states.Search
+		# Player was not sighted recently - Search
+		if(fsm.state_prev.prev_state == fsm.states.Search):
+			fsm.state_next = fsm.states.Search#stub
+		else:
+			fsm.state_next = fsm.states.Attack#stub
 
 func terminate():
 	pass

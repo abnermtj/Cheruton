@@ -22,7 +22,7 @@ func initialize():
 
 
 func run(delta):
-	print(1000111000001110000)
+	#print(10000001)
 	should_fall()
 	player_position = player.global_position
 	# Position of player not in direction enemy is facing

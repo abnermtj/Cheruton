@@ -23,7 +23,6 @@ func run(delta):
 	else: 
 		speed = 200
 	obj.velocity.x = obj.dir_curr * speed
-	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)
 	obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
 	# Player cannot be found while search is still going on
 	if (timer <= 0 && fsm.state_curr == fsm.states.Search):

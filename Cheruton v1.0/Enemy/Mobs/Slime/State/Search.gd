@@ -14,6 +14,7 @@ func initialize():
 
 
 func run(delta):
+	#print(30000001)
 	should_fall()
 	timer -= delta
 	# Enemy has encountered wall or empty gap - wait for player to come back

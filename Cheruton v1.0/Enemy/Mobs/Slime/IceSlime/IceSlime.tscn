@@ -110,6 +110,7 @@ __meta__ = {
 }
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 2.1, -1 )
 enabled = true
 cast_to = Vector2( 0, 2 )
@@ -119,6 +120,7 @@ __meta__ = {
 }
 
 [node name="RayFront" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 1.1, -2 )
 enabled = true
 cast_to = Vector2( 2, 0 )
@@ -210,7 +212,6 @@ shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 2
 __meta__ = {
