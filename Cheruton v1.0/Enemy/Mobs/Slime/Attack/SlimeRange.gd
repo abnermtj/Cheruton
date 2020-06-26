@@ -4,7 +4,7 @@ const SPEED = 10
 
 onready var player = get_parent().get_node("player")
 
-var velocity = Vector2(0,0)
+var velocity = Vector2()
 
 
 func _physics_process(delta):

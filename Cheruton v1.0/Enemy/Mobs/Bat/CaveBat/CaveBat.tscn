@@ -80,6 +80,7 @@ extents = Vector2( 5.8, 3.6 )
 [node name="CaveBat" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
+scale = Vector2( 12, 12 )
 collision_layer = 8
 script = ExtResource( 7 )
 

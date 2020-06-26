@@ -1,21 +1,22 @@
 extends KinematicBody2D
 
-const SPEED = 600
+const SPEED = 10
 
-onready var player = get_parent().get_parent().get_node("player")
+onready var player = get_parent().get_node("player")
 
 var velocity = Vector2()
 
 
-func _ready():
-	velocity = global_position.direction_to(player.global_position)
-	velocity *= SPEED
-	print(velocity)
-
 func _physics_process(delta):
+	print(velocity)
 	var colliders = move_and_collide(velocity)
 	if(colliders):
 		var hit_id = colliders.collider
 		self.queue_free()
 		if(hit_id.has_method("handle_enemy_attack_collision")):
 			hit_id.handle_enemy_attack_collision()
+
+
+func _on_BatRange_visibility_changed():
+	if(self.visible):
+		velocity = global_position.direction_to(player.global_position) * SPEED
