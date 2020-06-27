@@ -9,6 +9,7 @@ onready var bg_music = $BgMusic
 
 var curr_screen
 var loot_dict = {} # Items pending transfer to inventory
+var enable_save := false
 
 signal init_statbar
 
@@ -162,6 +163,9 @@ func insert_data(item_id, insert_index):
 func _input(_ev):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
+	if Input.is_action_just_pressed("save_player"):
+		if(enable_save):
+			DataResource.save_player()
 #==================================
 # Load GameState
 #==================================
