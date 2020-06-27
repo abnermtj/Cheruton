@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_head.png" type="Texture" id=2]
@@ -15,24 +15,29 @@
 [ext_resource path="res://Display/Font/Wilson hawk italic.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stabAttack.gd" type="Script" id=14]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stepBack.gd" type="Script" id=15]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/webShoot.gd" type="Script" id=16]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 100.0
-height = 100.0
+height = 400.0
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 150.0
+height = 680.0
+
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 240.0
 height = 500.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 125, 200 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 64
 font_data = ExtResource( 13 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 1000, 25 )
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 500, 25 )
 
 [node name="spiderBossIK" type="KinematicBody2D"]
 collision_layer = 0
@@ -62,10 +67,15 @@ texture = ExtResource( 6 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="bodyCollision" type="CollisionShape2D" parent="."]
+[node name="smallBodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 60 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="bodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 60 )
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [node name="ALegs" type="Node2D" parent="."]
 
@@ -81,7 +91,7 @@ flipped = true
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( 224.169, -5 )
 enabled = true
-cast_to = Vector2( -44, 600 )
+cast_to = Vector2( -53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( 100.907, -77.1101 )
@@ -104,7 +114,7 @@ position = Vector2( 0, 55.8384 )
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg2"]
 position = Vector2( -389.844, 121.991 )
 enabled = true
-cast_to = Vector2( 44, 600 )
+cast_to = Vector2( 53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg2"]
 position = Vector2( -109.138, -21.128 )
@@ -128,7 +138,7 @@ flipped = true
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg3"]
 position = Vector2( 346.011, 117.028 )
 enabled = true
-cast_to = Vector2( -44, 600 )
+cast_to = Vector2( -53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg3"]
 position = Vector2( 159.198, -52.4726 )
@@ -155,7 +165,7 @@ position = Vector2( 0, 20 )
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( -239.645, 8.09512 )
 enabled = true
-cast_to = Vector2( 44, 600 )
+cast_to = Vector2( 53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( -80.8382, -94.6984 )
@@ -179,7 +189,7 @@ flipped = true
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg2"]
 position = Vector2( 272.702, 76.7147 )
 enabled = true
-cast_to = Vector2( -44, 600 )
+cast_to = Vector2( -53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg2"]
 position = Vector2( 125.792, -42.7495 )
@@ -204,7 +214,7 @@ position = Vector2( 0, 55.8384 )
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg3"]
 position = Vector2( -373.737, 160.438 )
 enabled = true
-cast_to = Vector2( 44, 600 )
+cast_to = Vector2( 53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg3"]
 position = Vector2( -147.872, -39.4197 )
@@ -235,6 +245,9 @@ script = ExtResource( 14 )
 [node name="stepBack" type="Node" parent="states"]
 script = ExtResource( 15 )
 
+[node name="webShoot" type="Node" parent="states"]
+script = ExtResource( 16 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
@@ -252,14 +265,14 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smallPlayerLookArea"]
 position = Vector2( 0, 230.82 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "asd"
 script = ExtResource( 12 )
 __meta__ = {
@@ -271,7 +284,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
-position = Vector2( 0, 75 )
-shape = SubResource( 5 )
+position = Vector2( 0, 185 )
+shape = SubResource( 6 )
 disabled = true
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

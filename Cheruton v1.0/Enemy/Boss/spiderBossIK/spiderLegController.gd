@@ -12,6 +12,8 @@ onready var base_cast = $RayCast2D.cast_to
 onready var base_offset_diag = $RayCast2D2.position.y
 onready var base_cast_diag = $RayCast2D2.cast_to
 
+var just_planted = false
+
 func force_raycast_update():
 	ray_cast.force_raycast_update()
 	diag_ray_cast.force_raycast_update()

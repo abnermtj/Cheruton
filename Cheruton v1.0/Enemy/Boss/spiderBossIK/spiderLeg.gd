@@ -36,11 +36,13 @@ func _ready():
 		joint1.get_node("Sprite").flip_h = true
 		joint2.get_node("Sprite").flip_h = true
 
+#	randomize() # makes it more natural my varying step rate
+
 func step(target_pos):
 	hold = false
 
-	randomize() # makes it more natural my varying step rate
 	step_rate = DEFAULT_STEP_RATE + clamp(rand_range(0,1000)/1000 * .08 ,-.08,.08)
+	print(step_rate)
 	if target_pos == cur_target_pos: return
 
 	is_step_over = false

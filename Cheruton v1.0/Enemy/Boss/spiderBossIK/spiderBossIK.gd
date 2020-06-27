@@ -23,10 +23,12 @@ var desired_butt_pos : Vector2
 onready var ground_check = $groundCheck
 onready var next_pos_col_check = $nextPosColCheck
 onready var body_collision = $bodyCollision
+onready var small_body_collision = $smallBodyCollision
 onready var smaller_body_collision = $smallerBodyCollision
 onready var jump_hurt_box_col_shape = $jumpHurtBox/CollisionShape2D
 
 # General
+onready var player = get_parent().get_node("player")
 onready var default_sprite_pos = []
 
 var velocity = Vector2()
@@ -64,7 +66,7 @@ func move():
 	return move_and_slide(velocity, Vector2.UP, false, 16) # don't snap it makes it bugs when moving away from snapped position
 # moves the parts of the body according to the velocity
 func move_body_sprites():
-	desired_head_pos = default_sprite_pos[0] + (velocity * 0.03	).clamped(100)
+	desired_head_pos = default_sprite_pos[0] + (velocity * 0.03).clamped(100)
 	desired_feeler_pos = default_sprite_pos[1] + (velocity * 0.01).clamped(0)
 	desired_mid_body_pos = default_sprite_pos[2] + velocity.clamped(0)
 	desired_butt_pos = default_sprite_pos[3] - (velocity * 0.032).clamped(48)
@@ -86,12 +88,15 @@ func _on_states_state_changed(states_stack):
 	cur_state = states_stack[0]
 func set_body_collision(val):
 	smaller_body_collision.disabled = true
+	small_body_collision.disabled = true
 	body_collision.disabled = true
 	match val:
 		0:
 			body_collision.disabled = false
 		1:
 			smaller_body_collision.disabled = false
+		2:
+			small_body_collision.disabled = false
 
 # returns true if moving A legs, B is moving B legs
 func check_most_displaced_leg(leg, desired_flip, cur_max):

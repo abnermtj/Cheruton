@@ -5,14 +5,15 @@ const RUN_SPEED = 100
 
 const LEG_DIST_MARGIN = 460
 
-var leg_move_timer
+var leg_move_timer : float
 var desired_velocity = Vector2()
 
 func enter():
 	leg_move_timer = owner.LEG_MOVE_COOLDOWN
 
 func update(delta):
-	var next_position =  0.9*((owner.get_parent().get_node("player")).global_position ) + Vector2(0, -200) # the offset account for the spider never touching the player due to hitbox
+	var player_pos = owner.player.global_position
+	var next_position =  player_pos + Vector2(0, -200) + (Vector2(0,-200 )if (player_pos.y < owner.global_position.y) else Vector2())# the first offset account for the spider never touching the player due to hitbox, second offset accounts for situations when the spider needs to go up but there is a wall blocking
 #	next_position = owner.get_global_mouse_position()
 
 	if owner.ground_check.is_colliding() and owner.velocity.length() > SPEED/3:
@@ -28,7 +29,7 @@ func update(delta):
 	owner.velocity = owner.move()
 	owner.move_body_sprites()
 	if owner.player_in_small_look_area:
-		emit_signal("finished","stepBack")
+		emit_signal("finished","webShoot")
 
 func update_idle(delta):
 	leg_move_timer -= delta
@@ -61,7 +62,7 @@ func move_leg(leg):
 	owner.next_pos_col_check.global_position = tip_pos + Vector2(0 , -50) # else it would touch the floor during walks
 	owner.next_pos_col_check.cast_to = desired_pos - tip_pos + Vector2(0, -50)
 	var way_to_next_step_has_collision = true if owner.next_pos_col_check.is_colliding() else false# quickly places foot before collision collision peirces through the leg, making it look unrealistic
-	if leg.get_tip_dist_to_point(desired_pos) > adjusted_leg_dist_margin or way_to_next_step_has_collision:
+	if leg.get_tip_dist_to_point(desired_pos) > adjusted_leg_dist_margin or (owner.velocity.length() >100 and way_to_next_step_has_collision):
 		leg.step(desired_pos)
 
 func exit():

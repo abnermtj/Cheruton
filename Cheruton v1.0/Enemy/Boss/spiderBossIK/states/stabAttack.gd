@@ -6,7 +6,6 @@ var timers_dict = {"ANTICIPATION" : 1.5, "STAB" : 0.5}
 var stage
 var stage_switch_timer
 var leg_move_timer
-var desired_pos_body
 var desired_pos_arms_anticipation = Vector2(-10, 130) # relative to the parent
 var desired_pos_arms_stab = Vector2(-800, 700) # relative to the parent
 
@@ -23,7 +22,7 @@ func update(delta):
 	stage_switch_timer -= delta
 	match stage:
 		stages.ANTICIPATION:
-			var next_position =  0.9*((owner.get_parent().get_node("player")).global_position ) + Vector2(0, -325)
+			var next_position =  0.9*((owner.player).global_position ) + Vector2(0, -325)
 			owner.velocity = next_position - owner.global_position
 			owner.move()
 			owner.move_body_sprites()
@@ -36,14 +35,16 @@ func update(delta):
 
 				stage_switch_timer = timers_dict.STAB
 				stage = stages.STAB
+
 		stages.STAB:
-			var next_position =  0.9*((owner.get_parent().get_node("player")).global_position ) + Vector2(0, -150)
+			var next_position =  0.9*((owner.player).global_position ) + Vector2(0, -150)
 			owner.velocity = next_position - owner.global_position
 			owner.move()
 			stab_move_body_sprites()
 
 			if stage_switch_timer < 0:
 				stage = stages.RECOVER
+
 		stages.RECOVER:
 			emit_signal("finished", "run")
 
@@ -70,7 +71,7 @@ func update_idle(delta):
 
 			if owner.flip_legs:
 				for leg in owner.a_legs:
-					if leg != owner.front_right_leg and leg.is_step_over(): get_parent().get_node("run").move_leg(leg)
+					if leg != owner.front_right_leg and leg.is_step_over(): get_parent().get_node("run").player
 				leg_move_timer = owner.LEG_MOVE_COOLDOWN
 			else:
 				for leg in owner.b_legs:
