@@ -3,6 +3,7 @@
 [ext_resource path="res://Props/DamageVal/DamageVal.gd" type="Script" id=1]
 
 [node name="DamageVal" type="Node2D"]
+position = Vector2( 0, -10 )
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 1 )
 
