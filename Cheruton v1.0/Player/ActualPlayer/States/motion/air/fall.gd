@@ -16,7 +16,7 @@ func handle_input(event):
 				if not nearest_hook_point:
 					return
 
-				owner.hook_dir = ( nearest_hook_point.global_position - owner.global_position).normalized()
+				owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
 
 				owner.play_sound("hook_start")
 				owner.play_and_return_anim("grapple_throw")

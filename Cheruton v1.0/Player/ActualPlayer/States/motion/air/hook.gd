@@ -8,7 +8,7 @@ const SWING_SPEED = 60 # 70 for funzz 56.5 for the realz
 const MIN_WIRE_LENGTH = 100
 const MAX_WIRE_LENGTH = 1200
 const PLAYER_LENGTH_CONTROL = 250	# player's influence with REEL, too much may may make movements not smooth at the end
-const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lep
+const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lerp
 const TOP_SPEED = 1600
 
 var release_timer : float
@@ -25,7 +25,6 @@ var desired_length_rope = 0.0
 
 var initial_swing_anim_done = false
 
-# warning-ignore:unused_argument
 func handle_input(event):
 	if Input.is_action_just_pressed("hook"):
 		owner.chain_release()
@@ -138,7 +137,7 @@ func _adjust():
 
 func exit():
 	owner.body_pivot.rotation =  0
-	if owner.velocity.length() < 760: # boos when swinging slowly
+	if owner.velocity.length() < 760: # boost when swinging slowly
 		owner.velocity.x *= 1.6
 	owner.set_collision_mask_bit(0, true)
 

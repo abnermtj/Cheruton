@@ -18,6 +18,8 @@ onready var tip = $tip
 signal hooked(tip_pos)
 signal shake
 
+func _ready():
+	hide()
 # com stand for commnad command: 0 -start hook, 1 -release
 func _on_player_hook_command (com, dir, player_pos):
 	if com == 0: #START

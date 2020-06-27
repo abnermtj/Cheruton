@@ -176,8 +176,8 @@ func get_nearest_hook_point():
 	var closest_hook_point_facing_dir = null
 	var closest_hook_point_opp_dir = null
 
-	var facing_dir_x = sign(body_rotate.scale.x)
 
+	var facing_dir_x = sign(body_rotate.scale.x)
 	# get nearest hook point in front and behind sepearately
 	for hook_point in non_blocked_hook_points:
 		var cur_dist = global_position.distance_to(hook_point.global_position)

@@ -37,7 +37,6 @@ onready var tween = $ShiftTween
 
 # processes screenshake / pan
 func _process( delta ):
-
 	if _timer != 0:
 		_last_shook_timer = _last_shook_timer + delta
 		while _last_shook_timer >= _period_in_ms:

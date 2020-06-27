@@ -943,7 +943,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2.5, 19.5 ) ]
+"values": [ Vector2( 1, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=35]
@@ -968,10 +968,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
+"values": [ Vector2( 1, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=36]
@@ -1207,9 +1207,9 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( 18.5, 11.5 )
+offset = Vector2( 1, 19.5 )
 region_enabled = true
-region_rect = Rect2( 1103, 167, 96, 64 )
+region_rect = Rect2( 1327, 51, 32, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1279,7 +1279,6 @@ anims/run_change_dir_right = SubResource( 42 )
 anims/hit = SubResource( 43 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -5, 9 )
 shape = SubResource( 44 )
 
@@ -1468,8 +1467,8 @@ volume_db = -25.0
 stream = ExtResource( 15 )
 volume_db = -3.0
 [connection signal="animation_changed" from="animationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/testBench2/testBench2.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Props/spearBounce/spearBounce.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Props/movingTrap0/movingTrap0.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemy/Boss/spiderBoss/spiderBoss.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -39,6 +38,7 @@ tile_data = PoolIntArray( 393215, 0, 131077, 458751, 0, 196613, 393283, 0, 13107
 position = Vector2( 1364.04, 876.375 )
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
+current = false
 
 [node name="grapplePoints" type="Node2D" parent="."]
 
@@ -103,6 +103,3 @@ position = Vector2( 1625.79, 879.348 )
 [node name="bouncePad" parent="." instance=ExtResource( 12 )]
 position = Vector2( 2546.78, 1048.46 )
 scale = Vector2( 16, 4 )
-
-[node name="spiderBoss" parent="." instance=ExtResource( 14 )]
-position = Vector2( -667.648, 563.054 )
