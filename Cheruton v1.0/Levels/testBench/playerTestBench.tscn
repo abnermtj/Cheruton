@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
 [ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Props/SaveStatue/SaveStatue.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node2D"]
 position = Vector2( -127.414, 230.498 )
@@ -68,6 +69,9 @@ position = Vector2( 2179.5, 4767.72 )
 
 [node name="CaveBat" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1072.59, 4969.5 )
+
+[node name="SaveStatue" parent="." instance=ExtResource( 8 )]
+position = Vector2( -512.586, 5169.5 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
