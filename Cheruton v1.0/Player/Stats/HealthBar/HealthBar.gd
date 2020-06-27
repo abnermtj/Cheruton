@@ -8,8 +8,8 @@ onready var healthstat = $HealthRect/HealthStats/HealthVal
 var health_max
 
 func _ready():	
-	DataResource.connect("change_health", self, "change_healthbar")
-	SceneControl.connect("init_statbar", self, "init_bar")
+	var _conn1 = DataResource.connect("change_health", self, "change_healthbar")
+	var _conn2 = SceneControl.connect("init_statbar", self, "init_bar")
 
 func init_bar():
 	var old_health = DataResource.temp_dict_player.health_curr

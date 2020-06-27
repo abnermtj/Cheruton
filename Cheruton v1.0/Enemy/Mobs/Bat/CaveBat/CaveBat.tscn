@@ -1,17 +1,17 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Enemy/Mobs/Bat/State/Patrol.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Mobs/Bat/State/Search.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/Mobs/Bat/State/Dead.gd" type="Script" id=3]
-[ext_resource path="res://Enemy/Mobs/Bat/State/ProcessHit.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.png" type="Texture" id=5]
-[ext_resource path="res://Enemy/Mobs/Bat/State/Attack.gd" type="Script" id=6]
-[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.gd" type="Script" id=7]
-[ext_resource path="res://Enemy/Mobs/Bat/State/Hit.gd" type="Script" id=8]
-[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/Mobs/Bat/State/Dead.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Mobs/Bat/State/ProcessHit.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/Mobs/Bat/State/Patrol.gd" type="Script" id=4]
+[ext_resource path="res://Enemy/Mobs/Bat/State/Hit.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Mobs/Bat/State/Search.gd" type="Script" id=7]
+[ext_resource path="res://Enemy/Mobs/Bat/State/Attack.gd" type="Script" id=8]
+[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.5, 2.2 )
+extents = Vector2( 6, 2 )
 
 [sub_resource type="Animation" id=2]
 length = 0.7
@@ -68,23 +68,25 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 20.0
+[sub_resource type="CapsuleShape2D" id=4]
+height = 30.0
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 5.8, 3.6 )
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 4.0
+height = 4.0
 
 [node name="CaveBat" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
+scale = Vector2( 16, 16 )
 collision_layer = 8
-script = ExtResource( 7 )
+script = ExtResource( 3 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -0.6, 0 )
+position = Vector2( 0, -3.1 )
 scale = Vector2( 0.5, 1.7 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -92,7 +94,6 @@ __meta__ = {
 }
 
 [node name="Rotate" type="Node2D" parent="."]
-position = Vector2( -0.5, 2.5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -100,18 +101,18 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Rotate"]
 position = Vector2( 0, -3 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 region_enabled = true
-region_rect = Rect2( 201, 1, 48, 48 )
+region_rect = Rect2( 1, 1, 48, 48 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
-position = Vector2( 8, -1 )
+visible = false
+position = Vector2( 2.1, -1 )
 enabled = true
-cast_to = Vector2( 0, 5 )
-collision_mask = 1025
+cast_to = Vector2( 0, 2 )
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true
@@ -119,10 +120,9 @@ __meta__ = {
 
 [node name="RayFront" type="RayCast2D" parent="Rotate"]
 visible = false
-position = Vector2( 6, -2 )
+position = Vector2( 1.1, -2 )
 enabled = true
 cast_to = Vector2( 2, 0 )
-collision_mask = 1025
 collide_with_areas = true
 
 [node name="RayPlayerBack" type="RayCast2D" parent="Rotate"]
@@ -130,18 +130,27 @@ visible = false
 position = Vector2( 6, -2 )
 enabled = true
 cast_to = Vector2( -90, 0 )
-collision_mask = 1026
+collision_mask = 2
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="RayPlayerFront" type="RayCast2D" parent="Rotate"]
+visible = false
 position = Vector2( 3, -2 )
 enabled = true
 cast_to = Vector2( 15, 0 )
 collision_mask = 8
 collide_with_areas = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RayGround" type="RayCast2D" parent="Rotate"]
+visible = false
+enabled = true
+cast_to = Vector2( 0, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -153,24 +162,25 @@ anims/Patrol = SubResource( 3 )
 [node name="States" type="Node" parent="."]
 
 [node name="Patrol" type="Node" parent="States"]
-script = ExtResource( 1 )
-
-[node name="ProcessHit" type="Node" parent="States"]
 script = ExtResource( 4 )
 
 [node name="Hit" type="Node" parent="States"]
-script = ExtResource( 8 )
+script = ExtResource( 5 )
 
-[node name="Dead" type="Node" parent="States"]
-script = ExtResource( 3 )
-
-[node name="Search" type="Node" parent="States"]
+[node name="ProcessHit" type="Node" parent="States"]
 script = ExtResource( 2 )
 
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource( 1 )
+
+[node name="Search" type="Node" parent="States"]
+script = ExtResource( 7 )
+
 [node name="Attack" type="Node" parent="States"]
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="AOSBox" type="Area2D" parent="."]
+position = Vector2( 0, 10 )
 collision_layer = 8
 collision_mask = 2
 __meta__ = {
@@ -178,7 +188,8 @@ __meta__ = {
 }
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
-position = Vector2( 0, -3.1 )
+position = Vector2( 0, -9.8 )
+rotation = 1.5708
 shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -196,9 +207,6 @@ __meta__ = {
 position = Vector2( 0, -4 )
 shape = SubResource( 5 )
 one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
@@ -208,17 +216,18 @@ __meta__ = {
 }
 
 [node name="HitCollision" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( -0.6, 0 )
+position = Vector2( 0, -3.3 )
+rotation = 1.5708
 shape = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HealthBar" parent="." instance=ExtResource( 9 )]
-margin_left = -1.85212
-margin_top = -5.60179
-margin_right = -1.85212
-margin_bottom = -5.60179
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = -2.10403
+margin_top = -7.59821
+margin_right = -2.10403
+margin_bottom = -7.59821
 rect_scale = Vector2( 0.02, 0.02 )
 [connection signal="body_entered" from="AOSBox" to="." method="_on_AOSBox_body_entered"]
 [connection signal="body_exited" from="AOSBox" to="." method="_on_AOSBox_body_exited"]

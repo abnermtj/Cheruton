@@ -1,0 +1,52 @@
+{ "frames": {
+   "SaveStatue 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   "SaveStatue 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   "SaveStatue 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   "SaveStatue 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "SaveStatue.png",
+  "format": "RGBA8888",
+  "size": { "w": 136, "h": 34 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Activate", "from": 0, "to": 3, "direction": "forward" },
+   { "name": "Deactivate", "from": 0, "to": 3, "direction": "reverse" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

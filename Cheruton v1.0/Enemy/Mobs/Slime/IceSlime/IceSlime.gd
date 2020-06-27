@@ -23,7 +23,6 @@ var curr_health
 var max_health
 
 var player_nearby
-var player_sight = false
 var player_spotted
 
 func _ready():
@@ -34,7 +33,7 @@ func _ready():
 
 func _exit_tree():
 	fsm.call_deferred("free")
-
+	
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
 
@@ -67,6 +66,7 @@ func _on_HitBox_area_entered(area) -> void:
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
 		var damage = -20#stub
+		display_damage(damage)
 		# Enemy will die
 		if(abs(damage) > curr_health):
 			fsm.state_next = fsm.states.Dead
@@ -137,8 +137,6 @@ func _on_AOSBox_body_entered(body):
 	if(fsm.state_curr == fsm.states.Dead):
 		return
 	if (body == player):
-		player_sight = true
-		print(player_sight)
 		fsm.state_next = fsm.states.Attack
 
 # Player has left enemies guard radius
@@ -146,6 +144,5 @@ func _on_AOSBox_body_exited(body):
 	if(fsm.state_curr == fsm.states.Dead):
 		return
 	if (body == player):
-		player_sight = false
 		fsm.state_next = fsm.states.Search
 

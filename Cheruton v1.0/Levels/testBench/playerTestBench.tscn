@@ -1,20 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Slime/IceSlime/IceSlime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Mobs/Bat/CaveBat/CaveBat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Props/SaveStatue/SaveStatue.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node2D"]
-position = Vector2( -133.414, 230.498 )
+position = Vector2( -127.414, 230.498 )
 script = ExtResource( 5 )
 
 [node name="Chain" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -842.104, 2153.31 )
+position = Vector2( -1744.59, 5153.5 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )
@@ -60,10 +62,16 @@ position = Vector2( 52.7489, 4890.16 )
 position = Vector2( 393.652, 5207.68 )
 
 [node name="IceSlime6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1207.92, 4625.22 )
+position = Vector2( 1207.92, 4633.77 )
 
 [node name="IceSlime7" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2179.5, 4767.72 )
+
+[node name="CaveBat" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1072.59, 4969.5 )
+
+[node name="SaveStatue" parent="." instance=ExtResource( 8 )]
+position = Vector2( -512.586, 5169.5 )
 [connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
 [connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
 [connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]

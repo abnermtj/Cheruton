@@ -9,6 +9,7 @@ onready var bg_music = $BgMusic
 
 var curr_screen
 var loot_dict = {} # Items pending transfer to inventory
+var enable_save := false
 
 signal init_statbar
 
@@ -21,8 +22,8 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 #	$hud_layer/hud/chrystals/red.position ]
 
 
-#func _ready():
-#	load_screen(WELCOME)
+func _ready():
+	randomize()
 
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
@@ -102,7 +103,6 @@ func loot_selector(map_name, loot_count):
 				var loot = []
 				loot.append(DataResource.dict_item_spawn[map_name]["ItemType"+ str(index)])
 				loot.append(DataResource.dict_item_spawn[map_name]["ItemName"+ str(index)])
-				randomize()
 				#Randomize the qty of the item to be found
 				loot.append(int(rand_range(float(DataResource.dict_item_spawn[map_name]["ItemMinQ" + str(index)]), float(DataResource.dict_item_spawn[map_name]["ItemMaxQ"+ str(index)]))))
 				loot_dict[loot_dict.size() + 1] = loot
@@ -162,6 +162,9 @@ func insert_data(item_id, insert_index):
 func _input(_ev):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
+	if Input.is_action_just_pressed("save_player"):
+		if(enable_save):
+			DataResource.save_player()
 #==================================
 # Load GameState
 #==================================

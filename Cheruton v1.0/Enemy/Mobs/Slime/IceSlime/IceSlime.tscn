@@ -69,8 +69,8 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ), Vector2( 6, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 25.0
+[sub_resource type="CapsuleShape2D" id=4]
+height = 30.0
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 5, 1 )
@@ -111,10 +111,9 @@ __meta__ = {
 
 [node name="RayDown" type="RayCast2D" parent="Rotate"]
 visible = false
-position = Vector2( 7, -1 )
+position = Vector2( 2.1, -1 )
 enabled = true
 cast_to = Vector2( 0, 2 )
-collision_mask = 1025
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true
@@ -122,10 +121,9 @@ __meta__ = {
 
 [node name="RayFront" type="RayCast2D" parent="Rotate"]
 visible = false
-position = Vector2( 6, -2 )
+position = Vector2( 1.1, -2 )
 enabled = true
 cast_to = Vector2( 2, 0 )
-collision_mask = 1025
 collide_with_areas = true
 
 [node name="RayPlayerBack" type="RayCast2D" parent="Rotate"]
@@ -133,7 +131,7 @@ visible = false
 position = Vector2( 6, -2 )
 enabled = true
 cast_to = Vector2( -90, 0 )
-collision_mask = 1026
+collision_mask = 2
 collide_with_areas = true
 __meta__ = {
 "_edit_lock_": true
@@ -151,6 +149,7 @@ __meta__ = {
 }
 
 [node name="RayGround" type="RayCast2D" parent="Rotate"]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 1 )
 __meta__ = {
@@ -192,7 +191,8 @@ __meta__ = {
 }
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
-position = Vector2( 0, -3.1 )
+position = Vector2( 0, -9.8 )
+rotation = 1.5708
 shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -210,9 +210,6 @@ __meta__ = {
 position = Vector2( 0, -4 )
 shape = SubResource( 5 )
 one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16

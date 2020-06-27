@@ -5,7 +5,8 @@ onready var initial_position = global_position
 onready var player = get_parent().get_node("player")
 onready var healthbar = $HealthBar
 onready var healthbar_act = $HealthBar/HealthRect/HealthBar
-	
+
+
 var anim_curr = ""
 var anim_next = "Patrol"
 
@@ -16,13 +17,13 @@ var velocity = Vector2()
 
 var hit_dir : Vector2
 var is_hit := false
-var pos
+var energy = 1
 
 var curr_health
 var max_health
+var pos
 
 var player_nearby
-var player_sight = false
 var player_spotted
 
 func _ready():
@@ -53,14 +54,13 @@ func change_patrol_dirn() -> bool:
 		return true
 	return false
 
-
 #func force_jump() -> void:
 #	fsm.state_nxt = fsm.states.jump
 #	$damagebox/damage_collision.disabled = true
 #	$jumpbox/jumpcollision.disabled = true
 
 # Slime has been hit
-func _on_HitBox_area_entered(area)-> void:
+func _on_HitBox_area_entered(area) -> void:
 	# Damage processed if the node has not been previously hit or not dead
 	if (!is_hit):
 		is_hit = true
@@ -69,7 +69,6 @@ func _on_HitBox_area_entered(area)-> void:
 		var damage = -20#stub
 		# Enemy will die
 		if(abs(damage) > curr_health):
-			pass
 			fsm.state_next = fsm.states.Dead
 		else:
 			curr_health += damage
@@ -138,8 +137,6 @@ func _on_AOSBox_body_entered(body):
 	if(fsm.state_curr == fsm.states.Dead):
 		return
 	if (body == player):
-		player_sight = true
-		print(player_sight)
 		fsm.state_next = fsm.states.Attack
 
 # Player has left enemies guard radius
@@ -147,6 +144,5 @@ func _on_AOSBox_body_exited(body):
 	if(fsm.state_curr == fsm.states.Dead):
 		return
 	if (body == player):
-		player_sight = false
 		fsm.state_next = fsm.states.Search
 

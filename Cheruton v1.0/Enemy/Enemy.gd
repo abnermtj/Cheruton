@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Enemy
 
+onready var damage_val = preload("res://Props/DamageVal/DamageVal.tscn")
+
 var target_correction = Vector2( 0, -6 )
 
 func _ready():
@@ -16,3 +18,8 @@ func _highlight_target():
 
 func _clear_target():
 	pass
+
+func display_damage(damage_value):
+	var damage_text = damage_val.instance()
+	damage_text.amount = damage_value
+	add_child(damage_text)
