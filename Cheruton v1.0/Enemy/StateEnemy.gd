@@ -1,6 +1,8 @@
 extends Node
 class_name State_Enemy
 
+
+
 var fsm = null
 #var node = null
 var obj = null
@@ -12,7 +14,6 @@ func terminate():
 	pass
 	
 func run(_delta):
-	should_fall()
 	pass
 
 func should_fall() -> void:

@@ -29,8 +29,6 @@ func _set_states_parent_node(p_node) -> void:
 
 func run_machine(delta) -> void:
 
-
-
 	if(state_next != state_curr):
 		# Terminate current state if it is still running
 		if(state_curr):

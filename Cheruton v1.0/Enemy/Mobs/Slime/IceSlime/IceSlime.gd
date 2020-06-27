@@ -33,7 +33,7 @@ func _ready():
 
 func _exit_tree():
 	fsm.call_deferred("free")
-
+	
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
 
@@ -66,6 +66,7 @@ func _on_HitBox_area_entered(area) -> void:
 		#$Animation.stop()
 		hit_dir = global_position - area.global_position
 		var damage = -20#stub
+		display_damage(damage)
 		# Enemy will die
 		if(abs(damage) > curr_health):
 			fsm.state_next = fsm.states.Dead
