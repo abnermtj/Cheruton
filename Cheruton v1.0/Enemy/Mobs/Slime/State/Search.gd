@@ -8,8 +8,7 @@ var player
 
 func initialize():
 	player = obj.get_parent().get_node("player")
-	timer = randomize_timer()
-
+	timer = rand_range(2.4, 5.0)
 
 
 func run(delta):
@@ -28,10 +27,5 @@ func run(delta):
 	if (timer <= 0 && fsm.state_curr == fsm.states.Search):
 		fsm.state_next = fsm.states.Patrol
 
-# Randomize time taken by enemy to decide when to return to normal patrolling
-func randomize_timer():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var my_random_number = rng.randf_range(2.4, 5.0)	
-	return my_random_number
+
 
