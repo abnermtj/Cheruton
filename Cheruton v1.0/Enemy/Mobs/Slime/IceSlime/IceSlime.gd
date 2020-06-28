@@ -17,6 +17,7 @@ var velocity = Vector2()
 
 var hit_dir : Vector2
 var is_hit := false
+var player_in_range := false
 var energy = 1
 
 var curr_health
@@ -131,18 +132,18 @@ func _on_HitBox_area_entered(area) -> void:
 #	#fsm.state_nxt = fsm.states.cave_dead
 
 
-
 # Player has entered enemies guard radius
-func _on_AOSBox_body_entered(body):
-	if(fsm.state_curr == fsm.states.Dead):
-		return
-	if (body == player):
-		fsm.state_next = fsm.states.Attack
+func _on_AOSBox_area_entered(area) -> void:
+	if (!player_in_range):
+		player_in_range = true
+		if(fsm.state_curr != fsm.states.Dead && fsm.state_curr != fsm.states.Attack):
+			print(1000)
+			fsm.state_next = fsm.states.Attack
+
 
 # Player has left enemies guard radius
-func _on_AOSBox_body_exited(body):
-	if(fsm.state_curr == fsm.states.Dead):
-		return
-	if (body == player):
-		fsm.state_next = fsm.states.Search
-
+func _on_AOSBox_area_exited(area) -> void:
+		player_in_range = false
+		if(fsm.state_curr != fsm.states.Dead && fsm.state_curr != fsm.states.Search):
+			print(2000)
+			fsm.state_next = fsm.states.Search
