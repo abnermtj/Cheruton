@@ -48,6 +48,7 @@ var wall_direction = 0 # 0 or 1
 var throw_sword_dir = Vector2()
 var sword_stuck = false
 var sword_pos = Vector2()
+var sword_col_normal = Vector2()
 
 var can_attack = true
 var can_hook = true
@@ -201,10 +202,11 @@ func start_sword_throw():
 func return_sword_throw():
 	sword_stuck = false
 	emit_signal("flying_sword_command", 1, Vector2())
-func on_sword_result(result, pos):
+func on_sword_result(result, pos, normal):
 	if result == 0: # hit
 		sword_stuck = true
 		sword_pos = pos
+		sword_col_normal = normal
 	elif result == 1: # returning
 		sword_stuck = false
 	elif result == 2:

@@ -4,13 +4,13 @@
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - FlyingSword.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 35.0
+radius = 50.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 60.0
+radius = 80.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 900.0
+radius = 1200.0
 
 [sub_resource type="Animation" id=4]
 length = 0.12
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 1, 48, 48 ), Rect2( 51, 1, 48, 48 ), Rect2( 101, 1, 48, 48 ) ]
+"values": [ Rect2( 1, 1, 48, 64 ), Rect2( 51, 1, 48, 64 ), Rect2( 101, 1, 48, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyRotation/Sprite:offset")
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3.5, 2.5 ), Vector2( 3.5, 2.5 ), Vector2( 3.5, 2.5 ) ]
+"values": [ Vector2( -2.5, 4.5 ), Vector2( -2.5, 4.5 ), Vector2( -2.5, -3.5 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 151, 1, 16, 48 ) ]
+"values": [ Rect2( 151, 1, 16, 64 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyRotation/Sprite:offset")
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 3.5, 2.5 ) ]
+"values": [ Vector2( -2.5, 4.5 ) ]
 }
 
 [node name="flyingSword" type="KinematicBody2D"]
@@ -79,9 +79,9 @@ scale = Vector2( 4, 4 )
 
 [node name="Sprite" type="Sprite" parent="bodyRotation"]
 texture = ExtResource( 2 )
-offset = Vector2( 3.5, 2.5 )
+offset = Vector2( -2.5, 4.5 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 48, 48 )
+region_rect = Rect2( 1, 1, 48, 64 )
 
 [node name="collectionArea" type="Area2D" parent="."]
 collision_layer = 0

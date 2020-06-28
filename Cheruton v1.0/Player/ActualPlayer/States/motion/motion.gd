@@ -26,7 +26,7 @@ func get_input_direction():
 	return input_direction
 
 # makes character face right direction
-func update_look_direction(direction):
+func update_look_direction(direction : Vector2):
 	if direction and owner.look_direction != direction:
 		owner.look_direction = direction
 	if direction.x in [-1, 1]:

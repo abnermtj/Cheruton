@@ -1,18 +1,18 @@
 { "frames": {
    "MC - FlyingSword 0.aseprite": {
-    "frame": { "x": 1, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 1, "y": 1, "w": 48, "h": 64 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
-    "sourceSize": { "w": 41, "h": 43 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 64 },
+    "sourceSize": { "w": 53, "h": 55 },
     "duration": 40
    },
    "MC - FlyingSword 1.aseprite": {
-    "frame": { "x": 51, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 51, "y": 1, "w": 48, "h": 64 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
-    "sourceSize": { "w": 41, "h": 43 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 64 },
+    "sourceSize": { "w": 53, "h": 55 },
     "duration": 40
    },
    "MC - FlyingSword 2.aseprite": {
@@ -20,15 +20,15 @@
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
-    "sourceSize": { "w": 41, "h": 43 },
+    "sourceSize": { "w": 53, "h": 55 },
     "duration": 40
    },
    "MC - FlyingSword 3.aseprite": {
-    "frame": { "x": 151, "y": 1, "w": 16, "h": 48 },
+    "frame": { "x": 151, "y": 1, "w": 16, "h": 64 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 16, "y": 0, "w": 16, "h": 48 },
-    "sourceSize": { "w": 41, "h": 43 },
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 16, "h": 64 },
+    "sourceSize": { "w": 53, "h": 55 },
     "duration": 40
    }
  },
@@ -37,7 +37,7 @@
   "version": "1.2.15-x64",
   "image": "MC - FlyingSword.png",
   "format": "RGBA8888",
-  "size": { "w": 172, "h": 50 },
+  "size": { "w": 220, "h": 66 },
   "scale": "1",
   "frameTags": [
    { "name": "air", "from": 0, "to": 2, "direction": "forward" },

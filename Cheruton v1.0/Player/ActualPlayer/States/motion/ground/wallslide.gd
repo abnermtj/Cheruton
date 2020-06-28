@@ -27,6 +27,7 @@ func enter():
 func update(delta):
 	if not owner.get_wall_direction(): # no wall to slide onto
 		emit_signal("finished", "fall")
+		return
 
 	if owner.velocity.y > 75:
 		owner.play_anim("wall_slide_fast")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -320,6 +320,34 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
+}
+
+[sub_resource type="Animation" id=51]
+length = 0.2
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.12, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 393, 265, 48, 48 ), Rect2( 443, 265, 64, 48 ), Rect2( 509, 265, 48, 48 ), Rect2( 559, 265, 32, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.12, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -943,7 +971,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 19.5 ) ]
+"values": [ Vector2( 2, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=35]
@@ -971,7 +999,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 19.5 ) ]
+"values": [ Vector2( 2, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=36]
@@ -1207,7 +1235,7 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( 1, 19.5 )
+offset = Vector2( 2, 19.5 )
 region_enabled = true
 region_rect = Rect2( 1327, 51, 32, 48 )
 
@@ -1241,6 +1269,7 @@ anims/hover = SubResource( 8 )
 anims/idle = SubResource( 9 )
 anims/idle_continious = SubResource( 10 )
 anims/jump = SubResource( 11 )
+anims/pull_weapon = SubResource( 51 )
 anims/run_change_dir = SubResource( 12 )
 anims/run_continious = SubResource( 13 )
 anims/slide_begin = SubResource( 14 )
@@ -1279,7 +1308,7 @@ anims/run_change_dir_right = SubResource( 42 )
 anims/hit = SubResource( 43 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -5, 9 )
+position = Vector2( 0, 9 )
 shape = SubResource( 44 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
@@ -1324,7 +1353,7 @@ script = ExtResource( 21 )
 script = ExtResource( 22 )
 
 [node name="floorRay" type="RayCast2D" parent="."]
-position = Vector2( -5, 40 )
+position = Vector2( 0, 40 )
 enabled = true
 cast_to = Vector2( 0, 70 )
 collision_mask = 128
@@ -1333,7 +1362,7 @@ collision_mask = 128
 position = Vector2( -2, 0 )
 
 [node name="leftSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( -30, 0 )
+position = Vector2( -25, 0 )
 
 [node name="leftside1" type="RayCast2D" parent="wallRaycasts/leftSide"]
 position = Vector2( 0, -12 )
@@ -1348,7 +1377,7 @@ cast_to = Vector2( -12, 0 )
 collision_mask = 128
 
 [node name="rightSide" type="Node2D" parent="wallRaycasts"]
-position = Vector2( 24, 0 )
+position = Vector2( 25, 0 )
 
 [node name="rightside1" type="RayCast2D" parent="wallRaycasts/rightSide"]
 position = Vector2( 0, 20 )
@@ -1363,7 +1392,7 @@ cast_to = Vector2( 12, 0 )
 collision_mask = 128
 
 [node name="cornerCorrectionRaycasts" type="Node2D" parent="."]
-position = Vector2( -5, -30 )
+position = Vector2( 0, -30 )
 
 [node name="leftside" type="RayCast2D" parent="cornerCorrectionRaycasts"]
 position = Vector2( -10, 0 )
