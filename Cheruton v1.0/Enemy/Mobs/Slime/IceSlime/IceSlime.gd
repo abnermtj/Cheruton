@@ -9,7 +9,7 @@ onready var healthbar_act = $HealthBar/HealthRect/HealthBar
 
 var anim_curr = ""
 var anim_next = "Patrol"
-
+var false_hidden:= true
 var dir_curr = 1
 export(int) var dir_next = 1
 
@@ -134,16 +134,19 @@ func _on_HitBox_area_entered(area) -> void:
 
 # Player has entered enemies guard radius
 func _on_AOSBox_area_entered(area) -> void:
-	if (!player_in_range):
-		player_in_range = true
-		if(fsm.state_curr != fsm.states.Dead && fsm.state_curr != fsm.states.Attack):
-			print(1000)
-			fsm.state_next = fsm.states.Attack
+	player_in_range = true
+	false_hidden = false
+	if(fsm.state_curr != fsm.states.Dead):
+		print(1000)
+		fsm.state_next = fsm.states.Attack
 
 
 # Player has left enemies guard radius
 func _on_AOSBox_area_exited(area) -> void:
-		player_in_range = false
-		if(fsm.state_curr != fsm.states.Dead && fsm.state_curr != fsm.states.Search):
-			print(2000)
-			fsm.state_next = fsm.states.Search
+		false_hidden = true
+		yield(get_tree().create_timer(1.0), "timeout")
+		if(false_hidden):
+			player_in_range = false
+			if(fsm.state_curr != fsm.states.Dead):
+				print(2000)
+				fsm.state_next = fsm.states.Search
