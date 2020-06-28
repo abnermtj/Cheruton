@@ -6,7 +6,7 @@ onready var attack_instance = preload("res://Enemy/Mobs/Slime/Attack/SlimeRange.
 var state : int
 var timer : float
 
-var can_fire 
+var can_fire = false
 
 var fire_dir
 var player
@@ -49,12 +49,11 @@ func run(delta):
 		attack_node.global_position = obj.global_position + Vector2(0, -50)
 		attack_node.show()
 		
-		yield(get_tree().create_timer(0.4), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
 
 # case for player death!
 func terminate():
-	#can_fire = false
-	pass
+	can_fire = false
 #
 	

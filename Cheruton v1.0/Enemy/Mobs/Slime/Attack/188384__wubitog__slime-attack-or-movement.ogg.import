@@ -11,5 +11,5 @@ dest_files=[ "res://.import/188384__wubitog__slime-attack-or-movement.ogg-1e7b7d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
