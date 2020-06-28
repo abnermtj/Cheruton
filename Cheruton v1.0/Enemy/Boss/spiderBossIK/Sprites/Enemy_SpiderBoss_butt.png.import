@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Enemy_SpiderBoss_butt.png-2defe2e8fe1d98f46e8196bb55883309.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_butt.png"
+dest_files=[ "res://.import/Enemy_SpiderBoss_butt.png-2defe2e8fe1d98f46e8196bb55883309.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
