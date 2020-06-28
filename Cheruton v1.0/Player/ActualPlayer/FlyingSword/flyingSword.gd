@@ -8,9 +8,9 @@ const Y_LEVEL_FACTOR = 3 # swords tends to the player.pos.y during return
 enum sword_states { SHOOT = 0, HIT = 1, RETURN = 2, HIDDEN = 3}
 
 onready var sword_state = sword_states.HIDDEN
+onready var animation_player = $AnimationPlayer
 onready var bodyRotation = $bodyRotation
-onready var airSprite = $bodyRotation/air
-onready var hitSprite = $bodyRotation/hit
+onready var sprite = $bodyRotation/Sprite
 
 var velocity : Vector2
 var angular_velocity : float
@@ -27,8 +27,7 @@ func _ready():
 	angular_velocity = SPIN_SPEED
 
 func _on_flyingSword_command(command, arg):
-	hitSprite.hide()
-	airSprite.show()
+	animation_player.play("air")
 	bodyRotation.show()
 
 	if command == 0:
@@ -51,8 +50,10 @@ func _physics_process(delta):
 	if state == sword_states.HIT:
 		if bodies_in_collection_area:
 			state = sword_states.RETURN
+			animation_player.play("air")
 		if not bodies_in_limit_area:
 			state = sword_states.RETURN
+			animation_player.play("air")
 
 	match state:
 		sword_states.SHOOT:
@@ -64,8 +65,7 @@ func _physics_process(delta):
 				return
 
 			if move_and_collide(velocity*delta):
-				hitSprite.show()
-				airSprite.hide()
+				animation_player.play("stuck")
 				state = sword_states.HIT
 				emit_signal("sword_result", 0, global_position)
 

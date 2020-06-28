@@ -23,7 +23,7 @@ func run(delta):
 	# Enemy has encountered wall or empty gap - wait for player to come back
 	if (obj.change_patrol_dirn()):
 		speed = 0
-	else: 
+	else:
 		speed = 200
 	obj.velocity.x = obj.dir_curr * speed
 	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)

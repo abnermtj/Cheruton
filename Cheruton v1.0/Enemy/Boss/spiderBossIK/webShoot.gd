@@ -56,7 +56,7 @@ func update(delta):
 
 				proj.global_position = owner.global_position
 				proj.z_index = owner.player.z_index - 1
-				proj.start_shoot(proj.global_position, owner.player.global_position, )
+				proj.start_shoot( proj.global_position, owner.player.global_position, 24)
 
 			desired_pos = lerp (owner.global_position, goal_pos_shoot, delta)
 			owner.velocity = (goal_pos_shoot - owner.global_position) * 3

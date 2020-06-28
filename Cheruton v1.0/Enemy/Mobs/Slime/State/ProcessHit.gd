@@ -17,6 +17,6 @@ func run(delta):
 			fsm.state_next = fsm.states.Search#stub
 		else:
 			fsm.state_next = fsm.states.Attack#stub
-		
+
 func terminate():
 	pass

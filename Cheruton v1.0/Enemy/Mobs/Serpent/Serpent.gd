@@ -40,11 +40,11 @@ func _physics_process(delta) -> void:
 	if(anim_curr != anim_next):
 		anim_curr = anim_next
 		$Animation.play(anim_curr)
-	
+
 	if (dir_curr != dir_next):
 		dir_curr = dir_next
 		$Rotate.scale.x = dir_curr
-		
+
 
 # Checks if the node is colliding against a wall or is reaching the edge of his path
 func change_patrol_dirn() -> bool:
@@ -86,7 +86,7 @@ func _on_HitBox_area_entered(area):
 #		fsm.state_nxt = fsm.states.jump
 #		anim_next = ""
 #		pass # Replace with function body.
-	
+
 #func hit( area, hit_energy : float = 1.0 ):
 #	if fsm.state_cur == fsm.states.dead: return
 #	$Animation.stop()
@@ -109,7 +109,7 @@ func _on_HitBox_area_entered(area):
 #	print( "SLIME DETECTED PLAYER" )
 #	pass
 #	#$rotate/detect_player/exploding_timer.start()
-	
+
 #func _on_exploding_timer():
 #	# generate explosion
 #	var x = preload( "res://enemies/slime/cave_slime_explosion.tscn" ).instance()

@@ -11,7 +11,7 @@ bounce = 0.38
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 15.0
+radius = 20.0
 
 [node name="acidProjectile" type="RigidBody2D"]
 collision_layer = 0
@@ -20,6 +20,8 @@ physics_material_override = SubResource( 3 )
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

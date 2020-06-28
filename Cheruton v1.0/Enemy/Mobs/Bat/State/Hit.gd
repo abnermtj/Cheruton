@@ -8,7 +8,7 @@ func initialize():
 	timer = 0.1
 	#game.camera_shake( 0.10, 60, 4, obj.hit_dir.normalized() )
 	obj.get_node("HitBox/HitCollision").disabled = true
-	
+
 
 func run(delta):
 	aerial_pos_edit()
@@ -17,6 +17,6 @@ func run(delta):
 	timer -= delta
 	if (timer <= 0):
 		fsm.state_next = fsm.states.ProcessHit
-		
+
 func terminate():
 	prev_state = fsm.state_prev

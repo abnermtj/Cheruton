@@ -29,7 +29,7 @@ func run(delta):
 		obj.velocity.x *= 0.95
 		if (!obj.change_patrol_dirn()):
 			obj.velocity = obj.move_and_slide_with_snap( obj.velocity, obj.get_node("Rotate").scale.y * Vector2.DOWN * 8, obj.get_node("Rotate").scale.y * Vector2.UP )
-		
+
 func terminate():
 	obj.get_node("HitBox/HitCollision").disabled = false
 	obj.is_hit = false

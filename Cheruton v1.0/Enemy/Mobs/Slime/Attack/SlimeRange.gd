@@ -9,7 +9,7 @@ var velocity = Vector2()
 
 
 func _physics_process(delta):
-	
+
 	var colliders = move_and_collide(velocity)
 	if(colliders):
 		var hit_id = colliders.collider

@@ -1,22 +1,18 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-mountain2.png" type="Texture" id=1]
-[ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-forest.png" type="Texture" id=2]
+[ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-cloud.png" type="Texture" id=2]
 [ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-hill.png" type="Texture" id=3]
 [ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-sky.png" type="Texture" id=4]
-[ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-water.png" type="Texture" id=5]
+[ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-forest.png" type="Texture" id=5]
 [ext_resource path="res://Levels/levelAssets/grassLandsParralaxBg/Sprites/Grasslands-mountain.png" type="Texture" id=6]
-
-
-
-
 
 [node name="grassLandsParallaxBg" type="ParallaxBackground"]
 
 [node name="sky" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0, 0 )
 motion_offset = Vector2( -1400, -130 )
-motion_mirroring = Vector2( 2000, 0 )
+motion_mirroring = Vector2( 882, 0 )
 
 [node name="Sprite" type="Sprite" parent="sky"]
 position = Vector2( 0, -245 )
@@ -25,6 +21,18 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2000, 402 )
+
+[node name="cloud" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.025, 0 )
+motion_offset = Vector2( -1400, -130 )
+motion_mirroring = Vector2( 930, 0 )
+
+[node name="Sprite" type="Sprite" parent="cloud"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 465, 116 )
 
 [node name="mountain2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.075, 0 )
@@ -62,25 +70,15 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 104 )
 
-[node name="water" type="ParallaxLayer" parent="."]
-visible = false
-motion_scale = Vector2( 0, 0 )
-motion_mirroring = Vector2( 850, 0 )
-
 [node name="forest" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.33, 0.3 )
+visible = false
+motion_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 860, 0 )
 
-[node name="Sprite2" type="Sprite" parent="forest"]
-position = Vector2( 0, 200 )
+[node name="Sprite" type="Sprite" parent="forest"]
+position = Vector2( 0, 17 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 2500, 176 )
-
-[node name="Sprite" type="Sprite" parent="forest"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 2500, 127 )
+region_rect = Rect2( 0, 0, 2500, 132 )

@@ -10,7 +10,7 @@ var can_fire = false
 
 var fire_dir
 var player
-var player_position 
+var player_position
 var ray_cast_front
 var speed = 200
 
@@ -18,7 +18,7 @@ func initialize():
 	can_fire = true
 	player = obj.get_parent().get_node("player")
 	ray_cast_front = obj.get_node("Rotate/RayPlayerFront")
-	
+
 
 
 func run(delta):
@@ -31,7 +31,7 @@ func run(delta):
 	# Player has reached area enemy cannot reach
 	if (obj.change_patrol_dirn()):
 		speed = 0
-	elif(speed < 200): 
+	elif(speed < 200):
 		speed *= 3
 	# Another enemy in front of original enemy
 	if(ray_cast_front.is_colliding()):
@@ -41,13 +41,13 @@ func run(delta):
 	if(can_fire):
 		can_fire = false
 		var instanced = attack_instance.instance()
-		
+
 		var parent = obj.get_parent()
 		parent.add_child(instanced)
 		var attack_node = parent.get_child(parent.get_child_count() - 1)
 		attack_node.global_position = obj.global_position + Vector2(0, -50)
 		attack_node.show()
-		
+
 		yield(get_tree().create_timer(0.7), "timeout")
 		can_fire = true
 
@@ -55,4 +55,4 @@ func run(delta):
 func terminate():
 	can_fire = false
 #
-	
+

@@ -4,7 +4,7 @@ const SPEED = 465  # faster than player
 const RUN_SPEED = 100
 
 const LEG_DIST_MARGIN = 460
-
+onready var projectile = preload("res://Enemy/Boss/spiderBossIK/acidProjectile/acidProjectile.tscn")
 var leg_move_timer : float
 var desired_velocity = Vector2()
 
@@ -13,11 +13,10 @@ func enter():
 
 func update(delta):
 	var player_pos = owner.player.global_position
-	var next_position =  player_pos + Vector2(0, -200) + (Vector2(0,-200 )if (player_pos.y < owner.global_position.y) else Vector2())# the first offset account for the spider never touching the player due to hitbox, second offset accounts for situations when the spider needs to go up but there is a wall blocking
+	var next_position =  player_pos + Vector2(0, -250) + (Vector2(0,-200 )if (player_pos.y < owner.global_position.y) else Vector2())# the first offset account for the spider never touching the player due to hitbox, second offset accounts for situations when the spider needs to go up but there is a wall blocking
 #	next_position = owner.get_global_mouse_position()
-
-	if owner.ground_check.is_colliding() and owner.velocity.length() > SPEED/3:
-		next_position.y -= owner.ground_check.get_collision_point().y - owner.global_position.y + 10 # const makes it bob less jittery
+	if owner.ground_check.is_colliding() and owner.velocity.length() > SPEED/3.0: # keeps owner above ground
+		next_position.y -= owner.ground_check.get_collision_point().y - owner.global_position.y + 10 # const makes bob less jittery
 
 	desired_velocity =  next_position - owner.global_position
 
@@ -30,6 +29,15 @@ func update(delta):
 	owner.move_body_sprites()
 	if owner.player_in_small_look_area:
 		emit_signal("finished","webShoot")
+
+#func handle_input(event):
+#	if Input.is_action_just_pressed("hook"):
+#		var proj = projectile.instance() # delete onREADY ONTOP PLSPSLDPALPDASDOASJOD
+#		owner.get_parent().add_child(proj)
+#
+#		proj.global_position = owner.global_position
+#		proj.z_index = owner.player.z_index - 1
+#		proj.start_shoot( proj.global_position, owner.get_global_mouse_position(), 24)
 
 func update_idle(delta):
 	leg_move_timer -= delta

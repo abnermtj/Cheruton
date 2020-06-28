@@ -50,7 +50,7 @@ func run(delta):
 		timer -= delta
 	else:
 		terminate()
-		
+
 
 #	else:
 #		obj.position = obj.initial_position
@@ -84,4 +84,4 @@ func terminate():
 #		x.modulate = Color( "df3e23" )
 #	obj.get_parent().add_child( x )
 #
-	
+
