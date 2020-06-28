@@ -34,18 +34,18 @@ func _ready():
 
 func _exit_tree():
 	fsm.call_deferred("free")
-	
+
 func _physics_process(delta) -> void:
 	fsm.run_machine(delta)
 
 	if(anim_curr != anim_next):
 		anim_curr = anim_next
 		$Animation.play(anim_curr)
-	
+
 	if (dir_curr != dir_next):
 		dir_curr = dir_next
 		$Rotate.scale.x = dir_curr
-		
+
 
 # Checks if the node is colliding against a wall or is reaching the edge of his path
 func change_patrol_dirn() -> bool:
@@ -87,7 +87,7 @@ func _on_HitBox_area_entered(area) -> void:
 #		fsm.state_nxt = fsm.states.jump
 #		anim_next = ""
 #		pass # Replace with function body.
-	
+
 #func hit( area, hit_energy : float = 1.0 ):
 #	if fsm.state_cur == fsm.states.dead: return
 #	$Animation.stop()
@@ -110,7 +110,7 @@ func _on_HitBox_area_entered(area) -> void:
 #	print( "SLIME DETECTED PLAYER" )
 #	pass
 #	#$rotate/detect_player/exploding_timer.start()
-	
+
 #func _on_exploding_timer():
 #	# generate explosion
 #	var x = preload( "res://enemies/slime/cave_slime_explosion.tscn" ).instance()
@@ -133,7 +133,7 @@ func _on_HitBox_area_entered(area) -> void:
 
 
 # Player has entered enemies guard radius
-func _on_AOSBox_area_entered(area) -> void:
+func _on_AOSBox_body_entered(area) -> void:
 	player_in_range = true
 	false_hidden = false
 	if(fsm.state_curr != fsm.states.Dead):
@@ -142,7 +142,7 @@ func _on_AOSBox_area_entered(area) -> void:
 
 
 # Player has left enemies guard radius
-func _on_AOSBox_area_exited(area) -> void:
+func _on_AOSBox_body_exited(area) -> void:
 		false_hidden = true
 		yield(get_tree().create_timer(1.0), "timeout")
 		if(false_hidden):

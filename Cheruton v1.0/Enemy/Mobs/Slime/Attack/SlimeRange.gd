@@ -22,4 +22,4 @@ func _physics_process(delta):
 func _on_SlimeRange_visibility_changed():
 	if(self.visible):
 		velocity = global_position.direction_to(player.global_position) * SPEED
-		
+

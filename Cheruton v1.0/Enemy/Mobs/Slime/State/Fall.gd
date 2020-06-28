@@ -23,9 +23,9 @@ func run(delta):
 			fsm.state_next = fsm.states.Patrol
 	else:
 		obj.velocity = obj.move_and_slide_with_snap(obj.velocity, Vector2.DOWN * 8, Vector2.UP)
-		
-	
+
+
 func terminate():
 	obj.velocity.y = 0
 #
-	
+
