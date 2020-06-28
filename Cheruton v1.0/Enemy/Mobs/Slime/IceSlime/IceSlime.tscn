@@ -186,9 +186,6 @@ script = ExtResource( 9 )
 [node name="AOSBox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AOSCollision" type="CollisionShape2D" parent="AOSBox"]
 position = Vector2( 0, -9.8 )
@@ -231,6 +228,6 @@ margin_top = -7.59821
 margin_right = -2.10403
 margin_bottom = -7.59821
 rect_scale = Vector2( 0.02, 0.02 )
-[connection signal="body_entered" from="AOSBox" to="." method="_on_AOSBox_body_entered"]
-[connection signal="body_exited" from="AOSBox" to="." method="_on_AOSBox_body_exited"]
+[connection signal="area_entered" from="AOSBox" to="." method="_on_AOSBox_area_entered"]
+[connection signal="area_exited" from="AOSBox" to="." method="_on_AOSBox_area_exited"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
