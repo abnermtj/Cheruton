@@ -1,6 +1,6 @@
 extends Control
 
-const SCN1 = "res://Levels/Hometown/Hometown.tscn"
+const SCN1 = "res://Levels/testBench/playerTestBench.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
