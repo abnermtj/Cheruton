@@ -16,7 +16,8 @@ func _physics_process(delta):
 		var hit_id = colliders.collider
 		self.queue_free()
 		if(hit_id.has_method("handle_enemy_attack_collision")):
-			hit_id.handle_enemy_attack_collision()
+			var damage = -20
+			hit_id.handle_enemy_attack_collision(damage)
 
 
 func _on_SlimeRange_visibility_changed():
