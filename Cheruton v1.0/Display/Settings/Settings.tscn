@@ -9,32 +9,33 @@ __meta__ = {
 }
 
 [node name="List" type="VBoxContainer" parent="."]
-margin_left = 135.482
-margin_top = 10.7641
-margin_right = 175.482
-margin_bottom = 50.7641
-
-[node name="Settings" type="Label" parent="List"]
-margin_right = 51.0
-margin_bottom = 31.0
-text = "Settings
-"
+margin_right = 320.0
+margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVol" type="Label" parent="."]
-margin_left = 29.8537
-margin_top = 45.5013
-margin_right = 121.854
-margin_bottom = 76.5013
+[node name="Settings" type="Label" parent="List"]
+margin_right = 320.0
+margin_bottom = 31.0
+text = "Settings
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVol" type="Label" parent="List"]
+margin_top = 35.0
+margin_right = 320.0
+margin_bottom = 66.0
 text = "Main Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolBar" type="ProgressBar" parent="MainVol"]
+[node name="MainVolBar" type="ProgressBar" parent="List/MainVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -43,7 +44,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolUp" type="Button" parent="MainVol"]
+[node name="MainVolUp" type="Button" parent="List/MainVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -53,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolDown" type="Button" parent="MainVol"]
+[node name="MainVolDown" type="Button" parent="List/MainVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -63,18 +64,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVol" type="Label" parent="."]
-margin_left = 29.8537
-margin_top = 72.5013
-margin_right = 121.854
-margin_bottom = 103.501
+[node name="MusicVol" type="Label" parent="List"]
+margin_top = 70.0
+margin_right = 320.0
+margin_bottom = 101.0
 text = "Music Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolBar" type="ProgressBar" parent="MusicVol"]
+[node name="MusicVolBar" type="ProgressBar" parent="List/MusicVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -83,7 +83,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolUp" type="Button" parent="MusicVol"]
+[node name="MusicVolUp" type="Button" parent="List/MusicVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -93,7 +93,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolDown" type="Button" parent="MusicVol"]
+[node name="MusicVolDown" type="Button" parent="List/MusicVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -103,18 +103,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVol" type="Label" parent="."]
-margin_left = 29.8537
-margin_top = 99.5013
-margin_right = 121.854
-margin_bottom = 130.501
+[node name="SFXVol" type="Label" parent="List"]
+margin_top = 105.0
+margin_right = 320.0
+margin_bottom = 136.0
 text = "SFX Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolBar" type="ProgressBar" parent="SFXVol"]
+[node name="SFXVolBar" type="ProgressBar" parent="List/SFXVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -123,7 +122,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolUp" type="Button" parent="SFXVol"]
+[node name="SFXVolUp" type="Button" parent="List/SFXVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -133,7 +132,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolDown" type="Button" parent="SFXVol"]
+[node name="SFXVolDown" type="Button" parent="List/SFXVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -143,18 +142,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mute" type="Label" parent="."]
-margin_left = 24.8363
-margin_top = 125.363
-margin_right = 61.8363
-margin_bottom = 156.363
+[node name="Mute" type="Label" parent="List"]
+margin_top = 140.0
+margin_right = 320.0
+margin_bottom = 171.0
 text = "Mute:
 "
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MuteToggle" type="CheckButton" parent="Mute"]
+[node name="MuteToggle" type="CheckButton" parent="List/Mute"]
 margin_left = 37.4798
 margin_top = -8.61993
 margin_right = 113.48
@@ -165,19 +164,19 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="."]
-margin_left = 130.0
-margin_top = 155.0
-margin_right = 159.0
-margin_bottom = 175.0
+margin_left = 138.732
+margin_top = 155.727
+margin_right = 180.732
+margin_bottom = 175.727
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
-[connection signal="pressed" from="MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
-[connection signal="pressed" from="MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
-[connection signal="pressed" from="MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
-[connection signal="pressed" from="SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
-[connection signal="pressed" from="SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
-[connection signal="pressed" from="Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
+[connection signal="pressed" from="List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
+[connection signal="pressed" from="List/MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
+[connection signal="pressed" from="List/SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
+[connection signal="pressed" from="List/SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
+[connection signal="pressed" from="List/Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

@@ -9,7 +9,6 @@ func _ready():
 	DataResource.load_data()
 	init_music()
 	#init_cursor()
-	#Testing loot functionality
 	SceneControl.get_node("masterGui").enabled = false
 
 
