@@ -30,17 +30,28 @@
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.60522
+margin_top = 3.60504
+margin_right = 3.60522
+margin_bottom = 3.60498
 rect_scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="."]
-margin_left = 145.616
-margin_top = 72.8645
-margin_right = 183.616
-margin_bottom = 92.8645
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_left = 128.88
+margin_top = 65.7921
+margin_right = 198.88
+margin_bottom = 135.792
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Buttons"]
+margin_right = 70.0
+margin_bottom = 14.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -50,11 +61,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsBtn" type="Button" parent="."]
-margin_left = 132.463
-margin_top = 95.0734
-margin_right = 195.463
-margin_bottom = 115.073
+[node name="SettingsBtn" type="Button" parent="Buttons"]
+margin_top = 18.0
+margin_right = 70.0
+margin_bottom = 32.0
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
@@ -64,11 +74,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Button" parent="."]
-margin_left = 145.881
-margin_top = 116.767
-margin_right = 180.881
-margin_bottom = 136.767
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 36.0
+margin_right = 70.0
+margin_bottom = 50.0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
@@ -79,6 +88,7 @@ __meta__ = {
 }
 
 [node name="Settings" parent="." instance=ExtResource( 1 )]
-[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="SettingsBtn" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+visible = false
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Buttons/SettingsBtn" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=2]
 
 [node name="Settings" type="Control"]
 script = ExtResource( 1 )
@@ -8,14 +9,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="List" type="VBoxContainer" parent="."]
+[node name="ContainerMain" type="VBoxContainer" parent="."]
 margin_right = 320.0
-margin_bottom = 180.0
+margin_bottom = 195.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Label" parent="List"]
+[node name="Settings" type="Label" parent="ContainerMain"]
 margin_right = 320.0
 margin_bottom = 31.0
 text = "Settings
@@ -25,17 +26,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVol" type="Label" parent="List"]
+[node name="List" type="VBoxContainer" parent="ContainerMain"]
 margin_top = 35.0
 margin_right = 320.0
-margin_bottom = 66.0
+margin_bottom = 219.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVol" type="Label" parent="ContainerMain/List"]
+margin_right = 320.0
+margin_bottom = 31.0
 text = "Main Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolBar" type="ProgressBar" parent="List/MainVol"]
+[node name="MainVolBar" type="ProgressBar" parent="ContainerMain/List/MainVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -44,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolUp" type="Button" parent="List/MainVol"]
+[node name="MainVolUp" type="Button" parent="ContainerMain/List/MainVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -54,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolDown" type="Button" parent="List/MainVol"]
+[node name="MainVolDown" type="Button" parent="ContainerMain/List/MainVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -64,17 +72,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVol" type="Label" parent="List"]
-margin_top = 70.0
+[node name="MusicVol" type="Label" parent="ContainerMain/List"]
+margin_top = 35.0
 margin_right = 320.0
-margin_bottom = 101.0
+margin_bottom = 66.0
 text = "Music Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolBar" type="ProgressBar" parent="List/MusicVol"]
+[node name="MusicVolBar" type="ProgressBar" parent="ContainerMain/List/MusicVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -83,7 +91,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolUp" type="Button" parent="List/MusicVol"]
+[node name="MusicVolUp" type="Button" parent="ContainerMain/List/MusicVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -93,7 +101,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolDown" type="Button" parent="List/MusicVol"]
+[node name="MusicVolDown" type="Button" parent="ContainerMain/List/MusicVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -103,17 +111,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVol" type="Label" parent="List"]
-margin_top = 105.0
+[node name="SFXVol" type="Label" parent="ContainerMain/List"]
+margin_top = 70.0
 margin_right = 320.0
-margin_bottom = 136.0
+margin_bottom = 101.0
 text = "SFX Volume: 
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolBar" type="ProgressBar" parent="List/SFXVol"]
+[node name="SFXVolBar" type="ProgressBar" parent="ContainerMain/List/SFXVol"]
 margin_left = 112.418
 margin_top = -0.327515
 margin_right = 202.418
@@ -122,7 +130,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolUp" type="Button" parent="List/SFXVol"]
+[node name="SFXVolUp" type="Button" parent="ContainerMain/List/SFXVol"]
 margin_left = 221.237
 margin_top = -3.09061
 margin_right = 241.237
@@ -132,7 +140,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFXVolDown" type="Button" parent="List/SFXVol"]
+[node name="SFXVolDown" type="Button" parent="ContainerMain/List/SFXVol"]
 margin_left = 249.237
 margin_top = -3.09061
 margin_right = 269.237
@@ -142,10 +150,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mute" type="Label" parent="List"]
-margin_top = 140.0
+[node name="Mute" type="Label" parent="ContainerMain/List"]
+margin_top = 105.0
 margin_right = 320.0
-margin_bottom = 171.0
+margin_bottom = 136.0
 text = "Mute:
 "
 valign = 1
@@ -153,7 +161,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MuteToggle" type="CheckButton" parent="List/Mute"]
+[node name="MuteToggle" type="CheckButton" parent="ContainerMain/List/Mute"]
 margin_left = 37.4798
 margin_top = -8.61993
 margin_right = 113.48
@@ -163,20 +171,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="."]
-margin_left = 138.732
-margin_top = 155.727
-margin_right = 180.732
-margin_bottom = 175.727
+[node name="Back" type="Button" parent="ContainerMain/List"]
+margin_top = 140.0
+margin_right = 320.0
+margin_bottom = 160.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
-[connection signal="pressed" from="List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
-[connection signal="pressed" from="List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
-[connection signal="pressed" from="List/MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
-[connection signal="pressed" from="List/SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
-[connection signal="pressed" from="List/SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
-[connection signal="pressed" from="List/Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+
+[node name="TransferData" type="Button" parent="ContainerMain/List"]
+margin_top = 164.0
+margin_right = 320.0
+margin_bottom = 184.0
+text = "Transfer Data to another Device"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DataEncrypt" type="VBoxContainer" parent="ContainerMain"]
+visible = false
+margin_top = 35.0
+margin_right = 410.0
+margin_bottom = 158.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContainerMain/DataEncrypt"]
+margin_right = 410.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="ContainerMain/DataEncrypt/HBoxContainer"]
+margin_top = 8.0
+margin_right = 111.0
+margin_bottom = 22.0
+text = "Encryption Code: "
+valign = 2
+
+[node name="EncryptionBg" type="TextureRect" parent="ContainerMain/DataEncrypt/HBoxContainer"]
+margin_left = 115.0
+margin_right = 215.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="EncryptionText" type="Label" parent="ContainerMain/DataEncrypt/HBoxContainer/EncryptionBg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="ContainerMain/DataEncrypt"]
+margin_top = 34.0
+margin_right = 410.0
+margin_bottom = 99.0
+text = "When you load your save file onto another device, use this code
+when prompted.
+
+DO NOT Share this code with anyone else!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back2" type="Button" parent="ContainerMain/DataEncrypt"]
+margin_top = 103.0
+margin_right = 410.0
+margin_bottom = 123.0
+text = "Back"
+[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
+[connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
+[connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
+[connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
+[connection signal="pressed" from="ContainerMain/List/Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
+[connection signal="pressed" from="ContainerMain/List/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ContainerMain/List/TransferData" to="." method="_on_TransferData_pressed"]
+[connection signal="pressed" from="ContainerMain/DataEncrypt/Back2" to="." method="_on_Back2_pressed"]

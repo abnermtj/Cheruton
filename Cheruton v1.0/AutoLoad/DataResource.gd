@@ -46,7 +46,7 @@ func load_dict(FilePath):
 		save_data(FilePath, dict_main)
 		reset_all()
 	DataFile.open(FilePath, File.READ)
-	#DataFile.open_encrypted_with_pass(FilePath, File.READ, "mypass")
+	#DataFile.open_encrypted_with_pass(FilePath, File.READ, OS.get_unique_id())
 	var data = JSON.parse(DataFile.get_as_text())
 	DataFile.close()
 	print("Data Loaded!")

@@ -1,17 +1,29 @@
 extends baseGui
 
-onready var main_bar = $MainVol/MainVolBar
-onready var music_bar = $MusicVol/MusicVolBar
-onready var sfx_bar = $SFXVol/SFXVolBar
+onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
+onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar
+onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
+onready var list = $ContainerMain/List
+onready var encrypt = $ContainerMain/DataEncrypt
+
+onready var text_encrypt = $ContainerMain/DataEncrypt/HBoxContainer/EncryptionBg/EncryptionText
+
 
 func _ready():
+	init_bar_vals()
+	connect_functions()
+	text_encrypt.text = OS.get_unique_id()
+
+func init_bar_vals():
 	main_bar.value = (10 - ((10 - DataResource.dict_settings.audio_master)/8)) * 10
 	music_bar.value = (10 - ((10 - DataResource.dict_settings.audio_master)/8)) * 10
 	sfx_bar.value = (10 - ((10 - DataResource.dict_settings.audio_sfx)/8)) * 10
+
+func connect_functions():
 	var _conn1 = DataResource.connect("change_audio_master", self, "change_master_vol")
 	var _conn2 = DataResource.connect("change_audio_music", self, "change_music_vol")
 	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
-
+	
 func _on_MuteToggle_pressed():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), !(DataResource.dict_settings.is_mute))
 
@@ -54,3 +66,13 @@ func handle_input(event):
 		_on_Back_pressed()
 
 
+func _on_TransferData_pressed():
+	list.hide()
+	encrypt.show()
+
+
+
+
+func _on_Back2_pressed():
+	encrypt.hide()
+	list.show()
