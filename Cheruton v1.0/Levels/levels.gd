@@ -8,7 +8,9 @@ var camera
 
 func _ready() -> void:
 	DataResource.current_scene = self
-	#DataResource.load_data()
+	if(!DataResource.loaded):
+		DataResource.load_data(OS.get_unique_id())
+
 
 	SceneControl.get_node("masterGui").enabled = true
 
