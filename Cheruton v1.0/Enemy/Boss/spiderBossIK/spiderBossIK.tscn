@@ -68,7 +68,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="smallBodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 60 )
+position = Vector2( 0, 95 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
@@ -280,6 +280,7 @@ __meta__ = {
 }
 
 [node name="jumpHurtBox" type="Area2D" parent="."]
+position = Vector2( 0, 35 )
 collision_layer = 0
 collision_mask = 4
 

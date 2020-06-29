@@ -1,6 +1,6 @@
 extends Position2D
 
-const MIN_LENGTH = 260 # used so it doesn't dissapear 118 min for sss 330 for fabrik
+const MIN_LENGTH = 248 # used so it doesn't dissapear 118 min for sss 330 for fabrik
 const DEFAULT_STEP_RATE = 0.4 # actual time in seconds taken to complete a step
 const STEP_HEIGHT = 55
 
@@ -42,7 +42,6 @@ func step(target_pos):
 	hold = false
 
 	step_rate = DEFAULT_STEP_RATE + clamp(rand_range(0,1000)/1000 * .08 ,-.08,.08)
-	print(step_rate)
 	if target_pos == cur_target_pos: return
 
 	is_step_over = false

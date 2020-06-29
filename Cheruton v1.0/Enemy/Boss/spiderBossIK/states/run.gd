@@ -28,7 +28,7 @@ func update(delta):
 	owner.velocity = owner.move()
 	owner.move_body_sprites()
 	if owner.player_in_small_look_area:
-		emit_signal("finished","webShoot")
+		emit_signal("finished","stepBack")
 
 #func handle_input(event):
 #	if Input.is_action_just_pressed("hook"):

@@ -71,7 +71,7 @@ func update_idle(delta):
 
 			if owner.flip_legs:
 				for leg in owner.a_legs:
-					if leg != owner.front_right_leg and leg.is_step_over(): get_parent().get_node("run").player
+					if leg != owner.front_right_leg and leg.is_step_over(): get_parent().get_node("run").move_leg(leg)
 				leg_move_timer = owner.LEG_MOVE_COOLDOWN
 			else:
 				for leg in owner.b_legs:

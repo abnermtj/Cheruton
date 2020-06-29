@@ -13,13 +13,7 @@
 [ext_resource path="res://Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Props/spearBounce/spearBounce.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Props/movingTrap0/movingTrap0.tscn" type="PackedScene" id=13]
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
-glow_enabled = true
-glow_intensity = 1.22
-glow_blend_mode = 0
-glow_bicubic_upscale = true
+[ext_resource path="res://Levels/testBench2/worldt_env.res" type="Environment" id=14]
 
 [node name="testBench2" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,7 +32,6 @@ tile_data = PoolIntArray( 393215, 0, 131077, 458751, 0, 196613, 393283, 0, 13107
 position = Vector2( 1364.04, 876.375 )
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
-current = false
 
 [node name="grapplePoints" type="Node2D" parent="."]
 
@@ -58,7 +51,7 @@ position = Vector2( 3589.41, 541.738 )
 position = Vector2( 2084.53, 508.545 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = ExtResource( 14 )
 
 [node name="traps" type="Node2D" parent="."]
 

@@ -214,14 +214,14 @@ func change_mouse_bg(node):
 			node.get_node("Background/ItemBg").texture = index_equipped_bg
 			return
 	node.get_node("Background/ItemBg").texture = null
-	
+
 # When the icon of a item is pressed
 func _on_pressed(node):
 	if(mouse_count == 0):
 		$Timer.start()
 	mouse_count += 1
 	temp_mouse_node = node
-	
+
 	if (mouse_count == 2):
 		mouse_node = temp_mouse_node
 		print("Double Clicked!")
@@ -267,11 +267,11 @@ func revert_item_state():
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
-	
+
 	# Initially Fixed
 	elif(mouse_node != temp_mouse_node):
 		change_mouse_bg(mouse_node)
-		
+
 	else:
 		item_state = "HOVER"
 		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()

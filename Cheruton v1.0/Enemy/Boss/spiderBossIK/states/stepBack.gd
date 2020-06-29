@@ -46,7 +46,7 @@ func update(delta):
 
 		stages.JUMP:
 			if close_to_ground and (owner.ground_check.get_collision_point().y - owner.global_position.y) < 500:
-					owner.velocity.y = lerp(owner.velocity.y, 10, delta * 0.45) # gives the effect that legs are cushioning landing
+					owner.velocity.y = lerp(owner.velocity.y, 100, delta * 0.45) # gives the effect that legs are cushioning landing
 			else:
 				owner.velocity.y +=  GRAVITY * delta
 			owner.velocity.x = lerp(owner.velocity.x, 0, delta * 2)
@@ -71,14 +71,14 @@ func update(delta):
 			owner.butt_sprite.position.y = lerp(owner.butt_sprite.position.y,  owner.default_sprite_pos[3].y, delta)
 
 			owner.velocity.x = lerp(owner.velocity.x,0 ,delta * 2)
-			owner.velocity.y = lerp(owner.velocity.y, -500, delta * 2)
+			owner.velocity.y = lerp(owner.velocity.y, -600, delta * 2)
 			owner.move()
 
 			if not close_to_ground:
 				stage = stages.RECOVER
 
 		stages.RECOVER:
-			emit_signal("finished", "run")
+			emit_signal("finished", "webShoot")
 
 func move_leg(leg):
 	var desired_pos = leg.get_collision_point()
