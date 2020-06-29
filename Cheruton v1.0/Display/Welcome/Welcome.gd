@@ -10,7 +10,7 @@ var count := 0
 
 func _ready():
 	SceneControl.get_node("masterGui").enabled = false
-	var error = DataResource.load_data()
+	var error = DataResource.load_data(OS.get_unique_id())
 	if(error):
 		timer.stop()
 		encryption.show()

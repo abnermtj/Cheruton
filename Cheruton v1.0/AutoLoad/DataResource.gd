@@ -26,9 +26,10 @@ signal change_audio_master
 signal change_audio_music
 signal change_audio_sfx
 
-func load_data():
+func load_data(password:= ""):
 	#Editable
-	dict_main = load_dict(MAIN)
+
+	dict_main = load_dict(MAIN, password)
 	dict_masterlist = load_dict(MASTERLIST)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
@@ -40,16 +41,19 @@ func load_data():
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
 
-func load_dict(FilePath):
+func load_dict(FilePath, password:= ""):
 	var DataFile = File.new()
 	if(FilePath == MAIN && !DataFile.file_exists(FilePath)): # create new save
 		save_data(FilePath, dict_main)
 		reset_all()
-	DataFile.open(FilePath, File.READ)
-	#DataFile.open_encrypted_with_pass(FilePath, File.READ, OS.get_unique_id())
+	if(password != ""):
+		var _err_encrypt_load = DataFile.open_encrypted_with_pass(FilePath, File.READ, password)
+
+	else:
+		var _err_load = DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())
 	DataFile.close()
-	print("Data Loaded!")
+	#print("Data Loaded!")
 	return data.result
 
 func save_player():
@@ -62,8 +66,8 @@ func save_rest():
 
 func save_data(FILE, dictionary):
 	var file = File.new()
-	file.open(FILE, File.WRITE)
-	#file.open_encrypted_with_pass(FILE, File.WRITE, OS.get_unique_id())
+	#file.open(FILE, File.WRITE)
+	var _err_save = file.open_encrypted_with_pass(FILE, File.WRITE, OS.get_unique_id())
 	file.store_string(to_json(dictionary))
 	file.close()
 
