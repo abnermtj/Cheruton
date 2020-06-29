@@ -12,6 +12,7 @@ func _on_Settings_pressed():
 
 func _on_RMMenu_pressed():
 	SceneControl.load_screen(MAINMENU)
+	emit_signal("release_gui", "pause")
 
 func _on_ExitPause_pressed():
 	DataResource.save_player()

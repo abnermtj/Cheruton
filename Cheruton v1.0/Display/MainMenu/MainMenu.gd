@@ -36,7 +36,6 @@ func _on_Exit_pressed():
 	get_tree().quit()
 
 
-
 func _on_Play2_pressed():
 	scene_control.emit_signal("init_statbar")
 	SceneControl.load_screen(SCN2, true, true)
