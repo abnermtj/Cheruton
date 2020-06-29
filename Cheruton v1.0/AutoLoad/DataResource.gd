@@ -26,10 +26,12 @@ signal change_audio_master
 signal change_audio_music
 signal change_audio_sfx
 
-func load_data(password:= ""):
+func load_data(pass_choice:= ""):
 	#Editable
-
-	dict_main = load_dict(MAIN, password)
+	print("pass", pass_choice)
+	dict_main = load_dict(MAIN, pass_choice)
+	if(!dict_main):
+		return
 	dict_masterlist = load_dict(MASTERLIST)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
@@ -48,7 +50,8 @@ func load_dict(FilePath, password:= ""):
 		reset_all()
 	if(password != ""):
 		var _err_encrypt_load = DataFile.open_encrypted_with_pass(FilePath, File.READ, password)
-
+		if(_err_encrypt_load != 0):
+			return
 	else:
 		var _err_load = DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())
@@ -68,6 +71,7 @@ func save_data(FILE, dictionary):
 	var file = File.new()
 	#file.open(FILE, File.WRITE)
 	var _err_save = file.open_encrypted_with_pass(FILE, File.WRITE, OS.get_unique_id())
+	print("err_laod"_err_save)
 	file.store_string(to_json(dictionary))
 	file.close()
 

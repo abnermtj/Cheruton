@@ -30,8 +30,8 @@ func _ready():
 # Loads the next scene 
 func load_screen(scene, game_scene:= false, loading_screen:= false):
 
-	if (!game_scene):
-		curr_screen = scene
+
+	curr_screen = scene
 
 	if(bg_music):
 		bg_music.stop()
@@ -68,7 +68,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		load_layer.hide()
 	
 	#bg_music.set_stream(levels.find_node("background_music", true, false)
-	
+	print("Loaded")
 	#$fade_layer/fadeanim.play( "fade_in")
 	get_tree().paused = false
 

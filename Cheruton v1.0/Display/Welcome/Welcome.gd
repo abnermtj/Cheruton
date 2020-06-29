@@ -9,15 +9,14 @@ onready var beam = preload("res://Display/MouseDesign/beam.png")
 var count := 0
 
 func _ready():
-	SceneControl.get_node("masterGui").enabled = false
 	var error = DataResource.load_data(OS.get_unique_id())
-	if(error):
+	if(!error):
 		timer.stop()
 		encryption.show()
 		return
 	init_music()
 	#init_cursor()
-	
+
 
 
 func _on_Timer_timeout():
@@ -37,13 +36,13 @@ func init_cursor():
 
 
 func _on_LineEdit_text_entered(new_text):
-#	while (count < 3):
-#		var error_code = load_data(new_text)
-#		if(!error_code):
-#			on_Timer_timeout():
-#			return
-#		count += 1
-#	if (count == 3):
-#		get_tree().quit()
+	while (count < 3):
+		var error_code = DataResource.load_data(new_text)
+		if(!error_code):
+			_on_Timer_timeout()
+			return
+		count += 1
+	if (count == 3):
+		get_tree().quit()
 	
 	pass

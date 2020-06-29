@@ -2,7 +2,8 @@ extends baseGui
 
 func _ready():
 	if not DataResource.dict_settings:
-		DataResource.load_data() # for debugging, allows the scene to run by itself
+		pass
+		#DataResource.load_data(OS.get_unique_id()) # for debugging, allows the scene to run by itself
 
 func handle_input(event):
 	if is_active_gui:
