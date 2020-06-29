@@ -3,6 +3,7 @@ extends Node
 const MAIN = "res://SaveData/player-data.json"
 const MASTERLIST = "res://SaveData/item-masterlist.json"
 
+onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
 var current_scene = null
 
 # Main Dict
@@ -18,6 +19,7 @@ var dict_item_spawn = {}
 var dict_item_shop = {}
 # Stores any unsaved data regarding player stats
 var temp_dict_player = {}
+var loaded:= false
 
 signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
@@ -42,6 +44,8 @@ func load_data(pass_choice:= ""):
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
+
+	loaded = true
 
 func load_dict(FilePath, password:= ""):
 	var DataFile = File.new()
