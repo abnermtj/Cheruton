@@ -7,8 +7,8 @@ onready var player = get_parent().get_node("player")
 var velocity = Vector2()
 
 func _ready():
-	$Sound.play()
-
+#	$Sound.play()
+	pass
 func _physics_process(delta):
 
 	var colliders = move_and_collide(velocity)
