@@ -51,6 +51,7 @@ func load_dict(FilePath, password:= ""):
 	if(password != ""):
 		var _err_encrypt_load = DataFile.open_encrypted_with_pass(FilePath, File.READ, password)
 		if(_err_encrypt_load != 0):
+			print("HOORAH")
 			return
 	else:
 		var _err_load = DataFile.open(FilePath, File.READ)
@@ -71,7 +72,7 @@ func save_data(FILE, dictionary):
 	var file = File.new()
 	#file.open(FILE, File.WRITE)
 	var _err_save = file.open_encrypted_with_pass(FILE, File.WRITE, OS.get_unique_id())
-	print("err_laod"_err_save)
+
 	file.store_string(to_json(dictionary))
 	file.close()
 
