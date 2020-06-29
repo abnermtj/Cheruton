@@ -50,21 +50,47 @@ __meta__ = {
 }
 
 [node name="Play" type="Button" parent="Buttons"]
-margin_right = 70.0
+margin_right = 105.0
 margin_bottom = 14.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Play"
+text = "Play - Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play2" type="Button" parent="Buttons"]
+margin_top = 18.0
+margin_right = 105.0
+margin_bottom = 32.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Play -Hometown"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play3" type="Button" parent="Buttons"]
+margin_top = 36.0
+margin_right = 105.0
+margin_bottom = 50.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Play - Boss"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SettingsBtn" type="Button" parent="Buttons"]
-margin_top = 18.0
-margin_right = 70.0
-margin_bottom = 32.0
+margin_top = 54.0
+margin_right = 105.0
+margin_bottom = 68.0
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
@@ -75,9 +101,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="Buttons"]
-margin_top = 36.0
-margin_right = 70.0
-margin_bottom = 50.0
+margin_top = 72.0
+margin_right = 105.0
+margin_bottom = 86.0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
@@ -90,5 +116,7 @@ __meta__ = {
 [node name="Settings" parent="." instance=ExtResource( 1 )]
 visible = false
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Buttons/Play2" to="." method="_on_Play2_pressed"]
+[connection signal="pressed" from="Buttons/Play3" to="." method="_on_Play3_pressed"]
 [connection signal="pressed" from="Buttons/SettingsBtn" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]

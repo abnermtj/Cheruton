@@ -50,9 +50,9 @@ func load_dict(FilePath, password:= ""):
 		reset_all()
 	if(password != ""):
 		var _err_encrypt_load = DataFile.open_encrypted_with_pass(FilePath, File.READ, password)
-		if(_err_encrypt_load != 0):
-			print("HOORAH")
-			return
+#		if(_err_encrypt_load != 0):
+#			print("HOORAH")
+#			return
 	else:
 		var _err_load = DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())

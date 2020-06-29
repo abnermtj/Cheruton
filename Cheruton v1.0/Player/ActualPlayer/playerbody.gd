@@ -316,6 +316,6 @@ func shake_camera(dur, freq, amp, dir):
 
 
 func handle_enemy_attack_collision(damage):
-	#DataResource.change_health(damage)
+	DataResource.change_health(damage)
 	print("Player hit!")
 

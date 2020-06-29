@@ -1,6 +1,8 @@
 extends Control
 
 const SCN1 = "res://Levels/testBench/playerTestBench.tscn"
+const SCN2 = "res://Levels/Hometown/Hometown.tscn"
+const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
@@ -33,3 +35,13 @@ func _exit_Settings(gui_name):
 func _on_Exit_pressed():
 	get_tree().quit()
 
+
+
+func _on_Play2_pressed():
+	scene_control.emit_signal("init_statbar")
+	SceneControl.load_screen(SCN2, true, true)
+
+
+func _on_Play3_pressed():
+	scene_control.emit_signal("init_statbar")
+	SceneControl.load_screen(SCN3, true, true)
