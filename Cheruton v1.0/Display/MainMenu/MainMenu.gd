@@ -21,7 +21,7 @@ func _ready():
 func _on_Play_pressed():
 	scene_control.emit_signal("init_statbar")
 	SceneControl.load_screen(SCN1, true, true)
-	
+
 func _on_Settings_pressed():
 	button_list.hide()
 	settings.show()

@@ -44,5 +44,5 @@ func _on_LineEdit_text_entered(new_text):
 		count += 1
 	if (count == 3):
 		get_tree().quit()
-	
+
 	pass
