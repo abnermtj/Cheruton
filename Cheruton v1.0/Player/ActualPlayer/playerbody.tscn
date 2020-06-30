@@ -1202,7 +1202,7 @@ radius = 28.0
 height = 30.0
 
 [sub_resource type="CircleShape2D" id=47]
-radius = 28.0
+radius = 23.0
 
 [sub_resource type="CapsuleShape2D" id=48]
 radius = 20.0
@@ -1310,8 +1310,7 @@ position = Vector2( 0, 9 )
 shape = SubResource( 45 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -5, 26.5 )
+position = Vector2( 0, 26.5 )
 shape = SubResource( 46 )
 disabled = true
 
@@ -1417,14 +1416,12 @@ one_shot = true
 [node name="invunerableTimer" type="Timer" parent="timers"]
 
 [node name="slideArea2D" type="Area2D" parent="."]
-visible = false
-position = Vector2( -2, 0 )
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
-position = Vector2( -3, -18 )
+position = Vector2( 0, -18 )
 shape = SubResource( 47 )
 
 [node name="hitBox" type="Area2D" parent="."]
@@ -1434,30 +1431,27 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
-position = Vector2( -5, 10 )
+position = Vector2( 0, 10 )
 shape = SubResource( 48 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
-position = Vector2( -5, 61.5 )
+position = Vector2( 0, 61.5 )
 shape = SubResource( 49 )
 
 [node name="circleScan" type="Area2D" parent="."]
 visible = false
-position = Vector2( -5, 0 )
 collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
-position = Vector2( -21.0291, 42.5588 )
+position = Vector2( 0, 42.559 )
 shape = SubResource( 50 )
 
 [node name="cicleScanSmall" type="Area2D" parent="."]
 visible = false
-position = Vector2( -5, 0 )
 collision_layer = 0
 collision_mask = 32
 

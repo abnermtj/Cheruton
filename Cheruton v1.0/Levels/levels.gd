@@ -17,6 +17,7 @@ func _ready() -> void:
 	call_deferred( "_set_camera" )
 	call_deferred( "_set_player" )
 	call_deferred("_set_player_objects")
+	call_deferred("_set_level")
 	set_music()
 
 func _set_player() -> void:
@@ -58,9 +59,20 @@ func _set_player_objects() -> void:
 		flying_sword.connect("sword_result", player, "on_sword_result")
 		player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
 
+func _set_level():
+	var death_zone = find_node("DeathZone")
+
+	if not death_zone:
+		print("death_zone not found")
+	else:
+		death_zone.connect("body_entered", self, "handle_death_zone")
+
 # loads prev checkpoint
 func _on_player_dead() -> void:
 	pass
 
 func set_music():
+	pass
+
+func handle_death_zone(body):
 	pass

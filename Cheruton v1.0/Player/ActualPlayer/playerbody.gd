@@ -18,7 +18,7 @@ extends KinematicBody2D
 # -anmation player connects to states -> ON ANIMATION CHANGED
 
 const GRAVITY = 2400
-const AIR_ACCEL = 23.5  # increase in this >> increase in stearing power in air
+const AIR_ACCEL = 34  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 
@@ -186,9 +186,10 @@ func get_nearest_hook_point():
 		if facing_dir_x == sign(hook_point.global_position.x - global_position.x) and min_dist_facing > cur_dist:
 			min_dist_facing = cur_dist
 			closest_hook_point_facing_dir = hook_point
-		elif facing_dir_x != sign(hook_point.global_position.x - global_position.x) and min_dist_opp > cur_dist:
-			min_dist_opp = cur_dist
-			closest_hook_point_opp_dir = hook_point
+		# opp direction
+#		elif facing_dir_x != sign(hook_point.global_position.x - global_position.x) and min_dist_opp > cur_dist:
+#			min_dist_opp = cur_dist
+#			closest_hook_point_opp_dir = hook_point
 	if closest_hook_point_facing_dir:
 		return closest_hook_point_facing_dir
 	elif closest_hook_point_opp_dir:

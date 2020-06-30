@@ -4,12 +4,13 @@ class_name motionState
 func handle_input(event):
 	if event.is_action_pressed("attack")\
 	 and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
-	 and owner.can_attack:
+	 and owner.can_attack\
+	 and owner.can_throw_sword:
 		owner.can_attack = false
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
 	if event.is_action_pressed("sword_throw"):
-		if owner.can_throw_sword:
+		if owner.can_throw_sword and not ["attack", "wallSlide"].has(owner.cur_state.name) : # so that cannot throw while has sword
 			owner.throw_sword_dir = get_input_direction().normalized()
 			if not owner.throw_sword_dir: owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()

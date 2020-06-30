@@ -1,7 +1,7 @@
 extends airState
 
 const COYOTE_TIME = 0.085 # time window after leaving edge where you are allowed to jump
-const TERM_VEL = 3000
+const TERM_VEL = 1200
 const MIN_ENTER_VELOCITY_X = 420
 
 var coyote_timer : float # here incase playeer walks off an edge
@@ -28,7 +28,6 @@ func handle_input(event):
 				emit_signal("finished", "jump")
 
 	.handle_input(event)
-
 
 func enter():
 	enter_velocity = owner.velocity
@@ -64,7 +63,6 @@ func update(delta):
 	else:
 		owner.velocity.x = lerp(owner.velocity.x, 0, delta)
 
-	owner.move()
 	# wall crash
 	if owner.is_on_wall():
 		owner.velocity.x = 0
@@ -90,5 +88,6 @@ func update(delta):
 			owner.play_sound("land")
 			emit_signal("finished", "run")
 
+	owner.move()
 	updated_once = true
 	.update(delta)

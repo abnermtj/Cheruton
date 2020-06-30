@@ -44,7 +44,8 @@ func enter() -> void:
 		grav_multiplier = 1
 
 	if owner.prev_state.name == "wallSlide": # wall jump
-		owner.velocity.x = -JUMP_VEL*get_input_direction().x *.4
+		print(owner.look_direction.x )
+		owner.velocity.x = -JUMP_VEL* owner.look_direction.x * .4
 
 	keypress_timer = 0.2
 
@@ -61,9 +62,11 @@ func update( delta ):
 	input_dir = get_input_direction()
 	update_look_direction(input_dir)
 	if input_dir.x: # tend to input dir if steering
-		owner.velocity.x = clamp ((owner.velocity.x + input_dir.x*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))
+		owner.velocity.x += input_dir.x*owner.AIR_ACCEL
 	else: # tend .x to 0 if not steering
-		owner.velocity.x = lerp( owner.velocity.x, 0, owner.AIR_ACCEL * delta )
+		owner.velocity.x = lerp( owner.velocity.x, 0,  delta * owner.AIR_ACCEL * .049)
+
+	owner.velocity.x = clamp(owner.velocity.x, -abs(enter_velocity.x), abs(enter_velocity.x))
 
 	# corner correction
 	var corner_dir = owner.is_there_corner_above()
