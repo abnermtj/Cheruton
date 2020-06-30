@@ -10,7 +10,8 @@ var count := 0
 
 func _ready():
 	var error = DataResource.load_data(OS.get_unique_id())
-#	if(!error):
+	print(1001,error)
+#	if(error == -1):
 #		timer.stop()
 #		encryption.show()
 #		return

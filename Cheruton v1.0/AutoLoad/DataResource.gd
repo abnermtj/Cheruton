@@ -30,10 +30,10 @@ signal change_audio_sfx
 
 func load_data(pass_choice:= ""):
 	#Editable
-	print("pass", pass_choice)
+	loaded = true
 	dict_main = load_dict(MAIN, pass_choice)
 	if(!dict_main):
-		return
+		return -1
 	dict_masterlist = load_dict(MASTERLIST)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
@@ -45,8 +45,6 @@ func load_data(pass_choice:= ""):
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
 
-	loaded = true
-
 func load_dict(FilePath, password:= ""):
 	var DataFile = File.new()
 	if(FilePath == MAIN && !DataFile.file_exists(FilePath)): # create new save
@@ -54,9 +52,9 @@ func load_dict(FilePath, password:= ""):
 		reset_all()
 	if(password != ""):
 		var _err_encrypt_load = DataFile.open_encrypted_with_pass(FilePath, File.READ, password)
-#		if(_err_encrypt_load != 0):
-#			print("HOORAH")
-#			return
+		if(_err_encrypt_load != 0):
+			print("HOORAH")
+			return
 	else:
 		var _err_load = DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())
