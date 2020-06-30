@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
