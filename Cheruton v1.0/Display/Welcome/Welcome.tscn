@@ -25,15 +25,15 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Encryption" type="TextureRect" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -196.052
-margin_top = -105.709
-margin_right = 83.9485
-margin_bottom = 34.2908
+margin_left = -585.246
+margin_top = -179.374
+margin_right = -305.246
+margin_bottom = -39.3735
+rect_scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,7 +80,8 @@ margin_top = 90.0
 margin_right = 280.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 50, 50 )
-hint_tooltip = "From your old device, access the settings from the main menu, and click Transfer to Another Device. The code required to unlock the save file is displayed there"
+hint_tooltip = "From your old device, access the settings from the main menu, and click Transfer to Another Device. 
+The code required to unlock the save file is displayed there"
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {

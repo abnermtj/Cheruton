@@ -17,7 +17,7 @@ __meta__ = {
 }
 
 [node name="Settings" type="Label" parent="ContainerMain"]
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 31.0
 text = "Settings
 "
@@ -28,14 +28,14 @@ __meta__ = {
 
 [node name="List" type="VBoxContainer" parent="ContainerMain"]
 margin_top = 35.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 219.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainVol" type="Label" parent="ContainerMain/List"]
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 31.0
 text = "Main Volume: 
 "
@@ -74,7 +74,7 @@ __meta__ = {
 
 [node name="MusicVol" type="Label" parent="ContainerMain/List"]
 margin_top = 35.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 66.0
 text = "Music Volume: 
 "
@@ -113,7 +113,7 @@ __meta__ = {
 
 [node name="SFXVol" type="Label" parent="ContainerMain/List"]
 margin_top = 70.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 101.0
 text = "SFX Volume: 
 "
@@ -152,7 +152,7 @@ __meta__ = {
 
 [node name="Mute" type="Label" parent="ContainerMain/List"]
 margin_top = 105.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 136.0
 text = "Mute:
 "
@@ -173,7 +173,7 @@ __meta__ = {
 
 [node name="Back" type="Button" parent="ContainerMain/List"]
 margin_top = 140.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 160.0
 text = "Back"
 __meta__ = {
@@ -182,7 +182,7 @@ __meta__ = {
 
 [node name="TransferData" type="Button" parent="ContainerMain/List"]
 margin_top = 164.0
-margin_right = 320.0
+margin_right = 410.0
 margin_bottom = 184.0
 text = "Transfer Data to another Device"
 __meta__ = {
@@ -190,10 +190,9 @@ __meta__ = {
 }
 
 [node name="DataEncrypt" type="VBoxContainer" parent="ContainerMain"]
-visible = false
-margin_top = 35.0
+margin_top = 223.0
 margin_right = 410.0
-margin_bottom = 158.0
+margin_bottom = 346.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContainerMain/DataEncrypt"]
 margin_right = 410.0
@@ -208,9 +207,9 @@ valign = 2
 
 [node name="EncryptionBg" type="TextureRect" parent="ContainerMain/DataEncrypt/HBoxContainer"]
 margin_left = 115.0
-margin_right = 215.0
+margin_right = 375.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 100, 30 )
+rect_min_size = Vector2( 260, 30 )
 texture = ExtResource( 2 )
 expand = true
 
