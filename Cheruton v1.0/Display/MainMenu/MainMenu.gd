@@ -31,6 +31,7 @@ func _exit_Settings(gui_name):
 	button_list.show()
 
 func _on_Exit_pressed():
+	DataResource.save_rest()
 	get_tree().quit()
 
 

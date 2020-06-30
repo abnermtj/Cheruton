@@ -11,10 +11,10 @@ var count := 0
 func _ready():
 	var error = DataResource.load_data(OS.get_unique_id())
 	print(1001,error)
-#	if(error == -1):
-#		timer.stop()
-#		encryption.show()
-#		return
+	if(error):
+		timer.stop()
+		encryption.show()
+		return
 	init_music()
 	#init_cursor()
 

@@ -33,7 +33,7 @@ func load_data(pass_choice:= ""):
 	loaded = true
 	dict_main = load_dict(MAIN, pass_choice)
 	if(!dict_main):
-		return -1
+		return true
 	dict_masterlist = load_dict(MASTERLIST)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
@@ -44,6 +44,11 @@ func load_data(pass_choice:= ""):
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
+	
+	var instanced_gui = master_gui.instance()
+	SceneControl.add_child(instanced_gui)
+	SceneControl.get_node("masterGui").enabled = false
+	return false
 
 func load_dict(FilePath, password:= ""):
 	var DataFile = File.new()
