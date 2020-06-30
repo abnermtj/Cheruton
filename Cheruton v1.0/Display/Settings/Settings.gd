@@ -6,13 +6,12 @@ onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
 onready var list = $ContainerMain/List
 onready var encrypt = $ContainerMain/DataEncrypt
 
-onready var text_encrypt = $ContainerMain/DataEncrypt/HBoxContainer/EncryptionBg/EncryptionText
+
 
 
 func _ready():
 	init_bar_vals()
 	connect_functions()
-	text_encrypt.text = OS.get_unique_id()
 
 func init_bar_vals():
 	main_bar.value = (10 - ((10 - DataResource.dict_settings.audio_master)/8)) * 10
@@ -66,13 +65,4 @@ func handle_input(event):
 		_on_Back_pressed()
 
 
-func _on_TransferData_pressed():
-	list.hide()
-	encrypt.show()
 
-
-
-
-func _on_Back2_pressed():
-	encrypt.hide()
-	list.show()
