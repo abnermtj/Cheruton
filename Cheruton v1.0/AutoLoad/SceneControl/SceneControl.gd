@@ -66,7 +66,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if(loading_screen):
 		load_layer.hide()
 
-	var new_music = levels.get_child(0).bg_music_file
+	var new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 	print("new_music", new_music)
 	change_music(new_music)
 
