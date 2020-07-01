@@ -9,6 +9,7 @@ onready var beam = preload("res://Display/MouseDesign/beam.png")
 var count := 0
 
 func _ready():
+	SceneControl.initiate_music()
 	var error = DataResource.load_data()
 	init_music()
 	#init_cursor()

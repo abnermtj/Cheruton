@@ -2,6 +2,7 @@ extends Node2D
 
 const WELCOME = "res://Display/Welcome/Welcome.tscn"
 
+
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var bg_music = $BgMusic
@@ -13,6 +14,12 @@ onready var load_layer = $LoadLayer/Load
 var curr_screen
 var loot_dict = {} # Items pending transfer to inventory
 var enable_save := false
+
+var music_curr
+var music_next
+var fade_in := 0.5
+var fade_out := 0.5
+var music_state := "idle"
 
 signal init_statbar
 
@@ -51,13 +58,18 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
 	
+
+	
 	if(game_scene):
 		hud_elements.show()
 		
 	if(loading_screen):
 		load_layer.hide()
-	
-	#bg_music.set_stream(levels.find_node("background_music", true, false))
+
+	var new_music = levels.get_child(0).bg_music_file
+	print("new_music", new_music)
+	change_music(new_music)
+
 	print("Loaded")
 
 	get_tree().paused = false
@@ -66,14 +78,10 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 # MUSIC FSM #
 #############
 
-var music_curr := null
-var music_next := null
-var fade_in := 0.5
-var fade_out := 0.5
-var music_state := "idle"
 
-func init_music():
+func initiate_music():
 	music_state = "init"
+	music_next = null
 	music_fsm()
 
 func change_music(new_music):
@@ -89,6 +97,7 @@ func change_music(new_music):
 #	Active: Plays the current music stream
 
 func music_fsm():
+	print(music_state)
 	match music_state:
 		"idle":
 			pass
@@ -99,7 +108,9 @@ func music_fsm():
 			else:
 				music_state = "idle"
 
-			if(fade_out > 0):
+			if(fade_out > 0 && music_curr):
+				bg_music.volume_db = -60.0
+				call_deferred("music_fsm")#debug
 				pass
 				#bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
 			else:
@@ -107,21 +118,32 @@ func music_fsm():
 				call_deferred("music_fsm")
 
 		"init":
-			music_state = "active"
+			print("init",music_next)
+			if(music_next):
+				music_state = "active"
+			else:
+				music_state = "idle"
+			
 			music_curr = music_next
 			bg_music.stream = music_curr
 			
 			if(fade_in > 0):
+				bg_music.volume_db = .0
+				call_deferred("music_fsm")#debug
 				pass
 				#bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
 			else:
-				bg_music.volume_db = 0.0
+				bg_music.volume_db = 12.0
 				call_deferred("music_fsm")
 
 		"active":
+			print("active",bg_music.stream)
 			bg_music.play()
 
-func _on_VolPitch_animation_finished(_anim_name):
+	print("music_fsm")
+	
+		
+func _on_VolPitch_animation_finished(anim_name):
 	music_fsm()
 
 #func slow_music( n : int ):

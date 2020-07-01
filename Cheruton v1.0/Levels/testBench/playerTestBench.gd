@@ -1,5 +1,6 @@
 extends Level
 
+#onready var bg_music_file = preload("res://MusicDebug/Goblin-Loop.ogg")
 onready var save_position = $player.position
 
 func _input(event):
