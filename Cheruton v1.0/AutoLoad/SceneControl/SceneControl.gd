@@ -5,6 +5,7 @@ const WELCOME = "res://Display/Welcome/Welcome.tscn"
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var bg_music = $BgMusic
+onready var bg_music_pitch = $BgMusic/VolPitch
 
 onready var load_layer = $LoadLayer/Load
 
@@ -67,65 +68,62 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 
 var music_curr := null
 var music_next := null
+var fade_in := 0.5
+var fade_out := 0.5
+var music_state := "idle"
 
-func set_music( no : int, _fade_out : float = 0.5, _fade_in : float = 0.5, _match_position : bool = false ):
-	if no == music_curr: return
-#	self.music_next = no
-#	self.fade_in = _fade_in
-#	self.fade_out = _fade_out
-#	self.match_position = _match_position
-#	$music/vol_pitch_control.stop()
-#	music_state = 0
-#	music_fsm()
+func init_music():
+	music_state = "init"
+	music_fsm()
 
-#var music_state := -1
-#var match_position := false
-# Preload music cause we have tons of memory...?
-#var music = [ \
-#	preload( "res://music/menu.ogg" ), \
-#	preload( "res://music/main.ogg" ), \
-#	preload( "res://music/mountain.ogg" ), \
-#	preload( "res://music/main_without_tune.ogg" ) ]
-#var music_cur = -1
-#var music_nxt = -1
-#var fade_in := 0.0
-#var fade_out := 0.0
+func change_music(new_music):
+	music_state = "clear"
+	music_next = new_music
+	music_fsm()
 
+# A FSM to manage the music being played
 
+#	Idle: No music being played
+#	Clear: Clears the current music being played
+#	Init: Initalizes the next music stream
+#	Active: Plays the current music stream
 
-#func music_fsm():
-#	match music_state:
-#		0:
-#			# fade out
-#			music_state = 1
-#			if fade_out > 0:
-#				$music/vol_pitch_control.play( "fade_out", -1, 1.0 / fade_out )
-#			else:
-#				$music.volume_db = -60.0
-#				call_deferred( "music_fsm" )
-#		1:
-#			# record position
-#			var start_position = 0.0
-#			if match_position:
-#				start_position = $music.get_playback_position()
-#			# load new music
-#			music_state = 2
-#			music_cur = music_nxt
-#			$music.stream = music[music_cur]
-#			$music.play( start_position )
-#			# fade in
-#			if fade_in > 0:
-#				$music/vol_pitch_control.play( "fade_in", -1, 1.0 / fade_in )
-#			else:
-#				$music.volume_db = 0.0
-#				call_deferred( "music_fsm" )
-#		2:
-#			# not much to do
-#			music_state = -1
-#
-#func _on_vol_pitch_control_animation_finished( _anim_name ):
-#	music_fsm()
-#
+func music_fsm():
+	match music_state:
+		"idle":
+			pass
+
+		"clear":
+			if(music_next):
+				music_state = "init"
+			else:
+				music_state = "idle"
+
+			if(fade_out > 0):
+				pass
+				#bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
+			else:
+				bg_music.volume_db = -60.0
+				call_deferred("music_fsm")
+
+		"init":
+			music_state = "active"
+			music_curr = music_next
+			bg_music.stream = music_curr
+			
+			if(fade_in > 0):
+				pass
+				#bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
+			else:
+				bg_music.volume_db = 0.0
+				call_deferred( "music_fsm" )
+
+		"active":
+			bg_music.play()
+
+func _on_VolPitch_animation_finished(anim_name):
+	music_fsm()
+
 #func slow_music( n : int ):
 #	match n:
 #		0:
@@ -235,3 +233,4 @@ func _input(_ev):
 	if Input.is_action_just_pressed("save_player"):
 		if(enable_save):
 			DataResource.save_player()
+

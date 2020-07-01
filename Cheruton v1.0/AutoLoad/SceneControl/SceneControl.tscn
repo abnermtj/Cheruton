@@ -48,4 +48,7 @@ script = ExtResource( 5 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
+
+[node name="VolPitch" type="AnimationPlayer" parent="BgMusic"]
 [connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]
+[connection signal="animation_finished" from="BgMusic/VolPitch" to="." method="_on_VolPitch_animation_finished"]
