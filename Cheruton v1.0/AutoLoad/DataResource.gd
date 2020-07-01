@@ -1,7 +1,7 @@
 extends Node
 
-const MAIN = "res://SaveData/player-data.json"
-const MASTERLIST = "res://SaveData/item-masterlist.json"
+const MAIN = "user://player-data.json"
+const MASTERLIST = "res://Data/item-masterlist.json"
 
 onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
 var current_scene = null

@@ -81,7 +81,7 @@ func change_music(new_music):
 	music_next = new_music
 	music_fsm()
 
-# A FSM to manage the music being played
+# Manages the background music being played
 
 #	Idle: No music being played
 #	Clear: Clears the current music being played
@@ -116,12 +116,12 @@ func music_fsm():
 				#bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
 			else:
 				bg_music.volume_db = 0.0
-				call_deferred( "music_fsm" )
+				call_deferred("music_fsm")
 
 		"active":
 			bg_music.play()
 
-func _on_VolPitch_animation_finished(anim_name):
+func _on_VolPitch_animation_finished(_anim_name):
 	music_fsm()
 
 #func slow_music( n : int ):
