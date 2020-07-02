@@ -103,9 +103,9 @@ func reset_player():
 	save_player()
 
 func reset_settings():
-	dict_settings.audio_master = -10
-	dict_settings.audio_music = -10
-	dict_settings.audio_sfx = -10
+	dict_settings.audio_master = -6
+	dict_settings.audio_music = -6
+	dict_settings.audio_sfx = -6
 	dict_settings.is_mute = false
 	save_rest()
 
@@ -138,13 +138,20 @@ func change_coins(coins_change):
 	temp_dict_player.coins += coins_change
 
 func change_audio_master(var audio_change):
-	dict_settings.audio_master = clamp(dict_settings.audio_master + audio_change, -60, 12)
+	dict_settings.audio_master = clamp(dict_settings.audio_master + audio_change, -60, 0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio_master)
 	emit_signal("change_audio_master")
 
 func change_audio_music(var audio_change):
-	dict_settings.audio_music = clamp(dict_settings.audio_music + audio_change, -60, 12)
+	dict_settings.audio_music = clamp(dict_settings.audio_music + audio_change, -60, 0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
 	emit_signal("change_audio_music")
 
 func change_audio_sfx(var audio_change):
-	dict_settings.audio_sfx = clamp(dict_settings.audio_sfx + audio_change, -60, 12)
+	dict_settings.audio_sfx = clamp(dict_settings.audio_sfx + audio_change, -60, 0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 	emit_signal("change_audio_sfx")
+
+	
+	
+	
