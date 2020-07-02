@@ -115,7 +115,6 @@ func music_fsm():
 				call_deferred("music_fsm")
 
 		"init":
-			print("init",music_next)
 			if(music_next):
 				music_state = "active"
 			else:
@@ -134,12 +133,9 @@ func music_fsm():
 				call_deferred("music_fsm")
 
 		"active":
-			print("active",bg_music.stream)
 			bg_music.play()
 
-	print("music_fsm")
-	
-		
+
 func _on_VolPitch_animation_finished(anim_name):
 	music_fsm()
 
