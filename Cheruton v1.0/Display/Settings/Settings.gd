@@ -4,10 +4,6 @@ onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
 onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar
 onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
 onready var list = $ContainerMain/List
-onready var encrypt = $ContainerMain/DataEncrypt
-
-
-
 
 func _ready():
 	init_bar_vals()

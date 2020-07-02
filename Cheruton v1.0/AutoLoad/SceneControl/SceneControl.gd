@@ -17,7 +17,7 @@ var enable_save := false
 
 var music_curr
 var music_next
-var fade_in := 0.5
+var fade_in := 0.14
 var fade_out := 0.5
 var music_state := "idle"
 
@@ -50,16 +50,13 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if(hud_elements.visible):
 		hud_elements.hide()
 
-	#$hud_layer/hud.hide()
 	var children = levels.get_children()
 	if (!children.empty()):
 		children[0].queue_free()
 	
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
-	
 
-	
 	if(game_scene):
 		hud_elements.show()
 		
@@ -112,7 +109,7 @@ func music_fsm():
 				bg_music.volume_db = -60.0
 				call_deferred("music_fsm")#debug
 				pass
-				#bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
+				bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
 			else:
 				bg_music.volume_db = -60.0
 				call_deferred("music_fsm")
@@ -131,7 +128,7 @@ func music_fsm():
 				bg_music.volume_db = .0
 				call_deferred("music_fsm")#debug
 				pass
-				#bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
+				bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
 			else:
 				bg_music.volume_db = 12.0
 				call_deferred("music_fsm")
