@@ -27,6 +27,7 @@ onready var consum_sell = DataResource.dict_inventory.get("Consum")
 onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
 onready var shop = self
+onready var inventory = get_parent().get_node("inventory")
 onready var contents = $Border/Bg/Main/Rest/Contents
 onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
@@ -176,7 +177,7 @@ func enable_mouse(new_node):
 func disable_mouse(new_node):
 		# Clear item stats
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
-		btn.get_parent().get_child(0).name = "ItemName"
+		btn.get_parent().get_parent().get_child(0).name = "ItemName"
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
@@ -389,7 +390,6 @@ func _on_Shop_visibility_changed():
 	if(!visible):
 		check_fixed()
 		var shop_sell = get_parent().find_node("Items", true, false)
-		print(shop_sell)
 		update_tab_items(WEAPONS, shop_sell, "Weapons")
 		update_tab_items(APPAREL, shop_sell, "Apparel")
 		update_tab_items(CONSUM, shop_sell, "Consum")
@@ -402,7 +402,7 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
-		var inventory = get_parent().get_node("inventory")
+		
 		var updating_node_index
 		var updating_node
 		for _i in range(element_index, dict_size):
@@ -410,12 +410,10 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			generate_specific_data(updating_node, element_index, list_tab)
 			if(!updating_node.is_connected("mouse_entered", inventory, "_on_mouse_entered")):
-				print(updating_node.name)
 				inventory.enable_mouse(updating_node, true)
-				print(updating_node.is_connected("mouse_entered", inventory, "_on_mouse_entered"))
 			element_index += 1
-#		if(element_index == dict_size):
-#			updating_node_index = str(int(tab_constant + element_index))
-#			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
-#			if(updating_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
-#				inventory.disable_mouse(updating_node)
+		if(element_index == dict_size):
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			if(updating_node.get_child(0).get_child(0).name != "ItemName"):
+				inventory.disable_mouse(updating_node)

@@ -184,7 +184,7 @@ func enable_mouse(new_node, buying:= false):
 func disable_mouse(new_node):
 		# Clear item stats
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
-		btn.get_parent().get_child(0).name = "ItemName"
+		btn.get_parent().get_parent().get_child(0).name = "ItemName"
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
@@ -373,8 +373,8 @@ func handle_input(event):
 # Updates inventory changes to the Shop items to sell for future
 func _on_Inventory_visibility_changed():
 	if(!visible):
+		check_fixed()
 		var shop_sell = get_parent().find_node("ItemsSell", true, false)
-		print(shop_sell)
 		update_tab_items(WEAPONS, shop_sell, "Weapons")
 		update_tab_items(APPAREL, shop_sell, "Apparel")
 		update_tab_items(CONSUM, shop_sell, "Consum")
@@ -398,5 +398,5 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		if(element_index == dict_size):
 			updating_node_index = str(int(tab_constant + element_index))
 			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
-			if(updating_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+			if(updating_node.get_child(0).get_child(0).name != "ItemName"):
 				shop.disable_mouse(updating_node)
