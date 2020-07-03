@@ -26,6 +26,7 @@ onready var misc_list = DataResource.dict_inventory.get("Misc")
 onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 onready var inventory = self
+onready var shop = get_parent().get_node("shop")
 onready var tabs = $Border/Bg/Contents/Tabs
 onready var items = $Border/Bg/Contents/Items
 onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
@@ -183,6 +184,7 @@ func enable_mouse(new_node, buying:= false):
 func disable_mouse(new_node):
 		# Clear item stats
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_parent().get_child(0).name = "ItemName"
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
@@ -386,8 +388,15 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
+		var updating_node_index 
+		var updating_node
 		for _i in range(element_index, dict_size):
-			var updating_node_index = str(int(tab_constant + element_index))
-			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			generate_specific_data(updating_node, element_index, list_tab)
 			element_index += 1
+		if(element_index == dict_size):
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			if(updating_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+				shop.disable_mouse(updating_node)

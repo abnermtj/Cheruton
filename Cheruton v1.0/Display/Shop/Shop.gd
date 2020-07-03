@@ -176,6 +176,7 @@ func enable_mouse(new_node):
 func disable_mouse(new_node):
 		# Clear item stats
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_parent().get_child(0).name = "ItemName"
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
@@ -386,6 +387,7 @@ func free_the_shop():
 
 func _on_Shop_visibility_changed():
 	if(!visible):
+		check_fixed()
 		var shop_sell = get_parent().find_node("Items", true, false)
 		print(shop_sell)
 		update_tab_items(WEAPONS, shop_sell, "Weapons")
@@ -401,15 +403,19 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
 		var inventory = get_parent().get_node("inventory")
+		var updating_node_index
+		var updating_node
 		for _i in range(element_index, dict_size):
-			var updating_node_index = str(int(tab_constant + element_index))
-			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			generate_specific_data(updating_node, element_index, list_tab)
 			if(!updating_node.is_connected("mouse_entered", inventory, "_on_mouse_entered")):
 				print(updating_node.name)
 				inventory.enable_mouse(updating_node, true)
 				print(updating_node.is_connected("mouse_entered", inventory, "_on_mouse_entered"))
-			else:
-				print(10001001)
 			element_index += 1
-
+#		if(element_index == dict_size):
+#			updating_node_index = str(int(tab_constant + element_index))
+#			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+#			if(updating_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+#				inventory.disable_mouse(updating_node)
