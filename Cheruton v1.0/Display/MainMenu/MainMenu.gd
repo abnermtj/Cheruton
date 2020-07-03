@@ -6,11 +6,11 @@ const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
-
 onready var settings = $Settings
 onready var button_list = $Buttons
 onready var scene_control = self.get_parent().get_parent()
 
+onready var bg_music_file = preload("res://MusicDebug/Frantic-Gameplay.ogg")
 
 func _ready():
 	SceneControl.get_node("masterGui").enabled = false

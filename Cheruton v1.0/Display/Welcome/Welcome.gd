@@ -9,6 +9,7 @@ onready var beam = preload("res://Display/MouseDesign/beam.png")
 var count := 0
 
 func _ready():
+	SceneControl.initiate_music()
 	var error = DataResource.load_data()
 	init_music()
 	#init_cursor()
@@ -17,7 +18,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	SceneControl.load_screen(MAINMENU)
-	self.queue_free()
+	queue_free()
 
 func init_music():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)

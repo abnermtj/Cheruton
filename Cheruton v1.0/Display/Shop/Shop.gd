@@ -26,6 +26,8 @@ onready var apparel_sell = DataResource.dict_inventory.get("Apparel")
 onready var consum_sell = DataResource.dict_inventory.get("Consum")
 onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
+onready var shop = self
+onready var inventory = get_parent().get_node("inventory")
 onready var contents = $Border/Bg/Main/Rest/Contents
 onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
@@ -56,11 +58,11 @@ func display_equipped(name):
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
-	var _conn0 = connect("tab_changed", self, "change_tab_state")
-	var _conn1 = tabs.get_node("Weapons/Weapons").connect("pressed", self,  "tab_pressed", ["Weapons"])
-	var _conn2 = tabs.get_node("Apparel/Apparel").connect("pressed", self,  "tab_pressed", ["Apparel"])
-	var _conn3 = tabs.get_node("Consum/Consum").connect("pressed", self,  "tab_pressed", ["Consum"])
-	var _conn4 = tabs.get_node("Misc/Misc").connect("pressed", self,  "tab_pressed", ["Misc"])
+	var _conn0 = connect("tab_changed", shop, "change_tab_state")
+	var _conn1 = tabs.get_node("Weapons/Weapons").connect("pressed", shop,  "tab_pressed", ["Weapons"])
+	var _conn2 = tabs.get_node("Apparel/Apparel").connect("pressed", shop,  "tab_pressed", ["Apparel"])
+	var _conn3 = tabs.get_node("Consum/Consum").connect("pressed", shop,  "tab_pressed", ["Consum"])
+	var _conn4 = tabs.get_node("Misc/Misc").connect("pressed", shop,  "tab_pressed", ["Misc"])
 
 
 func tab_pressed(next_tab):
@@ -163,29 +165,30 @@ func enable_mouse(new_node):
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
 		btn.get_node("Qty").show()
 		if(!btn.get_normal_texture()):
-			var _conn0 = btn.connect("pressed", self, "_on_pressed", [new_node])
-			var _conn1 = new_node.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			var _conn2 = new_node.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn0 = btn.connect("pressed", shop, "_on_pressed", [new_node])
+			var _conn1 = new_node.connect("mouse_entered", shop, "_on_mouse_entered", [new_node])
+			var _conn2 = new_node.connect("mouse_exited", shop, "_on_mouse_exited", [new_node])
 
 			# For the TextureButton
-			var _conn3 = btn.connect("mouse_entered", self, "_on_mouse_entered", [new_node])
-			var _conn4 = btn.connect("mouse_exited", self, "_on_mouse_exited", [new_node])
+			var _conn3 = btn.connect("mouse_entered", shop, "_on_mouse_entered", [new_node])
+			var _conn4 = btn.connect("mouse_exited", shop, "_on_mouse_exited", [new_node])
 
 # Disable mouse functions of the item index
 func disable_mouse(new_node):
 		# Clear item stats
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
+		btn.get_parent().get_parent().get_child(0).name = "ItemName"
 		btn.get_node("Qty").text = "0"
 		btn.get_node("Qty").hide()
 		btn.set_normal_texture(null)
 
-		var _disconn1 = btn.disconnect("pressed", self, "_on_pressed")
-		var _disconn2 = new_node.disconnect("mouse_entered", self, "_on_mouse_entered")
-		var _disconn3 = new_node.disconnect("mouse_exited", self, "_on_mouse_exited")
+		var _disconn1 = btn.disconnect("pressed", shop, "_on_pressed")
+		var _disconn2 = new_node.disconnect("mouse_entered", shop, "_on_mouse_entered")
+		var _disconn3 = new_node.disconnect("mouse_exited", shop, "_on_mouse_exited")
 
 		# For the TextureButton
-		var _disconn4 = btn.disconnect("mouse_entered", self, "_on_mouse_entered")
-		btn.disconnect("mouse_exited", self, "_on_mouse_exited")
+		var _disconn4 = btn.disconnect("mouse_entered", shop, "_on_mouse_entered")
+		btn.disconnect("mouse_exited", shop, "_on_mouse_exited")
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
@@ -254,7 +257,8 @@ func revert_item_state():
 func sell_item():
 
 	var element_index = str(int(mouse_node.name)%100)
-	DataResource.change_coins(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2)
+	var sell_coins = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2
+	DataResource.change_coins(sell_coins)
 	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 
@@ -383,22 +387,33 @@ func free_the_shop():
 
 
 func _on_Shop_visibility_changed():
-	if(!self.visible):
-		var shop_sell = self.get_parent().find_node("Items", true, false)
-		print(shop_sell)
+	if(!visible):
+		check_fixed()
+		var shop_sell = get_parent().find_node("Items", true, false)
 		update_tab_items(WEAPONS, shop_sell, "Weapons")
 		update_tab_items(APPAREL, shop_sell, "Apparel")
 		update_tab_items(CONSUM, shop_sell, "Consum")
 		update_tab_items(MISC, shop_sell, "Misc")
+	else:
+		equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 # Updates a particular tabs item stock
 func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
+		
+		var updating_node_index
+		var updating_node
 		for _i in range(element_index, dict_size):
-			var updating_node_index = str(int(tab_constant + element_index))
-			var updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			generate_specific_data(updating_node, element_index, list_tab)
+			if(!updating_node.is_connected("mouse_entered", inventory, "_on_mouse_entered")):
+				inventory.enable_mouse(updating_node, true)
 			element_index += 1
-
+		if(element_index == dict_size):
+			updating_node_index = str(int(tab_constant + element_index))
+			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
+			if(updating_node.get_child(0).get_child(0).name != "ItemName"):
+				inventory.disable_mouse(updating_node)

@@ -3,6 +3,7 @@
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
 
 [node name="Settings" type="Control"]
+rect_pivot_offset = Vector2( 234.02, 41.046 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -16,7 +17,7 @@ __meta__ = {
 }
 
 [node name="Settings" type="Label" parent="ContainerMain"]
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 31.0
 text = "Settings
 "
@@ -27,14 +28,14 @@ __meta__ = {
 
 [node name="List" type="VBoxContainer" parent="ContainerMain"]
 margin_top = 35.0
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 195.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainVol" type="Label" parent="ContainerMain/List"]
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 31.0
 text = "Main Volume: 
 "
@@ -73,7 +74,7 @@ __meta__ = {
 
 [node name="MusicVol" type="Label" parent="ContainerMain/List"]
 margin_top = 35.0
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 66.0
 text = "Music Volume: 
 "
@@ -112,7 +113,7 @@ __meta__ = {
 
 [node name="SFXVol" type="Label" parent="ContainerMain/List"]
 margin_top = 70.0
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 101.0
 text = "SFX Volume: 
 "
@@ -151,7 +152,7 @@ __meta__ = {
 
 [node name="Mute" type="Label" parent="ContainerMain/List"]
 margin_top = 105.0
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 136.0
 text = "Mute:
 "
@@ -166,13 +167,15 @@ margin_top = -8.61993
 margin_right = 113.48
 margin_bottom = 31.3801
 rect_scale = Vector2( 0.75, 0.75 )
+focus_mode = 0
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Back" type="Button" parent="ContainerMain/List"]
 margin_top = 140.0
-margin_right = 410.0
+margin_right = 320.0
 margin_bottom = 160.0
 text = "Back"
 __meta__ = {
