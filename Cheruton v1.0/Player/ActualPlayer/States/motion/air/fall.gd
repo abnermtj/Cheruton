@@ -75,7 +75,7 @@ func update(delta):
 		owner.play_anim_fx("land")
 
 		var col = owner.get_slide_collision(0).get_collider() # bounce pad
-		if col.is_in_group("bouncePads"):
+		if col and  col.is_in_group("bouncePads"):
 			owner.bounce_boost = true
 			emit_signal("finished", "jump")
 			return

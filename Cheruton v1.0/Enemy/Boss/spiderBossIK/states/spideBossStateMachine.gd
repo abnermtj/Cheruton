@@ -8,7 +8,6 @@ func _ready():
 		"stabAttack" : $stabAttack,
 		"stepBack" : $stepBack,
 		"webShoot" : $webShoot,
-		"dashAttack" : $dashAttack
 	}
 
 func _change_state(state_name):

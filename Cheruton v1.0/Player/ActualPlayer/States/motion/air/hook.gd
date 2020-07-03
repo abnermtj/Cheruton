@@ -5,7 +5,7 @@ const RELEASE_TIMER = .05 # time before player can release rope from hands
 const SWING_CONTROL_STRENGTH = .11
 const SWING_GRAVITY = 110 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 60 # 70 for funzz 56.5 for the realz
-const MIN_WIRE_LENGTH = 100
+const MIN_WIRE_LENGTH = 150
 const MAX_WIRE_LENGTH = 1200
 const PLAYER_LENGTH_CONTROL = 250	# player's influence with REEL, too much may may make movements not smooth at the end
 const REEL_LERP_FACTOR = 2.45 # factor multiplied to delta for lerp
@@ -91,7 +91,7 @@ func update_idle(delta):
 		var flip_swing_frame_order = int (owner.look_direction.x == 1)
 
 		var swing_frame_number = int(clamp(angle_deg/7.5 + 5, 0, 12))
-		if flip_swing_frame_order:	swing_frame_number = 12 - swing_frame_number
+		if flip_swing_frame_order: swing_frame_number = 12 - swing_frame_number
 
 		var swing_frame = "swing_continious" + str(swing_frame_number)
 		owner.play_anim(swing_frame)
@@ -118,10 +118,12 @@ func _update(delta):
 		desired_length_rope -= 8
 		owner.global_position.y -= 2
 
+	var adjusted_swing_control_strength = SWING_CONTROL_STRENGTH + max(0, .15 + (-0.000000213 * vel.x * vel.x)  + (0.000320 * vel.x))
+
 	if owner.global_position.y > tip_pos.y+50:
-		next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * SWING_CONTROL_STRENGTH
+		next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * adjusted_swing_control_strength
 	else:
-		next_pos += vel + Vector2(0,SWING_GRAVITY*delta*.4) + input_dir * SWING_CONTROL_STRENGTH # physics is wrong but high gravity needed for the speed up
+		next_pos += vel + Vector2(0,SWING_GRAVITY*delta*.4) + input_dir * adjusted_swing_control_strength # physics is wrong but high gravity needed for the speed up
 
 	length_rope = lerp(length_rope, desired_length_rope, delta*REEL_LERP_FACTOR)
 
@@ -130,6 +132,9 @@ func _constrain():
 	if next_length > length_rope :#or desired_length_rope > next_length: # constrains player to a circle ceneted at hook tip
 		next_pos = (next_pos - tip_pos).normalized() * length_rope + tip_pos
 
+	if desired_length_rope > length_rope:
+		desired_length_rope = length_rope
+
 func _adjust():
 	owner.velocity = (next_pos - cur_pos )*SWING_SPEED
 	owner.velocity.x = clamp (owner.velocity.x, -TOP_SPEED, TOP_SPEED)
@@ -137,8 +142,6 @@ func _adjust():
 
 func exit():
 	owner.body_pivot.rotation =  0
-	if owner.velocity.length() < 760: # boost when swinging slowly
-		owner.velocity.x *= 1.6
 	owner.set_collision_mask_bit(0, true)
 
 	owner.play_anim("swing_exit")
