@@ -3,7 +3,7 @@ extends Node
 const MAIN = "user://player-data.json"
 const MASTERLIST = "res://Data/item-masterlist.json"
 
-onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
+
 var current_scene = null
 
 # Main Dict
@@ -42,10 +42,6 @@ func load_data():
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
-
-	var instanced_gui = master_gui.instance()
-	SceneControl.add_child(instanced_gui)
-	SceneControl.get_node("masterGui").enabled = false
 
 
 func load_dict(FilePath, password:= ""):

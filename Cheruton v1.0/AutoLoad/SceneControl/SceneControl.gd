@@ -2,7 +2,9 @@ extends Node2D
 
 const WELCOME = "res://Display/Welcome/Welcome.tscn"
 
-
+onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
+onready var arrow = preload("res://Display/MouseDesign/arrow.png")
+onready var beam = preload("res://Display/MouseDesign/beam.png")
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var bg_music = $BgMusic
@@ -27,8 +29,29 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 func _ready():
 	randomize()
-
+	initiate_music()
+	DataResource.load_data()
+	instance_gui()
+	#init_cursor()
 	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
+
+
+func init_music():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio_master)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
+
+
+func init_cursor():
+	Input.set_custom_mouse_cursor(arrow)
+	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
+
+func instance_gui():
+	var instanced_gui = master_gui.instance()
+	SceneControl.add_child(instanced_gui)
+	SceneControl.get_node("masterGui").enabled = false
+
 
 ################
 # SCENE CHANGE #

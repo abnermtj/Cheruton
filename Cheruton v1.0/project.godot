@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
@@ -123,7 +123,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cheruton v1.0"
-run/main_scene="res://Display/Welcome/Welcome.tscn"
+run/main_scene="res://Display/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
