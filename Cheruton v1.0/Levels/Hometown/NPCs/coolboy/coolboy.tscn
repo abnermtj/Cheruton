@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Levels/Resources/NPCs/coolboy/18fps_limitPallete_PIL_HomeTown_NPC_coolboy.png" type="Texture" id=1]
-[ext_resource path="res://Levels/Resources/NPCs/coolboy/coolboy.gd" type="Script" id=2]
+[ext_resource path="res://Levels/HomeTown/NPCs/coolboy/18fps_limitPallete_PIL_HomeTown_NPC_coolboy.png" type="Texture" id=1]
+[ext_resource path="res://Levels/HomeTown/NPCs/coolboy/coolboy.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+
 
 
 [sub_resource type="ShaderMaterial" id=1]

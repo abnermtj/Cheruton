@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Levels/Resources/NPCs/loli/20fps_limitPallete_PIL_HomeTown_NPC_loli.png" type="Texture" id=1]
-[ext_resource path="res://Levels/Resources/NPCs/loli/loli.gd" type="Script" id=2]
+[ext_resource path="res://Levels/HomeTown/NPCs/loli/20fps_limitPallete_PIL_HomeTown_NPC_loli.png" type="Texture" id=1]
+[ext_resource path="res://Levels/HomeTown/NPCs/loli/loli.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+
 
 
 [sub_resource type="ShaderMaterial" id=1]

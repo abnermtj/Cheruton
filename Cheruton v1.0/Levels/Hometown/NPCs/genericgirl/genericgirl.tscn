@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Levels/Resources/NPCs/genericgirl/18fps_limitPallete_PIL_HomeTown_NPC_genericgirl.png" type="Texture" id=1]
-[ext_resource path="res://Levels/Resources/NPCs/genericgirl/genericgirl.gd" type="Script" id=2]
+[ext_resource path="res://Levels/HomeTown/NPCs/genericgirl/18fps_limitPallete_PIL_HomeTown_NPC_genericgirl.png" type="Texture" id=1]
+[ext_resource path="res://Levels/HomeTown/NPCs/genericgirl/genericgirl.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+
 
 
 [sub_resource type="RectangleShape2D" id=1]

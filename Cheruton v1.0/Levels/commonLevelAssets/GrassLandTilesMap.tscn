@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Levels/Resources/Sprites/Hometown.tres" type="TileSet" id=1]
+[ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=1]
+
+
 
 
 

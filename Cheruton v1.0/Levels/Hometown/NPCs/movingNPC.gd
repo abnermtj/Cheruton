@@ -28,7 +28,9 @@ func _physics_process(delta):
 
 	move_and_slide(Vector2(dir*walk_speed, 100))
 
-	if dir == -1 and not $rayLeft.is_colliding():
+	if is_on_wall():
+		flip_dir()
+	elif dir == -1 and not $rayLeft.is_colliding():
 		flip_dir()
 	elif dir == 1 and not $rayRight.is_colliding():
 		flip_dir()
