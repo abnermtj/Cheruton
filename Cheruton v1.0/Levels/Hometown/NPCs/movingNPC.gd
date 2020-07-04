@@ -26,7 +26,7 @@ func _physics_process(delta):
 		timer = DIR_CHANGE_TIME
 		flip_dir()
 
-	move_and_slide(Vector2(dir*walk_speed, 100))
+	move_and_slide(Vector2(dir*walk_speed, 100), Vector2.UP)
 
 	if is_on_wall():
 		flip_dir()

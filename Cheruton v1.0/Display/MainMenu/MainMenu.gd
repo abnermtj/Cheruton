@@ -11,7 +11,7 @@ onready var options = $Background/Main/Options
 onready var timer_options = $Timer
 onready var scene_control = get_parent().get_parent()
 
-onready var bg_music_file 
+onready var bg_music_file
 
 func _ready():
 	SceneControl.get_node("masterGui").enabled = false

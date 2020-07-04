@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Display/Dialouge/dialog.gd" type="Script" id=1]
 [ext_resource path="res://Display/Dialouge/Sprites/next-indicator.png" type="Texture" id=2]
 [ext_resource path="res://Display/Dialouge/Sprites/menu_section_9patch.png" type="Texture" id=3]
-[ext_resource path="res://Display/Dialouge/Fonts/GaramondPremrPro-Smbd.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -12,7 +11,7 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=3]
 length = 0.8

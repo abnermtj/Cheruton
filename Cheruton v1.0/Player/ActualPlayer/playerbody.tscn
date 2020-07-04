@@ -1216,9 +1216,8 @@ collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
-material = ExtResource( 23 )
-position = Vector2( 0, 17 )
-scale = Vector2( 1.32, 0.748 )
+position = Vector2( 0.543201, 0.226334 )
+scale = Vector2( 1.00905, 0.995473 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
 show_behind_parent = true
