@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuback.png" type="Texture" id=3]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuselect.png" type="Texture" id=4]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuBase.png" type="Texture" id=5]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuback.png" type="Texture" id=3]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=5]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )

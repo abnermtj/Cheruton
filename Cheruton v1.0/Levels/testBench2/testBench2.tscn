@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/HomeTown/Sprites/Hometown.tres" type="TileSet" id=6]
+[ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=6]
 [ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Props/laser/laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Props/spike0/spike0.tscn" type="PackedScene" id=9]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Props/movingTrap/movingTrap0.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/testBench2/worldt_env.res" type="Environment" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
+
 
 
 
