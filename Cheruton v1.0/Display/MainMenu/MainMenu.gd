@@ -22,6 +22,7 @@ func _ready():
 func _on_Play_pressed():
 	SceneControl.emit_signal("init_statbar")
 	SceneControl.load_screen(SCN1, true, true)
+	queue_free()
 
 func _on_Settings_pressed():
 	options.hide()
@@ -30,16 +31,6 @@ func _on_Settings_pressed():
 func _exit_Settings(gui_name):
 	settings.hide()
 	options.show()
-
-
-func _on_Play2_pressed():
-	scene_control.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN2, true, true)
-
-
-func _on_Play3_pressed():
-	scene_control.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN3, true, true)
 
 
 func _on_Quit_pressed():
