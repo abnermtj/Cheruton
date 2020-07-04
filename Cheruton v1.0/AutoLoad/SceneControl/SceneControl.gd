@@ -1,15 +1,13 @@
 extends Node2D
 
-const WELCOME = "res://Display/Welcome/Welcome.tscn"
-
 onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
+
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var bg_music = $BgMusic
 onready var bg_music_pitch = $BgMusic/VolPitch
-
 onready var load_layer = $LoadLayer/Load
 
 
@@ -25,6 +23,7 @@ var music_state := "idle"
 
 signal init_statbar
 
+
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 func _ready():
@@ -32,9 +31,12 @@ func _ready():
 	initiate_music()
 	DataResource.load_data()
 	instance_gui()
+	print("Yes")
 	#init_cursor()
-	#var _ret = gamestate.connect( "gamestate_changed", self, "_on_gamestate_change" )
 
+##############
+# INITIALIZE #
+##############
 
 func init_music():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
@@ -61,11 +63,8 @@ func instance_gui():
 func load_screen(scene, game_scene:= false, loading_screen:= false):
 
 	curr_screen = scene
-
-	if(bg_music):
-		bg_music.stop()
-
 	print( "LOADING SCREEN: ", curr_screen)
+	
 	get_tree().paused = true
 	if(loading_screen):
 		load_layer.show()
