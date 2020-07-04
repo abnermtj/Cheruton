@@ -1,122 +1,136 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuback.png" type="Texture" id=3]
+[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuselect.png" type="Texture" id=4]
+[ext_resource path="res://Display/MainMenu/Sprites_Fonts/MainMenuBase.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 3.60522
-margin_top = 3.60504
-margin_right = 3.60522
-margin_bottom = 3.60498
-rect_scale = Vector2( 4, 4 )
+[node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Buttons" type="VBoxContainer" parent="."]
-margin_left = 128.88
-margin_top = 65.7921
-margin_right = 198.88
-margin_bottom = 135.792
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play" type="Button" parent="Buttons"]
-margin_right = 105.0
-margin_bottom = 14.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "Play - Tutorial"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play2" type="Button" parent="Buttons"]
-margin_top = 18.0
-margin_right = 105.0
-margin_bottom = 32.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "Play -Hometown"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play3" type="Button" parent="Buttons"]
-margin_top = 36.0
-margin_right = 105.0
-margin_bottom = 50.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "Play - Boss"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SettingsBtn" type="Button" parent="Buttons"]
-margin_top = 54.0
-margin_right = 105.0
-margin_bottom = 68.0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="Buttons"]
-margin_top = 72.0
-margin_right = 105.0
-margin_bottom = 86.0
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/normal = SubResource( 12 )
-text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Settings" parent="." instance=ExtResource( 1 )]
 visible = false
-[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Buttons/Play2" to="." method="_on_Play2_pressed"]
-[connection signal="pressed" from="Buttons/Play3" to="." method="_on_Play3_pressed"]
-[connection signal="pressed" from="Buttons/SettingsBtn" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 480.0
+margin_bottom = 270.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="VBoxContainer" parent="Background"]
+margin_left = 159.7
+margin_top = 78.8039
+margin_right = 345.7
+margin_bottom = 190.804
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cheruton" type="Label" parent="Background/Main"]
+margin_right = 186.0
+margin_bottom = 14.0
+text = "Cheruton"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="TextureRect" parent="Background/Main"]
+margin_top = 18.0
+margin_right = 186.0
+margin_bottom = 112.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Main/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="Background/Main/Options/VBoxContainer"]
+margin_right = 178.0
+margin_bottom = 23.0
+size_flags_vertical = 3
+texture_hover = ExtResource( 4 )
+expand = true
+
+[node name="Text" type="Label" parent="Background/Main/Options/VBoxContainer/Play"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+text = "Play"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="TextureButton" parent="Background/Main/Options/VBoxContainer"]
+margin_top = 27.0
+margin_right = 178.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+texture_hover = ExtResource( 4 )
+expand = true
+
+[node name="Text" type="Label" parent="Background/Main/Options/VBoxContainer/Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.5
+margin_top = -15.5
+margin_right = 25.5
+margin_bottom = 15.5
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="TextureButton" parent="Background/Main/Options/VBoxContainer"]
+margin_top = 54.0
+margin_right = 178.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+texture_hover = ExtResource( 4 )
+expand = true
+
+[node name="Text" type="Label" parent="Background/Main/Options/VBoxContainer/Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+text = "Quit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+[connection signal="pressed" from="Background/Main/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Background/Main/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Background/Main/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
