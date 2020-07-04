@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Props/movingTrap/movingTrap0.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="movingTrap0" type="Node2D"]
+script = ExtResource( 1 )
+cicular_path = false
+
+[node name="hitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite" type="Sprite" parent="hitArea"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitArea"]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

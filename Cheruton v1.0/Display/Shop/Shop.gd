@@ -402,7 +402,7 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
-		
+
 		var updating_node_index
 		var updating_node
 		for _i in range(element_index, dict_size):

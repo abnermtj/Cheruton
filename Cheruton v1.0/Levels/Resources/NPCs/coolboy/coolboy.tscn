@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Resources/NPCs/coolboy/18fps_limitPallete_PIL_HomeTown_NPC_coolboy.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Resources/NPCs/coolboy/coolboy.gd" type="Script" id=2]
+[ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/width = 0.0
+shader_param/outline_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.04
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 48, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.68
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 51, 1, 48, 48 ), Rect2( 101, 1, 48, 48 ), Rect2( 151, 1, 48, 48 ), Rect2( 201, 1, 32, 48 ), Rect2( 235, 1, 32, 48 ), Rect2( 269, 1, 32, 48 ), Rect2( 303, 1, 32, 48 ), Rect2( 337, 1, 32, 48 ), Rect2( 371, 1, 32, 48 ), Rect2( 405, 1, 32, 48 ), Rect2( 439, 1, 32, 48 ), Rect2( 473, 1, 32, 48 ), Rect2( 507, 1, 32, 48 ), Rect2( 541, 1, 32, 48 ), Rect2( 575, 1, 32, 48 ), Rect2( 609, 1, 32, 48 ), Rect2( 643, 1, 32, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 4, 4 ), Vector2( 4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32.5, 12.5 )
+
+[node name="coolboy" type="Area2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 1 )
+offset = Vector2( 4, 4 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 48, 48 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/idle = SubResource( 2 )
+anims/sweep = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )

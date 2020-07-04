@@ -42,7 +42,7 @@ func load_data():
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
-	
+
 	var instanced_gui = master_gui.instance()
 	SceneControl.add_child(instanced_gui)
 	SceneControl.get_node("masterGui").enabled = false
@@ -152,6 +152,6 @@ func change_audio_sfx(var audio_change):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 	emit_signal("change_audio_sfx")
 
-	
-	
-	
+
+
+

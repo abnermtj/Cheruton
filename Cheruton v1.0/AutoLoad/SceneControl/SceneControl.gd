@@ -34,7 +34,7 @@ func _ready():
 # SCENE CHANGE #
 ################
 
-# Loads the next scene 
+# Loads the next scene
 func load_screen(scene, game_scene:= false, loading_screen:= false):
 
 	curr_screen = scene
@@ -46,20 +46,20 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	get_tree().paused = true
 	if(loading_screen):
 		load_layer.show()
-	
+
 	if(hud_elements.visible):
 		hud_elements.hide()
 
 	var children = levels.get_children()
 	if (!children.empty()):
 		children[0].queue_free()
-	
+
 	var new_level = load(scene).instance()
 	levels.add_child(new_level)
 
 	if(game_scene):
 		hud_elements.show()
-		
+
 	if(loading_screen):
 		load_layer.hide()
 
@@ -119,10 +119,10 @@ func music_fsm():
 				music_state = "active"
 			else:
 				music_state = "idle"
-			
+
 			music_curr = music_next
 			bg_music.stream = music_curr
-			
+
 			if(fade_in > 0):
 				bg_music.volume_db = .0
 				call_deferred("music_fsm")#debug

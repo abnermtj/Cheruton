@@ -20,7 +20,7 @@ func _ready():
 	var story_reader_class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	story_reader = story_reader_class.new()
 
-	var story = load("res://Stories/Baked/HometownDialog.tres")
+	var story = load("res://Levels/Hometown/Stories/Baked/HometownDialog.tres")
 	story_reader.read(story)
 
 	start_dialog("Hometown/Moneygirl")

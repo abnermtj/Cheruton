@@ -168,7 +168,7 @@ func generate_specific_data(item_index_node, item_index, list_tab):
 
 # Enable mouse functions of the item index
 func enable_mouse(new_node, buying:= false):
-	
+
 		var btn = new_node.get_node("Background/ItemBg/ItemBtn")
 		btn.get_node("Qty").show()
 		if(!btn.get_normal_texture() || buying):
@@ -388,7 +388,7 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 		var element_index = 1
 		var list_tab = DataResource.dict_inventory[tab_name]
 		var dict_size = list_tab.size() + 1
-		var updating_node_index 
+		var updating_node_index
 		var updating_node
 		for _i in range(element_index, dict_size):
 			updating_node_index = str(int(tab_constant + element_index))

@@ -12,7 +12,7 @@ func initalize():
 
 func terminate():
 	pass
-	
+
 func run(_delta):
 	pass
 
@@ -22,6 +22,6 @@ func should_fall() -> void:
 
 func aerial_pos_edit() -> void:
 	#print(abs(obj.pos - obj.global_position.y))
-	if(abs(obj.pos - obj.global_position.y) > 20):		
+	if(abs(obj.pos - obj.global_position.y) > 20):
 		obj.velocity.y = -obj.velocity.y
 

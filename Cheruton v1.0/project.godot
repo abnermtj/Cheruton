@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "MovingNPC",
 "language": "GDScript",
-"path": "res://Levels/Hometown/NPCs/movingNPC.gd"
+"path": "res://Levels/Resources/NPCs/movingNPC.gd"
 }, {
 "base": "Camera2D",
 "class": "ShakeCamera",
@@ -62,12 +62,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "StaticNPC",
 "language": "GDScript",
-"path": "res://Levels/Hometown/NPCs/staticNPC.gd"
+"path": "res://Levels/Resources/NPCs/staticNPC.gd"
 }, {
 "base": "Line2D",
 "class": "Trail2D",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/Hook/trailsmoke.gd"
+"path": "res://Player/ActualPlayer/Hook/trailSmoke_unused.gd"
 }, {
 "base": "motionState",
 "class": "airState",
@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
