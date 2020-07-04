@@ -16,15 +16,6 @@
 [ext_resource path="res://Levels/testBench2/worldt_env.res" type="Environment" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
 
-
-
-
-
-
-
-
-
-
 [node name="testBench2" type="Node2D"]
 position = Vector2( -710.119, 261.193 )
 script = ExtResource( 1 )

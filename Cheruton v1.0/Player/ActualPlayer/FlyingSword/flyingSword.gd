@@ -5,6 +5,7 @@ const SPEED_RETURN = 2700
 const MAX_AIR_TIME = .6
 const SPIN_SPEED = 2 # spins /s
 const Y_LEVEL_FACTOR = 1 # swords tends to the player.pos.y during return
+const PICK_UP_TIME = .15 # player can't immediately grab after throwing
 enum sword_states { SHOOT = 0, HIT = 1, RETURN = 2, HIDDEN = 3}
 
 onready var sword_state = sword_states.HIDDEN
@@ -19,6 +20,7 @@ var cur_player_pos : Vector2
 var state
 var active : bool
 var air_timer : float
+var pick_up_timer : float
 
 signal sword_result
 
@@ -49,7 +51,8 @@ func _physics_process(delta):
 	var bodies_in_limit_area = $limitArea.get_overlapping_bodies()
 
 	if state == sword_states.HIT:
-		if bodies_in_collection_area: # playertouches sword
+		pick_up_timer -= delta
+		if bodies_in_collection_area and pick_up_timer < 0: # playertouches sword
 			state = sword_states.RETURN
 			animation_player.play("air")
 		if not bodies_in_limit_area:
@@ -69,6 +72,7 @@ func _physics_process(delta):
 
 			var col = move_and_collide(velocity*delta)
 			if col:
+				pick_up_timer = PICK_UP_TIME
 				velocity = Vector2()
 				bodyRotation.rotation = Vector2.UP.angle_to(col.normal)
 				animation_player.play("stuck")

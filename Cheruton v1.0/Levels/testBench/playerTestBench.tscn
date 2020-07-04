@@ -14,7 +14,7 @@
 position = Vector2( -127.414, 230.498 )
 script = ExtResource( 5 )
 
-[node name="Chain" parent="." instance=ExtResource( 7 )]
+[node name="grappleHook" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 882.819, 566.517 )
@@ -75,8 +75,3 @@ position = Vector2( 1087.41, 5169.5 )
 [node name="flyingSword" parent="." instance=ExtResource( 6 )]
 
 [node name="DeathZone" parent="." instance=ExtResource( 9 )]
-[connection signal="hooked" from="Chain" to="player" method="_on_Chain_hooked"]
-[connection signal="shake" from="Chain" to="player/camera" method="_on_Chain_shake"]
-[connection signal="camera_command" from="player" to="player/camera" method="_on_player_camera_command"]
-[connection signal="hook_command" from="player" to="Chain" method="_on_player_hook_command"]
-[connection signal="shake" from="player" to="player/camera" method="_on_player_shake"]

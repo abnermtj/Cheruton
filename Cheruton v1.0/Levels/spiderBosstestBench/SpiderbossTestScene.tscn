@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/acidProjectile/acidProjectile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=10]
 
 [node name="spiderBossTestScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -22,8 +23,7 @@ z_index = -2
 [node name="player" parent="." instance=ExtResource( 4 )]
 z_index = 4
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-current = true
+[node name="camera" parent="player" instance=ExtResource( 10 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
