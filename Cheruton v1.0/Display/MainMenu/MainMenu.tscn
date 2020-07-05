@@ -54,6 +54,7 @@ __meta__ = {
 }
 
 [node name="Options" type="NinePatchRect" parent="Background"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -170,7 +171,6 @@ wait_time = 0.8
 one_shot = true
 
 [node name="WhiteScreen" type="TextureRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 480.0

@@ -35,19 +35,21 @@ func _process(delta):
 func modulate_func():
 	match modulate_dec:
 		"white":
-			white_screen.modulate.a -= 0.01
-
 			if(white_screen.modulate.a < 0.01):
 				modulate_dec = "idle"
 				options_delay.start()
+			else:
+				white_screen.modulate.a -= 0.01
 
 		"options":
-			options.modulate.a += 0.03
 			if(options.modulate.a > 0.99):
 				modulate_dec = "idle"
+			else:
+				options.modulate.a += 0.03
 
 
 func _on_OptionsDelay_timeout():
+	white_screen.hide()
 	modulate_dec = "options"
 
 func _on_Quit_pressed():
