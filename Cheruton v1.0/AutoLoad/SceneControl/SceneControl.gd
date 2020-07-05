@@ -30,8 +30,10 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 func _ready():
 	randomize()
-	initiate_music()
+
 	DataResource.load_data()
+	#init_music()
+	initiate_music()
 	instance_gui()
 	print("Yes")
 	#init_cursor()
@@ -89,7 +91,8 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		get_tree().get_root().add_child(new_level)
 		new_music = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).bg_music_file
 	
-	new_music = load(new_music)
+	if(new_music):
+		new_music = load(new_music)
 	
 	if(game_scene):
 		hud_elements.show()
@@ -140,9 +143,6 @@ func music_fsm():
 				music_state = "idle"
 
 			if(fade_out > 0 && music_curr):
-				bg_music.volume_db = -60.0
-				call_deferred("music_fsm")#debug
-				pass
 				bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
 			else:
 				bg_music.volume_db = -60.0
@@ -158,9 +158,6 @@ func music_fsm():
 			bg_music.stream = music_curr
 
 			if(fade_in > 0):
-				bg_music.volume_db = .0
-				call_deferred("music_fsm")#debug
-				pass
 				bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
 			else:
 				bg_music.volume_db = 12.0

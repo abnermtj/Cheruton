@@ -2,7 +2,8 @@ extends Level
 
 onready var save_position = $player.position
 
-
+func _ready():
+	bg_music_file = "res://MusicDebug/Frantic-Gameplay.ogg"
 
 func _input(event):
 	if Input.is_action_just_pressed("reset"):
