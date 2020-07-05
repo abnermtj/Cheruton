@@ -52,6 +52,16 @@ func _on_OptionsDelay_timeout():
 	white_screen.hide()
 	modulate_dec = "options"
 
+func _on_Play_pressed():
+	SceneControl.emit_signal("init_statbar")
+	SceneControl.load_screen(SCN1, true, true)
+	queue_free()
+
+func _on_Settings_pressed():
+	options.hide()
+	settings.show()
+
+
 func _on_Quit_pressed():
 	get_tree().quit()
 
@@ -90,3 +100,6 @@ func slide_to_position(new_position):
 
 func _on_Tween_tween_completed(object, key):
 	tween_status = false
+
+
+
