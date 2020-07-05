@@ -26,9 +26,12 @@ var modulate_dec = "white"
 var slider_active := false
 var tween_status := false
 
+func _ready():
+	white_screen.modulate.a = 1.0
+	options.modulate.a = 0
+	
+
 func _process(delta):
-	print(modulate_dec)
-	#white_screen.modulate.a -= 0.01
 	modulate_func()
 
 # Creates a startup effect
@@ -84,6 +87,7 @@ func _on_Quit_mouse_entered():
 
 # Slides the slider to the intended position, or shows it there if not visible
 func slide_to_position(new_position):
+	print(new_position)
 	if(!tween_status):
 		var old_position = slider.rect_position
 		if(slider_active):

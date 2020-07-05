@@ -12,15 +12,15 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 0 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 7 )
 
 [node name="MainMenu" type="Node2D"]
@@ -35,6 +35,7 @@ margin_right = 480.0
 margin_bottom = 272.333
 rect_scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,7 +55,6 @@ __meta__ = {
 }
 
 [node name="Options" type="NinePatchRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -112,7 +112,7 @@ margin_left = -28.0
 margin_top = -8.5
 margin_right = 28.0
 margin_bottom = 10.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Play"
 align = 1
 __meta__ = {
@@ -135,7 +135,7 @@ margin_left = -56.0
 margin_top = -15.5
 margin_right = 56.0
 margin_bottom = 15.5
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Settings"
 align = 1
 valign = 1
@@ -159,7 +159,7 @@ margin_left = -28.0
 margin_top = -9.5
 margin_right = 28.0
 margin_bottom = 9.5
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Quit"
 align = 1
 __meta__ = {
@@ -169,6 +169,9 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
+
+[node name="OptionsDelay" type="Timer" parent="."]
+wait_time = 0.8
 
 [node name="WhiteScreen" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -180,9 +183,6 @@ texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="OptionsDelay" type="Timer" parent="."]
-wait_time = 0.8
 [connection signal="tween_completed" from="Background/Options/Slider/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="mouse_entered" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
