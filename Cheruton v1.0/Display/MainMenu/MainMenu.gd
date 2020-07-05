@@ -7,16 +7,16 @@ const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
 onready var settings = $Settings
-onready var options = $Background/Main/Options
+onready var options = $Background/Options
 onready var timer_options = $Timer
 onready var scene_control = get_parent().get_parent()
 
 onready var bg_music_file
 
 func _ready():
+	print("Loaded")
 	SceneControl.get_node("masterGui").enabled = false
 	settings.connect("release_gui", self, "_exit_Settings")
-	print(DataResource.dict_main)
 	#$Timer.start()
 
 func _on_Play_pressed():
@@ -39,3 +39,5 @@ func _on_Quit_pressed():
 
 func _on_Timer_timeout():
 	options.show()
+
+

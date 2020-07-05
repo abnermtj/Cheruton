@@ -3,6 +3,8 @@ extends Node2D
 class_name Level
 
 # commonly referenced nodes only
+
+var bg_music_file 
 var player
 var camera
 
