@@ -88,7 +88,9 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	else:
 		get_tree().get_root().add_child(new_level)
 		new_music = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).bg_music_file
-
+	
+	new_music = load(new_music)
+	
 	if(game_scene):
 		hud_elements.show()
 
