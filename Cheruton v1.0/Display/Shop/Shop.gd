@@ -1,4 +1,4 @@
-extends baseGui
+extends basePopUp
 
 const WEAPONS = 100
 const APPAREL = 200

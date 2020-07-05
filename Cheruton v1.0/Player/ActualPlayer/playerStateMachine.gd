@@ -18,7 +18,7 @@ func _change_state(state_name):
 	if not _active:
 		return
 
-	if not states_stack.empty():
+	if states_stack:
 		previous_state = states_stack[-1]
 
 	if ["jump", "fall"].has(state_name):

@@ -249,7 +249,6 @@ script = ExtResource( 15 )
 script = ExtResource( 16 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="groundCheck" type="RayCast2D" parent="."]
 enabled = true

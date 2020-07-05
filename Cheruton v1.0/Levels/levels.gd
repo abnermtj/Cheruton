@@ -4,7 +4,7 @@ class_name Level
 
 # commonly referenced nodes only
 
-var bg_music_file 
+var bg_music_file
 var player
 var camera
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 		DataResource.load_data()
 
 
-	SceneControl.get_node("masterGui").enabled = true
+	SceneControl.get_node("popUpGui").enabled = true
 
 	call_deferred( "_set_camera" )
 	call_deferred( "_set_player" )

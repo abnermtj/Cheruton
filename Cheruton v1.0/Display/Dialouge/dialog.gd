@@ -1,4 +1,4 @@
-extends baseGui
+extends basePopUp
 
 const TIME_PER_CHAR_WRITE = .03 # in seconds .03 is good
 

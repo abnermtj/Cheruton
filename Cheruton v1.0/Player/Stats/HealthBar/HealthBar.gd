@@ -7,7 +7,7 @@ onready var healthstat = $HealthRect/HealthStats/HealthVal
 
 var health_max
 
-func _ready():	
+func _ready():
 	var _conn1 = DataResource.connect("change_health", self, "change_healthbar")
 	var _conn2 = SceneControl.connect("init_statbar", self, "init_bar")
 
@@ -24,7 +24,7 @@ func change_healthbar(new_health):
 func animate_healthbar(start, end):
 	$Tween.interpolate_property(healthbar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
-	
+
 
 
 func _on_HealthBar_value_changed(value):

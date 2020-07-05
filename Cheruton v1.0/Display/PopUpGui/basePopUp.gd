@@ -1,6 +1,6 @@
 extends Control
 
-class_name baseGui
+class_name basePopUp
 
 var is_active_gui = false setget set_is_active_gui
 

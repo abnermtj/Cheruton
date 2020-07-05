@@ -15,7 +15,7 @@ onready var bg_music_file
 
 func _ready():
 	print("Loaded")
-	SceneControl.get_node("masterGui").enabled = false
+	SceneControl.get_node("popUpGui").enabled = false
 	settings.connect("release_gui", self, "_exit_Settings")
 	#$Timer.start()
 

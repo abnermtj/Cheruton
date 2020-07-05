@@ -10,7 +10,7 @@ func _ready():
 		child.connect("release_gui", self, "release_gui")
 
 	states_map = {
-		"emptygui": $emptygui,
+		"emptygui": $emptyPopUpgui,
 		"inventory": $inventory,
 		"pause": $pause,
 		"settings": $settings,

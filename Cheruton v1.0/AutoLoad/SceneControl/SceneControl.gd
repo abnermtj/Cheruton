@@ -1,8 +1,9 @@
 extends Node2D
 
 const MMENU = "res://Display/MainMenu/MainMenu.tscn"
+enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
-onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
+onready var pop_up_gui = preload("res://Display/PopUpGui/PopUpGui.tscn")
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
 
@@ -12,8 +13,7 @@ onready var bg_music = $BgMusic
 onready var bg_music_pitch = $BgMusic/VolPitch
 onready var load_layer = $LoadLayer/Load
 
-
-var curr_screen
+var curr_scene
 var loot_dict = {} # Items pending transfer to inventory
 var enable_save := false
 
@@ -23,24 +23,26 @@ var fade_in := 0.14
 var fade_out := 0.5
 var music_state := "idle"
 
+var dialog_curr
+
 signal init_statbar
-
-
-enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 func _ready():
 	randomize()
-
 	DataResource.load_data()
+
 	#init_music()
-	initiate_music()
+	begin_music()
 	instance_gui()
-	print("Yes")
 	#init_cursor()
 
 ##############
 # INITIALIZE #
 ##############
+func begin_music():
+	music_state = "init"
+	music_next = null
+	music_fsm()
 
 func init_music():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
@@ -48,37 +50,34 @@ func init_music():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 
-
 func init_cursor():
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
 
 func instance_gui():
-	var instanced_gui = master_gui.instance()
+	var instanced_gui = pop_up_gui.instance()
 	SceneControl.add_child(instanced_gui)
-	SceneControl.get_node("masterGui").enabled = false
+	SceneControl.get_node("popUpGui").enabled = false
 
 
 ################
 # SCENE CHANGE #
 ################
-
 # Loads the next scene
 func load_screen(scene, game_scene:= false, loading_screen:= false):
 	var new_music
-	
-	curr_screen = scene
-	print( "LOADING SCREEN: ", curr_screen)
-	
+
+	curr_scene = scene
+	print( "LOADING SCREEN: ", curr_scene)
+
 	get_tree().paused = true
 	if(loading_screen):
 		load_layer.show()
 
-	if(hud_elements.visible):
-		hud_elements.hide()
+	hud_elements.hide()
 
 	var children = levels.get_children()
-	if (!children.empty()):
+	if children:
 		children[0].queue_free()
 
 	var new_level = load(scene).instance()
@@ -87,23 +86,22 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		levels.add_child(new_level)
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 
-	else:
+	else: # main menu
 		get_tree().get_root().add_child(new_level)
 		new_music = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).bg_music_file
-	
+
 	if(new_music):
 		new_music = load(new_music)
-	
+
 	if(game_scene):
 		hud_elements.show()
 
 	if(loading_screen):
 		load_layer.hide()
 
-	
+
 	print("new_music", new_music)
 	change_music(new_music)
-
 	print("Loaded")
 
 	get_tree().paused = false
@@ -111,20 +109,12 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 #############
 # MUSIC FSM #
 #############
-
-
-func initiate_music():
-	music_state = "init"
-	music_next = null
-	music_fsm()
-
 func change_music(new_music):
 	music_state = "clear"
 	music_next = new_music
 	music_fsm()
 
-# Manages the background music being played
-
+# Manages the background music
 #	Idle: No music being played
 #	Clear: Clears the current music being played
 #	Init: Initalizes the next music stream
@@ -170,22 +160,6 @@ func music_fsm():
 func _on_VolPitch_animation_finished(anim_name):
 	music_fsm()
 
-#func slow_music( n : int ):
-#	match n:
-#		0:
-#			# normal mode
-#			$music/pitch_control.play( "normal" )
-#		1:
-#			# slow down
-#			$music/pitch_control.play( "slow" )
-#		2:
-#			# return to normal
-#			$music/pitch_control.play_backwards( "slow" )
-#
-#func level_restart_sfx():
-#	$level_restart.play()
-
-
 ########
 # LOOT #
 ########
@@ -200,7 +174,6 @@ func determine_loot_count(map_name):
 	var ItemMinCount = DataResource.dict_item_spawn[map_name].ItemMinCount
 	var ItemMaxCount = DataResource.dict_item_spawn[map_name].ItemMaxCount
 
-	randomize()
 	var loot_count = randi()%((int(ItemMaxCount) - int(ItemMinCount))+ 1) + int(ItemMinCount)
 	return loot_count
 
@@ -208,7 +181,6 @@ func determine_loot_count(map_name):
 # Needs rework. Currently, the next loot item can only be obtained after the previous one is
 func loot_selector(map_name, loot_count):
 	for _i in range(loot_count):
-		randomize()
 		var index = 1
 		var loot_chance = randi() % 100 + 1
 		while(loot_chance > -1):
@@ -273,10 +245,19 @@ func insert_data(item_id, insert_index):
 		}
 	DataResource.dict_inventory[loot_dict[item_id][item.TYPE]]["Item" + str(insert_index)] = stats
 
+
+########
+# INPUT #
+########
 func _input(_ev):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.is_action_just_pressed("save_player"):
 		if(enable_save):
 			DataResource.save_player()
+
+
+#########
+# DIALOG #
+#########
 

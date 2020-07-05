@@ -1,4 +1,4 @@
-extends baseGui
+extends basePopUp
 
 onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
 onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar

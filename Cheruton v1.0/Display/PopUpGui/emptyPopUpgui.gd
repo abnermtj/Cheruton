@@ -1,4 +1,4 @@
-extends baseGui
+extends basePopUp
 
 func _ready():
 	if not DataResource.dict_settings:

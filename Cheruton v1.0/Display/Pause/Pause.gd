@@ -1,4 +1,4 @@
-extends baseGui
+extends basePopUp
 
 const MAINMENU = "res://Display/MainMenu/MainMenu.tscn"
 

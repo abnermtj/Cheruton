@@ -22,7 +22,6 @@ var c = 1 # set in player function # similar to offset
 var s = .68 #  inverse wave length # 2
 var w = 1# wave length
 var a = 1# amplitude
-var rng = RandomNumberGenerator.new()
 
 func _draw(): # gets called once initially then again when update() is called
 	var points_arr = PoolVector2Array() # an array specifically to hold Vector2
@@ -37,10 +36,9 @@ func _draw(): # gets called once initially then again when update() is called
 		draw_polyline(points_arr,color_inner, LINE_WIDTH-10)
 
 func start():
-	rng.randomize()
-	var rand_num1 = rng.randf_range(-3, 3)
-	var rand_num2 = rng.randf_range(-4, 4)
-	var rand_num3 = rng.randf_range(-.1, .1)
+	var rand_num1 = rand_range(-3, 3)
+	var rand_num2 = rand_range(-4, 4)
+	var rand_num3 = rand_range(-.1, .1)
 	stage = INITIAL_SHOOT
 	w = 7 + rand_num1
 	a = 18 +rand_num2
