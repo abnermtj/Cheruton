@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
@@ -11,21 +11,6 @@
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "Move"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 97.6819, 73.7717 ) ]
-}
 
 [sub_resource type="DynamicFont" id=3]
 outline_size = 1
@@ -69,7 +54,6 @@ __meta__ = {
 }
 
 [node name="Options" type="NinePatchRect" parent="Background"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -83,13 +67,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Background/Options"]
+[node name="Slider" type="TextureRect" parent="Background/Options"]
 visible = false
-position = Vector2( 97.6819, 73.7717 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -86.2863
+margin_top = -37.7099
+margin_right = 85.7137
+margin_bottom = -14.7099
 texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Options"]
-anims/Move = SubResource( 2 )
+[node name="Tween" type="Tween" parent="Background/Options/Slider"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Options"]
 anchor_right = 1.0
@@ -106,7 +100,6 @@ __meta__ = {
 margin_right = 172.0
 margin_bottom = 23.0
 size_flags_vertical = 3
-texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Play"]
@@ -130,7 +123,6 @@ margin_top = 27.0
 margin_right = 172.0
 margin_bottom = 50.0
 size_flags_vertical = 3
-texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Settings"]
@@ -155,8 +147,6 @@ margin_top = 54.0
 margin_right = 172.0
 margin_bottom = 78.0
 size_flags_vertical = 3
-texture_hover = ExtResource( 4 )
-texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Quit"]
@@ -177,8 +167,10 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
+one_shot = true
 
 [node name="WhiteScreen" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 480.0
@@ -191,8 +183,12 @@ __meta__ = {
 
 [node name="OptionsDelay" type="Timer" parent="."]
 wait_time = 0.8
+[connection signal="tween_completed" from="Background/Options/Slider/Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="OptionsDelay" to="." method="_on_OptionsDelay_timeout"]

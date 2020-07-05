@@ -128,8 +128,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 DataResource="*res://AutoLoad/DataResource.gd"
+SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 
 [display]
 
