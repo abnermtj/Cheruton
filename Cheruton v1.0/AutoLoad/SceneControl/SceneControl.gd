@@ -1,5 +1,7 @@
 extends Node2D
 
+const MMENU = "res://Display/MainMenu/MainMenu.tscn"
+
 onready var master_gui = preload("res://AutoLoad/levelguiMaster.tscn")
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
@@ -61,7 +63,8 @@ func instance_gui():
 
 # Loads the next scene
 func load_screen(scene, game_scene:= false, loading_screen:= false):
-
+	var new_music
+	
 	curr_screen = scene
 	print( "LOADING SCREEN: ", curr_screen)
 	
@@ -77,7 +80,14 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		children[0].queue_free()
 
 	var new_level = load(scene).instance()
-	levels.add_child(new_level)
+
+	if(scene != MMENU):
+		levels.add_child(new_level)
+		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
+
+	else:
+		get_tree().get_root().add_child(new_level)
+		new_music = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).bg_music_file
 
 	if(game_scene):
 		hud_elements.show()
@@ -85,7 +95,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if(loading_screen):
 		load_layer.hide()
 
-	var new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
+	
 	print("new_music", new_music)
 	change_music(new_music)
 
