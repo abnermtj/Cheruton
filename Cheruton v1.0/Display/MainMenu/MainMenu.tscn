@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
@@ -7,22 +7,38 @@
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=5]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Effects/white_screen.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=2]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 0 )
-font_data = ExtResource( 7 )
+[sub_resource type="Animation" id=2]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 97.6819, 73.7717 ) ]
+}
 
 [sub_resource type="DynamicFont" id=3]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0 )
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 7 )
 
-[node name="MainMenu" type="Node"]
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 7 )
+
+[node name="MainMenu" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Settings" parent="." instance=ExtResource( 1 )]
@@ -52,7 +68,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="TextureRect" parent="Background"]
+[node name="Options" type="NinePatchRect" parent="Background"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -66,22 +83,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Background/Options"]
+visible = false
+position = Vector2( 97.6819, 73.7717 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Options"]
+anims/Move = SubResource( 2 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Options"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 8.0
-margin_right = -4.0
-margin_bottom = -8.0
+margin_left = 7.0
+margin_top = 9.0
+margin_right = -7.0
+margin_bottom = -7.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="TextureButton" parent="Background/Options/VBoxContainer"]
-margin_right = 178.0
+margin_right = 172.0
 margin_bottom = 23.0
 size_flags_vertical = 3
-texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Play"]
@@ -90,10 +115,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -28.0
-margin_top = -9.5
+margin_top = -8.5
 margin_right = 28.0
-margin_bottom = 9.5
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 10.5
+custom_fonts/font = SubResource( 3 )
 text = "Play"
 align = 1
 __meta__ = {
@@ -102,10 +127,10 @@ __meta__ = {
 
 [node name="Settings" type="TextureButton" parent="Background/Options/VBoxContainer"]
 margin_top = 27.0
-margin_right = 178.0
+margin_right = 172.0
 margin_bottom = 50.0
 size_flags_vertical = 3
-texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Settings"]
@@ -117,7 +142,7 @@ margin_left = -56.0
 margin_top = -15.5
 margin_right = 56.0
 margin_bottom = 15.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Settings"
 align = 1
 valign = 1
@@ -127,10 +152,11 @@ __meta__ = {
 
 [node name="Quit" type="TextureButton" parent="Background/Options/VBoxContainer"]
 margin_top = 54.0
-margin_right = 178.0
+margin_right = 172.0
 margin_bottom = 78.0
 size_flags_vertical = 3
 texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Quit"]
@@ -142,7 +168,7 @@ margin_left = -28.0
 margin_top = -9.5
 margin_right = 28.0
 margin_bottom = 9.5
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Quit"
 align = 1
 __meta__ = {
@@ -151,7 +177,22 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
+
+[node name="WhiteScreen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 480.0
+margin_bottom = 270.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsDelay" type="Timer" parent="."]
+wait_time = 0.8
 [connection signal="pressed" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="OptionsDelay" to="." method="_on_OptionsDelay_timeout"]

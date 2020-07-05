@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const SCN1 = "res://Levels/testBench/playerTestBench.tscn"
 const SCN2 = "res://Levels/Hometown/Hometown.tscn"
@@ -9,29 +9,35 @@ const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 onready var settings = $Settings
 onready var options = $Background/Options
 onready var timer_options = $Timer
-onready var scene_control = get_parent().get_parent()
+onready var white_screen = $WhiteScreen
+onready var options_delay = $OptionsDelay
 
-onready var bg_music_file
+onready var bg_music_fill
 
-func _ready():
-	print("Loaded")
-	SceneControl.get_node("masterGui").enabled = false
-	settings.connect("release_gui", self, "_exit_Settings")
-	#$Timer.start()
+var modulate_dec = "white"
 
-func _on_Play_pressed():
-	SceneControl.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN1, true, true)
-	queue_free()
+func _process(delta):
+	#white_screen.modulate.a -= 0.01
+	modulate_func()
 
-func _on_Settings_pressed():
-	options.hide()
-	settings.show()
+# Creates a startup effect
+func modulate_func():
+	match modulate_dec:
+		"white":
+			white_screen.modulate.a -= 0.01
 
-func _exit_Settings(gui_name):
-	settings.hide()
-	options.show()
+			if(white_screen.modulate.a < 0.01):
+				modulate_dec = "idle"
+				options_delay.start()
 
+		"options":
+			options.modulate.a += 0.03
+			if(options.modulate.a > 0.99):
+				modulate_dec = "idle"
+
+
+func _on_OptionsDelay_timeout():
+	modulate_dec = "options"
 
 func _on_Quit_pressed():
 	get_tree().quit()
@@ -39,5 +45,6 @@ func _on_Quit_pressed():
 
 func _on_Timer_timeout():
 	options.show()
+
 
 
