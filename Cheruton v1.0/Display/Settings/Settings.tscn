@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
 [ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
 
 [node name="Settings" type="Control"]
 margin_right = 1920.0
@@ -39,9 +40,8 @@ __meta__ = {
 }
 
 [node name="MusicVol" type="Label" parent="ContainerMain/List"]
-margin_top = 35.0
 margin_right = 320.0
-margin_bottom = 66.0
+margin_bottom = 31.0
 text = "Music Volume: 
 "
 __meta__ = {
@@ -78,9 +78,9 @@ __meta__ = {
 }
 
 [node name="SFXVol" type="Label" parent="ContainerMain/List"]
-margin_top = 70.0
+margin_top = 35.0
 margin_right = 320.0
-margin_bottom = 101.0
+margin_bottom = 66.0
 text = "SFX Volume: 
 "
 __meta__ = {
@@ -117,9 +117,9 @@ __meta__ = {
 }
 
 [node name="Mute" type="Label" parent="ContainerMain/List"]
-margin_top = 105.0
+margin_top = 70.0
 margin_right = 320.0
-margin_bottom = 136.0
+margin_bottom = 101.0
 text = "Mute:
 "
 valign = 1
@@ -140,19 +140,18 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="ContainerMain/List"]
-margin_top = 140.0
+margin_top = 105.0
 margin_right = 320.0
-margin_bottom = 160.0
+margin_bottom = 125.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainVol" type="Label" parent="ContainerMain/List"]
-margin_left = 693.0
-margin_top = 313.0
-margin_right = 1460.0
-margin_bottom = 344.0
+margin_top = 129.0
+margin_right = 320.0
+margin_bottom = 160.0
 text = "Main Volume: 
 "
 __meta__ = {
@@ -202,6 +201,19 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Slider" type="TextureRect" parent="Settings"]
+visible = false
+margin_left = 137.0
+margin_top = 130.0
+margin_right = 292.0
+margin_bottom = 170.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Settings/Slider"]
 
 [node name="Container" type="HBoxContainer" parent="Settings"]
 margin_left = 46.0
@@ -354,8 +366,24 @@ margin_bottom = 14.0
 size_flags_vertical = 0
 text = "       "
 
-[node name="BaseSound" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+[node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 216.0
+margin_right = 1010.0
+margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BaseSound" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
+margin_left = 579.0
+margin_right = 1010.0
+margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BaseGame" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
+margin_left = 715.0
 margin_right = 1010.0
 margin_bottom = 429.0
 size_flags_horizontal = 3
@@ -390,3 +418,7 @@ text = "                    "
 [connection signal="pressed" from="ContainerMain/List/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="tween_completed" from="Settings/Slider/Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Controls" to="." method="_on_Controls_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_mouse_entered"]
+[connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]

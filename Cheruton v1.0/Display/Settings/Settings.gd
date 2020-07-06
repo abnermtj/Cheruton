@@ -1,9 +1,23 @@
-extends basePopUp
+extends baseGui
 
 onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
 onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar
 onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
 onready var list = $ContainerMain/List
+
+onready var container = $Settings/Container
+onready var contents = $Settings/Container/Main/Contents
+
+onready var slider = $Settings/Slider
+onready var tween = $Settings/Slider/Tween
+onready var controls_position = $Settings/Container/Main/Contents/Options/Controls.rect_position
+onready var audio_position = $Settings/Container/Main/Contents/Options/Audio.rect_position
+onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_position
+
+var slider_active := false
+var tween_status := false
+
+
 
 func _ready():
 	init_bar_vals()
@@ -59,6 +73,41 @@ func _on_Back_pressed():
 func handle_input(event):
 	if is_active_gui and Input.is_action_just_pressed("escape"):
 		_on_Back_pressed()
+
+
+
+
+func _on_Controls_mouse_entered():
+	var new_position = Vector2(slider.rect_position.x, controls_position.y)
+	slide_to_position(new_position)
+
+func _on_Audio_mouse_entered():
+	var new_position = Vector2(slider.rect_position.x, audio_position.y)
+	slide_to_position(new_position)
+
+func _on_Game_mouse_entered():
+	var new_position = Vector2(slider.rect_position.x, game_position.y)
+	slide_to_position(new_position)
+
+# Slides the slider to the intended position, or shows it there if not visible
+func slide_to_position(new_position):
+	# Offset of position
+	new_position.y += container.rect_position.y + contents.rect_position.y
+	if(!tween_status):
+		var old_position = slider.rect_position
+		if(slider_active):
+			tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween_status = true
+			tween.start()
+		else:
+			slider.rect_position.y = new_position.y
+			slider.show()
+			slider_active = true
+
+
+func _on_Tween_tween_completed(object, key):
+	tween_status = false
+
 
 
 
