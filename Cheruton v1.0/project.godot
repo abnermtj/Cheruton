@@ -80,9 +80,9 @@ _global_script_classes=[ {
 "path": "res://Player/ActualPlayer/stateMachine.gd"
 }, {
 "base": "Control",
-"class": "baseGui",
+"class": "basePopUp",
 "language": "GDScript",
-"path": "res://Display/LevelGuiMaster/baseGui.gd"
+"path": "res://Display/PopUpGui/basePopUp.gd"
 }, {
 "base": "Node",
 "class": "baseState",
@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
@@ -114,7 +114,7 @@ _global_script_class_icons={
 "Trail2D": "",
 "airState": "",
 "baseFSM": "",
-"baseGui": "",
+"basePopUp": "",
 "baseState": "",
 "groundState": "",
 "motionState": ""
@@ -128,8 +128,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 DataResource="*res://AutoLoad/DataResource.gd"
+SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 
 [display]
 
@@ -302,10 +302,9 @@ shop_sell={
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="enemy_hitbox"
 2d_physics/layer_6="hookable_terrain"
-2d_physics/layer_7="area_enter_trigger_events"
-2d_physics/layer_8="swing_colliders"
+2d_physics/layer_8="non_one_way_terrain"
 2d_physics/layer_9="one_way_terrain"
-2d_physics/layer_20="non_masked_player_col"
+2d_physics/layer_10="interactibles"
 
 [physics]
 
