@@ -26,7 +26,7 @@ onready var bg_music_fill
 
 var modulate_dec = "white"
 var slider_active := false
-var tween_status := false
+
 
 func _ready():
 	white_screen.modulate.a = 1.0
@@ -97,20 +97,16 @@ func _on_Quit_mouse_entered():
 func slide_to_position(new_position):
 	# Offset of position
 	new_position.y += container.rect_position.y
-	if(!tween_status):
-		var old_position = slider.rect_position
-		if(slider_active):
-			tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween_status = true
-			tween.start()
-		else:
-			slider.rect_position.y = new_position.y
-			slider.show()
-			slider_active = true
+	var old_position = slider.rect_position
+	if(slider_active):
+		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
+		tween.start()
+	else:
+		slider.rect_position.y = new_position.y
+		slider.show()
+		slider_active = true
 
-func _on_Tween_tween_completed(object, key):
-	tween_status = false
 
 
 
