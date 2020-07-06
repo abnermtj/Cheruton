@@ -99,7 +99,7 @@ func slide_to_position(new_position):
 	new_position.y += container.rect_position.y
 	var old_position = slider.rect_position
 	if(slider_active):
-		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.05, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 		tween.start()
 	else:
 		slider.rect_position.y = new_position.y

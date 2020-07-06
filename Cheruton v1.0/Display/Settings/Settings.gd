@@ -15,7 +15,7 @@ onready var audio_position = $Settings/Container/Main/Contents/Options/Audio.rec
 onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_position
 
 var slider_active := false
-var tween_status := false
+
 
 
 
@@ -93,20 +93,14 @@ func _on_Game_mouse_entered():
 func slide_to_position(new_position):
 	# Offset of position
 	new_position.y += container.rect_position.y + contents.rect_position.y
-	if(!tween_status):
-		var old_position = slider.rect_position
-		if(slider_active):
-			tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.01, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			tween_status = true
-			tween.start()
-		else:
-			slider.rect_position.y = new_position.y
-			slider.show()
-			slider_active = true
-
-
-func _on_Tween_tween_completed(object, key):
-	tween_status = false
+	var old_position = slider.rect_position
+	if(slider_active):
+		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		tween.start()
+	else:
+		slider.rect_position.y = new_position.y
+		slider.show()
+		slider_active = true
 
 
 
