@@ -95,6 +95,11 @@ __meta__ = {
 }
 
 [node name="Play" type="TextureButton" parent="Background/Options/VBoxContainer"]
+<<<<<<< HEAD
+margin_right = 185.0
+=======
+margin_right = 172.0
+>>>>>>> 01c03b7b1c2b541e3400cbd0bf2ee36dabb0659d
 margin_bottom = 23.0
 size_flags_vertical = 3
 disabled = true
@@ -118,7 +123,11 @@ __meta__ = {
 
 [node name="Settings" type="TextureButton" parent="Background/Options/VBoxContainer"]
 margin_top = 27.0
+<<<<<<< HEAD
+margin_right = 185.0
+=======
 margin_right = 172.0
+>>>>>>> 01c03b7b1c2b541e3400cbd0bf2ee36dabb0659d
 margin_bottom = 50.0
 size_flags_vertical = 3
 disabled = true
@@ -143,7 +152,11 @@ __meta__ = {
 
 [node name="Quit" type="TextureButton" parent="Background/Options/VBoxContainer"]
 margin_top = 54.0
+<<<<<<< HEAD
+margin_right = 185.0
+=======
 margin_right = 172.0
+>>>>>>> 01c03b7b1c2b541e3400cbd0bf2ee36dabb0659d
 margin_bottom = 78.0
 size_flags_vertical = 3
 disabled = true

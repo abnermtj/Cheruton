@@ -29,6 +29,12 @@ var slider_active := false
 var tween_status := false
 
 func _ready():
+<<<<<<< HEAD
+	print("Loaded")
+	SceneControl.get_node("popUpGui").enabled = false
+	settings.connect("release_gui", self, "_exit_Settings")
+	#$Timer.start()
+=======
 	white_screen.modulate.a = 1.0
 	options.modulate.a = 0
 	
@@ -62,6 +68,7 @@ func _on_OptionsDelay_timeout():
 func enable_options():
 	for i in container.get_child_count():
 		container.get_child(i).disabled = false
+>>>>>>> 01c03b7b1c2b541e3400cbd0bf2ee36dabb0659d
 
 func _on_Play_pressed():
 	SceneControl.emit_signal("init_statbar")

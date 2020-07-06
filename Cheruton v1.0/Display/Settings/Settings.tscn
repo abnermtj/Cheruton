@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
+[ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
 
 [node name="Settings" type="Control"]
-rect_pivot_offset = Vector2( 234.02, 41.046 )
+margin_right = 1920.0
+margin_bottom = 1080.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ContainerMain" type="VBoxContainer" parent="."]
+visible = false
 margin_right = 320.0
 margin_bottom = 195.0
 __meta__ = {
@@ -30,44 +34,6 @@ __meta__ = {
 margin_top = 35.0
 margin_right = 320.0
 margin_bottom = 195.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVol" type="Label" parent="ContainerMain/List"]
-margin_right = 320.0
-margin_bottom = 31.0
-text = "Main Volume: 
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolBar" type="ProgressBar" parent="ContainerMain/List/MainVol"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolUp" type="Button" parent="ContainerMain/List/MainVol"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolDown" type="Button" parent="ContainerMain/List/MainVol"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -181,11 +147,246 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
-[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+
+[node name="MainVol" type="Label" parent="ContainerMain/List"]
+margin_left = 693.0
+margin_top = 313.0
+margin_right = 1460.0
+margin_bottom = 344.0
+text = "Main Volume: 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolBar" type="ProgressBar" parent="ContainerMain/List/MainVol"]
+margin_left = 112.418
+margin_top = -0.327515
+margin_right = 202.418
+margin_bottom = 13.6725
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolUp" type="Button" parent="ContainerMain/List/MainVol"]
+margin_left = 221.237
+margin_top = -3.09061
+margin_right = 241.237
+margin_bottom = 16.9094
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainVolDown" type="Button" parent="ContainerMain/List/MainVol"]
+margin_left = 249.237
+margin_top = -3.09061
+margin_right = 269.237
+margin_bottom = 16.9094
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -320.0
+margin_right = 640.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 640, 320 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="Settings"]
+margin_left = 46.0
+margin_top = 61.0
+margin_right = 1233.5
+margin_bottom = 592.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LMargin" type="Label" parent="Settings/Container"]
+margin_right = 80.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
+
+[node name="Main" type="VBoxContainer" parent="Settings/Container"]
+margin_left = 84.0
+margin_right = 1103.0
+margin_bottom = 531.0
+size_flags_horizontal = 3
+
+[node name="TMargin" type="Label" parent="Settings/Container/Main"]
+margin_right = 1019.0
+margin_bottom = 31.0
+text = "
+"
+
+[node name="Settings" type="Label" parent="Settings/Container/Main"]
+margin_top = 35.0
+margin_right = 1019.0
+margin_bottom = 49.0
+text = "Settings"
+
+[node name="DividerMain" type="TextureRect" parent="Settings/Container/Main"]
+margin_top = 53.0
+margin_right = 1019.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 0, 10 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Contents" type="HBoxContainer" parent="Settings/Container/Main"]
+margin_top = 67.0
+margin_right = 1019.0
+margin_bottom = 496.0
+size_flags_vertical = 3
+
+[node name="OLMargin" type="Label" parent="Settings/Container/Main/Contents"]
+margin_bottom = 14.0
+size_flags_vertical = 0
+
+[node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+margin_left = 4.0
+margin_right = 162.0
+margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
+margin_right = 158.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 0, 23 )
+expand = true
+
+[node name="Label" type="Label" parent="Settings/Container/Main/Contents/Options/Controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.5
+margin_top = -7.0
+margin_right = 26.5
+margin_bottom = 7.0
+text = "Controls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
+margin_top = 27.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 23 )
+expand = true
+
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.5
+margin_top = -7.0
+margin_right = 26.5
+margin_bottom = 7.0
+text = "Audio"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
+margin_top = 54.0
+margin_right = 158.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 0, 23 )
+expand = true
+
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Game"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.9524
+margin_top = -7.0
+margin_right = 28.0476
+margin_bottom = 24.0
+text = "Game
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
+margin_left = 166.0
+margin_right = 166.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+
+[node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
+margin_left = 170.0
+margin_right = 180.0
+margin_bottom = 429.0
+rect_min_size = Vector2( 10, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
+margin_left = 184.0
+margin_right = 212.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "       "
+
+[node name="BaseSound" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+margin_left = 216.0
+margin_right = 1010.0
+margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SRMargin" type="Label" parent="Settings/Container/Main/Contents"]
+margin_left = 1014.0
+margin_right = 1018.0
+margin_bottom = 14.0
+size_flags_vertical = 2
+text = " "
+
+[node name="BMargin" type="Label" parent="Settings/Container/Main"]
+margin_top = 500.0
+margin_right = 1019.0
+margin_bottom = 531.0
+text = "
+"
+
+[node name="RMargin" type="Label" parent="Settings/Container"]
+margin_left = 1107.0
+margin_right = 1187.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
 [connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
 [connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
 [connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
 [connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
 [connection signal="pressed" from="ContainerMain/List/Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
 [connection signal="pressed" from="ContainerMain/List/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
