@@ -101,6 +101,7 @@ __meta__ = {
 margin_right = 172.0
 margin_bottom = 23.0
 size_flags_vertical = 3
+disabled = true
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Play"]
@@ -124,6 +125,7 @@ margin_top = 27.0
 margin_right = 172.0
 margin_bottom = 50.0
 size_flags_vertical = 3
+disabled = true
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Settings"]
@@ -148,6 +150,7 @@ margin_top = 54.0
 margin_right = 172.0
 margin_bottom = 78.0
 size_flags_vertical = 3
+disabled = true
 expand = true
 
 [node name="Text" type="Label" parent="Background/Options/VBoxContainer/Quit"]
@@ -174,6 +177,7 @@ one_shot = true
 wait_time = 0.8
 
 [node name="WhiteScreen" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 480.0
