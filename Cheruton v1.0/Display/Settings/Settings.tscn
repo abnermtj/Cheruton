@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
 
 [node name="Settings" type="Control"]
-rect_pivot_offset = Vector2( 234.02, 41.046 )
+margin_right = 1920.0
+margin_bottom = 1080.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ContainerMain" type="VBoxContainer" parent="."]
+visible = false
 margin_right = 320.0
 margin_bottom = 195.0
 __meta__ = {
@@ -181,6 +184,97 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -320.0
+margin_right = 640.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 640, 320 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="NinePatchRect"]
+margin_left = 46.0
+margin_top = 61.0
+margin_right = 1233.5
+margin_bottom = 592.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LMargin" type="Label" parent="NinePatchRect/Container"]
+margin_right = 80.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
+
+[node name="Main" type="VBoxContainer" parent="NinePatchRect/Container"]
+margin_left = 84.0
+margin_right = 1103.0
+margin_bottom = 531.0
+size_flags_horizontal = 3
+
+[node name="Settings" type="Label" parent="NinePatchRect/Container/Main"]
+margin_right = 1019.0
+margin_bottom = 14.0
+text = "Settings"
+
+[node name="DividerMain" type="TextureRect" parent="NinePatchRect/Container/Main"]
+margin_top = 18.0
+margin_right = 1019.0
+margin_bottom = 18.0
+
+[node name="Contents" type="HBoxContainer" parent="NinePatchRect/Container/Main"]
+margin_top = 22.0
+margin_right = 1019.0
+margin_bottom = 36.0
+
+[node name="Options" type="VBoxContainer" parent="NinePatchRect/Container/Main/Contents"]
+margin_bottom = 14.0
+
+[node name="DividerSub" type="TextureRect" parent="NinePatchRect/Container/Main/Contents"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
+
+[node name="SLMargin" type="Label" parent="NinePatchRect/Container/Main/Contents"]
+margin_left = 8.0
+margin_right = 88.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
+
+[node name="BaseSound" type="VBoxContainer" parent="NinePatchRect/Container/Main/Contents"]
+margin_left = 92.0
+margin_right = 935.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SRMargin" type="Label" parent="NinePatchRect/Container/Main/Contents"]
+margin_left = 939.0
+margin_right = 1019.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
+
+[node name="RMargin" type="Label" parent="NinePatchRect/Container"]
+margin_left = 1107.0
+margin_right = 1187.0
+margin_bottom = 14.0
+size_flags_horizontal = 5
+size_flags_vertical = 0
+text = "                    "
 [connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
 [connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
