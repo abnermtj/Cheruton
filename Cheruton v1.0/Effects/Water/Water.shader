@@ -43,6 +43,7 @@ void fragment(){
 	
 	color = mix(color, blue_colour, 0.3);
 	color.rgb = mix(vec3(0.5), color.rgb, 1.4);
+//	color.rgb *=  1.2;
 	
 	// Set Surface
 	float near_top = (UV.y + distort_sum.y) / (0.2/sprite_scale.y);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilesMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=2]
@@ -24,6 +24,10 @@
 [ext_resource path="res://Levels/Hometown/Resources/Hometown_props.tres" type="TileSet" id=22]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown_foregroundt.tres" type="TileSet" id=23]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown_buildings.tres" type="TileSet" id=24]
+[ext_resource path="res://Effects/Water/Water.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree1/grassLandTree1.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrasslandsBackTree1/GrasslandsBackTree1.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree2/grassLandTree2.tscn" type="PackedScene" id=28]
 
 [node name="Hometown" type="Node2D"]
 pause_mode = 1
@@ -51,7 +55,25 @@ tile_set = ExtResource( 22 )
 collision_layer = 0
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 107, 22, 0, 262174, 21, 0, 262230, 13, 0, 327770, 20, 0, 327783, 18, 0, 327786, 20, 0, 327791, 20, 0, 327823, 21, 0, 458784, 20, 0, 458785, 18, 0, 458814, 20, 0, 458868, 18, 0, 524294, 20, 0, 524296, 20, 0, 524312, 19, 0, 524313, 19, 0, 524314, 19, 0, 524315, 18, 0, 524316, 18, 0, 524370, 20, 0, 524414, 20, 0, 589887, 20, 0, 589952, 19, 0, 589955, 19, 0, 589968, 19, 0, 589969, 19, 0, 589970, 19, 0, 589991, 18, 0 )
+tile_data = PoolIntArray( 107, 22, 0, 262230, 13, 0, 327770, 20, 0, 327783, 18, 0, 327786, 20, 0, 327791, 20, 0, 458784, 20, 0, 458785, 18, 0, 458814, 20, 0, 458868, 18, 0, 524294, 20, 0, 524296, 20, 0, 524312, 19, 0, 524313, 19, 0, 524314, 19, 0, 524315, 18, 0, 524316, 18, 0, 524370, 20, 0, 524414, 20, 0, 589887, 20, 0, 589952, 19, 0, 589955, 19, 0, 589968, 19, 0, 589969, 19, 0, 589970, 19, 0, 589991, 18, 0 )
+
+[node name="Shaders" type="Node2D" parent="."]
+
+[node name="Water" parent="Shaders" instance=ExtResource( 25 )]
+position = Vector2( 4704, 900 )
+scale = Vector2( 30, 10 )
+
+[node name="grassLandTree1" parent="Shaders" instance=ExtResource( 26 )]
+position = Vector2( 704, 422 )
+
+[node name="GrasslandsBackTree1" parent="Shaders" instance=ExtResource( 27 )]
+position = Vector2( 2128, 484 )
+
+[node name="grassLandTree2" parent="Shaders" instance=ExtResource( 28 )]
+position = Vector2( 5596, 296 )
+
+[node name="GrasslandsBackTree2" parent="Shaders" instance=ExtResource( 27 )]
+position = Vector2( 9360, 548 )
 
 [node name="Tiles" parent="." instance=ExtResource( 1 )]
 collision_mask = 0
@@ -72,7 +94,7 @@ cell_tile_origin = 2
 collision_layer = 256
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 65564, 7, 0, 131421, 3, 0, 131431, 4, 0, 262438, 4, 0, 262483, 8, 0, 918009, 4, 0, 1114542, 17, 0, 1180320, 4, 0, 1311058, 18, 0, 1311070, 20, 0, 1311078, 19, 0, 1573005, 19, 0, 1573007, 10, 0, 1704522, 5, 0, 1835129, 19, 0, 1835139, 15, 0, 1835497, 19, 0, 1900592, 11, 0, 1966203, 14, 0, 2097158, 19, 0, 2097174, 19, 0, 2097186, 10, 0, 2097230, 19, 0, 2097659, 15, 0, 2359919, 19, 0, 2359955, 19, 0, 2359972, 15, 0, 2490947, 14, 0 )
+tile_data = PoolIntArray( 131421, 3, 0, 131431, 4, 0, 262438, 4, 0, 918009, 4, 0, 1114542, 17, 0, 1180320, 4, 0, 1311058, 18, 0, 1311070, 20, 0, 1311078, 19, 0, 1573005, 19, 0, 1573007, 10, 0, 1704522, 5, 0, 1835129, 19, 0, 1835139, 15, 0, 1835497, 19, 0, 1900592, 11, 0, 1966203, 14, 0, 2097158, 19, 0, 2097174, 19, 0, 2097186, 10, 0, 2097230, 19, 0, 2097659, 15, 0, 2359919, 19, 0, 2359955, 19, 0, 2359972, 15, 0, 2490947, 14, 0 )
 
 [node name="camera_limit_NW" type="Position2D" parent="."]
 position = Vector2( 10, -840 )
@@ -176,7 +198,7 @@ position = Vector2( 10240, 560 )
 [node name="flyingSword" parent="." instance=ExtResource( 8 )]
 
 [node name="player" parent="." instance=ExtResource( 9 )]
-position = Vector2( 6105.2, 208.029 )
+position = Vector2( 819.328, 207.89 )
 
 [node name="camera" parent="player" instance=ExtResource( 10 )]
 position = Vector2( 1, -100 )

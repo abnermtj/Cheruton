@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Effects/Transparent_bg.png" type="Texture" id=1]
+[ext_resource path="res://Effects/Water/Transparent_bg.png" type="Texture" id=1]
 [ext_resource path="res://Effects/Lava/lava.shader" type="Shader" id=2]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
