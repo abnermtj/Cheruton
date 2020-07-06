@@ -3,15 +3,18 @@ extends Node2D
 const MMENU = "res://Display/MainMenu/MainMenu.tscn"
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
-onready var pop_up_gui = preload("res://Display/PopUpGui/PopUpGui.tscn")
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
 
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
+onready var pop_up_gui = $popUpGui
 onready var bg_music = $BgMusic
 onready var bg_music_pitch = $BgMusic/VolPitch
 onready var load_layer = $LoadLayer/Load
+
+var cur_story
+var cur_dialog
 
 var curr_scene
 var loot_dict = {} # Items pending transfer to inventory
@@ -23,17 +26,13 @@ var fade_in := 0.14
 var fade_out := 0.5
 var music_state := "idle"
 
-var dialog_curr
-
 signal init_statbar
 
 func _ready():
 	randomize()
-	DataResource.load_data()
 
 	#init_music()
 	begin_music()
-	instance_gui()
 	#init_cursor()
 
 ##############
@@ -53,11 +52,6 @@ func init_music():
 func init_cursor():
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
-
-func instance_gui():
-	var instanced_gui = pop_up_gui.instance()
-	SceneControl.add_child(instanced_gui)
-	SceneControl.get_node("popUpGui").enabled = false
 
 
 ################
@@ -84,7 +78,9 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 
 	if(scene != MMENU):
 		levels.add_child(new_level)
+
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
+		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 
 	else: # main menu
 		get_tree().get_root().add_child(new_level)
@@ -256,8 +252,14 @@ func _input(_ev):
 		if(enable_save):
 			DataResource.save_player()
 
-
 #########
 # DIALOG #
 #########
+func change_story(story : String): # a collection of dialogs
+	cur_story = story
+	pop_up_gui.get_node("popUps/dialog").load_story(cur_story)
 
+func change_and_start_dialog(dialog : String):
+	cur_dialog = dialog
+	pop_up_gui.get_node("popUps").new_gui("dialog")
+	pop_up_gui.get_node("popUps/dialog").start_dialog(cur_dialog)

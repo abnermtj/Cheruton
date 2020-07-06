@@ -20,19 +20,25 @@ func _ready():
 	var story_reader_class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	story_reader = story_reader_class.new()
 
-	var story = load("res://Levels/Hometown/Stories/Baked/HometownDialog.tres")
-	story_reader.read(story)
+	load_story("res://Levels/Hometown/Stories/Baked/HometownDialog.tres")
 
-	start_dialog("Hometown/Moneygirl")
 	next_indicator.visible = false
 
-func start_dialog(record_name : String): # THIS IS THE FUNCTION TO CALL FROM OUTSIDE SCENES
+func load_story(path : String): # LOAD OLLECTION OF ALL DIALOGS IN THAT MAP
+	var story = load(path)
+	story_reader.read(story)
+
+func start_dialog(record_name : String): # SPECIFIC DIALOG
 	finished_current_node = false
 	finished_last_node = false
 
 	dialog_id = story_reader.get_did_via_record_name(record_name)
 	node_id = self.story_reader.get_nid_via_exact_text(dialog_id, "<start>")
 	final_node_id = story_reader.get_nid_via_exact_text(dialog_id, "<end>")
+
+	if node_id == -1: print("start of dialog not found")
+	if final_node_id == -1: print("end of dialog not found")
+
 	get_next_node()
 	play_dialog()
 	show()

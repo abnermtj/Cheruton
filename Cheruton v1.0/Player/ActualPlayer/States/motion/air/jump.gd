@@ -22,7 +22,7 @@ func handle_input(event):
 				owner.hook_dir = ( nearest_hook_point.global_position - owner.global_position).normalized()
 
 				owner.play_sound("hook_start")
-				owner.play_and_return_anim("grapple_throw")
+#				owner.play_and_return_anim("grapple_throw")
 				owner.start_hook()
 	.handle_input(event)
 
@@ -44,7 +44,6 @@ func enter() -> void:
 		grav_multiplier = 1
 
 	if owner.prev_state.name == "wallSlide": # wall jump
-		print(owner.look_direction.x )
 		owner.velocity.x = -JUMP_VEL* owner.look_direction.x * .4
 
 	keypress_timer = 0.2

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=10 format=2]
 
-[ext_resource path="res://Levels/HomeTown/Sprites/HomeTown-BuidingsALL.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Hometown/Sprites/HomeTown-BuidingsALL.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 544, 1792, 544, 1792, 576, 0, 576 )

@@ -8,6 +8,5 @@ func _input(event):
 		$player.position = save_position
 
 func handle_death_zone(body):
-	print("here")
 	$player.velocity = Vector2()
 	$player.position = save_position

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Display/LoadScrn/LoadScrn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AutoLoad/SceneControl/SceneControl.gd" type="Script" id=4]
 [ext_resource path="res://Display/LoadScrn/LoadScrn.gd" type="Script" id=5]
+[ext_resource path="res://Display/PopUpGui/PopUpGui.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -110,5 +111,7 @@ visible = false
 
 [node name="LoadScrn" parent="LoadLayer/Load" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
+
+[node name="popUpGui" parent="." instance=ExtResource( 6 )]
 [connection signal="animation_finished" from="BgMusic/VolPitch" to="." method="_on_VolPitch_animation_finished"]
 [connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

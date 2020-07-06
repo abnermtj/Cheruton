@@ -1,10 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Levels/HomeTown/NPCs/whippersnapper/22fps_limitPallete_PIL_HomeTown_NPC_whippersnapper.png" type="Texture" id=1]
-[ext_resource path="res://Levels/HomeTown/NPCs/whippersnapper/whippersnapper.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Hometown/NPCs/whippersnapper/22fps_limitPallete_PIL_HomeTown_NPC_whippersnapper.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Hometown/NPCs/whippersnapper/whippersnapper.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
-
-
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -44,8 +42,8 @@ extents = Vector2( 32.5, 12.5 )
 
 [node name="whippersnapper" type="Area2D"]
 scale = Vector2( 4, 4 )
-collision_layer = 0
-collision_mask = 2
+collision_layer = 512
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

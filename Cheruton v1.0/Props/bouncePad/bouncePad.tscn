@@ -8,6 +8,7 @@ extents = Vector2( 8, 8 )
 [node name="bouncePad" type="StaticBody2D" groups=[
 "bouncePads",
 ]]
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -1,9 +1,10 @@
 extends basePopUp
 
-func _ready():
-	if not DataResource.dict_settings:
-		if(!DataResource.loaded):
-			DataResource.load_data() # for debugging, allows the scene to run by itself
+#for debugging, allows the scene to run by itself
+#func _ready():
+#	if not DataResource.dict_settings:
+#		if(!DataResource.loaded):
+#			DataResource.load_data()
 
 func handle_input(event):
 	if is_active_gui:
@@ -13,6 +14,3 @@ func handle_input(event):
 			emit_signal("new_gui", "pause")
 		elif Input.is_action_just_pressed("ui_focus_next"):#stub
 			emit_signal("new_gui", "shop")
-		elif Input.is_action_just_pressed("interact"):
-			emit_signal("new_gui", "dialog")
-

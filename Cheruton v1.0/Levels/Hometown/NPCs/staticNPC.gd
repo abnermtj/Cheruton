@@ -4,10 +4,15 @@ class_name StaticNPC
 
 func _ready():
 	$AnimationPlayer.play("idle")
-	connect("body_entered", self, "player_enter")
-	connect("body_exited", self, "player_exited")
+	add_to_group("interactibles")
 	add_to_group("NPCs")
-func player_enter(body):
+
+
+func pend_interact():
 	$Sprite.material.set_shader_param("width", .5)
-func player_exited(body):
+
+func unpend_interact():
 	$Sprite.material.set_shader_param("width", 0)
+
+func interact():
+	SceneControl.change_and_start_dialog(name)

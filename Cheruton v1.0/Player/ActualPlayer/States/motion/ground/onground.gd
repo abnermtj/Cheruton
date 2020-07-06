@@ -9,6 +9,10 @@ func handle_input(event):
 			owner.global_position.y += 1
 		else:
 			emit_signal("finished", "jump")
+
+	if event.is_action_pressed("interact"):
+		owner.interact_with_nearest_object()
+
 	return .handle_input(event) # everything below here not dealt twith
 
 func update(delta):

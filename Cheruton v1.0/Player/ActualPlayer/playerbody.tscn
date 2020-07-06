@@ -1216,8 +1216,6 @@ collision_mask = 385
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
-position = Vector2( 0.543201, 0.226334 )
-scale = Vector2( 1.00905, 0.995473 )
 
 [node name="bodyRotate" type="Node2D" parent="bodyPivot"]
 show_behind_parent = true
@@ -1439,18 +1437,17 @@ shape = SubResource( 49 )
 [node name="circleScan" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 32
+collision_mask = 544
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
 position = Vector2( 0, 42.559 )
 shape = SubResource( 50 )
 
-[node name="cicleScanSmall" type="Area2D" parent="."]
-visible = false
+[node name="circleScanSmall" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cicleScanSmall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="circleScanSmall"]
 shape = SubResource( 51 )
 
 [node name="sounds" type="Node" parent="."]
@@ -1476,8 +1473,8 @@ volume_db = -25.0
 [node name="slide" type="AudioStreamPlayer" parent="sounds"]
 volume_db = -3.0
 [connection signal="animation_changed" from="animationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="state_changed" from="states" to="stateNameDisplay" method="_on_states_state_changed"]
+[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]
 [connection signal="timeout" from="timers/grappleCoolDown" to="." method="_on_grappleCoolDown_timeout"]
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]

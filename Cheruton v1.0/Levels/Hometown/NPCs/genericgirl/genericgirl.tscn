@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Levels/HomeTown/NPCs/genericgirl/18fps_limitPallete_PIL_HomeTown_NPC_genericgirl.png" type="Texture" id=1]
-[ext_resource path="res://Levels/HomeTown/NPCs/genericgirl/genericgirl.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Hometown/NPCs/genericgirl/18fps_limitPallete_PIL_HomeTown_NPC_genericgirl.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Hometown/NPCs/genericgirl/genericgirl.gd" type="Script" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
-
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 18 )
@@ -69,12 +67,9 @@ tracks/1/keys = {
 "values": [ Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 40, 30 )
-
 [node name="genericgirl" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
-collision_layer = 0
+collision_layer = 512
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -93,14 +88,6 @@ region_rect = Rect2( 137, 1, 32, 48 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
-
-[node name="playerDetectionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetectionArea"]
-position = Vector2( 0, -5 )
-shape = SubResource( 5 )
 
 [node name="rayLeft" type="RayCast2D" parent="."]
 position = Vector2( -50, 0 )

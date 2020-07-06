@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-var enabled = true setget set_gui_enabled
+var enabled = false setget set_gui_enabled
 
 func set_gui_enabled(val):
-	$gui.active = val
-	$gui.visible = val
+	$popUps.active = val
+	$popUps.visible = val
 	if val == false:
 		get_tree().paused = false # if disabling from pause menu
-		$gui.reset()
+		$popUps.reset()

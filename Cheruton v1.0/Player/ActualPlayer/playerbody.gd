@@ -22,6 +22,25 @@ const AIR_ACCEL = 34  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 
+onready var animation_player = $animationPlayer
+onready var animation_player_fx = $animationPlayerFx
+onready var animation_player_fx_color = $animationPlayerFxColor
+onready var left_wall_raycasts = $wallRaycasts/leftSide
+onready var right_wall_raycasts = $wallRaycasts/rightSide
+onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
+onready var corner_correction_raycast_right = $cornerCorrectionRaycasts/rightside
+onready var almost_reaching_platform_jump_boost = $almostReachingPlatformBoost
+onready var floor_raycast = $floorRay
+onready var sound_parent = $sounds
+onready var body_pivot = $bodyPivot
+onready var body_rotate = $bodyPivot/bodyRotate
+onready var body_collision = $bodyCollision
+onready var slide_collision = $slideCollision
+onready var states = $states
+onready var circle_scan = $circleScan
+onready var circle_scan_small = $circleScanSmall
+onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
+
 var cur_state : Node
 var prev_state : Node
 var velocity = Vector2()
@@ -39,7 +58,6 @@ var hook_dir : Vector2
 var hooked : bool
 var rope_length = 0.0
 var nearest_hook_point
-var previous_hook_point
 
 var exit_slide_blocked = false
 
@@ -54,23 +72,7 @@ var can_attack = true
 var can_hook = true
 var can_throw_sword = true
 
-onready var animation_player = $animationPlayer
-onready var animation_player_fx = $animationPlayerFx
-onready var animation_player_fx_color = $animationPlayerFxColor
-onready var left_wall_raycasts = $wallRaycasts/leftSide
-onready var right_wall_raycasts = $wallRaycasts/rightSide
-onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
-onready var corner_correction_raycast_right = $cornerCorrectionRaycasts/rightside
-onready var almost_reaching_platform_jump_boost = $almostReachingPlatformBoost
-onready var floor_raycast = $floorRay
-onready var sound_parent = $sounds
-onready var body_pivot = $bodyPivot
-onready var body_rotate = $bodyPivot/bodyRotate
-onready var body_collision = $bodyCollision
-onready var slide_collision = $slideCollision
-onready var states = $states
-onready var circle_scan = $circleScan
-onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
+var nearest_interactible
 
 signal hook_command
 signal flying_sword_command
@@ -88,15 +90,59 @@ func _process(delta):
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
-#
-	nearest_hook_point = get_nearest_hook_point()
+	var old_nearest_interactible = nearest_interactible
+	nearest_hook_point = get_nearest_object("hook_points")
 	if nearest_hook_point != old_nearest_hook_point:
 		if nearest_hook_point:
 			nearest_hook_point.active = true # just a visual indicator
 		if old_nearest_hook_point:
 			old_nearest_hook_point.active = false
 
+	nearest_interactible = get_nearest_object("interactibles")
+	if nearest_interactible != old_nearest_interactible:
+		if nearest_interactible:
+			nearest_interactible.pend_interact()
+		if old_nearest_interactible:
+			old_nearest_interactible.unpend_interact()
+
 # General Helper functions
+func get_nearest_object(obj_type : String):
+	var near_objects
+	match obj_type:
+		"hook_points":
+			near_objects = circle_scan.get_overlapping_bodies()
+		"interactibles":
+			near_objects = circle_scan_small.get_overlapping_areas()
+			near_objects += circle_scan_small.get_overlapping_bodies()
+#
+	var non_block_objects = []
+	var space_state = get_world_2d().direct_space_state
+	for object in near_objects:
+		if not object.is_in_group(obj_type): continue
+		var result = space_state.intersect_ray(global_position + Vector2(0,-50), object.global_position ,[self, object], 32)
+		if result.empty(): non_block_objects.append( object)
+
+	if non_block_objects.empty():
+		return
+
+	var min_dist_facing = INF
+	var closest_object_facing_dir = null
+
+	var facing_dir_x = sign(body_rotate.scale.x)
+
+	for object in non_block_objects:
+		var cur_dist = global_position.distance_to(object.global_position)
+		# look for hooks in the direction character faces
+		if facing_dir_x == sign(object.global_position.x - global_position.x) and min_dist_facing > cur_dist:
+			min_dist_facing = cur_dist
+			closest_object_facing_dir = object
+	if closest_object_facing_dir:
+		return closest_object_facing_dir
+
+func interact_with_nearest_object():
+	if nearest_interactible:
+		nearest_interactible.interact()
+
 func set_look_direction(value : Vector2):
 	look_direction = value
 func _on_states_state_changed(states_stack):
@@ -144,7 +190,6 @@ func _on_Chain_hooked(command, tip_p, node):
 	if command == 0: # good hook
 		hooked = true
 		tip_pos = tip_p
-		previous_hook_point = node
 		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip, she can't run from it
 		states._change_state("hook")
 		set_camera_mode_logic()
@@ -158,44 +203,7 @@ func chain_release():
 	can_hook = false
 	$timers/grappleCoolDown.start(.05)
 
-func get_nearest_hook_point():
-	var near_hook_points = circle_scan.get_overlapping_bodies()
-	var non_blocked_hook_points = []
-	var space_state = get_world_2d().direct_space_state
-
-#	print(near_hook_points)
-	for hook_point in near_hook_points:
-		if not hook_point.is_in_group("hook_points"): continue
-		var result = space_state.intersect_ray(global_position + Vector2(0,-50), hook_point.global_position ,[self,hook_point], 32)
-		if result.empty(): non_blocked_hook_points.append( hook_point)
-
-	if non_blocked_hook_points.empty():
-		return
-
-	var min_dist_facing = INF
-	var min_dist_opp = INF
-	var closest_hook_point_facing_dir = null
-	var closest_hook_point_opp_dir = null
-
-
-	var facing_dir_x = sign(body_rotate.scale.x)
-	# get nearest hook point in front and behind sepearately
-	for hook_point in non_blocked_hook_points:
-		var cur_dist = global_position.distance_to(hook_point.global_position)
-		# look for hooks in the direction character faces
-		if facing_dir_x == sign(hook_point.global_position.x - global_position.x) and min_dist_facing > cur_dist:
-			min_dist_facing = cur_dist
-			closest_hook_point_facing_dir = hook_point
-		# opp direction
-#		elif facing_dir_x != sign(hook_point.global_position.x - global_position.x) and min_dist_opp > cur_dist:
-#			min_dist_opp = cur_dist
-#			closest_hook_point_opp_dir = hook_point
-	if closest_hook_point_facing_dir:
-		return closest_hook_point_facing_dir
-	elif closest_hook_point_opp_dir:
-		return closest_hook_point_opp_dir
-
-# swordThrow
+# Sword Throw
 func start_sword_throw():
 	can_throw_sword = false
 	sword_stuck = false
@@ -213,7 +221,8 @@ func on_sword_result(result, pos, normal):
 	elif result == 2:
 		can_throw_sword = true
 		sword_stuck = false
-# player damaged
+
+# Player damaged
 func _on_hitBox_area_entered(area):
 	if is_invunerable: return
 
@@ -245,7 +254,6 @@ func move():
 		if col.collider.has_method("handle_collision"): # used to hit enemies / platform
 			col.collider.handle_collision(col, self)
 
-
 func switch_col():
 	slide_collision.disabled = not slide_collision.disabled
 	body_collision.disabled = not body_collision.disabled
@@ -256,7 +264,7 @@ func _on_slideArea2D_body_entered(body):
 	if not body.is_in_group("one_way_platforms"):
 		exit_slide_blocked = true
 
-# wall climb
+# Wall climb
 func get_wall_direction():
 	var is_near_wall_left = _is_wall_raycast_colliding(left_wall_raycasts)
 	var is_near_wall_right = _is_wall_raycast_colliding(right_wall_raycasts)
@@ -277,14 +285,14 @@ func _is_wall_raycast_colliding(wall_raycasts) -> bool:
 					return true
 	return false
 
-# a y boost to the player incase barely missing the platform above
+# a position.y boost to the player incase barely missing the platform above
 func is_almost_at_a_platform():
 	return almost_reaching_platform_jump_boost.get_overlapping_bodies()
-# 1 if corner on the right -1 if left, used to nudge player away from smashing corners
+# returns 1 if corner on the right -1 if left, used to nudge player away from smashing corners
 func is_there_corner_above():
 	return int (corner_correction_raycast_right.is_colliding()) - int(corner_correction_raycast_left.is_colliding())
 
-# jump input buffering
+# Jump input buffering
 func jump_buffer_start():
 	jump_again = true
 	$timers/jumpInputBuffer.start(INPUT_AGAIN_MARGIN)
@@ -297,7 +305,7 @@ func start_attack_cool_down():
 func _on_attackCoolDown_timeout():
 	can_attack = true
 
-#Sound
+# Sound
 func play_sound(string):
 #	sound_parent.get_node(string).play()
 	pass
@@ -318,5 +326,6 @@ func shake_camera(dur, freq, amp, dir):
 
 func handle_enemy_attack_collision(damage):
 	#DataResource.change_health(damage)
-	print("Player hit!")
+#	print("Player hit!")
+	pass
 

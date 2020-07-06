@@ -28,6 +28,9 @@ signal change_audio_master
 signal change_audio_music
 signal change_audio_sfx
 
+func _ready():
+	load_data()
+
 func load_data():
 	#Editable
 	loaded = true
@@ -54,6 +57,7 @@ func load_dict(FilePath, password:= ""):
 	else:
 		DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())
+	DataFile.close()
 	DataFile.close()
 	#print("Data Loaded!")
 	return data.result

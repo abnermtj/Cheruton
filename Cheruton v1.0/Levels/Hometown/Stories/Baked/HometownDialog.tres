@@ -18,15 +18,378 @@ story = {
 "links": {
 0: 3
 },
-"text": "<speaker>weirdo</speaker>
-<dialog>HI  HHIHIHIHII</dialog>"
+"text": "<speaker>Elena</speaker>
+<dialog>I wonder when they'll...</dialog>"
 },
 3: {
 "links": {
 0: 4
 },
-"text": " <speaker>weirdo</speaker>
-<dialog>ice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice cream</dialog>"
+"text": " <speaker>Elena</speaker>
+<dialog>Oh, another adventurer.</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Elena</speaker>
+<dialog>Welcome to Laspla.</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>Elena</speaker>
+<dialog>If you're looking for work, I heard the Guildhouse has some quests.</dialog>"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "<speaker>Elena</speaker>
+<dialog>This cat? Oh, Iggy doesn't bite.</dialog>"
+},
+7: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+2: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Iggy</speaker>
+<dialog>Prrrr....</dialog>"
+},
+3: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+3: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Katherine</speaker>
+<dialog>Ah, a pretty face.</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Katherine</speaker>
+<dialog>Why are they carrying me?</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Katherine</speaker>
+<dialog>Ho ho ho, they work for me sweetie.</dialog>"
+},
+5: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+4: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Grandma</speaker>
+<dialog>My my, what an ambitious young girl.</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Grandma</speaker>
+<dialog>Be careful on your adventures.</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Grandma</speaker>
+<dialog>You can always come back to work for me HaHaHa!</dialog>"
+},
+5: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+5: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Ethan</speaker>
+<dialog>*mumbles* A broadsword is 20 gold... *mumbles*</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Ethan</speaker>
+<dialog>*mumbles* ...make 5 silver... *mumbles*</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Ethan</speaker>
+<dialog>GAH I CANT MATH</dialog>"
+},
+5: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+6: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Elaine</speaker>
+<dialog>Hey, you need a table?</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Elaine</speaker>
+<dialog>Sorry,but you look a bit underaged.</dialog>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+7: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Bryce</speaker>
+<dialog>Sorry, girl i'm taken.</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Bryce</speaker>
+<dialog>Oh, you're looking for a quest?</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>Bryce</speaker>
+<dialog>Well, there quest i've been putting off.</dialog>"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "<speaker>Bryce</speaker>
+<dialog>but I don't think if you can handle it.</dialog>"
+},
+7: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+8: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<end>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Nylah</speaker>
+<dialog>WhodoyouthinkyouaretalkingtomyBB.Doyouhaveanyideawhoiam.Dontunderstimateourlovebrycelovesmewaytomuch.whyareyoulookingatmylikethat.</dialog>"
+},
+5: {
+"links": {
+
+},
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>"
+}
+}
+},
+9: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Oluf</speaker>
+<dialog>Being a blacksmith is hardwork!</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Oluf</speaker>
+<dialog>So you adventurers gotta be a little more patient.</dialog>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+10: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Eric</speaker>
+<dialog>Don't tell no one...</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Eric</speaker>
+<dialog>I'm on Cherutine.</dialog>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+11: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Diana </speaker>
+<dialog>Sorry, they're still rearranging things back there.</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Diana </speaker>
+<dialog>Can you comeback in like an hour?</dialog>"
 },
 4: {
 "links": {
@@ -38,5 +401,15 @@ story = {
 }
 }
 names = {
-"Hometown/Moneygirl": 1
+"buff": 10,
+"captain": 3,
+"cat": 2,
+"chad": 7,
+"clgirl": 11,
+"coolboy": 5,
+"genericgirl": 6,
+"gramps": 9,
+"loli": 8,
+"moneygirl": 1,
+"whippersnapper": 4
 }

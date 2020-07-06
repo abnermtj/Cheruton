@@ -6,14 +6,24 @@
 script = ExtResource( 1 )
 TYPE = "EXP_Story_editor"
 names = {
-"Hometown/Moneygirl": 1
+"buff": 10,
+"captain": 3,
+"cat": 2,
+"chad": 7,
+"clgirl": 11,
+"coolboy": 5,
+"genericgirl": 6,
+"gramps": 9,
+"loli": 8,
+"moneygirl": 1,
+"whippersnapper": 4
 }
 story = {
 1: {
 "available_nid": [  ],
 "groups": [  ],
-"human_readable_description": "introduction",
-"name": "Hometown/Moneygirl",
+"human_readable_description": "initial",
+"name": "moneygirl",
 "nodes": {
 1: {
 "graph_offset": Vector2( 40, 40 ),
@@ -26,14 +36,14 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( -160, 80 ),
+"graph_offset": Vector2( -140, -249 ),
 "links": {
 0: 3
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": "<speaker>weirdo</speaker>
-<dialog>HI  HHIHIHIHII</dialog>",
+"text": "<speaker>Elena</speaker>
+<dialog>I wonder when they'll...</dialog>",
 "type": "line"
 },
 3: {
@@ -43,12 +53,611 @@ story = {
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": " <speaker>weirdo</speaker>
-<dialog>ice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice creamice cream</dialog>",
+"text": " <speaker>Elena</speaker>
+<dialog>Oh, another adventurer.</dialog>",
 "type": "line"
 },
 4: {
-"graph_offset": Vector2( 680, -400 ),
+"graph_offset": Vector2( 780, -420 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Elena</speaker>
+<dialog>Welcome to Laspla.</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 820, -180 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Elena</speaker>
+<dialog>If you're looking for work, I heard the Guildhouse has some quests.</dialog>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 820, 120 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Elena</speaker>
+<dialog>This cat? Oh, Iggy doesn't bite.</dialog>",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 1440, 160 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+2: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "cat",
+"nodes": {
+1: {
+"graph_offset": Vector2( -269.587, -435 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 375.413, -440 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Iggy</speaker>
+<dialog>Prrrr....</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 731.373, -256 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+3: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "captain",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 460, -160 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Katherine</speaker>
+<dialog>Ah, a pretty face.</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1080, -180 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Katherine</speaker>
+<dialog>Why are they carrying me?</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1680, -180 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Katherine</speaker>
+<dialog>Ho ho ho, they work for me sweetie.</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 2300, -160 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+4: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "whippersnapper",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 700, -340 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Grandma</speaker>
+<dialog>My my, what an ambitious young girl.</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 820, -100 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Grandma</speaker>
+<dialog>Be careful on your adventures.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 840, 160 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Grandma</speaker>
+<dialog>You can always come back to work for me HaHaHa!</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 720, 360 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+5: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "coolboy",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 180, -300 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Ethan</speaker>
+<dialog>*mumbles* A broadsword is 20 gold... *mumbles*</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 800, -300 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Ethan</speaker>
+<dialog>*mumbles* ...make 5 silver... *mumbles*</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1420, -280 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Ethan</speaker>
+<dialog>GAH I CANT MATH</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 2040, -300 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+6: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "genericgirl",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 560, -180 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Elaine</speaker>
+<dialog>Hey, you need a table?</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1200, -240 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Elaine</speaker>
+<dialog>Sorry,but you look a bit underaged.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1840, -200 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+7: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "chad",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 640, -380 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Bryce</speaker>
+<dialog>Sorry, girl i'm taken.</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1240, -380 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1880, -380 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Bryce</speaker>
+<dialog>Oh, you're looking for a quest?</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 2540, -360 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Bryce</speaker>
+<dialog>Well, there quest i've been putting off.</dialog>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 3220, -380 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Bryce</speaker>
+<dialog>but I don't think if you can handle it.</dialog>",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 3820, -380 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+8: {
+"available_nid": [ 6 ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "loli",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 680, 60 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1300, 60 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1900, 20 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Nylah</speaker>
+<dialog>WhodoyouthinkyouaretalkingtomyBB.Doyouhaveanyideawhoiam.Dontunderstimateourlovebrycelovesmewaytomuch.whyareyoulookingatmylikethat.</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 2520, 60 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Nylah</speaker>
+<dialog>...</dialog>",
+"type": "line"
+}
+}
+},
+9: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "gramps",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 620, 60 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Oluf</speaker>
+<dialog>Being a blacksmith is hardwork!</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1220, 20 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Oluf</speaker>
+<dialog>So you adventurers gotta be a little more patient.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1820, 40 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+10: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "buff",
+"nodes": {
+1: {
+"graph_offset": Vector2( 0, -100 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 660, -160 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Eric</speaker>
+<dialog>Don't tell no one...</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1280, -160 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Eric</speaker>
+<dialog>I'm on Cherutine.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1980, -140 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+11: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "default",
+"name": "clgirl",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( -240, -200 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Diana </speaker>
+<dialog>Sorry, they're still rearranging things back there.</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 460, -160 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Diana </speaker>
+<dialog>Can you comeback in like an hour?</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1120, -220 ),
 "links": {
 
 },

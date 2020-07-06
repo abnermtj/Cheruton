@@ -16,9 +16,8 @@ func _ready():
 	body_rotate.scale.x = -1
 	timer = DIR_CHANGE_TIME # remember to set this when overwriting dir change time in virtual funcs
 	$AnimationPlayer.play("walk")
-	$playerDetectionArea.connect("body_entered", self, "player_entered")
-	$playerDetectionArea.connect("body_exited", self, "player_exited")
 	add_to_group("NPCs")
+	add_to_group("interactibles")
 
 func _physics_process(delta):
 	timer -= delta
@@ -39,8 +38,10 @@ func flip_dir():
 	dir = -dir
 	body_rotate.scale.x = -body_rotate.scale.x
 
-func player_entered(body):
+func pend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", .5)
-func player_exited(body):
+func unpend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", 0)
+func interact():
+	SceneControl.change_and_start_dialog(name)
 

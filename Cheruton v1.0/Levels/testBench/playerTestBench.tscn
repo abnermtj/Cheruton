@@ -11,13 +11,12 @@
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=9]
 
 [node name="Node" type="Node2D"]
-position = Vector2( -127.414, 230.498 )
 script = ExtResource( 5 )
 
 [node name="grappleHook" parent="." instance=ExtResource( 7 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 882.819, 566.517 )
+position = Vector2( 882.819, 458.137 )
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -175 )

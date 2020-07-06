@@ -19,7 +19,7 @@ func handle_input(event):
 				owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
 
 				owner.play_sound("hook_start")
-				owner.play_and_return_anim("grapple_throw")
+#				owner.play_and_return_anim("grapple_throw")
 				owner.start_hook()
 
 	if Input.is_action_just_pressed("jump"):
