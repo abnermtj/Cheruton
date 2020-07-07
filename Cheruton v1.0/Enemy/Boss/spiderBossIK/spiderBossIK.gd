@@ -60,7 +60,6 @@ func init_leg(leg):
 	var col_point = leg.get_collision_point()
 	if col_point: leg.step(col_point)
 
-
 # UNIVERSAL MOVE FUNCTION
 func move():
 	return move_and_slide(velocity, Vector2.UP, false, 16) # don't snap it makes it bugs when moving away from snapped position
@@ -87,6 +86,8 @@ func on_player_exited_small_area(body):
 func _on_states_state_changed(states_stack):
 	cur_state = states_stack[0]
 func set_body_collision(val):
+	call_deferred("_set_body_collision", val)
+func _set_body_collision(val):
 	smaller_body_collision.disabled = true
 	small_body_collision.disabled = true
 	body_collision.disabled = true

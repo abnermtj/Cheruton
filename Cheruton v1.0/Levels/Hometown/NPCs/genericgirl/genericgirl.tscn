@@ -5,7 +5,7 @@
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 18 )
+extents = Vector2( 10, 15 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 4 ) ]
+"values": [ Vector2( 3.5, 6 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -52,19 +52,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 35, 1, 32, 48 ), Rect2( 69, 1, 32, 48 ), Rect2( 103, 1, 32, 48 ), Rect2( 137, 1, 32, 48 ), Rect2( 171, 1, 32, 48 ), Rect2( 205, 1, 32, 48 ), Rect2( 239, 1, 32, 48 ), Rect2( 273, 1, 32, 48 ), Rect2( 307, 1, 32, 48 ), Rect2( 341, 1, 32, 48 ), Rect2( 375, 1, 32, 48 ), Rect2( 409, 1, 32, 48 ), Rect2( 443, 1, 32, 48 ), Rect2( 477, 1, 32, 48 ), Rect2( 511, 1, 32, 48 ), Rect2( 545, 1, 32, 48 ), Rect2( 579, 1, 32, 48 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("bodyRotate/Sprite:offset")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4, 4 ) ]
+"values": [ Rect2( 35, 1, 32, 48 ), Rect2( 69, 1, 32, 48 ), Rect2( 103, 1, 32, 48 ), Rect2( 137, 1, 32, 48 ), Rect2( 171, 1, 32, 48 ), Rect2( 205, 1, 32, 48 ), Rect2( 239, 1, 32, 48 ), Rect2( 273, 1, 32, 48 ), Rect2( 307, 1, 32, 48 ), Rect2( 341, 1, 32, 48 ), Rect2( 375, 1, 32, 48 ), Rect2( 409, 1, 32, 48 ), Rect2( 443, 1, 32, 48 ), Rect2( 1, 51, 32, 48 ), Rect2( 35, 51, 32, 48 ), Rect2( 69, 51, 32, 48 ), Rect2( 103, 51, 32, 48 ) ]
 }
 
 [node name="genericgirl" type="KinematicBody2D"]
@@ -81,9 +69,9 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="bodyRotate"]
 material = SubResource( 2 )
 texture = ExtResource( 1 )
-offset = Vector2( -4, 4 )
+offset = Vector2( 5, 6 )
 region_enabled = true
-region_rect = Rect2( 137, 1, 32, 48 )
+region_rect = Rect2( 239, 1, 32, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )

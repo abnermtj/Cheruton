@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 5, 6.5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ), Vector2( 5, 6.5 ) ]
 }
 
 [node name="cat" type="KinematicBody2D"]
@@ -77,13 +77,14 @@ position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="bodyRotate" type="Position2D" parent="."]
-position = Vector2( 0, -10 )
+position = Vector2( 0, -2 )
 
 [node name="Sprite" type="Sprite" parent="bodyRotate"]
 material = SubResource( 2 )
 texture = ExtResource( 1 )
+offset = Vector2( 5, 6.5 )
 region_enabled = true
-region_rect = Rect2( 239, 1, 32, 32 )
+region_rect = Rect2( 273, 1, 32, 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )

@@ -32,12 +32,11 @@ func _input(event):
 	if active and state_name_stack:
 		states_map[state_name_stack[-1]].handle_input(event)
 
-
 func new_gui(gui_name):
 	if active == false:
 		return
 
-	states_map[gui_name].show()
+	states_map[gui_name].begin()
 	state_name_stack.push_back(gui_name)
 	for child in get_children():
 		child.is_active_gui = false
@@ -48,7 +47,7 @@ func release_gui(gui_name):
 	if active == false:
 		return
 
-	states_map[gui_name].hide()
+	states_map[gui_name].end()
 	states_map[gui_name].is_active_gui = false
 	state_name_stack.pop_back()
 	states_map[state_name_stack[-1]].is_active_gui = true

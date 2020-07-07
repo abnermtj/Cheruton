@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=2]
+[gd_resource type="TileSet" load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Hometown/Sprites/Grasslands.png" type="Texture" id=1]
+[ext_resource path="res://Effects/Wind/Grass_Bush_material.tres" type="Material" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 176, 64, 0, 64, 0, 56, 176, 56 )
@@ -148,6 +149,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 10/name = "Grasslands.png 10"
 10/texture = ExtResource( 1 )
 10/tex_offset = Vector2( 0, 0 )
+10/material = ExtResource( 2 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 624, 576, 96, 64 )
 10/tile_mode = 0
@@ -162,6 +164,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 11/name = "Grasslands.png 11"
 11/texture = ExtResource( 1 )
 11/tex_offset = Vector2( 0, 0 )
+11/material = ExtResource( 2 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 736, 528, 176, 112 )
 11/tile_mode = 0
@@ -176,6 +179,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 12/name = "Grasslands.png 12"
 12/texture = ExtResource( 1 )
 12/tex_offset = Vector2( 0, 0 )
+12/material = ExtResource( 2 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 912, 576, 80, 64 )
 12/tile_mode = 0
@@ -190,6 +194,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 13/name = "Grasslands.png 13"
 13/texture = ExtResource( 1 )
 13/tex_offset = Vector2( 0, 0 )
+13/material = ExtResource( 2 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 1008, 512, 288, 128 )
 13/tile_mode = 0

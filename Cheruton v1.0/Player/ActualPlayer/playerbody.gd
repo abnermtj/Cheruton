@@ -75,6 +75,8 @@ var can_throw_sword = true
 var nearest_interactible : Node
 var interaction_type : String
 
+var can_talk = true
+
 signal hook_command
 signal flying_sword_command
 signal camera_command
@@ -144,7 +146,7 @@ func get_nearest_object(obj_type : String):
 
 func interact_with_nearest_object():
 	if nearest_interactible:
-		nearest_interactible.interact()
+		nearest_interactible.interact(self)
 
 func set_look_direction(value : Vector2):
 	look_direction = value
@@ -258,6 +260,8 @@ func move():
 			col.collider.handle_collision(col, self)
 
 func switch_col():
+	call_deferred("_switch_col")
+func _switch_col():
 	slide_collision.disabled = not slide_collision.disabled
 	body_collision.disabled = not body_collision.disabled
 func _on_slideArea2D_body_exited(body):
@@ -308,6 +312,13 @@ func start_attack_cool_down():
 func _on_attackCoolDown_timeout():
 	can_attack = true
 
+# Dialog
+func talk_cooldown_start():
+	can_talk = false
+	$timers/talkCoolDown.start(.5)
+func _on_Timer_timeout():
+	can_talk = true
+
 # Sound
 func play_sound(string):
 #	sound_parent.get_node(string).play()
@@ -331,4 +342,5 @@ func handle_enemy_attack_collision(damage):
 	#DataResource.change_health(damage)
 #	print("Player hit!")
 	pass
+
 

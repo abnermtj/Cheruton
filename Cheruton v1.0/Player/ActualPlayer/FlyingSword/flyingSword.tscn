@@ -84,6 +84,7 @@ region_enabled = true
 region_rect = Rect2( 1, 1, 48, 64 )
 
 [node name="collectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -91,6 +92,7 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="limitArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

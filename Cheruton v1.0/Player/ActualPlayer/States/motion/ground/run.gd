@@ -7,7 +7,6 @@ const MIN_RUN_SPEED = 50
 var previous_dir : Vector2
 var input_direction : Vector2
 
-
 func handle_input(event):
 	input_direction = get_input_direction()
 	update_look_direction(input_direction)
@@ -20,7 +19,7 @@ func enter():
 	input_direction = get_input_direction()
 	previous_dir = input_direction
 	update_look_direction(input_direction)
-	if get_parent().previous_state.name == "slide":
+	if owner.prev_state.name == "slide":
 		owner.queue_anim("run_continious")
 	else:
 		owner.play_anim("run_continious")

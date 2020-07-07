@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrasslandsBackTree1/GrasslandsBackTree1.png" type="Texture" id=1]
+[ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.04
+shader_param/maxStrength = 0.1
+shader_param/strengthScale = 100.0
+shader_param/interval = 3.5
+shader_param/detail = 1.0
+shader_param/distortion = null
+shader_param/heightOffset = 0.0
+
+[node name="GrasslandsBackTree1" type="Node2D"]
+
+[node name="Trunk" type="Sprite" parent="."]
+position = Vector2( -50.794, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 288, 0, 280, 184 )
+
+[node name="Leaves" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( -52, -120 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 184 )

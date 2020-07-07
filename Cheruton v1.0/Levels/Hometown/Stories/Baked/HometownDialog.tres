@@ -26,7 +26,7 @@ story = {
 0: 4
 },
 "text": " <speaker>Elena</speaker>
-<dialog>Oh, another adventurer.</dialog>"
+<dialog>Oo, another adventurer!</dialog>"
 },
 4: {
 "links": {
@@ -93,23 +93,30 @@ story = {
 0: 3
 },
 "text": "<speaker>Katherine</speaker>
-<dialog>Ah, a pretty face.</dialog>"
+<dialog>Hello young lady.</dialog>"
 },
 3: {
 "links": {
 0: 4
 },
 "text": "<speaker>Katherine</speaker>
-<dialog>Why are they carrying me?</dialog>"
+<dialog>It's a fine day today.</dialog>"
 },
 4: {
 "links": {
 0: 5
 },
 "text": "<speaker>Katherine</speaker>
-<dialog>Ho ho ho, they work for me sweetie.</dialog>"
+<dialog>Why are they carrying me?</dialog>"
 },
 5: {
+"links": {
+0: 6
+},
+"text": "<speaker>Katherine</speaker>
+<dialog>Ho ho ho, they work for me sweetie.</dialog>"
+},
+6: {
 "links": {
 
 },
@@ -144,7 +151,7 @@ story = {
 0: 5
 },
 "text": "<speaker>Grandma</speaker>
-<dialog>You can always come back to work for me HaHaHa!</dialog>"
+<dialog>I've heard some scary tales from our customers.</dialog>"
 },
 5: {
 "links": {
@@ -204,16 +211,9 @@ story = {
 0: 3
 },
 "text": "<speaker>Elaine</speaker>
-<dialog>Hey, you need a table?</dialog>"
+<dialog>I like helping my grandma out!</dialog>"
 },
 3: {
-"links": {
-0: 4
-},
-"text": "<speaker>Elaine</speaker>
-<dialog>Sorry,but you look a bit underaged.</dialog>"
-},
-4: {
 "links": {
 
 },
@@ -255,7 +255,7 @@ story = {
 0: 6
 },
 "text": "<speaker>Bryce</speaker>
-<dialog>Well, there quest i've been putting off.</dialog>"
+<dialog>Well, there's a quest i've been putting off.</dialog>"
 },
 6: {
 "links": {
@@ -359,7 +359,7 @@ story = {
 0: 4
 },
 "text": "<speaker>Eric</speaker>
-<dialog>I'm on Cherutine.</dialog>"
+<dialog>I'm on the Cherutine.</dialog>"
 },
 4: {
 "links": {
@@ -382,7 +382,7 @@ story = {
 0: 3
 },
 "text": "<speaker>Diana </speaker>
-<dialog>Sorry, they're still rearranging things back there.</dialog>"
+<dialog>Sorry miss, they're still rearranging things back there.</dialog>"
 },
 3: {
 "links": {

@@ -54,7 +54,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": " <speaker>Elena</speaker>
-<dialog>Oh, another adventurer.</dialog>",
+<dialog>Oo, another adventurer!</dialog>",
 "type": "line"
 },
 4: {
@@ -165,7 +165,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Katherine</speaker>
-<dialog>Ah, a pretty face.</dialog>",
+<dialog>Hello young lady.</dialog>",
 "type": "line"
 },
 3: {
@@ -176,7 +176,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Katherine</speaker>
-<dialog>Why are they carrying me?</dialog>",
+<dialog>It's a fine day today.</dialog>",
 "type": "line"
 },
 4: {
@@ -187,11 +187,22 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Katherine</speaker>
-<dialog>Ho ho ho, they work for me sweetie.</dialog>",
+<dialog>Why are they carrying me?</dialog>",
 "type": "line"
 },
 5: {
 "graph_offset": Vector2( 2300, -160 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Katherine</speaker>
+<dialog>Ho ho ho, they work for me sweetie.</dialog>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 2640, 40 ),
 "links": {
 
 },
@@ -248,7 +259,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Grandma</speaker>
-<dialog>You can always come back to work for me HaHaHa!</dialog>",
+<dialog>I've heard some scary tales from our customers.</dialog>",
 "type": "line"
 },
 5: {
@@ -325,7 +336,7 @@ story = {
 }
 },
 6: {
-"available_nid": [  ],
+"available_nid": [ 4 ],
 "groups": [  ],
 "human_readable_description": "default",
 "name": "genericgirl",
@@ -341,29 +352,18 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( 560, -180 ),
+"graph_offset": Vector2( 500, -480 ),
 "links": {
 0: 3
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Elaine</speaker>
-<dialog>Hey, you need a table?</dialog>",
+<dialog>I like helping my grandma out!</dialog>",
 "type": "line"
 },
 3: {
-"graph_offset": Vector2( 1200, -240 ),
-"links": {
-0: 4
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "<speaker>Elaine</speaker>
-<dialog>Sorry,but you look a bit underaged.</dialog>",
-"type": "line"
-},
-4: {
-"graph_offset": Vector2( 1840, -200 ),
+"graph_offset": Vector2( 1120, -540 ),
 "links": {
 
 },
@@ -431,7 +431,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Bryce</speaker>
-<dialog>Well, there quest i've been putting off.</dialog>",
+<dialog>Well, there's a quest i've been putting off.</dialog>",
 "type": "line"
 },
 6: {
@@ -603,7 +603,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Eric</speaker>
-<dialog>I'm on Cherutine.</dialog>",
+<dialog>I'm on the Cherutine.</dialog>",
 "type": "line"
 },
 4: {
@@ -642,7 +642,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Diana </speaker>
-<dialog>Sorry, they're still rearranging things back there.</dialog>",
+<dialog>Sorry miss, they're still rearranging things back there.</dialog>",
 "type": "line"
 },
 3: {

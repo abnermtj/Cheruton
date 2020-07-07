@@ -69,13 +69,9 @@ func _on_Back_pressed():
 	DataResource.save_rest() # so that the new settings persist on next save file
 	emit_signal("release_gui", "settings")
 
-
 func handle_input(event):
 	if is_active_gui and Input.is_action_just_pressed("escape"):
 		_on_Back_pressed()
-
-
-
 
 func _on_Controls_mouse_entered():
 	var new_position = Vector2(slider.rect_position.x, controls_position.y)

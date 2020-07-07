@@ -11,8 +11,8 @@ func handle_input(event):
 			emit_signal("finished", "jump")
 
 	if event.is_action_pressed("interact"):
-		owner.interact_with_nearest_object()
-		if owner.interaction_type == "dialog":
+		if owner.interaction_type == "dialog" and owner.can_talk:
+			owner.interact_with_nearest_object()
 			DataResource.temp_dict_player.dialog_complete = false
 			emit_signal("finished", "talk")
 

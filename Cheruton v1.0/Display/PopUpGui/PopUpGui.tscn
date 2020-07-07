@@ -20,6 +20,9 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="inventory" parent="popUps" instance=ExtResource( 6 )]
 visible = false
@@ -51,6 +54,6 @@ margin_bottom = 535.551
 
 [node name="dialog" parent="popUps" instance=ExtResource( 7 )]
 margin_left = 1000.88
-margin_top = 997.866
+margin_top = 1080.0
 margin_right = 1000.88
-margin_bottom = 997.866
+margin_bottom = 1080.0

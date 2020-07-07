@@ -1,15 +1,14 @@
 extends basePopUp
 
-const TIME_PER_CHAR_WRITE = .03 # in seconds .03 is good
+const TIME_PER_CHAR_WRITE = .024 # seconds
 
-onready var dialogue_text = $dialogBox/body_background/MarginContainer/body_text
-onready var speaker_text = $dialogBox/speaker_background/MarginContainer/speaker_name
-onready var next_indicator = $dialogBox/body_background/MarginContainer/next_indicator
-onready var tween = $dialogBox/body_background/MarginContainer/Tween
+onready var dialogue_base = $dialogBox/bodyBackground
+onready var dialogue_text = $dialogBox/bodyBackground/MarginContainer/bodyText
+onready var tween = $dialogBox/bodyBackground/Tween
 
 var dialog : String
 var finished_current_node : bool
-var finished_last_node : bool
+var finished_last_node
 
 var dialog_id = 0
 var node_id = 0
@@ -22,7 +21,10 @@ func _ready():
 
 	load_story("res://Levels/Hometown/Stories/Baked/HometownDialog.tres")
 
-	next_indicator.visible = false
+func begin():
+	tween.interpolate_property(dialogue_base, "rect_scale", Vector2(0.1,1), Vector2(1,1), 0.26,Tween.TRANS_BACK, Tween.EASE_OUT, 0)
+	tween.start()
+	show()
 
 func load_story(path : String): # LOAD OLLECTION OF ALL DIALOGS IN THAT MAP
 	var story = load(path)
@@ -41,39 +43,46 @@ func start_dialog(record_name : String): # SPECIFIC DIALOG
 
 	get_next_node()
 	play_dialog()
-	show()
 
-func handle_input(event): # change name to handle_input when under level gui master
-	if Input.is_action_just_pressed("interact"):
+func handle_input(event):
+	if is_active_gui and Input.is_action_just_pressed("interact"): # bcause we started via dialog visa function call vs signal, it causes the interact key used to open dialog to also skip the first text
 		if finished_current_node and not finished_last_node:
 			get_next_node()
 			if not finished_last_node:
 				play_dialog()
 		elif not finished_current_node:
-			tween.stop_all()
+			tween.stop(dialogue_text, "percent_visible")
 			dialogue_text.percent_visible = 1
 			finished_current_node = true
 
+func _process(delta):
+	if is_active_gui:
+		dialogue_base.rect_pivot_offset = dialogue_base.rect_size/2 # doing this will allow the base to be scaled from the center
+
 func get_next_node():
-	node_id = story_reader.get_nid_from_slot(dialog_id, node_id, 0) # this is represented as the output of each node in a story
+	node_id = story_reader.get_nid_from_slot(dialog_id, node_id, 0)
 
 	if node_id == final_node_id:
 		finished_last_node = true
-		release_gui()
+		end_conversation()
 
 func play_dialog():
 	finished_current_node = false
 
 	var text = story_reader.get_text(dialog_id, node_id)
-	var speaker = _get_tagged_text("speaker", text)
 	var dialog = _get_tagged_text("dialog", text)
 
-	speaker_text.bbcode_text = speaker
 	dialogue_text.bbcode_text = dialog
 
-	dialogue_text.percent_visible = .01 # start never empty
+	dialogue_text.percent_visible = .01 # intentional start never empty
 	tween.interpolate_property(dialogue_text, "percent_visible", .01, 1, TIME_PER_CHAR_WRITE * dialog.length(),  Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	tween.start()
+
+func _on_Tween_tween_completed(object, key):
+	if key == ":percent_visible":
+		finished_current_node = true
+	elif key == ":rect_scale" and not is_active_gui:
+		hide()
 
 func _get_tagged_text(tag : String, text : String):
 	var start_tag = "<" + tag + ">"
@@ -84,13 +93,13 @@ func _get_tagged_text(tag : String, text : String):
 
 	return text.substr(start_index, substr_length)
 
-func _on_Tween_tween_completed(object, key):
-	finished_current_node = true
-
-func _process(delta):
-	next_indicator.visible = finished_current_node
-
-func release_gui():
+func end_conversation():
 	DataResource.temp_dict_player.dialog_complete = true
+
+	tween.interpolate_property(dialogue_base, "rect_scale", Vector2(1,1), Vector2(.1,1), 0.2,Tween.TRANS_BACK, Tween.EASE_IN, 0)
+	tween.start()
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
+
+func end(): # inherited method is will hide prematurely
+	pass

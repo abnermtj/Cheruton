@@ -1,33 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Display/Dialouge/dialog.gd" type="Script" id=1]
-[ext_resource path="res://Display/Dialouge/Sprites/next-indicator.png" type="Texture" id=2]
-[ext_resource path="res://Display/Dialouge/Sprites/menu_section_9patch.png" type="Texture" id=3]
+[ext_resource path="res://Display/Dialouge/Sprites/Dialogbase.png" type="Texture" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 36
+extra_spacing_top = 5
+extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 5 )
-
-[sub_resource type="Animation" id=3]
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1518.79, 145 ), Vector2( 1518.79, 150 ) ]
-}
 
 [node name="dialog" type="Control"]
 anchor_right = 1.0
@@ -38,82 +20,43 @@ __meta__ = {
 }
 
 [node name="dialogBox" type="Control" parent="."]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -1080.0
+margin_right = 960.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="speaker_background" type="NinePatchRect" parent="dialogBox"]
-show_behind_parent = true
+[node name="bodyBackground" type="NinePatchRect" parent="dialogBox"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -750.0
-margin_top = -270.0
-margin_right = -500.0
-rect_min_size = Vector2( 200, 50 )
-texture = ExtResource( 3 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+margin_left = -520.0
+margin_top = -348.0
+margin_right = 520.0
+margin_bottom = -40.0
+texture = ExtResource( 4 )
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="dialogBox/speaker_background"]
+[node name="MarginContainer" type="MarginContainer" parent="dialogBox/bodyBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 210, 50 )
-custom_constants/margin_right = -30
-custom_constants/margin_top = 200
-custom_constants/margin_left = 30
-custom_constants/margin_bottom = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="speaker_name" type="RichTextLabel" parent="dialogBox/speaker_background/MarginContainer"]
-margin_left = 30.0
-margin_top = 200.0
-margin_right = 280.0
-margin_bottom = 270.0
-rect_min_size = Vector2( 200, 50 )
-custom_fonts/normal_font = SubResource( 1 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-bbcode_enabled = true
-bbcode_text = "speaker
-"
-text = "speaker
-"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="body_background" type="NinePatchRect" parent="dialogBox"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -270.0
-margin_right = 700.0
-texture = ExtResource( 3 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="dialogBox/body_background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = 44.0
+margin_top = 24.0
+margin_right = -40.0
+margin_bottom = -20.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32
@@ -122,12 +65,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="body_text" type="RichTextLabel" parent="dialogBox/body_background/MarginContainer"]
+[node name="bodyText" type="RichTextLabel" parent="dialogBox/bodyBackground/MarginContainer"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 1168.0
-margin_bottom = 238.0
-custom_fonts/normal_font = SubResource( 2 )
+margin_right = 924.0
+margin_bottom = 231.0
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "this is a test, lets get it."
@@ -137,13 +80,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="next_indicator" type="Sprite" parent="dialogBox/body_background/MarginContainer"]
-position = Vector2( 1133.19, 222.563 )
-texture = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="dialogBox/body_background/MarginContainer/next_indicator"]
-autoplay = "idle"
-anims/idle = SubResource( 3 )
-
-[node name="Tween" type="Tween" parent="dialogBox/body_background/MarginContainer"]
-[connection signal="tween_completed" from="dialogBox/body_background/MarginContainer/Tween" to="." method="_on_Tween_tween_completed"]
+[node name="Tween" type="Tween" parent="dialogBox/bodyBackground"]
+[connection signal="tween_completed" from="dialogBox/bodyBackground/Tween" to="." method="_on_Tween_tween_completed"]

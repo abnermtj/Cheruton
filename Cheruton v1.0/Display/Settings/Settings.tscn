@@ -289,7 +289,7 @@ custom_constants/separation = 35
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_right = 214.0
-margin_bottom = 27.0
+margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 49.0

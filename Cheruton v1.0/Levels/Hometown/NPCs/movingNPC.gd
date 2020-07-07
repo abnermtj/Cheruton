@@ -8,9 +8,11 @@ export var walk_speed : int = 110 # remember to move ray case if walk speed is e
 
 onready var body_rotate = $bodyRotate
 
-var interaction_type
-var dir
-var timer
+var interaction_type : String
+var dir : int
+var timer : float
+var is_talking = false
+var save_dir : int
 
 func _ready():
 	dir = -1
@@ -36,6 +38,14 @@ func _physics_process(delta):
 	elif dir == 1 and not $rayRight.is_colliding():
 		flip_dir()
 
+func _process(delta):
+	if is_talking and DataResource.temp_dict_player.dialog_complete:
+		is_talking = false
+		$AnimationPlayer.play("walk")
+		set_physics_process(true)
+		set_process(false)
+		body_rotate.scale.x = save_dir
+
 func flip_dir():
 	dir = -dir
 	body_rotate.scale.x = -body_rotate.scale.x
@@ -44,6 +54,15 @@ func pend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", .5)
 func unpend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", 0)
-func interact():
+
+func interact(body):
 	SceneControl.change_and_start_dialog(name)
+	is_talking = true
+	$AnimationPlayer.play("idle")
+	set_physics_process(false)
+	set_process(true)
+	save_dir = body_rotate.scale.x
+	body_rotate.scale.x = sign(body.global_position.x - global_position.x)
+
+
 

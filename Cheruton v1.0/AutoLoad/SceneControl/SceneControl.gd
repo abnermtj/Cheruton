@@ -260,5 +260,8 @@ func change_story(story : String): # a collection of dialogs
 
 func change_and_start_dialog(dialog : String):
 	cur_dialog = dialog
+	call_deferred("_change_and_start_dialog")
+
+func _change_and_start_dialog():
 	pop_up_gui.get_node("popUps").new_gui("dialog")
 	pop_up_gui.get_node("popUps/dialog").start_dialog(cur_dialog)

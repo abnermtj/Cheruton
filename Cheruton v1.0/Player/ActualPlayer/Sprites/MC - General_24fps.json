@@ -920,10 +920,10 @@
     "duration": 40
    },
    "MC - General_24fps 115.aseprite": {
-    "frame": { "x": 903, "y": 101, "w": 96, "h": 48 },
+    "frame": { "x": 903, "y": 101, "w": 96, "h": 64 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 32, "y": 48, "w": 96, "h": 48 },
+    "spriteSourceSize": { "x": 32, "y": 32, "w": 96, "h": 64 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
@@ -1160,15 +1160,15 @@
     "duration": 40
    },
    "MC - General_24fps 145.aseprite": {
-    "frame": { "x": 1499, "y": 167, "w": 112, "h": 96 },
+    "frame": { "x": 1499, "y": 167, "w": 112, "h": 80 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 32, "y": 16, "w": 112, "h": 96 },
+    "spriteSourceSize": { "x": 32, "y": 16, "w": 112, "h": 80 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
    "MC - General_24fps 146.aseprite": {
-    "frame": { "x": 1, "y": 265, "w": 96, "h": 96 },
+    "frame": { "x": 1, "y": 249, "w": 96, "h": 96 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 48, "y": 16, "w": 96, "h": 96 },
@@ -1176,7 +1176,7 @@
     "duration": 40
    },
    "MC - General_24fps 147.aseprite": {
-    "frame": { "x": 99, "y": 265, "w": 96, "h": 96 },
+    "frame": { "x": 99, "y": 249, "w": 96, "h": 96 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 48, "y": 16, "w": 96, "h": 96 },
@@ -1184,47 +1184,55 @@
     "duration": 40
    },
    "MC - General_24fps 148.aseprite": {
-    "frame": { "x": 197, "y": 265, "w": 96, "h": 64 },
+    "frame": { "x": 197, "y": 249, "w": 96, "h": 80 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 48, "y": 48, "w": 96, "h": 64 },
+    "spriteSourceSize": { "x": 48, "y": 32, "w": 96, "h": 80 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
    "MC - General_24fps 149.aseprite": {
-    "frame": { "x": 295, "y": 265, "w": 96, "h": 64 },
+    "frame": { "x": 295, "y": 249, "w": 96, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 48, "y": 48, "w": 96, "h": 64 },
+    "spriteSourceSize": { "x": 48, "y": 48, "w": 96, "h": 48 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
    "MC - General_24fps 150.aseprite": {
-    "frame": { "x": 393, "y": 265, "w": 48, "h": 48 },
+    "frame": { "x": 393, "y": 249, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 48, "y": 48, "w": 64, "h": 64 },
+    "sourceSize": { "w": 155, "h": 105 },
+    "duration": 40
+   },
+   "MC - General_24fps 151.aseprite": {
+    "frame": { "x": 459, "y": 249, "w": 48, "h": 48 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 64, "y": 48, "w": 48, "h": 48 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
-   "MC - General_24fps 151.aseprite": {
-    "frame": { "x": 443, "y": 265, "w": 64, "h": 48 },
+   "MC - General_24fps 152.aseprite": {
+    "frame": { "x": 509, "y": 249, "w": 64, "h": 48 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 48, "y": 48, "w": 64, "h": 48 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
-   "MC - General_24fps 152.aseprite": {
-    "frame": { "x": 509, "y": 265, "w": 48, "h": 48 },
+   "MC - General_24fps 153.aseprite": {
+    "frame": { "x": 575, "y": 249, "w": 48, "h": 48 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 48, "y": 48, "w": 48, "h": 48 },
     "sourceSize": { "w": 155, "h": 105 },
     "duration": 40
    },
-   "MC - General_24fps 153.aseprite": {
-    "frame": { "x": 559, "y": 265, "w": 32, "h": 48 },
+   "MC - General_24fps 154.aseprite": {
+    "frame": { "x": 625, "y": 249, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
     "spriteSourceSize": { "x": 64, "y": 48, "w": 32, "h": 48 },
@@ -1237,7 +1245,7 @@
   "version": "1.2.15-x64",
   "image": "MC - General_24fps.png",
   "format": "RGBA8888",
-  "size": { "w": 1638, "h": 362 },
+  "size": { "w": 1638, "h": 346 },
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 7, "direction": "forward" },
@@ -1273,8 +1281,8 @@
    { "name": "attack_ground_3", "from": 121, "to": 126, "direction": "forward" },
    { "name": "attack_air_1", "from": 127, "to": 133, "direction": "forward" },
    { "name": "attack_air_2", "from": 134, "to": 141, "direction": "forward" },
-   { "name": "attack_air_3", "from": 142, "to": 149, "direction": "forward" },
-   { "name": "pull_weapon", "from": 150, "to": 153, "direction": "forward" }
+   { "name": "attack_air_3", "from": 142, "to": 150, "direction": "forward" },
+   { "name": "pull_weapon", "from": 151, "to": 154, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer", "opacity": 255, "blendMode": "normal" },

@@ -22,7 +22,7 @@ var updated_once = false
 var enter_vel : Vector2
 
 func enter():
-	if get_parent().previous_state is groundState:
+	if owner.prev_state is groundState:
 		owner.play_anim("attack_ground_1") # change to later on
 		attack_type = GROUND
 		owner.velocity = Vector2(owner.look_direction.x*GROUND_SPEED_H_1,500)
