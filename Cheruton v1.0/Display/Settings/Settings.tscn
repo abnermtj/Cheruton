@@ -368,8 +368,8 @@ text = "       "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
-margin_left = 216.0
-margin_right = 1010.0
+margin_left = 144.0
+margin_right = 575.0
 margin_bottom = 429.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -385,126 +385,157 @@ size_flags_vertical = 3
 margin_right = 794.0
 margin_bottom = 14.0
 
-[node name="MainVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
+[node name="Contents" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 18.0
 margin_right = 794.0
-margin_bottom = 49.0
-text = "Master
-"
+margin_bottom = 221.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="SoundType" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_right = 112.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+custom_constants/separation = 20
+
+[node name="MainVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_right = 112.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Master"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/MainVol2"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/MainVol2"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/MainVol2"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_top = 53.0
-margin_right = 794.0
-margin_bottom = 84.0
-text = "SFX
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/SFXVol2"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/SFXVol2"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/SFXVol2"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_top = 88.0
-margin_right = 794.0
-margin_bottom = 102.0
+[node name="MusicVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_top = 34.0
+margin_right = 112.0
+margin_bottom = 48.0
 text = "Music"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/MusicVol2"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
+[node name="SFXVol2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_top = 68.0
+margin_right = 112.0
+margin_bottom = 82.0
+text = "SFX"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/MusicVol2"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
+[node name="SoundBar" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 132.0
+margin_right = 696.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="MainVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_right = 564.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_top = 34.0
+margin_right = 564.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_top = 68.0
+margin_right = 564.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundControlUp" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 716.0
+margin_right = 744.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+custom_constants/separation = 20
+
+[node name="MainVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_right = 28.0
+margin_bottom = 20.0
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/MusicVol2"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
+[node name="MusicVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_top = 40.0
+margin_right = 28.0
+margin_bottom = 60.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_top = 80.0
+margin_right = 28.0
+margin_bottom = 100.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundControlDown" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 764.0
+margin_right = 794.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+custom_constants/separation = 20
+
+[node name="MainVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_right = 30.0
+margin_bottom = 20.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_top = 40.0
+margin_right = 30.0
+margin_bottom = 60.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_top = 80.0
+margin_right = 30.0
+margin_bottom = 100.0
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_top = 106.0
+margin_top = 225.0
 margin_right = 794.0
-margin_bottom = 120.0
+margin_bottom = 239.0
 size_flags_vertical = 2
 
 [node name="BaseGame" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
@@ -547,9 +578,9 @@ text = "                    "
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Controls" to="." method="_on_Controls_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/MainVol2/MainVolUp" to="." method="_on_MainVolUp_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/MainVol2/MainVolDown" to="." method="_on_MainVolDown_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/SFXVol2/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/SFXVol2/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/MusicVol2/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/MusicVol2/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
