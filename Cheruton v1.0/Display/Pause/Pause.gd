@@ -8,7 +8,7 @@ func _on_ExitDirect_pressed():
 	get_tree().quit()
 
 func _on_Settings_pressed():
-	emit_signal("new_gui", "settings")
+	SceneControl.settings_layer.show()
 
 func _on_RMMenu_pressed():
 	SceneControl.load_screen(MAINMENU)

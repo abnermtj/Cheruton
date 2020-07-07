@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Display/PopUpGui/guiStateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Display/PopUpGui/PopUpGui.gd" type="Script" id=2]
 [ext_resource path="res://Display/PopUpGui/emptyPopUpgui.gd" type="Script" id=3]
-[ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Display/Shop/Shop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Inventory/Inventory.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Display/Dialouge/dialog.tscn" type="PackedScene" id=7]
@@ -34,13 +33,6 @@ margin_left = 536.788
 margin_top = 256.289
 margin_right = 750.789
 margin_bottom = 380.29
-
-[node name="settings" parent="popUps" instance=ExtResource( 4 )]
-visible = false
-margin_left = 825.046
-margin_top = 414.979
-margin_right = 825.046
-margin_bottom = 414.979
 
 [node name="shop" parent="popUps" instance=ExtResource( 5 )]
 visible = false

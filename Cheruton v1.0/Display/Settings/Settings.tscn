@@ -13,6 +13,7 @@
 [ext_resource path="res://Display/Settings/Sprites_Font/Settings.png" type="Texture" id=11]
 
 [node name="Settings" type="Control"]
+pause_mode = 2
 margin_right = 1920.0
 margin_bottom = 1080.0
 script = ExtResource( 1 )
@@ -189,6 +190,17 @@ stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
+margin_top = 223.0
+margin_right = 214.0
+margin_bottom = 237.0
+
+[node name="Back" type="Button" parent="Settings/Container/Main/Contents/Options"]
+margin_top = 272.0
+margin_right = 214.0
+margin_bottom = 292.0
+text = "Back"
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
 margin_left = 222.0
@@ -444,6 +456,7 @@ text = "                    "
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Controls" to="." method="_on_Controls_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/Options/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MainVolUp" to="." method="_on_MainVolUp_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]

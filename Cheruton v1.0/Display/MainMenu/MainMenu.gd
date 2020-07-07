@@ -21,13 +21,14 @@ onready var play_position = $Background/Options/VBoxContainer/Play.rect_position
 onready var settings_position = $Background/Options/VBoxContainer/Settings.rect_position
 onready var quit_position = $Background/Options/VBoxContainer/Quit.rect_position
 
-onready var bg_music_fill
+onready var bg_music_file
 
 var modulate_dec = "white"
 var slider_active := false
 
 
 func _ready():
+	SceneControl.get_node("popUpGui").enabled = false
 	tween_white_screen()
 	options.modulate.a = 0
 
@@ -55,12 +56,11 @@ func enable_options():
 
 func _on_Play_pressed():
 	SceneControl.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN1, true, true)
+	SceneControl.load_screen(SCN1)
 	queue_free()
 
 func _on_Settings_pressed():
-	options.hide()
-	settings.show()
+	SceneControl.settings_layer.show()
 
 
 func _on_Quit_pressed():
