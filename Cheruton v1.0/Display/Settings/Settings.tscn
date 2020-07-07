@@ -210,6 +210,7 @@ __meta__ = {
 }
 
 [node name="Slider" type="TextureRect" parent="Settings"]
+visible = false
 margin_left = 119.0
 margin_top = 200.0
 margin_right = 356.0
@@ -289,7 +290,7 @@ custom_constants/separation = 35
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_right = 214.0
-margin_bottom = 27.0
+margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 49.0
@@ -413,27 +414,28 @@ size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="SoundType" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_right = 40.0
+margin_right = 102.0
 margin_bottom = 367.0
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
-custom_constants/separation = 26
+custom_constants/separation = 25
 
 [node name="Master" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
-margin_right = 40.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 40, 25 )
+margin_right = 102.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 40, 8 )
 texture = ExtResource( 8 )
 expand = true
-stretch_mode = 4
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Music" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
-margin_top = 51.0
-margin_right = 40.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 40, 20 )
+margin_top = 33.0
+margin_right = 102.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 0, 8 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 5
@@ -442,10 +444,10 @@ __meta__ = {
 }
 
 [node name="SFX" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
-margin_top = 97.0
-margin_right = 40.0
-margin_bottom = 117.0
-rect_min_size = Vector2( 40, 20 )
+margin_top = 66.0
+margin_right = 102.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 20, 9 )
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 5
@@ -454,39 +456,39 @@ __meta__ = {
 }
 
 [node name="SoundBar" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 60.0
-margin_right = 637.0
+margin_left = 122.0
+margin_right = 636.0
 margin_bottom = 367.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
+custom_constants/separation = 26
 
 [node name="MainVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
-margin_right = 577.0
+margin_right = 514.0
 margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MusicVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
-margin_top = 34.0
-margin_right = 577.0
-margin_bottom = 48.0
+margin_top = 40.0
+margin_right = 514.0
+margin_bottom = 54.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SFXVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
-margin_top = 68.0
-margin_right = 577.0
-margin_bottom = 82.0
+margin_top = 80.0
+margin_right = 514.0
+margin_bottom = 94.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SoundControlUp" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 657.0
-margin_right = 677.0
+margin_left = 656.0
+margin_right = 676.0
 margin_bottom = 367.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 20
@@ -518,8 +520,8 @@ __meta__ = {
 }
 
 [node name="SoundControlDown" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 697.0
-margin_right = 714.0
+margin_left = 696.0
+margin_right = 713.0
 margin_bottom = 367.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 20
