@@ -10,9 +10,9 @@ onready var settings = $Settings
 onready var options = $Background/Options
 onready var timer_options = $Timer
 onready var slider = $Background/Options/Slider
-onready var tween = $Background/Options/Slider/Tween
+onready var tween = $Tween
+onready var canvas_modulate = $CanvasModulate
 
-onready var white_screen = $WhiteScreen
 onready var options_delay = $OptionsDelay
 
 onready var container = $Background/Options/VBoxContainer
@@ -21,42 +21,33 @@ onready var play_position = $Background/Options/VBoxContainer/Play.rect_position
 onready var settings_position = $Background/Options/VBoxContainer/Settings.rect_position
 onready var quit_position = $Background/Options/VBoxContainer/Quit.rect_position
 
-
-onready var bg_music_fill
+onready var bg_music_file
 
 var modulate_dec = "white"
 var slider_active := false
 
 
 func _ready():
-	white_screen.modulate.a = 1.0
+	SceneControl.get_node("popUpGui").enabled = false
+	tween_white_screen()
 	options.modulate.a = 0
-	
 
-func _process(delta):
-	modulate_func()
+# Gives a fadein effect
+func tween_white_screen():
+	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 
-# Creates a startup effect
-func modulate_func():
-	match modulate_dec:
-		"white":
-			if(white_screen.modulate.a < 0.01):
-				modulate_dec = "idle"
-				options_delay.start()
-			else:
-				white_screen.modulate.a -= 0.01
-
-		"options":
-			if(options.modulate.a > 0.99):
-				modulate_dec = "idle"
-				enable_options()
-			else:
-				options.modulate.a += 0.03
+# When the tween of the relevant object is completed
+func _on_Tween_tween_completed(object, key):
+	if(object == canvas_modulate):
+		options_delay.start()
+	elif(object == options):
+		enable_options()
 
 
 func _on_OptionsDelay_timeout():
-	white_screen.hide()
-	modulate_dec = "options"
+	tween.interpolate_property(options, "modulate", options.modulate, Color(1,1,1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 	
 #Enables the Buttons for use
 func enable_options():
@@ -65,12 +56,11 @@ func enable_options():
 
 func _on_Play_pressed():
 	SceneControl.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN1, true, true)
+	SceneControl.load_screen(SCN1)
 	queue_free()
 
 func _on_Settings_pressed():
-	options.hide()
-	settings.show()
+	SceneControl.settings_layer.show()
 
 
 func _on_Quit_pressed():
@@ -105,6 +95,8 @@ func slide_to_position(new_position):
 		slider.rect_position.y = new_position.y
 		slider.show()
 		slider_active = true
+
+
 
 
 

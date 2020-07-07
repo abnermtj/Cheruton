@@ -1,9 +1,9 @@
 extends basePopUp
 
-onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
-onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar
-onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
-onready var list = $ContainerMain/List
+onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MainVolBar
+onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MusicVolBar
+onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/SFXVolBar
+
 
 onready var container = $Settings/Container
 onready var contents = $Settings/Container/Main/Contents
@@ -17,9 +17,8 @@ onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_
 var slider_active := false
 
 
-
-
 func _ready():
+	#SceneControl.get_node("popUpGui").enabled = false
 	init_bar_vals()
 	connect_functions()
 
@@ -66,8 +65,10 @@ func _on_SFXVolDown_pressed():
 
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
+	print(true)
 	DataResource.save_rest() # so that the new settings persist on next save file
-	emit_signal("release_gui", "settings")
+	SceneControl.settings_layer.hide()
+	#emit_signal("release_gui", "settings")
 
 func handle_input(event):
 	if is_active_gui and Input.is_action_just_pressed("escape"):
@@ -100,4 +101,4 @@ func slide_to_position(new_position):
 
 
 
-
+	

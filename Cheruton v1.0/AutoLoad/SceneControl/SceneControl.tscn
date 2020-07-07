@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Display/LoadScrn/LoadScrn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://AutoLoad/SceneControl/SceneControl.gd" type="Script" id=4]
 [ext_resource path="res://Display/LoadScrn/LoadScrn.gd" type="Script" id=5]
 [ext_resource path="res://Display/PopUpGui/PopUpGui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -82,6 +83,8 @@ anims/fade_out = SubResource( 3 )
 [node name="Hud" type="Node2D" parent="HudLayer"]
 visible = false
 
+[node name="Settings" parent="HudLayer/Hud" instance=ExtResource( 7 )]
+
 [node name="StatBars" type="VBoxContainer" parent="HudLayer/Hud"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,5 +116,12 @@ visible = false
 script = ExtResource( 5 )
 
 [node name="popUpGui" parent="." instance=ExtResource( 6 )]
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="Node2D" parent="SettingsLayer"]
+visible = false
+
+[node name="Settings" parent="SettingsLayer/Settings" instance=ExtResource( 7 )]
 [connection signal="animation_finished" from="BgMusic/VolPitch" to="." method="_on_VolPitch_animation_finished"]
 [connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

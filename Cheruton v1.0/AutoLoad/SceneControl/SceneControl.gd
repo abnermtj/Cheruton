@@ -12,6 +12,7 @@ onready var pop_up_gui = $popUpGui
 onready var bg_music = $BgMusic
 onready var bg_music_pitch = $BgMusic/VolPitch
 onready var load_layer = $LoadLayer/Load
+onready var settings_layer = $SettingsLayer/Settings
 
 var cur_story
 var cur_dialog
@@ -31,7 +32,7 @@ signal init_statbar
 func _ready():
 	randomize()
 
-	#init_music()
+	init_music()
 	begin_music()
 	#init_cursor()
 
@@ -83,8 +84,9 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 
 	else: # main menu
-		get_tree().get_root().add_child(new_level)
-		new_music = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1).bg_music_file
+		var root = get_tree().get_root()
+		root.add_child(new_level)
+		new_music = root.get_child(root.get_child_count() - 1).bg_music_file
 
 	if(new_music):
 		new_music = load(new_music)

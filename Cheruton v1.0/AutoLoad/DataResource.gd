@@ -30,6 +30,7 @@ signal change_audio_sfx
 
 func _ready():
 	load_data()
+	
 
 func load_data():
 	#Editable

@@ -13,7 +13,6 @@ func _ready():
 		"emptygui": $emptyPopUpgui,
 		"inventory": $inventory,
 		"pause": $pause,
-		"settings": $settings,
 		"shop": $shop,
 		"dialog": $dialog
 	}
