@@ -17,8 +17,6 @@ onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_
 var slider_active := false
 
 
-
-
 func _ready():
 	init_bar_vals()
 	connect_functions()
