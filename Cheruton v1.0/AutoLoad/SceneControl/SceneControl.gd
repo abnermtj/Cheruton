@@ -117,7 +117,6 @@ func change_music(new_music):
 #	Active: Plays the current music stream
 
 func music_fsm():
-	print(music_state)
 	match music_state:
 		"idle":
 			pass

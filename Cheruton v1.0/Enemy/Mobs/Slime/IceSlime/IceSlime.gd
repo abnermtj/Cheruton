@@ -107,7 +107,6 @@ func _on_HitBox_area_entered(area) -> void:
 #	if is_exploding: return
 #	if randf() < 0: return
 #	is_exploding = true
-#	print( "SLIME DETECTED PLAYER" )
 #	pass
 #	#$rotate/detect_player/exploding_timer.start()
 
@@ -137,7 +136,6 @@ func _on_AOSBox_body_entered(area) -> void:
 	player_in_range = true
 	false_hidden = false
 	if(fsm.state_curr != fsm.states.Dead):
-		print(1000)
 		fsm.state_next = fsm.states.Attack
 
 
@@ -148,5 +146,4 @@ func _on_AOSBox_body_exited(area) -> void:
 		if(false_hidden):
 			player_in_range = false
 			if(fsm.state_curr != fsm.states.Dead):
-				print(2000)
 				fsm.state_next = fsm.states.Search

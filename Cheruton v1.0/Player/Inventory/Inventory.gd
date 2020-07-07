@@ -90,9 +90,6 @@ func change_tab_state(next_tab):
 		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
 		"KeyItems": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
 
-	if(next_tab):
-		print("Current Tab: ")
-		print(next_tab)
 
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
@@ -200,7 +197,6 @@ func disable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
-		print(node.name)
 		node.get_node("Background/ItemBg").texture = index_bg
 
 
@@ -226,7 +222,6 @@ func _on_pressed(node):
 
 	if (mouse_count == 2):
 		mouse_node = temp_mouse_node
-		print("Double Clicked!")
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
 		mouse_count = 0
@@ -240,7 +235,6 @@ func check_fixed():
 # Use the item that has been double clicked
 func utilize_item(node):
 	# Dequipping item
-	print(node.name)
 	if(node.name == "Weapons" || node.name == "Apparel"):
 		item_status(node, "DEQUIP")
 
@@ -258,7 +252,6 @@ func utilize_item(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
-		print("Single Clicked!")
 		revert_item_state()
 		mouse_count = 0
 
@@ -347,7 +340,6 @@ func item_status(selected_node, status):
 			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			equipped_coins.get_node(active_tab.name + "/Background/ItemBg").texture = index_equipped_bg
 			type.show()
-			print("Show")
 		"DEQUIP":
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
 				var actual = items.get_node(selected_node.name + "/Column").find_node(str(DataResource.temp_dict_player[selected_node.name + "_item"]), true, false)
@@ -360,7 +352,6 @@ func item_status(selected_node, status):
 				type.hide()
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			mouse_node = null
-			print("Hide")
 
 #Debug
 func _on_Button_pressed():

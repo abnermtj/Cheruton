@@ -11,7 +11,8 @@ func _ready():
 		"attack" : $attack,
 		"wallSlide" : $wallSlide,
 		"dash" : $dash,
-		"hit" : $hit
+		"hit" : $hit,
+		"talk": $talk
 	}
 
 func _change_state(state_name):

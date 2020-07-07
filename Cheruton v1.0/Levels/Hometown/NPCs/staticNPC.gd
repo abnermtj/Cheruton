@@ -2,7 +2,9 @@ extends Node2D
 
 class_name StaticNPC
 
+var interaction_type
 func _ready():
+	interaction_type = "dialog"
 	$AnimationPlayer.play("idle")
 	add_to_group("interactibles")
 	add_to_group("NPCs")

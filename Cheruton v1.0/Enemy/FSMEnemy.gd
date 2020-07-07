@@ -11,7 +11,7 @@ var object = null
 
 func _init(input_object, initial_state, self_debug = false ):
 	self.object = input_object
-	#self.debug = self_debug
+	#debug = self_debug
 	_set_states_parent_node(initial_state.get_parent())
 	state_next = initial_state
 

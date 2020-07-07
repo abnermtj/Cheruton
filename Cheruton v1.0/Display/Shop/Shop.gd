@@ -210,7 +210,6 @@ func _on_pressed(node):
 	if (mouse_count == 2):
 		check_fixed()
 		mouse_node = temp_mouse_node
-		print("Double Clicked!")
 		match shop_setting:
 			"Sell": 	# Sell item: fix the item, then sell it
 				if(item_state == "HOVER"):
@@ -230,7 +229,6 @@ func _on_pressed(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
-		print("Single Clicked!")
 		revert_item_state()
 		mouse_count = 0
 

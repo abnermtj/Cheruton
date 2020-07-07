@@ -8,7 +8,6 @@ func initialize():
 	timer = 0.10
 
 func run(delta):
-	#print(20000002)
 	should_fall()
 	timer -= delta
 	if (timer <= 0):

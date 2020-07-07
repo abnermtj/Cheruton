@@ -21,7 +21,6 @@ func initialize():
 
 func run(delta):
 	timer -= delta
-	#print(10000001)
 	should_fall()
 	player_position = player.global_position
 	# Position of player not in direction enemy is facing

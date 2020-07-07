@@ -33,7 +33,6 @@ func run(delta):
 		speed *= 3
 	# Another enemy in front of original enemy
 	if(ray_cast_front.is_colliding()):
-		print(true)
 		speed /= 2
 	obj.velocity.x = obj.dir_curr * speed
 	obj.velocity.y = 0#min(obj.velocity.y + 500 * _delta, 160)

@@ -7,8 +7,8 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/blue_colour = Color( 0.126354, 0.811567, 1, 1 )
-shader_param/sprite_scale = Vector2( 7.5, 7.5 )
-shader_param/scale_x = 0.68
+shader_param/sprite_scale = Vector2( 1, 7 )
+shader_param/scale_x = 0.8
 
 [node name="Water" type="Sprite"]
 material = SubResource( 1 )

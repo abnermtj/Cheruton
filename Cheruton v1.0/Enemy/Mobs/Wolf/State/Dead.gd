@@ -18,7 +18,6 @@ func initialize():
 #	obj.get_node("Collision").disabled = true
 #	obj.get_node("DamageBox/DamageCollision").disabled = true
 #	if obj.find_node("jumpbox"):
-#		#print( "disabling jump" )
 #		obj.get_node( "jumpbox/jumpcollision" ).disabled = true
 ##		obj.get_node( "jumpbox" ).set_collision_mask_bit( 7, false )
 ##		obj.get_node( "jumpbox" ).set_collision_layer_bit( 7, false )
@@ -50,7 +49,7 @@ func run(delta):
 		timer -= delta
 	else:
 		terminate()
-		
+
 
 #	else:
 #		obj.position = obj.initial_position
@@ -58,7 +57,6 @@ func run(delta):
 #			fsm.state_nxt = fsm.states.run
 
 func terminate():
-	print(1)
 	obj._exit_tree()
 	obj.free()
 #	obj.get_node( "anim" ).play()
@@ -85,4 +83,4 @@ func terminate():
 #		x.modulate = Color( "df3e23" )
 #	obj.get_parent().add_child( x )
 #
-	
+

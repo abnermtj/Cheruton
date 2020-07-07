@@ -33,7 +33,7 @@ story = {
 0: 5
 },
 "text": "<speaker>Elena</speaker>
-<dialog>Welcome to Laspla.</dialog>"
+<dialog>Welcome to Laspla!</dialog>"
 },
 5: {
 "links": {
@@ -262,7 +262,7 @@ story = {
 0: 7
 },
 "text": "<speaker>Bryce</speaker>
-<dialog>but I don't think if you can handle it.</dialog>"
+<dialog>but I don't think you can handle it.</dialog>"
 },
 7: {
 "links": {

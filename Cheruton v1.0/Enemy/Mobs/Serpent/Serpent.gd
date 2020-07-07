@@ -106,7 +106,6 @@ func _on_HitBox_area_entered(area):
 #	if is_exploding: return
 #	if randf() < 0: return
 #	is_exploding = true
-#	print( "SLIME DETECTED PLAYER" )
 #	pass
 #	#$rotate/detect_player/exploding_timer.start()
 
@@ -138,7 +137,6 @@ func _on_AOSBox_body_entered(body):
 		return
 	if (body == player):
 		player_sight = true
-		print(player_sight)
 		fsm.state_next = fsm.states.Attack
 
 # Player has left enemies guard radius

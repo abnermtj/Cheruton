@@ -65,7 +65,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Elena</speaker>
-<dialog>Welcome to Laspla.</dialog>",
+<dialog>Welcome to Laspla!</dialog>",
 "type": "line"
 },
 5: {
@@ -91,7 +91,7 @@ story = {
 "type": "line"
 },
 7: {
-"graph_offset": Vector2( 1440, 160 ),
+"graph_offset": Vector2( 2560, 460 ),
 "links": {
 
 },
@@ -442,7 +442,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Bryce</speaker>
-<dialog>but I don't think if you can handle it.</dialog>",
+<dialog>but I don't think you can handle it.</dialog>",
 "type": "line"
 },
 7: {

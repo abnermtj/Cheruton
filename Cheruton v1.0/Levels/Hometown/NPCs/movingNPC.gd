@@ -8,6 +8,7 @@ export var walk_speed : int = 110 # remember to move ray case if walk speed is e
 
 onready var body_rotate = $bodyRotate
 
+var interaction_type
 var dir
 var timer
 
@@ -16,6 +17,7 @@ func _ready():
 	body_rotate.scale.x = -1
 	timer = DIR_CHANGE_TIME # remember to set this when overwriting dir change time in virtual funcs
 	$AnimationPlayer.play("walk")
+	interaction_type = "dialog"
 	add_to_group("NPCs")
 	add_to_group("interactibles")
 

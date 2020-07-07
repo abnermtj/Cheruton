@@ -83,7 +83,6 @@ func _process(delta):
 		tip_pos = target_pos
 
 #	target_pos = get_viewport().get_mouse_position()
-#	print(target_pos-global_position)
 	update_ik(target_pos)
 
 	total_rotation = joint1.rotation_degrees + joint2.rotation_degrees

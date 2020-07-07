@@ -106,7 +106,6 @@ func _on_HitBox_area_entered(area) -> void:
 #	if is_exploding: return
 #	if randf() < 0: return
 #	is_exploding = true
-#	print( "SLIME DETECTED PLAYER" )
 #	pass
 #	#$rotate/detect_player/exploding_timer.start()
 

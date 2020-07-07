@@ -8,7 +8,6 @@ func initialize():
 	timer = 0.10
 
 func run(delta):
-	#print(20000002)
 	aerial_pos_edit()
 	timer -= delta
 	if (timer <= 0):
@@ -17,7 +16,7 @@ func run(delta):
 			fsm.state_next = fsm.states.Search#stub
 		else:
 			fsm.state_next = fsm.states.Attack#stub
-		
+
 func terminate():
 	obj.get_node("HitBox/HitCollision").disabled = false
 	obj.is_hit = false

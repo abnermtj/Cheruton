@@ -72,7 +72,8 @@ var can_attack = true
 var can_hook = true
 var can_throw_sword = true
 
-var nearest_interactible
+var nearest_interactible : Node
+var interaction_type : String
 
 signal hook_command
 signal flying_sword_command
@@ -104,6 +105,8 @@ func _physics_process(delta):
 			nearest_interactible.pend_interact()
 		if old_nearest_interactible:
 			old_nearest_interactible.unpend_interact()
+	if nearest_interactible: interaction_type = nearest_interactible.interaction_type
+	else: interaction_type = ""
 
 # General Helper functions
 func get_nearest_object(obj_type : String):

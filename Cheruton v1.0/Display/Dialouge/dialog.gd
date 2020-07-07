@@ -44,7 +44,7 @@ func start_dialog(record_name : String): # SPECIFIC DIALOG
 	show()
 
 func handle_input(event): # change name to handle_input when under level gui master
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("interact"):
 		if finished_current_node and not finished_last_node:
 			get_next_node()
 			if not finished_last_node:
@@ -91,5 +91,6 @@ func _process(delta):
 	next_indicator.visible = finished_current_node
 
 func release_gui():
+	DataResource.temp_dict_player.dialog_complete = true
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
