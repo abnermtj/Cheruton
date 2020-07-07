@@ -1,8 +1,8 @@
 extends basePopUp
 
-onready var main_bar = $ContainerMain/List/MainVol/MainVolBar
-onready var music_bar = $ContainerMain/List/MusicVol/MusicVolBar
-onready var sfx_bar = $ContainerMain/List/SFXVol/SFXVolBar
+onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MainVolBar
+onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MusicVolBar
+onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/SFXVolBar
 onready var list = $ContainerMain/List
 
 onready var container = $Settings/Container

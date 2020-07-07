@@ -20,180 +20,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContainerMain" type="VBoxContainer" parent="."]
-visible = false
-margin_right = 320.0
-margin_bottom = 195.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Settings" type="Label" parent="ContainerMain"]
-margin_right = 320.0
-margin_bottom = 31.0
-text = "Settings
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="List" type="VBoxContainer" parent="ContainerMain"]
-margin_top = 35.0
-margin_right = 320.0
-margin_bottom = 230.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicVol" type="Label" parent="ContainerMain/List"]
-margin_right = 320.0
-margin_bottom = 31.0
-text = "Music Volume: 
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicVolBar" type="ProgressBar" parent="ContainerMain/List/MusicVol"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicVolUp" type="Button" parent="ContainerMain/List/MusicVol"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicVolDown" type="Button" parent="ContainerMain/List/MusicVol"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVol" type="Label" parent="ContainerMain/List"]
-margin_top = 35.0
-margin_right = 320.0
-margin_bottom = 66.0
-text = "SFX Volume: 
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolBar" type="ProgressBar" parent="ContainerMain/List/SFXVol"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolUp" type="Button" parent="ContainerMain/List/SFXVol"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXVolDown" type="Button" parent="ContainerMain/List/SFXVol"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mute" type="Label" parent="ContainerMain/List"]
-margin_top = 70.0
-margin_right = 320.0
-margin_bottom = 101.0
-text = "Mute:
-"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MuteToggle" type="CheckButton" parent="ContainerMain/List/Mute"]
-margin_left = 37.4798
-margin_top = -8.61993
-margin_right = 113.48
-margin_bottom = 31.3801
-rect_scale = Vector2( 0.75, 0.75 )
-focus_mode = 0
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Back" type="Button" parent="ContainerMain/List"]
-margin_top = 105.0
-margin_right = 320.0
-margin_bottom = 125.0
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVol" type="Label" parent="ContainerMain/List"]
-margin_top = 129.0
-margin_right = 320.0
-margin_bottom = 160.0
-text = "Main Volume: 
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolBar" type="ProgressBar" parent="ContainerMain/List/MainVol"]
-margin_left = 112.418
-margin_top = -0.327515
-margin_right = 202.418
-margin_bottom = 13.6725
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolUp" type="Button" parent="ContainerMain/List/MainVol"]
-margin_left = 221.237
-margin_top = -3.09061
-margin_right = 241.237
-margin_bottom = 16.9094
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainVolDown" type="Button" parent="ContainerMain/List/MainVol"]
-margin_left = 249.237
-margin_top = -3.09061
-margin_right = 269.237
-margin_bottom = 16.9094
-text = "-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Settings" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -347,7 +173,7 @@ margin_bottom = 188.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text2" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Game"]
+[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Game"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -431,8 +257,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -46.5
 margin_top = -10.0
-margin_right = 46.5
-margin_bottom = 10.0
+margin_right = 71.5
+margin_bottom = 15.0
 rect_min_size = Vector2( 92, 20 )
 texture = ExtResource( 8 )
 stretch_mode = 5
@@ -450,10 +276,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.0
+margin_left = -33.5
 margin_top = -10.0
-margin_right = 34.0
-margin_bottom = 10.0
+margin_right = 52.5
+margin_bottom = 15.0
 rect_min_size = Vector2( 54, 20 )
 texture = ExtResource( 5 )
 stretch_mode = 5
@@ -471,10 +297,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -22.0
+margin_left = -21.5
 margin_top = -10.0
-margin_right = 22.0
-margin_bottom = 10.0
+margin_right = 33.5
+margin_bottom = 15.0
 rect_min_size = Vector2( 34, 20 )
 texture = ExtResource( 10 )
 expand = true
@@ -615,14 +441,6 @@ margin_bottom = 14.0
 size_flags_horizontal = 5
 size_flags_vertical = 0
 text = "                    "
-[connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
-[connection signal="pressed" from="ContainerMain/List/MusicVol/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
-[connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
-[connection signal="pressed" from="ContainerMain/List/SFXVol/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
-[connection signal="pressed" from="ContainerMain/List/Mute/MuteToggle" to="." method="_on_MuteToggle_pressed"]
-[connection signal="pressed" from="ContainerMain/List/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolUp" to="." method="_on_MainVolUp_pressed"]
-[connection signal="pressed" from="ContainerMain/List/MainVol/MainVolDown" to="." method="_on_MainVolDown_pressed"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Controls" to="." method="_on_Controls_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
