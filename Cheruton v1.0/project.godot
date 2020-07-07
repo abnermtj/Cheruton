@@ -306,6 +306,10 @@ shop_sell={
 2d_physics/layer_9="one_way_terrain"
 2d_physics/layer_10="interactibles"
 
+[memory]
+
+limits/message_queue/max_size_kb=2048
+
 [physics]
 
 common/physics_jitter_fix=0.1
