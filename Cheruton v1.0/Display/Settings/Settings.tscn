@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
 [ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
+[ext_resource path="res://Display/Settings/Music.png" type="Texture" id=5]
+[ext_resource path="res://Display/Settings/Sprites_Font/Audio.png" type="Texture" id=6]
+[ext_resource path="res://Display/Settings/Sprites_Font/Controls.png" type="Texture" id=7]
+[ext_resource path="res://Display/Settings/Sprites_Font/Master.png" type="Texture" id=8]
+[ext_resource path="res://Display/Settings/Sprites_Font/Game.png" type="Texture" id=9]
+[ext_resource path="res://Display/Settings/Sprites_Font/sfx.png" type="Texture" id=10]
+[ext_resource path="res://Display/Settings/Sprites_Font/Settings.png" type="Texture" id=11]
 
 [node name="Settings" type="Control"]
 margin_right = 1920.0
@@ -34,7 +41,7 @@ __meta__ = {
 [node name="List" type="VBoxContainer" parent="ContainerMain"]
 margin_top = 35.0
 margin_right = 320.0
-margin_bottom = 195.0
+margin_bottom = 230.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -203,12 +210,13 @@ __meta__ = {
 }
 
 [node name="Slider" type="TextureRect" parent="Settings"]
-visible = false
-margin_left = 137.0
-margin_top = 130.0
-margin_right = 292.0
-margin_bottom = 170.0
+margin_left = 119.0
+margin_top = 200.0
+margin_right = 356.0
+margin_bottom = 298.0
 texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -243,22 +251,25 @@ margin_bottom = 31.0
 text = "
 "
 
-[node name="Settings" type="Label" parent="Settings/Container/Main"]
+[node name="Settings" type="TextureRect" parent="Settings/Container/Main"]
 margin_top = 35.0
 margin_right = 1019.0
-margin_bottom = 49.0
-text = "Settings"
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 40 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
 
 [node name="DividerMain" type="TextureRect" parent="Settings/Container/Main"]
-margin_top = 53.0
+margin_top = 79.0
 margin_right = 1019.0
-margin_bottom = 63.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 0, 10 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="Contents" type="HBoxContainer" parent="Settings/Container/Main"]
-margin_top = 67.0
+margin_top = 93.0
 margin_right = 1019.0
 margin_bottom = 496.0
 size_flags_vertical = 3
@@ -269,117 +280,281 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 162.0
-margin_bottom = 429.0
+margin_right = 218.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.3
+custom_constants/separation = 35
+
+[node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
+margin_right = 214.0
+margin_bottom = 27.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 158.0
-margin_bottom = 23.0
+margin_top = 49.0
+margin_right = 214.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Label" type="Label" parent="Settings/Container/Main/Contents/Options/Controls"]
+[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Controls"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -26.5
-margin_top = -7.0
-margin_right = 26.5
-margin_bottom = 7.0
-text = "Controls"
-align = 1
-valign = 1
+margin_left = -66.0
+margin_top = -12.5
+margin_right = 66.0
+margin_bottom = 12.5
+rect_min_size = Vector2( 0, 20 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 27.0
-margin_right = 158.0
-margin_bottom = 50.0
+margin_top = 107.0
+margin_right = 214.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Audio"]
+[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Audio"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -26.5
-margin_top = -7.0
-margin_right = 26.5
-margin_bottom = 7.0
-text = "Audio"
-align = 1
-valign = 1
+margin_left = -42.5
+margin_top = -12.5
+margin_right = 42.5
+margin_bottom = 12.5
+rect_min_size = Vector2( 0, 20 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 54.0
-margin_right = 158.0
-margin_bottom = 77.0
+margin_top = 165.0
+margin_right = 214.0
+margin_bottom = 188.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Game"]
+[node name="Text2" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Game"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.9524
-margin_top = -7.0
-margin_right = 28.0476
-margin_bottom = 24.0
-text = "Game
-"
-align = 1
-valign = 1
+margin_left = -38.5
+margin_top = -12.5
+margin_right = 38.5
+margin_bottom = 12.5
+rect_min_size = Vector2( 0, 20 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 166.0
-margin_right = 166.0
+margin_left = 222.0
+margin_right = 222.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 170.0
-margin_right = 180.0
-margin_bottom = 429.0
+margin_left = 226.0
+margin_right = 236.0
+margin_bottom = 403.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 
 [node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 184.0
-margin_right = 212.0
+margin_left = 240.0
+margin_right = 268.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 text = "       "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 216.0
-margin_right = 1010.0
+visible = false
+margin_left = 144.0
+margin_right = 575.0
 margin_bottom = 429.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BaseSound" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 579.0
-margin_right = 1010.0
-margin_bottom = 429.0
+[node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+margin_left = 272.0
+margin_right = 986.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
+margin_right = 714.0
+margin_bottom = 14.0
+
+[node name="Contents" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio"]
+margin_top = 18.0
+margin_right = 714.0
+margin_bottom = 385.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="SoundType" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_right = 40.0
+margin_bottom = 367.0
+size_flags_stretch_ratio = 0.2
+custom_constants/separation = 26
+
+[node name="Master" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_right = 40.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 40, 25 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_top = 51.0
+margin_right = 40.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 40, 20 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
+margin_top = 97.0
+margin_right = 40.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 40, 20 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundBar" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 60.0
+margin_right = 637.0
+margin_bottom = 367.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="MainVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_right = 577.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_top = 34.0
+margin_right = 577.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
+margin_top = 68.0
+margin_right = 577.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundControlUp" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 657.0
+margin_right = 677.0
+margin_bottom = 367.0
+size_flags_stretch_ratio = 0.05
+custom_constants/separation = 20
+
+[node name="MainVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_right = 20.0
+margin_bottom = 20.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_top = 40.0
+margin_right = 20.0
+margin_bottom = 60.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolUp" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp"]
+margin_top = 80.0
+margin_right = 20.0
+margin_bottom = 100.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundControlDown" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
+margin_left = 697.0
+margin_right = 714.0
+margin_bottom = 367.0
+size_flags_stretch_ratio = 0.05
+custom_constants/separation = 20
+
+[node name="MainVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_right = 17.0
+margin_bottom = 20.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_top = 40.0
+margin_right = 17.0
+margin_bottom = 60.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolDown" type="Button" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown"]
+margin_top = 80.0
+margin_right = 17.0
+margin_bottom = 100.0
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
+margin_top = 389.0
+margin_right = 714.0
+margin_bottom = 403.0
+size_flags_vertical = 1
 
 [node name="BaseGame" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
@@ -390,11 +565,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SRMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 1014.0
+margin_left = 990.0
 margin_right = 1018.0
 margin_bottom = 14.0
 size_flags_vertical = 2
-text = " "
+text = "       "
 
 [node name="BMargin" type="Label" parent="Settings/Container/Main"]
 margin_top = 500.0
@@ -421,3 +596,9 @@ text = "                    "
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Controls" to="." method="_on_Controls_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_mouse_entered"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MainVolUp" to="." method="_on_MainVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/MusicVolUp" to="." method="_on_MusicVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlUp/SFXVolUp" to="." method="_on_SFXVolUp_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/MainVolDown" to="." method="_on_MainVolDown_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
+[connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Contents/SoundControlDown/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
