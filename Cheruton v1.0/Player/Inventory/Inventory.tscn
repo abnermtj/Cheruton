@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Player/Inventory/Sprites/exit.png" type="Texture" id=5]
+[ext_resource path="res://Player/Inventory/Sprites/Icons/exit.png" type="Texture" id=5]
 [ext_resource path="res://Player/Inventory/101.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=7]
 [ext_resource path="res://Player/Inventory/Sprites/Base/baseUIBackgroundg.png" type="Texture" id=8]
