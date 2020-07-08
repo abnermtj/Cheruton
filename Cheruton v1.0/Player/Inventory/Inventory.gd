@@ -13,8 +13,8 @@ var mouse_count = 0
 var mouse_node
 var temp_mouse_node
 
-onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+onready var active_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabSelected.png")
+onready var default_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabDeselected.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
@@ -27,9 +27,9 @@ onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 onready var inventory = self
 onready var shop = get_parent().get_node("shop")
-onready var tabs = $Border/Bg/Contents/Tabs
-onready var items = $Border/Bg/Contents/Items
-onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
+onready var tabs = $Border/Bg/Sides/Contents/Tabs
+onready var items = $Border/Bg/Sides/Contents/Items
+onready var equipped_coins = $Border/Bg/Sides/Contents/EquippedCoins
 
 signal tab_changed(next_tab)
 
@@ -84,11 +84,11 @@ func tab_pressed(next_tab):
 
 func change_tab_state(next_tab):
 	match next_tab:
-		"Weapons":   change_active_tab(tabs.get_node("Weapons/Weapons"))
-		"Apparel":   change_active_tab(tabs.get_node("Apparel/Apparel"))
-		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
-		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
-		"KeyItems": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
+		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
+		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
+		"Consum":    change_active_tab(tabs.get_node("Consum"))
+		"Misc":      change_active_tab(tabs.get_node("Misc"))
+		"KeyItems": change_active_tab(tabs.get_node("KeyItems"))
 
 
 func change_active_tab(new_tab):
@@ -99,12 +99,12 @@ func change_active_tab(new_tab):
 		_on_mouse_exited(temp)
 
 	if(active_tab):
-		active_tab.set_normal_texture(default_tab_image)
+		active_tab.set_texture(default_tab_image)
 		items.get_node(active_tab.name).hide()
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
-	active_tab.set_normal_texture(active_tab_image)
+	active_tab.set_texture(active_tab_image)
 	items.get_node(active_tab.name).show()
 
 func load_data():
@@ -128,8 +128,8 @@ func generate_list(scroll_tab, list_tab, tab_index):
 	var dict_size = list_tab.size()
 	for _i in range(0, BOXES):
 
-		# Creates New Row every 10 items
-		if(index / 10 != row_index && index % 10 != 0):
+		# Creates New Row every 6 items
+		if(index % 6 == 1):
 			var new_row = HBoxContainer.new()
 			row_index += 1
 			scroll_tab.add_child(new_row)
@@ -239,7 +239,7 @@ func utilize_item(node):
 		item_status(node, "DEQUIP")
 
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		var type = get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
 		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
 			item_status(node, "EQUIP")
@@ -261,7 +261,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
+		get_node("Border/Bg/Sides/Contents/EquippedCoins/Button").show()
 
 	# Initially Fixed
 	elif(mouse_node != temp_mouse_node):
@@ -269,7 +269,7 @@ func revert_item_state():
 
 	else:
 		item_state = "HOVER"
-		get_node("Border/Bg/Contents/EquippedCoins/Button").hide()
+		get_node("Border/Bg/Sides/Contents/EquippedCoins/Button").hide()
 		mouse_node = null
 
 func use_item():
@@ -303,11 +303,11 @@ func delete_item():
 		#	If the Row is empty (except Row0), delete it
 
 		# Dequips active item
-		var main = get_node("Border/Bg/Contents/Items/" + active_tab.name)
+		var main = get_node("Border/Bg/Sides/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
-				get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name).hide()
+				get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name).hide()
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		var list_tab = DataResource.dict_inventory[active_tab.name]
@@ -332,7 +332,7 @@ func delete_item():
 
 # Handles equipping of the item
 func item_status(selected_node, status):
-	var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name)
+	var type = get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name)
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
