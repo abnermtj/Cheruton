@@ -27,9 +27,9 @@ onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 onready var inventory = self
 onready var shop = get_parent().get_node("shop")
-onready var tabs = $Bg/Contents/Tabs
-onready var items = $Bg/Contents/Items
-onready var equipped_coins = $Bg/Contents/EquippedCoins
+onready var tabs = $Border/Bg/Contents/Tabs
+onready var items = $Border/Bg/Contents/Items
+onready var equipped_coins = $Border/Bg/Contents/EquippedCoins
 
 signal tab_changed(next_tab)
 
@@ -239,9 +239,9 @@ func utilize_item(node):
 		item_status(node, "DEQUIP")
 
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		var type = get_node("Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		var type = get_node("Border/Bg/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
-		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+		if(type.get_normal_texture() != node.get_node("Border/Background/ItemBg/ItemBtn").get_normal_texture()):
 			item_status(node, "EQUIP")
 		# Removing equipped item
 		else:
@@ -261,7 +261,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		get_node("Bg/Contents/EquippedCoins/Button").show()
+		get_node("Border/Bg/Contents/EquippedCoins/Button").show()
 
 	# Initially Fixed
 	elif(mouse_node != temp_mouse_node):
