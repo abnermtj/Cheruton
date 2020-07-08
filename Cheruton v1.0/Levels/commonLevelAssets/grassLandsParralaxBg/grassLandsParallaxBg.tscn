@@ -10,14 +10,17 @@
 [node name="grassLandsParallaxBg" type="ParallaxBackground"]
 
 [node name="sky" parent="." instance=ExtResource( 4 )]
+light_mask = 0
 position = Vector2( 0, 200 )
 
 [node name="cloud" type="ParallaxLayer" parent="."]
+light_mask = 0
 motion_scale = Vector2( 0.025, 0 )
 motion_offset = Vector2( -1400, -130 )
 motion_mirroring = Vector2( 930, 0 )
 
 [node name="Sprite" type="Sprite" parent="cloud"]
+light_mask = 0
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
@@ -25,10 +28,12 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 465, 116 )
 
 [node name="mountain2" type="ParallaxLayer" parent="."]
+light_mask = 0
 motion_scale = Vector2( 0.075, 0 )
 motion_mirroring = Vector2( 732, 0 )
 
 [node name="Sprite" type="Sprite" parent="mountain2"]
+light_mask = 0
 position = Vector2( 0, -75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
@@ -37,10 +42,12 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 250 )
 
 [node name="mountain" type="ParallaxLayer" parent="."]
+light_mask = 0
 motion_scale = Vector2( 0.08, 0 )
 motion_mirroring = Vector2( 768, 0 )
 
 [node name="Sprite" type="Sprite" parent="mountain"]
+light_mask = 0
 position = Vector2( 0, -65 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
@@ -49,23 +56,27 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2500, 260 )
 
 [node name="hills" type="ParallaxLayer" parent="."]
+light_mask = 0
 motion_scale = Vector2( 0.16, 0.08 )
 motion_mirroring = Vector2( 692, 0 )
 
 [node name="Sprite" type="Sprite" parent="hills"]
+light_mask = 0
 position = Vector2( 0, 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 2500, 104 )
+region_rect = Rect2( 0, 0, 2500, 163 )
 
 [node name="forest" type="ParallaxLayer" parent="."]
 visible = false
+light_mask = 0
 motion_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 860, 0 )
 
 [node name="Sprite" type="Sprite" parent="forest"]
+light_mask = 0
 position = Vector2( 0, 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )

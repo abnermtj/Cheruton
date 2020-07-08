@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/States/combat/attack_ground.gd" type="Script" id=13]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallSlide.gd" type="Script" id=14]
+[ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps_normal.png" type="Texture" id=15]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/dash.gd" type="Script" id=21]
 [ext_resource path="res://Player/ActualPlayer/States/combat/hit.gd" type="Script" id=22]
 [ext_resource path="res://Player/ActualPlayer/Shaders/blinkWhite.tres" type="Material" id=23]
@@ -1212,8 +1213,9 @@ radius = 550.0
 radius = 100.0
 
 [node name="player" type="KinematicBody2D"]
+light_mask = 3
 collision_layer = 6
-collision_mask = 385
+collision_mask = 524673
 script = ExtResource( 5 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
@@ -1229,6 +1231,7 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+normal_map = ExtResource( 15 )
 offset = Vector2( 2.5, 19.5 )
 region_enabled = true
 region_rect = Rect2( 625, 249, 32, 48 )
@@ -1303,10 +1306,12 @@ anims/run_change_dir_right = SubResource( 43 )
 anims/hit = SubResource( 44 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 7.5 )
 shape = SubResource( 45 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 25 )
 shape = SubResource( 46 )
 disabled = true
@@ -1421,6 +1426,7 @@ one_shot = true
 one_shot = true
 
 [node name="slideArea2D" type="Area2D" parent="."]
+visible = false
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 129
@@ -1440,6 +1446,7 @@ position = Vector2( 0, 10 )
 shape = SubResource( 48 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
@@ -1456,6 +1463,7 @@ position = Vector2( 0, 42.559 )
 shape = SubResource( 50 )
 
 [node name="circleScanSmall" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 512
 
