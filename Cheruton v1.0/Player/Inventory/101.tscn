@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=2]
+[ext_resource path="res://Player/Inventory/Sprites/Slots/itemSlot.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22

@@ -116,7 +116,7 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 	for _i in range(0, BOXES):
 
 		# Creates New Row every 10 items
-		if(index / 10 != row_index && index % 10 != 0):
+		if(index %6 == 1):
 			var new_row = HBoxContainer.new()
 			row_index += 1
 			scroll_tab.add_child(new_row)

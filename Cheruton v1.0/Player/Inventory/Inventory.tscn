@@ -1,14 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Player/Inventory/Icons/Exit.png" type="Texture" id=5]
+[ext_resource path="res://Player/Inventory/Sprites/exit.png" type="Texture" id=5]
 [ext_resource path="res://Player/Inventory/101.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=7]
-[ext_resource path="res://Player/Inventory/old_paper.jpg" type="Texture" id=8]
-[ext_resource path="res://Player/Inventory/pink_wooden_border.jpg" type="Texture" id=9]
+[ext_resource path="res://Player/Inventory/Sprites/Base/baseUIBackgroundg.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -37,44 +36,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Border" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -360.0
-margin_top = -240.0
-margin_right = 440.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 800, 480 )
+[node name="Bg" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 610.0
+margin_top = 310.0
+margin_right = -510.0
+margin_bottom = -290.0
 texture = ExtResource( 8 )
-expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bg" type="TextureRect" parent="Border"]
+[node name="Contents" type="VBoxContainer" parent="Bg"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-texture = ExtResource( 9 )
-expand = true
+margin_left = 21.0
+margin_top = 28.0
+margin_right = -23.0
+margin_bottom = -28.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Contents" type="VBoxContainer" parent="Border/Bg"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margin" type="Label" parent="Border/Bg/Contents"]
-margin_right = 780.0
+[node name="Margin" type="Label" parent="Bg/Contents"]
+margin_right = 756.0
 margin_bottom = 1.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -82,17 +68,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Header" type="HBoxContainer" parent="Border/Bg/Contents"]
+[node name="Header" type="HBoxContainer" parent="Bg/Contents"]
 margin_top = 5.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" type="Label" parent="Border/Bg/Contents/Header"]
-margin_right = 739.0
+[node name="Inventory" type="Label" parent="Bg/Contents/Header"]
+margin_right = 715.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -101,26 +87,26 @@ text = "Inventory"
 align = 1
 valign = 2
 
-[node name="Exit" type="TextureButton" parent="Border/Bg/Contents/Header"]
-margin_left = 743.0
-margin_right = 776.0
+[node name="Exit" type="TextureButton" parent="Bg/Contents/Header"]
+margin_left = 719.0
+margin_right = 752.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
 
-[node name="Margin3" type="Label" parent="Border/Bg/Contents/Header"]
-margin_left = 780.0
+[node name="Margin3" type="Label" parent="Bg/Contents/Header"]
+margin_left = 756.0
 margin_top = 9.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 23.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Margin2" type="Label" parent="Border/Bg/Contents"]
+[node name="Margin2" type="Label" parent="Bg/Contents"]
 margin_top = 42.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 43.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -128,25 +114,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tabs" type="HBoxContainer" parent="Border/Bg/Contents"]
+[node name="Tabs" type="HBoxContainer" parent="Bg/Contents"]
 margin_top = 47.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 87.0
 
-[node name="LMargin" type="Label" parent="Border/Bg/Contents/Tabs"]
+[node name="LMargin" type="Label" parent="Bg/Contents/Tabs"]
 margin_top = 13.0
 margin_bottom = 27.0
 
-[node name="Weapons" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
+[node name="Weapons" type="TextureRect" parent="Bg/Contents/Tabs"]
 margin_left = 4.0
-margin_right = 155.0
+margin_right = 150.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Weapons" type="TextureButton" parent="Border/Bg/Contents/Tabs/Weapons"]
+[node name="Weapons" type="TextureButton" parent="Bg/Contents/Tabs/Weapons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -159,7 +145,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Weapons" type="Label" parent="Border/Bg/Contents/Tabs/Weapons/Weapons"]
+[node name="Weapons" type="Label" parent="Bg/Contents/Tabs/Weapons/Weapons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -170,16 +156,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Apparel" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 159.0
-margin_right = 310.0
+[node name="Apparel" type="TextureRect" parent="Bg/Contents/Tabs"]
+margin_left = 154.0
+margin_right = 300.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Apparel" type="TextureButton" parent="Border/Bg/Contents/Tabs/Apparel"]
+[node name="Apparel" type="TextureButton" parent="Bg/Contents/Tabs/Apparel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -192,7 +178,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Apparel" type="Label" parent="Border/Bg/Contents/Tabs/Apparel/Apparel"]
+[node name="Apparel" type="Label" parent="Bg/Contents/Tabs/Apparel/Apparel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -203,16 +189,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Consum" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 314.0
-margin_right = 465.0
+[node name="Consum" type="TextureRect" parent="Bg/Contents/Tabs"]
+margin_left = 304.0
+margin_right = 450.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Consum" type="TextureButton" parent="Border/Bg/Contents/Tabs/Consum"]
+[node name="Consum" type="TextureButton" parent="Bg/Contents/Tabs/Consum"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -225,7 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Consum" type="Label" parent="Border/Bg/Contents/Tabs/Consum/Consum"]
+[node name="Consum" type="Label" parent="Bg/Contents/Tabs/Consum/Consum"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -236,16 +222,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Misc" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 469.0
-margin_right = 620.0
+[node name="Misc" type="TextureRect" parent="Bg/Contents/Tabs"]
+margin_left = 454.0
+margin_right = 600.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Misc" type="TextureButton" parent="Border/Bg/Contents/Tabs/Misc"]
+[node name="Misc" type="TextureButton" parent="Bg/Contents/Tabs/Misc"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -258,7 +244,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Misc" type="Label" parent="Border/Bg/Contents/Tabs/Misc/Misc"]
+[node name="Misc" type="Label" parent="Bg/Contents/Tabs/Misc/Misc"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -269,16 +255,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyItems" type="TextureRect" parent="Border/Bg/Contents/Tabs"]
-margin_left = 624.0
-margin_right = 775.0
+[node name="KeyItems" type="TextureRect" parent="Bg/Contents/Tabs"]
+margin_left = 604.0
+margin_right = 750.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="KeyItems" type="TextureButton" parent="Border/Bg/Contents/Tabs/KeyItems"]
+[node name="KeyItems" type="TextureButton" parent="Bg/Contents/Tabs/KeyItems"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -291,7 +277,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyItems" type="Label" parent="Border/Bg/Contents/Tabs/KeyItems/KeyItems"]
+[node name="KeyItems" type="Label" parent="Bg/Contents/Tabs/KeyItems/KeyItems"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -302,15 +288,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RMargin" type="Label" parent="Border/Bg/Contents/Tabs"]
-margin_left = 779.0
+[node name="RMargin" type="Label" parent="Bg/Contents/Tabs"]
+margin_left = 754.0
 margin_top = 13.0
-margin_right = 779.0
+margin_right = 754.0
 margin_bottom = 27.0
 
-[node name="Margin3" type="Label" parent="Border/Bg/Contents"]
+[node name="Margin3" type="Label" parent="Bg/Contents"]
 margin_top = 91.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 92.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -318,88 +304,88 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Items" type="HBoxContainer" parent="Border/Bg/Contents"]
+[node name="Items" type="HBoxContainer" parent="Bg/Contents"]
 margin_top = 96.0
-margin_right = 780.0
-margin_bottom = 363.0
+margin_right = 756.0
+margin_bottom = 327.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_top = 126.0
-margin_bottom = 140.0
+[node name="LMargin" type="Label" parent="Bg/Contents/Items"]
+margin_top = 108.0
+margin_bottom = 122.0
 
-[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+[node name="Weapons" type="ScrollContainer" parent="Bg/Contents/Items"]
 margin_left = 4.0
-margin_right = 776.0
-margin_bottom = 267.0
+margin_right = 752.0
+margin_bottom = 231.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Weapons"]
+[node name="Column" type="VBoxContainer" parent="Bg/Contents/Items/Weapons"]
 
-[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+[node name="Apparel" type="ScrollContainer" parent="Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
 margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Apparel"]
+[node name="Column" type="VBoxContainer" parent="Bg/Contents/Items/Apparel"]
 
-[node name="Consum" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+[node name="Consum" type="ScrollContainer" parent="Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
 margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Consum"]
+[node name="Column" type="VBoxContainer" parent="Bg/Contents/Items/Consum"]
 
-[node name="Misc" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+[node name="Misc" type="ScrollContainer" parent="Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
 margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/Misc"]
+[node name="Column" type="VBoxContainer" parent="Bg/Contents/Items/Misc"]
 
-[node name="KeyItems" type="ScrollContainer" parent="Border/Bg/Contents/Items"]
+[node name="KeyItems" type="ScrollContainer" parent="Bg/Contents/Items"]
 visible = false
 margin_left = 385.0
 margin_right = 762.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Contents/Items/KeyItems"]
+[node name="Column" type="VBoxContainer" parent="Bg/Contents/Items/KeyItems"]
 
-[node name="RMargin" type="Label" parent="Border/Bg/Contents/Items"]
-margin_left = 780.0
-margin_top = 126.0
-margin_right = 780.0
-margin_bottom = 140.0
+[node name="RMargin" type="Label" parent="Bg/Contents/Items"]
+margin_left = 756.0
+margin_top = 108.0
+margin_right = 756.0
+margin_bottom = 122.0
 
-[node name="Margin4" type="Label" parent="Border/Bg/Contents"]
-margin_top = 367.0
-margin_right = 780.0
-margin_bottom = 368.0
+[node name="Margin4" type="Label" parent="Bg/Contents"]
+margin_top = 331.0
+margin_right = 756.0
+margin_bottom = 332.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Contents"]
-margin_top = 372.0
-margin_right = 780.0
-margin_bottom = 442.0
+[node name="EquippedCoins" type="HBoxContainer" parent="Bg/Contents"]
+margin_top = 336.0
+margin_right = 756.0
+margin_bottom = 406.0
 size_flags_horizontal = 3
 
-[node name="LMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
+[node name="LMargin" type="Label" parent="Bg/Contents/EquippedCoins"]
 margin_top = 28.0
 margin_bottom = 42.0
 
-[node name="Equipped" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
+[node name="Equipped" type="Label" parent="Bg/Contents/EquippedCoins"]
 margin_left = 4.0
 margin_top = 24.0
 margin_right = 137.0
@@ -408,46 +394,46 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Equipped Items:"
 
-[node name="Weapons" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
+[node name="Weapons" parent="Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
 visible = false
 margin_left = 141.0
 margin_right = 211.0
 
-[node name="Apparel" parent="Border/Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
+[node name="Apparel" parent="Bg/Contents/EquippedCoins" instance=ExtResource( 6 )]
 visible = false
 margin_left = 141.0
 margin_right = 211.0
 
-[node name="MMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
+[node name="MMargin" type="Label" parent="Bg/Contents/EquippedCoins"]
 margin_left = 141.0
 margin_top = 28.0
-margin_right = 698.0
+margin_right = 674.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 
-[node name="Coins" type="TextureRect" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 702.0
-margin_right = 772.0
+[node name="Coins" type="TextureRect" parent="Bg/Contents/EquippedCoins"]
+margin_left = 678.0
+margin_right = 748.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 texture = ExtResource( 7 )
 expand = true
 
-[node name="CoinsVal" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 776.0
+[node name="CoinsVal" type="Label" parent="Bg/Contents/EquippedCoins"]
+margin_left = 752.0
 margin_top = 24.0
-margin_right = 776.0
+margin_right = 752.0
 margin_bottom = 45.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="RMargin" type="Label" parent="Border/Bg/Contents/EquippedCoins"]
-margin_left = 780.0
+[node name="RMargin" type="Label" parent="Bg/Contents/EquippedCoins"]
+margin_left = 756.0
 margin_top = 28.0
-margin_right = 780.0
+margin_right = 756.0
 margin_bottom = 42.0
 
-[node name="Button" type="Button" parent="Border/Bg/Contents/EquippedCoins"]
+[node name="Button" type="Button" parent="Bg/Contents/EquippedCoins"]
 visible = false
 margin_left = 496.0
 margin_right = 766.0
@@ -455,14 +441,14 @@ margin_bottom = 70.0
 size_flags_horizontal = 3
 text = "Delete"
 
-[node name="BottomMargin" type="Label" parent="Border/Bg/Contents"]
-margin_top = 446.0
-margin_right = 780.0
-margin_bottom = 460.0
+[node name="BottomMargin" type="Label" parent="Bg/Contents"]
+margin_top = 410.0
+margin_right = 756.0
+margin_bottom = 424.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 [connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
-[connection signal="pressed" from="Border/Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="Border/Bg/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Bg/Contents/Header/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Bg/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
