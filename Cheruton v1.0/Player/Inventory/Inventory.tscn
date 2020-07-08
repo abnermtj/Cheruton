@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
+[ext_resource path="res://Player/Inventory/Sprites/Slots/vertTabDeselected.png" type="Texture" id=1]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=2]
 [ext_resource path="res://Player/Inventory/Sprites/Icons/misc.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
@@ -141,10 +141,10 @@ __meta__ = {
 
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Sides/Contents"]
 margin_top = 47.0
-margin_right = 255.0
+margin_right = 365.0
 margin_bottom = 87.0
 size_flags_horizontal = 0
-custom_constants/separation = 11
+custom_constants/separation = 33
 
 [node name="Weapons" type="TextureRect" parent="Border/Bg/Sides/Contents/Tabs"]
 margin_right = 40.0
@@ -169,8 +169,8 @@ __meta__ = {
 }
 
 [node name="Apparel" type="TextureRect" parent="Border/Bg/Sides/Contents/Tabs"]
-margin_left = 51.0
-margin_right = 91.0
+margin_left = 73.0
+margin_right = 113.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Apparel"
@@ -192,8 +192,8 @@ __meta__ = {
 }
 
 [node name="Consum" type="TextureRect" parent="Border/Bg/Sides/Contents/Tabs"]
-margin_left = 102.0
-margin_right = 142.0
+margin_left = 146.0
+margin_right = 186.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Consumables"
@@ -215,8 +215,8 @@ __meta__ = {
 }
 
 [node name="Misc" type="TextureRect" parent="Border/Bg/Sides/Contents/Tabs"]
-margin_left = 153.0
-margin_right = 193.0
+margin_left = 219.0
+margin_right = 259.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Misc"
@@ -238,8 +238,8 @@ __meta__ = {
 }
 
 [node name="KeyItems" type="TextureRect" parent="Border/Bg/Sides/Contents/Tabs"]
-margin_left = 204.0
-margin_right = 244.0
+margin_left = 292.0
+margin_right = 332.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Key Items"
@@ -261,9 +261,9 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Border/Bg/Sides/Contents/Tabs"]
-margin_left = 255.0
+margin_left = 365.0
 margin_top = 13.0
-margin_right = 255.0
+margin_right = 365.0
 margin_bottom = 27.0
 
 [node name="Margin3" type="Label" parent="Border/Bg/Sides/Contents"]

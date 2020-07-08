@@ -13,8 +13,8 @@ var mouse_count = 0
 var mouse_node
 var temp_mouse_node
 
-onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+onready var active_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabSelected.png")
+onready var default_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabDeselected.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
@@ -84,11 +84,11 @@ func tab_pressed(next_tab):
 
 func change_tab_state(next_tab):
 	match next_tab:
-		"Weapons":   change_active_tab(tabs.get_node("Weapons/Weapons"))
-		"Apparel":   change_active_tab(tabs.get_node("Apparel/Apparel"))
-		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
-		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
-		"KeyItems": change_active_tab(tabs.get_node("KeyItems/KeyItems"))
+		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
+		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
+		"Consum":    change_active_tab(tabs.get_node("Consum"))
+		"Misc":      change_active_tab(tabs.get_node("Misc"))
+		"KeyItems": change_active_tab(tabs.get_node("KeyItems"))
 
 
 func change_active_tab(new_tab):
@@ -99,12 +99,12 @@ func change_active_tab(new_tab):
 		_on_mouse_exited(temp)
 
 	if(active_tab):
-		active_tab.set_normal_texture(default_tab_image)
+		active_tab.set_texture(default_tab_image)
 		items.get_node(active_tab.name).hide()
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
-	active_tab.set_normal_texture(active_tab_image)
+	active_tab.set_texture(active_tab_image)
 	items.get_node(active_tab.name).show()
 
 func load_data():
@@ -241,7 +241,7 @@ func utilize_item(node):
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 		var type = get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
-		if(type.get_normal_texture() != node.get_node("Border/Background/ItemBg/ItemBtn").get_normal_texture()):
+		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
 			item_status(node, "EQUIP")
 		# Removing equipped item
 		else:
