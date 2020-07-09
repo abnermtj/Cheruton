@@ -14,13 +14,13 @@
 [ext_resource path="res://Player/Inventory/Sprites/Icons/Key.png" type="Texture" id=12]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=13]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=1]
-
 [sub_resource type="DynamicFont" id=2]
+
+[sub_resource type="DynamicFont" id=3]
 size = 32
 extra_spacing_top = -1
 font_data = ExtResource( 4 )
@@ -92,7 +92,7 @@ margin_left = 54.0
 margin_top = 15.0
 margin_right = 110.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "4000"
 valign = 1
@@ -100,18 +100,14 @@ valign = 1
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Sides/Data"]
 margin_top = 54.0
 margin_right = 250.0
-margin_bottom = 54.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 
 [node name="Weapons" parent="Border/Bg/Sides/Data/EquippedCoins" instance=ExtResource( 6 )]
-visible = false
-margin_left = 141.0
-margin_right = 211.0
 
 [node name="Apparel" parent="Border/Bg/Sides/Data/EquippedCoins" instance=ExtResource( 6 )]
-visible = false
-margin_left = 215.0
-margin_right = 285.0
+margin_left = 74.0
+margin_right = 144.0
 
 [node name="Button" type="Button" parent="Border/Bg/Sides/Data"]
 visible = false
@@ -135,7 +131,7 @@ __meta__ = {
 margin_right = 501.0
 margin_bottom = 1.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,7 +149,7 @@ __meta__ = {
 margin_right = 460.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Inventory"
 align = 1
@@ -181,7 +177,7 @@ margin_top = 42.0
 margin_right = 501.0
 margin_bottom = 43.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,7 +314,7 @@ margin_top = 91.0
 margin_right = 501.0
 margin_bottom = 92.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -389,7 +385,7 @@ margin_top = 404.0
 margin_right = 501.0
 margin_bottom = 405.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
