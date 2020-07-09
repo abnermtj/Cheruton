@@ -29,11 +29,11 @@ onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 onready var inventory = self
 onready var shop = get_parent().get_node("shop")
-onready var tabs = $Border/Bg/Sides/Contents/Tabs
-onready var items = $Border/Bg/Sides/Contents/Items
-onready var coins = $Border/Bg/Sides/Data/Coins
-onready var equipped_coins = $Border/Bg/Sides/Data/EquippedCoins
-onready var button = $Border/Bg/Sides/Data/Button
+onready var tabs = $Border/Bg/Main/Sides/Contents/Tabs
+onready var items = $Border/Bg/Main/Sides/Contents/Items
+onready var coins = $Border/Bg/Main/Sides/Data/Coins
+onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
+onready var button = $Border/Bg/Main/Sides/Data/Button
 
 signal tab_changed(next_tab)
 
@@ -247,7 +247,7 @@ func utilize_item(node):
 		item_status(node, "DEQUIP")
 
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		var type = get_node("Border/Bg/Sides/Data/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
 		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
 			item_status(node, "EQUIP")
@@ -311,11 +311,11 @@ func delete_item():
 		#	If the Row is empty (except Row0), delete it
 
 		# Dequips active item
-		var main = get_node("Border/Bg/Sides/Contents/Items/" + active_tab.name)
+		var main = get_node("Border/Bg/Main/Sides/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
-				get_node("Border/Bg/Sides/Data/EquippedCoins/" + active_tab.name).hide()
+				get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name).hide()
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		var list_tab = DataResource.dict_inventory[active_tab.name]
@@ -340,7 +340,7 @@ func delete_item():
 
 # Handles equipping of the item
 func item_status(selected_node, status):
-	var type = get_node("Border/Bg/Sides/Data/EquippedCoins/" + active_tab.name)
+	var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name)
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
