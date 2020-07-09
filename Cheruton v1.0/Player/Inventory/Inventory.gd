@@ -355,7 +355,7 @@ func item_status(selected_node, status):
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				selected_node.get_node("Background/ItemBg").texture = null
-				
+
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)

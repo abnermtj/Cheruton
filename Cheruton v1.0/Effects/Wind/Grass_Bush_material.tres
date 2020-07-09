@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Effects/Wind/Wind.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/speed = -1.0
+shader_param/minStrength = 0.02
+shader_param/maxStrength = 0.04
+shader_param/strengthScale = 80.0
+shader_param/interval = 6.0
+shader_param/detail = 1.0
+shader_param/distortion = 0.0
+shader_param/heightOffset = 0.55

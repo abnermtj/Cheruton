@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
@@ -125,6 +125,10 @@ _global_script_class_icons={
 config/name="Cheruton v1.0"
 run/main_scene="res://Display/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout="res://Sound/default_bus_layout.tres"
 
 [autoload]
 
@@ -317,4 +321,3 @@ common/physics_jitter_fix=0.1
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_environment="res://default_env.tres"

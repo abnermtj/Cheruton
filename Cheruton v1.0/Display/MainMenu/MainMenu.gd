@@ -48,7 +48,7 @@ func _on_Tween_tween_completed(object, key):
 func _on_OptionsDelay_timeout():
 	tween.interpolate_property(options, "modulate", options.modulate, Color(1,1,1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
-	
+
 #Enables the Buttons for use
 func enable_options():
 	for i in container.get_child_count():
