@@ -141,8 +141,10 @@ func generate_list(scroll_tab, list_tab, tab_index):
 			var new_row = HBoxContainer.new()
 			row_index += 1
 			scroll_tab.add_child(new_row)
-			scroll_tab.get_child(scroll_tab.get_child_count() - 1).name = "Row" + str(row_index)
-
+			var integrated_row = scroll_tab.get_child(scroll_tab.get_child_count() - 1)
+			integrated_row.name = "Row" + str(row_index)
+			integrated_row.add_constant_override("separation", 10) 
+			
 		var row = scroll_tab.get_node("Row" + str(row_index))
 
 		# Creates a new box in the particular row
