@@ -18,6 +18,8 @@ onready var default_tab_image = preload("res://Player/Inventory/Sprites/Slots/ve
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
+onready var attack_slot = preload("res://Player/Inventory/Sprites/Slots/empty_attack.png")
+onready var defense_slot = preload("res://Player/Inventory/Sprites/Slots/empty_defense.png")
 
 onready var weapons_list = DataResource.dict_inventory.get("Weapons")
 onready var apparel_list = DataResource.dict_inventory.get("Apparel")
@@ -27,9 +29,11 @@ onready var key_items_list = DataResource.dict_inventory.get("Key Items")
 
 onready var inventory = self
 onready var shop = get_parent().get_node("shop")
-onready var tabs = $Border/Bg/Sides/Contents/Tabs
-onready var items = $Border/Bg/Sides/Contents/Items
-onready var equipped_coins = $Border/Bg/Sides/Contents/EquippedCoins
+onready var tabs = $Border/Bg/Main/Sides/Contents/Tabs
+onready var items = $Border/Bg/Main/Sides/Contents/Items
+onready var coins = $Border/Bg/Main/Sides/Data/Coins
+onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
+onready var button = $Border/Bg/Main/Sides/Data/Button
 
 signal tab_changed(next_tab)
 
@@ -39,7 +43,7 @@ func _ready():
 	emit_signal("tab_changed", "Weapons")
 	init_equipped()
 	set_equipped()
-	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 func _on_Exit_pressed():
 	free_the_inventory()
@@ -47,22 +51,26 @@ func _on_Exit_pressed():
 func set_equipped():
 	var _conn1 = equipped_coins.get_node("Weapons/Background/ItemBg/ItemBtn").connect("pressed", inventory, "_on_pressed", [equipped_coins.get_node("Weapons")])
 	var _conn2 = equipped_coins.get_node("Apparel/Background/ItemBg/ItemBtn").connect("pressed", inventory, "_on_pressed", [equipped_coins.get_node("Apparel")])
-	equipped_coins.get_node("Weapons/Background/ItemBg").texture = index_equipped_bg
-	equipped_coins.get_node("Apparel/Background/ItemBg").texture = index_equipped_bg
+
 
 func init_equipped():
+	set_background()
 	if(DataResource.temp_dict_player.Weapons_item):
 		display_equipped("Weapons")
 
 	if(DataResource.temp_dict_player.Apparel_item):
 		display_equipped("Apparel")
 
+func set_background():
+	equipped_coins.get_node("Weapons/Background").texture = attack_slot
+	equipped_coins.get_node("Apparel/Background").texture = defense_slot
+
 func display_equipped(name):
 	var type = equipped_coins.get_node(name)
 	var node = items.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	type.get_node("Background/ItemBg").texture = index_equipped_bg
 	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 	node.get_node("Background/ItemBg").texture = index_equipped_bg
-	type.show()
 
 
 func free_the_inventory():
@@ -239,7 +247,7 @@ func utilize_item(node):
 		item_status(node, "DEQUIP")
 
 	elif(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
-		var type = get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
 		# Item not equipped or Item Selected is a different weapon
 		if(type.get_normal_texture() != node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
 			item_status(node, "EQUIP")
@@ -261,7 +269,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		get_node("Border/Bg/Sides/Contents/EquippedCoins/Button").show()
+		button.show()
 
 	# Initially Fixed
 	elif(mouse_node != temp_mouse_node):
@@ -269,7 +277,7 @@ func revert_item_state():
 
 	else:
 		item_state = "HOVER"
-		get_node("Border/Bg/Sides/Contents/EquippedCoins/Button").hide()
+		button.hide()
 		mouse_node = null
 
 func use_item():
@@ -303,11 +311,11 @@ func delete_item():
 		#	If the Row is empty (except Row0), delete it
 
 		# Dequips active item
-		var main = get_node("Border/Bg/Sides/Contents/Items/" + active_tab.name)
+		var main = get_node("Border/Bg/Main/Sides/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
 				DataResource.temp_dict_player[active_tab.name + "_item"] = null
-				get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name).hide()
+				get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name).hide()
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		var list_tab = DataResource.dict_inventory[active_tab.name]
@@ -328,28 +336,31 @@ func delete_item():
 		check_fixed()
 		disable_mouse(emptied_node)
 
-		equipped_coins.get_node("Button").hide()
+		button.hide()
 
 # Handles equipping of the item
 func item_status(selected_node, status):
-	var type = get_node("Border/Bg/Sides/Contents/EquippedCoins/" + active_tab.name)
+	var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name)
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
 			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			equipped_coins.get_node(active_tab.name + "/Background/ItemBg").texture = index_equipped_bg
-			type.show()
 		"DEQUIP":
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
+				if(!selected_node.get_node("Background/ItemBg").texture):
+					return
 				var actual = items.get_node(selected_node.name + "/Column").find_node(str(DataResource.temp_dict_player[selected_node.name + "_item"]), true, false)
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
-				selected_node.hide()
+				selected_node.get_node("Background/ItemBg").texture = null
+				
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
-				type.hide()
+				type.get_node("Background/ItemBg").texture = null
+
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			mouse_node = null
 
@@ -371,7 +382,7 @@ func _on_Inventory_visibility_changed():
 		update_tab_items(CONSUM, shop_sell, "Consum")
 		update_tab_items(MISC, shop_sell, "Misc")
 	else:
-		equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+		coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 
 # Updates a particular tabs item stock
