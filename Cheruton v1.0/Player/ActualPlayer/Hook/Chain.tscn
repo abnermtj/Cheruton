@@ -10,7 +10,6 @@ radius = 5.0
 height = 2.0
 
 [node name="grappleHook" type="Node2D"]
-visible = false
 position = Vector2( 0, -1 )
 script = ExtResource( 2 )
 
@@ -30,7 +29,7 @@ shape = SubResource( 1 )
 
 [node name="PinJoint2D" type="PinJoint2D" parent="tip/CollisionShape2D"]
 
-[node name="link" type="Node2D" parent="tip"]
+[node name="rope" type="Node2D" parent="tip"]
 script = ExtResource( 3 )
 attachment_curve = ExtResource( 4 )
 

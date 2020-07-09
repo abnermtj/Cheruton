@@ -1240,7 +1240,6 @@ region_rect = Rect2( 625, 249, 32, 48 )
 position = Vector2( -6.11726, 61.9883 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
-visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124
@@ -1306,12 +1305,10 @@ anims/run_change_dir_right = SubResource( 43 )
 anims/hit = SubResource( 44 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 7.5 )
 shape = SubResource( 45 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 25 )
 shape = SubResource( 46 )
 disabled = true

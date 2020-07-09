@@ -71,10 +71,13 @@ func update(delta):
 					attack_again = false
 
 					charge_dir = input_dir.x
-					owner.velocity = Vector2(owner.look_direction.x*GROUND_SPEED_H_3,5)
+					owner.velocity = Vector2(input_dir.x*GROUND_SPEED_H_3,5)
 
 					owner.play_anim("attack_ground_3")
-					owner.play_anim_fx("attack_ground_3")
+					if input_dir.x:
+						owner.play_anim_fx("attack_ground_3")
+
+					update_look_direction(input_dir)
 			2:
 				if attack_timer< 0:
 					emit_signal("finished", "run")

@@ -226,7 +226,7 @@ position = Vector2( 10240, 560 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 light_mask = 1
-position = Vector2( 11257, 488 )
+position = Vector2( 1997, 332 )
 
 [node name="camera" parent="player" instance=ExtResource( 10 )]
 position = Vector2( 1, -100 )

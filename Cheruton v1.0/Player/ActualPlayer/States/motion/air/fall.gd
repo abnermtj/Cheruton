@@ -65,10 +65,10 @@ func update(delta):
 
 	# wall crash
 	if owner.is_on_wall():
-		owner.velocity.x = 0
+		owner.velocity.x *= .5
 
 	if owner.is_on_ceiling():
-			owner.velocity.y = 0
+		owner.velocity.y = 0
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false

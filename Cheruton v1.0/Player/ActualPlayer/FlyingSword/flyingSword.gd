@@ -35,7 +35,7 @@ func _on_flyingSword_command(command, arg):
 
 	if command == 0:
 		set_collision_mask_bit(0,1)
-		global_position =  DataResource.temp_dict_player.player_pos
+		global_position = get_parent().player.global_position
 		active = true
 		air_timer = MAX_AIR_TIME
 		velocity = arg.normalized() * SPEED_THROW_START # arg is direction
@@ -46,7 +46,7 @@ func _on_flyingSword_command(command, arg):
 func _physics_process(delta):
 	if not active: return
 
-	cur_player_pos = DataResource.temp_dict_player.player_pos
+	cur_player_pos = get_parent().player.global_position
 	var bodies_in_collection_area = $collectionArea.get_overlapping_bodies()
 	var bodies_in_limit_area = $limitArea.get_overlapping_bodies()
 

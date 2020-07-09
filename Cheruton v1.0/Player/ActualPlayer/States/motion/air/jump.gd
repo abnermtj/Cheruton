@@ -50,12 +50,12 @@ func enter() -> void:
 
 func update( delta ):
 	owner.velocity.y = min( JUMP_TERMINAL_VELOCITY , owner.velocity.y + owner.GRAVITY * grav_multiplier * delta)
-
 	keypress_timer -= delta
 	if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
 		keypress_timer = -1.0
 		if not owner.bounce_boost:
-			owner.velocity.y *= JUMP_RELEASE_SLOWDOWN
+			grav_multiplier = 1.5
+#			owner.velocity.y *= JUMP_RELEASE_SLOWDOWN # this caused weird equilibriums as with adding gravity line above
 
 	# steering here
 	input_dir = get_input_direction()
@@ -81,12 +81,15 @@ func update( delta ):
 	if owner.is_on_ceiling():
 		owner.velocity.y = 0.0
 		emit_signal("finished","fall")
+	elif owner.is_on_wall():
+		owner.velocity.x *= .5
 	else:
 		if owner.velocity.y > 0:
 			# platform boost
 			if owner.is_almost_at_a_platform():
 				owner.position.y -= 10
 			emit_signal("finished","fall")
+
 
 	.update(delta)
 

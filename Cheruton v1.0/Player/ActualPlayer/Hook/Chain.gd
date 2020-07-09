@@ -8,11 +8,12 @@ enum chain_states { SHOOT = 0, HOOKED = 1, REEL = 2, HIDDEN = 3}
 
 var direction := Vector2(0,0) # The direction in which the chain was shot
 var cur_player_pos : Vector2
+var prev_player_pos : Vector2
 var speed_tip : float
 
 onready var chain_state = chain_states.HIDDEN
 onready var tween = $Tween
-onready var link  = $tip/link
+onready var rope  = $tip/rope
 onready var tip = $tip
 
 signal hooked(tip_pos)
@@ -26,7 +27,7 @@ func _on_player_hook_command (com, dir, player_pos):
 		show()
 
 		chain_state = chain_states.SHOOT
-		link.start() # link is the rope
+		rope.start() # rope is the rope
 
 		tip.global_position = player_pos # start at player
 		direction = dir.normalized()
@@ -42,9 +43,12 @@ func _on_player_hook_command (com, dir, player_pos):
 func start_reel():
 	chain_state = chain_states.REEL
 	tip.get_node("CollisionShape2D").disabled = true
-	link.release()
+	rope.release()
+
 
 func _physics_process(delta: float) -> void:
+
+
 	match(chain_state):
 		chain_states.SHOOT:
 			if speed_tip < MIN_TIP_SPEED:
@@ -59,16 +63,13 @@ func _physics_process(delta: float) -> void:
 		chain_states.HOOKED:
 			pass
 		chain_states.REEL:
-			direction = cur_player_pos - tip.global_position # moves towards player
-			tip.move_and_collide(direction.normalized() * REEL_SPEED * delta)
-			if (tip.global_position - cur_player_pos).length() < 100:
-				chain_state = chain_states.HIDDEN
-				hide()
+			pass
 		chain_states.HIDDEN:
 			pass
 
 func _process(delta):
 	if visible:
-		cur_player_pos = DataResource.temp_dict_player.player_shoulder_pos #so that the hook come from  shoulder
-		link.c = max((cur_player_pos - tip.global_position).length(),1)
+		prev_player_pos = cur_player_pos
+		cur_player_pos = get_parent().player.shoulder_position.global_position # shoulder for alignment issues
+		rope.c = max((cur_player_pos - tip.global_position).length(),1)
 		tip.rotation = cur_player_pos.angle_to_point(tip.global_position)

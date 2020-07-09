@@ -21,6 +21,7 @@ const GRAVITY = 2400
 const AIR_ACCEL = 34  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
+const TIME_PER_ATTACK = 1
 
 onready var animation_player = $animationPlayer
 onready var animation_player_fx = $animationPlayerFx
@@ -44,7 +45,7 @@ onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
 var cur_state : Node
 var prev_state : Node
 var velocity = Vector2()
-var on_floor = false setget signal_on_floor
+var on_floor = false setget set_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var previous_anim : String
 var is_invunerable = false
@@ -71,6 +72,7 @@ var sword_col_normal = Vector2()
 var can_attack = true
 var can_hook = true
 var can_throw_sword = true
+var attack_cooldown_finished = true
 
 var nearest_interactible : Node
 var interaction_type : String
@@ -86,10 +88,6 @@ func _ready():
 	cur_state = states.current_state
 	body_collision.disabled = false
 	slide_collision.disabled = true
-
-func _process(delta):
-	DataResource.temp_dict_player.player_pos = global_position # for objects that target player, it needs to be as often as fps
-	DataResource.temp_dict_player.player_shoulder_pos = shoulder_position.global_position
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
@@ -153,8 +151,11 @@ func set_look_direction(value : Vector2):
 func _on_states_state_changed(states_stack):
 	prev_state = cur_state
 	cur_state = states_stack[-1]
-func signal_on_floor(grounded):
+func set_on_floor(grounded):
 	on_floor = grounded
+	if grounded and attack_cooldown_finished:
+		can_attack = true
+
 	set_camera_mode_logic()
 
 # Animation
@@ -308,9 +309,10 @@ func _on_jumpInputBuffer_timeout():
 
 # ATTACK
 func start_attack_cool_down():
-	$timers/attackCoolDown.start(1)
+	attack_cooldown_finished = false
+	$timers/attackCoolDown.start(TIME_PER_ATTACK)
 func _on_attackCoolDown_timeout():
-	can_attack = true
+	attack_cooldown_finished = true
 
 # Dialog
 func talk_cooldown_start():

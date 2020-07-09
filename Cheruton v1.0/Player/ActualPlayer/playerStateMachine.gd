@@ -27,7 +27,7 @@ func _change_state(state_name):
 	else:
 		owner.on_floor = true
 
-#	print("changing to ", state_name)
+	print("changing to ", state_name)
 	._change_state(state_name)
 
 func _input(event):
