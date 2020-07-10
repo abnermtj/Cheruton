@@ -35,7 +35,9 @@ func _on_flyingSword_command(command, arg):
 
 	if command == 0:
 		set_collision_mask_bit(0,1)
-		global_position = get_parent().player.global_position
+
+		var player = get_parent().player
+		global_position = player.global_position + 24 * player.look_direction
 		active = true
 		air_timer = MAX_AIR_TIME
 		velocity = arg.normalized() * SPEED_THROW_START # arg is direction

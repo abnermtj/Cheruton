@@ -84,12 +84,12 @@ func update( delta ):
 		emit_signal("finished","fall")
 	elif owner.is_on_wall():
 		owner.velocity.x *= .5
-	else:
-		if owner.velocity.y > 0:
-			# platform boost
-			if owner.is_almost_at_a_platform():
-				owner.position.y -= 10
-			emit_signal("finished","fall")
+
+	if owner.velocity.y > 0:
+		# platform boost
+		if owner.is_almost_at_a_platform():
+			owner.position.y -= 10
+		emit_signal("finished","fall")
 
 
 	.update(delta)
