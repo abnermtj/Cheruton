@@ -81,7 +81,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		levels.add_child(new_level)
 
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
-	#	change_story(levels.get_child(levels.get_child_count() - 1).story_file)
+		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 
 	else: # main menu
 		var root = get_tree().get_root()
@@ -256,7 +256,9 @@ func _input(_ev):
 #########
 # DIALOG #
 #########
-func change_story(story : String): # a collection of dialogs
+func change_story(story): # a collection of dialogs
+	if not story: return
+
 	cur_story = story
 	pop_up_gui.get_node("popUps/dialog").load_story(cur_story)
 

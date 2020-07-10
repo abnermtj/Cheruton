@@ -25,6 +25,7 @@ func _ready():
 func _on_player_hook_command (com, dir, player_pos):
 	if com == 0: #START
 		show()
+		tip.show()
 
 		chain_state = chain_states.SHOOT
 		rope.start() # rope is the rope
@@ -45,10 +46,7 @@ func start_reel():
 	tip.get_node("CollisionShape2D").disabled = true
 	rope.release()
 
-
 func _physics_process(delta: float) -> void:
-
-
 	match(chain_state):
 		chain_states.SHOOT:
 			if speed_tip < MIN_TIP_SPEED:
@@ -63,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		chain_states.HOOKED:
 			pass
 		chain_states.REEL:
-			pass
+			tip.hide()
 		chain_states.HIDDEN:
 			pass
 

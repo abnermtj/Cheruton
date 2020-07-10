@@ -13,15 +13,16 @@ var col_inner : Color
 var width : float
 var timer : float
 
-func init(cur_points_array, prev_points_array, _length, no_points, color_outline, color_inner, line_width):
-	prev_points = prev_points_array
-	cur_points = cur_points_array
+func init(_cur_points_array, _prev_points_array, _length, no_points, color_outline, color_inner, line_width, tip_rotation):
+	prev_points = _prev_points_array
+	cur_points = _cur_points_array
 
-	for point in prev_points + cur_points:
-		point -= get_parent().position
+	var offset = get_parent().global_position
 
+	$tip.global_position = cur_points[0] + offset
+	$tip.rotation = tip_rotation - PI/2
 	# for the very last point that attaches to the player,we make it have more speed to exaggerate speeed player leaves the rope
-	prev_points_array[-1] += prev_points[-1] - cur_points[-1]
+	prev_points[-1] += prev_points[-1] - cur_points[-1]
 
 	length = _length
 	num_points = no_points

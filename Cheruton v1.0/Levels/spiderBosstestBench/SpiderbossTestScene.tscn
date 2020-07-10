@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=4]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=10]
+
 
 [node name="spiderBossTestScene" type="Node2D"]
 script = ExtResource( 6 )

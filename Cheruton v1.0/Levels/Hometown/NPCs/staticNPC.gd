@@ -5,6 +5,7 @@ class_name StaticNPC
 export var is_flipped = false
 
 onready var sprite = $Sprite
+onready var sprite2 = $Sprite2
 
 var interaction_type
 var is_talking = false
@@ -30,11 +31,13 @@ func _process(delta):
 		is_talking = false
 		set_process(false)
 		sprite.scale.x = save_dir
+		if sprite2: sprite2.scale.x = save_dir
 
 func interact(body):
 	is_talking = true
 	SceneControl.change_and_start_dialog(name)
 	save_dir = sprite.scale.x
 	sprite.scale.x = sign(body.global_position.x - global_position.x) * (-1 if is_flipped else 1)
+	if sprite2: sprite2.scale.x = sprite.scale.x
 	set_process(true)
 

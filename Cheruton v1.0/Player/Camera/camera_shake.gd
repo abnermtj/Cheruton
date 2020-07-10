@@ -1,5 +1,4 @@
 extends Camera2D
-class_name ShakeCamera
 
 const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_IN_OUT

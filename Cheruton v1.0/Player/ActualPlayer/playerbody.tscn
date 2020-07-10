@@ -8,7 +8,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/run.gd" type="Script" id=6]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/jump.gd" type="Script" id=7]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
-[ext_resource path="res://Player/ActualPlayer/States/noncombat/talk.gd" type="Script" id=9]
+[ext_resource path="res://Player/ActualPlayer/States/others/talk.gd" type="Script" id=9]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/States/combat/attack_ground.gd" type="Script" id=13]
@@ -1080,7 +1080,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=52]
+[sub_resource type="Animation" id=40]
 resource_name = "default"
 length = 0.5
 step = 0.04
@@ -1109,7 +1109,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=40]
+[sub_resource type="Animation" id=41]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1123,7 +1123,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.81, 1.19 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=42]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1149,7 +1149,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 17 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=43]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1175,7 +1175,7 @@ tracks/1/keys = {
 "values": [ Vector2( -6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=44]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1201,7 +1201,7 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=45]
 length = 0.35
 step = 0.05
 tracks/0/type = "value"
@@ -1217,28 +1217,28 @@ tracks/0/keys = {
 "values": [ ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null ]
 }
 
-[sub_resource type="CapsuleShape2D" id=45]
+[sub_resource type="CapsuleShape2D" id=46]
 radius = 28.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=46]
+[sub_resource type="CapsuleShape2D" id=47]
 radius = 28.0
 height = 30.0
 
-[sub_resource type="CircleShape2D" id=47]
+[sub_resource type="CircleShape2D" id=48]
 radius = 23.0
 
-[sub_resource type="CapsuleShape2D" id=48]
+[sub_resource type="CapsuleShape2D" id=49]
 radius = 20.0
 height = 65.0
 
-[sub_resource type="RectangleShape2D" id=49]
+[sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 30, 10 )
 
-[sub_resource type="CircleShape2D" id=50]
+[sub_resource type="CircleShape2D" id=51]
 radius = 550.0
 
-[sub_resource type="CircleShape2D" id=51]
+[sub_resource type="CircleShape2D" id=52]
 radius = 100.0
 
 [node name="player" type="KinematicBody2D"]
@@ -1323,22 +1323,22 @@ anims/wall_slide_fast = SubResource( 36 )
 anims/attack_air_2 = SubResource( 37 )
 anims/attack_air_3 = SubResource( 38 )
 anims/attack_ground_3 = SubResource( 39 )
-anims/default = SubResource( 52 )
-anims/jump = SubResource( 40 )
-anims/land = SubResource( 41 )
-anims/run_change_dir_left = SubResource( 42 )
-anims/run_change_dir_right = SubResource( 43 )
+anims/default = SubResource( 40 )
+anims/jump = SubResource( 41 )
+anims/land = SubResource( 42 )
+anims/run_change_dir_left = SubResource( 43 )
+anims/run_change_dir_right = SubResource( 44 )
 
 [node name="animationPlayerFxColor" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 44 )
+anims/hit = SubResource( 45 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.5 )
-shape = SubResource( 45 )
+shape = SubResource( 46 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 25 )
-shape = SubResource( 46 )
+shape = SubResource( 47 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -1458,7 +1458,7 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( 0, -18 )
-shape = SubResource( 47 )
+shape = SubResource( 48 )
 
 [node name="hitBox" type="Area2D" parent="."]
 visible = false
@@ -1468,7 +1468,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( 0, 10 )
-shape = SubResource( 48 )
+shape = SubResource( 49 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
 visible = false
@@ -1476,7 +1476,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
 position = Vector2( 0, 61.5 )
-shape = SubResource( 49 )
+shape = SubResource( 50 )
 
 [node name="circleScan" type="Area2D" parent="."]
 visible = false
@@ -1485,7 +1485,7 @@ collision_mask = 544
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
 position = Vector2( 0, 42.559 )
-shape = SubResource( 50 )
+shape = SubResource( 51 )
 
 [node name="circleScanSmall" type="Area2D" parent="."]
 visible = false
@@ -1493,7 +1493,7 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScanSmall"]
-shape = SubResource( 51 )
+shape = SubResource( 52 )
 
 [node name="sounds" type="Node" parent="."]
 

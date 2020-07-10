@@ -68,7 +68,7 @@ func update(delta):
 		owner.velocity.x *= .5
 
 	if owner.is_on_ceiling():
-		owner.velocity.y = 0
+		owner.velocity.y = 1 # cannot 0 else is on_celing bug
 	# landing
 	if owner.is_on_floor():
 		owner.has_jumped = false

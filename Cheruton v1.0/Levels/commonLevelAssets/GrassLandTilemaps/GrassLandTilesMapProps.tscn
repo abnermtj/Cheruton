@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Hometown/Resources/Hometown_props.tres" type="TileSet" id=1]
+
+[node name="Props" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_tile_origin = 2
+collision_layer = 256
+collision_mask = 0
+format = 1
