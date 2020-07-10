@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
 [ext_resource path="res://Display/Shop/Shop.gd" type="Script" id=2]
 [ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Player/Inventory/Icons/Exit.png" type="Texture" id=5]
+[ext_resource path="res://Display/Shop/Sprites/Icons/exit.png" type="Texture" id=5]
 [ext_resource path="res://Display/Shop/selling_item.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=7]
+[ext_resource path="res://Display/Shop/Sprites/Base/baseUIBackgroundg.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -15,12 +16,12 @@ size = 32
 extra_spacing_top = -1
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 24
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=4]
 size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
 font_data = ExtResource( 4 )
 
 [node name="Shop" type="Control"]
@@ -33,7 +34,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Border" type="TextureRect" parent="."]
+[node name="Border" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -43,8 +44,7 @@ margin_top = -240.0
 margin_right = 440.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 800, 480 )
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,11 +52,10 @@ __meta__ = {
 [node name="Bg" type="TextureRect" parent="Border"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = 14.0
-margin_right = -17.0
-margin_bottom = -14.0
-texture = ExtResource( 3 )
+margin_left = 20.0
+margin_top = 28.0
+margin_right = -23.0
+margin_bottom = -28.0
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,7 +69,7 @@ __meta__ = {
 }
 
 [node name="Margin" type="Label" parent="Border/Bg/Main"]
-margin_right = 766.0
+margin_right = 757.0
 margin_bottom = 1.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -80,7 +79,7 @@ __meta__ = {
 
 [node name="Header" type="HBoxContainer" parent="Border/Bg/Main"]
 margin_top = 5.0
-margin_right = 766.0
+margin_right = 757.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -88,7 +87,7 @@ __meta__ = {
 }
 
 [node name="Shop" type="Label" parent="Border/Bg/Main/Header"]
-margin_right = 725.0
+margin_right = 716.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
@@ -98,118 +97,82 @@ align = 1
 valign = 2
 
 [node name="Exit" type="TextureButton" parent="Border/Bg/Main/Header"]
-margin_left = 729.0
-margin_right = 762.0
+margin_left = 720.0
+margin_right = 753.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Header"]
-margin_left = 766.0
+margin_left = 757.0
 margin_top = 9.0
-margin_right = 766.0
+margin_right = 757.0
 margin_bottom = 23.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rest" type="HBoxContainer" parent="Border/Bg/Main"]
+[node name="Sides" type="HBoxContainer" parent="Border/Bg/Main"]
 margin_top = 42.0
-margin_right = 766.0
-margin_bottom = 452.0
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margin" type="Label" parent="Border/Bg/Main/Rest"]
-margin_bottom = 410.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemDec" type="VBoxContainer" parent="Border/Bg/Main/Rest"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 410.0
-
-[node name="MarginU" type="Label" parent="Border/Bg/Main/Rest/ItemDec"]
-margin_bottom = 109.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
-text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginM" type="Label" parent="Border/Bg/Main/Rest/ItemDec"]
-margin_top = 113.0
-margin_bottom = 146.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
-text = "
-
-
-
-
-
-
-
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margin2" type="Label" parent="Border/Bg/Main/Rest/ItemDec"]
-margin_top = 150.0
-margin_bottom = 151.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Contents" type="VBoxContainer" parent="Border/Bg/Main/Rest"]
-margin_left = 8.0
-margin_right = 766.0
-margin_bottom = 410.0
+margin_right = 757.0
+margin_bottom = 388.0
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size_flags_vertical = 3
 
-[node name="Margin2" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_right = 758.0
+[node name="Data" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
+margin_right = 215.0
+margin_bottom = 346.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="DTMargin" type="Label" parent="Border/Bg/Main/Sides/Data"]
+margin_right = 215.0
+margin_bottom = 14.0
+
+[node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
+margin_top = 18.0
+margin_right = 215.0
+margin_bottom = 88.0
+
+[node name="Coins" type="TextureRect" parent="Border/Bg/Main/Sides/Data/Coins"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="CoinsVal" type="Label" parent="Border/Bg/Main/Sides/Data/Coins"]
+margin_left = 74.0
+margin_top = 24.0
+margin_right = 74.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Button" type="Button" parent="Border/Bg/Main/Sides/Data"]
+visible = false
+margin_left = 496.0
+margin_right = 766.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+text = "Sell"
+
+[node name="DBMargin" type="Label" parent="Border/Bg/Main/Sides/Data"]
+margin_top = 92.0
+margin_right = 215.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+
+[node name="Rest" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
+margin_left = 219.0
+margin_right = 757.0
+margin_bottom = 346.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Margin" type="Label" parent="Border/Bg/Main/Sides/Rest"]
+margin_right = 538.0
 margin_bottom = 1.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -217,26 +180,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+[node name="Contents" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest"]
+margin_top = 5.0
+margin_right = 538.0
+margin_bottom = 346.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin2" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
+margin_right = 538.0
+margin_bottom = 1.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
 visible = false
 margin_top = 5.0
-margin_right = 758.0
+margin_right = 725.0
 margin_bottom = 45.0
 
-[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs"]
+[node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
 margin_top = 13.0
 margin_bottom = 27.0
 
-[node name="Weapons" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
+[node name="Weapons" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
 margin_left = 4.0
-margin_right = 188.0
+margin_right = 180.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Weapons" type="TextureButton" parent="Border/Bg/Main/Rest/Contents/Tabs/Weapons"]
+[node name="Weapons" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Weapons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -249,7 +231,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Weapons" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs/Weapons/Weapons"]
+[node name="Weapons" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Weapons/Weapons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -260,16 +242,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Apparel" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 192.0
-margin_right = 376.0
+[node name="Apparel" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
+margin_left = 184.0
+margin_right = 360.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Apparel" type="TextureButton" parent="Border/Bg/Main/Rest/Contents/Tabs/Apparel"]
+[node name="Apparel" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Apparel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -282,7 +264,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Apparel" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs/Apparel/Apparel"]
+[node name="Apparel" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Apparel/Apparel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -293,16 +275,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Consum" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 380.0
-margin_right = 564.0
+[node name="Consum" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
+margin_left = 364.0
+margin_right = 540.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Consum" type="TextureButton" parent="Border/Bg/Main/Rest/Contents/Tabs/Consum"]
+[node name="Consum" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Consum"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -315,7 +297,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Consum" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs/Consum/Consum"]
+[node name="Consum" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Consum/Consum"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -326,16 +308,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Misc" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 568.0
-margin_right = 752.0
+[node name="Misc" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
+margin_left = 544.0
+margin_right = 720.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 40 )
 size_flags_horizontal = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Misc" type="TextureButton" parent="Border/Bg/Main/Rest/Contents/Tabs/Misc"]
+[node name="Misc" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Misc"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -348,7 +330,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Misc" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs/Misc/Misc"]
+[node name="Misc" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Misc/Misc"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -359,15 +341,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/Tabs"]
-margin_left = 756.0
+[node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
+margin_left = 724.0
 margin_top = 13.0
-margin_right = 756.0
+margin_right = 724.0
 margin_bottom = 27.0
 
-[node name="Margin3" type="Label" parent="Border/Bg/Main/Rest/Contents"]
+[node name="Margin3" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 5.0
-margin_right = 758.0
+margin_right = 538.0
 margin_bottom = 6.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
@@ -375,145 +357,110 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemsSell" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+[node name="ItemsSell" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
 visible = false
 margin_top = 10.0
-margin_right = 758.0
-margin_bottom = 313.0
+margin_right = 693.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
-margin_top = 144.0
-margin_bottom = 158.0
+[node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
+margin_bottom = 14.0
 
-[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+[node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
 margin_left = 4.0
-margin_right = 754.0
-margin_bottom = 303.0
+margin_right = 689.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Weapons"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell/Weapons"]
 
-[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+[node name="Apparel" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 171.0
 margin_right = 334.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Apparel"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell/Apparel"]
 
-[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+[node name="Consum" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 226.0
 margin_right = 444.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Consum"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell/Consum"]
 
-[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
+[node name="Misc" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
 visible = false
 margin_left = 338.0
 margin_right = 668.0
 margin_bottom = 259.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsSell/Misc"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell/Misc"]
 
-[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsSell"]
-margin_left = 758.0
-margin_top = 144.0
-margin_right = 758.0
-margin_bottom = 158.0
+[node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsSell"]
+margin_left = 693.0
+margin_right = 693.0
+margin_bottom = 14.0
 
-[node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
+[node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 10.0
-margin_right = 758.0
-margin_bottom = 313.0
+margin_right = 538.0
+margin_bottom = 318.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-margin_top = 144.0
-margin_bottom = 158.0
+[node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
+margin_top = 147.0
+margin_bottom = 161.0
 
-[node name="General" type="ScrollContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
+[node name="General" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
 margin_left = 4.0
-margin_right = 754.0
-margin_bottom = 303.0
+margin_right = 534.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
-[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Rest/Contents/ItemsBuy/General"]
+[node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy/General"]
 
-[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/ItemsBuy"]
-margin_left = 758.0
-margin_top = 144.0
-margin_right = 758.0
-margin_bottom = 158.0
+[node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
+margin_left = 538.0
+margin_top = 147.0
+margin_right = 538.0
+margin_bottom = 161.0
 
-[node name="Margin4" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 317.0
-margin_right = 758.0
-margin_bottom = 318.0
+[node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
+margin_top = 322.0
+margin_right = 538.0
+margin_bottom = 323.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 322.0
-margin_right = 758.0
-margin_bottom = 392.0
-size_flags_horizontal = 3
+[node name="BottomMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
+margin_top = 327.0
+margin_right = 538.0
+margin_bottom = 341.0
 
-[node name="LMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-margin_top = 28.0
-margin_bottom = 42.0
+[node name="SRMargin" type="Label" parent="Border/Bg/Main"]
+margin_top = 392.0
+margin_right = 757.0
+margin_bottom = 406.0
+rect_pivot_offset = Vector2( 87.7578, -100.189 )
+text = "       "
 
-[node name="MMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-margin_left = 4.0
-margin_top = 28.0
-margin_right = 676.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-
-[node name="Coins" type="TextureRect" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-margin_left = 680.0
-margin_right = 750.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-texture = ExtResource( 7 )
-expand = true
-
-[node name="CoinsVal" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-margin_left = 754.0
-margin_top = 24.0
-margin_right = 754.0
-margin_bottom = 45.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="RMargin" type="Label" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-margin_left = 758.0
-margin_top = 28.0
-margin_right = 758.0
-margin_bottom = 42.0
-
-[node name="Button" type="Button" parent="Border/Bg/Main/Rest/Contents/EquippedCoins"]
-visible = false
-margin_left = 496.0
-margin_right = 766.0
-margin_bottom = 70.0
-size_flags_horizontal = 3
-text = "Sell"
-
-[node name="BottomMargin" type="Label" parent="Border/Bg/Main/Rest/Contents"]
-margin_top = 396.0
-margin_right = 758.0
-margin_bottom = 410.0
+[node name="SRMargin2" type="Label" parent="Border/Bg/Main"]
+margin_top = 410.0
+margin_right = 757.0
+margin_bottom = 424.0
+rect_pivot_offset = Vector2( 87.7578, -100.189 )
+text = "       "
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -521,8 +468,7 @@ wait_time = 0.25
 [node name="Transaction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = 6.0
-bus = "SFX"
 [connection signal="visibility_changed" from="." to="." method="_on_Shop_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="Border/Bg/Main/Rest/Contents/EquippedCoins/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Border/Bg/Main/Sides/Data/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

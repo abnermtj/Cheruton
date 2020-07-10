@@ -28,12 +28,11 @@ onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
 onready var shop = self
 onready var inventory = get_parent().get_node("inventory")
-onready var contents = $Border/Bg/Main/Rest/Contents
-onready var tabs = $Border/Bg/Main/Rest/Contents/Tabs
-onready var items_sell = $Border/Bg/Main/Rest/Contents/ItemsSell
-onready var items_buy = $Border/Bg/Main/Rest/Contents/ItemsBuy
-onready var equipped_coins = $Border/Bg/Main/Rest/Contents/EquippedCoins
-onready var item_dec = $Border/Bg/Main/Rest/ItemDec
+onready var contents = $Border/Bg/Main/Sides/Rest/Contents
+onready var tabs = $Border/Bg/Main/Sides/Rest/Contents/Tabs
+onready var items_sell = $Border/Bg/Main/Sides/Rest/Contents/ItemsSell
+onready var items_buy = $Border/Bg/Main/Sides/Rest/Contents/ItemsBuy
+onready var coins = $Border/Bg/Main/Sides/Data/Coins
 
 func _ready():
 	connect_tabs()
@@ -41,19 +40,19 @@ func _ready():
 	load_data()
 	emit_signal("tab_changed", "Weapons")
 	tabs.hide()
-	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 func _on_Exit_pressed():
 	free_the_shop()
 
 
-func display_equipped(name):
-	var main = get_node("Border/Bg/Contents/Items")
-	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
-	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
-	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
-	node.get_node("Background/ItemBg").texture = index_equipped_bg
-	type.show()
+#func display_equipped(name):
+#	var main = get_node("Border/Bg/Contents/Items")
+#	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
+#	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+#	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
+#	node.get_node("Background/ItemBg").texture = index_equipped_bg
+#	type.show()
 
 
 # Links the buttons when pressed into the function to change active tab
@@ -233,7 +232,7 @@ func _on_Timer_timeout():
 		mouse_count = 0
 
 func revert_item_state():
-	var btn_node = get_node("Border/Bg/Main/Rest/Contents/EquippedCoins/Button")
+	var btn_node = get_node("Border/Bg/Main/Sides/Data/Button")
 	if(item_state == "HOVER"):
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
@@ -257,7 +256,7 @@ func sell_item():
 	var element_index = str(int(mouse_node.name)%100)
 	var sell_coins = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2
 	DataResource.change_coins(sell_coins)
-	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 
 	# Item Stock is empty: Update node containing item
@@ -291,7 +290,7 @@ func sell_item():
 		check_fixed()
 		disable_mouse(emptied_node)
 
-		equipped_coins.get_node("Button").hide()
+		get_node("Border/Bg/Main/Sides/Data/Button").hide()
 
 	$Transaction.play()
 
@@ -313,7 +312,7 @@ func buy_item():
 
 	# Update coins val and item qty
 	DataResource.change_coins(-coins_val)
-	equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 	var dict_size = DataResource.dict_inventory[current_tab_name].size()
 	var element_index = 1
@@ -393,7 +392,7 @@ func _on_Shop_visibility_changed():
 		update_tab_items(CONSUM, shop_sell, "Consum")
 		update_tab_items(MISC, shop_sell, "Misc")
 	else:
-		equipped_coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+		coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 
 # Updates a particular tabs item stock
 func update_tab_items(tab_constant, updating_path, tab_name):
