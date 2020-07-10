@@ -15,8 +15,8 @@ var temp_mouse_node
 
 signal tab_changed(next_tab)
 
-onready var active_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-onready var default_tab_image = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg.png")
+onready var active_tab_image = preload("res://Display/Shop/Sprites/Slots/HorizontalTabSelect.png")
+onready var default_tab_image = preload("res://Display/Shop/Sprites/Slots/HorizontalTabDeSelect.png")
 onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
 onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
@@ -70,10 +70,10 @@ func tab_pressed(next_tab):
 
 func change_tab_state(next_tab):
 	match next_tab:
-		"Weapons":   change_active_tab(tabs.get_node("Weapons/Weapons"))
-		"Apparel":   change_active_tab(tabs.get_node("Apparel/Apparel"))
-		"Consum":    change_active_tab(tabs.get_node("Consum/Consum"))
-		"Misc":      change_active_tab(tabs.get_node("Misc/Misc"))
+		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
+		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
+		"Consum":    change_active_tab(tabs.get_node("Consum"))
+		"Misc":      change_active_tab(tabs.get_node("Misc"))
 
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
@@ -83,12 +83,12 @@ func change_active_tab(new_tab):
 		_on_mouse_exited(temp)
 
 	if(active_tab):
-		active_tab.set_normal_texture(default_tab_image)
+		active_tab.texture = default_tab_image
 		contents.get_node("ItemsSell/" + active_tab.name).hide()
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
-	active_tab.set_normal_texture(active_tab_image)
+	active_tab.texture = active_tab_image
 	contents.get_node("ItemsSell/" + active_tab.name).show()
 
 func load_data():

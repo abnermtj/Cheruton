@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Player/Inventory/Icons/Button_Bg/equip_bg.png" type="Texture" id=1]
+[ext_resource path="res://Display/Shop/Sprites/Icons/misc.png" type="Texture" id=1]
 [ext_resource path="res://Display/Shop/Shop.gd" type="Script" id=2]
-[ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
+[ext_resource path="res://Display/Shop/Sprites/Icons/apparel.png" type="Texture" id=3]
 [ext_resource path="res://Player/Inventory/Wilson hawk.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Display/Shop/Sprites/Icons/exit.png" type="Texture" id=5]
 [ext_resource path="res://Display/Shop/selling_item.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Player/Inventory/Icons/coin.png" type="Texture" id=7]
 [ext_resource path="res://Display/Shop/Sprites/Base/baseUIBackgroundg.png" type="Texture" id=8]
+[ext_resource path="res://Display/Shop/Sprites/Slots/HorizontalTabDeSelect.png" type="Texture" id=9]
+[ext_resource path="res://Display/Shop/Sprites/Icons/consum.png" type="Texture" id=10]
+[ext_resource path="res://Display/Shop/Sprites/Icons/weapons.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -16,12 +19,8 @@ size = 32
 extra_spacing_top = -1
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 20
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 20
 font_data = ExtResource( 4 )
 
 [node name="Shop" type="Control"]
@@ -147,7 +146,7 @@ margin_left = 74.0
 margin_top = 24.0
 margin_right = 74.0
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Button" type="Button" parent="Border/Bg/Main/Sides/Data"]
@@ -200,9 +199,8 @@ __meta__ = {
 }
 
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
-visible = false
 margin_top = 5.0
-margin_right = 725.0
+margin_right = 538.0
 margin_bottom = 45.0
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
@@ -211,11 +209,10 @@ margin_bottom = 27.0
 
 [node name="Weapons" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
 margin_left = 4.0
-margin_right = 180.0
+margin_right = 54.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 120, 40 )
-size_flags_horizontal = 3
-texture = ExtResource( 1 )
+rect_min_size = Vector2( 50, 40 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Weapons" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Weapons"]
@@ -225,30 +222,18 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Weapons" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Weapons/Weapons"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Weapons"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Apparel" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
-margin_left = 184.0
-margin_right = 360.0
+margin_left = 58.0
+margin_right = 108.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 120, 40 )
-size_flags_horizontal = 3
-texture = ExtResource( 1 )
+rect_min_size = Vector2( 50, 40 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Apparel" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Apparel"]
@@ -264,24 +249,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Apparel" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Apparel/Apparel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Apparel"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Consum" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
-margin_left = 364.0
-margin_right = 540.0
+margin_left = 112.0
+margin_right = 162.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 120, 40 )
-size_flags_horizontal = 3
-texture = ExtResource( 1 )
+rect_min_size = Vector2( 50, 40 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Consum" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Consum"]
@@ -291,30 +264,18 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 10 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Consum" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Consum/Consum"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Consum"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Misc" type="TextureRect" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
-margin_left = 544.0
-margin_right = 720.0
+margin_left = 166.0
+margin_right = 216.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 120, 40 )
-size_flags_horizontal = 3
-texture = ExtResource( 1 )
+rect_min_size = Vector2( 50, 40 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Misc" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Misc"]
@@ -324,33 +285,22 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 1 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Misc" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Misc/Misc"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Misc"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs"]
-margin_left = 724.0
+margin_left = 220.0
 margin_top = 13.0
-margin_right = 724.0
+margin_right = 220.0
 margin_bottom = 27.0
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
-margin_top = 5.0
+margin_top = 49.0
 margin_right = 538.0
-margin_bottom = 6.0
+margin_bottom = 50.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -409,29 +359,29 @@ margin_right = 693.0
 margin_bottom = 14.0
 
 [node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
-margin_top = 10.0
+margin_top = 54.0
 margin_right = 538.0
 margin_bottom = 318.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
-margin_top = 147.0
-margin_bottom = 161.0
+margin_top = 125.0
+margin_bottom = 139.0
 
 [node name="General" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
 margin_left = 4.0
 margin_right = 534.0
-margin_bottom = 308.0
+margin_bottom = 264.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy/General"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
 margin_left = 538.0
-margin_top = 147.0
+margin_top = 125.0
 margin_right = 538.0
-margin_bottom = 161.0
+margin_bottom = 139.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 322.0
