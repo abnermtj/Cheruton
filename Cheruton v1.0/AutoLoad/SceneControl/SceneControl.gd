@@ -163,7 +163,7 @@ func _on_VolPitch_animation_finished(anim_name):
 
 func determine_loot(map):
 	var loot_count = determine_loot_count(map)
-	loot_selector(map, loot_count)
+	loot_selector(map)
 	append_loot(loot_count)
 
 # Determines the qty of tiems to be released
@@ -176,24 +176,22 @@ func determine_loot_count(map_name):
 
 # Determines what items and their respective qty to be released
 # Needs rework. Currently, the next loot item can only be obtained after the previous one is
-func loot_selector(map_name, loot_count):
-	for _i in range(loot_count):
-		var index = 1
+func loot_selector(map_name):
+	var index = 1
+	for _i in range(3):
+		
 		var loot_chance = randi() % 100 + 1
-		while(loot_chance > -1):
-			# Item has been found - take note of its critical elements
-			if(loot_chance <= DataResource.dict_item_spawn[map_name]["ItemChance"+ str(index)]):
-				var loot = []
-				loot.append(DataResource.dict_item_spawn[map_name]["ItemType"+ str(index)])
-				loot.append(DataResource.dict_item_spawn[map_name]["ItemName"+ str(index)])
-				#Randomize the qty of the item to be found
-				loot.append(int(rand_range(float(DataResource.dict_item_spawn[map_name]["ItemMinQ" + str(index)]), float(DataResource.dict_item_spawn[map_name]["ItemMaxQ"+ str(index)]))))
-				loot_dict[loot_dict.size() + 1] = loot
-				break
-			#Item not found, manipulate loot_chance val and compare against next index
-			else:
-				loot_chance -= DataResource.dict_item_spawn[map_name]["ItemChance" + str(index)]
-				index += 1
+
+		# Item has been found - take note of its critical elements
+		if(loot_chance <= DataResource.dict_item_spawn[map_name]["ItemChance"+ str(index)]):
+			var loot = []
+			loot.append(DataResource.dict_item_spawn[map_name]["ItemType"+ str(index)])
+			loot.append(DataResource.dict_item_spawn[map_name]["ItemName"+ str(index)])
+			#Randomize the qty of the item to be found
+			loot.append(int(rand_range(float(DataResource.dict_item_spawn[map_name]["ItemMinQ" + str(index)]), float(DataResource.dict_item_spawn[map_name]["ItemMaxQ"+ str(index)]))))
+			loot_dict[loot_dict.size() + 1] = loot
+			
+		index += 1
 
 # Transfers all loot present in loot_dict to dict_inventory
 func append_loot(loot_count):
@@ -224,6 +222,11 @@ func append_loot(loot_count):
 					insert_data(index, curr_size)
 		index += 1
 		loot_count -= 1
+	print(1)
+	print(loot_dict)
+	loot_dict.empty()
+	print(0)
+	print(loot_dict)
 	DataResource.save_rest()
 
 # inserts item to inventory at insert_index
