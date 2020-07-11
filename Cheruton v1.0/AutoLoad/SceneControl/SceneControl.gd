@@ -172,7 +172,7 @@ func loot_selector(map_name):
 	var index = 1
 	var max_range = DataResource.dict_item_spawn[map_name]["ItemIndexes"]
 	for _i in range(max_range):
-		
+
 		var loot_chance = randi() % 100 + 1
 
 		# Item has been found - take note of its critical elements
@@ -183,7 +183,7 @@ func loot_selector(map_name):
 			#Randomize the qty of the item to be found
 			loot.append(int(rand_range(float(DataResource.dict_item_spawn[map_name]["ItemMinQ" + str(index)]), float(DataResource.dict_item_spawn[map_name]["ItemMaxQ"+ str(index)]))))
 			loot_dict[loot_dict.size() + 1] = loot
-			
+
 		index += 1
 
 # Transfers all loot present in loot_dict to dict_inventory
