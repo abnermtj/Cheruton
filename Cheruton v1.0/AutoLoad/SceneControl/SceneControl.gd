@@ -162,23 +162,16 @@ func _on_VolPitch_animation_finished(anim_name):
 ########
 
 func determine_loot(map):
-	var loot_count = determine_loot_count(map)
 	loot_selector(map)
-	append_loot(loot_count)
+	append_loot(map)
 
-# Determines the qty of tiems to be released
-func determine_loot_count(map_name):
-	var ItemMinCount = DataResource.dict_item_spawn[map_name].ItemMinCount
-	var ItemMaxCount = DataResource.dict_item_spawn[map_name].ItemMaxCount
-
-	var loot_count = randi()%((int(ItemMaxCount) - int(ItemMinCount))+ 1) + int(ItemMinCount)
-	return loot_count
 
 # Determines what items and their respective qty to be released
 # Needs rework. Currently, the next loot item can only be obtained after the previous one is
 func loot_selector(map_name):
 	var index = 1
-	for _i in range(3):
+	var max_range = DataResource.dict_item_spawn[map_name]["ItemIndexes"]
+	for _i in range(max_range):
 		
 		var loot_chance = randi() % 100 + 1
 
@@ -194,9 +187,10 @@ func loot_selector(map_name):
 		index += 1
 
 # Transfers all loot present in loot_dict to dict_inventory
-func append_loot(loot_count):
+func append_loot(map_name):
 	var index = 1
-	while loot_count:
+	var loot_count = loot_dict.size()
+	while loot_count != 0:
 		var item_type = loot_dict[index][item.TYPE]
 
 		# Money
@@ -222,11 +216,7 @@ func append_loot(loot_count):
 					insert_data(index, curr_size)
 		index += 1
 		loot_count -= 1
-	print(1)
-	print(loot_dict)
-	loot_dict.empty()
-	print(0)
-	print(loot_dict)
+	loot_dict.clear()
 	DataResource.save_rest()
 
 # inserts item to inventory at insert_index

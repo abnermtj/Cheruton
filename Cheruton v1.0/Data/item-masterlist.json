@@ -1,8 +1,7 @@
 {
   "item_spawn": {
     "test": {
-      "ItemMinCount": 4,
-      "ItemMaxCount": 6,
+      "ItemIndexes": 3,
       "ItemName1": "Gold",
       "ItemChance1": 80,
       "ItemMinQ1": 2,
