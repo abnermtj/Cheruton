@@ -2,7 +2,8 @@ extends Control
 
 var old_level
 
-onready var exp_bar = $ExpRect/ExpBar
+onready var exp_bar = $ExpRect/ExpStats/ExpBar
+onready var tween = $Tween
 
 func _ready():
 	var _conn1 = DataResource.connect("update_exp", self, "update_expbar")
@@ -28,6 +29,6 @@ func update_expbar(new_exp, new_exp_max, new_level) -> void:
 	animate_expbar(exp_bar.value, new_exp/new_exp_max * 100)
 
 func animate_expbar(start, end) -> void:
-	$Tween.interpolate_property(exp_bar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
+	tween.interpolate_property(exp_bar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 

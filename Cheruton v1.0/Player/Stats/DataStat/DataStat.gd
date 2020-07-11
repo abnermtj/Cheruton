@@ -6,9 +6,15 @@ extends Control
 # var b = "text"
 onready var bar = $Bar
 onready var tween = $Tween
+#onready var bar_type = get_parent().name
 
 func init_bar():
-	$Bar.value = 50
+#	match bar_type:
+#		"Attack":
+#			bar.value = 25#stub
+#		"Defense":
+#			bar.value = 50#stub
+	bar.value = 60#stub
 
 func change_bar_value(value):
 	change_bar_colour(value)
