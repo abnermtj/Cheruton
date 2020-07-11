@@ -25,9 +25,10 @@ onready var bg_music_file
 
 var modulate_dec = "white"
 var slider_active := false
-
+var slider_enabled := false
 
 func _ready():
+	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
 	SceneControl.get_node("popUpGui").enabled = false
 	tween_white_screen()
 	options.modulate.a = 0
@@ -43,6 +44,7 @@ func _on_Tween_tween_completed(object, key):
 		options_delay.start()
 	elif(object == options):
 		enable_options()
+		
 
 
 func _on_OptionsDelay_timeout():
@@ -53,15 +55,22 @@ func _on_OptionsDelay_timeout():
 func enable_options():
 	for i in container.get_child_count():
 		container.get_child(i).disabled = false
+	slider_enabled = true
 
 func _on_Play_pressed():
+	slider_enabled = false
 	SceneControl.emit_signal("init_statbar")
 	SceneControl.load_screen(SCN1)
 	queue_free()
 
 func _on_Settings_pressed():
+	options.hide()
+	slider_active = false
+	slider.hide()
 	SceneControl.settings_layer.show()
 
+func back_to_mmenu():
+	options.show()
 
 func _on_Quit_pressed():
 	get_tree().quit()
@@ -86,15 +95,16 @@ func _on_Quit_mouse_entered():
 # Slides the slider to the intended position, or shows it there if not visible
 func slide_to_position(new_position):
 	# Offset of position
-	new_position.y += container.rect_position.y
-	var old_position = slider.rect_position
-	if(slider_active):
-		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-		tween.start()
-	else:
-		slider.rect_position.y = new_position.y
-		slider.show()
-		slider_active = true
+	if(slider_enabled):
+		new_position.y += container.rect_position.y
+		var old_position = slider.rect_position
+		if(slider_active):
+			tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+			tween.start()
+		else:
+			slider.rect_position.y = new_position.y
+			slider.show()
+			slider_active = true
 
 
 
