@@ -106,7 +106,7 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 253.0
+margin_right = 260.0
 margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -114,12 +114,12 @@ size_flags_stretch_ratio = 0.3
 custom_constants/separation = 35
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 49.0
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -143,7 +143,7 @@ __meta__ = {
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 107.0
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -167,7 +167,7 @@ __meta__ = {
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 165.0
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -191,24 +191,24 @@ __meta__ = {
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 223.0
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 237.0
 
 [node name="Back" type="Button" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 272.0
-margin_right = 249.0
+margin_right = 256.0
 margin_bottom = 292.0
 text = "Back"
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 257.0
-margin_right = 257.0
+margin_left = 264.0
+margin_right = 264.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 261.0
-margin_right = 271.0
+margin_left = 268.0
+margin_right = 278.0
 margin_bottom = 403.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
@@ -216,11 +216,10 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 275.0
-margin_right = 303.0
+margin_left = 282.0
+margin_right = 282.0
 margin_bottom = 14.0
 size_flags_vertical = 0
-text = "       "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
@@ -231,33 +230,33 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 307.0
+margin_left = 286.0
 margin_right = 1140.0
 margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_right = 833.0
+margin_right = 854.0
 margin_bottom = 14.0
 
 [node name="Contents" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 18.0
-margin_right = 833.0
+margin_right = 854.0
 margin_bottom = 385.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
+custom_constants/separation = 46
 
 [node name="SoundType" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_right = 245.0
+margin_right = 113.0
 margin_bottom = 367.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.2
 custom_constants/separation = 45
 
 [node name="Label" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
-margin_right = 245.0
+margin_right = 113.0
 margin_bottom = 14.0
 
 [node name="Master" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType/Label"]
@@ -278,7 +277,7 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
 margin_top = 59.0
-margin_right = 245.0
+margin_right = 113.0
 margin_bottom = 73.0
 
 [node name="Music" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType/Label2"]
@@ -299,7 +298,7 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType"]
 margin_top = 118.0
-margin_right = 245.0
+margin_right = 113.0
 margin_bottom = 132.0
 
 [node name="SFX" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundType/Label3"]
@@ -320,15 +319,15 @@ __meta__ = {
 }
 
 [node name="SoundBar" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 265.0
-margin_right = 755.0
+margin_left = 159.0
+margin_right = 724.0
 margin_bottom = 367.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 45
 
 [node name="MainVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
-margin_right = 490.0
+margin_right = 565.0
 margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -336,7 +335,7 @@ __meta__ = {
 
 [node name="MusicVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
 margin_top = 59.0
-margin_right = 490.0
+margin_right = 565.0
 margin_bottom = 73.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -344,15 +343,15 @@ __meta__ = {
 
 [node name="SFXVolBar" type="ProgressBar" parent="Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar"]
 margin_top = 118.0
-margin_right = 490.0
+margin_right = 565.0
 margin_bottom = 132.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SoundControlUp" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 775.0
-margin_right = 795.0
+margin_left = 770.0
+margin_right = 790.0
 margin_bottom = 367.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 40
@@ -384,8 +383,8 @@ __meta__ = {
 }
 
 [node name="SoundControlDown" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Contents"]
-margin_left = 815.0
-margin_right = 832.0
+margin_left = 836.0
+margin_right = 853.0
 margin_bottom = 367.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 40
@@ -418,7 +417,7 @@ __meta__ = {
 
 [node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 389.0
-margin_right = 833.0
+margin_right = 854.0
 margin_bottom = 403.0
 size_flags_vertical = 1
 
