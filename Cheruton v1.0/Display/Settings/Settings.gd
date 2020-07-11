@@ -16,6 +16,7 @@ onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_
 
 var slider_active := false
 
+signal closed_settings
 
 func _ready():
 	#SceneControl.get_node("popUpGui").enabled = false
@@ -65,10 +66,9 @@ func _on_SFXVolDown_pressed():
 
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
-	print(true)
 	DataResource.save_rest() # so that the new settings persist on next save file
 	SceneControl.settings_layer.hide()
-	#emit_signal("release_gui", "settings")
+	emit_signal("closed_settings")
 
 func handle_input(event):
 	if is_active_gui and Input.is_action_just_pressed("escape"):
