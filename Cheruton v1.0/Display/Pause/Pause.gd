@@ -19,5 +19,5 @@ func _on_ExitPause_pressed():
 	emit_signal("release_gui", "pause")
 
 func handle_input(event):
-	if is_active_gui and Input.is_action_just_pressed("escape"):
+	if is_active_gui and Input.is_action_just_pressed("escape") and !SceneControl.settings_layer.visible:
 		_on_ExitPause_pressed()
