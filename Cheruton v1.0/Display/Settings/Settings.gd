@@ -1,8 +1,8 @@
 extends basePopUp
 
-onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MainVolBar
-onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/MusicVolBar
-onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Contents/SoundBar/SFXVolBar
+onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
+onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
+onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/SFXVolBar
 
 
 onready var container = $Settings/Container
@@ -14,7 +14,14 @@ onready var controls_position = $Settings/Container/Main/Contents/Options/Contro
 onready var audio_position = $Settings/Container/Main/Contents/Options/Audio.rect_position
 onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_position
 
+onready var base_controls = $Settings/Container/Main/Contents/BaseControls
+onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
+onready var base_game = $Settings/Container/Main/Contents/BaseGame
+onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
+
 var slider_active := false
+
+onready var active_tab = base_empty
 
 signal closed_settings
 
@@ -66,6 +73,9 @@ func _on_SFXVolDown_pressed():
 
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
+	change_active_tab(base_empty)
+	slider.hide()
+	slider_active = false
 	DataResource.save_rest() # so that the new settings persist on next save file
 	SceneControl.settings_layer.hide()
 	emit_signal("closed_settings")
@@ -99,6 +109,18 @@ func slide_to_position(new_position):
 		slider.show()
 		slider_active = true
 
-
-
-
+func _on_Controls_pressed():
+	change_active_tab(base_controls)
+	
+func _on_Audio_pressed():
+	change_active_tab(base_audio)
+	
+func _on_Game_pressed():
+	change_active_tab(base_game)
+	
+func change_active_tab(new_tab):
+	if(active_tab):
+		active_tab.hide()
+	
+	active_tab = new_tab
+	active_tab.show()

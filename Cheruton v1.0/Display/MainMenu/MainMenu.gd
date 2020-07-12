@@ -8,10 +8,10 @@ const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
 onready var settings = $Settings
 onready var options = $Background/Options
-onready var timer_options = $Timer
 onready var slider = $Background/Options/Slider
 onready var tween = $Tween
 onready var canvas_modulate = $CanvasModulate
+onready var player = $Background/Cheruton/Player
 
 onready var options_delay = $OptionsDelay
 
@@ -64,21 +64,29 @@ func _on_Play_pressed():
 	queue_free()
 
 func _on_Settings_pressed():
+	hide_options()
+	player.play("to_settings")
+	
+
+func hide_options():
 	options.hide()
 	slider_active = false
 	slider.hide()
-	SceneControl.settings_layer.show()
+
+
+func _on_Player_animation_finished(anim_name):
+	print(anim_name)
+	if(anim_name == "to_settings"):
+		SceneControl.settings_layer.show()
+	elif(anim_name == "to_mmenu"):
+		options.show()
 
 func back_to_mmenu():
-	options.show()
+	player.play("to_mmenu")
+	
 
 func _on_Quit_pressed():
 	get_tree().quit()
-
-
-func _on_Timer_timeout():
-	options.show()
-
 
 func _on_Play_mouse_entered():
 	var new_position = Vector2(slider.rect_position.x, play_position.y)
@@ -105,9 +113,3 @@ func slide_to_position(new_position):
 			slider.rect_position.y = new_position.y
 			slider.show()
 			slider_active = true
-
-
-
-
-
-

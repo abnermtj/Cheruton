@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
@@ -9,6 +9,37 @@
 [ext_resource path="res://Display/MainMenu/Sprites_Fonts/Play.png" type="Texture" id=7]
 [ext_resource path="res://Display/MainMenu/Sprites_Fonts/Quit.png" type="Texture" id=9]
 [ext_resource path="res://Display/MainMenu/Sprites_Fonts/Settings.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "to_mmenu"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 10 ), Vector2( 53, 60 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 60 ), Vector2( 53, 10 ) ]
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,13 +57,17 @@ __meta__ = {
 
 [node name="Cheruton" type="TextureRect" parent="Background"]
 margin_left = 53.0
-margin_top = 60.0
+margin_top = 10.0
 margin_right = 433.0
-margin_bottom = 128.0
+margin_bottom = 78.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player" type="AnimationPlayer" parent="Background/Cheruton"]
+anims/to_mmenu = SubResource( 1 )
+anims/to_settings = SubResource( 2 )
 
 [node name="Options" type="NinePatchRect" parent="Background"]
 anchor_left = 0.5
@@ -54,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -86.2863
-margin_top = -37.7099
-margin_right = 85.7137
-margin_bottom = -14.7099
+margin_left = -89.5
+margin_top = -11.5
+margin_right = 89.5
+margin_bottom = 11.5
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -145,10 +180,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
-
 [node name="OptionsDelay" type="Timer" parent="."]
 wait_time = 0.8
 
@@ -160,12 +191,12 @@ visible = false
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 100, 100, 100, 1 )
+[connection signal="animation_finished" from="Background/Cheruton/Player" to="." method="_on_Player_animation_finished"]
 [connection signal="mouse_entered" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="mouse_entered" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="mouse_entered" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="pressed" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="OptionsDelay" to="." method="_on_OptionsDelay_timeout"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
