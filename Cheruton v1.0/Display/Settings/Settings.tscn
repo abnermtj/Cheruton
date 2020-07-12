@@ -222,8 +222,9 @@ margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 286.0
-margin_right = 1140.0
+visible = false
+margin_left = 174.0
+margin_right = 655.0
 margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -433,6 +434,13 @@ visible = false
 margin_left = 715.0
 margin_right = 1010.0
 margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+margin_left = 286.0
+margin_right = 1140.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

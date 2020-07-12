@@ -57,9 +57,9 @@ __meta__ = {
 
 [node name="Cheruton" type="TextureRect" parent="Background"]
 margin_left = 53.0
-margin_top = 60.0
+margin_top = 10.0
 margin_right = 433.0
-margin_bottom = 128.0
+margin_bottom = 78.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
