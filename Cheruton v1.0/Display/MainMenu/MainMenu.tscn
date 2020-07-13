@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=5]
 [ext_resource path="res://Display/MainMenu/Sprites_Fonts/Cheruton.png" type="Texture" id=6]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/Play.png" type="Texture" id=7]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/Quit.png" type="Texture" id=9]
-[ext_resource path="res://Display/MainMenu/Sprites_Fonts/Settings.png" type="Texture" id=10]
+[ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_mmenu"
@@ -41,6 +39,13 @@ tracks/0/keys = {
 "values": [ Vector2( 53, 60 ), Vector2( 53, 10 ) ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 7 )
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -57,9 +62,9 @@ __meta__ = {
 
 [node name="Cheruton" type="TextureRect" parent="Background"]
 margin_left = 53.0
-margin_top = 10.0
+margin_top = 60.0
 margin_right = 433.0
-margin_bottom = 78.0
+margin_bottom = 128.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,7 +129,7 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="TextureRect" parent="Background/Options/VBoxContainer/Play"]
+[node name="Text" type="Label" parent="Background/Options/VBoxContainer/Play"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -133,7 +138,10 @@ margin_left = -32.0
 margin_top = -8.0
 margin_right = 32.0
 margin_bottom = 8.0
-texture = ExtResource( 7 )
+custom_fonts/font = SubResource( 3 )
+text = "Play"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,16 +155,19 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="TextureRect" parent="Background/Options/VBoxContainer/Settings"]
+[node name="Text" type="Label" parent="Background/Options/VBoxContainer/Settings"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.0
+margin_left = -51.5
 margin_top = -8.0
-margin_right = 56.0
+margin_right = 51.5
 margin_bottom = 8.0
-texture = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+text = "Settings"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -170,16 +181,19 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="TextureRect" parent="Background/Options/VBoxContainer/Quit"]
+[node name="Text2" type="Label" parent="Background/Options/VBoxContainer/Quit"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
+margin_left = -51.5
 margin_top = -8.0
-margin_right = 32.0
+margin_right = 51.5
 margin_bottom = 8.0
-texture = ExtResource( 9 )
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
