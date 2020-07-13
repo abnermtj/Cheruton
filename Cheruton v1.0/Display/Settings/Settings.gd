@@ -1,4 +1,4 @@
-extends basePopUp
+extends Control
 
 onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
@@ -7,6 +7,7 @@ onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/
 
 onready var container = $Settings/Container
 onready var contents = $Settings/Container/Main/Contents
+onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Column
 
 onready var slider = $Settings/Slider
 onready var tween = $Settings/Slider/Tween
@@ -26,10 +27,28 @@ onready var active_tab = base_empty
 signal closed_settings
 
 func _ready():
+	init_key_bindings()
 	#SceneControl.get_node("popUpGui").enabled = false
 	init_bar_vals()
 	connect_functions()
 
+func init_key_bindings():
+	var columns = controls_column.get_child_count()
+	for i in columns:
+		var column_node = controls_column.get_child(i)
+		var bindings = column_node.get_child_count()
+		for j in bindings:
+			var current_binding = column_node.get_child(j)
+			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
+			set_text(current_binding, false, btn_text)
+
+func set_text(node, unassign := true, new_value := ""):
+	var new_status = node.find_node("BtnName", true, false)
+	if(unassign):
+			new_status.text = "Unassigned"
+	else:
+			new_status.text = new_value
+	
 func init_bar_vals():
 	main_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
@@ -81,7 +100,7 @@ func _on_Back_pressed():
 	emit_signal("closed_settings")
 
 func handle_input(event):
-	if is_active_gui and Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape"):
 		_on_Back_pressed()
 
 func _on_Controls_mouse_entered():
