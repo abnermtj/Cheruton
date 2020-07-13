@@ -11,9 +11,9 @@ onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Col
 
 onready var slider = $Settings/Slider
 onready var tween = $Settings/Slider/Tween
-onready var controls_position = $Settings/Container/Main/Contents/Options/Controls.rect_position
-onready var audio_position = $Settings/Container/Main/Contents/Options/Audio.rect_position
-onready var game_position = $Settings/Container/Main/Contents/Options/Game.rect_position
+onready var controls = $Settings/Container/Main/Contents/Options/Controls
+onready var audio = $Settings/Container/Main/Contents/Options/Audio
+onready var game = $Settings/Container/Main/Contents/Options/Game
 
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
@@ -104,21 +104,24 @@ func handle_input(event):
 		_on_Back_pressed()
 
 func _on_Controls_mouse_entered():
-	var new_position = Vector2(slider.rect_position.x, controls_position.y)
-	slide_to_position(new_position)
+	var new_position = Vector2(slider.rect_position.x, controls.rect_position.y)
+	var new_offset = controls.get_child(0).rect_size.y - controls.rect_size.y
+	slide_to_position(new_position, new_offset)
 
 func _on_Audio_mouse_entered():
-	var new_position = Vector2(slider.rect_position.x, audio_position.y)
-	slide_to_position(new_position)
+	var new_position = Vector2(slider.rect_position.x, audio.rect_position.y)
+	var new_offset = audio.get_child(0).rect_size.y - audio.rect_size.y
+	slide_to_position(new_position, new_offset)
 
 func _on_Game_mouse_entered():
-	var new_position = Vector2(slider.rect_position.x, game_position.y)
-	slide_to_position(new_position)
+	var new_position = Vector2(slider.rect_position.x, game.rect_position.y)
+	var new_offset = game.get_child(0).rect_size.y - game.rect_size.y
+	slide_to_position(new_position, new_offset)
 
 # Slides the slider to the intended position, or shows it there if not visible
-func slide_to_position(new_position):
+func slide_to_position(new_position, new_offset):
 	# Offset of position
-	new_position.y += container.rect_position.y + contents.rect_position.y
+	new_position.y += container.rect_position.y + contents.rect_position.y -new_offset
 	var old_position = slider.rect_position
 	if(slider_active):
 		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
