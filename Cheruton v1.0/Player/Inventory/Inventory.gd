@@ -102,13 +102,12 @@ func change_tab_state(next_tab):
 func change_active_tab(new_tab):
 	# Set current tab to default colour and hide its items
 	if(mouse_node):
-		var temp = mouse_node
-		revert_item_state()
-		_on_mouse_exited(temp)
+		check_fixed()
 
 	if(active_tab):
 		active_tab.set_texture(default_tab_image)
-		items.get_node(active_tab.name).hide()
+		items.get_node(active_tab.name).hide()\
+	
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
@@ -272,14 +271,11 @@ func revert_item_state():
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		button.show()
-
-	# Initially Fixed
-	elif(mouse_node != temp_mouse_node):
-		change_mouse_bg(mouse_node)
-
+		
 	else:
 		item_state = "HOVER"
 		button.hide()
+		mouse_node.get_node("Background/ItemBg").texture = null
 		mouse_node = null
 
 func use_item():

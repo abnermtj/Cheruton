@@ -127,7 +127,7 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 292.0
+margin_right = 169.0
 margin_bottom = 395.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -135,12 +135,12 @@ size_flags_stretch_ratio = 0.36
 custom_constants/separation = 35
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 49.0
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -164,7 +164,7 @@ __meta__ = {
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 107.0
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -188,7 +188,7 @@ __meta__ = {
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 165.0
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
@@ -212,7 +212,7 @@ __meta__ = {
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 223.0
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 339.0
 text = "
 
@@ -224,7 +224,7 @@ text = "
 
 [node name="Back" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 374.0
-margin_right = 288.0
+margin_right = 165.0
 margin_bottom = 395.0
 size_flags_vertical = 3
 expand = true
@@ -247,14 +247,14 @@ __meta__ = {
 }
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 296.0
-margin_right = 296.0
+margin_left = 173.0
+margin_right = 173.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 300.0
-margin_right = 310.0
+margin_left = 177.0
+margin_right = 187.0
 margin_bottom = 395.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
@@ -262,8 +262,8 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 314.0
-margin_right = 334.0
+margin_left = 191.0
+margin_right = 211.0
 margin_bottom = 14.0
 size_flags_vertical = 2
 text = "     "
@@ -512,20 +512,19 @@ margin_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 195.0
-margin_right = 665.0
+margin_left = 215.0
+margin_right = 675.0
 margin_bottom = 395.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_right = 470.0
+margin_right = 460.0
 margin_bottom = 14.0
 
 [node name="Rect" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 18.0
-margin_right = 470.0
+margin_right = 460.0
 margin_bottom = 377.0
 size_flags_vertical = 3
 
@@ -677,7 +676,7 @@ __meta__ = {
 
 [node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 381.0
-margin_right = 470.0
+margin_right = 460.0
 margin_bottom = 395.0
 size_flags_vertical = 1
 
@@ -690,15 +689,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 338.0
-margin_right = 1140.0
+margin_left = 679.0
+margin_right = 1139.0
 margin_bottom = 395.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SRMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 1144.0
-margin_right = 1172.0
+margin_left = 1143.0
+margin_right = 1171.0
 margin_bottom = 14.0
 size_flags_vertical = 2
 text = "       "
