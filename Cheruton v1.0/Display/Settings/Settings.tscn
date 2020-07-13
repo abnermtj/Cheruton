@@ -1,17 +1,25 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
 [ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
 [ext_resource path="res://Display/Settings/Music.png" type="Texture" id=5]
-[ext_resource path="res://Display/Settings/Sprites_Font/Audio.png" type="Texture" id=6]
-[ext_resource path="res://Display/Settings/Sprites_Font/Controls.png" type="Texture" id=7]
 [ext_resource path="res://Display/Settings/Sprites_Font/Master.png" type="Texture" id=8]
-[ext_resource path="res://Display/Settings/Sprites_Font/Game.png" type="Texture" id=9]
 [ext_resource path="res://Display/Settings/Sprites_Font/sfx.png" type="Texture" id=10]
-[ext_resource path="res://Display/Settings/Sprites_Font/Settings.png" type="Texture" id=11]
+[ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -45,10 +53,10 @@ __meta__ = {
 
 [node name="Slider" type="TextureRect" parent="Settings"]
 visible = false
-margin_left = 142.0
-margin_top = 200.0
-margin_right = 379.0
-margin_bottom = 228.0
+margin_left = 126.134
+margin_top = 204.0
+margin_right = 435.134
+margin_bottom = 309.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 5
@@ -86,25 +94,26 @@ margin_bottom = 31.0
 text = "
 "
 
-[node name="Settings" type="TextureRect" parent="Settings/Container/Main"]
+[node name="Settings" type="Label" parent="Settings/Container/Main"]
 margin_top = 35.0
-margin_right = 1173.0
-margin_bottom = 75.0
+margin_right = 303.0
+margin_bottom = 83.0
 rect_min_size = Vector2( 0, 40 )
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 5
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+text = "Settings"
+valign = 2
 
 [node name="DividerMain" type="TextureRect" parent="Settings/Container/Main"]
-margin_top = 79.0
+margin_top = 87.0
 margin_right = 1173.0
-margin_bottom = 89.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 0, 10 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="Contents" type="HBoxContainer" parent="Settings/Container/Main"]
-margin_top = 93.0
+margin_top = 101.0
 margin_right = 1173.0
 margin_bottom = 496.0
 size_flags_vertical = 3
@@ -115,110 +124,134 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 261.0
-margin_bottom = 403.0
+margin_right = 299.0
+margin_bottom = 395.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.36
 custom_constants/separation = 35
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 257.0
+margin_right = 295.0
 margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 49.0
-margin_right = 257.0
+margin_right = 295.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Controls"]
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Controls"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -66.0
-margin_top = -12.5
-margin_right = 66.0
-margin_bottom = 12.5
-rect_min_size = Vector2( 0, 20 )
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 5
+margin_left = -78.0
+margin_top = -15.0
+margin_right = 78.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 4 )
+text = "Controls"
+align = 1
+valign = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 107.0
-margin_right = 257.0
+margin_right = 295.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Audio"]
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Audio"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -42.5
-margin_top = -12.5
-margin_right = 42.5
-margin_bottom = 12.5
-rect_min_size = Vector2( 0, 20 )
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
+margin_left = -78.0
+margin_top = -15.0
+margin_right = 78.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 4 )
+text = "Audio"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 165.0
-margin_right = 257.0
+margin_right = 295.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 0, 23 )
 expand = true
 
-[node name="Text" type="TextureRect" parent="Settings/Container/Main/Contents/Options/Game"]
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Game"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -38.0
-margin_top = -12.5
-margin_right = 38.5
-margin_bottom = 12.5
-rect_min_size = Vector2( 0, 20 )
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 5
+margin_left = -78.0
+margin_top = -15.0
+margin_right = 78.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 4 )
+text = "Game"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 223.0
-margin_right = 257.0
-margin_bottom = 237.0
+margin_right = 295.0
+margin_bottom = 339.0
+text = "
 
-[node name="Back" type="Button" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 272.0
-margin_right = 257.0
-margin_bottom = 292.0
+
+
+
+
+"
+
+[node name="Back" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
+margin_top = 374.0
+margin_right = 295.0
+margin_bottom = 374.0
+expand = true
+
+[node name="Text2" type="Label" parent="Settings/Container/Main/Contents/Options/Back"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.0
+margin_top = -15.0
+margin_right = 78.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 4 )
 text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 265.0
-margin_right = 265.0
+margin_left = 303.0
+margin_right = 303.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 269.0
-margin_right = 279.0
-margin_bottom = 403.0
+margin_left = 307.0
+margin_right = 317.0
+margin_bottom = 395.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -683,9 +716,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 283.0
+margin_left = 321.0
 margin_right = 1140.0
-margin_bottom = 403.0
+margin_bottom = 395.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -716,7 +749,6 @@ text = "                    "
 [connection signal="pressed" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_pressed"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_pressed"]
-[connection signal="pressed" from="Settings/Container/Main/Contents/Options/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundControlDown/MainVolDown" to="." method="_on_MainVolDown_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundControlDown/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundControlDown/SFXVolDown" to="." method="_on_SFXVolDown_pressed"]
