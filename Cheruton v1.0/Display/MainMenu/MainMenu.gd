@@ -35,7 +35,7 @@ func _ready():
 
 # Gives a fadein effect
 func tween_white_screen():
-	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.75, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 # When the tween of the relevant object is completed
