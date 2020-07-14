@@ -18,18 +18,19 @@ func init_bar(value):
 	bar.value = value#stub
 	parent_value.text = str(bar.value)
 
-func change_bar_value(value):
-	change_bar_colour(value)
+func change_bar_value(value, browse := false):
+	change_bar_colour(value, browse)
 	animate_bar(bar.value, value)
 
 
-func change_bar_colour(value):
-	if(value > bar.value):
-		bar.set_tint_progress(Color(0, 1, 0))   # Green
-	elif(value < bar.value):
-		bar.set_tint_progress(Color(1, 0, 0))   # Red
-	else:
+func change_bar_colour(value, browse):
+	if(value == bar.value || !browse):
 		bar.set_tint_progress(Color(1, 1, 1))   # White
+	elif(browse):
+		if(value > bar.value):
+			bar.set_tint_progress(Color(0, 1, 0))   # Green
+		elif(value < bar.value):
+			bar.set_tint_progress(Color(1, 0, 0))   # Red
 
 func animate_bar(start, end):
 	tween.interpolate_property(bar, "value", start, end, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
