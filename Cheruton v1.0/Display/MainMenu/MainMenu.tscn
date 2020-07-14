@@ -22,6 +22,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 53, 10 ), Vector2( 53, 30 ), Vector2( 53, 60 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Options:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.1, 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 4, 0.14, 1 ),
+"update": 0,
+"values": [ Vector2( 193, 100 ), Vector2( 193, 100 ), Vector2( 193, 100 ), Vector2( 193, 100 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Options:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Vector2( 146, 150 ), Vector2( 146, 150 ), Vector2( 146, 150 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.1
@@ -81,26 +105,25 @@ anchor_bottom = 0.5
 margin_left = -94.0
 margin_top = 14.9998
 margin_right = 99.0
-margin_bottom = 107.0
+margin_bottom = 115.0
 texture = ExtResource( 5 )
-patch_margin_left = 7
-patch_margin_top = 9
-patch_margin_right = 7
-patch_margin_bottom = 7
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slider" type="TextureRect" parent="Background/Options"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -89.5
-margin_top = -11.5
+margin_top = -13.0
 margin_right = 89.5
-margin_bottom = 11.5
+margin_bottom = 13.0
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -122,7 +145,7 @@ __meta__ = {
 
 [node name="Play" type="TextureButton" parent="Background/Options/VBoxContainer"]
 margin_right = 179.0
-margin_bottom = 25.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
@@ -146,9 +169,9 @@ __meta__ = {
 }
 
 [node name="Settings" type="TextureButton" parent="Background/Options/VBoxContainer"]
-margin_top = 25.0
+margin_top = 28.0
 margin_right = 179.0
-margin_bottom = 50.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
@@ -172,9 +195,9 @@ __meta__ = {
 }
 
 [node name="Quit" type="TextureButton" parent="Background/Options/VBoxContainer"]
-margin_top = 50.0
+margin_top = 56.0
 margin_right = 179.0
-margin_bottom = 76.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
