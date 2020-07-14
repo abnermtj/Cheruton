@@ -9,7 +9,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_mmenu"
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -17,10 +17,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 4, 0.143587, 0.143587 ),
 "update": 0,
-"values": [ Vector2( 53, 10 ), Vector2( 53, 60 ) ]
+"values": [ Vector2( 53, 10 ), Vector2( 53, 30 ), Vector2( 53, 60 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -61,9 +61,9 @@ __meta__ = {
 
 [node name="Cheruton" type="TextureRect" parent="Background"]
 margin_left = 53.0
-margin_top = 60.0
+margin_top = 10.0
 margin_right = 433.0
-margin_bottom = 128.0
+margin_bottom = 78.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
