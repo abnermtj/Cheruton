@@ -21,23 +21,23 @@ outline_size = 1
 extra_spacing_top = -1
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 13 )
+
 [sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=3]
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.80505
-margin_top = -0.902527
+margin_top = -1.75995
 margin_right = 1.80505
-margin_bottom = -0.902588
+margin_bottom = -1.76001
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,10 +61,10 @@ __meta__ = {
 [node name="Bg" type="TextureRect" parent="Border"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
+margin_left = 56.0
 margin_top = 28.0
-margin_right = -22.4999
-margin_bottom = -28.15
+margin_right = -58.0
+margin_bottom = -28.0
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,7 +80,7 @@ __meta__ = {
 }
 
 [node name="Header" type="HBoxContainer" parent="Border/Bg/Main"]
-margin_right = 792.0
+margin_right = 721.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -89,7 +89,7 @@ __meta__ = {
 
 [node name="Inventory" type="Label" parent="Border/Bg/Main/Header"]
 margin_top = 1.0
-margin_right = 751.0
+margin_right = 680.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -100,48 +100,57 @@ align = 1
 valign = 1
 
 [node name="Exit" type="TextureButton" parent="Border/Bg/Main/Header"]
-margin_left = 755.0
-margin_right = 788.0
+margin_left = 684.0
+margin_right = 717.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Header"]
-margin_left = 792.0
+margin_left = 721.0
 margin_top = 9.0
-margin_right = 792.0
+margin_right = 721.0
 margin_bottom = 23.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sides" type="HBoxContainer" parent="Border/Bg/Main"]
+[node name="Margin2" type="Label" parent="Border/Bg/Main"]
 margin_top = 37.0
-margin_right = 792.0
-margin_bottom = 423.0
+margin_right = 721.0
+margin_bottom = 38.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SRMargin3" type="Label" parent="Border/Bg/Main"]
+margin_top = 42.0
+margin_right = 721.0
+margin_bottom = 56.0
+
+[node name="Sides" type="HBoxContainer" parent="Border/Bg/Main"]
+margin_top = 60.0
+margin_right = 721.0
+margin_bottom = 424.0
 size_flags_vertical = 3
 custom_constants/separation = 13
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SRMargin2" type="Label" parent="Border/Bg/Main/Sides"]
-margin_top = 186.0
-margin_right = 28.0
-margin_bottom = 200.0
-text = "       "
-
 [node name="Data" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
-margin_left = 41.0
-margin_right = 248.0
-margin_bottom = 386.0
+margin_right = 230.0
+margin_bottom = 364.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.55
+custom_constants/separation = 21
 
 [node name="Attack" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_right = 207.0
+margin_right = 230.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 15 )
 custom_constants/separation = 17
@@ -149,7 +158,7 @@ custom_constants/separation = 17
 [node name="Name" type="Label" parent="Border/Bg/Main/Sides/Data/Attack"]
 margin_right = 42.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "ATK"
 align = 2
 valign = 2
@@ -158,23 +167,23 @@ valign = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 59.0
-margin_right = 162.0
+margin_right = 185.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
 [node name="Value" type="Label" parent="Border/Bg/Main/Sides/Data/Attack"]
-margin_left = 179.0
-margin_right = 207.0
+margin_left = 202.0
+margin_right = 230.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "30"
 align = 2
 valign = 2
 
 [node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_top = 24.0
-margin_right = 207.0
-margin_bottom = 74.0
+margin_top = 41.0
+margin_right = 230.0
+margin_bottom = 91.0
 
 [node name="Coins" type="TextureRect" parent="Border/Bg/Main/Sides/Data/Coins"]
 margin_right = 50.0
@@ -188,22 +197,23 @@ margin_left = 54.0
 margin_top = 15.0
 margin_right = 110.0
 margin_bottom = 35.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "4000"
 valign = 1
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_top = 78.0
-margin_right = 207.0
-margin_bottom = 148.0
+margin_top = 112.0
+margin_right = 230.0
+margin_bottom = 182.0
 size_flags_horizontal = 3
+custom_constants/separation = 26
 
 [node name="Weapons" parent="Border/Bg/Main/Sides/Data/EquippedCoins" instance=ExtResource( 6 )]
 
 [node name="Apparel" parent="Border/Bg/Main/Sides/Data/EquippedCoins" instance=ExtResource( 6 )]
-margin_left = 74.0
-margin_right = 144.0
+margin_left = 96.0
+margin_right = 166.0
 
 [node name="Button" type="Button" parent="Border/Bg/Main/Sides/Data"]
 visible = false
@@ -214,38 +224,25 @@ margin_bottom = 144.0
 size_flags_horizontal = 3
 text = "Delete"
 
+[node name="SRMargin2" type="Label" parent="Border/Bg/Main/Sides"]
+margin_left = 243.0
+margin_top = 175.0
+margin_right = 275.0
+margin_bottom = 189.0
+text = "        "
+
 [node name="Contents" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
-margin_left = 261.0
-margin_right = 778.0
-margin_bottom = 386.0
+margin_left = 288.0
+margin_right = 707.0
+margin_bottom = 364.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Margin" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_right = 517.0
-margin_bottom = 1.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margin2" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 5.0
-margin_right = 517.0
-margin_bottom = 6.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 10.0
 margin_right = 250.0
-margin_bottom = 50.0
+margin_bottom = 40.0
 size_flags_horizontal = 0
 custom_constants/separation = 0
 
@@ -370,30 +367,30 @@ margin_right = 250.0
 margin_bottom = 27.0
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 54.0
-margin_right = 517.0
-margin_bottom = 55.0
+margin_top = 44.0
+margin_right = 419.0
+margin_bottom = 45.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 59.0
-margin_right = 517.0
-margin_bottom = 363.0
+margin_top = 49.0
+margin_right = 419.0
+margin_bottom = 341.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
-margin_top = 145.0
-margin_bottom = 159.0
+margin_top = 139.0
+margin_bottom = 153.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Sides/Contents/Items"]
 margin_left = 4.0
-margin_right = 513.0
-margin_bottom = 304.0
+margin_right = 415.0
+margin_bottom = 292.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Contents/Items/Weapons"]
@@ -435,31 +432,31 @@ size_flags_horizontal = 3
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Contents/Items/KeyItems"]
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
-margin_left = 517.0
-margin_top = 145.0
-margin_right = 517.0
-margin_bottom = 159.0
+margin_left = 419.0
+margin_top = 139.0
+margin_right = 419.0
+margin_bottom = 153.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 367.0
-margin_right = 517.0
-margin_bottom = 368.0
+margin_top = 345.0
+margin_right = 419.0
+margin_bottom = 346.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 372.0
-margin_right = 517.0
-margin_bottom = 386.0
+margin_top = 350.0
+margin_right = 419.0
+margin_bottom = 364.0
 
 [node name="SRMargin" type="Label" parent="Border/Bg/Main/Sides"]
-margin_left = 791.0
-margin_top = 186.0
-margin_right = 791.0
-margin_bottom = 200.0
+margin_left = 720.0
+margin_top = 175.0
+margin_right = 720.0
+margin_bottom = 189.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25

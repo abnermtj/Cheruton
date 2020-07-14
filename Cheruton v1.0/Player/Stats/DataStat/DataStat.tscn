@@ -22,3 +22,4 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="value_changed" from="Bar" to="." method="_on_Bar_value_changed"]
