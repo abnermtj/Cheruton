@@ -44,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Levels/Hometown/NPCs/movingNPC.gd"
 }, {
-"base": "Camera2D",
-"class": "ShakeCamera",
-"language": "GDScript",
-"path": "res://Player/Camera/camera_shake.gd"
-}, {
 "base": "Position2D",
 "class": "SpiderLegController",
 "language": "GDScript",
@@ -107,7 +102,6 @@ _global_script_class_icons={
 "FSM_Enemy": "",
 "Level": "",
 "MovingNPC": "",
-"ShakeCamera": "",
 "SpiderLegController": "",
 "State_Enemy": "",
 "StaticNPC": "",
