@@ -98,6 +98,8 @@ func reset_player():
 	dict_player.health_max = 50
 	dict_player.level = 1
 	dict_player.coins = 100
+	dict_player.attack = 15
+	dict_player.defense = 15
 	dict_player.Weapons_item = null
 	dict_player.Apparel_item = null
 	dict_player.stage = "stage1"

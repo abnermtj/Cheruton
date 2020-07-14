@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuback.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
@@ -202,9 +201,6 @@ __meta__ = {
 wait_time = 0.8
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Settings" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

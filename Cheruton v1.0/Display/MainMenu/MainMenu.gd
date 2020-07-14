@@ -6,7 +6,6 @@ const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
-onready var settings = $Settings
 onready var options = $Background/Options
 onready var slider = $Background/Options/Slider
 onready var tween = $Tween

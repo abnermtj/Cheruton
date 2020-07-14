@@ -1,6 +1,6 @@
 extends Control
 
-onready var main_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
+onready var master_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
 onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/SFXVolBar
 
@@ -10,7 +10,7 @@ onready var contents = $Settings/Container/Main/Contents
 onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Column
 
 onready var slider = $Settings/Slider
-onready var tween = $Settings/Slider/Tween
+onready var tween = $Tween
 onready var controls = $Settings/Container/Main/Contents/Options/Controls
 onready var audio = $Settings/Container/Main/Contents/Options/Audio
 onready var game = $Settings/Container/Main/Contents/Options/Game
@@ -50,7 +50,7 @@ func set_text(node, unassign := true, new_value := ""):
 			new_status.text = new_value
 	
 func init_bar_vals():
-	main_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
+	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
 	sfx_bar.value = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
 
@@ -64,24 +64,34 @@ func _on_MuteToggle_pressed():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
 
 func change_master_vol():
-	main_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
-
+	var end = (DataResource.dict_settings.audio_master + 60) / 60 * 100
+	animate_healthbar(master_bar, end)
+	
 func change_music_vol():
-	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
+	var end = (DataResource.dict_settings.audio_music + 60) / 60 * 100
+	animate_healthbar(music_bar, end)
 
 func change_sfx_vol():
-	sfx_bar.value = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
+	var end = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
+	animate_healthbar(sfx_bar, end)
+
+func animate_healthbar(bar, end):
+	tween.interpolate_property(bar, "value", bar.value, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
 
 func _on_MainVolUp_pressed():
 	DataResource.change_audio_master(6)
 
 func _on_MainVolDown_pressed():
+	print(202)
 	DataResource.change_audio_master(-6)
 
 func _on_MusicVolUp_pressed():
 	DataResource.change_audio_music(6)
 
 func _on_MusicVolDown_pressed():
+	print(101)
 	DataResource.change_audio_music(-6)
 
 func _on_SFXVolUp_pressed():
