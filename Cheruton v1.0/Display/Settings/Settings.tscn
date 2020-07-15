@@ -531,6 +531,7 @@ margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
 margin_left = 423.0
 margin_right = 1460.0
 margin_bottom = 767.0
@@ -711,8 +712,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 864.0
+margin_left = 423.0
 margin_right = 1460.0
 margin_bottom = 767.0
 size_flags_horizontal = 3

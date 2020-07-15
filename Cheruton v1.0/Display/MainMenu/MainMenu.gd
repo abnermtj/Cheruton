@@ -68,9 +68,9 @@ func _on_Settings_pressed():
 	
 
 func hide_options():
-	options.hide()
 	slider_active = false
 	slider.hide()
+	container.hide()
 
 
 func _on_Player_animation_finished(anim_name):
@@ -78,7 +78,7 @@ func _on_Player_animation_finished(anim_name):
 	if(anim_name == "to_settings"):
 		SceneControl.settings_layer.show()
 	elif(anim_name == "to_mmenu"):
-		options.show()
+		container.show()
 
 func back_to_mmenu():
 	player.play("to_mmenu")
