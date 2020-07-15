@@ -27,7 +27,7 @@ func update(delta):
 		emit_signal("finished", "fall")
 		return
 
-	update_look_direction(Vector2(-wall_dir, 0))
+	owner.look_direction = Vector2(-wall_dir, 0)
 	if owner.velocity.y > 75:
 		owner.play_anim("wall_slide_fast")
 	else:

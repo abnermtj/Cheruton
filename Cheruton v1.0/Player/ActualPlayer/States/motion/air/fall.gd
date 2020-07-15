@@ -56,7 +56,7 @@ func update(delta):
 
 	# Air steering
 	var input_dir = get_input_direction()
-	update_look_direction(input_dir)
+	owner.look_direction = input_dir
 
 	if input_dir.x:
 		owner.velocity.x = clamp ((owner.velocity.x + input_dir.x*owner.AIR_ACCEL), -abs(enter_velocity.x), abs(enter_velocity.x))

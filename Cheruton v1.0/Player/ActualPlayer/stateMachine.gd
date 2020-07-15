@@ -19,21 +19,27 @@ var _active = false setget set_active
 func _ready():
 	for child in get_children():
 		child.connect("finished", self, "_change_state")
-	initialize(START_STATE)
-
-func initialize(start_state):
 	set_active(true)
-	states_stack.push_front(get_node(start_state))
-	current_state = states_stack[0]
-	current_state.enter()
+	set_start_state(START_STATE)
+
 
 func set_active(value):
 	_active = value
 	set_physics_process(value)
+	set_process(value)
 	set_process_input(value)
+
 	if not _active:
 		states_stack = []
 		current_state = null
+	else:
+		set_start_state(START_STATE)
+
+func set_start_state(start_state):
+	states_stack.resize(0)
+	states_stack.push_front(get_node(start_state))
+	current_state = states_stack[0]
+	current_state.enter()
 
 func _input(event):
 	current_state.handle_input(event)

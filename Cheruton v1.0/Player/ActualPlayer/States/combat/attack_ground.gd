@@ -62,7 +62,7 @@ func update(delta):
 					owner.velocity = Vector2(input_dir.x*GROUND_SPEED_H_2,500)
 
 					owner.play_anim("attack_ground_2")
-					update_look_direction(input_dir)
+					owner.look_direction = input_dir
 
 			1:
 				if attack_again and attack_timer < 0:
@@ -77,7 +77,7 @@ func update(delta):
 					if input_dir.x:
 						owner.play_anim_fx("attack_ground_3")
 
-					update_look_direction(input_dir)
+					owner.look_direction = input_dir
 			2:
 				if attack_timer< 0:
 					emit_signal("finished", "run")
@@ -97,7 +97,7 @@ func update(delta):
 
 					owner.play_anim("attack_air_2")
 					owner.play_anim_fx("attack_air_2")
-					update_look_direction(input_dir)
+					owner.look_direction = input_dir
 
 			1:
 				if attack_again and attack_timer < 0:
@@ -109,7 +109,7 @@ func update(delta):
 
 					owner.play_anim("attack_air_3")
 					owner.play_anim_fx("attack_air_3")
-					update_look_direction(input_dir)
+					owner.look_direction = input_dir
 
 			2:
 				if attack_timer< 0:

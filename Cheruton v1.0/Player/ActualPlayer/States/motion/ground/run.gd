@@ -9,7 +9,7 @@ var input_direction : Vector2
 
 func handle_input(event):
 	input_direction = get_input_direction()
-	update_look_direction(input_direction)
+	owner.look_direction = input_direction
 
 	if Input.is_action_just_pressed("slide"):
 		emit_signal("finished", "slide")
@@ -18,7 +18,7 @@ func handle_input(event):
 func enter():
 	input_direction = get_input_direction()
 	previous_dir = input_direction
-	update_look_direction(input_direction)
+	owner.look_direction = input_direction
 	if owner.prev_state.name == "slide":
 		owner.queue_anim("run_continious")
 	else:

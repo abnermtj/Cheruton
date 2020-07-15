@@ -20,9 +20,9 @@ func enter():
 	owner.queue_anim("slide_continious")
 	owner.play_sound("slide")
 	if initial_vel.x > 0:
-		update_look_direction(Vector2.RIGHT)
+		owner.look_direction = Vector2.RIGHT
 	else:
-		update_look_direction(Vector2.LEFT)
+		owner.look_direction = Vector2.LEFT
 
 func _on_animation_finished(name):
 	if name == "slide": initial_slide_anim_done = true

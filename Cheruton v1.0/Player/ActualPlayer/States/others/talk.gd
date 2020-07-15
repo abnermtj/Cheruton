@@ -1,9 +1,9 @@
 extends baseState
 
 func enter():
+	owner.set_anim_speed(.66)
 	owner.play_anim("idle")
 	owner.queue_anim("idle_continious")
-	owner.set_anim_speed(.66)
 
 	owner.velocity = Vector2()
 	owner.move()

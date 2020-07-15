@@ -7,6 +7,12 @@ var story_file
 var player
 var camera
 
+
+# manages position of player on enter or map
+var enter_point : int
+var player_spawn_pos : Vector2
+var entrace_to_pos_dict = {}
+
 func _ready() -> void:
 	DataResource.current_scene = self
 	if(!DataResource.loaded):
@@ -19,6 +25,7 @@ func _ready() -> void:
 	call_deferred( "_set_player" )
 	call_deferred("_set_player_objects")
 	call_deferred("_set_level")
+	call_deferred("enter_level")
 	set_music()
 
 func _set_player() -> void:
@@ -67,6 +74,9 @@ func _set_level():
 		print("death_zone not found")
 	else:
 		death_zone.connect("body_entered", self, "handle_death_zone")
+
+func enter_level():
+	player.global_position = player_spawn_pos
 
 # loads prev checkpoint
 func _on_player_dead() -> void:

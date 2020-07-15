@@ -25,10 +25,3 @@ func get_input_direction():
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	return input_direction
-
-# makes character face right direction
-func update_look_direction(direction : Vector2):
-	if direction and owner.look_direction != direction:
-		owner.look_direction = direction
-	if direction.x in [-1, 1]:
-		owner.body_rotate.scale = Vector2(direction.x,1) # flips horizontally

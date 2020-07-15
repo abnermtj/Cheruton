@@ -12,7 +12,7 @@ func enter():
 	owner.sword_stuck = false # so cannot repeatedly dash
 
 	var normal = owner.sword_col_normal
-	update_look_direction(-normal)
+	owner.look_direction = -normal
 	owner.velocity =  (owner.sword_pos - owner.global_position).normalized() * VELOCITY
 	owner.global_position = owner.sword_pos + OFFSET_FROM_SWORD_POS * normal
 

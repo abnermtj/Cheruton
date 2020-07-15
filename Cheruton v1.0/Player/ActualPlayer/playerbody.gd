@@ -146,11 +146,17 @@ func interact_with_nearest_object():
 	if nearest_interactible:
 		nearest_interactible.interact(self)
 
-func set_look_direction(value : Vector2):
-	look_direction = value
+# makes character face right direction
+func set_look_direction(direction : Vector2):
+	look_direction = direction
+
+	if direction.x in [-1, 1]:
+		body_rotate.scale = Vector2(direction.x,1) # flips horizontally
+
 func _on_states_state_changed(states_stack):
 	prev_state = cur_state
-	cur_state = states_stack[-1]
+	cur_state = states_stack[0]
+
 func set_on_floor(grounded):
 	on_floor = grounded
 	if grounded and attack_cooldown_finished:
@@ -158,13 +164,16 @@ func set_on_floor(grounded):
 
 	set_camera_mode_logic()
 
+func set_fsm(val):
+	states._active = val
+
 # Animation
 func play_anim(string):
 	if animation_player:
-			animation_player.clear_queue()
-			animation_player.play(string)
-			previous_anim = string
-			animation_player.advance(0)
+		animation_player.clear_queue()
+		animation_player.play(string)
+		previous_anim = string
+		animation_player.advance(0) # play from the start of anim
 func queue_anim(string):
 	if animation_player:
 			animation_player.queue(string)
@@ -249,8 +258,8 @@ func _on_invunerableTimer_timeout():
 func move():
 	if hooked and not ["hook"].has(cur_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND: # player cannot move too far from hook point
-			move_and_slide(Vector2(), Vector2.UP)
-	elif  ["run", "slide", "idle", "wallSlide"].has(cur_state.name):
+		move_and_slide(Vector2(), Vector2.UP)
+	elif ["run", "slide", "idle", "wallSlide"].has(cur_state.name):
 		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
 		move_and_slide(velocity, Vector2.UP)

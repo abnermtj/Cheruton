@@ -16,7 +16,7 @@
 [ext_resource path="res://Levels/Hometown/NPCs/cat/cat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/Hometown/NPCs/coolboy/coolboy.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Levels/Hometown/NPCs/moneygirl/moneygirl.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/Hometown/NPCs/genericgirl/genericgirl.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Levels/Hometown/NPCs/chad/chad.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=20]
@@ -82,6 +82,7 @@ visible = false
 tile_data = PoolIntArray( -458564, 1, 327680, -458563, 1, 327681, -458562, 1, 327682, -458561, 1, 327682, -458560, 1, 0, -393024, 1, 131078, -327488, 1, 196613, -261952, 1, 196613, -196605, 1, 0, -196604, 1, 327682, -196603, 1, 327683, -196416, 1, 131078, -131069, 1, 196613, -130880, 1, 196613, -65533, 1, 131078, -65344, 1, 131078, 3, 1, 131078, 192, 1, 131078, 65539, 1, 196613, 65728, 1, 131078, 131075, 1, 196613, 131264, 1, 196614, 196611, 1, 196613, 262147, 1, 196613, 327683, 1, 196613, 393219, 1, 196613, 458755, 1, 131078, 524291, 1, 196614 )
 
 [node name="Shaders" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
 
 [node name="grassLandTree1" parent="Shaders" instance=ExtResource( 26 )]
 position = Vector2( 704, 422 )
@@ -185,7 +186,7 @@ position = Vector2( 10591.2, -87.6736 )
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="moneygirl" parent="Npcs" instance=ExtResource( 17 )]
-position = Vector2( 1317, 508 )
+position = Vector2( 1321, 476 )
 
 [node name="cat" parent="Npcs" instance=ExtResource( 14 )]
 position = Vector2( 1319.34, 539.293 )
@@ -226,7 +227,7 @@ position = Vector2( 10240, 560 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 light_mask = 1
-position = Vector2( 5397, -104 )
+position = Vector2( 525, 498 )
 
 [node name="camera" parent="player" instance=ExtResource( 10 )]
 limit_left = -9999

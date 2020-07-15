@@ -60,7 +60,7 @@ func update( delta ):
 
 	# steering here
 	input_dir = get_input_direction()
-	update_look_direction(input_dir)
+	owner.look_direction = input_dir
 	if input_dir.x: # tend to input dir if steering
 		owner.velocity.x += input_dir.x*owner.AIR_ACCEL
 	else: # tend .x to 0 if not steering
