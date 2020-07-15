@@ -29,10 +29,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( -0.1, 0, 0.15, 0.3 ),
-"transitions": PoolRealArray( 1, 4, 0.14, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 4, 0.14, 1 ),
 "update": 0,
-"values": [ Vector2( 193, 100 ), Vector2( 193, 100 ), Vector2( 193, 100 ), Vector2( 193, 100 ) ]
+"values": [ Vector2( 248, 133 ), Vector2( 220.5, 116.5 ), Vector2( 193, 100 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Options:rect_position")
@@ -44,7 +44,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 146, 150 ), Vector2( 146, 150 ), Vector2( 146, 150 ) ]
+"values": [ Vector2( 125, 117 ), Vector2( 135.5, 133.5 ), Vector2( 146, 150 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -73,9 +73,8 @@ font_data = ExtResource( 7 )
 script = ExtResource( 2 )
 
 [node name="Background" type="TextureRect" parent="."]
-margin_top = 2.3327
 margin_right = 480.0
-margin_bottom = 272.333
+margin_bottom = 270.0
 rect_scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 expand = true
@@ -85,9 +84,9 @@ __meta__ = {
 
 [node name="Cheruton" type="TextureRect" parent="Background"]
 margin_left = 53.0
-margin_top = 10.0
+margin_top = 60.0
 margin_right = 433.0
-margin_bottom = 78.0
+margin_bottom = 128.0
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
