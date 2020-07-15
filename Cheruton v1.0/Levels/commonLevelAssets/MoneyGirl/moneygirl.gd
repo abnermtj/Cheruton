@@ -5,9 +5,9 @@ extends StaticNPC
 onready var anim_player = $AnimationPlayer
 
 func _ready():
+	._ready()
 	sprite = $bodyRotate/Sprite
 	sprite2 = $bodyRotate/Sprite2
-	._ready()
 
 func play_anim(name):
 	anim_player.clear_queue()

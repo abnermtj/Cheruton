@@ -13,7 +13,7 @@
 [ext_resource path="res://Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Props/bouncePad/bouncePad.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Props/movingTrap/movingTrap0.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Levels/testBench2/worldt_env.res" type="Environment" id=14]
+[ext_resource path="res://Levels/commonLevelAssets/worldt_env.res" type="Environment" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
 
 [node name="testBench2" type="Node2D"]

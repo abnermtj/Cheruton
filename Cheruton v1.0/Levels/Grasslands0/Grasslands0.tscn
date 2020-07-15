@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Levels/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -17,10 +17,13 @@
 [ext_resource path="res://Effects/Transition/Sprites/fromCenter.png" type="Texture" id=15]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree1/grassLandTree1.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneyGirlStaff.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Levels/commonLevelAssets/worldt_env.res" type="Environment" id=18]
+[ext_resource path="res://Levels/Grasslands0/Rock.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cutscene0"
-length = 5.0
+length = 7.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
 tracks/0/interp = 1
@@ -28,7 +31,7 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.4 ),
+"times": PoolRealArray( 0, 4.8 ),
 "transitions": PoolRealArray( 1.2, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -60,172 +63,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.8 ],
-"method": "set_anim_speed"
-} ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ Vector2( -1, 0 ) ],
-"method": "set_look_direction"
-} ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("player")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "set_fsm"
-} ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("player:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -188, 188 ) ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("npcs/moneygirl")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 3.00046 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "idle2" ],
-"method": "play_anim"
-}, {
-"args": [ "poke" ],
-"method": "play_anim"
-} ]
-}
-tracks/7/type = "method"
-tracks/7/path = NodePath("npcs/moneygirl")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 0.8 ],
-"method": "set_anim_speed"
-} ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("npcs/moneygirl:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -60, 156 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("npcs/moneygirl:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -4, 4 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("player/camera:zoom")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 0.8, 2.15, 2.7 ),
-"transitions": PoolRealArray( 1, 1.2, 0.8, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.67, 0.67 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("npcs/moneyGirlStaff:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "cutscene1"
-length = 3.1
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1.4 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("player")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ "scene0_wakeup" ],
-"method": "play_anim"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("player")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 1.0 ],
+"args": [ 0.6 ],
 "method": "set_anim_speed"
 } ]
 }
@@ -264,7 +102,172 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.77, 0.79, 0.87, 1.02, 1.03 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -188, 188 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("npcs/moneygirl")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.00046 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "idle2" ],
+"method": "play_anim"
+}, {
+"args": [ "poke" ],
+"method": "play_anim"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("npcs/moneygirl")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.6 ],
+"method": "set_anim_speed"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("npcs/moneygirl:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -60, 156 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("npcs/moneygirl:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4, 4 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("player/camera:zoom")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1.6, 4.3, 6.1 ),
+"transitions": PoolRealArray( 1, 1.2, 0.8, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.67, 0.67 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("npcs/moneyGirlStaff:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "cutscene1"
+length = 4.0
+loop = true
+step = 0.002
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.4 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "scene0_wakeup" ],
+"method": "play_anim"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.8 ],
+"method": "set_anim_speed"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ Vector2( -1, 0 ) ],
+"method": "set_look_direction"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("player")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_fsm"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.812, 0.834, 1.192, 1.892, 1.92 ),
 "transitions": PoolRealArray( 1, 0.34151, 2, 0.392292, 2.63902, 1 ),
 "update": 0,
 "values": [ Vector2( -188, 188 ), Vector2( -188, 188 ), Vector2( -187, 188 ), Vector2( -297, 188 ), Vector2( -314, 188 ), Vector2( -315, 188 ) ]
@@ -276,7 +279,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.813297 ),
+"times": PoolRealArray( 0, 1.62 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ "idle2" ],
@@ -296,7 +299,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.8 ],
+"args": [ 0.6 ],
 "method": "set_anim_speed"
 } ]
 }
@@ -307,10 +310,10 @@ tracks/8/loop_wrap = false
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.81, 0.85, 0.97, 1.08, 1.24 ),
-"transitions": PoolRealArray( 0.55, 0.55, 0.47, 1.1, 0.31864, 1 ),
+"times": PoolRealArray( 0, 1.62, 1.7, 1.93, 2.1, 2.4, 2.5 ),
+"transitions": PoolRealArray( 0.55, 0.55, 0.6, 1.1, 0.31864, 0.535887, 1 ),
 "update": 0,
-"values": [ Vector2( -60, 156 ), Vector2( -60, 156 ), Vector2( -59, 162 ), Vector2( -52, 110 ), Vector2( -49.9332, 130.668 ), Vector2( -48, 150 ) ]
+"values": [ Vector2( -60, 156 ), Vector2( -60, 156 ), Vector2( -59, 162 ), Vector2( -52, 110 ), Vector2( -47, 130.668 ), Vector2( -46, 148 ), Vector2( -45, 150 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("npcs/moneygirl:scale")
@@ -319,7 +322,7 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.81, 0.85, 1.05 ),
+"times": PoolRealArray( 0, 1.62, 1.7, 2.1 ),
 "transitions": PoolRealArray( 0.55, 0.55, 0.47, 1 ),
 "update": 0,
 "values": [ Vector2( -4, 4 ), Vector2( -4, 4 ), Vector2( -4.5, 3.5 ), Vector2( -4, 4 ) ]
@@ -343,10 +346,10 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.81 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.62, 1.9, 2.39 ),
+"transitions": PoolRealArray( 1, 0.7, 1.72, 1 ),
 "update": 0,
-"values": [ Vector2( -60, 156 ), Vector2( -60, 156 ) ]
+"values": [ Vector2( -60, 156 ), Vector2( -60, 156 ), Vector2( -49, 152 ), Vector2( -44, 176 ) ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("npcs/moneyGirlStaff:scale")
@@ -367,10 +370,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false ]
 }
 tracks/14/type = "method"
 tracks/14/path = NodePath("npcs/moneyGirlStaff")
@@ -379,10 +382,13 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0.82 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1.64 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "" ],
+"args": [ "default" ],
+"method": "play_anim"
+}, {
+"args": [ "staff_jump_switch" ],
 "method": "play_anim"
 } ]
 }
@@ -428,7 +434,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 1.0 ],
+"args": [ 0.66 ],
 "method": "set_anim_speed"
 } ]
 }
@@ -482,7 +488,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "idle2" ],
+"args": [ "on_broom_idle" ],
 "method": "play_anim"
 } ]
 }
@@ -512,6 +518,80 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 0.67, 0.67 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("npcs/moneyGirlStaff:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("npcs/moneygirl/rock:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.6, 0.68, 0.73 ),
+"transitions": PoolRealArray( 0.25, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 4 ), Vector2( 8, 2 ), Vector2( 9, 2 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("npcs/moneygirl/rock:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.48 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.65, 1, 1.1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("npcs/moneygirl/rock:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = false
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("npcs/moneygirl:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -45, 150 ) ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 1.0
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 14 )
@@ -544,7 +624,7 @@ tile_data = PoolIntArray( -2949127, 1, 0, -2949126, 1, 327681, -2949125, 1, 3276
 tile_data = PoolIntArray( -5963483, 17, 0, -5242860, 15, 0, 655351, 11, 0, 3866829, 5, 0, 4981087, 13, 0, 7208937, 17, 0, 8192353, 17, 0, 8716335, 5, 0, 9765231, 5, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -215.029, 188 )
+position = Vector2( -315, 188 )
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
 zoom = Vector2( 0.67, 0.67 )
@@ -552,12 +632,32 @@ zoom = Vector2( 0.67, 0.67 )
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="moneyGirlStaff" parent="npcs" instance=ExtResource( 17 )]
+visible = false
 position = Vector2( -60, 156 )
 scale = Vector2( -4, 4 )
 
 [node name="moneygirl" parent="npcs" instance=ExtResource( 13 )]
-position = Vector2( -59.2738, 160.357 )
-scale = Vector2( -4.36311, 3.63689 )
+position = Vector2( -45, 150 )
+scale = Vector2( -4, 4 )
+
+[node name="rock" type="Sprite" parent="npcs/moneygirl"]
+visible = false
+position = Vector2( 20, 4 )
+texture = ExtResource( 19 )
+
+[node name="fallingRock" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2( -81, 158 )
+rotation = -3.14159
+collision_layer = 0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallingRock"]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="fallingRock"]
+scale = Vector2( 4, -4 )
+texture = ExtResource( 19 )
 
 [node name="Mobs" type="Node2D" parent="."]
 
@@ -612,3 +712,6 @@ color = Color( 0, 0, 0, 0.701961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 18 )

@@ -646,7 +646,7 @@
    { "name": "poke", "from": 34, "to": 49, "direction": "forward" },
    { "name": "idle2", "from": 50, "to": 65, "direction": "forward" },
    { "name": "jump", "from": 66, "to": 74, "direction": "forward" },
-   { "name": "stafft jump switch", "from": 75, "to": 78, "direction": "forward" }
+   { "name": "staff_jump_switch", "from": 75, "to": 78, "direction": "forward" }
   ],
   "layers": [
    { "name": "player below", "opacity": 255, "blendMode": "normal" },
