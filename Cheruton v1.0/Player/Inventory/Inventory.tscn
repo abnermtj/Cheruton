@@ -188,10 +188,51 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 2
 valign = 2
 
-[node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
+[node name="Defense" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
 margin_top = 41.0
 margin_right = 325.0
-margin_bottom = 91.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+custom_constants/separation = 23
+
+[node name="Name" type="Label" parent="Border/Bg/Main/Sides/Data/Defense"]
+margin_right = 42.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 3 )
+text = "DEF"
+align = 2
+valign = 2
+
+[node name="Defense" parent="Border/Bg/Main/Sides/Data/Defense" instance=ExtResource( 14 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 65.0
+margin_right = 237.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Border/Bg/Main/Sides/Data/Defense"]
+margin_left = 260.0
+margin_right = 302.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 3 )
+text = "100"
+align = 2
+valign = 2
+
+[node name="ValueRating" type="Label" parent="Border/Bg/Main/Sides/Data/Defense"]
+margin_left = 325.0
+margin_right = 325.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+valign = 2
+
+[node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
+margin_top = 82.0
+margin_right = 325.0
+margin_bottom = 132.0
 
 [node name="Coins" type="TextureRect" parent="Border/Bg/Main/Sides/Data/Coins"]
 margin_right = 50.0
@@ -211,9 +252,9 @@ text = "4000"
 valign = 1
 
 [node name="EquippedCoins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_top = 112.0
+margin_top = 153.0
 margin_right = 325.0
-margin_bottom = 182.0
+margin_bottom = 223.0
 size_flags_horizontal = 3
 custom_constants/separation = 26
 
