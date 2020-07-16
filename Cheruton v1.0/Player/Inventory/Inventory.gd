@@ -162,7 +162,7 @@ func set_equipped():
 	var _conn2 = equipped_coins.get_node("Apparel/Background/ItemBg/ItemBtn").connect("pressed", inventory, "_on_pressed", [equipped_coins.get_node("Apparel")])
 
 func init_bars():
-	change_specific_bar(base_attack, "Weapons")
+	attack.init_bar("attack")
 
 
 func change_specific_bar(base_type, type_name):
@@ -384,9 +384,11 @@ func item_status(selected_node, status):
 			match active_tab.name:
 				"Weapons":
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-					attack.change_bar_value(base_attack + rating)
+					base_attack += rating
+					attack.change_bar_value(base_attack, false, true)
 
 		"DEQUIP":
+			
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
 				if(!selected_node.get_node("Background/ItemBg").texture):
 					return
@@ -394,21 +396,22 @@ func item_status(selected_node, status):
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				selected_node.get_node("Background/ItemBg").texture = null
-				var element_index = str(int(selected_node.name)%100)
-				match active_tab.name:
-					"Weapons":
-						var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-						attack.change_bar_value(base_attack - rating)
-
-
+				
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				type.get_node("Background/ItemBg").texture = null
 
+			var element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"])%100)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			mouse_node = null
-
+			
+			match active_tab.name:
+				"Weapons":
+					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+					print(0)
+					base_attack -= rating
+					attack.change_bar_value(base_attack, false, true)
 #Debug
 func _on_Button_pressed():
 	delete_item()
