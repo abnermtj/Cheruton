@@ -67,6 +67,7 @@ tracks/0/keys = {
 script = ExtResource( 4 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 volume_db = -60.0
 bus = "Music"
 
