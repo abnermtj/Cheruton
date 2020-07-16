@@ -264,10 +264,22 @@ func _on_pressed(node):
 	temp_mouse_node = node
 
 	if (mouse_count == 2):
+		if(item_state == "FIXED"):
+			check_fixed()
+
 		mouse_node = temp_mouse_node
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
+			
+				
 		mouse_count = 0
+
+# Check if the doubleclick has happened
+func _on_Timer_timeout():
+	if(mouse_count == 1):
+		revert_item_state()
+		mouse_count = 0
+
 
 func check_fixed():
 	if(item_state == "FIXED"):
@@ -292,11 +304,6 @@ func utilize_item(node):
 	elif(active_tab.name == "Consum"):
 		use_item()
 
-# Check if the doubleclick has happened
-func _on_Timer_timeout():
-	if(mouse_count == 1):
-		revert_item_state()
-		mouse_count = 0
 
 func revert_item_state():
 	# Initially Hover
@@ -307,11 +314,10 @@ func revert_item_state():
 		button.show()
 		
 	else:
-		check_fixed()
-#		item_state = "HOVER"
-#		button.hide()
-#		mouse_node.get_node("Background/ItemBg").texture = null
-#		mouse_node = null
+		item_state = "HOVER"
+		button.hide()
+		mouse_node.get_node("Background/ItemBg").texture = null
+		mouse_node = null
 
 func use_item():
 	var element_index = str(int(mouse_node.name)%100)
