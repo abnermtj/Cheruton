@@ -14,6 +14,7 @@ onready var tween = $Tween
 onready var controls = $Settings/Container/Main/Contents/Options/Controls
 onready var audio = $Settings/Container/Main/Contents/Options/Audio
 onready var game = $Settings/Container/Main/Contents/Options/Game
+onready var back = $Settings/Container/Main/Contents/Options/Back
 
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
@@ -128,6 +129,12 @@ func _on_Game_mouse_entered():
 	var new_offset = game.get_child(0).rect_size.y /4
 	slide_to_position(new_position, new_offset)
 
+
+func _on_Back_mouse_entered():
+	var new_position = Vector2(slider.rect_position.x, back.rect_position.y)
+	var new_offset = back.get_child(0).rect_size.y /4
+	slide_to_position(new_position, new_offset)
+
 # Slides the slider to the intended position, or shows it there if not visible
 func slide_to_position(new_position, new_offset):
 	# Offset of position
@@ -158,3 +165,5 @@ func change_active_tab(new_tab):
 	
 	active_tab = new_tab
 	active_tab.show()
+
+

@@ -35,6 +35,7 @@ onready var coins = $Border/Bg/Main/Sides/Data/Coins
 onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
 onready var button = $Border/Bg/Main/Sides/Data/Button
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
+onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
 
 onready var base_attack = DataResource.temp_dict_player.attack
 onready var base_defense = DataResource.temp_dict_player.defense
@@ -162,8 +163,8 @@ func set_equipped():
 	var _conn2 = equipped_coins.get_node("Apparel/Background/ItemBg/ItemBtn").connect("pressed", inventory, "_on_pressed", [equipped_coins.get_node("Apparel")])
 
 func init_bars():
-	change_specific_bar(base_attack, "Weapons")
-
+	attack.init_bar("attack")
+	defense.init_bar("defense")
 
 func change_specific_bar(base_type, type_name):
 	var item = DataResource.temp_dict_player[type_name + "_item"]
@@ -173,9 +174,16 @@ func change_specific_bar(base_type, type_name):
 		match type_name:
 			"Weapons":
 				rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-		attack.change_bar_value(base_type + rating)
+				attack.change_bar_value(base_type + rating)
+			"Apparel":
+				rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+				defense.change_bar_value(base_type + rating)
 	else:
-		attack.change_bar_value(base_type)
+		match type_name:
+			"Weapons":
+				attack.change_bar_value(base_type)
+			"Apparel":
+				defense.change_bar_value(base_type)
 
 func free_the_inventory():
 	DataResource.save_rest()
@@ -233,12 +241,14 @@ func _on_mouse_entered(node):
 	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = index_bg
 		#change atttack
+		var element_index = str(int(node.name)%100)
 		match active_tab.name:
 			"Weapons":
-				var element_index = str(int(node.name)%100)
 				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
 				attack.change_bar_value(base_attack + rating, true)
-
+			"Apparel":
+				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+				defense.change_bar_value(base_attack + rating, true)
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
@@ -247,6 +257,8 @@ func _on_mouse_exited(node):
 		match active_tab.name:
 			"Weapons":
 				change_specific_bar(base_attack, "Weapons")
+			"Apparel":
+				change_specific_bar(base_defense, "Apparel")
 
 # Changes based on whether if the item is equipped or not
 func change_mouse_bg(node):
@@ -264,10 +276,22 @@ func _on_pressed(node):
 	temp_mouse_node = node
 
 	if (mouse_count == 2):
+		if(item_state == "FIXED"):
+			check_fixed()
+
 		mouse_node = temp_mouse_node
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
+			
+				
 		mouse_count = 0
+
+# Check if the doubleclick has happened
+func _on_Timer_timeout():
+	if(mouse_count == 1):
+		revert_item_state()
+		mouse_count = 0
+
 
 func check_fixed():
 	if(item_state == "FIXED"):
@@ -292,11 +316,6 @@ func utilize_item(node):
 	elif(active_tab.name == "Consum"):
 		use_item()
 
-# Check if the doubleclick has happened
-func _on_Timer_timeout():
-	if(mouse_count == 1):
-		revert_item_state()
-		mouse_count = 0
 
 func revert_item_state():
 	# Initially Hover
@@ -307,11 +326,10 @@ func revert_item_state():
 		button.show()
 		
 	else:
-		check_fixed()
-#		item_state = "HOVER"
-#		button.hide()
-#		mouse_node.get_node("Background/ItemBg").texture = null
-#		mouse_node = null
+		item_state = "HOVER"
+		button.hide()
+		mouse_node.get_node("Background/ItemBg").texture = null
+		mouse_node = null
 
 func use_item():
 	var element_index = str(int(mouse_node.name)%100)
@@ -384,9 +402,15 @@ func item_status(selected_node, status):
 			match active_tab.name:
 				"Weapons":
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-					attack.change_bar_value(base_attack + rating)
+					base_attack += rating
+					attack.change_bar_value(base_attack, false, true)
+				"Apparel":
+					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+					base_defense += rating
+					defense.change_bar_value(base_defense, false, true)
 
 		"DEQUIP":
+			
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
 				if(!selected_node.get_node("Background/ItemBg").texture):
 					return
@@ -394,21 +418,25 @@ func item_status(selected_node, status):
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				selected_node.get_node("Background/ItemBg").texture = null
-				var element_index = str(int(selected_node.name)%100)
-				match active_tab.name:
-					"Weapons":
-						var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-						attack.change_bar_value(base_attack - rating)
-
-
+				
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				type.get_node("Background/ItemBg").texture = null
 
+			var element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"])%100)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			mouse_node = null
-
+			
+			match active_tab.name:
+				"Weapons":
+					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+					base_attack -= rating
+					attack.change_bar_value(base_attack, false, true)
+				"Apparel":
+					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+					base_defense -= rating
+					defense.change_bar_value(base_defense, false, true)
 #Debug
 func _on_Button_pressed():
 	delete_item()
