@@ -1,0 +1,171 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Hey, are you still alive?</dialog>"
+},
+2: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Wake up, wake up!</dialog>"
+},
+3: {
+"links": {
+0: 1
+},
+"text": "<start>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+2: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Woah woah woah, don't worry i'm not trying to kill you.</dialog>"
+},
+2: {
+"links": {
+0: 1
+},
+"text": "<start>"
+},
+3: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+3: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Mary</speaker>
+<dialog>*Annoyed* Hey i'm part of the mages circle you know...</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>little girls like you can't hurt me.</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Mary</speaker>
+<dialog>*notices* Where is your weapon?</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>MC</speaker>
+<dialog>...</dialog>
+<speed>.6</speed>"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Ridiculous, how have you made it this high up?</dialog>"
+},
+7: {
+"links": {
+0: 8
+},
+"text": "<speaker>Mary</speaker>
+<dialog>It's dangerous here, monsters are everywhere!</dialog>"
+},
+8: {
+"links": {
+0: 9
+},
+"text": "<speaker>Mary</speaker>
+<dialog>*Sigh*The magic stones are going to have to wait...</dialog>"
+},
+9: {
+"links": {
+0: 10
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Follow me, there's stuff I can give you at my place.</dialog>"
+},
+10: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+4: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Sorry, I only have one broom.</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>You're going to have to take the long way round.</dialog>"
+}
+}
+}
+}
+names = {
+"cutscene0_0": 1,
+"cutscene0_1": 2,
+"cutscene0_2": 3,
+"cutscene0_3": 4
+}

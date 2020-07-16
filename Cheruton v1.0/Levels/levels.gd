@@ -13,6 +13,8 @@ var enter_point : int
 var player_spawn_pos : Vector2
 var entrace_to_pos_dict = {}
 
+var cutscene_number = 0
+
 func _ready() -> void:
 	DataResource.current_scene = self
 	if(!DataResource.loaded):

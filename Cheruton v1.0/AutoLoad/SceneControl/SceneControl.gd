@@ -79,7 +79,6 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 
 	if(scene != MMENU):
 		levels.add_child(new_level)
-
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 

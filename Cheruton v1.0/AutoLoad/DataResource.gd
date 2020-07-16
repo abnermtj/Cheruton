@@ -103,6 +103,7 @@ func reset_player():
 	dict_player.Weapons_item = null
 	dict_player.Apparel_item = null
 	dict_player.stage = "stage1"
+	dict_player.completed_cutscenes = {"grasslands0_0" : false}
 	save_player()
 
 func reset_settings():

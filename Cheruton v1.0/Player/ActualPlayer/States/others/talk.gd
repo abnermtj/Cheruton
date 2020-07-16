@@ -9,7 +9,7 @@ func enter():
 	owner.move()
 
 func update_idle(delta):
-	if DataResource.temp_dict_player.dialog_complete == true:
+	if DataResource.temp_dict_player.dialog_complete:
 		emit_signal("finished", "idle")
 
 func exit():

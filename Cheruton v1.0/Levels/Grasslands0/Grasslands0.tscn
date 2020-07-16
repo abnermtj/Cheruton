@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Levels/Grasslands0.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=4]
@@ -23,7 +23,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "cutscene0"
 length = 7.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
 tracks/0/interp = 1
@@ -198,11 +197,24 @@ tracks/12/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/13/type = "method"
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 6.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "cutscene0_0" ],
+"method": "play_cutscene_dialog"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "cutscene1"
 length = 4.0
-loop = true
 step = 0.002
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
@@ -407,11 +419,24 @@ tracks/14/keys = {
 "method": "play_anim"
 } ]
 }
+tracks/15/type = "method"
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 3.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "cutscene0_1" ],
+"method": "play_cutscene_dialog"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "cutscene2"
 length = 4.0
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
@@ -634,11 +659,24 @@ tracks/16/keys = {
 "update": 0,
 "values": [ 15.0, 0.0, -1440.0 ]
 }
+tracks/17/type = "method"
+tracks/17/path = NodePath(".")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 3.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "cutscene0_2" ],
+"method": "play_cutscene_dialog"
+} ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "cutscene3"
 length = 4.0
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
@@ -775,10 +813,24 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Vector2( -45, 150 ), Vector2( 0, -750 ) ]
 }
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "cutscene0_3" ],
+"method": "play_cutscene_dialog"
+} ]
+}
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 14 )
-shader_param/cutoff = 0.287772
+shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.25
 shader_param/mask = ExtResource( 15 )
 
@@ -790,7 +842,7 @@ method_call_mode = 1
 anims/cutscene0 = SubResource( 1 )
 anims/cutscene1 = SubResource( 2 )
 anims/cutscene2 = SubResource( 3 )
-anims/cutscene3 = SubResource( 5 )
+anims/cutscene3 = SubResource( 4 )
 
 [node name="Shaders" type="Node2D" parent="."]
 
@@ -808,27 +860,26 @@ tile_data = PoolIntArray( -2949127, 1, 0, -2949126, 1, 327681, -2949125, 1, 3276
 tile_data = PoolIntArray( -5963483, 17, 0, -5242860, 15, 0, 655351, 11, 0, 3866829, 5, 0, 4981087, 13, 0, 7208937, 17, 0, 8192353, 17, 0, 8716335, 5, 0, 9765231, 5, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -188, 188 )
+position = Vector2( -315, 188 )
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
-zoom = Vector2( 0.996168, 0.996168 )
+zoom = Vector2( 0.67, 0.67 )
 
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="moneyGirlStaff" parent="npcs" instance=ExtResource( 17 )]
 visible = false
-position = Vector2( -56.293, 154.652 )
+position = Vector2( -44, 176 )
 scale = Vector2( -4, 4 )
 
 [node name="moneygirl" parent="npcs" instance=ExtResource( 13 )]
-position = Vector2( -60, 156 )
+position = Vector2( -45, 150 )
 scale = Vector2( -4, 4 )
 
 [node name="rock" type="Sprite" parent="npcs/moneygirl"]
 visible = false
-modulate = Color( 1.7, 1, 1.1, 1 )
 position = Vector2( 9, 2 )
-rotation = -15.3563
+rotation = -25.1327
 texture = ExtResource( 19 )
 
 [node name="Mobs" type="Node2D" parent="."]
@@ -877,7 +928,7 @@ position = Vector2( 6624, 2228 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 4 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.701961 )

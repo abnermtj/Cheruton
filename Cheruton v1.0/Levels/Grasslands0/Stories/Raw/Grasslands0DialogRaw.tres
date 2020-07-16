@@ -1,0 +1,273 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_EditorStory/EXP_EditorStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Story_editor"
+names = {
+"cutscene0_0": 1,
+"cutscene0_1": 2,
+"cutscene0_2": 3,
+"cutscene0_3": 4
+}
+story = {
+1: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "",
+"name": "cutscene0_0",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 140 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 727, 275 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Hey, are you still alive?</dialog>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1160, 80 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Wake up, wake up!</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 1
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1460, -280 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+2: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "",
+"name": "cutscene0_1",
+"nodes": {
+1: {
+"graph_offset": Vector2( 440, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 608, 170 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Woah woah woah, don't worry i'm not trying to kill you.</dialog>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( -360, -40 ),
+"links": {
+0: 1
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 300, -460 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+3: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene0_2",
+"nodes": {
+1: {
+"graph_offset": Vector2( -260, -240 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 400, -260 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>*Annoyed* Hey i'm part of the mages circle you know...</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1100, -260 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>little girls like you can't hurt me.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1720, -280 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>*notices* Where is your weapon?</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 2320, -280 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>MC</speaker>
+<dialog>...</dialog>
+<speed>.6</speed>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 2960, -300 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Ridiculous, how have you made it this high up?</dialog>",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 3760, -360 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>It's dangerous here, monsters are everywhere!</dialog>",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( 4160, -20 ),
+"links": {
+0: 9
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>*Sigh*The magic stones are going to have to wait...</dialog>",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( 4220, 380 ),
+"links": {
+0: 10
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Follow me, there's stuff I can give you at my place.</dialog>",
+"type": "line"
+},
+10: {
+"graph_offset": Vector2( 4280, 800 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
+4: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene0_3",
+"nodes": {
+1: {
+"graph_offset": Vector2( -660, 100 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1040, 120 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( -220, 400 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Sorry, I only have one broom.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 340, 260 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>You're going to have to take the long way round.</dialog>",
+"type": "line"
+}
+}
+}
+}
+available_dids = [  ]
+groups = [  ]

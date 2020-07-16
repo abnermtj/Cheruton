@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Display/Dialouge/dialog.gd" type="Script" id=1]
+[ext_resource path="res://Display/Dialouge/Sounds/Female.wav" type="AudioStream" id=2]
 [ext_resource path="res://Display/Dialouge/Sprites/Dialogbase.png" type="Texture" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
@@ -38,9 +39,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -510.0
-margin_top = -307.0
+margin_top = -260.235
 margin_right = 556.0
-margin_bottom = -40.0
+margin_bottom = 6.76514
 texture = ExtResource( 4 )
 patch_margin_left = 40
 patch_margin_top = 40
@@ -81,4 +82,11 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="dialogBox/bodyBackground"]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 [connection signal="tween_completed" from="dialogBox/bodyBackground/Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

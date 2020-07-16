@@ -108,6 +108,10 @@ func _physics_process(delta):
 	if nearest_interactible: interaction_type = nearest_interactible.interaction_type
 	else: interaction_type = ""
 
+#	print(on_floor)
+	if on_floor and attack_cooldown_finished:
+		can_attack = true
+
 # General Helper functions
 func get_nearest_object(obj_type : String):
 	var near_objects
@@ -148,7 +152,7 @@ func interact_with_nearest_object():
 
 # makes character face right direction
 func set_look_direction(direction : Vector2):
-	look_direction = direction
+	if direction != Vector2() :look_direction = direction
 
 	if direction.x in [-1, 1]:
 		body_rotate.scale = Vector2(direction.x,1) # flips horizontally
@@ -159,9 +163,6 @@ func _on_states_state_changed(states_stack):
 
 func set_on_floor(grounded):
 	on_floor = grounded
-	if grounded and attack_cooldown_finished:
-		can_attack = true
-
 	set_camera_mode_logic()
 
 func set_fsm(val):
