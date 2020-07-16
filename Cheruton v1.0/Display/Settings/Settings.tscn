@@ -745,6 +745,7 @@ text = "                    "
 [connection signal="pressed" from="Settings/Container/Main/Contents/Options/Audio" to="." method="_on_Audio_pressed"]
 [connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_mouse_entered"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/Options/Game" to="." method="_on_Game_pressed"]
+[connection signal="mouse_entered" from="Settings/Container/Main/Contents/Options/Back" to="." method="_on_Back_mouse_entered"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/Options/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundControlDown/MainVolDown" to="." method="_on_MainVolDown_pressed"]
 [connection signal="pressed" from="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundControlDown/MusicVolDown" to="." method="_on_MusicVolDown_pressed"]

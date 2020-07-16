@@ -30,6 +30,7 @@ func _ready():
 	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
 	SceneControl.get_node("popUpGui").enabled = false
 	tween_white_screen()
+	slider_enabled = true
 	options.modulate.a = 0
 
 # Gives a fadein effect
@@ -53,7 +54,7 @@ func _on_OptionsDelay_timeout():
 func enable_options():
 	for i in container.get_child_count():
 		container.get_child(i).disabled = false
-	slider_enabled = true
+	
 
 func _on_Play_pressed():
 	player.play("button_pressed")
