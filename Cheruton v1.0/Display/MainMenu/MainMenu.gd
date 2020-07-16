@@ -43,7 +43,6 @@ func _on_Tween_tween_completed(object, key):
 		options_delay.start()
 	elif(object == options):
 		enable_options()
-		
 
 
 func _on_OptionsDelay_timeout():
@@ -57,35 +56,49 @@ func enable_options():
 	slider_enabled = true
 
 func _on_Play_pressed():
-	slider_enabled = false
-	SceneControl.emit_signal("init_statbar")
-	SceneControl.load_screen(SCN1)
-	queue_free()
+	player.play("button_pressed")
 
 func _on_Settings_pressed():
-	hide_options()
-	player.play("to_settings")
-	
+	player.play("button_pressed")
 
-func hide_options():
-	options.hide()
-	slider_active = false
-	slider.hide()
+func _on_Quit_pressed():
+	player.play("button_pressed")
 
 
 func _on_Player_animation_finished(anim_name):
-	print(anim_name)
 	if(anim_name == "to_settings"):
 		SceneControl.settings_layer.show()
 	elif(anim_name == "to_mmenu"):
-		options.show()
+		container.show()
+	elif(anim_name == "button_pressed"):
+		perform_button_action()
+		
+
+func perform_button_action():
+	var btn_pos = slider.rect_position - container.rect_position
+	
+	match btn_pos:
+		play_position:
+			slider_enabled = false
+			SceneControl.emit_signal("init_statbar")
+			SceneControl.load_screen(SCN1)
+			queue_free()
+		settings_position:
+			hide_options()
+			player.play("to_settings")
+		quit_position:
+			get_tree().quit()
+
+
+func hide_options():
+	slider_active = false
+	slider.hide()
+	container.hide()
 
 func back_to_mmenu():
 	player.play("to_mmenu")
 	
-
-func _on_Quit_pressed():
-	get_tree().quit()
+	
 
 func _on_Play_mouse_entered():
 	var new_position = Vector2(slider.rect_position.x, play_position.y)

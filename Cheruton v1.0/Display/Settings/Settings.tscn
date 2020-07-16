@@ -10,30 +10,32 @@
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=12]
 
 [sub_resource type="DynamicFont" id=1]
-size = 42
+size = 70
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_char = 1
 font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
+size = 50
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 30
+size = 50
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 20
+size = 40
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 30
+size = 50
 font_data = ExtResource( 12 )
 
 [node name="Settings" type="Control"]
 pause_mode = 2
+rect_min_size = Vector2( 480, 270 )
+rect_scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,34 +48,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 270.0
-margin_top = 324.0
-margin_right = 1710.0
-margin_bottom = 964.0
-rect_pivot_offset = Vector2( 720, 320 )
+margin_left = -115.0
+margin_top = -18.0
+margin_right = 133.0
+margin_bottom = 115.0
 texture = ExtResource( 2 )
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slider" type="TextureRect" parent="Settings"]
+[node name="Slider" type="NinePatchRect" parent="Settings"]
 visible = false
-margin_left = 122.0
-margin_top = 204.0
-margin_right = 431.0
-margin_bottom = 242.0
+margin_left = 27.75
+margin_top = 31.0
+margin_right = 76.75
+margin_bottom = 39.0
 texture = ExtResource( 4 )
-expand = true
-stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="HBoxContainer" parent="Settings"]
-margin_left = 46.0
-margin_top = 61.0
-margin_right = 1387.5
-margin_bottom = 592.0
+[node name="Container" type="TextureRect" parent="Settings"]
+margin_left = 19.0
+margin_top = 9.0
+margin_right = 1680.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.125, 0.125 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,20 +91,23 @@ text = "                    "
 
 [node name="Main" type="VBoxContainer" parent="Settings/Container"]
 margin_left = 84.0
-margin_right = 1257.0
-margin_bottom = 531.0
+margin_right = 1577.0
+margin_bottom = 935.0
 size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TMargin" type="Label" parent="Settings/Container/Main"]
-margin_right = 1173.0
+margin_right = 1493.0
 margin_bottom = 31.0
 text = "
 "
 
 [node name="Settings" type="Label" parent="Settings/Container/Main"]
 margin_top = 35.0
-margin_right = 303.0
-margin_bottom = 83.0
+margin_right = 495.0
+margin_bottom = 115.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 1 )
@@ -108,17 +115,17 @@ text = "Settings"
 valign = 2
 
 [node name="DividerMain" type="TextureRect" parent="Settings/Container/Main"]
-margin_top = 87.0
-margin_right = 1173.0
-margin_bottom = 97.0
+margin_top = 119.0
+margin_right = 1493.0
+margin_bottom = 129.0
 rect_min_size = Vector2( 0, 10 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="Contents" type="HBoxContainer" parent="Settings/Container/Main"]
-margin_top = 101.0
-margin_right = 1173.0
-margin_bottom = 496.0
+margin_top = 133.0
+margin_right = 1493.0
+margin_bottom = 900.0
 size_flags_vertical = 3
 
 [node name="OLMargin" type="Label" parent="Settings/Container/Main/Contents"]
@@ -127,22 +134,23 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 169.0
-margin_bottom = 395.0
+margin_right = 377.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.36
-custom_constants/separation = 35
+custom_constants/separation = 0
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 165.0
+margin_right = 373.0
 margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 49.0
-margin_right = 165.0
-margin_bottom = 72.0
+margin_top = 14.0
+margin_right = 373.0
+margin_bottom = 135.0
 rect_min_size = Vector2( 0, 23 )
+size_flags_vertical = 3
 expand = true
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Controls"]
@@ -150,23 +158,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -78.0
-margin_top = -15.0
-margin_right = 78.0
-margin_bottom = 15.0
+margin_left = -130.0
+margin_top = -25.0
+margin_right = 130.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
 text = "Controls"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 107.0
-margin_right = 165.0
-margin_bottom = 130.0
+margin_top = 135.0
+margin_right = 373.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 0, 23 )
+size_flags_vertical = 3
 expand = true
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Audio"]
@@ -175,9 +184,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -78.0
-margin_top = -15.0
+margin_top = -25.0
 margin_right = 78.0
-margin_bottom = 15.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
 text = "Audio"
 align = 1
@@ -187,10 +196,11 @@ __meta__ = {
 }
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 165.0
-margin_right = 165.0
-margin_bottom = 188.0
+margin_top = 256.0
+margin_right = 373.0
+margin_bottom = 377.0
 rect_min_size = Vector2( 0, 23 )
+size_flags_vertical = 3
 expand = true
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/Options/Game"]
@@ -199,9 +209,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -78.0
-margin_top = -15.0
-margin_right = 78.0
-margin_bottom = 15.0
+margin_top = -24.5
+margin_right = 67.0
+margin_bottom = 25.5
 custom_fonts/font = SubResource( 2 )
 text = "Game"
 align = 1
@@ -211,10 +221,19 @@ __meta__ = {
 }
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 223.0
-margin_right = 165.0
-margin_bottom = 339.0
+margin_top = 377.0
+margin_right = 373.0
+margin_bottom = 646.0
 text = "
+
+
+
+
+
+
+
+
+
 
 
 
@@ -223,9 +242,9 @@ text = "
 "
 
 [node name="Back" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 374.0
-margin_right = 165.0
-margin_bottom = 395.0
+margin_top = 646.0
+margin_right = 373.0
+margin_bottom = 767.0
 size_flags_vertical = 3
 expand = true
 
@@ -234,10 +253,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -42.0
-margin_top = -15.0
-margin_right = 42.0
-margin_bottom = 15.0
+margin_left = -70.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 align = 1
@@ -247,66 +266,66 @@ __meta__ = {
 }
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 173.0
-margin_right = 173.0
+margin_left = 381.0
+margin_right = 381.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 177.0
-margin_right = 187.0
-margin_bottom = 395.0
+margin_left = 385.0
+margin_right = 395.0
+margin_bottom = 767.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 
 [node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 191.0
-margin_right = 211.0
+margin_left = 399.0
+margin_right = 419.0
 margin_bottom = 14.0
 size_flags_vertical = 2
 text = "     "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
-margin_left = 170.0
-margin_right = 653.0
-margin_bottom = 403.0
+margin_left = 267.0
+margin_right = 871.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls"]
-margin_right = 483.0
+margin_right = 604.0
 margin_bottom = 14.0
 
 [node name="Column" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls"]
 margin_top = 18.0
-margin_right = 483.0
-margin_bottom = 403.0
+margin_right = 604.0
+margin_bottom = 767.0
 size_flags_vertical = 3
 
 [node name="Col1" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column"]
-margin_right = 483.0
-margin_bottom = 385.0
+margin_right = 604.0
+margin_bottom = 749.0
 size_flags_horizontal = 3
 custom_constants/separation = 40
 
 [node name="move_left" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_right = 483.0
-margin_bottom = 30.0
+margin_right = 604.0
+margin_bottom = 50.0
 custom_constants/separation = 40
 
 [node name="LMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_left"]
-margin_top = 8.0
-margin_right = 121.0
-margin_bottom = 22.0
+margin_top = 18.0
+margin_right = 149.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_left"]
-margin_left = 161.0
-margin_right = 245.0
-margin_bottom = 30.0
+margin_left = 189.0
+margin_right = 329.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "Left"
 __meta__ = {
@@ -314,9 +333,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_left"]
-margin_left = 285.0
-margin_right = 321.0
-margin_bottom = 30.0
+margin_left = 369.0
+margin_right = 413.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 __meta__ = {
@@ -340,28 +359,28 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_left"]
-margin_left = 361.0
-margin_top = 8.0
-margin_right = 483.0
-margin_bottom = 22.0
+margin_left = 453.0
+margin_top = 18.0
+margin_right = 604.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="move_right" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_top = 70.0
-margin_right = 483.0
-margin_bottom = 100.0
+margin_top = 90.0
+margin_right = 604.0
+margin_bottom = 140.0
 custom_constants/separation = 40
 
 [node name="LMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_right"]
-margin_top = 8.0
-margin_right = 117.0
-margin_bottom = 22.0
+margin_top = 18.0
+margin_right = 143.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_right"]
-margin_left = 157.0
-margin_right = 250.0
-margin_bottom = 30.0
+margin_left = 183.0
+margin_right = 338.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "Right"
 __meta__ = {
@@ -369,9 +388,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_right"]
-margin_left = 290.0
-margin_right = 325.0
-margin_bottom = 30.0
+margin_left = 378.0
+margin_right = 420.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 __meta__ = {
@@ -395,28 +414,28 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_right"]
-margin_left = 365.0
-margin_top = 8.0
-margin_right = 483.0
-margin_bottom = 22.0
+margin_left = 460.0
+margin_top = 18.0
+margin_right = 604.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="move_up" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_top = 140.0
-margin_right = 483.0
-margin_bottom = 170.0
+margin_top = 180.0
+margin_right = 604.0
+margin_bottom = 230.0
 custom_constants/separation = 40
 
 [node name="LMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_up"]
-margin_top = 8.0
-margin_right = 139.0
-margin_bottom = 22.0
+margin_top = 18.0
+margin_right = 180.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_up"]
-margin_left = 179.0
-margin_right = 221.0
-margin_bottom = 30.0
+margin_left = 220.0
+margin_right = 290.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "Up"
 __meta__ = {
@@ -424,9 +443,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_up"]
-margin_left = 261.0
-margin_right = 302.0
-margin_bottom = 30.0
+margin_left = 330.0
+margin_right = 384.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 __meta__ = {
@@ -450,28 +469,28 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_up"]
-margin_left = 342.0
-margin_top = 8.0
-margin_right = 483.0
-margin_bottom = 22.0
+margin_left = 424.0
+margin_top = 18.0
+margin_right = 604.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="move_down" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_top = 210.0
-margin_right = 483.0
-margin_bottom = 240.0
+margin_top = 270.0
+margin_right = 604.0
+margin_bottom = 320.0
 custom_constants/separation = 40
 
 [node name="LMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_down"]
-margin_top = 8.0
-margin_right = 120.0
-margin_bottom = 22.0
+margin_top = 18.0
+margin_right = 147.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_down"]
-margin_left = 160.0
-margin_right = 247.0
-margin_bottom = 30.0
+margin_left = 187.0
+margin_right = 332.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "Down"
 __meta__ = {
@@ -479,9 +498,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_down"]
-margin_left = 287.0
-margin_right = 323.0
-margin_bottom = 30.0
+margin_left = 372.0
+margin_right = 416.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 __meta__ = {
@@ -505,33 +524,38 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/move_down"]
-margin_left = 363.0
-margin_top = 8.0
-margin_right = 483.0
-margin_bottom = 22.0
+margin_left = 456.0
+margin_top = 18.0
+margin_right = 604.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 215.0
-margin_right = 675.0
-margin_bottom = 395.0
+visible = false
+margin_left = 423.0
+margin_right = 1460.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_right = 460.0
-margin_bottom = 14.0
+margin_right = 1037.0
+margin_bottom = 65.0
+text = "
+
+
+"
 
 [node name="Rect" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_top = 18.0
-margin_right = 460.0
-margin_bottom = 377.0
+margin_top = 69.0
+margin_right = 1037.0
+margin_bottom = 749.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Contents" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Rect"]
-margin_top = 4.0
-margin_right = 854.0
-margin_bottom = 144.0
+anchor_right = 1.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 custom_constants/separation = 46
 __meta__ = {
@@ -539,15 +563,15 @@ __meta__ = {
 }
 
 [node name="SoundType" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents"]
-margin_right = 135.0
-margin_bottom = 180.0
+margin_right = 319.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.1
 custom_constants/separation = 45
 
 [node name="Master" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundType"]
-margin_right = 135.0
-margin_bottom = 30.0
+margin_right = 319.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 5 )
 text = "Master"
 align = 1
@@ -555,9 +579,9 @@ valign = 1
 autowrap = true
 
 [node name="Music" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundType"]
-margin_top = 75.0
-margin_right = 135.0
-margin_bottom = 105.0
+margin_top = 95.0
+margin_right = 319.0
+margin_bottom = 145.0
 custom_fonts/font = SubResource( 5 )
 text = "Music"
 align = 1
@@ -565,9 +589,9 @@ valign = 1
 autowrap = true
 
 [node name="SFX" type="Label" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundType"]
-margin_top = 150.0
-margin_right = 135.0
-margin_bottom = 180.0
+margin_top = 190.0
+margin_right = 319.0
+margin_bottom = 240.0
 custom_fonts/font = SubResource( 5 )
 text = "SFX"
 align = 1
@@ -575,43 +599,42 @@ valign = 1
 autowrap = true
 
 [node name="SoundBar" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents"]
-margin_left = 181.0
-margin_right = 724.0
-margin_bottom = 180.0
-size_flags_horizontal = 3
+margin_left = 365.0
+margin_right = 908.0
+margin_bottom = 240.0
 size_flags_vertical = 3
-custom_constants/separation = 57
+custom_constants/separation = 75
 alignment = 1
 
 [node name="MainVolBar" type="TextureProgress" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar"]
-margin_top = 9.0
+margin_top = 21.0
 margin_right = 543.0
-margin_bottom = 25.0
+margin_bottom = 37.0
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 tint_under = Color( 0, 0, 0, 1 )
 
 [node name="MusicVolBar" type="TextureProgress" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar"]
-margin_top = 82.0
+margin_top = 112.0
 margin_right = 543.0
-margin_bottom = 98.0
+margin_bottom = 128.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 tint_under = Color( 0, 0, 0, 1 )
 
 [node name="SFXVolBar" type="TextureProgress" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar"]
-margin_top = 155.0
+margin_top = 203.0
 margin_right = 543.0
-margin_bottom = 171.0
+margin_bottom = 219.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 tint_under = Color( 0, 0, 0, 1 )
 
 [node name="SoundControlDown" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents"]
-margin_left = 770.0
-margin_right = 787.0
-margin_bottom = 180.0
+margin_left = 954.0
+margin_right = 971.0
+margin_bottom = 240.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 57
 
@@ -642,9 +665,9 @@ __meta__ = {
 }
 
 [node name="SoundControlUp" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseAudio/Rect/Contents"]
-margin_left = 833.0
-margin_right = 853.0
-margin_bottom = 180.0
+margin_left = 1017.0
+margin_right = 1037.0
+margin_bottom = 240.0
 size_flags_stretch_ratio = 0.05
 custom_constants/separation = 57
 
@@ -675,9 +698,9 @@ __meta__ = {
 }
 
 [node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_top = 381.0
-margin_right = 460.0
-margin_bottom = 395.0
+margin_top = 753.0
+margin_right = 1037.0
+margin_bottom = 767.0
 size_flags_vertical = 1
 
 [node name="BaseGame" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
@@ -689,29 +712,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 679.0
-margin_right = 1139.0
-margin_bottom = 395.0
+margin_left = 423.0
+margin_right = 1460.0
+margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SRMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 1143.0
-margin_right = 1171.0
+margin_left = 1464.0
+margin_right = 1492.0
 margin_bottom = 14.0
 size_flags_vertical = 2
 text = "       "
 
 [node name="BMargin" type="Label" parent="Settings/Container/Main"]
-margin_top = 500.0
-margin_right = 1173.0
-margin_bottom = 531.0
+margin_top = 904.0
+margin_right = 1493.0
+margin_bottom = 935.0
 text = "
 "
 
 [node name="RMargin" type="Label" parent="Settings/Container"]
-margin_left = 1261.0
-margin_right = 1341.0
+margin_left = 1581.0
+margin_right = 1661.0
 margin_bottom = 14.0
 size_flags_horizontal = 5
 size_flags_vertical = 0

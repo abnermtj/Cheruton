@@ -54,7 +54,7 @@ func release_gui(gui_name):
 
 func on_gui_changed():
 	if active:
-		if state_name_stack.has("pause"):
+		if state_name_stack.has("pause") || state_name_stack.has("inventory"):
 			get_tree().paused = true
 		else:
 			get_tree().paused = false
