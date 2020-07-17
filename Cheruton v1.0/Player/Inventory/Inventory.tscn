@@ -322,15 +322,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.0
-margin_top = -6.5
-margin_right = 7.0
-margin_bottom = 6.5
+margin_left = -26.0
+margin_top = -9.5
+margin_right = -3.8147e-06
+margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 6.5, 6.5 )
 texture_normal = ExtResource( 9 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -351,15 +352,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
-margin_top = -6.5
-margin_right = 6.5
-margin_bottom = 6.5
+margin_left = -26.0
+margin_top = -9.5
+margin_right = -3.8147e-06
+margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 6.5, 6.5 )
 texture_normal = ExtResource( 10 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -380,15 +382,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
-margin_top = -6.5
-margin_right = 6.5
-margin_bottom = 6.5
+margin_left = -26.0
+margin_top = -9.5
+margin_right = -3.8147e-06
+margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 6.5, 6.5 )
 texture_normal = ExtResource( 11 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -409,15 +412,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
-margin_top = -6.5
-margin_right = 6.5
-margin_bottom = 6.5
+margin_left = -26.0
+margin_top = -9.5
+margin_right = -3.8147e-06
+margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 6.5, 6.5 )
 texture_normal = ExtResource( 3 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -438,15 +442,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
-margin_top = -6.5
-margin_right = 6.5
-margin_bottom = 6.5
+margin_left = -26.0
+margin_top = -9.5
+margin_right = -3.8147e-06
+margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 6.5, 6.5 )
 texture_normal = ExtResource( 12 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
