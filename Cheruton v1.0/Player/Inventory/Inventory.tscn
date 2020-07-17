@@ -322,9 +322,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -26.0
+margin_left = -25.6503
 margin_top = -9.5
-margin_right = -3.8147e-06
+margin_right = 0.349667
 margin_bottom = 5.5
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
@@ -478,18 +478,18 @@ __meta__ = {
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Main/Sides/Contents"]
 margin_top = 60.0
 margin_right = 510.0
-margin_bottom = 303.0
+margin_bottom = 299.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
-margin_top = 114.0
-margin_bottom = 128.0
+margin_top = 112.0
+margin_bottom = 126.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Sides/Contents/Items"]
 margin_left = 4.0
 margin_right = 506.0
-margin_bottom = 243.0
+margin_bottom = 239.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Contents/Items/Weapons"]
@@ -537,16 +537,18 @@ custom_constants/separation = 10
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
 margin_left = 510.0
-margin_top = 114.0
+margin_top = 112.0
 margin_right = 510.0
-margin_bottom = 128.0
+margin_bottom = 126.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 303.0
+margin_top = 299.0
 margin_right = 510.0
 margin_bottom = 304.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 2 )
+text = "
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
