@@ -57,7 +57,7 @@ func _on_Exit_pressed():
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
 	var _conn1 = connect("tab_changed", inventory, "change_tab_state")
-	tabs.get_node("Weapons/Weapons").connect("pressed",inventory,  "tab_pressed", ["Weapons"])
+	tabs.get_node("Weapons").connect("pressed",inventory,  "tab_pressed", ["Weapons"])
 	tabs.get_node("Apparel/Apparel").connect("pressed", inventory,  "tab_pressed", ["Apparel"])
 	tabs.get_node("Consum/Consum").connect("pressed", inventory,  "tab_pressed", ["Consum"])
 	tabs.get_node("Misc/Misc").connect("pressed", inventory,  "tab_pressed", ["Misc"])
