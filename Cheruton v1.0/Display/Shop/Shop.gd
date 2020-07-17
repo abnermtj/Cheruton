@@ -5,6 +5,7 @@ const APPAREL = 200
 const CONSUM = 300
 const MISC = 400
 const BOXES = 50
+const EMPTY = "0"
 
 var active_tab
 var item_state = "HOVER"
@@ -33,6 +34,7 @@ onready var tabs = $Border/Bg/Main/Sides/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Sides/Rest/Contents/ItemsSell
 onready var items_buy = $Border/Bg/Main/Sides/Rest/Contents/ItemsBuy
 onready var coins = $Border/Bg/Main/Sides/Data/Coins
+onready var price_value = $Border/Bg/Main/Sides/Data/Price/Value
 
 func _ready():
 	connect_tabs()
@@ -41,6 +43,7 @@ func _ready():
 	emit_signal("tab_changed", "Weapons")
 	tabs.hide()
 	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
+	price_value.text = EMPTY
 
 func _on_Exit_pressed():
 	free_the_shop()
@@ -85,6 +88,7 @@ func change_active_tab(new_tab):
 	if(active_tab):
 		active_tab.texture = default_tab_image
 		contents.get_node("ItemsSell/" + active_tab.name).hide()
+		price_value.text = EMPTY
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
@@ -119,8 +123,10 @@ func generate_list(scroll_tab, list_tab, tab_index, item_dec):
 			var new_row = HBoxContainer.new()
 			row_index += 1
 			scroll_tab.add_child(new_row)
-			scroll_tab.get_child(scroll_tab.get_child_count() - 1).name = "Row" + str(row_index)
-
+			var integrated_row = scroll_tab.get_child(scroll_tab.get_child_count() - 1)
+			integrated_row.name = "Row" + str(row_index)
+			integrated_row.add_constant_override("separation", 10)
+			
 		var row = scroll_tab.get_node("Row" + str(row_index))
 
 		# Creates a new box in the particular row
@@ -192,12 +198,16 @@ func disable_mouse(new_node):
 func _on_mouse_entered(node):
 	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = index_bg
-
-
+		var index = int(node.name) % 100
+		if(shop_setting == "Buy"):
+			price_value.text = str(DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue)
+		else:
+			price_value.text = str(DataResource.dict_inventory[active_tab.name]["Item" + str(index)].item_value/2)
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = null
+		price_value.text = EMPTY
 
 
 # When the icon of a item is pressed
@@ -221,6 +231,7 @@ func _on_pressed(node):
 					revert_item_state()
 				if(coins_val <= DataResource.temp_dict_player["coins"]):
 					buy_item()
+		price_value.text = EMPTY
 		check_fixed()	# Revert back to hover status
 		mouse_count = 0
 
@@ -237,7 +248,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		btn_node.text = shop_setting
+		btn_node.get_child(0).text = shop_setting
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):
@@ -246,6 +257,7 @@ func revert_item_state():
 
 	else:
 		item_state = "HOVER"
+		price_value.text = EMPTY
 		btn_node.hide()
 		mouse_node = null
 
