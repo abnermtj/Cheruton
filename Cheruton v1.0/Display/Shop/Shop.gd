@@ -203,7 +203,6 @@ func _on_mouse_entered(node):
 			price_value.text = str(DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue)
 		else:
 			price_value.text = str(DataResource.dict_inventory[active_tab.name]["Item" + str(index)].item_value/2)
-
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(mouse_node != node):
@@ -249,7 +248,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		btn_node.text = shop_setting
+		btn_node.get_child(0).text = shop_setting
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):

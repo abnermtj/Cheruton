@@ -180,13 +180,30 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "4000"
 
-[node name="Button" type="Button" parent="Border/Bg/Main/Sides/Data"]
+[node name="Button" type="TextureButton" parent="Border/Bg/Main/Sides/Data"]
 visible = false
-margin_top = 98.0
-margin_right = 355.0
-margin_bottom = 118.0
+margin_top = 132.0
+margin_right = 321.0
+margin_bottom = 297.0
 size_flags_horizontal = 3
-text = "Sell"
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="Border/Bg/Main/Sides/Data/Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -29.3604
+margin_top = -8.63962
+margin_right = 26.6396
+margin_bottom = 11.3604
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DBMargin" type="Label" parent="Border/Bg/Main/Sides/Data"]
 margin_top = 132.0
@@ -232,9 +249,9 @@ expand = true
 [node name="Weapons" type="TextureButton" parent="Border/Bg/Main/Sides/Rest/Contents/Tabs/Weapons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 15.4012
+margin_left = 15.0
 margin_top = 16.0
-margin_right = -42.5988
+margin_right = -42.0
 margin_bottom = -20.0
 rect_min_size = Vector2( 13, 13 )
 rect_scale = Vector2( 3, 3 )
