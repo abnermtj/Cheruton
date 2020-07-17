@@ -9,7 +9,8 @@ names = {
 "cutscene0_0": 1,
 "cutscene0_1": 2,
 "cutscene0_2": 3,
-"cutscene0_3": 4
+"cutscene0_3": 4,
+"cutscene1_0": 5
 }
 story = {
 1: {
@@ -102,7 +103,7 @@ story = {
 }
 },
 3: {
-"available_nid": [  ],
+"available_nid": [ 3 ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
 "name": "cutscene0_2",
@@ -120,23 +121,12 @@ story = {
 2: {
 "graph_offset": Vector2( 400, -260 ),
 "links": {
-0: 3
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "<speaker>Mary</speaker>
-<dialog>*Annoyed* Hey i'm part of the mages circle you know...</dialog>",
-"type": "line"
-},
-3: {
-"graph_offset": Vector2( 1100, -260 ),
-"links": {
 0: 4
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>little girls like you can't hurt me.</dialog>",
+<dialog>*Annoyed* Hey! I'm trying to help you.</dialog>",
 "type": "line"
 },
 4: {
@@ -147,7 +137,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>*notices* Where is your weapon?</dialog>",
+<dialog>*Notices* Where's your weapon?</dialog>",
 "type": "line"
 },
 5: {
@@ -170,7 +160,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>Ridiculous, how have you made it this high up?</dialog>",
+<dialog>Ridiculous! How have you made it this high up?</dialog>",
 "type": "line"
 },
 7: {
@@ -192,7 +182,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>*Sigh*The magic stones are going to have to wait...</dialog>",
+<dialog>*Sigh*  The magic stones are going to have to wait...</dialog>",
 "type": "line"
 },
 9: {
@@ -264,6 +254,67 @@ story = {
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
 <dialog>You're going to have to take the long way round.</dialog>",
+"type": "line"
+}
+}
+},
+5: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene1_0",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 640, -180 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Not bad at all.</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 1120, 160 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Pretty quick for a young girl.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 740, 500 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>My hut is still a bit farther, this way!</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 1080, 940 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
 "type": "line"
 }
 }

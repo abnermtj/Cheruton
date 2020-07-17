@@ -20,3 +20,11 @@ func queue_anim(name):
 func set_anim_speed(speed):
 	anim_player.playback_speed = speed
 
+func set_outline_enabled(val):
+	sprite.visible = val
+
+func interact(body):
+	.interact(body)
+	SceneControl.cur_level.next_cutscene()
+	DataResource.temp_dict_player.dialog_complete = false
+	SceneControl.cur_level.wait_dialog_complete = true

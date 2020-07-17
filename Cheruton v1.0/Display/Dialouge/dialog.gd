@@ -5,6 +5,7 @@ var TIME_PER_CHAR_WRITE = .024 # seconds
 onready var dialogue_base = $dialogBox/bodyBackground
 onready var dialogue_text = $dialogBox/bodyBackground/MarginContainer/bodyText
 onready var tween = $dialogBox/bodyBackground/Tween
+onready var audio = $AudioStreamPlayer
 
 var dialog : String
 var dialog_left : String
@@ -20,7 +21,7 @@ func _ready():
 	var story_reader_class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	story_reader = story_reader_class.new()
 
-	load_story("res://Levels/Hometown/Stories/Baked/HometownDialog.tres")
+	load_story("res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres") # for debuging
 
 	dialogue_base.rect_scale = Vector2(0,1)
 	dialogue_text.percent_visible = 1
@@ -56,6 +57,7 @@ func handle_input(event):
 			if not finished_last_node: # method above coulve changed the value
 				play_dialog()
 		elif not finished_current_node:
+			dialogue_text.bbcode_text += dialog_left
 			finished_current_node = true
 
 func _process(delta):
@@ -80,18 +82,21 @@ func play_dialog():
 	dialog_left = dialog
 
 	var write_speed = _get_tagged_text("speed", text)
-	TIME_PER_CHAR_WRITE = float(write_speed) if write_speed else .048
+	TIME_PER_CHAR_WRITE = float(write_speed) if write_speed else .06 # .048 is fast
 
 	start_dialog_timer()
 
 func start_dialog_timer():
-	$Timer.start(TIME_PER_CHAR_WRITE)
+	$Timer.start(TIME_PER_CHAR_WRITE + rand_range(-.01, .01))
 
 func _on_Timer_timeout():
+	if finished_current_node : return
+
 	var next_char = dialog_left[0]
 	dialogue_text.bbcode_text += next_char
 	if not [' ',',','?','!'].has(next_char):
-		$AudioStreamPlayer.play()
+		audio.pitch_scale = rand_range(.98, 1.02)
+		audio.play()
 
 	dialog_left.erase(0, 1)
 	if dialog_left == "":

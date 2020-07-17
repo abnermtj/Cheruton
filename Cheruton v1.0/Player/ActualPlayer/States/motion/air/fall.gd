@@ -41,7 +41,7 @@ func enter():
 
 	if owner.prev_state.name == "hook":
 		 owner.queue_anim("fall")
-	elif owner.velocity.y < 20:
+	elif owner.velocity.y < 50:
 		owner.play_anim("hover")
 		owner.queue_anim("fall")
 	else:
@@ -73,6 +73,9 @@ func update(delta):
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim_fx("land")
+
+		if owner.velocity.y > 850:
+			owner.emit_dust("land")
 
 		var col = owner.get_slide_collision(0).get_collider() # bounce pad
 		if col and  col.is_in_group("bouncePads"):

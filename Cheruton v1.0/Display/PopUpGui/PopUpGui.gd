@@ -1,10 +1,21 @@
 extends CanvasLayer
 
+onready var popups = $popUps
 var enabled = false setget set_gui_enabled
 
 func set_gui_enabled(val):
-	$popUps.active = val
-	$popUps.visible = val
+	popups.active = val
+	popups.visible = val
 	if val == false:
 		get_tree().paused = false # if disabling from pause menu
-		$popUps.reset()
+		popups.reset()
+
+func dialog_only():
+	for entry in popups.pop_up_enable_list:
+		if entry == "dialog":
+			popups.pop_up_enable_list[entry] = true
+		else:
+			popups.pop_up_enable_list[entry] = false
+
+func end_dialog_only():
+	pass

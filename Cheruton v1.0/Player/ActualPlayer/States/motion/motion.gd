@@ -5,7 +5,8 @@ func handle_input(event):
 	if event.is_action_pressed("attack")\
 	 and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
 	 and owner.can_attack\
-	 and owner.can_throw_sword:
+	 and owner.can_throw_sword\
+	 and owner.attack_enabled: # rip code
 		owner.can_attack = false
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")

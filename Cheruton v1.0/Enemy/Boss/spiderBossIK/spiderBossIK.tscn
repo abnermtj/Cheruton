@@ -32,12 +32,12 @@ height = 500.0
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 125, 200 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 500, 25 )
+
 [sub_resource type="DynamicFont" id=5]
 size = 64
 font_data = ExtResource( 13 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 500, 25 )
 
 [node name="spiderBossIK" type="KinematicBody2D"]
 collision_layer = 0
@@ -248,8 +248,6 @@ script = ExtResource( 15 )
 [node name="webShoot" type="Node" parent="states"]
 script = ExtResource( 16 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="groundCheck" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 380 )
@@ -266,6 +264,18 @@ collision_mask = 2
 position = Vector2( 0, 230.82 )
 shape = SubResource( 4 )
 
+[node name="jumpHurtBox" type="Area2D" parent="."]
+position = Vector2( 0, 35 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
+position = Vector2( 0, 185 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -277,14 +287,4 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="jumpHurtBox" type="Area2D" parent="."]
-position = Vector2( 0, 35 )
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
-position = Vector2( 0, 185 )
-shape = SubResource( 6 )
-disabled = true
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

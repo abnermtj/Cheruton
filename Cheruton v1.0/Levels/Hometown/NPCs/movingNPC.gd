@@ -7,6 +7,8 @@ var DIR_CHANGE_TIME = 8
 export var walk_speed : int = 110 # remember to move ray case if walk speed is ever too much
 
 onready var body_rotate = $bodyRotate
+onready var anim_player = $AnimationPlayer
+onready var dialog_name = name
 
 var interaction_type : String
 var dir : int
@@ -18,7 +20,7 @@ func _ready():
 	dir = -1
 	body_rotate.scale.x = -1
 	timer = DIR_CHANGE_TIME # remember to set this when overwriting dir change time in virtual funcs
-	$AnimationPlayer.play("walk")
+	anim_player.play("walk")
 	interaction_type = "dialog"
 	add_to_group("NPCs")
 	add_to_group("interactibles")
@@ -41,7 +43,7 @@ func _physics_process(delta):
 func _process(delta):
 	if is_talking and DataResource.temp_dict_player.dialog_complete:
 		is_talking = false
-		$AnimationPlayer.play("walk")
+		anim_player.play("walk")
 		set_physics_process(true)
 		set_process(false)
 		body_rotate.scale.x = save_dir
@@ -56,9 +58,9 @@ func unpend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", 0)
 
 func interact(body):
-	SceneControl.change_and_start_dialog(name)
+	SceneControl.change_and_start_dialog(dialog_name)
 	is_talking = true
-	$AnimationPlayer.play("idle")
+	anim_player.play("idle")
 	set_physics_process(false)
 	set_process(true)
 	save_dir = body_rotate.scale.x

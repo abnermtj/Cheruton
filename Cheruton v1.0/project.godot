@@ -87,7 +87,7 @@ _global_script_classes=[ {
 "base": "motionState",
 "class": "groundState",
 "language": "GDScript",
-"path": "res://Player/ActualPlayer/States/motion/ground/onground.gd"
+"path": "res://Player/ActualPlayer/States/motion/ground/onGround.gd"
 }, {
 "base": "baseState",
 "class": "motionState",
@@ -300,6 +300,7 @@ shop_sell={
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="enemy_hitbox"
 2d_physics/layer_6="hookable_terrain"
+2d_physics/layer_7="enemy_blocking_terrain"
 2d_physics/layer_8="non_one_way_terrain"
 2d_physics/layer_9="one_way_terrain"
 2d_physics/layer_10="interactibles"

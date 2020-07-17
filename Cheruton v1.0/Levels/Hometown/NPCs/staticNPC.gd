@@ -6,8 +6,9 @@ export var is_flipped = false
 
 onready var sprite = $Sprite
 onready var sprite2 = $Sprite2
-
+onready var dialog_name = name
 var interaction_type
+
 var is_talking = false
 var save_dir : int
 
@@ -35,9 +36,11 @@ func _process(delta):
 
 func interact(body):
 	is_talking = true
-	SceneControl.change_and_start_dialog(name)
+	SceneControl.change_and_start_dialog(dialog_name)
 	save_dir = sprite.scale.x
 	sprite.scale.x = sign(body.global_position.x - global_position.x) * (-1 if is_flipped else 1)
 	if sprite2: sprite2.scale.x = sprite.scale.x
 	set_process(true)
 
+func set_dialog_name(val : String):
+	dialog_name = val

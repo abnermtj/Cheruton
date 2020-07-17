@@ -62,7 +62,8 @@ func init_leg(leg):
 
 # UNIVERSAL MOVE FUNCTION
 func move():
-	return move_and_slide(velocity, Vector2.UP, false, 16) # don't snap it makes it bugs when moving away from snapped position
+	velocity = move_and_slide(velocity, Vector2.UP, false, 16) # don't snap it makes it bugs when moving away from snapped position
+
 # moves the parts of the body according to the velocity
 func move_body_sprites():
 	desired_head_pos = default_sprite_pos[0] + (velocity * 0.03).clamped(100)

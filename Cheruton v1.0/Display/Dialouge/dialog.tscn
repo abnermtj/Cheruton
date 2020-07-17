@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Display/Dialouge/dialog.gd" type="Script" id=1]
-[ext_resource path="res://Display/Dialouge/Sounds/Female.wav" type="AudioStream" id=2]
+[ext_resource path="res://Display/Dialouge/Sounds/Blip_select 35 (1).wav" type="AudioStream" id=2]
 [ext_resource path="res://Display/Dialouge/Sprites/Dialogbase.png" type="Texture" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 36
-extra_spacing_top = 6
+size = 40
+extra_spacing_top = 11
 extra_spacing_char = 1
 extra_spacing_space = 1
 font_data = ExtResource( 5 )
@@ -74,8 +74,8 @@ margin_bottom = 191.0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
-bbcode_text = "this is a test, lets get it."
-text = "this is a test, lets get it."
+bbcode_text = "this is a test, lets get it.12312313123123"
+text = "this is a test, lets get it.12312313123123"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,5 +88,6 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -25.0
 [connection signal="tween_completed" from="dialogBox/bodyBackground/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

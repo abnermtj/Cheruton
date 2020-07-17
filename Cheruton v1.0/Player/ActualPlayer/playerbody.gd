@@ -1,19 +1,4 @@
 extends KinematicBody2D
-
-# Some Code Rules
-# 1 - no using getNode/$ except for in the root, no owner.get_node("asd")
-# 2 - use owner. or signals to tell root nodeto do something
-# 3 - nested if statements MAX 3, if statements should be one liners with 3-4 conditions max
-# 4 - CAPS for CONSTS,
-# 5 - snake_case for variable_names and function_names
-# 6 - all FileNames in PascalCase
-# 7 - nodes in camelCase
-# 8 - General Order of variables
-######TOP of script#######
-#	- Consts
-# 	-  vars
-#	- onready vars
-#	- signals
 # IMPT NOTES
 # -anmation player connects to states -> ON ANIMATION CHANGED
 
@@ -23,9 +8,10 @@ const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 const TIME_PER_ATTACK = 1
 
-onready var animation_player = $animationPlayer
-onready var animation_player_fx = $animationPlayerFx
-onready var animation_player_fx_color = $animationPlayerFxColor
+onready var level = get_parent()
+onready var animation_player = $AnimationPlayer
+onready var animation_player_fx = $AnimationPlayerFx
+onready var animation_player_fx_color = $AnimationPlayerFxColor
 onready var left_wall_raycasts = $wallRaycasts/leftSide
 onready var right_wall_raycasts = $wallRaycasts/rightSide
 onready var corner_correction_raycast_left = $cornerCorrectionRaycasts/leftside
@@ -41,6 +27,8 @@ onready var states = $states
 onready var circle_scan = $circleScan
 onready var circle_scan_small = $circleScanSmall
 onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
+onready var run_dust = preload("res://Effects/Dust/RunDust/runDust.tscn")
+onready var land_dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
 
 var cur_state : Node
 var prev_state : Node
@@ -69,6 +57,8 @@ var sword_stuck = false
 var sword_pos = Vector2()
 var sword_col_normal = Vector2()
 
+
+var attack_enabled = true
 var can_attack = true
 var can_hook = true
 var can_throw_sword = true
@@ -82,12 +72,12 @@ var can_talk = true
 signal hook_command
 signal flying_sword_command
 signal camera_command
-signal shake
 
 func _ready():
 	cur_state = states.current_state
 	body_collision.disabled = false
 	slide_collision.disabled = true
+	$bodyPivot/bodyRotate/hurtBox/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
@@ -156,6 +146,11 @@ func set_look_direction(direction : Vector2):
 
 	if direction.x in [-1, 1]:
 		body_rotate.scale = Vector2(direction.x,1) # flips horizontally
+
+func set_attack_enabled (val):
+	attack_enabled = val
+func displace(vector : Vector2):
+	global_position += vector
 
 func _on_states_state_changed(states_stack):
 	prev_state = cur_state
@@ -258,7 +253,7 @@ func _on_invunerableTimer_timeout():
 # Movement
 func move():
 	if hooked and not ["hook"].has(cur_state.name) and\
-	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND: # player cannot move too far from hook point
+	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND: # when player is hooked but tried to move away from hook point
 		move_and_slide(Vector2(), Vector2.UP)
 	elif ["run", "slide", "idle", "wallSlide"].has(cur_state.name):
 		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
@@ -310,6 +305,20 @@ func is_almost_at_a_platform():
 func is_there_corner_above():
 	return int (corner_correction_raycast_right.is_colliding()) - int(corner_correction_raycast_left.is_colliding())
 
+func emit_dust(type : String):
+	var dust
+	match type:
+		"run" :
+			dust = run_dust.instance()
+		"land":
+			dust = land_dust.instance()
+
+	dust.scale.x = look_direction.x
+	dust.global_position = global_position + Vector2(0, 68)
+	dust.emitting = true
+
+	get_parent().add_child(dust)
+
 # Jump input buffering
 func jump_buffer_start():
 	jump_again = true
@@ -347,7 +356,7 @@ func set_camera_mode_logic():
 	else:
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
-	emit_signal("shake", dur, freq, amp, dir)
+	level.shake_camera(dur, freq, amp, dir)
 
 
 func handle_enemy_attack_collision(damage):

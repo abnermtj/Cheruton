@@ -25,12 +25,17 @@ func enter():
 		owner.play_anim("run_continious")
 
 func update(delta):
-	if input_direction.x != previous_dir.x:
+	if input_direction.x and input_direction.x != previous_dir.x:
 		owner.play_anim("run_change_dir")
+
 		var dir_name = "left" if input_direction.x == -1 else "right"
 		owner.play_anim_fx("run_change_dir_"+ dir_name)
+
 		owner.queue_anim("run_continious")
+
 		previous_dir = input_direction
+		if abs(owner.velocity.x) > 200:
+			owner.emit_dust("run")
 
 	owner.velocity.x = lerp(owner.velocity.x , MAX_RUN_SPEED * input_direction.x, delta*PLAYER_DIR_CONTROL)
 	owner.velocity.y = 5

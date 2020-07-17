@@ -25,7 +25,7 @@ func update(delta):
 
 	owner.velocity = lerp(owner.velocity, desired_velocity, 2 * delta)
 
-	owner.velocity = owner.move()
+	owner.velocity =owner.move()
 	owner.move_body_sprites()
 	if owner.player_in_small_look_area:
 		var rand = randi()%3

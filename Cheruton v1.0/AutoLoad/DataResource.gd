@@ -3,7 +3,6 @@ extends Node
 const MAIN = "user://player-data.json"
 const MASTERLIST = "res://Data/item-masterlist.json"
 
-
 var current_scene = null
 
 # Main Dict
@@ -58,7 +57,6 @@ func load_dict(FilePath, password:= ""):
 	else:
 		DataFile.open(FilePath, File.READ)
 	var data = JSON.parse(DataFile.get_as_text())
-	DataFile.close()
 	DataFile.close()
 	#print("Data Loaded!")
 	return data.result

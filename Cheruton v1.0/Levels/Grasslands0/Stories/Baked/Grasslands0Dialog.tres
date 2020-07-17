@@ -69,24 +69,17 @@ story = {
 },
 2: {
 "links": {
-0: 3
-},
-"text": "<speaker>Mary</speaker>
-<dialog>*Annoyed* Hey i'm part of the mages circle you know...</dialog>"
-},
-3: {
-"links": {
 0: 4
 },
 "text": "<speaker>Mary</speaker>
-<dialog>little girls like you can't hurt me.</dialog>"
+<dialog>*Annoyed* Hey! I'm trying to help you.</dialog>"
 },
 4: {
 "links": {
 0: 5
 },
 "text": "<speaker>Mary</speaker>
-<dialog>*notices* Where is your weapon?</dialog>"
+<dialog>*Notices* Where's your weapon?</dialog>"
 },
 5: {
 "links": {
@@ -101,7 +94,7 @@ story = {
 0: 7
 },
 "text": "<speaker>Mary</speaker>
-<dialog>Ridiculous, how have you made it this high up?</dialog>"
+<dialog>Ridiculous! How have you made it this high up?</dialog>"
 },
 7: {
 "links": {
@@ -115,7 +108,7 @@ story = {
 0: 9
 },
 "text": "<speaker>Mary</speaker>
-<dialog>*Sigh*The magic stones are going to have to wait...</dialog>"
+<dialog>*Sigh*  The magic stones are going to have to wait...</dialog>"
 },
 9: {
 "links": {
@@ -161,11 +154,49 @@ story = {
 <dialog>You're going to have to take the long way round.</dialog>"
 }
 }
+},
+5: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Not bad at all.</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Pretty quick for a young girl.</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Mary</speaker>
+<dialog>My hut is still a bit farther, this way!</dialog>"
+},
+5: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
 }
 }
 names = {
 "cutscene0_0": 1,
 "cutscene0_1": 2,
 "cutscene0_2": 3,
-"cutscene0_3": 4
+"cutscene0_3": 4,
+"cutscene1_0": 5
 }

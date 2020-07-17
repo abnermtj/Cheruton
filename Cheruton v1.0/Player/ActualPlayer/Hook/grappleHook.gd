@@ -57,7 +57,6 @@ func _physics_process(delta: float) -> void:
 			if col :
 				chain_state = chain_states.HOOKED
 				emit_signal("hooked",0, tip.global_position, col.collider)
-				emit_signal("shake", .105, 7, 3, -(tip.global_position - cur_player_pos).normalized()+ Vector2(.1,.1)) # camera shake
 		chain_states.HOOKED:
 			pass
 		chain_states.REEL:

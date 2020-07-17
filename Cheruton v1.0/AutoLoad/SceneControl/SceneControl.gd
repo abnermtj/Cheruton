@@ -21,6 +21,8 @@ var curr_scene
 var loot_dict = {} # Items pending transfer to inventory
 var enable_save := false
 
+var cur_level
+
 var music_curr
 var music_next
 var fade_in := 0.14
@@ -78,6 +80,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	var new_level = load(scene).instance()
 
 	if(scene != MMENU):
+		cur_level = new_level
 		levels.add_child(new_level)
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
@@ -261,3 +264,9 @@ func change_and_start_dialog(dialog : String):
 func _change_and_start_dialog():
 	pop_up_gui.get_node("popUps").new_gui("dialog")
 	pop_up_gui.get_node("popUps/dialog").start_dialog(cur_dialog)
+
+func set_dialog_only_mode(val : bool):
+	if val == true:
+		pop_up_gui.dialog_only()
+	else:
+		pop_up_gui.end_dialog_only()

@@ -16,11 +16,15 @@ var previous_state = null # for function
 
 var _active = false setget set_active
 
-func _ready():
+func _ready(): # ready function not overwritten so no need ._ready() in inheritors
+	for child in get_children():
+		states_map[child.name] = child
+
 	for child in get_children():
 		child.connect("finished", self, "_change_state")
 	set_active(true)
 	set_start_state(START_STATE)
+
 
 
 func set_active(value):

@@ -1,6 +1,7 @@
 extends Node2D
 
 var states_map
+var pop_up_enable_list = {}
 var active = true
 var state_name_stack = []
 
@@ -17,6 +18,8 @@ func _ready():
 		"dialog": $dialog
 	}
 
+	for state in states_map:
+		pop_up_enable_list[state] = true
 	reset()
 
 func reset():
@@ -34,6 +37,7 @@ func _input(event):
 func new_gui(gui_name):
 	if active == false:
 		return
+	if not pop_up_enable_list[gui_name] : return
 
 	states_map[gui_name].begin()
 	state_name_stack.push_back(gui_name)

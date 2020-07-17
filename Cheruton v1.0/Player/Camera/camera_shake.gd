@@ -87,7 +87,7 @@ func shake(duration, frequency, amplitude, shakedir = Vector2.ZERO ):
 	_amplitude = amplitude
 	_previous_x = rand_range(-0.5, 0.5)
 	_previous_y = rand_range(-0.5, 0.5)
-	_shakedir = shakedir
+	_shakedir = shakedir.normalized()
 	shake_offset -= _last_offset
 	_last_offset = Vector2.ZERO
 
