@@ -15,8 +15,8 @@ var temp_mouse_node
 
 onready var active_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabSelected.png")
 onready var default_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabDeselected.png")
-onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
+onready var index_bg = preload("res://Player/Inventory/Sprites/Slots/itemSelected.png")
+onready var index_equipped_bg = preload("res://Player/Inventory/Sprites/Slots/itemEquipped.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
 onready var attack_slot = preload("res://Player/Inventory/Sprites/Slots/empty_attack.png")
 onready var defense_slot = preload("res://Player/Inventory/Sprites/Slots/empty_defense.png")
