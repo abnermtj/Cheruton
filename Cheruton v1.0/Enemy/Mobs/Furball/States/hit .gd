@@ -9,13 +9,15 @@ var timer : float
 
 func enter():
 	owner.return_to_sleep = false
-	owner.display_damage(5)
+	owner.display_damage(owner.damage)
+	owner.play_hit_effect()
+	owner.health -= owner.damage
 
 	owner.play_anim("hit")
 	owner.play_anim_fx("hit")
-	var player_pos = owner.player.global_position
-	move_dir = (owner.global_position - player_pos ).normalized()
 
+	var obj_pos = owner.hitter.global_position
+	move_dir = (owner.global_position - obj_pos ).normalized()
 	owner.shake_camera(.05, 20.0, 19.5, -move_dir) # dur, freq, amp, dir
 	owner.velocity.x = move_dir.x * initial_speed
 	owner.look_dir = Vector2(-sign(move_dir.x),0)
@@ -36,4 +38,3 @@ func update(delta):
 		get_tree().paused = false
 	if timer < HURT_TIME - .1:
 		owner.move()
-

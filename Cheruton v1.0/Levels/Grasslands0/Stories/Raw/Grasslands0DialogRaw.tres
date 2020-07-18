@@ -10,7 +10,8 @@ names = {
 "cutscene0_1": 2,
 "cutscene0_2": 3,
 "cutscene0_3": 4,
-"cutscene1_0": 5
+"cutscene1_0": 5,
+"cutscene2_0": 6
 }
 story = {
 1: {
@@ -70,9 +71,9 @@ story = {
 "name": "cutscene0_1",
 "nodes": {
 1: {
-"graph_offset": Vector2( 440, 40 ),
+"graph_offset": Vector2( 440, 60 ),
 "links": {
-0: 3
+0: 4
 },
 "rect_size": Vector2( 608, 170 ),
 "slot_amount": 1,
@@ -91,13 +92,24 @@ story = {
 "type": "line"
 },
 3: {
-"graph_offset": Vector2( 300, -460 ),
+"graph_offset": Vector2( 500, -560 ),
 "links": {
 
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<end>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 880, -220 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Whats your n...</dialog>",
 "type": "line"
 }
 }
@@ -242,7 +254,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>Sorry, I only have one broom.</dialog>",
+<dialog>Sorry, I only have one staff.</dialog>",
 "type": "line"
 },
 4: {
@@ -315,6 +327,56 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<end>",
+"type": "line"
+}
+}
+},
+6: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene2_0",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1380, 60 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 280, -240 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Don't be fooled.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 980, -180 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Anything that moves is dangerous.</dialog>",
 "type": "line"
 }
 }

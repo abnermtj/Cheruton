@@ -40,7 +40,7 @@ story = {
 "nodes": {
 1: {
 "links": {
-0: 3
+0: 4
 },
 "text": "<speaker>Mary</speaker>
 <dialog>Woah woah woah, don't worry i'm not trying to kill you.</dialog>"
@@ -56,6 +56,13 @@ story = {
 
 },
 "text": "<end>"
+},
+4: {
+"links": {
+0: 3
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Whats your n...</dialog>"
 }
 }
 },
@@ -144,7 +151,7 @@ story = {
 0: 4
 },
 "text": "<speaker>Mary</speaker>
-<dialog>Sorry, I only have one broom.</dialog>"
+<dialog>Sorry, I only have one staff.</dialog>"
 },
 4: {
 "links": {
@@ -191,6 +198,36 @@ story = {
 "text": "<end>"
 }
 }
+},
+6: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Don't be fooled.</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Anything that moves is dangerous.</dialog>"
+}
+}
 }
 }
 names = {
@@ -198,5 +235,6 @@ names = {
 "cutscene0_1": 2,
 "cutscene0_2": 3,
 "cutscene0_3": 4,
-"cutscene1_0": 5
+"cutscene1_0": 5,
+"cutscene2_0": 6
 }

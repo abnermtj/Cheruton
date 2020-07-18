@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/fall.gd" type="Script" id=8]
 [ext_resource path="res://Player/ActualPlayer/States/others/talk.gd" type="Script" id=9]
 [ext_resource path="res://Player/ActualPlayer/States/motion/air/hook.gd" type="Script" id=10]
+[ext_resource path="res://Player/ActualPlayer/hurtBox.gd" type="Script" id=11]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide.gd" type="Script" id=12]
 [ext_resource path="res://Player/ActualPlayer/States/combat/attack_ground.gd" type="Script" id=13]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/wallSlide.gd" type="Script" id=14]
@@ -716,7 +717,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 371, 397, 48, 48 ), Rect2( 421, 397, 48, 48 ), Rect2( 471, 397, 48, 48 ), Rect2( 521, 397, 48, 48 ), Rect2( 571, 397, 48, 48 ), Rect2( 621, 397, 48, 48 ), Rect2( 671, 397, 48, 48 ), Rect2( 721, 397, 48, 48 ), Rect2( 771, 397, 48, 48 ), Rect2( 821, 397, 48, 48 ) ]
+"values": [ Rect2( 371, 397, 32, 48 ), Rect2( 405, 397, 32, 48 ), Rect2( 439, 397, 32, 48 ), Rect2( 473, 397, 32, 48 ), Rect2( 507, 397, 32, 48 ), Rect2( 541, 397, 32, 48 ), Rect2( 575, 397, 32, 48 ), Rect2( 609, 397, 32, 48 ), Rect2( 643, 397, 32, 48 ), Rect2( 677, 397, 32, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
@@ -728,7 +729,21 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ) ]
+"values": [ Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ Vector2( 1, 0 ) ],
+"method": "set_look_direction"
+} ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -744,7 +759,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 1, 447, 32, 48 ), Rect2( 35, 447, 32, 48 ), Rect2( 69, 447, 32, 48 ), Rect2( 103, 447, 32, 48 ), Rect2( 137, 447, 32, 48 ), Rect2( 171, 447, 32, 48 ), Rect2( 205, 447, 32, 48 ), Rect2( 239, 447, 32, 48 ) ]
+"values": [ Rect2( 1323, 397, 32, 48 ), Rect2( 1357, 397, 32, 48 ), Rect2( 1391, 397, 32, 48 ), Rect2( 1425, 397, 32, 48 ), Rect2( 1459, 397, 32, 48 ), Rect2( 1493, 397, 32, 48 ), Rect2( 1527, 397, 32, 48 ), Rect2( 1561, 397, 32, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
@@ -772,7 +787,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 273, 447, 32, 48 ), Rect2( 307, 447, 32, 48 ), Rect2( 341, 447, 32, 48 ), Rect2( 375, 447, 32, 48 ), Rect2( 409, 447, 32, 48 ), Rect2( 443, 447, 32, 48 ), Rect2( 477, 447, 32, 48 ), Rect2( 511, 447, 32, 48 ) ]
+"values": [ Rect2( 1595, 397, 32, 48 ), Rect2( 1, 447, 32, 48 ), Rect2( 35, 447, 32, 48 ), Rect2( 69, 447, 32, 48 ), Rect2( 103, 447, 32, 48 ), Rect2( 137, 447, 32, 48 ), Rect2( 171, 447, 32, 48 ), Rect2( 205, 447, 32, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
@@ -856,7 +871,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Rect2( 871, 397, 48, 48 ), Rect2( 921, 397, 48, 48 ), Rect2( 971, 397, 48, 48 ), Rect2( 1021, 397, 48, 48 ), Rect2( 1071, 397, 48, 48 ), Rect2( 1121, 397, 48, 48 ), Rect2( 1171, 397, 48, 48 ), Rect2( 1221, 397, 48, 48 ), Rect2( 1271, 397, 32, 48 ), Rect2( 1305, 397, 32, 48 ), Rect2( 1339, 397, 32, 48 ), Rect2( 1373, 397, 32, 48 ), Rect2( 1407, 397, 32, 48 ), Rect2( 1441, 397, 32, 48 ), Rect2( 1475, 397, 32, 48 ), Rect2( 1509, 397, 32, 48 ), Rect2( 1543, 397, 32, 48 ), Rect2( 1577, 397, 32, 48 ) ]
+"values": [ Rect2( 711, 397, 32, 48 ), Rect2( 745, 397, 32, 48 ), Rect2( 779, 397, 32, 48 ), Rect2( 813, 397, 32, 48 ), Rect2( 847, 397, 32, 48 ), Rect2( 881, 397, 32, 48 ), Rect2( 915, 397, 32, 48 ), Rect2( 949, 397, 32, 48 ), Rect2( 983, 397, 32, 48 ), Rect2( 1017, 397, 32, 48 ), Rect2( 1051, 397, 32, 48 ), Rect2( 1085, 397, 32, 48 ), Rect2( 1119, 397, 32, 48 ), Rect2( 1153, 397, 32, 48 ), Rect2( 1187, 397, 32, 48 ), Rect2( 1221, 397, 32, 48 ), Rect2( 1255, 397, 32, 48 ), Rect2( 1289, 397, 32, 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
@@ -868,7 +883,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( -5.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
+"values": [ Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -918,14 +933,11 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.01, 0.92 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.01 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "scene0_idle1" ],
 "method": "queue_anim"
-}, {
-"args": [ Vector2( 1, 0 ) ],
-"method": "set_look_direction"
 } ]
 }
 tracks/3/type = "method"
@@ -935,12 +947,9 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.92 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ Vector2( 36, 0 ) ],
-"method": "displace"
-} ]
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -1823,16 +1832,15 @@ script = ExtResource( 5 )
 show_behind_parent = true
 use_parent_material = true
 position = Vector2( 0, -68 )
-scale = Vector2( -1, 1 )
 
 [node name="playerSprite" type="Sprite" parent="bodyPivot/bodyRotate"]
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 15 )
-offset = Vector2( -5.5, 19.5 )
+offset = Vector2( 18.5, 11.5 )
 region_enabled = true
-region_rect = Rect2( 611, 167, 48, 48 )
+region_rect = Rect2( 281, 167, 96, 64 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1843,11 +1851,11 @@ rotation = -3.14159
 scale = Vector2( 0.789474, -1.15385 )
 collision_layer = 0
 collision_mask = 16
+script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
 position = Vector2( -116.598, -32.013 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
 visible = false

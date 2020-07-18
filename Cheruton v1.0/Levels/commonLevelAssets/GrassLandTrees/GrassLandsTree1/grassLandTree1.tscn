@@ -6,10 +6,10 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/speed = 1.0
-shader_param/minStrength = 0.08
-shader_param/maxStrength = 0.13
-shader_param/strengthScale = 130.0
-shader_param/interval = 2.6
+shader_param/minStrength = 0.07
+shader_param/maxStrength = 0.12
+shader_param/strengthScale = 110.0
+shader_param/interval = 3.0
 shader_param/detail = 1.0
 shader_param/distortion = 0.4
 shader_param/heightOffset = 0.0

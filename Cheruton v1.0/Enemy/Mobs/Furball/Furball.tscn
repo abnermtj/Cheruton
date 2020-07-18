@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Furball/Sprites/Enemy_Furball_22fps.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Mobs/Furball/Furball.gd" type="Script" id=2]
@@ -10,9 +10,11 @@
 [ext_resource path="res://Enemy/Mobs/Furball/States/fall.gd" type="Script" id=8]
 [ext_resource path="res://Enemy/Mobs/Furball/idle.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/Mobs/Furball/attack.gd" type="Script" id=10]
+[ext_resource path="res://Enemy/Mobs/Furball/dead.gd" type="Script" id=11]
+[ext_resource path="res://Enemy/Mobs/Furball/hurtBox.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 80 )
+extents = Vector2( 60, 80 )
 
 [sub_resource type="Animation" id=2]
 length = 0.65
@@ -41,19 +43,19 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 15 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.55 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape:extents")
+tracks/3/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -62,10 +64,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 40, 80 ) ]
+"values": [ Vector2( 59.6764, -50 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:position")
+tracks/4/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape:extents")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -74,19 +76,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 72, -50 ) ]
+"values": [ Vector2( 60, 80 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape")
+tracks/5/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 1 ) ]
+"times": PoolRealArray( 0, 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ true, false, true ]
 }
 tracks/6/type = "method"
 tracks/6/path = NodePath("states/attack")
@@ -152,6 +154,32 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 7 ), Vector2( 1, 7 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ), Vector2( 1, 15 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.693736 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -402,7 +430,6 @@ extents = Vector2( 100, 80 )
 
 [node name="Furball" type="KinematicBody2D"]
 collision_layer = 0
-collision_mask = 65
 script = ExtResource( 2 )
 
 [node name="bodyPivot" type="Position2D" parent="."]
@@ -416,15 +443,16 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 32 )
+region_rect = Rect2( 919, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
 collision_layer = 0
 collision_mask = 4
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
-position = Vector2( 72, -50 )
+position = Vector2( 59.6764, -50 )
 shape = SubResource( 1 )
 disabled = true
 
@@ -474,8 +502,11 @@ script = ExtResource( 8 )
 script = ExtResource( 5 )
 
 [node name="dead" type="Node" parent="states"]
+pause_mode = 2
+script = ExtResource( 11 )
 
 [node name="alertArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -484,6 +515,7 @@ position = Vector2( 1, 0 )
 shape = SubResource( 11 )
 
 [node name="attackRangeArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -492,6 +524,7 @@ position = Vector2( 0, -50 )
 shape = SubResource( 12 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 40, 40 )

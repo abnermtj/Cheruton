@@ -57,7 +57,8 @@ region_rect = Rect2( 0, 0, 2500, 260 )
 
 [node name="hills" type="ParallaxLayer" parent="."]
 light_mask = 0
-motion_scale = Vector2( 0.16, 0.08 )
+motion_scale = Vector2( 0.16, 0 )
+motion_offset = Vector2( 0, 18 )
 motion_mirroring = Vector2( 692, 0 )
 
 [node name="Sprite" type="Sprite" parent="hills"]

@@ -78,6 +78,7 @@ func _ready():
 	body_collision.disabled = false
 	slide_collision.disabled = true
 	$bodyPivot/bodyRotate/hurtBox/CollisionShape2D.disabled = true
+	$bodyPivot/bodyRotate/hurtBox.obj = self
 
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
@@ -93,7 +94,7 @@ func _physics_process(delta):
 	if nearest_interactible != old_nearest_interactible:
 		if nearest_interactible:
 			nearest_interactible.pend_interact()
-		if old_nearest_interactible:
+		if is_instance_valid(old_nearest_interactible):
 			old_nearest_interactible.unpend_interact()
 	if nearest_interactible: interaction_type = nearest_interactible.interaction_type
 	else: interaction_type = ""
@@ -314,7 +315,7 @@ func emit_dust(type : String):
 			dust = land_dust.instance()
 
 	dust.scale.x = look_direction.x
-	dust.global_position = global_position + Vector2(0, 68)
+	dust.global_position = global_position + Vector2(0, 68) - get_parent().global_position
 	dust.emitting = true
 
 	get_parent().add_child(dust)

@@ -7,6 +7,8 @@ export var is_flipped = false
 onready var sprite = $Sprite
 onready var sprite2 = $Sprite2
 onready var dialog_name = name
+
+
 var interaction_type
 
 var is_talking = false

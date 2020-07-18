@@ -1,0 +1,51 @@
+{ "frames": {
+   "Moneygirl_projectile 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 0, "w": 32, "h": 16 },
+    "sourceSize": { "w": 42, "h": 12 },
+    "duration": 83
+   },
+   "Moneygirl_projectile 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 42, "h": 12 },
+    "duration": 83
+   },
+   "Moneygirl_projectile 2.aseprite": {
+    "frame": { "x": 85, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 42, "h": 12 },
+    "duration": 83
+   },
+   "Moneygirl_projectile 3.aseprite": {
+    "frame": { "x": 1, "y": 19, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 42, "h": 12 },
+    "duration": 83
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Moneygirl_projectile.png",
+  "format": "RGBA8888",
+  "size": { "w": 175, "h": 176 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "projectile", "from": 0, "to": 3, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "projectile", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.gd" type="Script" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/22fps_limitPallete_PIL_HomeTown_NPC_moneygirl.png" type="Texture" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/Moneygirl_staff_explode.png" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -358,7 +359,48 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="Animation" id=8]
+length = 1.245
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/staffPos/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498, 0.581, 0.664, 0.747, 0.83, 0.913, 0.996, 1.079, 1.162 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 16, 32 ), Rect2( 19, 1, 16, 32 ), Rect2( 37, 1, 16, 32 ), Rect2( 55, 1, 16, 32 ), Rect2( 73, 1, 16, 32 ), Rect2( 91, 1, 16, 32 ), Rect2( 109, 1, 16, 32 ), Rect2( 127, 1, 16, 32 ), Rect2( 145, 1, 16, 32 ), Rect2( 1, 35, 16, 32 ), Rect2( 19, 35, 32, 32 ), Rect2( 53, 35, 32, 48 ), Rect2( 87, 35, 32, 48 ), Rect2( 121, 35, 16, 32 ), Rect2( 139, 35, 16, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/staffPos/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498, 0.581, 0.664, 0.747, 0.83, 0.913, 0.996, 1.079, 1.162 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ), Vector2( 0.5, -4 ), Vector2( 0.5, 4 ), Vector2( 0.5, 4 ), Vector2( -7.5, -4 ), Vector2( -7.5, -4 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.17939 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "instance_magic_shot"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 32.5, 12.5 )
 
 [node name="moneygirl" type="Area2D"]
@@ -383,6 +425,18 @@ offset = Vector2( -1, -1 )
 region_enabled = true
 region_rect = Rect2( 545, 1, 48, 48 )
 
+[node name="staffPos" type="Position2D" parent="bodyRotate"]
+position = Vector2( 24, 19.9741 )
+
+[node name="Sprite" type="Sprite" parent="bodyRotate/staffPos"]
+texture = ExtResource( 4 )
+offset = Vector2( -7.5, -4 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 16, 32 )
+
+[node name="tipStaffPos" type="Position2D" parent="bodyRotate/staffPos"]
+position = Vector2( 0, -3.44741 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 playback_speed = 0.8
@@ -394,6 +448,9 @@ anims/jump = SubResource( 5 )
 anims/on_broom_idle = SubResource( 6 )
 anims/poke = SubResource( 7 )
 
+[node name="AnimationPlayerStaff" type="AnimationPlayer" parent="."]
+anims/Staff = SubResource( 8 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )

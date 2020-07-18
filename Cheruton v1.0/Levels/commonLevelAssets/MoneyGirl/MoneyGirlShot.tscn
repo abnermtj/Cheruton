@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/Moneygirl_projectile.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/MoneyGirlShot.gd" type="Script" id=2]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/hurtBox.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.332
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 32, 16 ), Rect2( 35, 1, 48, 16 ), Rect2( 85, 1, 48, 16 ), Rect2( 1, 19, 48, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, 2 ), Vector2( 3, 2 ), Vector2( 3, 2 ), Vector2( 3, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="MoneyGirlShot" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="rotate" type="Position2D" parent="."]
+position = Vector2( -12, 0 )
+
+[node name="Sprite" type="Sprite" parent="rotate"]
+texture = ExtResource( 1 )
+offset = Vector2( 11, 2 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 32, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "projectile"
+anims/projectile = SubResource( 2 )
+
+[node name="hurtBox" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
+shape = SubResource( 3 )
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]

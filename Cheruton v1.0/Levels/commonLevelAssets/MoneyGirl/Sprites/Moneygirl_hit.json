@@ -1,0 +1,51 @@
+{ "frames": {
+   "Moneygirl_hit #hit 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 21, "h": 35 },
+    "duration": 83
+   },
+   "Moneygirl_hit #hit 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 21, "h": 35 },
+    "duration": 83
+   },
+   "Moneygirl_hit #hit 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 21, "h": 35 },
+    "duration": 83
+   },
+   "Moneygirl_hit #hit 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 21, "h": 35 },
+    "duration": 83
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Moneygirl_hit.png",
+  "format": "RGBA8888",
+  "size": { "w": 175, "h": 176 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "hit", "from": 0, "to": 3, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "doge", "opacity": 255, "blendMode": "color_dodge" }
+  ],
+  "slices": [
+  ]
+ }
+}

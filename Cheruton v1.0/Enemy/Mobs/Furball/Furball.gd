@@ -18,11 +18,15 @@ onready var player = level.get_node("player")
 onready var initial_pos = global_position
 
 var velocity = Vector2()
-var health = 100
+var health = 15.0 setget set_health
 var look_dir = Vector2(-1,0) setget set_look_direction
 
 var return_to_sleep = false
+var damage : int
+var hitter : Node
 
+func _ready():
+	$bodyPivot/bodyRotate/hurtBox.obj = self
 # HELPER FUNCTIONS
 func set_look_direction(dir : Vector2):
 	if dir != Vector2() :look_dir = dir
@@ -31,6 +35,11 @@ func set_look_direction(dir : Vector2):
 		body_pivot.scale = Vector2(dir.x,1)
 func move():
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func set_health(val):
+	health = val
+	if health <= 0.1:
+		change_state("dead")
 
 # ANIMATION
 func play_anim(string):
@@ -49,20 +58,29 @@ func queue_anim_fx(string):
 
 # DEBUG
 func _process(delta):
-	$Label.text = str(velocity)
+	$Label.text = str(states.current_state.name)
 
 # AREAS
 func _on_hitBox_area_entered(area):
-	health -= 10
-	states._change_state("hit")
+	damage = area.damage
+	hitter = area.obj
+	if states.current_state.name != "dead":
+		change_state("hit")
 
 # CAMERA
 func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)
 
-# player left range
 func _on_alertArea_body_exited(body):
 	return_to_sleep = true
 
 func _on_alertArea_body_entered(body):
 	return_to_sleep = false
+
+func play_hit_effect():
+	var instance = hit_effect.instance()
+	instance.global_position = global_position
+	get_parent().add_child(instance)
+
+func change_state(state_name : String):
+	states._change_state(state_name)

@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Enemy
 
 onready var damage_val = preload("res://Enemy/DamageVal/DamageVal.tscn")
+onready var hit_effect = preload("res://Effects/MobHit/HitFx.tscn")
 
 var target_correction = Vector2( 0, -6 )
 

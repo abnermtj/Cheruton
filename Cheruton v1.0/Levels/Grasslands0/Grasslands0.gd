@@ -17,10 +17,14 @@ func _ready():
 
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
+	#debug
 	cur_cut_scene_completed = true
+	cutscene_number = 2 # cutscene
+	cutscene_index = 0 #
+	########
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
 	if not cur_cut_scene_completed:
-		cutscene_number = 0 # cutscene
+		cutscene_number = 2 # cutscene
 		cutscene_index = 0 # specific part of cutscene (separated by dialog etc)
 		next_cutscene()
 
@@ -34,10 +38,14 @@ func next_cutscene():
 				return
 		1:
 			if cutscene_index == 1:
-#				DataResource.dict_player.completed_cutscenes["grasslands0_1"] = true # will no longer be played on reenter
+#				DataResource.dict_player.completed_cutscenes["grasslands0_1"] = true
 				end_cutscene()
 				return
-
+		2:
+			if cutscene_index == 1:
+#				DataResource.dict_player.completed_cutscenes["grasslands0_2"] = true
+				end_cutscene()
+				return
 	cutscene_index += 1
 
 func end_cutscene():
@@ -56,6 +64,11 @@ func _input(event):
 	if Input.is_action_just_pressed("reset"):
 		player.velocity = Vector2()
 		player.position = save_position
+
+		var mob = preload("res://Enemy/Mobs/Furball/Furball.tscn")
+		var instance = mob.instance()
+		instance.position = save_position
+		$Mobs.add_child(instance)
 
 func handle_death_zone(body):
 	player.velocity = Vector2()
