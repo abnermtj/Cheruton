@@ -1,0 +1,114 @@
+{ "frames": {
+   "MainMenu3 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 1.aseprite": {
+    "frame": { "x": 483, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 2.aseprite": {
+    "frame": { "x": 965, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 3.aseprite": {
+    "frame": { "x": 1447, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 4.aseprite": {
+    "frame": { "x": 1929, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 5.aseprite": {
+    "frame": { "x": 2411, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 6.aseprite": {
+    "frame": { "x": 2893, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 7.aseprite": {
+    "frame": { "x": 3375, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 8.aseprite": {
+    "frame": { "x": 3857, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "MainMenu3 9.aseprite": {
+    "frame": { "x": 4339, "y": 1, "w": 480, "h": 272 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 272 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "MainMenu3.png",
+  "format": "RGBA8888",
+  "size": { "w": 4820, "h": 274 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "water", "from": 0, "to": 9, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "moutain", "opacity": 255, "blendMode": "normal" },
+   { "name": "moutain2", "opacity": 255, "blendMode": "normal" },
+   { "name": "river", "opacity": 255, "blendMode": "normal" },
+   { "name": "mid3", "opacity": 255, "blendMode": "normal" },
+   { "name": "mid2", "opacity": 255, "blendMode": "normal" },
+   { "name": "mid ground", "opacity": 255, "blendMode": "normal" },
+   { "name": "player", "opacity": 255, "blendMode": "normal" },
+   { "name": "spear", "opacity": 255, "blendMode": "normal" },
+   { "name": "player above spear", "opacity": 255, "blendMode": "normal" },
+   { "name": "grass above player", "opacity": 255, "blendMode": "normal" },
+   { "name": "sun", "opacity": 255, "blendMode": "normal" },
+   { "name": "lefttree", "opacity": 255, "blendMode": "normal" },
+   { "name": "lefttreeleaves", "opacity": 255, "blendMode": "normal" },
+   { "name": "right tree", "opacity": 255, "blendMode": "normal" },
+   { "name": "doge", "opacity": 255, "blendMode": "color_dodge" },
+   { "name": "trees", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

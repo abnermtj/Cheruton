@@ -54,7 +54,7 @@ func _on_OptionsDelay_timeout():
 func enable_options():
 	for i in container.get_child_count():
 		container.get_child(i).disabled = false
-	
+
 
 func _on_Play_pressed():
 	player.play("button_pressed")
@@ -73,11 +73,11 @@ func _on_Player_animation_finished(anim_name):
 		container.show()
 	elif(anim_name == "button_pressed"):
 		perform_button_action()
-		
+
 
 func perform_button_action():
 	var btn_pos = slider.rect_position - container.rect_position
-	
+
 	match btn_pos:
 		play_position:
 			slider_enabled = false
@@ -98,8 +98,8 @@ func hide_options():
 
 func back_to_mmenu():
 	player.play("to_mmenu")
-	
-	
+
+
 
 func _on_Play_mouse_entered():
 	var new_position = Vector2(slider.rect_position.x, play_position.y)
