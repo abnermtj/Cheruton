@@ -18,8 +18,8 @@ signal tab_changed(next_tab)
 
 onready var active_tab_image = preload("res://Display/Shop/Sprites/Slots/HorizontalTabSelect.png")
 onready var default_tab_image = preload("res://Display/Shop/Sprites/Slots/HorizontalTabDeSelect.png")
-onready var index_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_keypress.png")
-onready var index_equipped_bg = preload("res://Player/Inventory/Icons/Button_Bg/inventory_bg_equip.png")
+onready var index_bg = preload("res://Display/Shop/Sprites/Slots/itemSelected.png")
+onready var index_equipped_bg = preload("res://Display/Shop/Sprites/Slots/itemEquipped.png")
 onready var instance_loc = preload("res://Player/Inventory/101.tscn")
 
 onready var weapons_sell = DataResource.dict_inventory.get("Weapons")
