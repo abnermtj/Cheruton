@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Effects/Rain/the-cloud.jpg" type="Texture" id=1]
 
+
+
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 310, 1 )

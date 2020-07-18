@@ -25,8 +25,6 @@ func _ready(): # ready function not overwritten so no need ._ready() in inherito
 	set_active(true)
 	set_start_state(START_STATE)
 
-
-
 func set_active(value):
 	_active = value
 	set_physics_process(value)

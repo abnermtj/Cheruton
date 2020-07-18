@@ -1,6 +1,6 @@
 extends Node2D
 
-var states_map
+var states_map = {}
 var pop_up_enable_list = {}
 var active = true
 var state_name_stack = []
@@ -9,14 +9,7 @@ func _ready():
 	for child in get_children():
 		child.connect("new_gui", self, "new_gui")
 		child.connect("release_gui", self, "release_gui")
-
-	states_map = {
-		"emptygui": $emptyPopUpgui,
-		"inventory": $inventory,
-		"pause": $pause,
-		"shop": $shop,
-		"dialog": $dialog
-	}
+		states_map[child.name] = child
 
 	for state in states_map:
 		pop_up_enable_list[state] = true
@@ -24,7 +17,7 @@ func _ready():
 
 func reset():
 	state_name_stack.resize(0)
-	state_name_stack.append("emptygui")
+	state_name_stack.append("empty")
 	for child in get_children():
 		child.hide()
 		child.is_active_gui = false

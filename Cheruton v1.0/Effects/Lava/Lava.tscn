@@ -4,6 +4,8 @@
 [ext_resource path="res://Effects/Lava/lava.shader" type="Shader" id=2]
 
 
+
+
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/red = Color( 1, 0.0705882, 0, 1 )

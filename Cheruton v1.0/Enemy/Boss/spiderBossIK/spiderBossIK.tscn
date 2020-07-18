@@ -4,7 +4,7 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_head.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLegController.gd" type="Script" id=4]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/states/spideBossStateMachine.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/states/spiderBossStateMachine.gd" type="Script" id=5]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_feelers.png" type="Texture" id=6]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_midbody.png" type="Texture" id=7]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_butt.png" type="Texture" id=8]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stabAttack.gd" type="Script" id=14]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stepBack.gd" type="Script" id=15]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/webShoot.gd" type="Script" id=16]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 100.0

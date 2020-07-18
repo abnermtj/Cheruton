@@ -26,7 +26,6 @@ func _ready():
 
 func next_cutscene():
 	cut_scene_player.play("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
-	print("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
 	match cutscene_number:
 		0:
 			if cutscene_index == 4:

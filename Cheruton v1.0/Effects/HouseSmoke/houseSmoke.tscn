@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Effects/HouseSmoke/smoke.png" type="Texture" id=1]
 
+
+
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.159091, 1 )
 colors = PoolColorArray( 0.858824, 0.878431, 0.905882, 1, 0.858824, 0.878431, 0.905882, 0.905882, 0.858824, 0.878431, 0.905882, 0.0352941 )

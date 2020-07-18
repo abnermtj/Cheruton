@@ -283,7 +283,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.04 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -97.7725, -45.3783 ) ]
+"values": [ Vector2( -115.847, -44.9661 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:disabled")
@@ -454,10 +454,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.040025 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.04, 0.040025 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -162.146, 7.29089 ) ]
+"values": [ Vector2( -168.171, 7.29088 ), Vector2( -162.146, 7.29089 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape")
@@ -1830,9 +1830,9 @@ use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 15 )
-offset = Vector2( 2.5, 19.5 )
+offset = Vector2( -5.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 273, 1, 32, 48 )
+region_rect = Rect2( 611, 167, 48, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )

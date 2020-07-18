@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 [node name="popUps" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="emptyPopUpgui" type="Control" parent="popUps"]
+[node name="empty" type="Control" parent="popUps"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 3 )

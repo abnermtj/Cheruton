@@ -1,0 +1,464 @@
+{ "frames": {
+   "Enemy_Furball_22fps 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 4.aseprite": {
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 5.aseprite": {
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 6.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 7.aseprite": {
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 8.aseprite": {
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 9.aseprite": {
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 10.aseprite": {
+    "frame": { "x": 341, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 11.aseprite": {
+    "frame": { "x": 375, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 12.aseprite": {
+    "frame": { "x": 409, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 13.aseprite": {
+    "frame": { "x": 443, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 14.aseprite": {
+    "frame": { "x": 477, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 15.aseprite": {
+    "frame": { "x": 511, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 16.aseprite": {
+    "frame": { "x": 545, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 17.aseprite": {
+    "frame": { "x": 579, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 18.aseprite": {
+    "frame": { "x": 613, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 19.aseprite": {
+    "frame": { "x": 647, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 20.aseprite": {
+    "frame": { "x": 681, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 21.aseprite": {
+    "frame": { "x": 715, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 22.aseprite": {
+    "frame": { "x": 749, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 23.aseprite": {
+    "frame": { "x": 783, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 24.aseprite": {
+    "frame": { "x": 817, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 25.aseprite": {
+    "frame": { "x": 851, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 26.aseprite": {
+    "frame": { "x": 885, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 27.aseprite": {
+    "frame": { "x": 919, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 28.aseprite": {
+    "frame": { "x": 953, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 29.aseprite": {
+    "frame": { "x": 987, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 30.aseprite": {
+    "frame": { "x": 1021, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 31.aseprite": {
+    "frame": { "x": 1055, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 32.aseprite": {
+    "frame": { "x": 1089, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 33.aseprite": {
+    "frame": { "x": 1123, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 34.aseprite": {
+    "frame": { "x": 1157, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 35.aseprite": {
+    "frame": { "x": 1191, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 36.aseprite": {
+    "frame": { "x": 1225, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 37.aseprite": {
+    "frame": { "x": 1259, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 38.aseprite": {
+    "frame": { "x": 1293, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 39.aseprite": {
+    "frame": { "x": 1327, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 40.aseprite": {
+    "frame": { "x": 1361, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 41.aseprite": {
+    "frame": { "x": 1395, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 42.aseprite": {
+    "frame": { "x": 1429, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 43.aseprite": {
+    "frame": { "x": 1463, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 44.aseprite": {
+    "frame": { "x": 1497, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 45.aseprite": {
+    "frame": { "x": 1531, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 46.aseprite": {
+    "frame": { "x": 1565, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 47.aseprite": {
+    "frame": { "x": 1599, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 48.aseprite": {
+    "frame": { "x": 1, "y": 51, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 49.aseprite": {
+    "frame": { "x": 35, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 50.aseprite": {
+    "frame": { "x": 69, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 51.aseprite": {
+    "frame": { "x": 103, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 52.aseprite": {
+    "frame": { "x": 137, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 53.aseprite": {
+    "frame": { "x": 171, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   },
+   "Enemy_Furball_22fps 54.aseprite": {
+    "frame": { "x": 205, "y": 51, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 30, "h": 34 },
+    "duration": 50
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Enemy_Furball_22fps.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 152 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "sleep", "from": 0, "to": 14, "direction": "forward" },
+   { "name": "attack", "from": 15, "to": 27, "direction": "forward" },
+   { "name": "jump", "from": 28, "to": 36, "direction": "forward" },
+   { "name": "fall", "from": 37, "to": 39, "direction": "forward" },
+   { "name": "hit", "from": 40, "to": 40, "direction": "forward" },
+   { "name": "die", "from": 41, "to": 54, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
