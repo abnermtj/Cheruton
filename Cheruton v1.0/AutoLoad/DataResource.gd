@@ -126,11 +126,37 @@ func add_exp(var exp_gain):
 
 	# Next Level Reached
 	if(temp_dict_player.exp_curr >= temp_dict_player.exp_max):
+		increase_player_stats()
+
+	emit_signal("update_exp", temp_dict_player.exp_curr, temp_dict_player.exp_max, temp_dict_player.level)
+
+func increase_player_stats():
 		temp_dict_player.level += 1
 		temp_dict_player.exp_curr -= temp_dict_player.exp_max
 		temp_dict_player.exp_max *= 1.5
-
-	emit_signal("update_exp", temp_dict_player.exp_curr, temp_dict_player.exp_max, temp_dict_player.level)
+		temp_dict_player.attack *= 1.2#stub 
+		temp_dict_player.defense *= 1.2
+		
+func increase_specific(type):
+	var equipped_item 
+	var equipped_item_val
+	match type:
+		"Weapons":
+			equipped_item = temp_dict_player.Weapons_item
+		"Apparel":
+			equipped_item = temp_dict_player.Apparel_item
+	if(!equipped_item):
+		equipped_item_val = 0
+	else:
+		var element_index = str(int(equipped_item%100))
+		match type:
+			"Weapons":
+				equipped_item_val = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
+				temp_dict_player.attack = equipped_item_val + 1.2 * (temp_dict_player.attack - equipped_item_val)
+			
+			"Apparel":
+				equipped_item_val = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
+				temp_dict_player.defense = equipped_item_val + 1.2 * (temp_dict_player.defense - equipped_item_val)
 
 func change_health(var health_change):
 	temp_dict_player.health_curr = clamp(temp_dict_player.health_curr + health_change, 0, temp_dict_player.health_max)
