@@ -64,6 +64,8 @@ var can_hook = true
 var can_throw_sword = true
 var attack_cooldown_finished = true
 
+var hit_dir : Vector2
+
 var nearest_interactible : Node
 var interaction_type : String
 
@@ -96,10 +98,11 @@ func _physics_process(delta):
 			nearest_interactible.pend_interact()
 		if is_instance_valid(old_nearest_interactible):
 			old_nearest_interactible.unpend_interact()
-	if nearest_interactible: interaction_type = nearest_interactible.interaction_type
-	else: interaction_type = ""
+	if nearest_interactible:
+		interaction_type = nearest_interactible.interaction_type
+	else:
+		interaction_type = ""
 
-#	print(on_floor)
 	if on_floor and attack_cooldown_finished:
 		can_attack = true
 
@@ -240,9 +243,8 @@ func _on_hitBox_area_entered(area):
 
 	if hooked: chain_release()
 
-	var hit_dir = global_position - area.global_position
-	velocity = hit_dir.normalized() * 400
-	move()
+	hit_dir = global_position - area.global_position
+
 	states._change_state("hit")
 
 func set_player_invunerable(time):
@@ -360,9 +362,6 @@ func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)
 
 
-func handle_enemy_attack_collision(damage):
+func handle_enemy_attack_collision(damage): # might not be used, delete later
 	#DataResource.change_health(damage)
-#	print("Player hit!")
 	pass
-
-

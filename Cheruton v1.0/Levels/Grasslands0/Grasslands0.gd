@@ -7,8 +7,6 @@ var cur_cut_scene_completed = false
 var wait_dialog_complete = false
 
 func _ready():
-	._ready()
-
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\

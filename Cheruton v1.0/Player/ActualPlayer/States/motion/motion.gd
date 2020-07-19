@@ -6,17 +6,20 @@ func handle_input(event):
 	 and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
 	 and owner.can_attack\
 	 and owner.can_throw_sword\
-	 and owner.attack_enabled: # rip code
+	 and owner.attack_enabled: # nasty
 		owner.can_attack = false
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
+
 	if event.is_action_pressed("sword_throw"):
-		if owner.can_throw_sword and not ["attack", "wallSlide"].has(owner.cur_state.name) : # so that cannot throw while has sword
+		if not ["attack", "wallSlide"].has(owner.cur_state.name)\
+		 and owner.can_throw_sword:
 			owner.throw_sword_dir = get_input_direction().normalized()
 			if owner.throw_sword_dir == Vector2(): owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()
 		elif owner.sword_stuck:
 			owner.return_sword_throw()
+
 	if event.is_action_pressed("dash") and owner.sword_stuck:
 		emit_signal("finished", "dash")
 

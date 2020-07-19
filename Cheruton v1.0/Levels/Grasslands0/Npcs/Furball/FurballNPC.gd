@@ -10,6 +10,7 @@ func interact(body):
 	instance.global_position = global_position
 	instance.name = "FurballTarget"
 	get_parent().add_child(instance)
+
 	instance.change_state("jump")
 
 	get_parent().get_parent().next_cutscene()
