@@ -445,7 +445,7 @@ func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
 		_on_Exit_pressed()
 
-# Updates inventory changes to the Shop items to sell for future
+# Updates inventory changes to 
 func _on_Inventory_visibility_changed():
 	if(!visible):
 		check_fixed()
@@ -454,6 +454,8 @@ func _on_Inventory_visibility_changed():
 		update_tab_items(APPAREL, shop_sell, "Apparel")
 		update_tab_items(CONSUM, shop_sell, "Consum")
 		update_tab_items(MISC, shop_sell, "Misc")
+		DataResource.temp_dict_player.attack = base_attack
+		DataResource.temp_dict_player.defense = base_defense
 	else:
 		base_attack = DataResource.temp_dict_player.attack
 		base_defense = DataResource.temp_dict_player.defense
