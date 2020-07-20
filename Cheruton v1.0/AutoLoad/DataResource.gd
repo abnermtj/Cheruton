@@ -95,7 +95,7 @@ func reset_player():
 	dict_player.health_curr = 50
 	dict_player.health_max = 50
 	dict_player.level = 1
-	dict_player.coins = 100
+	dict_player.coins = 9999#DEBUG
 	dict_player.attack = 15
 	dict_player.defense = 15
 	dict_player.Weapons_item = null
@@ -134,8 +134,8 @@ func increase_player_stats():
 		temp_dict_player.level += 1
 		temp_dict_player.exp_curr -= temp_dict_player.exp_max
 		temp_dict_player.exp_max *= 1.5
-		temp_dict_player.attack *= 1.2#stub 
-		temp_dict_player.defense *= 1.2
+		increase_specific("Weapons")
+		increase_specific("Apparel")
 		
 func increase_specific(type):
 	var equipped_item 
