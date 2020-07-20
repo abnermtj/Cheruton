@@ -1,11 +1,38 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://Display/MainMenu/Sprites/MainMenuback.png" type="Texture" id=1]
 [ext_resource path="res://Display/MainMenu/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://Display/MainMenu/Sprites/MainMenuback.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=5]
 [ext_resource path="res://Display/MainMenu/Sprites_Fonts/Cheruton.png" type="Texture" id=6]
 [ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 480, 272 ), Rect2( 483, 1, 480, 272 ), Rect2( 965, 1, 480, 272 ), Rect2( 1447, 1, 480, 272 ), Rect2( 1929, 1, 480, 272 ), Rect2( 2411, 1, 480, 272 ), Rect2( 2893, 1, 480, 272 ), Rect2( 3375, 1, 480, 272 ), Rect2( 3857, 1, 480, 272 ), Rect2( 4339, 1, 480, 272 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "button_pressed"
@@ -111,11 +138,21 @@ font_data = ExtResource( 7 )
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Bg" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 0, 1 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 480, 272 )
+
+[node name="BgPlayer" type="AnimationPlayer" parent="Bg"]
+anims/water = SubResource( 5 )
+
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 480.0
 margin_bottom = 270.0
 rect_scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -156,7 +193,6 @@ __meta__ = {
 
 [node name="Slider" type="TextureRect" parent="Background/Options"]
 visible = false
-modulate = Color( 1, 1, 1, 0.37 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
