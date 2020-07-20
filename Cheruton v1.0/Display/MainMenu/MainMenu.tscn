@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/Velocity = Vector2( -0.01, 0 )
+shader_param/Velocity = Vector2( -0.005, 0 )
 
 [sub_resource type="Animation" id=2]
 loop = true
@@ -154,7 +154,6 @@ centered = false
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( 0, 1 )
 region_enabled = true
 region_rect = Rect2( 1, 1, 480, 272 )
 
