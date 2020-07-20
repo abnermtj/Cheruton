@@ -278,17 +278,10 @@ func sell_item():
 	# Item Stock is empty:
 	else:
 		var dict_size = DataResource.dict_inventory[active_tab.name].size()
-		# Deactivate item held if that node is a held item
+		# Dequip item held if that node is a held item
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-				#edit stuff here
-				#edit stuff here
-				match active_tab.name:
-					"Weapons":
-						DataResource.temp_dict_player.attack -= DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-					"Apparel":
-						DataResource.temp_dict_player.defense -= DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
-				DataResource.temp_dict_player[active_tab.name + "_item"] = null
+				inventory.item_status(inventory.find_node(mouse_node.name, true, false), "DEQUIP")
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		element_index = int(element_index)

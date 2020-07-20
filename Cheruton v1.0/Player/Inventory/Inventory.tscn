@@ -584,6 +584,7 @@ margin_bottom = 167.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+one_shot = true
 [connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Sides/Data/Button" to="." method="_on_Button_pressed"]

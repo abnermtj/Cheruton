@@ -10,8 +10,8 @@ onready var options = $Background/Options
 onready var slider = $Background/Options/Slider
 onready var tween = $Tween
 onready var canvas_modulate = $CanvasModulate
-onready var player = $Background/Cheruton/Player
-
+onready var general_player = $Background/Cheruton/GeneralPlayer
+onready var bg_player = $Bg/BgPlayer
 onready var options_delay = $OptionsDelay
 
 onready var container = $Background/Options/VBoxContainer
@@ -27,6 +27,7 @@ var slider_active := false
 var slider_enabled := false
 
 func _ready():
+	bg_player.play("water")
 	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
 	SceneControl.get_node("popUpGui").enabled = false
 	tween_white_screen()
@@ -57,13 +58,13 @@ func enable_options():
 
 
 func _on_Play_pressed():
-	player.play("button_pressed")
+	general_player.play("button_pressed")
 
 func _on_Settings_pressed():
-	player.play("button_pressed")
+	general_player.play("button_pressed")
 
 func _on_Quit_pressed():
-	player.play("button_pressed")
+	general_player.play("button_pressed")
 
 
 func _on_Player_animation_finished(anim_name):
@@ -86,7 +87,7 @@ func perform_button_action():
 			queue_free()
 		settings_position:
 			hide_options()
-			player.play("to_settings")
+			general_player.play("to_settings")
 		quit_position:
 			get_tree().quit()
 
@@ -97,7 +98,7 @@ func hide_options():
 	container.hide()
 
 func back_to_mmenu():
-	player.play("to_mmenu")
+	general_player.play("to_mmenu")
 
 
 
