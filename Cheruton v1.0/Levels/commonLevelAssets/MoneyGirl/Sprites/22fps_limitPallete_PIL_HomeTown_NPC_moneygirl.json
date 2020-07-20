@@ -630,6 +630,118 @@
     "spriteSourceSize": { "x": 0, "y": 32, "w": 48, "h": 16 },
     "sourceSize": { "w": 50, "h": 50 },
     "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 79.aseprite": {
+    "frame": { "x": 201, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 80.aseprite": {
+    "frame": { "x": 235, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 81.aseprite": {
+    "frame": { "x": 269, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 82.aseprite": {
+    "frame": { "x": 303, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 83.aseprite": {
+    "frame": { "x": 337, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 84.aseprite": {
+    "frame": { "x": 371, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 85.aseprite": {
+    "frame": { "x": 405, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 86.aseprite": {
+    "frame": { "x": 439, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 87.aseprite": {
+    "frame": { "x": 473, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 88.aseprite": {
+    "frame": { "x": 507, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 89.aseprite": {
+    "frame": { "x": 541, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 90.aseprite": {
+    "frame": { "x": 575, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 91.aseprite": {
+    "frame": { "x": 609, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
+   },
+   "22fps_limitPallete_PIL_HomeTown_NPC_moneygirl 92.aseprite": {
+    "frame": { "x": 643, "y": 101, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 32, "h": 48 },
+    "sourceSize": { "w": 50, "h": 50 },
+    "duration": 40
    }
  },
  "meta": {
@@ -646,12 +758,14 @@
    { "name": "poke", "from": 34, "to": 49, "direction": "forward" },
    { "name": "idle2", "from": 50, "to": 65, "direction": "forward" },
    { "name": "jump", "from": 66, "to": 74, "direction": "forward" },
-   { "name": "staff_jump_switch", "from": 75, "to": 78, "direction": "forward" }
+   { "name": "staff_jump_switch", "from": 75, "to": 78, "direction": "forward" },
+   { "name": "turn_around", "from": 79, "to": 92, "direction": "forward" }
   ],
   "layers": [
    { "name": "player below", "opacity": 255, "blendMode": "normal" },
    { "name": "staff", "opacity": 255, "blendMode": "normal" },
-   { "name": "playe above", "opacity": 255, "blendMode": "normal" }
+   { "name": "playe above", "opacity": 255, "blendMode": "normal" },
+   { "name": "rock hit", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]

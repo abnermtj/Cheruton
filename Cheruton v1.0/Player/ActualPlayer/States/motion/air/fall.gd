@@ -10,18 +10,6 @@ var enter_velocity
 var updated_once
 
 func handle_input(event):
-	if Input.is_action_just_pressed("hook"):
-			if owner.can_hook:
-				var nearest_hook_point = owner.nearest_hook_point
-				if not nearest_hook_point:
-					return
-
-				owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
-
-				owner.play_sound("hook_start")
-#				owner.play_and_return_anim("grapple_throw")
-				owner.start_hook()
-
 	if Input.is_action_just_pressed("jump"):
 		owner.jump_buffer_start() # used for input buffering
 		if coyote_timer > 0 and not owner.has_jumped:
@@ -50,6 +38,16 @@ func enter():
 	coyote_timer = COYOTE_TIME
 
 func update(delta):
+	if Input.is_action_pressed("hook"):
+			if owner.can_hook:
+				var nearest_hook_point = owner.nearest_hook_point
+				if nearest_hook_point:
+					owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
+
+					owner.play_sound("hook_start")
+	#				owner.play_and_return_anim("grapple_throw")
+					owner.start_hook()
+
 	coyote_timer -= delta
 
 	owner.velocity.y = min(TERM_VEL, owner.velocity.y + owner.GRAVITY * delta) # dunnid delta here by right, move and slide deals with it

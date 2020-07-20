@@ -27,9 +27,9 @@ func set_outline_enabled(val):
 
 func interact(body):
 	.interact(body)
-	SceneControl.cur_level.next_cutscene()
+	level.next_cutscene()
 	DataResource.temp_dict_player.dialog_complete = false
-	SceneControl.cur_level.wait_dialog_complete = true
+	level.wait_dialog_complete = true
 
 func shoot():
 	$AnimationPlayerStaff.play("Staff")

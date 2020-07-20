@@ -108,8 +108,6 @@ func _physics_process(delta):
 # General Helper functions
 func set_input_enabled(val):
 	states.input_enabled = val
-	print(states.input_enabled)
-	print("here")
 
 func change_state(name):
 	states._change_state(name)

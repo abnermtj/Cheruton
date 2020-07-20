@@ -136,7 +136,6 @@ scale = Vector2( 2, 2 )
 transform = Transform2D( 2, 0, 0, 2, 0, -750 )
 
 [node name="grapplePoints" type="Node2D" parent="."]
-visible = false
 
 [node name="grapplePoint0" parent="grapplePoints" instance=ExtResource( 6 )]
 position = Vector2( 5701.91, -81.9597 )

@@ -396,7 +396,7 @@ story = {
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": "<start>   ",
+"text": "<start>",
 "type": "line"
 },
 2: {

@@ -14,7 +14,9 @@ func handle_input(event):
 	if event.is_action_pressed("sword_throw"):
 		if not ["attack", "wallSlide"].has(owner.cur_state.name)\
 		 and owner.can_throw_sword:
-			owner.throw_sword_dir = get_input_direction().normalized()
+#			owner.throw_sword_dir = get_input_direction().normalized() # keyboard
+			owner.throw_sword_dir = (get_viewport().get_mouse_position() - owner.get_global_transform_with_canvas().origin).normalized()
+
 			if owner.throw_sword_dir == Vector2(): owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()
 		elif owner.sword_stuck:

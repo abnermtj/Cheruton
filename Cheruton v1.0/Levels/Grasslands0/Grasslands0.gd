@@ -17,18 +17,21 @@ func _ready():
 
 	#debug
 	player_spawn_pos = Vector2(3028, -1936)
+#	player_spawn_pos = Vector2(5472, 1056)
 	cur_cut_scene_completed = true
-	cutscene_number = 3 # cutscene
+	cutscene_number = 2 # cutscene
 	cutscene_index = 0 #
 	########
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
 	if not cur_cut_scene_completed:
-		cutscene_number = 2 # cutscene
+		cutscene_number = 0 # cutscene
 		cutscene_index = 0 # specific part of cutscene (separated by dialog etc)
 		next_cutscene()
 
 func next_cutscene():
+	cur_cut_scene_completed = false
 	cut_scene_player.play("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
+
 	match cutscene_number:
 		0:
 			if cutscene_index == 4:
@@ -42,6 +45,11 @@ func next_cutscene():
 				return
 		2:
 			if cutscene_index == 1:
+#				DataResource.dict_player.completed_cutscenes["grasslands0_2"] = true
+				end_cutscene()
+				return
+		3:
+			if cutscene_index == 4:
 #				DataResource.dict_player.completed_cutscenes["grasslands0_2"] = true
 				end_cutscene()
 				return
@@ -76,8 +84,7 @@ func handle_death_zone(body):
 func start_falling_rock():
 	var falling_rock = load("res://Levels/Grasslands0/fallingRock/fallingRock.tscn")
 	var fallling_rock_node = falling_rock.instance()
-	fallling_rock_node.global_position = $npcs/moneygirl/rock.global_position
-
+	fallling_rock_node.global_position = $NPCs/moneygirl/rock.global_position
 	add_child(fallling_rock_node)
 
 func play_cutscene_dialog(name : String):

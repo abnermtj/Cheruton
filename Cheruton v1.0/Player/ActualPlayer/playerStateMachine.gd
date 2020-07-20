@@ -20,4 +20,3 @@ func _on_AnimationPlayer_animation_changed(old_name, new_name):
 
 func _input(event):
 	._input(event)
-	print(input_enabled)

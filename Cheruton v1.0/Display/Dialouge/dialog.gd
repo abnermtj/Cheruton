@@ -1,6 +1,6 @@
 extends basePopUp
 
-var TIME_PER_CHAR_WRITE = .024 # seconds
+var TIME_PER_CHAR_WRITE = .022 # seconds
 
 onready var dialogue_base = $dialogBox/bodyBackground
 onready var dialogue_text = $dialogBox/bodyBackground/MarginContainer/bodyText
@@ -87,7 +87,7 @@ func play_dialog():
 	start_dialog_timer()
 
 func start_dialog_timer():
-	$Timer.start(TIME_PER_CHAR_WRITE + rand_range(-.01, .01))
+	$Timer.start(TIME_PER_CHAR_WRITE + rand_range(-.005, .005))
 
 func _on_Timer_timeout():
 	if finished_current_node : return

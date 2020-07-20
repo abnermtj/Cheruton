@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Levels/Hometown/Sprites/Grasslands.png" type="Texture" id=20]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Levels/Grasslands0/Npcs/Furball/FurballNPC.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands-WitchHutForeground.png" type="Texture" id=23]
 [ext_resource path="res://Effects/ColorDodge/ColorDodge.shader" type="Shader" id=24]
 [ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands-WitchHut.png" type="Texture" id=25]
 [ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands_SunRay.png" type="Texture" id=26]
@@ -99,7 +100,7 @@ tracks/4/keys = {
 "values": [ Vector2( -188, 188 ) ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("npcs/moneygirl")
+tracks/5/path = NodePath("NPCs/moneygirl")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -116,7 +117,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("npcs/moneygirl")
+tracks/6/path = NodePath("NPCs/moneygirl")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -130,7 +131,7 @@ tracks/6/keys = {
 } ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath("npcs/moneygirl")
+tracks/7/path = NodePath("NPCs/moneygirl")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -144,7 +145,7 @@ tracks/7/keys = {
 } ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("npcs/moneygirl:position")
+tracks/8/path = NodePath("NPCs/moneygirl:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = false
 tracks/8/imported = false
@@ -156,7 +157,7 @@ tracks/8/keys = {
 "values": [ Vector2( -60, 156 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("npcs/moneygirl:scale")
+tracks/9/path = NodePath("NPCs/moneygirl:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = false
 tracks/9/imported = false
@@ -180,7 +181,7 @@ tracks/10/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.67, 0.67 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("npcs/moneyGirlStaff:visible")
+tracks/11/path = NodePath("NPCs/moneyGirlStaff:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = false
 tracks/11/imported = false
@@ -192,7 +193,7 @@ tracks/11/keys = {
 "values": [ false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("npcs/moneygirl/rock:visible")
+tracks/12/path = NodePath("NPCs/moneygirl/rock:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -283,7 +284,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "method"
-tracks/4/path = NodePath("npcs/moneygirl")
+tracks/4/path = NodePath("NPCs/moneygirl")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -300,7 +301,7 @@ tracks/4/keys = {
 } ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("npcs/moneygirl")
+tracks/5/path = NodePath("NPCs/moneygirl")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -314,7 +315,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("npcs/moneygirl:position")
+tracks/6/path = NodePath("NPCs/moneygirl:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = false
 tracks/6/imported = false
@@ -326,7 +327,7 @@ tracks/6/keys = {
 "values": [ Vector2( -60, 156 ), Vector2( -60, 156 ), Vector2( -59, 162 ), Vector2( -52, 110 ), Vector2( -47, 130.668 ), Vector2( -46, 148 ), Vector2( -45, 150 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("npcs/moneygirl:scale")
+tracks/7/path = NodePath("NPCs/moneygirl:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = false
 tracks/7/imported = false
@@ -350,7 +351,7 @@ tracks/8/keys = {
 "values": [ Vector2( 0.67, 0.67 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("npcs/moneyGirlStaff:position")
+tracks/9/path = NodePath("NPCs/moneyGirlStaff:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -362,7 +363,7 @@ tracks/9/keys = {
 "values": [ Vector2( -60, 156 ), Vector2( -60, 156 ), Vector2( -49, 152 ), Vector2( -44, 176 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("npcs/moneyGirlStaff:scale")
+tracks/10/path = NodePath("NPCs/moneyGirlStaff:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -374,7 +375,7 @@ tracks/10/keys = {
 "values": [ Vector2( -4, 4 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("npcs/moneyGirlStaff:visible")
+tracks/11/path = NodePath("NPCs/moneyGirlStaff:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -386,7 +387,7 @@ tracks/11/keys = {
 "values": [ true, false ]
 }
 tracks/12/type = "method"
-tracks/12/path = NodePath("npcs/moneyGirlStaff")
+tracks/12/path = NodePath("NPCs/moneyGirlStaff")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -503,7 +504,7 @@ tracks/4/keys = {
 "values": [ Vector2( -315, 188 ) ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("npcs/moneygirl")
+tracks/5/path = NodePath("NPCs/moneygirl")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -517,7 +518,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("npcs/moneygirl")
+tracks/6/path = NodePath("NPCs/moneygirl")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -543,7 +544,7 @@ tracks/7/keys = {
 "values": [ Vector2( 0.67, 0.67 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("npcs/moneyGirlStaff:visible")
+tracks/8/path = NodePath("NPCs/moneyGirlStaff:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -555,7 +556,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("npcs/moneygirl/rock:position")
+tracks/9/path = NodePath("NPCs/moneygirl/rock:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = false
 tracks/9/imported = false
@@ -567,7 +568,7 @@ tracks/9/keys = {
 "values": [ Vector2( 20, 4 ), Vector2( 8, 2 ), Vector2( 9, 2 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("npcs/moneygirl/rock:modulate")
+tracks/10/path = NodePath("NPCs/moneygirl/rock:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = false
 tracks/10/imported = false
@@ -579,7 +580,7 @@ tracks/10/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1.7, 1, 1.1, 1 ), Color( 1.7, 1, 1.1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("npcs/moneygirl/rock:visible")
+tracks/11/path = NodePath("NPCs/moneygirl/rock:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = false
 tracks/11/imported = false
@@ -591,7 +592,7 @@ tracks/11/keys = {
 "values": [ false, true, false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("npcs/moneygirl:position")
+tracks/12/path = NodePath("NPCs/moneygirl:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -617,7 +618,7 @@ tracks/13/keys = {
 } ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("npcs/moneygirl/rock:scale")
+tracks/14/path = NodePath("NPCs/moneygirl/rock:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = false
 tracks/14/imported = false
@@ -629,7 +630,7 @@ tracks/14/keys = {
 "values": [ Vector2( 3.5, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("npcs/moneygirl/rock:rotation_degrees")
+tracks/15/path = NodePath("NPCs/moneygirl/rock:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = false
 tracks/15/imported = false
@@ -729,7 +730,7 @@ tracks/4/keys = {
 "values": [ Vector2( -315, 188 ) ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("npcs/moneygirl")
+tracks/5/path = NodePath("NPCs/moneygirl")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -743,7 +744,7 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("npcs/moneygirl")
+tracks/6/path = NodePath("NPCs/moneygirl")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -769,7 +770,7 @@ tracks/7/keys = {
 "values": [ Vector2( 0.67, 0.67 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("npcs/moneygirl:position")
+tracks/8/path = NodePath("NPCs/moneygirl:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = false
 tracks/8/imported = false
@@ -824,7 +825,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0.67, 0.67 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("npcs/moneygirl:position")
+tracks/2/path = NodePath("NPCs/moneygirl:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
@@ -836,7 +837,7 @@ tracks/2/keys = {
 "values": [ Vector2( 72, -1336 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("npcs/moneygirl:scale")
+tracks/3/path = NodePath("NPCs/moneygirl:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -862,7 +863,7 @@ tracks/4/keys = {
 } ]
 }
 tracks/5/type = "method"
-tracks/5/path = NodePath("npcs/moneygirl")
+tracks/5/path = NodePath("NPCs/moneygirl")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -884,7 +885,7 @@ resource_name = "cutscene1_0"
 length = 3.0
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("npcs/moneygirl:position")
+tracks/0/path = NodePath("NPCs/moneygirl:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -896,7 +897,7 @@ tracks/0/keys = {
 "values": [ Vector2( 72, -1336 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("npcs/moneygirl:scale")
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -913,7 +914,7 @@ resource_name = "cutscene1_1"
 length = 7.0
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("npcs/moneygirl:position")
+tracks/0/path = NodePath("NPCs/moneygirl:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
@@ -925,7 +926,7 @@ tracks/0/keys = {
 "values": [ Vector2( 72, -1336 ), Vector2( 1900, -1976 ), Vector2( 5520, -1890 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("npcs/moneygirl:scale")
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -937,7 +938,7 @@ tracks/1/keys = {
 "values": [ Vector2( 4, 4 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("npcs/moneygirl")
+tracks/2/path = NodePath("NPCs/moneygirl")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -956,19 +957,19 @@ resource_name = "cutscene2_0"
 length = 3.2
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("npcs/moneygirl:position")
+tracks/0/path = NodePath("NPCs/moneygirl:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.25822 ),
+"times": PoolRealArray( 0, 2.26 ),
 "transitions": PoolRealArray( 0.7, 1 ),
 "update": 0,
-"values": [ Vector2( 5150, -1300 ), Vector2( 4268, -1436 ) ]
+"values": [ Vector2( 5000, -1300 ), Vector2( 3928, -1468 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("npcs/moneygirl:scale")
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -980,7 +981,7 @@ tracks/1/keys = {
 "values": [ Vector2( -4, 4 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("npcs/moneygirl")
+tracks/2/path = NodePath("NPCs/moneygirl")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1060,45 +1061,48 @@ resource_name = "cutscene2_1"
 length = 4.0
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("npcs/moneygirl:position")
+tracks/0/path = NodePath("NPCs/moneygirl:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3.41 ),
+"times": PoolRealArray( 0, 4 ),
 "transitions": PoolRealArray( 1.5, 1 ),
-"update": 3,
-"values": [ Vector2( 4640, -1504 ), Vector2( 5552, 1084 ) ]
+"update": 0,
+"values": [ Vector2( 3928, -1468 ), Vector2( 6076, 1104 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("npcs/moneygirl:scale")
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.181148 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 4, 4 ) ]
+"times": PoolRealArray( 0.181148, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, 4 ), Vector2( 3.45, 3.45 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("npcs/moneygirl")
+tracks/2/path = NodePath("NPCs/moneygirl")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 4.03 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ "on_broom_idle" ],
+"method": "play_anim"
+}, {
+"args": [ "idle" ],
 "method": "play_anim"
 } ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("npcs/moneygirl")
+tracks/3/path = NodePath("NPCs/moneygirl")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1112,36 +1116,36 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=10]
 resource_name = "cutscene3_0"
 length = 4.0
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("npcs/moneygirl:position")
+tracks/0/path = NodePath("NPCs/moneygirl:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1.41421, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.41421 ),
 "update": 0,
-"values": [ Vector2( 5552, 1084 ), Vector2( 5880, 1064 ) ]
+"values": [ Vector2( 6076, 1104 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("npcs/moneygirl:scale")
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 4 ), Vector2( 3.8, 3.8 ) ]
+"values": [ Vector2( -3.45, 3.45 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("npcs/moneygirl")
+tracks/2/path = NodePath("NPCs/moneygirl")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1150,7 +1154,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "on_broom_idle" ],
+"args": [ "idle" ],
 "method": "play_anim"
 } ]
 }
@@ -1161,20 +1165,87 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 2.85299 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.0 ]
 }
 
-[sub_resource type="ShaderMaterial" id=14]
+[sub_resource type="Animation" id=11]
+resource_name = "cutscene3_1"
+length = 4.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("NPCs/moneygirl:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.17, 1.18 ),
+"transitions": PoolRealArray( 1.41421, 1 ),
+"update": 0,
+"values": [ Vector2( 6076, 1104 ), Vector2( 6202, 1106 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NPCs/moneygirl:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.17 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3.5, 3.5 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("NPCs/moneygirl")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "turn_around" ],
+"method": "play_anim"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/ColorRect:material:shader_param/cutoff")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("NPCs/moneygirl:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.45, 1.18 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 24 )
 shader_param/mask = ExtResource( 26 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=14]
 0/name = "Grasslands.png 0"
 0/texture = ExtResource( 20 )
 0/tex_offset = Vector2( 0, 0 )
@@ -1185,19 +1256,19 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 10 )
+0/shape = SubResource( 13 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=15]
 shader = ExtResource( 14 )
 shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.25
@@ -1220,10 +1291,11 @@ anims/cutscene1_0 = SubResource( 6 )
 anims/cutscene1_1 = SubResource( 7 )
 anims/cutscene2_0 = SubResource( 8 )
 anims/cutscene2_1 = SubResource( 9 )
-anims/cutscene3_0 = SubResource( 15 )
+anims/cutscene3_0 = SubResource( 10 )
+anims/cutscene3_1 = SubResource( 11 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 6384, 1168 )
+[node name="house" type="Sprite" parent="."]
+position = Vector2( 6388, 1168 )
 texture = ExtResource( 25 )
 
 [node name="Shaders" type="Node2D" parent="."]
@@ -1232,35 +1304,35 @@ texture = ExtResource( 25 )
 position = Vector2( -112, 104 )
 
 [node name="Ray" type="Sprite" parent="Shaders"]
-material = SubResource( 14 )
+material = SubResource( 12 )
 position = Vector2( 6048, 1116 )
 rotation = -0.698132
 scale = Vector2( 5, 30 )
 texture = ExtResource( 26 )
 
 [node name="Ray2" type="Sprite" parent="Shaders"]
-material = SubResource( 14 )
+material = SubResource( 12 )
 position = Vector2( 6548, 892 )
 rotation = -0.698132
 scale = Vector2( 6, 30 )
 texture = ExtResource( 26 )
 
 [node name="Ray3" type="Sprite" parent="Shaders"]
-material = SubResource( 14 )
+material = SubResource( 12 )
 position = Vector2( 3964, -1484 )
 rotation = -0.698132
 scale = Vector2( 6, 40 )
 texture = ExtResource( 26 )
 
 [node name="Ray4" type="Sprite" parent="Shaders"]
-material = SubResource( 14 )
+material = SubResource( 12 )
 position = Vector2( -344, -188 )
 rotation = -0.698132
 scale = Vector2( 9, 40 )
 texture = ExtResource( 26 )
 
 [node name="Ray5" type="Sprite" parent="Shaders"]
-material = SubResource( 14 )
+material = SubResource( 12 )
 position = Vector2( 1836, -1596 )
 rotation = -0.610865
 scale = Vector2( 9, 48 )
@@ -1275,7 +1347,7 @@ tile_data = PoolIntArray( -2949127, 1, 0, -2949126, 1, 327681, -2949125, 1, 3276
 
 [node name="EnemyBlocks" type="TileMap" parent="."]
 visible = false
-tile_set = SubResource( 11 )
+tile_set = SubResource( 14 )
 collision_layer = 64
 collision_mask = 0
 format = 1
@@ -1286,26 +1358,37 @@ tile_data = PoolIntArray( -5242860, 15, 0, -3866283, 17, 0, 655351, 11, 0, 38668
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 self_modulate = Color( 0.698039, 0.109804, 0.109804, 1 )
-position = Vector2( 4740, 1160 )
+position = Vector2( -188, 188 )
+z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
 
-[node name="npcs" type="Node2D" parent="."]
+[node name="NPCs" type="Node2D" parent="."]
 
-[node name="moneyGirlStaff" parent="npcs" instance=ExtResource( 17 )]
+[node name="moneyGirlStaff" parent="NPCs" instance=ExtResource( 17 )]
+visible = false
 position = Vector2( -60, 156 )
 scale = Vector2( -4, 4 )
 
-[node name="moneygirl" parent="npcs" instance=ExtResource( 13 )]
-position = Vector2( 5880, 1064 )
-scale = Vector2( 3.8, 3.8 )
+[node name="moneygirl" parent="NPCs" instance=ExtResource( 13 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 3928, -1468 )
+scale = Vector2( -4, 4 )
 
-[node name="rock" type="Sprite" parent="npcs/moneygirl"]
+[node name="rock" type="Sprite" parent="NPCs/moneygirl"]
 visible = false
 modulate = Color( 1.7, 1, 1.1, 1 )
 position = Vector2( 9, 2 )
 rotation = -23.8727
 texture = ExtResource( 19 )
+
+[node name="Foreground" type="Node2D" parent="."]
+position = Vector2( -4, 0 )
+
+[node name="houseFence" type="Sprite" parent="Foreground"]
+position = Vector2( 5972, 1020 )
+texture = ExtResource( 23 )
+centered = false
 
 [node name="Mobs" type="Node2D" parent="."]
 position = Vector2( -4, 0 )
@@ -1363,7 +1446,7 @@ scale = Vector2( 2, 2 )
 transform = Transform2D( 2, 0, 0, 2, 0, -700 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 12 )
+material = SubResource( 15 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.701961 )
