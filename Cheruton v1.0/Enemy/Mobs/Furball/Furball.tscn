@@ -85,7 +85,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 0.55 ),
+"times": PoolRealArray( 0, 0.45, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ true, false, true ]
@@ -283,6 +283,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( -1.5, -36 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.45
@@ -426,7 +438,7 @@ extents = Vector2( 48, 28 )
 radius = 800.0
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 100, 80 )
+extents = Vector2( 90, 80 )
 
 [node name="Furball" type="KinematicBody2D"]
 collision_layer = 0
@@ -443,7 +455,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 919, 1, 32, 32 )
+region_rect = Rect2( 1361, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
@@ -515,7 +527,6 @@ position = Vector2( 1, 0 )
 shape = SubResource( 11 )
 
 [node name="attackRangeArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 

@@ -25,6 +25,8 @@ func handle_input(event):
 
 # note left and right at the same time cancel out
 func get_input_direction():
+	if not get_parent().input_enabled: return Vector2()
+
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))

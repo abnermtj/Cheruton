@@ -91,11 +91,12 @@ func handle_death_zone(body):
 	pass
 
 func start_cutscene_mode():
-	player.set_fsm(false)
+	print("ISITIS SET")
+	player.set_input_enabled(false)
 	SceneControl.set_dialog_only_mode(true)
 
 func end_cutscene_mode():
-	player.set_fsm(true)
+	player.set_input_enabled(true)
 	SceneControl.set_dialog_only_mode(false)
 
 func shake_camera(dur, freq, amp, dir):

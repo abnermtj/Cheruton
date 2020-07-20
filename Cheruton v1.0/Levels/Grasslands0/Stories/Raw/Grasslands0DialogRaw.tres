@@ -11,7 +11,9 @@ names = {
 "cutscene0_2": 3,
 "cutscene0_3": 4,
 "cutscene1_0": 5,
-"cutscene2_0": 6
+"cutscene2_0": 6,
+"cutscene3_0": 7,
+"cutscene3_1": 8
 }
 story = {
 1: {
@@ -377,6 +379,95 @@ story = {
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
 <dialog>Anything that moves is dangerous.</dialog>",
+"type": "line"
+}
+}
+},
+7: {
+"available_nid": [ 4 ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene3_0",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>   ",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 320, 360 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 400, 160 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>You can wait here, i'll see what i can lend you.</dialog>",
+"type": "line"
+}
+}
+},
+8: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene3_1",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 760, 60 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 120, 220 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>By the way, where are you from?</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 380, 400 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>You don't look like you're from around here.</dialog>",
 "type": "line"
 }
 }

@@ -16,8 +16,9 @@ func _ready():
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 	#debug
+	player_spawn_pos = Vector2(3028, -1936)
 	cur_cut_scene_completed = true
-	cutscene_number = 2 # cutscene
+	cutscene_number = 3 # cutscene
 	cutscene_index = 0 #
 	########
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
@@ -83,3 +84,8 @@ func play_cutscene_dialog(name : String):
 	DataResource.temp_dict_player.dialog_complete = false
 	SceneControl.change_and_start_dialog(name)
 	wait_dialog_complete = true
+
+
+func _on_NextCutsceneTriger_body_entered(body):
+	if cur_cut_scene_completed and cutscene_number == 2:
+		$Mobs/FurballNPC.interact(player)

@@ -57,7 +57,6 @@ var sword_stuck = false
 var sword_pos = Vector2()
 var sword_col_normal = Vector2()
 
-
 var attack_enabled = true
 var can_attack = true
 var can_hook = true
@@ -107,6 +106,14 @@ func _physics_process(delta):
 		can_attack = true
 
 # General Helper functions
+func set_input_enabled(val):
+	states.input_enabled = val
+	print(states.input_enabled)
+	print("here")
+
+func change_state(name):
+	states._change_state(name)
+
 func get_nearest_object(obj_type : String):
 	var near_objects
 	match obj_type:
@@ -206,7 +213,7 @@ func _on_Chain_hooked(command, tip_p, node):
 		hooked = true
 		tip_pos = tip_p
 		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip, she can't run from it
-		states._change_state("hook")
+		change_state("hook")
 		set_camera_mode_logic()
 	elif command == 1: # bad hook
 		play_sound("hook_bad")
@@ -245,7 +252,7 @@ func _on_hitBox_area_entered(area):
 
 	hit_dir = global_position - area.global_position
 
-	states._change_state("hit")
+	change_state("hit")
 
 func set_player_invunerable(time):
 	is_invunerable = true
@@ -365,3 +372,4 @@ func shake_camera(dur, freq, amp, dir):
 func handle_enemy_attack_collision(damage): # might not be used, delete later
 	#DataResource.change_health(damage)
 	pass
+

@@ -1838,9 +1838,9 @@ use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 15 )
-offset = Vector2( 18.5, 11.5 )
+offset = Vector2( -5.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 281, 167, 96, 64 )
+region_rect = Rect2( 611, 167, 48, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )

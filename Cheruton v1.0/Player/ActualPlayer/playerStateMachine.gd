@@ -17,3 +17,7 @@ func _change_state(state_name):
 
 func _on_AnimationPlayer_animation_changed(old_name, new_name):
 	._on_animation_finished(old_name)
+
+func _input(event):
+	._input(event)
+	print(input_enabled)
