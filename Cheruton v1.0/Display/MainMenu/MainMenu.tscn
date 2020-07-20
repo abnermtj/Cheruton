@@ -27,6 +27,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Rect2( 1, 1, 480, 272 ), Rect2( 483, 1, 480, 272 ), Rect2( 965, 1, 480, 272 ), Rect2( 1447, 1, 480, 272 ), Rect2( 1929, 1, 480, 272 ), Rect2( 2411, 1, 480, 272 ), Rect2( 2893, 1, 480, 272 ), Rect2( 3375, 1, 480, 272 ), Rect2( 3857, 1, 480, 272 ), Rect2( 4339, 1, 480, 272 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.2
@@ -148,17 +160,7 @@ region_rect = Rect2( 1, 1, 480, 272 )
 [node name="BgPlayer" type="AnimationPlayer" parent="Bg"]
 anims/water = SubResource( 2 )
 
-[node name="Background" type="TextureRect" parent="."]
-visible = false
-margin_right = 480.0
-margin_bottom = 270.0
-rect_scale = Vector2( 4, 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Cheruton" type="TextureRect" parent="Background"]
+[node name="Cheruton" type="TextureRect" parent="Bg"]
 margin_left = 53.0
 margin_top = 60.0
 margin_right = 433.0
@@ -168,20 +170,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" type="AnimationPlayer" parent="Background/Cheruton"]
+[node name="Player" type="AnimationPlayer" parent="Bg/Cheruton"]
 anims/button_pressed = SubResource( 3 )
 anims/to_mmenu = SubResource( 4 )
 anims/to_settings = SubResource( 5 )
 
-[node name="Options" type="NinePatchRect" parent="Background"]
+[node name="Options" type="NinePatchRect" parent="Bg"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -94.0
-margin_top = 15.0
+margin_top = 14.0
 margin_right = 99.0
-margin_bottom = 115.0
+margin_bottom = 114.0
 texture = ExtResource( 5 )
 patch_margin_left = 50
 patch_margin_top = 50
@@ -191,7 +193,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slider" type="TextureRect" parent="Background/Options"]
+[node name="Slider" type="TextureRect" parent="Bg/Options"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -207,7 +209,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Bg/Options"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -220,7 +222,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="TextureButton" parent="Background/Options/VBoxContainer"]
+[node name="Play" type="TextureButton" parent="Bg/Options/VBoxContainer"]
 margin_right = 179.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -228,7 +230,7 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="Label" parent="Background/Options/VBoxContainer/Play"]
+[node name="Text" type="Label" parent="Bg/Options/VBoxContainer/Play"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -245,7 +247,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="TextureButton" parent="Background/Options/VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="Bg/Options/VBoxContainer"]
 margin_top = 28.0
 margin_right = 179.0
 margin_bottom = 56.0
@@ -254,7 +256,7 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="Label" parent="Background/Options/VBoxContainer/Settings"]
+[node name="Text" type="Label" parent="Bg/Options/VBoxContainer/Settings"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -271,7 +273,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="TextureButton" parent="Background/Options/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Bg/Options/VBoxContainer"]
 margin_top = 56.0
 margin_right = 179.0
 margin_bottom = 84.0
@@ -280,7 +282,7 @@ size_flags_vertical = 3
 disabled = true
 expand = true
 
-[node name="Text" type="Label" parent="Background/Options/VBoxContainer/Quit"]
+[node name="Text" type="Label" parent="Bg/Options/VBoxContainer/Quit"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -298,19 +300,23 @@ __meta__ = {
 }
 
 [node name="OptionsDelay" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="CherutonDelay" type="Timer" parent="."]
 wait_time = 0.8
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 100, 100, 100, 1 )
-[connection signal="animation_finished" from="Background/Cheruton/Player" to="." method="_on_Player_animation_finished"]
-[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
-[connection signal="pressed" from="Background/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_mouse_entered"]
-[connection signal="pressed" from="Background/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="mouse_entered" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
-[connection signal="pressed" from="Background/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="animation_finished" from="Bg/Cheruton/Player" to="." method="_on_Player_animation_finished"]
+[connection signal="mouse_entered" from="Bg/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="pressed" from="Bg/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Bg/Options/VBoxContainer/Settings" to="." method="_on_Settings_mouse_entered"]
+[connection signal="pressed" from="Bg/Options/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="mouse_entered" from="Bg/Options/VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="pressed" from="Bg/Options/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="timeout" from="OptionsDelay" to="." method="_on_OptionsDelay_timeout"]
+[connection signal="timeout" from="CherutonDelay" to="." method="_on_CherutonDelay_timeout"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

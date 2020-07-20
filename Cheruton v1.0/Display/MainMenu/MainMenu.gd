@@ -6,19 +6,21 @@ const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
-onready var options = $Background/Options
-onready var slider = $Background/Options/Slider
+onready var options = $Bg/Options
+onready var slider = $Bg/Options/Slider
 onready var tween = $Tween
 onready var canvas_modulate = $CanvasModulate
-onready var general_player = $Background/Cheruton/GeneralPlayer
+onready var general_player = $Bg/Cheruton/Player
 onready var bg_player = $Bg/BgPlayer
 onready var options_delay = $OptionsDelay
+onready var cheruton_delay = $CherutonDelay
+onready var cheruton = $Bg/Cheruton
 
-onready var container = $Background/Options/VBoxContainer
+onready var container = $Bg/Options/VBoxContainer
 
-onready var play_position = $Background/Options/VBoxContainer/Play.rect_position
-onready var settings_position = $Background/Options/VBoxContainer/Settings.rect_position
-onready var quit_position = $Background/Options/VBoxContainer/Quit.rect_position
+onready var play_position = $Bg/Options/VBoxContainer/Play.rect_position
+onready var settings_position = $Bg/Options/VBoxContainer/Settings.rect_position
+onready var quit_position = $Bg/Options/VBoxContainer/Quit.rect_position
 
 onready var bg_music_file
 
@@ -32,19 +34,28 @@ func _ready():
 	SceneControl.get_node("popUpGui").enabled = false
 	tween_white_screen()
 	slider_enabled = true
+
+	cheruton.modulate.a = 0
 	options.modulate.a = 0
 
 # Gives a fadein effect
 func tween_white_screen():
-	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.75, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.65, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
 
 # When the tween of the relevant object is completed
 func _on_Tween_tween_completed(object, key):
 	if(object == canvas_modulate):
+		cheruton_delay.start()
+	elif(object == cheruton):
 		options_delay.start()
 	elif(object == options):
 		enable_options()
+
+
+func _on_CherutonDelay_timeout():
+	tween.interpolate_property(cheruton, "modulate", cheruton.modulate, Color(1,1,1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 
 
 func _on_OptionsDelay_timeout():
@@ -127,3 +138,4 @@ func slide_to_position(new_position):
 			slider.rect_position.y = new_position.y
 			slider.show()
 			slider_active = true
+
