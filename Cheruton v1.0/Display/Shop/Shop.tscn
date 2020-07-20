@@ -460,6 +460,7 @@ text = "       "
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+one_shot = true
 
 [node name="Transaction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

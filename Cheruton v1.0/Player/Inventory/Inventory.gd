@@ -289,7 +289,8 @@ func _on_pressed(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
-		revert_item_state()
+		if(temp_mouse_node.name != "Weapons" && temp_mouse_node.name != "Apparel"):
+			revert_item_state()
 		mouse_count = 0
 
 
