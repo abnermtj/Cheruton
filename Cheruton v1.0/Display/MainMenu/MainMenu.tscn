@@ -67,7 +67,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.143587, 0.143587 ),
 "update": 0,
-"values": [ Vector2( 53, 10 ), Vector2( 53, 35 ), Vector2( 63, 80 ) ]
+"values": [ Vector2( 63, 10 ), Vector2( 63, 45 ), Vector2( 63, 80 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Options:rect_size")
@@ -79,7 +79,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 248, 133 ), Vector2( 220.5, 116.5 ), Vector2( 193, 101 ) ]
+"values": [ Vector2( 303, 166 ), Vector2( 248, 133.5 ), Vector2( 193, 101 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Options:rect_position")
@@ -91,7 +91,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 125, 117 ), Vector2( 135.5, 133.5 ), Vector2( 146, 153 ) ]
+"values": [ Vector2( 88.5, 88 ), Vector2( 117.25, 120.5 ), Vector2( 146, 153 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 63, 80 ), Vector2( 53, 35 ), Vector2( 53, 10 ) ]
+"values": [ Vector2( 63, 80 ), Vector2( 63, 45 ), Vector2( 63, 10 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Options:rect_size")
@@ -118,7 +118,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 193, 101 ), Vector2( 220.5, 116.5 ), Vector2( 248, 133 ) ]
+"values": [ Vector2( 193, 101 ), Vector2( 248, 133.5 ), Vector2( 303, 166 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Options:rect_position")
@@ -130,7 +130,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
-"values": [ Vector2( 146, 153 ), Vector2( 135.5, 133.5 ), Vector2( 125, 117 ) ]
+"values": [ Vector2( 146, 153 ), Vector2( 117.25, 120.5 ), Vector2( 88.5, 88 ) ]
 }
 
 [sub_resource type="DynamicFont" id=6]
@@ -194,15 +194,14 @@ __meta__ = {
 }
 
 [node name="Slider" type="TextureRect" parent="Bg/Options"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -89.5
-margin_top = -13.0
+margin_top = -13.5
 margin_right = 89.5
-margin_bottom = 13.0
+margin_bottom = 12.5
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {

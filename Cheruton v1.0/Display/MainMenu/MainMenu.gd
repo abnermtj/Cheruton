@@ -89,7 +89,6 @@ func _on_Player_animation_finished(anim_name):
 
 func perform_button_action():
 	var btn_pos = slider.rect_position - container.rect_position
-
 	match btn_pos:
 		play_position:
 			slider_enabled = false

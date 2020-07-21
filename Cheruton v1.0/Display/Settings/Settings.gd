@@ -139,7 +139,7 @@ func _on_Back_mouse_entered():
 func slide_to_position(new_position, new_offset):
 	# Offset of position
 	new_position.y += contents.rect_position.y 
-	new_position.y /= 8
+	new_position.y /= 6.25
 	new_position.y += new_offset 
 	var old_position = slider.rect_position
 	if(slider_active):
