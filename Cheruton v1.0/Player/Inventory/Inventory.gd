@@ -241,6 +241,8 @@ func _on_mouse_entered(node):
 	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = index_bg
 		#change atttack
+		if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
+			return
 		var element_index = str(int(node.name)%100)
 		match active_tab.name:
 			"Weapons":
@@ -254,6 +256,7 @@ func _on_mouse_entered(node):
 func _on_mouse_exited(node):
 	if(mouse_node != node):
 		change_mouse_bg(node)
+
 		match active_tab.name:
 			"Weapons":
 				change_specific_bar(base_attack, "Weapons")
@@ -329,6 +332,9 @@ func revert_item_state():
 	else:
 		item_state = "HOVER"
 		button.hide()
+		if(mouse_node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
+			mouse_node.get_node("Background/ItemBg").texture = index_equipped_bg
+			return
 		mouse_node.get_node("Background/ItemBg").texture = null
 		mouse_node = null
 
