@@ -23,7 +23,7 @@ font_data = ExtResource( 12 )
 [sub_resource type="DynamicFont" id=2]
 
 [sub_resource type="DynamicFont" id=3]
-size = 20
+size = 30
 font_data = ExtResource( 4 )
 
 [node name="Shop" type="Control"]
@@ -42,11 +42,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -131.0
-margin_top = -78.0
-margin_right = 129.0
-margin_bottom = 45.0
+margin_left = -130.0
+margin_top = -61.5
+margin_right = 130.0
+margin_bottom = 61.5
 rect_min_size = Vector2( 260, 123 )
+rect_pivot_offset = Vector2( 130, 61.5 )
 texture = ExtResource( 8 )
 patch_margin_left = 50
 patch_margin_top = 50
@@ -59,9 +60,9 @@ __meta__ = {
 [node name="Bg" type="TextureRect" parent="Border"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 18.0
+margin_left = 21.0
 margin_top = 9.0
-margin_right = 654.0
+margin_right = 645.0
 margin_bottom = 296.0
 rect_min_size = Vector2( 560, 190 )
 rect_scale = Vector2( 0.25, 0.25 )
@@ -78,7 +79,7 @@ __meta__ = {
 }
 
 [node name="Header" type="HBoxContainer" parent="Border/Bg/Main"]
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -87,7 +88,7 @@ __meta__ = {
 
 [node name="Shop" type="Label" parent="Border/Bg/Main/Header"]
 margin_top = 1.0
-margin_right = 855.0
+margin_right = 843.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -98,17 +99,17 @@ align = 1
 valign = 2
 
 [node name="Exit" type="TextureButton" parent="Border/Bg/Main/Header"]
-margin_left = 859.0
-margin_right = 892.0
+margin_left = 847.0
+margin_right = 880.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 33, 33 )
 texture_normal = ExtResource( 5 )
 expand = true
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Header"]
-margin_left = 896.0
+margin_left = 884.0
 margin_top = 9.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 23.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,7 +117,7 @@ __meta__ = {
 
 [node name="Margin" type="Label" parent="Border/Bg/Main"]
 margin_top = 37.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 38.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 2 )
@@ -126,107 +127,190 @@ __meta__ = {
 
 [node name="Sides" type="HBoxContainer" parent="Border/Bg/Main"]
 margin_top = 42.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 374.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 38
 
-[node name="Data" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
-margin_right = 321.0
-margin_bottom = 332.0
+[node name="BtnMode" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
+margin_right = 100.0
+margin_bottom = 217.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.6
-custom_constants/separation = 21
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.17
+custom_constants/separation = 25
 
-[node name="Price" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_right = 321.0
-margin_bottom = 20.0
-custom_constants/separation = 23
+[node name="Label" type="Label" parent="Border/Bg/Main/Sides/BtnMode"]
+margin_right = 100.0
+margin_bottom = 65.0
+text = "
 
-[node name="Name" type="Label" parent="Border/Bg/Main/Sides/Data/Price"]
-margin_right = 62.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "PRICE"
 
-[node name="Value" type="Label" parent="Border/Bg/Main/Sides/Data/Price"]
-margin_left = 85.0
-margin_right = 127.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "100"
+"
 
-[node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
-margin_top = 41.0
-margin_right = 321.0
-margin_bottom = 111.0
-
-[node name="Coins" type="TextureRect" parent="Border/Bg/Main/Sides/Data/Coins"]
-margin_right = 70.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-texture = ExtResource( 7 )
+[node name="Buy" type="TextureButton" parent="Border/Bg/Main/Sides/BtnMode"]
+margin_top = 90.0
+margin_right = 100.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 100, 51 )
+size_flags_vertical = 0
+texture_normal = ExtResource( 9 )
 expand = true
 
-[node name="CoinsVal" type="Label" parent="Border/Bg/Main/Sides/Data/Coins"]
-margin_left = 74.0
-margin_top = 25.0
-margin_right = 130.0
-margin_bottom = 45.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "4000"
-
-[node name="Button" type="TextureButton" parent="Border/Bg/Main/Sides/Data"]
-visible = false
-margin_top = 132.0
-margin_right = 321.0
-margin_bottom = 297.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Text" type="Label" parent="Border/Bg/Main/Sides/Data/Button"]
+[node name="Buy" type="Label" parent="Border/Bg/Main/Sides/BtnMode/Buy"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -29.3604
-margin_top = -8.63962
-margin_right = 26.6396
-margin_bottom = 11.3604
+margin_left = -31.5
+margin_top = -15.0
+margin_right = 31.5
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Buy"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DBMargin" type="Label" parent="Border/Bg/Main/Sides/Data"]
-margin_top = 132.0
-margin_right = 321.0
-margin_bottom = 146.0
-size_flags_horizontal = 3
+[node name="Sell" type="TextureButton" parent="Border/Bg/Main/Sides/BtnMode"]
+margin_top = 166.0
+margin_right = 100.0
+margin_bottom = 217.0
+rect_min_size = Vector2( 100, 51 )
+size_flags_vertical = 0
+texture_normal = ExtResource( 9 )
+expand = true
 
-[node name="Label" type="Label" parent="Border/Bg/Main/Sides"]
-margin_left = 325.0
-margin_top = 159.0
-margin_right = 357.0
-margin_bottom = 173.0
-text = "        "
+[node name="Sell" type="Label" parent="Border/Bg/Main/Sides/BtnMode/Sell"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -15.0
+margin_right = 31.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Sell"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
+margin_left = 138.0
+margin_right = 340.0
+margin_bottom = 332.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+custom_constants/separation = 21
+
+[node name="Price" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
+margin_right = 179.0
+margin_bottom = 30.0
+size_flags_horizontal = 2
+custom_constants/separation = 23
+
+[node name="Name" type="Label" parent="Border/Bg/Main/Sides/Data/Price"]
+margin_right = 93.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PRICE"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Border/Bg/Main/Sides/Data/Price"]
+margin_left = 116.0
+margin_right = 179.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="Coins" type="HBoxContainer" parent="Border/Bg/Main/Sides/Data"]
+margin_top = 51.0
+margin_right = 202.0
+margin_bottom = 101.0
+custom_constants/separation = 23
+
+[node name="Coins" type="TextureRect" parent="Border/Bg/Main/Sides/Data/Coins"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="CoinsVal" type="Label" parent="Border/Bg/Main/Sides/Data/Coins"]
+margin_left = 73.0
+margin_top = 10.0
+margin_right = 157.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "4000"
+align = 1
+valign = 1
+
+[node name="DBMargin" type="Label" parent="Border/Bg/Main/Sides/Data"]
+margin_top = 122.0
+margin_right = 202.0
+margin_bottom = 238.0
+size_flags_horizontal = 3
+text = "
+
+
+
+
+
+"
+
+[node name="Button" type="TextureButton" parent="Border/Bg/Main/Sides/Data"]
+visible = false
+margin_top = 259.0
+margin_right = 202.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 0, 51 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Text" type="Label" parent="Border/Bg/Main/Sides/Data/Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = -15.0
+margin_right = 31.5
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "buy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Rest" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
-margin_left = 361.0
-margin_right = 896.0
+margin_left = 378.0
+margin_right = 884.0
 margin_bottom = 332.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Contents" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest"]
-margin_right = 535.0
+margin_right = 506.0
 margin_bottom = 332.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -235,7 +319,7 @@ __meta__ = {
 }
 
 [node name="Tabs" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
-margin_right = 535.0
+margin_right = 506.0
 margin_bottom = 51.0
 custom_constants/separation = 18
 
@@ -340,7 +424,7 @@ __meta__ = {
 
 [node name="Margin3" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 55.0
-margin_right = 535.0
+margin_right = 506.0
 margin_bottom = 56.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 2 )
@@ -405,55 +489,47 @@ margin_bottom = 14.0
 
 [node name="ItemsBuy" type="HBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 60.0
-margin_right = 535.0
-margin_bottom = 309.0
+margin_right = 506.0
+margin_bottom = 314.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
-margin_top = 117.0
-margin_bottom = 131.0
+margin_top = 120.0
+margin_bottom = 134.0
 
 [node name="General" type="ScrollContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
 margin_left = 4.0
-margin_right = 531.0
-margin_bottom = 249.0
+margin_right = 502.0
+margin_bottom = 254.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy/General"]
+margin_bottom = 254.0
+size_flags_vertical = 3
 custom_constants/separation = 10
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents/ItemsBuy"]
-margin_left = 535.0
-margin_top = 117.0
-margin_right = 535.0
-margin_bottom = 131.0
-
-[node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
-margin_top = 313.0
-margin_right = 535.0
-margin_bottom = 314.0
-size_flags_vertical = 5
-custom_fonts/font = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 506.0
+margin_top = 120.0
+margin_right = 506.0
+margin_bottom = 134.0
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Sides/Rest/Contents"]
 margin_top = 318.0
-margin_right = 535.0
+margin_right = 506.0
 margin_bottom = 332.0
 
 [node name="SRMargin" type="Label" parent="Border/Bg/Main"]
 margin_top = 378.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 392.0
 rect_pivot_offset = Vector2( 87.7578, -100.189 )
 text = "       "
 
 [node name="SRMargin2" type="Label" parent="Border/Bg/Main"]
 margin_top = 396.0
-margin_right = 896.0
+margin_right = 884.0
 margin_bottom = 410.0
 rect_pivot_offset = Vector2( 87.7578, -100.189 )
 text = "       "
@@ -467,5 +543,7 @@ stream = ExtResource( 6 )
 volume_db = 6.0
 [connection signal="visibility_changed" from="." to="." method="_on_Shop_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Border/Bg/Main/Sides/BtnMode/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="pressed" from="Border/Bg/Main/Sides/BtnMode/Sell" to="." method="_on_Sell_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Sides/Data/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

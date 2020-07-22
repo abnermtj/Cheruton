@@ -49,11 +49,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -144.003
-margin_top = -47.0
-margin_right = 115.997
-margin_bottom = 76.0
+margin_left = -130.0
+margin_top = -61.5
+margin_right = 130.0
+margin_bottom = 61.5
 rect_min_size = Vector2( 260, 120 )
+rect_pivot_offset = Vector2( 130, 61.5 )
 texture = ExtResource( 8 )
 patch_margin_left = 50
 patch_margin_top = 50
@@ -80,6 +81,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -56.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -141,7 +143,7 @@ margin_bottom = 56.0
 [node name="Sides" type="HBoxContainer" parent="Border/Bg/Main"]
 margin_top = 60.0
 margin_right = 908.0
-margin_bottom = 381.0
+margin_bottom = 410.0
 size_flags_vertical = 3
 custom_constants/separation = 13
 __meta__ = {
@@ -150,7 +152,7 @@ __meta__ = {
 
 [node name="Data" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
 margin_right = 327.0
-margin_bottom = 321.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.6
@@ -301,15 +303,15 @@ __meta__ = {
 
 [node name="SRMargin2" type="Label" parent="Border/Bg/Main/Sides"]
 margin_left = 340.0
-margin_top = 153.0
+margin_top = 168.0
 margin_right = 372.0
-margin_bottom = 167.0
+margin_bottom = 182.0
 text = "        "
 
 [node name="Contents" type="VBoxContainer" parent="Border/Bg/Main/Sides"]
 margin_left = 385.0
 margin_right = 895.0
-margin_bottom = 321.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.73
@@ -496,18 +498,18 @@ __meta__ = {
 [node name="Items" type="HBoxContainer" parent="Border/Bg/Main/Sides/Contents"]
 margin_top = 60.0
 margin_right = 510.0
-margin_bottom = 302.0
+margin_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
-margin_top = 114.0
-margin_bottom = 128.0
+margin_top = 128.0
+margin_bottom = 142.0
 
 [node name="Weapons" type="ScrollContainer" parent="Border/Bg/Main/Sides/Contents/Items"]
 margin_left = 4.0
 margin_right = 506.0
-margin_bottom = 242.0
+margin_bottom = 271.0
 size_flags_horizontal = 3
 
 [node name="Column" type="VBoxContainer" parent="Border/Bg/Main/Sides/Contents/Items/Weapons"]
@@ -555,14 +557,14 @@ custom_constants/separation = 10
 
 [node name="RMargin" type="Label" parent="Border/Bg/Main/Sides/Contents/Items"]
 margin_left = 510.0
-margin_top = 114.0
+margin_top = 128.0
 margin_right = 510.0
-margin_bottom = 128.0
+margin_bottom = 142.0
 
 [node name="Margin4" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 302.0
+margin_top = 331.0
 margin_right = 510.0
-margin_bottom = 307.0
+margin_bottom = 336.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 2 )
 text = "
@@ -572,15 +574,15 @@ __meta__ = {
 }
 
 [node name="BottomMargin" type="Label" parent="Border/Bg/Main/Sides/Contents"]
-margin_top = 307.0
+margin_top = 336.0
 margin_right = 510.0
-margin_bottom = 321.0
+margin_bottom = 350.0
 
 [node name="SRMargin" type="Label" parent="Border/Bg/Main/Sides"]
 margin_left = 908.0
-margin_top = 153.0
+margin_top = 168.0
 margin_right = 908.0
-margin_bottom = 167.0
+margin_bottom = 182.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
