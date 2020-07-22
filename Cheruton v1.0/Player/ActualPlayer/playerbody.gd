@@ -82,6 +82,7 @@ func _ready():
 	$bodyPivot/bodyRotate/hurtBox.obj = self
 
 func _physics_process(delta):
+	Engine.time_scale =1
 	var old_nearest_hook_point = nearest_hook_point
 	var old_nearest_interactible = nearest_interactible
 	nearest_hook_point = get_nearest_object("hook_points")
@@ -92,6 +93,7 @@ func _physics_process(delta):
 			old_nearest_hook_point.active = false
 
 	nearest_interactible = get_nearest_object("interactibles")
+
 	if nearest_interactible != old_nearest_interactible:
 		if nearest_interactible:
 			nearest_interactible.pend_interact()

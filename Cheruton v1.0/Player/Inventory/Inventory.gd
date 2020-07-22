@@ -53,7 +53,7 @@ func _ready():
 
 func _on_Exit_pressed():
 	free_the_inventory()
-	
+
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
 	var _conn1 = connect("tab_changed", inventory, "change_tab_state")
@@ -211,7 +211,7 @@ func change_active_tab(new_tab):
 	if(active_tab):
 		active_tab.set_texture(default_tab_image)
 		items.get_node(active_tab.name).hide()
-	
+
 
 	# Set new active tab and its colour and show its items
 	active_tab = new_tab
@@ -285,8 +285,8 @@ func _on_pressed(node):
 		mouse_node = temp_mouse_node
 		utilize_item(node)
 		check_fixed()	# Revert back to hover status
-			
-				
+
+
 		mouse_count = 0
 
 # Check if the doubleclick has happened
@@ -328,7 +328,7 @@ func revert_item_state():
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		button.show()
-		
+
 	else:
 		item_state = "HOVER"
 		button.hide()
@@ -417,7 +417,7 @@ func item_status(selected_node, status):
 					defense.change_bar_value(base_defense, false, true)
 
 		"DEQUIP":
-			
+
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
 				if(!selected_node.get_node("Background/ItemBg").texture):
 					return
@@ -425,7 +425,7 @@ func item_status(selected_node, status):
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				selected_node.get_node("Background/ItemBg").texture = null
-				
+
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
@@ -434,7 +434,7 @@ func item_status(selected_node, status):
 			var element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"])%100)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 			mouse_node = null
-			
+
 			match active_tab.name:
 				"Weapons":
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
@@ -452,7 +452,7 @@ func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
 		_on_Exit_pressed()
 
-# Updates inventory changes to 
+# Updates inventory changes to
 func _on_Inventory_visibility_changed():
 	if(!visible):
 		check_fixed()

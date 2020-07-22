@@ -4,10 +4,14 @@ class_name StaticNPC
 
 export var is_flipped = false
 
+
+onready var level = get_parent().get_parent()
+onready var player = level.get_node("player")
 onready var sprite = $Sprite
 onready var sprite2 = $Sprite2
 onready var dialog_name = name
 
+var interact_enabled = true setget set_interact_enabled
 
 var interaction_type
 
@@ -20,8 +24,8 @@ func _ready():
 	add_to_group("interactibles")
 	add_to_group("NPCs")
 
+	set_process(false)
 	if is_flipped: scale.x = -abs(scale.x)
-
 
 func pend_interact():
 	sprite.material.set_shader_param("width", .5)
@@ -44,5 +48,11 @@ func interact(body):
 	if sprite2: sprite2.scale.x = sprite.scale.x
 	set_process(true)
 
+func set_interact_enabled(val):
+	interact_enabled = val
+
 func set_dialog_name(val : String):
 	dialog_name = val
+
+func set_outline_enabled(val):
+	sprite.visible = val

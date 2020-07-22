@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Grasslands0/Sprites/WitchHut_Explosion.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Grasslands0/WitchHutExplosion/WitchHutExplosion.gd" type="Script" id=2]
+[ext_resource path="res://Effects/HouseSmoke/houseSmoke.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.44
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 32, 16 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 103, 1, 48, 32 ), Rect2( 153, 1, 48, 32 ), Rect2( 203, 1, 48, 32 ), Rect2( 253, 1, 48, 32 ), Rect2( 303, 1, 32, 32 ), Rect2( 337, 1, 48, 32 ), Rect2( 387, 1, 48, 32 ), Rect2( 1, 1, -2, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 6.5 ), Vector2( -3, -1.5 ), Vector2( -3, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( -3, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( -19, -17.5 ) ]
+}
+
+[node name="WitchHutExplosion" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="houseSmoke" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.313726, 0.313726, 0.313726, 1 )
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+position = Vector2( 0, 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+offset = Vector2( -3, 6.5 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 32, 16 )
+__meta__ = {
+"_editor_description_": "4"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/explosion = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

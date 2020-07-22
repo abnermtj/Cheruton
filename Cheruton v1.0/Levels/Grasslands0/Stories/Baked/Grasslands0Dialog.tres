@@ -252,7 +252,7 @@ story = {
 }
 }
 },
-8: {
+9: {
 "nodes": {
 1: {
 "links": {
@@ -275,10 +275,165 @@ story = {
 },
 4: {
 "links": {
-0: 2
+0: 5
 },
 "text": "<speaker>Mary</speaker>
 <dialog>You don't look like you're from around here.</dialog>"
+},
+5: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Not a lot of people come up here alone.</dialog>"
+}
+}
+},
+10: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>...</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>It's okay, i'm fine.</dialog>"
+}
+}
+},
+12: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Can you try that out?</dialog>"
+}
+}
+},
+13: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Hoho, an innate feeling for magic.</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Not bad! You would make a great adenturer.</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>You</speaker>
+<dialog>...</dialog>"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Huh, you want to be one?</dialog>"
+},
+7: {
+"links": {
+0: 8
+},
+"text": "<speaker>Mary</speaker>
+<dialog> Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>"
+},
+8: {
+"links": {
+0: 9
+},
+"text": "<speaker>Mary</speaker>
+<dialog>There's a town with a Guild House nearby.</dialog>"
+},
+9: {
+"links": {
+
+},
+"text": "<speaker>Mary</speaker>
+<dialog>I can lead you there.</dialog>"
+}
+}
+},
+14: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>!!!What was that?</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>You wait here, I have to check it out.</dialog>"
 }
 }
 }
@@ -291,5 +446,9 @@ names = {
 "cutscene1_0": 5,
 "cutscene2_0": 6,
 "cutscene3_0": 7,
-"cutscene3_1": 8
+"cutscene3_1": 9,
+"cutscene3_2": 10,
+"cutscene3_3": 12,
+"cutscene4_0": 13,
+"cutscene4_1": 14
 }

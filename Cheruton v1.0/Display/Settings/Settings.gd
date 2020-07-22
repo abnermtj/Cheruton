@@ -49,7 +49,7 @@ func set_text(node, unassign := true, new_value := ""):
 			new_status.text = "Unassigned"
 	else:
 			new_status.text = new_value
-	
+
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
@@ -67,7 +67,7 @@ func _on_MuteToggle_pressed():
 func change_master_vol():
 	var end = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	animate_healthbar(master_bar, end)
-	
+
 func change_music_vol():
 	var end = (DataResource.dict_settings.audio_music + 60) / 60 * 100
 	animate_healthbar(music_bar, end)
@@ -138,9 +138,9 @@ func _on_Back_mouse_entered():
 # Slides the slider to the intended position, or shows it there if not visible
 func slide_to_position(new_position, new_offset):
 	# Offset of position
-	new_position.y += contents.rect_position.y 
+	new_position.y += contents.rect_position.y
 	new_position.y /= 6.25
-	new_position.y += new_offset 
+	new_position.y += new_offset
 	var old_position = slider.rect_position
 	if(slider_active):
 		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
@@ -152,17 +152,17 @@ func slide_to_position(new_position, new_offset):
 
 func _on_Controls_pressed():
 	change_active_tab(base_controls)
-	
+
 func _on_Audio_pressed():
 	change_active_tab(base_audio)
-	
+
 func _on_Game_pressed():
 	change_active_tab(base_game)
-	
+
 func change_active_tab(new_tab):
 	if(active_tab):
 		active_tab.hide()
-	
+
 	active_tab = new_tab
 	active_tab.show()
 

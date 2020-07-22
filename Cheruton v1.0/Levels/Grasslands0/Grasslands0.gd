@@ -7,6 +7,7 @@ var cur_cut_scene_completed = false
 var wait_dialog_complete = false
 
 func _ready():
+	Engine.time_scale = 1.5
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
@@ -49,8 +50,13 @@ func next_cutscene():
 				end_cutscene()
 				return
 		3:
-			if cutscene_index == 4:
+			if cutscene_index == 3:
 #				DataResource.dict_player.completed_cutscenes["grasslands0_2"] = true
+				end_cutscene()
+				return
+		4:
+			if cutscene_index == 3:
+#				DataResource.dict_player.completed_cutscenes["grasslands0_3"] = true
 				end_cutscene()
 				return
 	cutscene_index += 1
@@ -76,6 +82,8 @@ func _input(event):
 		var instance = mob.instance()
 		instance.position = save_position
 		$Mobs.add_child(instance)
+#	if Input.is_action_just_pressed("attack"):
+#		shake_camera(.5,60,4, Vector2())
 
 func handle_death_zone(body):
 	player.velocity = Vector2()
@@ -96,3 +104,11 @@ func play_cutscene_dialog(name : String):
 func _on_NextCutsceneTriger_body_entered(body):
 	if cur_cut_scene_completed and cutscene_number == 2:
 		$Mobs/FurballNPC.interact(player)
+
+func start_glove_throw():
+	var glove = load("res://Levels/Grasslands0/Glove/Glove.tscn")
+	var glove_node = glove.instance()
+	glove_node.global_position = $NPCs/moneygirl.global_position
+	glove_node.velocity = Vector2(-1500 , -540)
+	$NPCs.add_child(glove_node)
+

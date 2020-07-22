@@ -3,7 +3,7 @@ extends airState
 const RELEASE_TIMER = .05 # time before player can release rope from hands
 
 const SWING_CONTROL_STRENGTH = .11
-const SWING_GRAVITY = 22 # increasing this will indirectly increase swing speed
+const SWING_GRAVITY = 110 # increasing this will indirectly increase swing speed
 const SWING_SPEED = 60 # 70 for funzz 56.5 for the realz
 const MIN_WIRE_LENGTH = 150
 const MAX_WIRE_LENGTH = 1200
@@ -48,8 +48,7 @@ func _on_animation_finished(anim_name):
 # Invariant : hook tip already planted
 func update(delta):
 	release_timer -= delta
-	if Input.is_action_just_pressed("jump") and release_timer < 0\
-	 or Input.is_action_just_released("hook"):
+	if  not Input.is_action_pressed("hook") or Input.is_action_just_pressed("jump") and release_timer < 0:
 		owner.chain_release()
 		emit_signal("finished", "fall")
 		return
@@ -113,17 +112,15 @@ func _update(delta):
 
 	var adjusted_swing_control_strength = SWING_CONTROL_STRENGTH + max(0, .15 + (-0.000000213 * vel.x * vel.x)  + (0.000320 * vel.x))
 
-	if owner.global_position.y > tip_pos.y+50:
-		var angle = owner.global_position.angle_to_point(tip_pos)
-		# angles are PI/2 means tip is straight up
-		# PI means to the right
-		# PI TURNS FROM  PI TO  - PI immediately
-		#PI/2 means below
-		next_pos += vel + Vector2((owner.look_direction.x *  SWING_GRAVITY * delta * sin(angle + PI/2)) , 0) + input_dir * adjusted_swing_control_strength
-#		print(sin(owner.global_position.angle_to_point(tip_pos) + PI/2))
+	length_rope = (owner.global_position - tip_pos).length()
+
+	if length_rope >= desired_length_rope:
+		if owner.global_position.y > tip_pos.y+50:
+			next_pos += vel + Vector2(0,(SWING_GRAVITY * delta * sin(owner.global_position.angle_to_point(tip_pos)))) + input_dir * adjusted_swing_control_strength
+		else:
+			next_pos += vel + Vector2(0,SWING_GRAVITY*delta*.4) + input_dir * adjusted_swing_control_strength # physics is wrong but high gravity needed for the speed up
 	else:
-		next_pos += vel + Vector2(0,SWING_GRAVITY * delta*.4) + input_dir * adjusted_swing_control_strength # physics is wrong but high gravity needed for the speed up
-	print("angle", owner.global_position.angle_to_point(tip_pos))
+		next_pos += vel + Vector2 (0, SWING_GRAVITY * delta * .5)
 
 	length_rope = lerp(length_rope, desired_length_rope, delta*REEL_LERP_FACTOR)
 

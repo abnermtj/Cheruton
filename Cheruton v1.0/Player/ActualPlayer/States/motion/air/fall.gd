@@ -39,14 +39,14 @@ func enter():
 
 func update(delta):
 	if Input.is_action_pressed("hook"):
-			if owner.can_hook:
-				var nearest_hook_point = owner.nearest_hook_point
-				if nearest_hook_point:
-					owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
+		if owner.can_hook:
+			var nearest_hook_point = owner.nearest_hook_point
+			if nearest_hook_point:
+				owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
 
-					owner.play_sound("hook_start")
-	#				owner.play_and_return_anim("grapple_throw")
-					owner.start_hook()
+				owner.play_sound("hook_start")
+				owner.start_hook()
+				return
 
 	coyote_timer -= delta
 

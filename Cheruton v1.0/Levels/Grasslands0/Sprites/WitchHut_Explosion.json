@@ -1,0 +1,110 @@
+{ "frames": {
+   "WitchHut_Explosion 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 16 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 4.aseprite": {
+    "frame": { "x": 153, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 5.aseprite": {
+    "frame": { "x": 203, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 6.aseprite": {
+    "frame": { "x": 253, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 7.aseprite": {
+    "frame": { "x": 303, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 8.aseprite": {
+    "frame": { "x": 337, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 9.aseprite": {
+    "frame": { "x": 387, "y": 1, "w": 48, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 32 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   },
+   "WitchHut_Explosion 10.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": -2, "h": -2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 0, "h": 0 },
+    "sourceSize": { "w": 38, "h": 35 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "WitchHut_Explosion.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 152 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "explosion", "from": 0, "to": 10, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 4", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 5", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 3", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

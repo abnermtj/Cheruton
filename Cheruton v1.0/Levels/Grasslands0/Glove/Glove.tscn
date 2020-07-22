@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=1]
+[ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands-Glove.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Grasslands0/Glove/Glove.gd" type="Script" id=3]
+[ext_resource path="res://Levels/Grasslands0/Glove/DetectionArea.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/width = null
+shader_param/outline_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 25, 15 )
+
+[node name="Glove" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 0
+collision_mask = 33
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, 0.309016 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource( 4 )

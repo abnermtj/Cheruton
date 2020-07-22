@@ -4,8 +4,6 @@ extends StaticNPC
 
 onready var anim_player = $AnimationPlayer
 onready var magic_shot = preload("res://Levels/commonLevelAssets/MoneyGirl/MoneyGirlShot.tscn")
-onready var level = get_parent().get_parent()
-onready var player = level.get_node("player")
 
 func _ready():
 	._ready()
@@ -13,6 +11,7 @@ func _ready():
 	sprite2 = $bodyRotate/Sprite2
 
 func play_anim(name):
+	if name != "on_broom_idle": $bodyRotate.position = Vector2()
 	anim_player.clear_queue()
 	anim_player.play(name)
 	anim_player.advance(0)
@@ -22,10 +21,11 @@ func queue_anim(name):
 func set_anim_speed(speed):
 	anim_player.playback_speed = speed
 
-func set_outline_enabled(val):
-	sprite.visible = val
-
 func interact(body):
+	if not interact_enabled:
+		DataResource.temp_dict_player.dialog_complete = true
+		return
+
 	.interact(body)
 	level.next_cutscene()
 	DataResource.temp_dict_player.dialog_complete = false

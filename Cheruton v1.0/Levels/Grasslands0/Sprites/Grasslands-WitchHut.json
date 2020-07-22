@@ -1,0 +1,55 @@
+{ "frames": {
+   "Grasslands-WitchHut 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 320, "h": 192 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 96, "y": 0, "w": 320, "h": 192 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "Grasslands-WitchHut 1.aseprite": {
+    "frame": { "x": 323, "y": 1, "w": 320, "h": 192 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 96, "y": 0, "w": 320, "h": 192 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   },
+   "Grasslands-WitchHut 2.aseprite": {
+    "frame": { "x": 645, "y": 1, "w": 320, "h": 192 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 96, "y": 0, "w": 320, "h": 192 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Grasslands-WitchHut.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 194 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "light0", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "light1", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "light2", "from": 2, "to": 2, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 4", "opacity": 255, "blendMode": "normal" },
+   { "name": "base", "opacity": 255, "blendMode": "normal" },
+   { "name": "roof", "opacity": 255, "blendMode": "normal" },
+   { "name": "door stairs", "opacity": 255, "blendMode": "normal" },
+   { "name": "windows", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 5", "opacity": 255, "blendMode": "normal" },
+   { "name": "window shadow", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 3", "opacity": 255, "blendMode": "normal" },
+   { "name": "light", "opacity": 255, "blendMode": "normal" },
+   { "name": "props", "opacity": 255, "blendMode": "normal" },
+   { "name": "forefround", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

@@ -185,7 +185,7 @@ position = Vector2( 10591.2, -87.6736 )
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="moneygirl" parent="Npcs" instance=ExtResource( 17 )]
-position = Vector2( 1321, 476 )
+position = Vector2( 1321, 469 )
 
 [node name="cat" parent="Npcs" instance=ExtResource( 14 )]
 position = Vector2( 1319.34, 539.293 )

@@ -17,7 +17,6 @@ onready var rope  = $tip/rope
 onready var tip = $tip
 
 signal hooked(tip_pos)
-signal shake
 
 func _ready():
 	hide()

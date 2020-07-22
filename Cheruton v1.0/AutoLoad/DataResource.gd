@@ -136,9 +136,9 @@ func increase_player_stats():
 		temp_dict_player.exp_max *= 1.5
 		increase_specific("Weapons")
 		increase_specific("Apparel")
-		
+
 func increase_specific(type):
-	var equipped_item 
+	var equipped_item
 	var equipped_item_val
 	match type:
 		"Weapons":
@@ -153,7 +153,7 @@ func increase_specific(type):
 			"Weapons":
 				equipped_item_val = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 				temp_dict_player.attack = equipped_item_val + 1.2 * (temp_dict_player.attack - equipped_item_val)
-			
+
 			"Apparel":
 				equipped_item_val = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
 				temp_dict_player.defense = equipped_item_val + 1.2 * (temp_dict_player.defense - equipped_item_val)

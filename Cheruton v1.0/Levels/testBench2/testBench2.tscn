@@ -71,6 +71,7 @@ position = Vector2( 0, 0 )
 environment = ExtResource( 14 )
 
 [node name="traps" type="Node2D" parent="."]
+visible = false
 
 [node name="laser0" parent="traps" instance=ExtResource( 8 )]
 modulate = Color( 2, 2, 2, 1 )

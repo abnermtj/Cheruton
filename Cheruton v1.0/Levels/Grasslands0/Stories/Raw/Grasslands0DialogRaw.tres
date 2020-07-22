@@ -13,7 +13,11 @@ names = {
 "cutscene1_0": 5,
 "cutscene2_0": 6,
 "cutscene3_0": 7,
-"cutscene3_1": 8
+"cutscene3_1": 9,
+"cutscene3_2": 10,
+"cutscene3_3": 12,
+"cutscene4_0": 13,
+"cutscene4_1": 14
 }
 story = {
 1: {
@@ -422,7 +426,7 @@ story = {
 }
 }
 },
-8: {
+9: {
 "available_nid": [  ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
@@ -439,7 +443,7 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( 760, 60 ),
+"graph_offset": Vector2( 1620, 360 ),
 "links": {
 
 },
@@ -449,7 +453,7 @@ story = {
 "type": "line"
 },
 3: {
-"graph_offset": Vector2( 120, 220 ),
+"graph_offset": Vector2( 700, 80 ),
 "links": {
 0: 4
 },
@@ -460,18 +464,273 @@ story = {
 "type": "line"
 },
 4: {
-"graph_offset": Vector2( 380, 400 ),
+"graph_offset": Vector2( 160, 300 ),
 "links": {
-0: 2
+0: 5
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
 <dialog>You don't look like you're from around here.</dialog>",
 "type": "line"
+},
+5: {
+"graph_offset": Vector2( 940, 380 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Not a lot of people come up here alone.</dialog>",
+"type": "line"
+}
+}
+},
+10: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene3_2",
+"nodes": {
+1: {
+"graph_offset": Vector2( -600, 140 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 760, 80 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>...</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 180, -280 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>It's okay, i'm fine.</dialog>",
+"type": "line"
+}
+}
+},
+12: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene3_3",
+"nodes": {
+1: {
+"graph_offset": Vector2( -1920, -1300 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( -420, -1140 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( -1160, -1280 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Can you try that out?</dialog>",
+"type": "line"
+}
+}
+},
+13: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene4_0",
+"nodes": {
+1: {
+"graph_offset": Vector2( -1300, -980 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 140, -740 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( -660, -1060 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Hoho, an innate feeling for magic.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( -600, -1320 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Not bad! You would make a great adenturer.</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 80, -1400 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>You</speaker>
+<dialog>...</dialog>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 380, -1080 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Huh, you want to be one?</dialog>",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 1160, -1140 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog> Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( 1080, -880 ),
+"links": {
+0: 9
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>There's a town with a Guild House nearby.</dialog>",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( 1940, -920 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>I can lead you there.</dialog>",
+"type": "line"
+}
+}
+},
+14: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene4_1",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1100, -820 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 120, -1180 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>!!!What was that?</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 800, -1160 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>You wait here, I have to check it out.</dialog>",
+"type": "line"
 }
 }
 }
 }
-available_dids = [  ]
+available_dids = [ 8, 11 ]
 groups = [  ]

@@ -50,6 +50,16 @@ func enter() -> void:
 	keypress_timer = 0.2
 
 func update( delta ):
+	if Input.is_action_pressed("hook"):
+		if owner.can_hook:
+			var nearest_hook_point = owner.nearest_hook_point
+			if nearest_hook_point:
+				owner.hook_dir = (nearest_hook_point.global_position - owner.global_position).normalized()
+
+				owner.play_sound("hook_start")
+				owner.start_hook()
+				return
+
 	owner.velocity.y = min( JUMP_TERMINAL_VELOCITY , owner.velocity.y + owner.GRAVITY * grav_multiplier * delta)
 	keypress_timer -= delta
 	if keypress_timer < 0 or Input.is_action_just_released( "jump" ):
