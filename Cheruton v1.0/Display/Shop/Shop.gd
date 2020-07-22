@@ -251,7 +251,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		btn_node.get_child(0).text = shop_setting
+		btn_node.get_child(0).text = shop_setting + " Item"
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):
