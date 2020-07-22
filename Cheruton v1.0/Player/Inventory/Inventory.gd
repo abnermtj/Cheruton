@@ -33,7 +33,7 @@ onready var tabs = $Border/Bg/Main/Sides/Contents/Tabs
 onready var items = $Border/Bg/Main/Sides/Contents/Items
 onready var coins = $Border/Bg/Main/Sides/Data/Coins
 onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
-onready var button = $Border/Bg/Main/Sides/Data/Button
+onready var button = $Border/Bg/Main/Sides/Data/TextureRect/Button
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
 
@@ -241,8 +241,9 @@ func _on_mouse_entered(node):
 	if(mouse_node != node):
 		node.get_node("Background/ItemBg").texture = index_bg
 		#change atttack
-		if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
-			return
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
+				return
 		var element_index = str(int(node.name)%100)
 		match active_tab.name:
 			"Weapons":
@@ -256,7 +257,9 @@ func _on_mouse_entered(node):
 func _on_mouse_exited(node):
 	if(mouse_node != node):
 		change_mouse_bg(node)
-
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
+				return
 		match active_tab.name:
 			"Weapons":
 				change_specific_bar(base_attack, "Weapons")
@@ -281,10 +284,11 @@ func _on_pressed(node):
 	if (mouse_count == 2):
 		if(item_state == "FIXED"):
 			check_fixed()
-
 		mouse_node = temp_mouse_node
-		utilize_item(node)
-		check_fixed()	# Revert back to hover status
+		item_state = "FIXED"
+		utilize_item(mouse_node)
+		mouse_node = null
+		item_state = "HOVER"
 			
 				
 		mouse_count = 0
@@ -332,9 +336,12 @@ func revert_item_state():
 	else:
 		item_state = "HOVER"
 		button.hide()
-		if(mouse_node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
-			mouse_node.get_node("Background/ItemBg").texture = index_equipped_bg
-			return
+		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+			var active_item = DataResource.temp_dict_player[active_tab.name + "_item"]
+			if(mouse_node.name == active_item):
+				mouse_node.get_node("Background/ItemBg").texture = index_equipped_bg
+				mouse_node = null
+				return
 		mouse_node.get_node("Background/ItemBg").texture = null
 		mouse_node = null
 
