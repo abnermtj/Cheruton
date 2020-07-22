@@ -28,27 +28,25 @@ onready var active_tab = base_empty
 signal closed_settings
 
 func _ready():
-#	init_key_bindings()
-	#SceneControl.get_node("popUpGui").enabled = false
+	init_key_bindings()
 	init_bar_vals()
 	connect_functions()
 
-#func init_key_bindings():
-#	var columns = controls_column.get_child_count()
-#	for i in columns:
-#		var column_node = controls_column.get_child(i)
-#		var bindings = column_node.get_child_count()
-#		for j in bindings:
-#			var current_binding = column_node.get_child(j)
-#			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-#			set_text(current_binding, false, btn_text)
+func init_key_bindings():
+	var columns = controls_column.get_child_count()
+	for i in columns:
+		var column_node = controls_column.get_child(i).get_node("Mapping")
+		var bindings = column_node.get_child_count()
+		for j in bindings:
+			var current_binding = column_node.get_child(j)
+			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
+			set_text(current_binding, false, btn_text)
 
 func set_text(node, unassign := true, new_value := ""):
-	var new_status = node.find_node("BtnName", true, false)
 	if(unassign):
-			new_status.text = "Unassigned"
+			node.text = "Unassigned"
 	else:
-			new_status.text = new_value
+			node.text = new_value
 	
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
