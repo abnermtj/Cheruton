@@ -22,6 +22,14 @@
     "spriteSourceSize": { "x": 96, "y": 0, "w": 320, "h": 192 },
     "sourceSize": { "w": 480, "h": 270 },
     "duration": 100
+   },
+   "Grasslands-WitchHut 3.aseprite": {
+    "frame": { "x": 967, "y": 1, "w": 320, "h": 192 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 96, "y": 0, "w": 320, "h": 192 },
+    "sourceSize": { "w": 480, "h": 270 },
+    "duration": 100
    }
  },
  "meta": {
@@ -34,7 +42,8 @@
   "frameTags": [
    { "name": "light0", "from": 0, "to": 0, "direction": "forward" },
    { "name": "light1", "from": 1, "to": 1, "direction": "forward" },
-   { "name": "light2", "from": 2, "to": 2, "direction": "forward" }
+   { "name": "light2", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "light3", "from": 3, "to": 3, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer 4", "opacity": 255, "blendMode": "normal" },

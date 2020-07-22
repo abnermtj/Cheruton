@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.gd" type="Script" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/22fps_limitPallete_PIL_HomeTown_NPC_moneygirl.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 shader = ExtResource( 3 )
 shader_param/width = 0.0
 shader_param/outline_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/lighttest.png-dd86ab63643f5d4d2b49d5c7785fbfcd.stex"
 
 [sub_resource type="Animation" id=2]
 length = 0.08
@@ -411,7 +414,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-length = 1.245
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/staffPos/Sprite:region_rect")
 tracks/0/interp = 0
@@ -450,6 +453,42 @@ tracks/2/keys = {
 "method": "instance_magic_shot"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("bodyRotate/staffPos/tipStaffPos/Light2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.511174, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("bodyRotate/staffPos/tipStaffPos/Light2D:texture_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.511174, 0.6, 0.823616, 0.83, 0.921418 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.4, 0.01, 0.01, 0.8, 0.01 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("bodyRotate:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.83, 0.958795, 1.5 ),
+"transitions": PoolRealArray( 0.267943, 1.4, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -6, -1 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 32.5, 12.5 )
@@ -468,26 +507,30 @@ material = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -1, -1 )
 region_enabled = true
-region_rect = Rect2( 1345, 1, 48, 48 )
+region_rect = Rect2( 1395, 1, 48, 48 )
 
 [node name="Sprite2" type="Sprite" parent="bodyRotate"]
 texture = ExtResource( 2 )
 offset = Vector2( -1, -1 )
 region_enabled = true
-region_rect = Rect2( 1345, 1, 48, 48 )
+region_rect = Rect2( 1395, 1, 48, 48 )
 
 [node name="staffPos" type="Position2D" parent="bodyRotate"]
-visible = false
 position = Vector2( 24, 19.9741 )
 
 [node name="Sprite" type="Sprite" parent="bodyRotate/staffPos"]
 texture = ExtResource( 4 )
 offset = Vector2( -7.5, -4 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 16, 32 )
+region_rect = Rect2( 139, 35, 16, 32 )
 
 [node name="tipStaffPos" type="Position2D" parent="bodyRotate/staffPos"]
 position = Vector2( 0, -3.44741 )
+
+[node name="Light2D" type="Light2D" parent="bodyRotate/staffPos/tipStaffPos"]
+position = Vector2( -5, -0.0266895 )
+texture = SubResource( 11 )
+texture_scale = 0.01
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -505,5 +548,6 @@ anims/turn_around = SubResource( 8 )
 anims/Staff = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 10 )

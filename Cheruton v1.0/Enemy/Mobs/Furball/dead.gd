@@ -4,6 +4,7 @@ const SPEED = 3200
 const FREEZE_TIME = .02
 
 var timer : float
+
 func enter():
 	var obj_pos = owner.hitter.global_position
 	var move_dir = (owner.global_position - obj_pos ).normalized()
@@ -16,7 +17,6 @@ func enter():
 
 	timer = FREEZE_TIME
 
-
 func update(delta):
 	timer -= delta
 	if timer > 0 : return
@@ -25,3 +25,15 @@ func update(delta):
 	owner.velocity.y = clamp(owner.velocity.y + owner.GRAVITY/3 * delta, -INF, owner.TERMINAL_VELOCITY)
 
 	owner.move()
+
+	var col = owner.get_slide_collision(0)
+
+	if col and owner.velocity.length() > 150:
+
+		var dust_instance = owner.dust.instance()
+		dust_instance.global_position = col.position
+		dust_instance.rotation = col.normal.angle_to(Vector2.UP)
+		dust_instance.emitting = true
+
+		get_parent().add_child(dust_instance)
+

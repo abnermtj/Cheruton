@@ -35,10 +35,13 @@ onready var items_sell = $Border/Bg/Main/Sides/Rest/Contents/ItemsSell
 onready var items_buy = $Border/Bg/Main/Sides/Rest/Contents/ItemsBuy
 onready var coins = $Border/Bg/Main/Sides/Data/Coins
 onready var price_value = $Border/Bg/Main/Sides/Data/Price/Value
+onready var buy_tab = $Border/Bg/Main/Sides/BtnMode/Buy
+onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
 func _ready():
 	connect_tabs()
 	set_state("Buy")
+	buy_tab.texture_normal = active_tab_image
 	load_data()
 	emit_signal("tab_changed", "Weapons")
 	tabs.hide()
@@ -248,7 +251,7 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		btn_node.get_child(0).text = shop_setting
+		btn_node.get_child(0).text = shop_setting + " Item"
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):
@@ -354,6 +357,8 @@ func _on_Button_pressed():
 # Buy Option set
 func _on_Buy_pressed():
 	if(shop_setting == "Sell"):
+		sell_tab.texture_normal = default_tab_image
+		buy_tab.texture_normal = active_tab_image
 		tabs.hide()
 		set_state("Buy")
 		check_fixed()
@@ -361,6 +366,8 @@ func _on_Buy_pressed():
 #Sell Option Set
 func _on_Sell_pressed():
 	if(shop_setting == "Buy"):
+		buy_tab.texture_normal = default_tab_image
+		sell_tab.texture_normal = active_tab_image
 		tabs.show()
 		set_state("Sell")
 		check_fixed()

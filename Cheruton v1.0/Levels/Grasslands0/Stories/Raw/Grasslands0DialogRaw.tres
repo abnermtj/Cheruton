@@ -16,8 +16,8 @@ names = {
 "cutscene3_1": 9,
 "cutscene3_2": 10,
 "cutscene3_3": 12,
-"cutscene4_0": 13,
-"cutscene4_1": 14
+"cutscene4_1": 13,
+"cutscene4_2": 14
 }
 story = {
 1: {
@@ -580,7 +580,7 @@ story = {
 "available_nid": [  ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
-"name": "cutscene4_0",
+"name": "cutscene4_1",
 "nodes": {
 1: {
 "graph_offset": Vector2( -1300, -980 ),
@@ -685,7 +685,7 @@ story = {
 "available_nid": [  ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
-"name": "cutscene4_1",
+"name": "cutscene4_2",
 "nodes": {
 1: {
 "graph_offset": Vector2( 40, 40 ),

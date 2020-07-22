@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 
 var velocity : Vector2
+var interact_enabled = true
 
 func _physics_process(delta):
 	velocity.x *= .978
@@ -21,7 +22,12 @@ func unpend_interact():
 	sprite.material.set_shader_param("width", 0)
 
 func interact(body):
-	owner.level.next_cutscene()
-	global_position = owner.level.player.global_position + Vector2(-27, -68)
+	if not interact_enabled: return
+	interact_enabled = false
+
+	var level = get_parent().get_parent()
+	level.next_cutscene()
 	DataResource.temp_dict_player.dialog_complete = true
-	owner.level.wait_dialog_complete = false
+	level.wait_dialog_complete = false
+
+	queue_free()

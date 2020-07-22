@@ -81,8 +81,8 @@ func _ready():
 	$bodyPivot/bodyRotate/hurtBox/CollisionShape2D.disabled = true
 	$bodyPivot/bodyRotate/hurtBox.obj = self
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
-	Engine.time_scale =1
 	var old_nearest_hook_point = nearest_hook_point
 	var old_nearest_interactible = nearest_interactible
 	nearest_hook_point = get_nearest_object("hook_points")

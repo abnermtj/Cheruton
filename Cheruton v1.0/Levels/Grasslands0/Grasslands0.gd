@@ -5,9 +5,9 @@ onready var cut_scene_player = $CutScenePlayer
 
 var cur_cut_scene_completed = false
 var wait_dialog_complete = false
+var flying_sword
 
 func _ready():
-	Engine.time_scale = 1.5
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
@@ -30,6 +30,7 @@ func _ready():
 		next_cutscene()
 
 func next_cutscene():
+	print(cutscene_number, cutscene_index)
 	cur_cut_scene_completed = false
 	cut_scene_player.play("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
 
@@ -50,7 +51,7 @@ func next_cutscene():
 				end_cutscene()
 				return
 		3:
-			if cutscene_index == 3:
+			if cutscene_index == 4:
 #				DataResource.dict_player.completed_cutscenes["grasslands0_2"] = true
 				end_cutscene()
 				return
@@ -68,6 +69,7 @@ func end_cutscene():
 	cutscene_index = 0
 
 func _process(delta):
+	Engine.time_scale = 1
 	if wait_dialog_complete and DataResource.temp_dict_player.dialog_complete:
 		next_cutscene()
 		wait_dialog_complete = false
@@ -110,5 +112,28 @@ func start_glove_throw():
 	var glove_node = glove.instance()
 	glove_node.global_position = $NPCs/moneygirl.global_position
 	glove_node.velocity = Vector2(-1500 , -540)
+
 	$NPCs.add_child(glove_node)
+
+func instance_flying_sword():
+	var load_sword = load("res://Player/ActualPlayer/FlyingSword/flyingSword.tscn")
+	flying_sword = load_sword.instance()
+
+	flying_sword.connect("sword_result", player, "on_sword_result")
+	flying_sword.connect("sword_result", self, "on_sword_result")
+	player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
+
+	flying_sword.hide()
+	add_child(flying_sword)
+
+	flying_sword.global_position = player.global_position + Vector2 (2000, -2000)
+	flying_sword.active = true
+	flying_sword.z_index = 1
+	flying_sword.show()
+
+	flying_sword._on_flyingSword_command(2, 0)
+
+func on_sword_result(result, vector1, vector2):
+	if result == 2 and cutscene_number == 4:
+		next_cutscene()
 

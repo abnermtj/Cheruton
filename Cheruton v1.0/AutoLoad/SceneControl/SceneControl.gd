@@ -10,7 +10,7 @@ onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var pop_up_gui = $popUpGui
 onready var bg_music = $BgMusic
-onready var bg_music_pitch = $BgMusic/VolPitch
+onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
 
@@ -25,8 +25,8 @@ var cur_level
 
 var music_curr
 var music_next
-var fade_in := 0.14
-var fade_out := 0.5
+var fade_in := 0.6
+var fade_out := 0.6
 var music_state := "idle"
 
 signal init_statbar
@@ -132,7 +132,7 @@ func music_fsm():
 				music_state = "idle"
 
 			if(fade_out > 0 && music_curr):
-				bg_music_pitch.play( "fade_out", -1, 1.0 / fade_out )
+				tween_music_vol(bg_music.volume_db, -60, fade_out)
 			else:
 				bg_music.volume_db = -60.0
 				call_deferred("music_fsm")
@@ -147,16 +147,22 @@ func music_fsm():
 			bg_music.stream = music_curr
 
 			if(fade_in > 0):
-				bg_music_pitch.play( "fade_in", -1, 1.0 / fade_in )
+				bg_music.play()
+				tween_music_vol(bg_music.volume_db, DataResource.dict_settings.audio_music, fade_in)
 			else:
-				bg_music.volume_db = 12.0
+				bg_music.volume_db = DataResource.dict_settings.audio_music
 				call_deferred("music_fsm")
 
 		"active":
-			bg_music.play()
+			if(!bg_music.playing):
+				bg_music.play()
 
+func tween_music_vol(old_val, new_val, time):
+	print(new_val)
+	bg_music_tween.interpolate_property(bg_music, "volume_db", old_val, new_val, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	bg_music_tween.start()
 
-func _on_VolPitch_animation_finished(anim_name):
+func _on_Tween_tween_completed(object, key):
 	music_fsm()
 
 ########
@@ -270,3 +276,6 @@ func set_dialog_only_mode(val : bool):
 		pop_up_gui.dialog_only()
 	else:
 		pop_up_gui.end_dialog_only()
+
+
+

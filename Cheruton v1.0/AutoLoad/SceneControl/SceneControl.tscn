@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Display/LoadScrn/LoadScrn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
@@ -8,61 +8,6 @@
 [ext_resource path="res://Display/PopUpGui/PopUpGui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:pitch_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-
-[sub_resource type="Animation" id=2]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -60.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=3]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, -60.0 ]
-}
-
 [node name="SceneControl" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -71,11 +16,7 @@ pause_mode = 2
 volume_db = -60.0
 bus = "Music"
 
-[node name="VolPitch" type="AnimationPlayer" parent="BgMusic"]
-autoplay = "default"
-anims/default = SubResource( 1 )
-anims/fade_in = SubResource( 2 )
-anims/fade_out = SubResource( 3 )
+[node name="Tween" type="Tween" parent="BgMusic"]
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -124,5 +65,5 @@ script = ExtResource( 5 )
 visible = false
 
 [node name="Settings" parent="SettingsLayer/Settings" instance=ExtResource( 7 )]
-[connection signal="animation_finished" from="BgMusic/VolPitch" to="." method="_on_VolPitch_animation_finished"]
+[connection signal="tween_completed" from="BgMusic/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]

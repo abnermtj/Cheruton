@@ -455,7 +455,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 1361, 1, 32, 32 )
+region_rect = Rect2( 511, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
@@ -535,6 +535,7 @@ position = Vector2( 0, -50 )
 shape = SubResource( 12 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 40, 40 )

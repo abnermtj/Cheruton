@@ -16,6 +16,7 @@ onready var states = $states
 onready var level = get_parent().get_parent()
 onready var player = level.get_node("player")
 onready var initial_pos = global_position
+onready var dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
 
 var velocity = Vector2()
 var health = 15.0 setget set_health

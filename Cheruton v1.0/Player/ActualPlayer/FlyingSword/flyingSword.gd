@@ -44,6 +44,9 @@ func _on_flyingSword_command(command, arg):
 		state = sword_states.SHOOT
 	elif command == 1:
 		state = sword_states.RETURN
+	elif command == 2:
+		state = sword_states.RETURN
+		bodyRotation.position += Vector2(0, -80)
 
 func _physics_process(delta):
 	if not active: return
@@ -90,7 +93,7 @@ func _physics_process(delta):
 			desired_velocity = direction.normalized() * SPEED_RETURN + Vector2(0,Y_LEVEL_FACTOR * (cur_player_pos.y-global_position.y)) # curves the return
 			desired_velocity = desired_velocity.normalized() * SPEED_RETURN
 
-			velocity = lerp(velocity, desired_velocity, delta * 2)
+			velocity = lerp(velocity, desired_velocity, delta * 3) # 2 is slow
 			move_and_collide(velocity * delta)
 
 			if (global_position - cur_player_pos).length() < 70:

@@ -4,7 +4,7 @@ func _ready():
 	hide()
 
 func play_anim(name):
-	$Timer.start(2)
+	$Timer.start(3.2)
 	show()
 	$AnimationPlayer.play(name)
 

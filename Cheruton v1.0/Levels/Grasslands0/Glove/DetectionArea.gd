@@ -11,3 +11,6 @@ func pend_interact():
 
 func unpend_interact():
 	owner.unpend_interact()
+
+func interact(body):
+	owner.interact(body)

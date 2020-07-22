@@ -2,9 +2,6 @@
 
 [ext_resource path="res://Effects/Dust/JumpDust/jumpDust.tres" type="Material" id=1]
 
-
-
-
 [node name=" jumpDust" type="Particles2D"]
 emitting = false
 amount = 10

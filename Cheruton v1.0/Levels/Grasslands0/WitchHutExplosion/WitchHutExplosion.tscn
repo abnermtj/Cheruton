@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Sprites/WitchHut_Explosion.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Grasslands0/WitchHutExplosion/WitchHutExplosion.gd" type="Script" id=2]
 [ext_resource path="res://Effects/HouseSmoke/houseSmoke.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Grasslands0/Sprites/circleLight.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.44
@@ -30,6 +31,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -3, 6.5 ), Vector2( -3, -1.5 ), Vector2( -3, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( -3, -1.5 ), Vector2( 5, -1.5 ), Vector2( 5, -1.5 ), Vector2( -19, -17.5 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.04, 0.317792 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.0, 0.01 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Light2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.04, 0.317792 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0 ]
+}
 
 [node name="WitchHutExplosion" type="Node2D"]
 script = ExtResource( 2 )
@@ -42,9 +67,9 @@ position = Vector2( 0, 4 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( -3, 6.5 )
+offset = Vector2( -19, -17.5 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 16 )
+region_rect = Rect2( 1, 1, -2, -2 )
 __meta__ = {
 "_editor_description_": "4"
 }
@@ -55,4 +80,10 @@ anims/explosion = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 4 )
+texture_scale = 0.01
+energy = 0.0
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
