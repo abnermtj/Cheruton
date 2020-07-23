@@ -1,30 +1,22 @@
 {
   "item_spawn": {
-    "test": {
+    "tutorial": {
       "ItemIndexes": 3,
       "ItemName1": "Gold",
       "ItemChance1": 80,
       "ItemMinQ1": 2,
       "ItemMaxQ1": 5,
       "ItemType1": "Money",
-      "ItemName2": "Iron Sword",
-      "ItemChance2": 15,
+      "ItemName2": "Potion Tube",
+      "ItemChance2": 100,
       "ItemMinQ2": 1,
-      "ItemMaxQ2": 1,
-      "ItemType2": "Weapons",
-      "ItemName3": "Potion Tube",
-      "ItemChance3": 40,
-      "ItemMinQ3": 1,
-      "ItemMaxQ3": 2,
-      "ItemType3": "Consum"
-    }
-  },
-  "item_shop": {
-    "stage1": {
-	"Item1":"Iron Sword",
-	"Item2":"Potion Tube"
-
-      
+      "ItemMaxQ2": 2,
+      "ItemType2": "Consum",
+      "ItemName3": null,
+      "ItemChance3": null,
+      "ItemMinQ3": null,
+      "ItemMaxQ3": null,
+      "ItemType3": null
     }
   },
   "item_masterlist": {
@@ -36,7 +28,7 @@
       "HealVal": null,
       "ItemValue": 40,
       "ItemDetails": null,
-      "ItemPNG": "res://Player/Inventory/Icons/Item_Icons/iron_sword.png"
+      "ItemPNG": "res://Props/ItemIcons/iron_sword.png"
     },
     "Steel Sword": {
       "ItemType": "Weapons",
@@ -56,7 +48,54 @@
       "HealVal": 20,
       "ItemValue": 30,
       "ItemDetails": null,
-      "ItemPNG": "res://Player/Inventory/Icons/Item_Icons/potion_tube.png"
+      "ItemPNG": "res://Props/ItemIcons/potion_tube.png"
+    },
+    "Wine": {
+      "ItemType": "Consum",
+      "ItemAtk": null,
+      "ItemDef": null,
+      "StatHeal": "HP",
+      "HealVal": 75,
+      "ItemValue": 130,
+      "ItemDetails": null,
+      "ItemPNG": "res://Props/ItemIcons/wine.png"
+    },
+    "Potion Jug": {
+      "ItemType": "Consum",
+      "ItemAtk": null,
+      "ItemDef": null,
+      "StatHeal": "HP",
+      "HealVal": 50,
+      "ItemValue": 80,
+      "ItemDetails": null,
+      "ItemPNG": "res://Props/ItemIcons/potion_jug.png"
+    },
+    "Noodles": {
+      "ItemType": "Consum",
+      "ItemAtk": null,
+      "ItemDef": null,
+      "StatHeal": "HP",
+      "HealVal": 30,
+      "ItemValue": 50,
+      "ItemDetails": null,
+      "ItemPNG": "res://Props/ItemIcons/noodles.png"
+    },
+    "Iron Armor": {
+      "ItemType": "Apparel",
+      "ItemAtk": null,
+      "ItemDef": 8,
+      "StatHeal": null,
+      "HealVal": null,
+      "ItemValue": 50,
+      "ItemDetails": null,
+      "ItemPNG": "res://Props/ItemIcons/iron_armor.png"
+    }
+  },
+  "item_shop": {
+    "stage1": {
+      "Item1": "Iron Sword",
+      "Item2": "Potion Tube",
+      "Item3": "Iron Armor"
     }
   }
 }
