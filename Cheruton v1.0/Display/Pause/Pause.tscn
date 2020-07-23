@@ -1,84 +1,173 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Display/Pause/Pause.gd" type="Script" id=1]
-[ext_resource path="res://Display/Pause/Exit.png" type="Texture" id=2]
-[ext_resource path="res://Player/Inventory/Icons/Button_Bg/inventory_bg.png" type="Texture" id=3]
+[ext_resource path="res://Display/Pause/Sprites/Slots/HorizontalTabSelect.png" type="Texture" id=2]
+[ext_resource path="res://Display/Pause/Sprites/Base/baseUIBackgroundg.png" type="Texture" id=3]
+[ext_resource path="res://Display/Pause/Sprites/Icons/exit.png" type="Texture" id=4]
+[ext_resource path="res://Display/Pause/Sprites/Slots/HorizontalTabDeSelect.png" type="Texture" id=5]
+[ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_space = -4
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 6 )
 
 [node name="Pause" type="Control"]
-margin_left = 239.673
-margin_top = 123.692
-margin_right = 453.674
-margin_bottom = 247.693
+margin_right = 480.0
+margin_bottom = 270.0
 rect_scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Border" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.5
+margin_top = -60.0
+margin_right = 107.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 140, 60 )
+texture = ExtResource( 3 )
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rectangle" type="TextureRect" parent="Border"]
+margin_left = 18.0
+margin_top = 10.0
+margin_right = 192.0
+margin_bottom = 111.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Border/Rectangle"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1.00101
-margin_bottom = -0.000991821
-texture = ExtResource( 3 )
-expand = true
+margin_right = 7.0
+rect_min_size = Vector2( 0, 50 )
+custom_constants/separation = 13
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GPaused" type="Label" parent="."]
-margin_left = 69.6285
-margin_top = 18.6922
-margin_right = 157.629
-margin_bottom = 32.6922
+[node name="GPaused" type="Label" parent="Border/Rectangle/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
 text = "Game Paused"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Button" parent="."]
-margin_left = 85.278
-margin_top = 41.665
-margin_right = 148.278
-margin_bottom = 61.665
-rect_scale = Vector2( 0.75, 0.75 )
+[node name="Buttons" type="TextureRect" parent="Border/Rectangle/VBoxContainer"]
+margin_top = 29.0
+margin_right = 181.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Border/Rectangle/VBoxContainer/Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 80 )
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="TextureButton" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons"]
+margin_right = 80.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Settings"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RMMenu" type="Button" parent="."]
-margin_left = 56.2784
-margin_top = 65.7666
-margin_right = 206.278
-margin_bottom = 85.7666
-rect_scale = Vector2( 0.75, 0.75 )
-text = "Return to Main Menu"
+[node name="RMMenu" type="TextureButton" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons"]
+margin_top = 27.0
+margin_right = 80.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 15 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons/RMMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitDirect" type="Button" parent="."]
-margin_left = 80.5957
-margin_top = 87.696
-margin_right = 157.596
-margin_bottom = 107.696
-rect_scale = Vector2( 0.75, 0.75 )
-text = "Exit Game"
+[node name="ExitDirect" type="TextureButton" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons"]
+margin_top = 54.0
+margin_right = 80.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 0, 15 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 2 )
+expand = true
+
+[node name="Label2" type="Label" parent="Border/Rectangle/VBoxContainer/Buttons/Buttons/ExitDirect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitPause" type="TextureButton" parent="."]
-margin_left = 202.603
-margin_top = 4.14248
-margin_right = 209.603
-margin_bottom = 11.1425
-texture_normal = ExtResource( 2 )
+margin_left = 322.228
+margin_top = 81.8176
+margin_right = 334.228
+margin_bottom = 93.8176
+texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="RMMenu" to="." method="_on_RMMenu_pressed"]
-[connection signal="pressed" from="ExitDirect" to="." method="_on_ExitDirect_pressed"]
+[connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/RMMenu" to="." method="_on_RMMenu_pressed"]
+[connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/ExitDirect" to="." method="_on_ExitDirect_pressed"]
 [connection signal="pressed" from="ExitPause" to="." method="_on_ExitPause_pressed"]

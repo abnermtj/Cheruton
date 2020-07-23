@@ -334,7 +334,7 @@ func buy_item():
 	var node_multiplier
 	match current_tab_name:
 		"Weapons": node_multiplier = WEAPONS
-		"Weapons": node_multiplier = APPAREL
+		"Apparel": node_multiplier = APPAREL
 		"Consum": node_multiplier = CONSUM
 		"Misc": node_multiplier = MISC
 

@@ -5,6 +5,8 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
+onready var mmenu_music_file = preload("res://BackgroundMusic/Time Trip.wav")
+
 
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
@@ -13,6 +15,7 @@ onready var bg_music = $BgMusic
 onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
+
 
 var cur_story
 var cur_dialog
@@ -25,25 +28,25 @@ var cur_level
 
 var music_curr
 var music_next
-var fade_in := 0.6
-var fade_out := 0.6
+var fade_in := 1.5
+var fade_out := 0.8
 var music_state := "idle"
 
 signal init_statbar
 
 func _ready():
 	randomize()
-
-	init_music()
 	begin_music()
+	init_music()
 	#init_cursor()
 
 ##############
 # INITIALIZE #
 ##############
+
 func begin_music():
 	music_state = "init"
-	music_next = null
+	music_next = mmenu_music_file
 	music_fsm()
 
 func init_music():
@@ -51,6 +54,8 @@ func init_music():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio_master)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
+
+
 
 func init_cursor():
 	Input.set_custom_mouse_cursor(arrow)
@@ -84,14 +89,13 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		levels.add_child(new_level)
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
-
+		if(new_music):
+			new_music = load(new_music)
+		
 	else: # main menu
 		var root = get_tree().get_root()
 		root.add_child(new_level)
-		new_music = root.get_child(root.get_child_count() - 1).bg_music_file
-
-	if(new_music):
-		new_music = load(new_music)
+		change_music(mmenu_music_file)
 
 	if(game_scene):
 		hud_elements.show()
@@ -99,9 +103,10 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if(loading_screen):
 		load_layer.hide()
 
-
+	if(scene != MMENU):
+		change_music(new_music)
 	print("new_music", new_music)
-	change_music(new_music)
+	
 	print("Loaded")
 
 	get_tree().paused = false
