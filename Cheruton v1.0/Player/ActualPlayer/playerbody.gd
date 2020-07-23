@@ -33,10 +33,12 @@ onready var land_dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
 var cur_state : Node
 var prev_state : Node
 var velocity = Vector2()
+var actual_velocity = Vector2()
 var on_floor = false setget set_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var previous_anim : String
 var is_invunerable = false
+var prev_pos = Vector2()
 
 var has_jumped = false
 var jump_again = false
@@ -262,13 +264,15 @@ func _on_invunerableTimer_timeout():
 
 # Movement
 func move():
+	actual_velocity = (global_position - prev_pos) * 60
+	prev_pos = global_position # used to calcualate actual speed junmping of moving platform
 	if hooked and not ["hook"].has(cur_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND: # when player is hooked but tried to move away from hook point
-		move_and_slide(Vector2(), Vector2.UP)
+		return move_and_slide(Vector2(), Vector2.UP)
 	elif ["run", "slide", "idle", "wallSlide"].has(cur_state.name):
-		move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
+		return move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
-		move_and_slide(velocity, Vector2.UP)
+		return move_and_slide(velocity, Vector2.UP)
 
 	for i in get_slide_count():
 		var col = get_slide_collision(i)

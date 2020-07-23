@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Furball/Sprites/Enemy_Furball_22fps.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Mobs/Furball/Furball.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Enemy/Mobs/Furball/attack.gd" type="Script" id=10]
 [ext_resource path="res://Enemy/Mobs/Furball/dead.gd" type="Script" id=11]
 [ext_resource path="res://Enemy/Mobs/Furball/hurtBox.gd" type="Script" id=12]
+[ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 80 )
@@ -544,6 +545,12 @@ text = "sd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HealthBar" parent="." instance=ExtResource( 13 )]
+margin_left = 0.0
+margin_top = -50.854
+margin_right = 0.0
+margin_bottom = -50.854
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
 [connection signal="body_entered" from="alertArea" to="." method="_on_alertArea_body_entered"]

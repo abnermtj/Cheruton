@@ -46,9 +46,9 @@ position = Vector2( -12, 0 )
 
 [node name="Sprite" type="Sprite" parent="rotate"]
 texture = ExtResource( 1 )
-offset = Vector2( 11, 2 )
+offset = Vector2( 3, 2 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 16 )
+region_rect = Rect2( 1, 19, 48, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -21,22 +21,14 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="HealthRect" type="VBoxContainer" parent="."]
+[node name="HealthBarDesign" type="HBoxContainer" parent="."]
 margin_right = 209.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 180, 40 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBarDesign" type="HBoxContainer" parent="HealthRect"]
-margin_right = 304.0
 margin_bottom = 53.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" type="TextureProgress" parent="HealthRect/HealthBarDesign"]
+[node name="HealthBar" type="TextureProgress" parent="HealthBarDesign"]
 margin_right = 190.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 50, 50 )
@@ -47,10 +39,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthVal" type="Label" parent="HealthRect/HealthBarDesign"]
+[node name="HealthVal" type="Label" parent="HealthBarDesign"]
 margin_left = 194.0
 margin_top = 10.0
-margin_right = 304.0
+margin_right = 209.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -58,4 +50,4 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="HealthRect/HealthBarDesign/HealthBar" to="." method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="HealthBarDesign/HealthBar" to="." method="_on_HealthBar_value_changed"]

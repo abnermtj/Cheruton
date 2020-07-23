@@ -1,10 +1,9 @@
 extends Control
 
 
-onready var healthbar = $HealthRect/HealthBarDesign/HealthBar
-onready var healthstat = $HealthRect/HealthBarDesign/HealthVal
+onready var healthbar = $HealthBarDesign/HealthBar
+onready var healthstat = $HealthBarDesign/HealthVal
 onready var tween = $Tween
-#onready var heart = $HealthRect/HealthBarDesign/Heart
 
 var health_max
 

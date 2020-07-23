@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/Sprites/Props-HookPoint.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/grapplePoint.gd" type="Script" id=2]
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/Sprites/Props-HookPoint_rope_end.png" type="Texture" id=3]
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/Sprites/Props-HookPoint_rope.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hook:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 32, 32 ), Rect2( 35, 1, 32, 32 ), Rect2( 69, 1, 32, 32 ), Rect2( 103, 1, 32, 32 ), Rect2( 137, 1, 32, 32 ), Rect2( 171, 1, 32, 32 ), Rect2( 205, 1, 32, 32 ), Rect2( 239, 1, 32, 32 ), Rect2( 273, 1, 32, 32 ), Rect2( 307, 1, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 8 ) ]
+}
+
+[node name="grapplePoint" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -300 )
+
+[node name="Rope" type="Sprite" parent="."]
+position = Vector2( -5, -64 )
+scale = Vector2( 4, -4 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 100 )
+
+[node name="Hook" type="Sprite" parent="."]
+position = Vector2( 3, -84 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 8 )
+region_enabled = true
+region_rect = Rect2( 205, 1, 32, 32 )
+
+[node name="End" type="Sprite" parent="."]
+position = Vector2( -5, -116 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="pivot" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -11 )
+scale = Vector2( 0.5, 5 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shine"
+anims/shine = SubResource( 2 )

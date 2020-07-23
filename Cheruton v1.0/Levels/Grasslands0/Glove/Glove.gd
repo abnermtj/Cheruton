@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var sprite = $Sprite
+onready var dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
 
 var velocity : Vector2
 var interact_enabled = true
@@ -14,6 +15,15 @@ func _physics_process(delta):
 
 	if is_on_floor():
 		velocity.x *= .86
+		var col = get_slide_collision(0)
+		if col and velocity.x > 50:
+			var instance = dust.instance()
+			instance.emitting = true
+
+			instance.global_position = col.position
+			get_parent().add_child(instance)
+
+
 
 func pend_interact():
 	sprite.material.set_shader_param("width", .5)

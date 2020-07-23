@@ -30,7 +30,7 @@ func _ready():
 		next_cutscene()
 
 func next_cutscene():
-	print(cutscene_number, cutscene_index)
+#	print(cutscene_number, cutscene_index)
 	cur_cut_scene_completed = false
 	cut_scene_player.play("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
 
@@ -56,7 +56,7 @@ func next_cutscene():
 				end_cutscene()
 				return
 		4:
-			if cutscene_index == 3:
+			if cutscene_index == 4:
 #				DataResource.dict_player.completed_cutscenes["grasslands0_3"] = true
 				end_cutscene()
 				return
@@ -136,4 +136,7 @@ func instance_flying_sword():
 func on_sword_result(result, vector1, vector2):
 	if result == 2 and cutscene_number == 4:
 		next_cutscene()
+
+func shake_camera(time : float, freq : float, power : float, dir: Vector2):
+	camera.shake(time, freq, power, dir)
 

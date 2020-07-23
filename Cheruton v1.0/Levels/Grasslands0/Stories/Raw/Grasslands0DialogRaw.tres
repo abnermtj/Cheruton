@@ -17,7 +17,8 @@ names = {
 "cutscene3_2": 10,
 "cutscene3_3": 12,
 "cutscene4_1": 13,
-"cutscene4_2": 14
+"cutscene4_2": 14,
+"cutscene4_3": 8
 }
 story = {
 1: {
@@ -426,6 +427,45 @@ story = {
 }
 }
 },
+8: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene4_3",
+"nodes": {
+1: {
+"graph_offset": Vector2( 360, -720 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 360, -420 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>You</speaker>
+<dialog>(Curious, you don't wait)</dialog>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 360, -200 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
+}
+},
 9: {
 "available_nid": [  ],
 "groups": [  ],
@@ -593,7 +633,7 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( 140, -740 ),
+"graph_offset": Vector2( 2560, -900 ),
 "links": {
 
 },
@@ -654,7 +694,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog> Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>",
+<dialog>Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>",
 "type": "line"
 },
 8: {
@@ -671,18 +711,18 @@ story = {
 9: {
 "graph_offset": Vector2( 1940, -920 ),
 "links": {
-
+0: 2
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>I can lead you there.</dialog>",
+<dialog>I can lead you th...</dialog>",
 "type": "line"
 }
 }
 },
 14: {
-"available_nid": [  ],
+"available_nid": [ 5 ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
 "name": "cutscene4_2",
@@ -715,7 +755,7 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<speaker>Mary</speaker>
-<dialog>!!!What was that?</dialog>",
+<dialog>!!! What was that?</dialog>",
 "type": "line"
 },
 4: {
@@ -732,5 +772,5 @@ story = {
 }
 }
 }
-available_dids = [ 8, 11 ]
+available_dids = [ 11 ]
 groups = [  ]

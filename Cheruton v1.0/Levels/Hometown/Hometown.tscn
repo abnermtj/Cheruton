@@ -5,7 +5,7 @@
 [ext_resource path="res://Levels/Hometown/NPCs/clgirl/clgirl.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Hometown/NPCs/whippersnapper/whippersnapper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Hometown/NPCs/gramps/gramps.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=9]
@@ -35,6 +35,7 @@
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_shadows.png" type="Texture" id=33]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=35]
+
 
 [node name="Hometown" type="Node2D"]
 pause_mode = 1

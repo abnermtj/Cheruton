@@ -53,7 +53,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.04, 0.317792 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 2.0, 0.0 ]
+"values": [ 1.0, 0.0 ]
 }
 
 [node name="WitchHutExplosion" type="Node2D"]
@@ -67,9 +67,9 @@ position = Vector2( 0, 4 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( -19, -17.5 )
+offset = Vector2( -3, 6.5 )
 region_enabled = true
-region_rect = Rect2( 1, 1, -2, -2 )
+region_rect = Rect2( 1, 1, 32, 16 )
 __meta__ = {
 "_editor_description_": "4"
 }
@@ -84,6 +84,6 @@ one_shot = true
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, -8 )
 texture = ExtResource( 4 )
-texture_scale = 0.01
-energy = 0.0
+texture_scale = 1.70029
+energy = 0.621847
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

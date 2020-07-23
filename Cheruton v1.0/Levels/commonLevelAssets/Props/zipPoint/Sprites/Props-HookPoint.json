@@ -1,0 +1,100 @@
+{ "frames": {
+   "Props-HookPoint 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 1.aseprite": {
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 2.aseprite": {
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 3.aseprite": {
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 4.aseprite": {
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 5.aseprite": {
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 6.aseprite": {
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 7.aseprite": {
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 8.aseprite": {
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   },
+   "Props-HookPoint 9.aseprite": {
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Props-HookPoint.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 152 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "shine", "from": 0, "to": 9, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "dodge", "opacity": 255, "blendMode": "color_dodge" }
+  ],
+  "slices": [
+  ]
+ }
+}

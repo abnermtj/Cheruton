@@ -9,11 +9,12 @@
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Props/spike0/spike0.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Props/movingPlatforms/movingPlatform0.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Props/bouncePad/bouncePad.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/commonLevelAssets/Props/spike0/spike0.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/commonLevelAssets/Props/movingPlatforms/movingPlatform0.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/commonLevelAssets/Props/bouncePad/bouncePad.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/commonLevelAssets/Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=14]
+
 
 [node name="Grasslands1" type="Node2D"]
 script = ExtResource( 1 )

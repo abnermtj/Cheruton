@@ -16,7 +16,7 @@ func enter():
 	owner.play_anim("hit")
 	owner.play_anim_fx("hit")
 
-	var obj_pos = owner.hitter.global_position
+	var obj_pos = owner.hitter_pos
 	move_dir = (owner.global_position - obj_pos ).normalized()
 	owner.shake_camera(.05, 20.0, 19.5, -move_dir) # dur, freq, amp, dir
 	owner.velocity.x = move_dir.x * initial_speed

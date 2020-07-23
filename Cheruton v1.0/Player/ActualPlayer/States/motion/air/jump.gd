@@ -29,7 +29,8 @@ func handle_input(event):
 func enter() -> void:
 	grav_multiplier = NORMAL_GRAV_MULTIPLIER
 
-	enter_velocity = owner.velocity
+	owner.velocity = owner.actual_velocity # moving platforms show a different speed with for moveslidesnap
+	enter_velocity = owner.actual_velocity
 	if MIN_ENTER_VELOCITY_X > abs(enter_velocity.x):
 		enter_velocity.x = MIN_ENTER_VELOCITY_X
 

@@ -6,7 +6,7 @@ const FREEZE_TIME = .02
 var timer : float
 
 func enter():
-	var obj_pos = owner.hitter.global_position
+	var obj_pos = owner.hitter_pos
 	var move_dir = (owner.global_position - obj_pos ).normalized()
 
 	owner.shake_camera(.06, 20.0, 42, -move_dir)

@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/ActualPlayer/Hook/link_retract_curve.tres" type="Curve" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
+radius = 3.0
 height = 2.0
 
 [node name="grappleHook" type="Node2D"]

@@ -252,6 +252,29 @@ story = {
 }
 }
 },
+8: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>You</speaker>
+<dialog>(Curious, you don't wait)</dialog>"
+},
+3: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
 9: {
 "nodes": {
 1: {
@@ -389,7 +412,7 @@ story = {
 0: 8
 },
 "text": "<speaker>Mary</speaker>
-<dialog> Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>"
+<dialog>Hah! Well you're in luck, Mary the great mage (me) is here to help you.</dialog>"
 },
 8: {
 "links": {
@@ -400,10 +423,10 @@ story = {
 },
 9: {
 "links": {
-
+0: 2
 },
 "text": "<speaker>Mary</speaker>
-<dialog>I can lead you there.</dialog>"
+<dialog>I can lead you th...</dialog>"
 }
 }
 },
@@ -426,7 +449,7 @@ story = {
 0: 4
 },
 "text": "<speaker>Mary</speaker>
-<dialog>!!!What was that?</dialog>"
+<dialog>!!! What was that?</dialog>"
 },
 4: {
 "links": {
@@ -450,5 +473,6 @@ names = {
 "cutscene3_2": 10,
 "cutscene3_3": 12,
 "cutscene4_1": 13,
-"cutscene4_2": 14
+"cutscene4_2": 14,
+"cutscene4_3": 8
 }

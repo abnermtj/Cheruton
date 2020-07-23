@@ -7,7 +7,7 @@
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=5]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Props/SaveStatue/SaveStatue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/commonLevelAssets/Props/SaveStatueOld/SaveStatue.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=9]
 
 [node name="Node" type="Node2D"]
