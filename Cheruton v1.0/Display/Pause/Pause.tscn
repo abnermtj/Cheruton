@@ -12,6 +12,7 @@
 size = 14
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_space = -4
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -32,9 +33,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
+margin_left = -107.5
 margin_top = -60.0
-margin_right = 140.0
+margin_right = 107.5
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 140, 60 )
 texture = ExtResource( 3 )
@@ -42,11 +43,14 @@ patch_margin_left = 50
 patch_margin_top = 50
 patch_margin_right = 50
 patch_margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Rectangle" type="TextureRect" parent="Border"]
 margin_left = 18.0
 margin_top = 10.0
-margin_right = 263.0
+margin_right = 192.0
 margin_bottom = 111.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,7 +59,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Border/Rectangle"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -4.0
+margin_right = 7.0
 rect_min_size = Vector2( 0, 50 )
 custom_constants/separation = 13
 __meta__ = {
@@ -63,7 +67,7 @@ __meta__ = {
 }
 
 [node name="GPaused" type="Label" parent="Border/Rectangle/VBoxContainer"]
-margin_right = 241.0
+margin_right = 181.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 1 )
 text = "Game Paused"
@@ -75,7 +79,7 @@ __meta__ = {
 
 [node name="Buttons" type="TextureRect" parent="Border/Rectangle/VBoxContainer"]
 margin_top = 29.0
-margin_right = 241.0
+margin_right = 181.0
 margin_bottom = 101.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -155,10 +159,10 @@ __meta__ = {
 }
 
 [node name="ExitPause" type="TextureButton" parent="."]
-margin_left = 349.827
-margin_top = 83.1334
-margin_right = 361.827
-margin_bottom = 95.1334
+margin_left = 322.228
+margin_top = 81.8176
+margin_right = 334.228
+margin_bottom = 93.8176
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
