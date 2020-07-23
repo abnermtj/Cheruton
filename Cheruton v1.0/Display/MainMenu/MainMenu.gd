@@ -22,11 +22,10 @@ onready var play_position = $Bg/Options/VBoxContainer/Play.rect_position
 onready var settings_position = $Bg/Options/VBoxContainer/Settings.rect_position
 onready var quit_position = $Bg/Options/VBoxContainer/Quit.rect_position
 
-onready var bg_music_file
-
 var modulate_dec = "white"
 var slider_active := false
 var slider_enabled := false
+
 
 func _ready():
 	bg_player.play("water")
