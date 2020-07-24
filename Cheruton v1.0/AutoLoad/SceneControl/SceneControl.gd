@@ -5,7 +5,7 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
-onready var mmenu_music_file = preload("res://BackgroundMusic/Time Trip.wav")
+onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
 
 onready var levels = $Levels
@@ -15,7 +15,7 @@ onready var bg_music = $BgMusic
 onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
-
+onready var button_click = $ButtonClick
 
 var cur_story
 var cur_dialog
@@ -137,7 +137,7 @@ func music_fsm():
 				music_state = "idle"
 
 			if(fade_out > 0 && music_curr):
-				tween_music_vol(bg_music.volume_db, -60, fade_out)
+				tween_music_vol(0, -60, fade_out)
 			else:
 				bg_music.volume_db = -60.0
 				call_deferred("music_fsm")
@@ -153,7 +153,7 @@ func music_fsm():
 
 			if(fade_in > 0):
 				bg_music.play()
-				tween_music_vol(bg_music.volume_db, DataResource.dict_settings.audio_music, fade_in)
+				tween_music_vol(-60, 0, fade_in)
 			else:
 				bg_music.volume_db = DataResource.dict_settings.audio_music
 				call_deferred("music_fsm")

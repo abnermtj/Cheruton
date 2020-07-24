@@ -100,6 +100,7 @@ func _on_SFXVolDown_pressed():
 
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
+	SceneControl.button_click.play()
 	change_active_tab(base_empty)
 	slider.hide()
 	slider_active = false
@@ -148,12 +149,15 @@ func slide_to_position(new_position, new_offset):
 		slider_active = true
 
 func _on_Controls_pressed():
+	SceneControl.button_click.play()
 	change_active_tab(base_controls)
 
 func _on_Audio_pressed():
+	SceneControl.button_click.play()
 	change_active_tab(base_audio)
 
 func _on_Game_pressed():
+	SceneControl.button_click.play()
 	change_active_tab(base_game)
 
 func change_active_tab(new_tab):
@@ -163,8 +167,3 @@ func change_active_tab(new_tab):
 	active_tab = new_tab
 	active_tab.show()
 
-
-
-
-func _on_up_pressed():
-	print("lol")

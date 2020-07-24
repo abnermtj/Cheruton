@@ -1,10 +1,36 @@
-https://www.noiseforfun.com/
 
-menu 03b
+
+Main Menu
+
+menu 03a - positive click
+https://www.noiseforfun.com/2012-sound-effects/menu-03-a/
+
+menu 03b - negativ click
 https://www.noiseforfun.com/2012-sound-effects/menu-03-b/
 
-soft confirm
-https://www.noiseforfun.com/2012-sound-effects/soft-confirm/
-
-confirm
+menu 05a - positive click
 https://www.noiseforfun.com/2012-sound-effects/menu-05-a/
+
+menu 05b - negativ click
+https://www.noiseforfun.com/2012-sound-effects/menu-05-b/
+
+menu retro
+https://freesound.org/people/pumodi/sounds/150222/
+
+videogame slect
+https://freesound.org/people/Fupicat/sounds/471937/
+
+Option accepted
+https://freesound.org/people/Cabeeno%20Rossley/sounds/126418/
+
+Inventory/Shop
+
+hovering between items
+1) https://freesound.org/people/MATRIXXX_/sounds/455202/
+2) https://freesound.org/people/MATRIXXX_/sounds/515823/
+
+item highlighted
+https://freesound.org/people/MATRIXXX_/sounds/515823/
+
+mouse clicked - item utilized
+https://www.noiseforfun.com/2012-sound-effects/tiny-select-03/
