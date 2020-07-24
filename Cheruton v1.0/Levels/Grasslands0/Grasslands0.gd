@@ -8,6 +8,7 @@ var wait_dialog_complete = false
 var flying_sword
 
 func _ready():
+	DataResource.change_health(50) # fix next time
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
@@ -18,6 +19,7 @@ func _ready():
 
 	#debug
 	player_spawn_pos = Vector2(3028, -1936)
+	$player.set_input_enabled(true)
 #	player_spawn_pos = Vector2(5472, 1056)
 	cur_cut_scene_completed = true
 	cutscene_number = 2 # cutscene
@@ -74,18 +76,24 @@ func _process(delta):
 		next_cutscene()
 		wait_dialog_complete = false
 
-
+#
 func _input(event):
-	if Input.is_action_just_pressed("reset"):
-		player.velocity = Vector2()
-		player.position = save_position
+#	if Input.is_action_just_pressed("reset"):
+#		player.velocity = Vector2()
+#		player.position = save_position
+#
+#		var mob = preload("res://Enemy/Mobs/Furball/Furball.tscn")
+#		var instance = mob.instance()
+#		instance.position = save_position
+#		$Mobs.add_child(instance)
 
-		var mob = preload("res://Enemy/Mobs/Furball/Furball.tscn")
-		var instance = mob.instance()
-		instance.position = save_position
-		$Mobs.add_child(instance)
-#	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack"):
+		$Hints/Scene0_0._on_Scene0_0_body_entered(null)
 #		shake_camera(.5,60,4, Vector2())
+
+func on_player_dead():
+	player.global_position = player_spawn_pos
+	DataResource.change_health(999)
 
 func handle_death_zone(body):
 	player.velocity = Vector2()
@@ -101,7 +109,6 @@ func play_cutscene_dialog(name : String):
 	DataResource.temp_dict_player.dialog_complete = false
 	SceneControl.change_and_start_dialog(name)
 	wait_dialog_complete = true
-
 
 func _on_NextCutsceneTriger_body_entered(body):
 	if cur_cut_scene_completed and cutscene_number == 2:

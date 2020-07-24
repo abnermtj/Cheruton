@@ -10,6 +10,8 @@ func _ready():
 	sprite = $bodyRotate/Sprite
 	sprite2 = $bodyRotate/Sprite2
 
+	$bodyRotate/staffPos.hide()
+
 func play_anim(name):
 	if name != "on_broom_idle": $bodyRotate.position = Vector2()
 	anim_player.clear_queue()

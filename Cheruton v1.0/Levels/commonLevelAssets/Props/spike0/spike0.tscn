@@ -1,18 +1,59 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/Props/spike0/Sprites/Props-Vines.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/Props/spike0/spike0.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 28 )
+extents = Vector2( 96, 10 )
+
+[sub_resource type="Animation" id=3]
+length = 0.825
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.425, 0.525, 0.625 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 48, 16 ), Rect2( 51, 1, 48, 16 ), Rect2( 101, 1, 48, 16 ), Rect2( 151, 1, 48, 16 ), Rect2( 201, 1, 48, 16 ), Rect2( 251, 1, 48, 16 ), Rect2( 301, 1, 48, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.425, 0.525, 0.625 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1.5 ), Vector2( 0, 1.5 ), Vector2( 0, 1.5 ), Vector2( 0, 1.5 ), Vector2( 0, 1.5 ), Vector2( 0, 1.5 ), Vector2( 0, 1.5 ) ]
+}
 
 [node name="spike0" type="Area2D"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 20
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -24 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, 1.5 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 48, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -29 )
+position = Vector2( 0, -10 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

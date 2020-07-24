@@ -289,8 +289,8 @@ func _on_pressed(node):
 		utilize_item(mouse_node)
 		mouse_node = null
 		item_state = "HOVER"
-			
-				
+
+
 		mouse_count = 0
 
 # Check if the doubleclick has happened

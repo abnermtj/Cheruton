@@ -1,0 +1,76 @@
+{ "frames": {
+   "Props-Vines 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 100
+   },
+   "Props-Vines 1.aseprite": {
+    "frame": { "x": 51, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 100
+   },
+   "Props-Vines 2.aseprite": {
+    "frame": { "x": 101, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 100
+   },
+   "Props-Vines 3.aseprite": {
+    "frame": { "x": 151, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 125
+   },
+   "Props-Vines 4.aseprite": {
+    "frame": { "x": 201, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 100
+   },
+   "Props-Vines 5.aseprite": {
+    "frame": { "x": 251, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 100
+   },
+   "Props-Vines 6.aseprite": {
+    "frame": { "x": 301, "y": 1, "w": 48, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 16 },
+    "sourceSize": { "w": 48, "h": 13 },
+    "duration": 200
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Props-Vines.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 152 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 6, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 2", "opacity": 255, "blendMode": "color_dodge" }
+  ],
+  "slices": [
+  ]
+ }
+}

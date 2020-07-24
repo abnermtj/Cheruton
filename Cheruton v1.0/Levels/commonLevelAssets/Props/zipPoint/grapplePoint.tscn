@@ -59,7 +59,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, 8 )
 region_enabled = true
-region_rect = Rect2( 205, 1, 32, 32 )
+region_rect = Rect2( 307, 1, 32, 32 )
 
 [node name="End" type="Sprite" parent="."]
 position = Vector2( -5, -116 )
@@ -73,4 +73,5 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "shine"
+playback_speed = 0.8
 anims/shine = SubResource( 2 )

@@ -39,6 +39,7 @@ var look_direction = Vector2(1, 0) setget set_look_direction
 var previous_anim : String
 var is_invunerable = false
 var prev_pos = Vector2()
+var zone : Node # an area that the player is in
 
 var has_jumped = false
 var jump_again = false
@@ -249,6 +250,19 @@ func on_sword_result(result, pos, normal):
 # Player damaged
 func _on_hitBox_area_entered(area):
 	if is_invunerable: return
+	is_invunerable = true
+	if zone: global_position = zone.tele_pos
+
+	var damage
+	if damage in area: # write a better system
+		damage = -area.damage
+	else:
+		damage = -10
+
+	DataResource.change_health(damage)
+
+	if DataResource.temp_dict_player.health_curr < 1: # change this to a better system
+		get_parent().on_player_dead()
 
 	if hooked: chain_release()
 
@@ -371,9 +385,3 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
 func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)
-
-
-func handle_enemy_attack_collision(damage): # might not be used, delete later
-	#DataResource.change_health(damage)
-	pass
-

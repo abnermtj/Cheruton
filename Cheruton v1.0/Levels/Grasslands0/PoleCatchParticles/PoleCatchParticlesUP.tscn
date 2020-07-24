@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.929412, 0.321569, 0.34902, 1, 0.929412, 0.321569, 0.34902, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.2
+emission_shape = 2
+emission_box_extents = Vector3( 10.5, 3, 1 )
+flag_disable_z = true
+direction = Vector3( 0.3, -1, 0 )
+spread = 0.2
+gravity = Vector3( 2, 120, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -20.0
+damping = 0.5
+color_ramp = SubResource( 3 )
+
+[node name="PoleCatchParticlesUP" type="Particles2D"]
+emitting = false
+amount = 40
+one_shot = true
+explosiveness = 0.85
+process_material = SubResource( 1 )

@@ -91,7 +91,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 		if(new_music):
 			new_music = load(new_music)
-		
+
 	else: # main menu
 		var root = get_tree().get_root()
 		root.add_child(new_level)
@@ -106,7 +106,7 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 	if(scene != MMENU):
 		change_music(new_music)
 	print("new_music", new_music)
-	
+
 	print("Loaded")
 
 	get_tree().paused = false

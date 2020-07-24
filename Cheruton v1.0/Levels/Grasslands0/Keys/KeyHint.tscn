@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Grasslands0/Keys/Sprites/KeyBase.png" type="Texture" id=1]
+[ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Label" type="Label"]
+margin_left = -250.0
+margin_top = -250.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_pivot_offset = Vector2( 250, 250 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 250, 250 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 1 )

@@ -14,7 +14,7 @@ var states_stack = []
 var current_state = null
 var previous_state = null # for function
 
-var input_enabled = true
+var input_enabled = false
 var _active = false setget set_active
 
 func _ready(): # ready function not overwritten so no need ._ready() in inheritors

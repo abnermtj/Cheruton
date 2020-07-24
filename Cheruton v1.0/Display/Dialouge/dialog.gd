@@ -26,6 +26,8 @@ func _ready():
 	dialogue_base.rect_scale = Vector2(0,1)
 	dialogue_text.percent_visible = 1
 
+	$dialogBox/bodyBackground/Next.modulate.a = 0
+
 func begin():
 	tween.interpolate_property(dialogue_base, "rect_scale", Vector2(0.1,1), Vector2(1,1), .8,Tween.TRANS_BACK, Tween.EASE_OUT, 0)
 
@@ -59,6 +61,7 @@ func handle_input(event):
 		elif not finished_current_node:
 			dialogue_text.bbcode_text += dialog_left
 			finished_current_node = true
+			$AnimationPlayerVisibility.play("next")
 
 func _process(delta):
 	if is_active_gui:
@@ -74,6 +77,7 @@ func get_next_node():
 
 func play_dialog():
 	finished_current_node = false
+	$AnimationPlayerVisibility.play("default")
 
 	var text = story_reader.get_text(dialog_id, node_id)
 	var dialog = _get_tagged_text("dialog", text)
@@ -101,6 +105,8 @@ func _on_Timer_timeout():
 	dialog_left.erase(0, 1)
 	if dialog_left == "":
 		finished_current_node = true
+		$AnimationPlayerVisibility.play("next")
+
 	else:
 		start_dialog_timer()
 

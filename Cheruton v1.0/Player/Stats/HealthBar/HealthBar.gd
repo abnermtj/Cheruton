@@ -20,19 +20,15 @@ func init_bar():
 func change_healthbar(new_health):
 	animate_healthbar(healthbar.value, new_health/health_max * 100)
 
-
 func animate_healthbar(start, end):
 	tween.interpolate_property(healthbar, "value", start, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
-
-
 func _on_HealthBar_value_changed(value):
 	healthstat.text = str(floor(healthbar.value * health_max/100), "/", health_max)
 	if(value > 49):
-		healthbar.set_tint_progress(Color(0.180392, 0.415686, 0.258824))
+		healthbar.set_tint_progress(Color("#7bcf5c"))
 	elif(value > 19):
-		healthbar.set_tint_progress(Color(0.968627, 0.67451, 0.215686))
+		healthbar.set_tint_progress(Color("#e57028"))
 	else:
-		healthbar.set_tint_progress(Color(0.768627, 0.172549, 0.211765))
-		#heart.play("HeartBeatFast")
+		healthbar.set_tint_progress(Color("#c42c36"))

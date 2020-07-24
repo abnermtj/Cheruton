@@ -83,6 +83,9 @@ func _physics_process(delta):
 
 			var col = move_and_collide(velocity*delta)
 			if col:
+				if not col.collider.is_in_group("flyingPoleColliders"):
+					state = sword_states.RETURN
+					return
 				pick_up_timer = PICK_UP_TIME
 				velocity = Vector2()
 				bodyRotation.rotation = Vector2.UP.angle_to(col.normal)

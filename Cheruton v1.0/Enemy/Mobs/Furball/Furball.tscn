@@ -86,7 +86,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.45, 0.6 ),
+"times": PoolRealArray( 0, 0.45, 0.65 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ true, false, true ]
@@ -456,7 +456,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 511, 1, 32, 32 )
+region_rect = Rect2( 919, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )

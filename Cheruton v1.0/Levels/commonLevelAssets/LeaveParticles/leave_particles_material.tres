@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/leave_particles.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/color_1 = Color( 0.542187, 0.92, 0.4048, 1 )
+shader_param/color_2 = Color( 0.482353, 0.811765, 0.360784, 1 )
+shader_param/color_3 = Color( 0.313726, 0.607843, 0.294118, 1 )
+shader_param/color_4 = Color( 0.180392, 0.415686, 0.258824, 1 )

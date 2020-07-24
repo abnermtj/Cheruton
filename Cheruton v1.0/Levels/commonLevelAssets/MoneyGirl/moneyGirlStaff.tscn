@@ -3,7 +3,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneyGirlStaff.gd" type="Script" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/22fps_limitPallete_PIL_HomeTown_NPC_moneygirl.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -30,8 +30,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1, 15 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "staff_jump_switch"
+[sub_resource type="Animation" id=2]
 length = 0.16
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -69,5 +68,5 @@ region_enabled = true
 region_rect = Rect2( 1, 101, 48, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 2 )
-anims/staff_jump_switch = SubResource( 1 )
+anims/default = SubResource( 1 )
+anims/staff_jump_switch = SubResource( 2 )

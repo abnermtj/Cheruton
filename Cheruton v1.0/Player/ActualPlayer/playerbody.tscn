@@ -1927,6 +1927,7 @@ position = Vector2( -116.598, -32.013 )
 shape = SubResource( 1 )
 
 [node name="stateNameDisplay" type="Label" parent="."]
+visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124

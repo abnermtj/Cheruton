@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/Leaf.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/leave_particles_material.tres" type="Material" id=2]
+
+[node name="leaves" type="Particles2D"]
+position = Vector2( 2, -33 )
+amount = 120
+lifetime = 60.0
+preprocess = 60.0
+visibility_rect = Rect2( -200, -150, 400, 300 )
+process_material = ExtResource( 2 )
+texture = ExtResource( 1 )
