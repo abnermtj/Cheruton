@@ -137,7 +137,7 @@ func music_fsm():
 				music_state = "idle"
 
 			if(fade_out > 0 && music_curr):
-				tween_music_vol(bg_music.volume_db, -60, fade_out)
+				tween_music_vol(0, -60, fade_out)
 			else:
 				bg_music.volume_db = -60.0
 				call_deferred("music_fsm")
@@ -153,7 +153,7 @@ func music_fsm():
 
 			if(fade_in > 0):
 				bg_music.play()
-				tween_music_vol(bg_music.volume_db, DataResource.dict_settings.audio_music, fade_in)
+				tween_music_vol(-60, 0, fade_in)
 			else:
 				bg_music.volume_db = DataResource.dict_settings.audio_music
 				call_deferred("music_fsm")

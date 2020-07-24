@@ -68,12 +68,15 @@ func enable_options():
 
 
 func _on_Play_pressed():
+	SceneControl.button_click.play()
 	general_player.play("button_pressed")
 
 func _on_Settings_pressed():
+	SceneControl.button_click.play()
 	general_player.play("button_pressed")
 
 func _on_Quit_pressed():
+	SceneControl.button_click.play()
 	general_player.play("button_pressed")
 
 
@@ -83,8 +86,8 @@ func _on_Player_animation_finished(anim_name):
 	elif(anim_name == "to_mmenu"):
 		container.show()
 	elif(anim_name == "button_pressed"):
-		SceneControl.button_click.play()
 		perform_button_action()
+
 
 
 func perform_button_action():
