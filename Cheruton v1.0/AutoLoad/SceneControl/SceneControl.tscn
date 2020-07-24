@@ -7,13 +7,14 @@
 [ext_resource path="res://Display/LoadScrn/LoadScrn.gd" type="Script" id=5]
 [ext_resource path="res://Display/PopUpGui/PopUpGui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Music/SFX/ButtonClick3.wav" type="AudioStream" id=8]
+[ext_resource path="res://Music/SFX/ButtonClick.wav" type="AudioStream" id=8]
 
 [node name="SceneControl" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
+volume_db = -60.0
 bus = "Music"
 
 [node name="Tween" type="Tween" parent="BgMusic"]
