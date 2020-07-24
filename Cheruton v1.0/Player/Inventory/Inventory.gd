@@ -36,8 +36,8 @@ onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
 onready var button = $Border/Bg/Main/Sides/Data/TextureRect/Button
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
-onready var hover_music = $MouseOver2
-onready var select_music = $MouseOver3
+#onready var hover_music = $MouseOver2
+#onready var select_music = $MouseOver3
 
 
 onready var base_attack = DataResource.temp_dict_player.attack
@@ -242,7 +242,7 @@ func disable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
-		hover_music.play()
+#		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
 		#change atttack
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
@@ -300,7 +300,7 @@ func _on_pressed(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
-		select_music.play()
+#		select_music.play()
 		if(temp_mouse_node.name != "Weapons" && temp_mouse_node.name != "Apparel"):
 			revert_item_state()
 		mouse_count = 0
