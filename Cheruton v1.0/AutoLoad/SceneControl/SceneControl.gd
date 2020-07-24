@@ -5,7 +5,7 @@ enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
-onready var mmenu_music_file = preload("res://BackgroundMusic/Time Trip.wav")
+onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
 
 onready var levels = $Levels
@@ -15,7 +15,7 @@ onready var bg_music = $BgMusic
 onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
-
+onready var button_click = $ButtonClick
 
 var cur_story
 var cur_dialog

@@ -83,6 +83,7 @@ func _on_Player_animation_finished(anim_name):
 	elif(anim_name == "to_mmenu"):
 		container.show()
 	elif(anim_name == "button_pressed"):
+		SceneControl.button_click.play()
 		perform_button_action()
 
 
