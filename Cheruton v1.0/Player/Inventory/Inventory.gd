@@ -12,6 +12,7 @@ var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
 var temp_mouse_node
+var delete_status:= false
 
 onready var active_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabSelected.png")
 onready var default_tab_image = preload("res://Player/Inventory/Sprites/Slots/vertTabDeselected.png")
@@ -33,7 +34,7 @@ onready var tabs = $Border/Bg/Main/Sides/Contents/Tabs
 onready var items = $Border/Bg/Main/Sides/Contents/Items
 onready var coins = $Border/Bg/Main/Sides/Data/Coins
 onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
-onready var button = $Border/Bg/Main/Sides/Data/TextureRect/Button
+onready var button_list = $Border/Bg/Main/Sides/Data/TextureRect
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
 #onready var hover_music = $MouseOver2
@@ -241,6 +242,7 @@ func disable_mouse(new_node):
 
 
 func _on_mouse_entered(node):
+	print(item_state)
 	if(mouse_node != node):
 #		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
@@ -291,8 +293,7 @@ func _on_pressed(node):
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		utilize_item(mouse_node)
-		mouse_node = null
-		item_state = "HOVER"
+		
 
 
 		mouse_count = 0
@@ -328,7 +329,9 @@ func utilize_item(node):
 			item_status(node, "DEQUIP")
 	elif(active_tab.name == "Consum"):
 		use_item()
-
+	button_list.hide()
+	mouse_node = null
+	item_state = "HOVER"
 
 func revert_item_state():
 	# Initially Hover
@@ -336,11 +339,12 @@ func revert_item_state():
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
-		button.show()
+		set_button_text(button_list.get_child(0))
+		button_list.show()
 
 	else:
 		item_state = "HOVER"
-		button.hide()
+		button_list.hide()
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			var active_item = DataResource.temp_dict_player[active_tab.name + "_item"]
 			if(mouse_node.name == active_item):
@@ -349,6 +353,21 @@ func revert_item_state():
 				return
 		mouse_node.get_node("Background/ItemBg").texture = null
 		mouse_node = null
+
+func set_button_text(button_node):
+	if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
+		var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name + "/Background/ItemBg/ItemBtn")
+		# Item not equipped or Item Selected is a different weapon
+		if(type.get_normal_texture() == mouse_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture()):
+			button_node.get_child(0).text = "Dequip Item"
+		else:
+			button_node.get_child(0).text = "Equip Item"
+	elif(active_tab.name == "Consum"):
+		button_node.text = "Use Item"
+	else:
+		button_node.hide()
+		return
+	button_node.show()
 
 func use_item():
 	var element_index = str(int(mouse_node.name)%100)
@@ -384,9 +403,8 @@ func delete_item():
 		var main = get_node("Border/Bg/Main/Sides/Contents/Items/" + active_tab.name)
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-				DataResource.temp_dict_player[active_tab.name + "_item"] = null
-				get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name).hide()
-
+				item_status(find_node(mouse_node.name, true, false), "DEQUIP")
+				pass
 		# From deleted item's index upwards, shift affected indexes down by 1
 		var list_tab = DataResource.dict_inventory[active_tab.name]
 		var dict_size = list_tab.size()
@@ -406,7 +424,7 @@ func delete_item():
 		check_fixed()
 		disable_mouse(emptied_node)
 
-		button.hide()
+		button_list.hide()
 
 # Handles equipping of the item
 func item_status(selected_node, status):
@@ -445,7 +463,8 @@ func item_status(selected_node, status):
 
 			var element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"])%100)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null
-			mouse_node = null
+			if(!delete_status):
+				mouse_node = null
 
 			match active_tab.name:
 				"Weapons":
@@ -458,7 +477,13 @@ func item_status(selected_node, status):
 					defense.change_bar_value(base_defense, false, true)
 #Debug
 func _on_Button_pressed():
+	delete_status = true
 	delete_item()
+	delete_status = false
+
+func _on_ButtonUse_pressed():
+	utilize_item(mouse_node)
+		
 
 func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):
@@ -498,3 +523,6 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			if(updating_node.get_child(0).get_child(0).name != "ItemName"):
 				shop.disable_mouse(updating_node)
+
+
+
