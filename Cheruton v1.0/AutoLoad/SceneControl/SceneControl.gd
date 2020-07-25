@@ -16,6 +16,7 @@ onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
 onready var button_click = $ButtonClick
+onready var scene_change = $SceneChange
 
 var cur_story
 var cur_dialog
@@ -29,7 +30,7 @@ var cur_level
 var music_curr
 var music_next
 var fade_in := 1.5
-var fade_out := 0.8
+var fade_out := 1.5
 var music_state := "idle"
 
 signal init_statbar
@@ -152,6 +153,7 @@ func music_fsm():
 			bg_music.stream = music_curr
 
 			if(fade_in > 0):
+				bg_music.volume_db = -60.0
 				bg_music.play()
 				tween_music_vol(-60, 0, fade_in)
 			else:

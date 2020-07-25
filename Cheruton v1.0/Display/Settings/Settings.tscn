@@ -144,7 +144,7 @@ margin_bottom = 14.0
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 14.0
 margin_right = 373.0
-margin_bottom = 135.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 0, 23 )
 size_flags_vertical = 3
 expand = true
@@ -167,9 +167,9 @@ __meta__ = {
 }
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 135.0
+margin_top = 175.0
 margin_right = 373.0
-margin_bottom = 256.0
+margin_bottom = 336.0
 rect_min_size = Vector2( 0, 23 )
 size_flags_vertical = 3
 expand = true
@@ -192,6 +192,7 @@ __meta__ = {
 }
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
+visible = false
 margin_top = 256.0
 margin_right = 373.0
 margin_bottom = 377.0
@@ -217,9 +218,9 @@ __meta__ = {
 }
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 377.0
+margin_top = 336.0
 margin_right = 373.0
-margin_bottom = 646.0
+margin_bottom = 605.0
 text = "
 
 
@@ -238,7 +239,7 @@ text = "
 "
 
 [node name="Back" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
-margin_top = 646.0
+margin_top = 605.0
 margin_right = 373.0
 margin_bottom = 767.0
 size_flags_vertical = 3

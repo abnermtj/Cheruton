@@ -1,20 +1,46 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Display/LoadScrn/LoadScrn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AutoLoad/SceneControl/SceneControl.gd" type="Script" id=4]
-[ext_resource path="res://Display/LoadScrn/LoadScrn.gd" type="Script" id=5]
 [ext_resource path="res://Display/PopUpGui/PopUpGui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Display/Settings/Settings.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Music/SFX/ButtonClick.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "scene_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ 0.0, -30.0, -60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.5, 0.5, 0.5, 0.5 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="SceneControl" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-volume_db = -60.0
+volume_db = -53.9059
 bus = "Music"
 
 [node name="Tween" type="Tween" parent="BgMusic"]
@@ -56,10 +82,6 @@ margin_bottom = 144.0
 [node name="LoadLayer" type="CanvasLayer" parent="."]
 
 [node name="Load" type="Node2D" parent="LoadLayer"]
-visible = false
-
-[node name="LoadScrn" parent="LoadLayer/Load" instance=ExtResource( 1 )]
-script = ExtResource( 5 )
 
 [node name="popUpGui" parent="." instance=ExtResource( 6 )]
 
@@ -74,5 +96,10 @@ visible = false
 stream = ExtResource( 8 )
 volume_db = 12.0
 bus = "SFX"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color( 0.101568, 0.101568, 0.101568, 0.898432 )
+
+[node name="SceneChange" type="AnimationPlayer" parent="."]
+anims/scene_out = SubResource( 1 )
 [connection signal="tween_completed" from="BgMusic/Tween" to="." method="_on_Tween_tween_completed"]
-[connection signal="visibility_changed" from="LoadLayer/Load/LoadScrn" to="LoadLayer/Load/LoadScrn" method="_on_LoadScrn_visibility_changed"]
