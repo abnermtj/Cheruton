@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=3]
@@ -8,8 +8,8 @@
 [ext_resource path="res://Music/SFX/ButtonClick.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
-resource_name = "scene_out"
-length = 1.5
+resource_name = "scene_in"
+length = 1.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("BgMusic:volume_db")
 tracks/0/interp = 1
@@ -17,7 +17,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ -60.0, -30.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 0.5 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 1.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
 "values": [ 0.0, -30.0, -60.0 ]
@@ -29,7 +56,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.63, 1.25 ),
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.5, 0.5, 0.5, 0.5 ), Color( 0, 0, 0, 1 ) ]
@@ -40,10 +67,7 @@ script = ExtResource( 4 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-volume_db = -53.9059
 bus = "Music"
-
-[node name="Tween" type="Tween" parent="BgMusic"]
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -101,5 +125,6 @@ bus = "SFX"
 modulate = Color( 0.101568, 0.101568, 0.101568, 0.898432 )
 
 [node name="SceneChange" type="AnimationPlayer" parent="."]
-anims/scene_out = SubResource( 1 )
-[connection signal="tween_completed" from="BgMusic/Tween" to="." method="_on_Tween_tween_completed"]
+anims/scene_in = SubResource( 1 )
+anims/scene_out = SubResource( 2 )
+[connection signal="animation_finished" from="SceneChange" to="." method="_on_SceneChange_animation_finished"]
