@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Hometown/Sprites/Grasslands.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Hometown/Sprites/Grasslands_n.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 176, 64, 0, 64, 0, 56, 176, 56 )
@@ -17,6 +18,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 [resource]
 2/name = "Grasslands.png 2"
 2/texture = ExtResource( 1 )
+2/normal_map = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 1344, 2144, 208, 96 )
@@ -206,6 +208,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 13/z_index = 0
 14/name = "Grasslands.png 14"
 14/texture = ExtResource( 1 )
+14/normal_map = ExtResource( 2 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 752, 480, 64, 32 )
@@ -220,6 +223,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 14/z_index = 0
 15/name = "Grasslands.png 15"
 15/texture = ExtResource( 1 )
+15/normal_map = ExtResource( 2 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 832, 448, 80, 64 )
@@ -234,6 +238,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 15/z_index = 0
 16/name = "Grasslands.png 16"
 16/texture = ExtResource( 1 )
+16/normal_map = ExtResource( 2 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 960, 432, 112, 80 )
@@ -248,6 +253,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 16/z_index = 0
 17/name = "Grasslands.png 17"
 17/texture = ExtResource( 1 )
+17/normal_map = ExtResource( 2 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 1088, 848, 96, 112 )
@@ -262,6 +268,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 17/z_index = 0
 18/name = "Grasslands.png 18"
 18/texture = ExtResource( 1 )
+18/normal_map = ExtResource( 2 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 1280, 896, 192, 64 )
@@ -276,6 +283,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 18/z_index = 0
 19/name = "Grasslands.png 19"
 19/texture = ExtResource( 1 )
+19/normal_map = ExtResource( 2 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 1472, 896, 128, 64 )
@@ -290,6 +298,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 19/z_index = 0
 20/name = "Grasslands.png 20"
 20/texture = ExtResource( 1 )
+20/normal_map = ExtResource( 2 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 1600, 896, 128, 64 )
@@ -318,6 +327,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
 22/z_index = 0
 23/name = "Grasslands.png 23"
 23/texture = ExtResource( 1 )
+23/normal_map = ExtResource( 2 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 896, 1344, 320, 128 )
