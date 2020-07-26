@@ -45,7 +45,7 @@ func init_key_bindings():
 		var column_node = controls_column.get_child(i).get_node("Mapping")
 		var bindings = column_node.get_child_count()
 		for j in bindings:
-			var current_binding = column_node.get_child(j)
+			var current_binding = column_node.get_child(j).get_child(0)
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			btn_text = check_mouse_text(btn_text)
 			set_text(current_binding, false, btn_text)
