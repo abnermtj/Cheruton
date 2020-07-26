@@ -40,7 +40,7 @@ onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
 onready var transaction_music = $MusicNodes/Transaction
 onready var hover_music = $MusicNodes/Hover
-#onready var select_music = $MusicNodes/MouseOver3
+onready var select_music = $MusicNodes/Select
 
 
 
@@ -262,6 +262,7 @@ func _on_pressed(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
+		select_music.play()
 		revert_item_state()
 		mouse_count = 0
 

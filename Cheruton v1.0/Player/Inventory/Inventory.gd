@@ -39,7 +39,7 @@ onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
 
 onready var hover_music = $MusicNodes/Hover
-#onready var select_music = $MusicNodes/MouseOver3
+onready var select_music = $MusicNodes/Select
 #onready var equip_music = $MusicNodes/MouseOver3
 #onready var dequip_music = $MusicNodes/MouseOver3
 onready var trash_music = $MusicNodes/Trash
@@ -246,7 +246,6 @@ func disable_mouse(new_node):
 
 
 func _on_mouse_entered(node):
-	print(item_state)
 	if(mouse_node != node):
 		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
@@ -292,6 +291,7 @@ func _on_pressed(node):
 	temp_mouse_node = node
 
 	if (mouse_count == 2):
+		
 		if(item_state == "FIXED"):
 			check_fixed()
 		mouse_node = temp_mouse_node
@@ -305,7 +305,7 @@ func _on_pressed(node):
 # Check if the doubleclick has happened
 func _on_Timer_timeout():
 	if(mouse_count == 1):
-#		select_music.play()
+		select_music.play()
 		if(temp_mouse_node.name != "Weapons" && temp_mouse_node.name != "Apparel"):
 			revert_item_state()
 		mouse_count = 0
@@ -367,7 +367,7 @@ func set_button_text(button_node):
 		else:
 			button_node.get_child(0).text = "Equip Item"
 	elif(active_tab.name == "Consum"):
-		button_node.text = "Use Item"
+		button_node.get_child(0).text = "Use Item"
 	else:
 		button_node.hide()
 		return
@@ -381,9 +381,6 @@ func use_item():
 		item_used = true
 	elif(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_statheal == "HP" && DataResource.temp_dict_player.health_curr != DataResource.temp_dict_player.health_max):
 		DataResource.change_health(DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_healval)
-		item_used = true
-
-	if(item_used):
 		delete_item()
 
 # Reduces qty of item by 1

@@ -1,8 +1,6 @@
 extends Node2D
 
-const SCN1 = "res://Levels/Grasslands0/Grasslands0.tscn"
-const SCN2 = "res://Levels/Hometown/Hometown.tscn"
-const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
+const SCN1 = "res://Levels/testBench/playerTestBench.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
@@ -97,11 +95,9 @@ func perform_button_action():
 	var btn_pos = slider.rect_position - container.rect_position
 	match btn_pos:
 		play_position:
-			SceneControl.scene_change.play("scene_out")
-#			slider_enabled = false
-#			SceneControl.emit_signal("init_statbar")
-#			SceneControl.load_screen(SCN1, true)
-#			queue_free()
+			slider_enabled = false
+			SceneControl.change_scene(self, SCN1)
+
 		settings_position:
 			hide_options()
 			general_player.play("to_settings")

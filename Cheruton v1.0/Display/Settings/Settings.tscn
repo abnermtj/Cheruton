@@ -86,6 +86,9 @@ margin_bottom = 14.0
 size_flags_horizontal = 5
 size_flags_vertical = 0
 text = "                    "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Main" type="VBoxContainer" parent="Settings/Container"]
 anchor_right = 1.0
