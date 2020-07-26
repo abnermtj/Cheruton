@@ -39,12 +39,9 @@ onready var buy_tab = $Border/Bg/Main/Sides/BtnMode/Buy
 onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
 onready var transaction_music = $MusicNodes/Transaction
-#onready var hover_music = $MusicNodes/MouseOver2
+onready var hover_music = $MusicNodes/MouseOver
 #onready var select_music = $MusicNodes/MouseOver3
 
-
-
-onready var mouse_over
 
 
 func _ready():
@@ -214,7 +211,7 @@ func disable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
-#		hover_music.play()
+		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
 		var index = int(node.name) % 100
 		if(shop_setting == "Buy"):

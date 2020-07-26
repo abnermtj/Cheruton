@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Inventory/Sprites/Slots/vertTabDeselected.png" type="Texture" id=1]
 [ext_resource path="res://Player/Inventory/Inventory.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Player/Stats/DataStat/DataStat.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Player/Inventory/Sprites/Slots/HorizontalTabDeSelect.png" type="Texture" id=15]
 [ext_resource path="res://Player/Inventory/Sprites/Slots/HorizontalTabSelect.png" type="Texture" id=16]
+[ext_resource path="res://Music/SFX/Trash.wav" type="AudioStream" id=17]
+[ext_resource path="res://Music/SFX/MouseOver.wav" type="AudioStream" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -649,13 +651,15 @@ one_shot = true
 
 [node name="MusicNodes" type="Node" parent="."]
 
-[node name="MouseOver1" type="AudioStreamPlayer" parent="MusicNodes"]
+[node name="Hover" type="AudioStreamPlayer" parent="MusicNodes"]
+stream = ExtResource( 18 )
 bus = "SFX"
 
-[node name="MouseOver2" type="AudioStreamPlayer" parent="MusicNodes"]
+[node name="Select" type="AudioStreamPlayer" parent="MusicNodes"]
 bus = "SFX"
 
-[node name="MouseOver3" type="AudioStreamPlayer" parent="MusicNodes"]
+[node name="Trash" type="AudioStreamPlayer" parent="MusicNodes"]
+stream = ExtResource( 17 )
 bus = "SFX"
 [connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]

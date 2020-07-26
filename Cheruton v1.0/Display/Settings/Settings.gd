@@ -94,9 +94,11 @@ func connect_functions():
 	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
 
 func _on_Previous_pressed():
+	SceneControl.button_click.play()
 	controls_set_column("Prev")
 
 func _on_Next_pressed():
+	SceneControl.button_click.play()
 	controls_set_column("Next")
 
 
