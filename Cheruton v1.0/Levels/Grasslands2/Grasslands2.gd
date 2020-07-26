@@ -4,7 +4,6 @@ onready var save_position = $player.position
 onready var cut_scene_player = $CutScenePlayer
 
 var cur_cut_scene_completed = false
-var wait_dialog_complete = false
 var flying_sword
 
 func _ready():
@@ -37,7 +36,7 @@ func next_cutscene():
 
 	match cutscene_number:
 		0:
-			if cutscene_index == 4:
+			if cutscene_index == 3:
 #				DataResource.dict_player.completed_cutscenes["grasslands0_0"] = true # will no longer be played on reenter
 				end_cutscene()
 				return

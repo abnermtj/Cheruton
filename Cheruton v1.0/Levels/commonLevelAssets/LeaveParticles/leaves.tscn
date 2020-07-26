@@ -5,6 +5,7 @@
 
 [node name="leaves" type="Particles2D"]
 position = Vector2( 2, -33 )
+scale = Vector2( 4, 4 )
 amount = 120
 lifetime = 60.0
 preprocess = 60.0

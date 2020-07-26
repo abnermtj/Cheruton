@@ -58,7 +58,9 @@ func unpend_interact():
 	$bodyRotate/Sprite.material.set_shader_param("width", 0)
 
 func interact(body):
+	if is_talking: return
 	SceneControl.change_and_start_dialog(dialog_name)
+	DataResource.temp_dict_player.dialog_complete = false # the defered call in Scene Control causes timing issue
 	is_talking = true
 	anim_player.play("idle")
 	set_physics_process(false)

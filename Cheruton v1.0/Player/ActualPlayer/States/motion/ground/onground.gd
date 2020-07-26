@@ -15,7 +15,7 @@ func handle_input(event):
 			DataResource.temp_dict_player.dialog_complete = false
 			owner.interact_with_nearest_object()
 			emit_signal("finished", "talk")
-		else:
+		elif not owner.interaction_type == "dialog":
 			owner.interact_with_nearest_object()
 
 	return .handle_input(event) # everything below here not dealt twith

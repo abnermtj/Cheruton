@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.gd" type="Script" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/22fps_limitPallete_PIL_HomeTown_NPC_moneygirl.png" type="Texture" id=2]
@@ -178,6 +178,109 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 1.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 677, 101, 32, 48 ), Rect2( 711, 101, 32, 48 ), Rect2( 745, 101, 32, 48 ), Rect2( 779, 101, 32, 48 ), Rect2( 813, 101, 32, 48 ), Rect2( 847, 101, 32, 48 ), Rect2( 881, 101, 32, 48 ), Rect2( 915, 101, 32, 48 ), Rect2( 949, 101, 32, 48 ), Rect2( 983, 101, 32, 48 ), Rect2( 1017, 101, 32, 48 ), Rect2( 1051, 101, 32, 48 ), Rect2( 1085, 101, 32, 48 ), Rect2( 1119, 101, 32, 48 ), Rect2( 1153, 101, 32, 48 ), Rect2( 1187, 101, 32, 48 ), Rect2( 1221, 101, 32, 48 ), Rect2( 1255, 101, 32, 48 ), Rect2( 1289, 101, 32, 48 ), Rect2( 1323, 101, 32, 48 ), Rect2( 1357, 101, 32, 48 ), Rect2( 1391, 101, 32, 48 ), Rect2( 1425, 101, 32, 48 ), Rect2( 1459, 101, 32, 48 ), Rect2( 1493, 101, 32, 48 ), Rect2( 1527, 101, 32, 48 ), Rect2( 1561, 101, 32, 48 ), Rect2( 1595, 101, 32, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bodyRotate/Sprite2:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 677, 101, 32, 48 ), Rect2( 711, 101, 32, 48 ), Rect2( 745, 101, 32, 48 ), Rect2( 779, 101, 32, 48 ), Rect2( 813, 101, 32, 48 ), Rect2( 847, 101, 32, 48 ), Rect2( 881, 101, 32, 48 ), Rect2( 915, 101, 32, 48 ), Rect2( 949, 101, 32, 48 ), Rect2( 983, 101, 32, 48 ), Rect2( 1017, 101, 32, 48 ), Rect2( 1051, 101, 32, 48 ), Rect2( 1085, 101, 32, 48 ), Rect2( 1119, 101, 32, 48 ), Rect2( 1153, 101, 32, 48 ), Rect2( 1187, 101, 32, 48 ), Rect2( 1221, 101, 32, 48 ), Rect2( 1255, 101, 32, 48 ), Rect2( 1289, 101, 32, 48 ), Rect2( 1323, 101, 32, 48 ), Rect2( 1357, 101, 32, 48 ), Rect2( 1391, 101, 32, 48 ), Rect2( 1425, 101, 32, 48 ), Rect2( 1459, 101, 32, 48 ), Rect2( 1493, 101, 32, 48 ), Rect2( 1527, 101, 32, 48 ), Rect2( 1561, 101, 32, 48 ), Rect2( 1595, 101, 32, 48 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bodyRotate/Sprite2:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 1.16
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 151, 32, 48 ), Rect2( 35, 151, 32, 48 ), Rect2( 69, 151, 32, 48 ), Rect2( 103, 151, 32, 48 ), Rect2( 137, 151, 32, 48 ), Rect2( 171, 151, 32, 48 ), Rect2( 205, 151, 32, 48 ), Rect2( 239, 151, 32, 48 ), Rect2( 273, 151, 32, 48 ), Rect2( 307, 151, 32, 48 ), Rect2( 341, 151, 32, 48 ), Rect2( 375, 151, 32, 48 ), Rect2( 409, 151, 32, 48 ), Rect2( 443, 151, 32, 48 ), Rect2( 477, 151, 32, 48 ), Rect2( 511, 151, 32, 48 ), Rect2( 545, 151, 32, 48 ), Rect2( 579, 151, 32, 48 ), Rect2( 613, 151, 32, 48 ), Rect2( 647, 151, 32, 48 ), Rect2( 681, 151, 32, 48 ), Rect2( 715, 151, 32, 48 ), Rect2( 749, 151, 32, 48 ), Rect2( 783, 151, 32, 48 ), Rect2( 817, 151, 32, 48 ), Rect2( 851, 151, 32, 48 ), Rect2( 885, 151, 32, 48 ), Rect2( 919, 151, 32, 48 ), Rect2( 953, 151, 32, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bodyRotate/Sprite2:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 151, 32, 48 ), Rect2( 35, 151, 32, 48 ), Rect2( 69, 151, 32, 48 ), Rect2( 103, 151, 32, 48 ), Rect2( 137, 151, 32, 48 ), Rect2( 171, 151, 32, 48 ), Rect2( 205, 151, 32, 48 ), Rect2( 239, 151, 32, 48 ), Rect2( 273, 151, 32, 48 ), Rect2( 307, 151, 32, 48 ), Rect2( 341, 151, 32, 48 ), Rect2( 375, 151, 32, 48 ), Rect2( 409, 151, 32, 48 ), Rect2( 443, 151, 32, 48 ), Rect2( 477, 151, 32, 48 ), Rect2( 511, 151, 32, 48 ), Rect2( 545, 151, 32, 48 ), Rect2( 579, 151, 32, 48 ), Rect2( 613, 151, 32, 48 ), Rect2( 647, 151, 32, 48 ), Rect2( 681, 151, 32, 48 ), Rect2( 715, 151, 32, 48 ), Rect2( 749, 151, 32, 48 ), Rect2( 783, 151, 32, 48 ), Rect2( 817, 151, 32, 48 ), Rect2( 851, 151, 32, 48 ), Rect2( 885, 151, 32, 48 ), Rect2( 919, 151, 32, 48 ), Rect2( 953, 151, 32, 48 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bodyRotate/Sprite2:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04, 1.08, 1.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -362,6 +465,57 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
 }
 
+[sub_resource type="Animation" id=14]
+length = 0.16
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 101, 48, 16 ), Rect2( 51, 101, 48, 16 ), Rect2( 101, 101, 48, 16 ), Rect2( 151, 101, 48, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyRotate/Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bodyRotate/Sprite2:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 101, 48, 16 ), Rect2( 51, 101, 48, 16 ), Rect2( 101, 101, 48, 16 ), Rect2( 151, 101, 48, 16 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bodyRotate/Sprite2:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
+}
+
 [sub_resource type="Animation" id=9]
 length = 0.56
 tracks/0/type = "value"
@@ -519,13 +673,13 @@ material = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 7, 15 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 48 )
+region_rect = Rect2( 307, 151, 32, 48 )
 
 [node name="Sprite2" type="Sprite" parent="bodyRotate"]
 texture = ExtResource( 2 )
 offset = Vector2( 7, 15 )
 region_enabled = true
-region_rect = Rect2( 1, 1, 32, 48 )
+region_rect = Rect2( 307, 151, 32, 48 )
 
 [node name="staffPos" type="Position2D" parent="bodyRotate"]
 position = Vector2( 24, 19.9741 )
@@ -552,9 +706,12 @@ method_call_mode = 1
 anims/blink = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/idle2 = SubResource( 5 )
+anims/idle3 = SubResource( 12 )
+anims/idle4 = SubResource( 13 )
 anims/jump = SubResource( 6 )
 anims/on_broom_idle = SubResource( 7 )
 anims/poke = SubResource( 8 )
+anims/staff_jump_switch = SubResource( 14 )
 anims/turn_around = SubResource( 9 )
 
 [node name="AnimationPlayerStaff" type="AnimationPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -25,7 +25,7 @@
 [ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands-WitchHutForeground.png" type="Texture" id=23]
 [ext_resource path="res://Effects/ColorDodge/ColorDodge.shader" type="Shader" id=24]
 [ext_resource path="res://Levels/Grasslands0/House.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Levels/Grasslands0/Sprites/Grasslands_SunRay.png" type="Texture" id=26]
+[ext_resource path="res://Levels/commonLevelAssets/Ray/Sprites/Grasslands_SunRay.png" type="Texture" id=26]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=27]
 [ext_resource path="res://Levels/Grasslands0/WitchHutExplosion/WitchHutExplosion.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Levels/Grasslands0/Sprites/PureBlack.png" type="Texture" id=29]
@@ -48,6 +48,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree2/grassLandTree2.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Levels/Grasslands0/Sprites/plus.png" type="Texture" id=47]
 [ext_resource path="res://Levels/Grasslands0/Sprites/arrow.png" type="Texture" id=48]
+[ext_resource path="res://Levels/commonLevelAssets/Ray/Ray.tscn" type="PackedScene" id=49]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cutscene0_0"
@@ -2703,7 +2704,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="ShaderMaterial" id=39]
 shader = ExtResource( 14 )
-shader_param/cutoff = 0.392119
+shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.25
 shader_param/mask = ExtResource( 15 )
 
@@ -2761,8 +2762,7 @@ scale = Vector2( -4, 4 )
 z_index = 1
 
 [node name="moneygirl" parent="NPCs" instance=ExtResource( 13 )]
-position = Vector2( -60, 156 )
-scale = Vector2( -4, 4 )
+position = Vector2( 72, -1336 )
 z_index = 1
 
 [node name="rock" type="Sprite" parent="NPCs/moneygirl"]
@@ -2783,7 +2783,6 @@ position = Vector2( -112, 104 )
 
 [node name="leaves" parent="Shaders/grassLandTree1" instance=ExtResource( 45 )]
 position = Vector2( 132, -160 )
-scale = Vector2( 4, 4 )
 z_index = -1
 amount = 80
 
@@ -2792,19 +2791,14 @@ position = Vector2( 2672, -1816 )
 
 [node name="leaves2" parent="Shaders/grassLandTree2" instance=ExtResource( 45 )]
 position = Vector2( 36, -140 )
-scale = Vector2( 4, 4 )
 z_index = -1
 amount = 40
 visibility_rect = Rect2( -600, -150, 1000, 830 )
 
 [node name="Shaders2" type="Node2D" parent="."]
 
-[node name="Ray" type="Sprite" parent="Shaders2"]
-material = SubResource( 19 )
-position = Vector2( 6020, 1116 )
-rotation = -0.698132
-scale = Vector2( 5, 20 )
-texture = ExtResource( 26 )
+[node name="Ray" parent="Shaders2" instance=ExtResource( 49 )]
+position = Vector2( 6508, -12 )
 
 [node name="Ray6" type="Sprite" parent="Shaders2"]
 material = SubResource( 19 )
@@ -2894,7 +2888,7 @@ z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
 scale = Vector2( 0.66, 0.66 )
-zoom = Vector2( 0.967102, 0.967102 )
+zoom = Vector2( 0.707673, 0.707673 )
 
 [node name="PoleSprite" type="Sprite" parent="player"]
 visible = false
@@ -3207,7 +3201,6 @@ scale = Vector2( 2, 1.3 )
 [node name="Hints" type="Node2D" parent="."]
 
 [node name="Scene0_0" parent="Hints" instance=ExtResource( 41 )]
-visible = false
 position = Vector2( 48, 24 )
 
 [node name="Label" parent="Hints/Scene0_0" instance=ExtResource( 39 )]

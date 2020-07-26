@@ -4,7 +4,6 @@ onready var save_position = $player.position
 onready var cut_scene_player = $CutScenePlayer
 
 var cur_cut_scene_completed = false
-var wait_dialog_complete = false
 var flying_sword
 
 func _ready():

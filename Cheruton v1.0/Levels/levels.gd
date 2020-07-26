@@ -12,6 +12,8 @@ var enter_point : int
 var player_spawn_pos : Vector2
 var entrace_to_pos_dict = {}
 
+var wait_dialog_complete = false
+
 var cutscene_number = 0
 var cutscene_index = 0
 
@@ -88,6 +90,9 @@ func set_music():
 	pass
 
 func handle_death_zone(body):
+	pass
+
+func next_cutscene():
 	pass
 
 func start_cutscene_mode():

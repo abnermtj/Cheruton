@@ -43,6 +43,7 @@ func _process(delta):
 func interact(body):
 	is_talking = true
 	SceneControl.change_and_start_dialog(dialog_name)
+	DataResource.temp_dict_player.dialog_complete = false # the defered call in Scene Control causes timing issue
 	save_dir = sprite.scale.x
 	sprite.scale.x = sign(body.global_position.x - global_position.x) * (-1 if is_flipped else 1)
 	if sprite2: sprite2.scale.x = sprite.scale.x

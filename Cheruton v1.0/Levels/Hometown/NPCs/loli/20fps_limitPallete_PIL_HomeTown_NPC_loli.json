@@ -1,81 +1,81 @@
 { "frames": {
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 0.aseprite": {
-    "frame": { "x": 1, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 1.aseprite": {
-    "frame": { "x": 51, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 35, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 2.aseprite": {
-    "frame": { "x": 101, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 69, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 3.aseprite": {
-    "frame": { "x": 151, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 103, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 4.aseprite": {
-    "frame": { "x": 201, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 137, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 5.aseprite": {
-    "frame": { "x": 251, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 171, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 6.aseprite": {
-    "frame": { "x": 301, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 205, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 7.aseprite": {
-    "frame": { "x": 351, "y": 1, "w": 48, "h": 48 },
+    "frame": { "x": 239, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 8.aseprite": {
-    "frame": { "x": 1, "y": 51, "w": 48, "h": 48 },
+    "frame": { "x": 273, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    },
    "20fps_limitPallete_PIL_HomeTown_NPC_loli 9.aseprite": {
-    "frame": { "x": 51, "y": 51, "w": 48, "h": 48 },
+    "frame": { "x": 307, "y": 1, "w": 32, "h": 48 },
     "rotated": false,
     "trimmed": true,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 40, "h": 40 },
     "duration": 40
    }
@@ -85,7 +85,7 @@
   "version": "1.2.15-x64",
   "image": "20fps_limitPallete_PIL_HomeTown_NPC_loli.png",
   "format": "RGBA8888",
-  "size": { "w": 420, "h": 100 },
+  "size": { "w": 420, "h": 50 },
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 9, "direction": "forward" }

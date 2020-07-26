@@ -1,0 +1,108 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Gr...</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Don't they know how expensive it is.</dialog>"
+}
+}
+},
+2: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<speaker>Mary</speaker>
+<dialog>!!! How did you get here.</dialog>"
+},
+2: {
+"links": {
+0: 1
+},
+"text": "<start>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Mary</speaker>
+<dialog>...</dialog>"
+},
+4: {
+"links": {
+0: 5
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Nevermind about that</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Someone used my cannon without my permission.</dialog>"
+},
+6: {
+"links": {
+0: 7
+},
+"text": "<speaker>Mary</speaker>
+<dialog>We have to go catch him.</dialog>"
+},
+7: {
+"links": {
+0: 8
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Beat him up a bit >.>, and pay make him him for using it.</dialog>"
+},
+8: {
+"links": {
+0: 9
+},
+"text": "<speaker>Mary</speaker>
+<dialog>Get in!</dialog>"
+},
+9: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+}
+}
+names = {
+"cutscene0_1": 1,
+"cutscene0_2": 2
+}

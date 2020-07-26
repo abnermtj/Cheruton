@@ -6,15 +6,163 @@
 script = ExtResource( 1 )
 TYPE = "EXP_Story_editor"
 names = {
-
+"cutscene0_1": 1,
+"cutscene0_2": 2
 }
 story = {
 1: {
 "available_nid": [  ],
 "groups": [  ],
 "human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene0_1",
 "nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 1360, 120 ),
+"links": {
 
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 100, 320 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Gr...</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 740, 320 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Don't they know how expensive it is.</dialog>",
+"type": "line"
+}
+}
+},
+2: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "New Dialog - Enter Human Readable Description.",
+"name": "cutscene0_2",
+"nodes": {
+1: {
+"graph_offset": Vector2( 20, -500 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>!!! How did you get here.</dialog>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( -660, -440 ),
+"links": {
+0: 1
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( 600, -600 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>...</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( 1300, -560 ),
+"links": {
+0: 5
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Nevermind about that</dialog>",
+"type": "line"
+},
+5: {
+"graph_offset": Vector2( 1940, -580 ),
+"links": {
+0: 6
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Someone used my cannon without my permission.</dialog>",
+"type": "line"
+},
+6: {
+"graph_offset": Vector2( 2580, -620 ),
+"links": {
+0: 7
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>We have to go catch him.</dialog>",
+"type": "line"
+},
+7: {
+"graph_offset": Vector2( 3260, -660 ),
+"links": {
+0: 8
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Beat him up a bit >.>, and pay make him him for using it.</dialog>",
+"type": "line"
+},
+8: {
+"graph_offset": Vector2( 3420, -1040 ),
+"links": {
+0: 9
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Mary</speaker>
+<dialog>Get in!</dialog>",
+"type": "line"
+},
+9: {
+"graph_offset": Vector2( 4260, -920 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+}
 }
 }
 }
