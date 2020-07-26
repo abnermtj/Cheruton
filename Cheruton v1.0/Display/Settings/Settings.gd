@@ -3,6 +3,8 @@ extends Control
 const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 
+const RED = Color(1,0,0,1)
+const WHITE = Color(1,1,1,1)
 
 onready var master_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
@@ -31,6 +33,7 @@ var controls_set := -1
 var edit_control := false
 var temp_control
 
+
 onready var active_tab = base_empty
 
 signal closed_settings
@@ -48,7 +51,7 @@ func init_key_bindings():
 		var bindings = column_node.get_child_count()
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
-			#current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
+			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			btn_text = check_mouse_text(btn_text)
 			set_text(current_binding.get_child(0), false, btn_text)
@@ -97,7 +100,6 @@ func _on_button_pressed(button):
 		set_text(temp_control.get_child(0), false, btn_text)
 		set_text(button.get_child(0), true)
 	temp_control = button
-	print(button.name)
 
 func _input(event):
 	if event is InputEventKey: 
@@ -107,20 +109,22 @@ func _input(event):
 
 func _edit_key(new_key):
 	var action_name = temp_control.name
+	var old_key
 	if !InputMap.get_action_list(action_name).empty():
+		old_key = InputMap.get_action_list(temp_control.name)[0]
 		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 	
-	check_duplicates(new_key)
+	check_duplicates(new_key, old_key)
 	
 	InputMap.action_add_event(action_name, new_key)
-
+	
 	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
 	set_text(temp_control.get_child(0), false, btn_text)
 
 	temp_control = null
 
 # Detects actions who already occupy the same key binding as the intended one
-func check_duplicates(new_key):
+func check_duplicates(new_key, old_key):
 	var columns = controls_column.get_child_count()
 	
 	for i in columns:
@@ -130,9 +134,18 @@ func check_duplicates(new_key):
 			var current_binding = column_node.get_child(j)
 			var check = InputMap.event_is_action(new_key, current_binding.name)
 			if(check):
-				print(true)
+				handle_duplicates(current_binding, old_key)
 				return
-	print(false)
+
+
+func handle_duplicates(current_binding, old_key):
+	var action_name = current_binding.name
+	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+	InputMap.action_add_event(current_binding.name, old_key)
+	
+	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
+	set_text(current_binding.get_child(0), false, btn_text)
+
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
