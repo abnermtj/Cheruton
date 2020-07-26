@@ -28,6 +28,8 @@ onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
 
 var slider_active := false
 var controls_set := -1
+var edit_control := false
+var temp_control
 
 onready var active_tab = base_empty
 
@@ -86,7 +88,50 @@ func controls_set_column(type):
 	controls_column.get_child(controls_set).show()
 
 func _on_button_pressed(button):
+	if(!edit_control):
+		edit_control = true
+		set_text(button.get_child(0), true)
+		
+	else:
+		var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
+		set_text(temp_control.get_child(0), false, btn_text)
+		set_text(button.get_child(0), true)
+	temp_control = button
 	print(button.name)
+
+func _input(event):
+	if event is InputEventKey: 
+		if(edit_control):
+			edit_control = false
+			_edit_key(event)
+
+func _edit_key(new_key):
+	var action_name = temp_control.name
+	if !InputMap.get_action_list(action_name).empty():
+		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+	
+	check_duplicates(new_key)
+	
+#	InputMap.action_add_event(action_name, new_key)
+#
+#	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
+#	set_text(temp_control.get_child(0), false, btn_text)
+#
+#	temp_control = null
+
+func check_duplicates(new_key):
+	var columns = controls_column.get_child_count()
+	
+	for i in columns:
+		var column_node = controls_column.get_child(i).get_node("Mapping")
+		var bindings = column_node.get_child_count()
+		for j in bindings:
+			var current_binding = column_node.get_child(j)
+			var check = InputMap.event_is_action(new_key, current_binding.name)
+			if(check):
+				print(true)
+				return
+	print(false)
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
@@ -113,40 +158,48 @@ func _on_MuteToggle_pressed():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
 
 func change_master_vol():
+	SceneControl.button_click.play()
 	var end = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	animate_healthbar(master_bar, end)
 
 func change_music_vol():
+	SceneControl.button_click.play()
 	var end = (DataResource.dict_settings.audio_music + 60) / 60 * 100
 	animate_healthbar(music_bar, end)
 
 func change_sfx_vol():
+	SceneControl.button_click.play()
 	var end = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
 	animate_healthbar(sfx_bar, end)
 
 func animate_healthbar(bar, end):
+	SceneControl.button_click.play()
 	tween.interpolate_property(bar, "value", bar.value, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 
 func _on_MainVolUp_pressed():
+	SceneControl.button_click.play()
 	DataResource.change_audio_master(6)
 
 func _on_MainVolDown_pressed():
-	print(202)
+	SceneControl.button_click.play()
 	DataResource.change_audio_master(-6)
 
 func _on_MusicVolUp_pressed():
+	SceneControl.button_click.play()
 	DataResource.change_audio_music(6)
 
 func _on_MusicVolDown_pressed():
-	print(101)
+	SceneControl.button_click.play()
 	DataResource.change_audio_music(-6)
 
 func _on_SFXVolUp_pressed():
+	SceneControl.button_click.play()
 	DataResource.change_audio_sfx(6)
 
 func _on_SFXVolDown_pressed():
+	SceneControl.button_click.play()
 	DataResource.change_audio_sfx(-6)
 
 #change this to go back to previously loaded scene
