@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/commonLevelAssets/Flag/Sprites/Grasslands-Flag.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+length = 0.92
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 128, 112 ), Rect2( 131, 1, 128, 112 ), Rect2( 261, 1, 128, 112 ), Rect2( 391, 1, 128, 112 ), Rect2( 521, 1, 128, 112 ), Rect2( 651, 1, 144, 112 ), Rect2( 797, 1, 144, 112 ), Rect2( 943, 1, 144, 112 ), Rect2( 1089, 1, 144, 112 ), Rect2( 1235, 1, 144, 112 ), Rect2( 1381, 1, 144, 112 ), Rect2( 1, 115, 144, 112 ), Rect2( 147, 115, 144, 112 ), Rect2( 293, 115, 144, 112 ), Rect2( 439, 115, 144, 96 ), Rect2( 585, 115, 144, 96 ), Rect2( 731, 115, 144, 96 ), Rect2( 877, 115, 144, 96 ), Rect2( 1023, 115, 144, 96 ), Rect2( 1169, 115, 144, 96 ), Rect2( 1315, 115, 144, 96 ), Rect2( 1461, 115, 144, 112 ), Rect2( 1, 229, 128, 112 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 9.5 ), Vector2( 2, 9.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 1, 1, 128, 112 ), Rect2( 131, 1, 128, 112 ), Rect2( 261, 1, 128, 112 ), Rect2( 391, 1, 128, 112 ), Rect2( 521, 1, 128, 112 ), Rect2( 651, 1, 144, 112 ), Rect2( 797, 1, 144, 112 ), Rect2( 943, 1, 144, 112 ), Rect2( 1089, 1, 144, 112 ), Rect2( 1235, 1, 144, 112 ), Rect2( 1381, 1, 144, 112 ), Rect2( 1, 115, 144, 112 ), Rect2( 147, 115, 144, 112 ), Rect2( 293, 115, 144, 112 ), Rect2( 439, 115, 144, 96 ), Rect2( 585, 115, 144, 96 ), Rect2( 731, 115, 144, 96 ), Rect2( 877, 115, 144, 96 ), Rect2( 1023, 115, 144, 96 ), Rect2( 1169, 115, 144, 96 ), Rect2( 1315, 115, 144, 96 ), Rect2( 1461, 115, 144, 112 ), Rect2( 1, 229, 128, 112 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( 2, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 9.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 17.5 ), Vector2( -6, 9.5 ), Vector2( 2, 9.5 ) ]
+}
+
+[node name="Flag" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+offset = Vector2( 2, 9.5 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 128, 112 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )

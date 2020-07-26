@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Grasslands2/Cannon/Sprites/Grasslands-Cannon_base.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Grasslands2/Cannon/Sprites/Grasslands-Cannon.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 3.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.75 ),
+"transitions": PoolRealArray( 1.4, 0.8 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ) ]
+}
+
+[node name="Cannon" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="rotate" type="Position2D" parent="."]
+
+[node name="Cannon" type="Sprite" parent="rotate"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Base" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": " "
+}

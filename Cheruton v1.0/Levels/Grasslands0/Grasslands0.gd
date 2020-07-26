@@ -71,7 +71,6 @@ func end_cutscene():
 	cutscene_index = 0
 
 func _process(delta):
-	Engine.time_scale = 1
 	if wait_dialog_complete and DataResource.temp_dict_player.dialog_complete:
 		next_cutscene()
 		wait_dialog_complete = false

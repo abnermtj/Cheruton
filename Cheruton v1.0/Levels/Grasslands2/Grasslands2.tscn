@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/Grasslands2/Grasslands2.gd" type="Script" id=1]
+[ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/commonLevelAssets/Flag/Flag.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Grasslands2/Cannon/Cannon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/HouseSmoke/houseSmoke.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cutscene0_0"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("player/camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 3.5 ),
+"transitions": PoolRealArray( 1.4, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/grassLandsParallaxBg:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1.4 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.4, 2.4 ) ]
+}
+
+[node name="Grasslands2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CutScenePlayer" type="AnimationPlayer" parent="."]
+autoplay = "cutscene0_0"
+anims/cutscene0_0 = SubResource( 1 )
+
+[node name="PropsBehind" type="Node2D" parent="."]
+
+[node name="Flag" parent="PropsBehind" instance=ExtResource( 8 )]
+position = Vector2( 1364, 136 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Cannon" parent="PropsBehind" instance=ExtResource( 9 )]
+position = Vector2( 536, -4 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="houseSmoke" parent="PropsBehind/Cannon" instance=ExtResource( 12 )]
+self_modulate = Color( 0.556863, 0.478431, 0.623529, 1 )
+show_behind_parent = true
+position = Vector2( -384, -172 )
+scale = Vector2( 2, 2 )
+amount = 4
+
+[node name="flyingSword" parent="." instance=ExtResource( 3 )]
+
+[node name="GrassLandTileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 393207, 0, 0, 393208, 0, 3, 393209, 0, 3, 393210, 0, 1, 393211, 0, 2, 393212, 0, 4, 458742, 0, 0, 458743, 0, 65542, 458744, 0, 131075, 458745, 0, 131074, 458746, 0, 196611, 458747, 0, 196609, 458748, 0, 65541, 458749, 0, 1, 458750, 0, 1, 458751, 0, 3, 393216, 0, 3, 393217, 0, 3, 393218, 0, 2, 393219, 0, 1, 393220, 0, 1, 393221, 0, 3, 393222, 0, 3, 393223, 0, 1, 393224, 0, 2, 393225, 0, 3, 393226, 0, 3, 393227, 0, 2, 393228, 0, 3, 393229, 0, 3, 393230, 0, 2, 393231, 0, 3, 393232, 0, 3, 393233, 0, 3, 393234, 0, 1, 393235, 0, 4, 524278, 0, 196608, 524279, 0, 131073, 524280, 0, 65539, 524281, 0, 196609, 524282, 0, 196610, 524283, 0, 65537, 524284, 0, 196610, 524285, 0, 65539, 524286, 0, 196609, 524287, 0, 131074, 458752, 0, 131073, 458753, 0, 65537, 458754, 0, 196609, 458755, 0, 196611, 458756, 0, 65538, 458757, 0, 131073, 458758, 0, 65538, 458759, 0, 196611, 458760, 0, 131074, 458761, 0, 131073, 458762, 0, 196609, 458763, 0, 196609, 458764, 0, 196610, 458765, 0, 131073, 458766, 0, 65537, 458767, 0, 196610, 458768, 0, 196610, 458769, 0, 65537, 458770, 0, 65537, 458771, 0, 196612, 589814, 0, 65536, 589815, 0, 131073, 589816, 0, 131073, 589817, 0, 131074, 589818, 0, 196609, 589819, 0, 65538, 589820, 0, 65537, 589821, 0, 196610, 589822, 0, 65538, 589823, 0, 196611, 524288, 0, 131073, 524289, 0, 196609, 524290, 0, 131073, 524291, 0, 131073, 524292, 0, 65539, 524293, 0, 131073, 524294, 0, 65537, 524295, 0, 196611, 524296, 0, 196610, 524297, 0, 196611, 524298, 0, 196609, 524299, 0, 196610, 524300, 0, 65539, 524301, 0, 131074, 524302, 0, 131074, 524303, 0, 196609, 524304, 0, 65539, 524305, 0, 65538, 524306, 0, 65539, 524307, 0, 65541, 524308, 0, 4, 655350, 0, 196608, 655351, 0, 65539, 655352, 0, 196609, 655353, 0, 196611, 655354, 0, 196610, 655355, 0, 131074, 655356, 0, 65537, 655357, 0, 131073, 655358, 0, 196609, 655359, 0, 65538, 589824, 0, 196611, 589825, 0, 196611, 589826, 0, 131075, 589827, 0, 131073, 589828, 0, 65539, 589829, 0, 131073, 589830, 0, 196611, 589831, 0, 196609, 589832, 0, 131075, 589833, 0, 65537, 589834, 0, 196609, 589835, 0, 131073, 589836, 0, 65538, 589837, 0, 196610, 589838, 0, 196609, 589839, 0, 131073, 589840, 0, 196611, 589841, 0, 65539, 589842, 0, 131074, 589843, 0, 196609, 589844, 0, 131076, 720886, 0, 65536, 720887, 0, 65537, 720888, 0, 65539, 720889, 0, 131074, 720890, 0, 65537, 720891, 0, 131075, 720892, 0, 65539, 720893, 0, 65538, 720894, 0, 65539, 720895, 0, 65537, 655360, 0, 65537, 655361, 0, 131074, 655362, 0, 65537, 655363, 0, 131075, 655364, 0, 131073, 655365, 0, 196611, 655366, 0, 131074, 655367, 0, 65537, 655368, 0, 131075, 655369, 0, 196610, 655370, 0, 196609, 655371, 0, 131075, 655372, 0, 196609, 655373, 0, 196610, 655374, 0, 131074, 655375, 0, 65539, 655376, 0, 131074, 655377, 0, 131074, 655378, 0, 196610, 655379, 0, 196611, 655380, 0, 131076, 786422, 0, 196608, 786423, 0, 65537, 786424, 0, 65539, 786425, 0, 65537, 786426, 0, 196610, 786427, 0, 131073, 786428, 0, 131074, 786429, 0, 131075, 786430, 0, 131075, 786431, 0, 131074, 720896, 0, 196610, 720897, 0, 131073, 720898, 0, 65538, 720899, 0, 65539, 720900, 0, 131073, 720901, 0, 196611, 720902, 0, 65538, 720903, 0, 196609, 720904, 0, 131075, 720905, 0, 131074, 720906, 0, 131073, 720907, 0, 131075, 720908, 0, 131074, 720909, 0, 65537, 720910, 0, 196610, 720911, 0, 65539, 720912, 0, 131073, 720913, 0, 196609, 720914, 0, 65538, 720915, 0, 196610, 720916, 0, 196612, 851958, 0, 65536, 851959, 0, 65539, 851960, 0, 196610, 851961, 0, 196610, 851962, 0, 131074, 851963, 0, 131075, 851964, 0, 65537, 851965, 0, 196611, 851966, 0, 196610, 851967, 0, 131073, 786432, 0, 196610, 786433, 0, 65537, 786434, 0, 131075, 786435, 0, 131074, 786436, 0, 65538, 786437, 0, 196609, 786438, 0, 65538, 786439, 0, 196610, 786440, 0, 196611, 786441, 0, 131073, 786442, 0, 196609, 786443, 0, 65538, 786444, 0, 65537, 786445, 0, 131074, 786446, 0, 131075, 786447, 0, 65538, 786448, 0, 65537, 786449, 0, 65537, 786450, 0, 65537, 786451, 0, 65537, 786452, 0, 196612, 917494, 0, 262144, 917495, 0, 262145, 917496, 0, 262146, 917497, 0, 262145, 917498, 0, 262147, 917499, 0, 262147, 917500, 0, 262146, 917501, 0, 262145, 917502, 0, 262147, 917503, 0, 262146, 851968, 0, 262146, 851969, 0, 262145, 851970, 0, 262145, 851971, 0, 262145, 851972, 0, 262145, 851973, 0, 262147, 851974, 0, 262147, 851975, 0, 262145, 851976, 0, 262145, 851977, 0, 262147, 851978, 0, 262146, 851979, 0, 262146, 851980, 0, 262145, 851981, 0, 262147, 851982, 0, 262147, 851983, 0, 262147, 851984, 0, 262146, 851985, 0, 262145, 851986, 0, 262146, 851987, 0, 262145, 851988, 0, 262148 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="grassLandsParallaxBg" parent="CanvasLayer" instance=ExtResource( 6 )]
+offset = Vector2( 0, -700 )
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, -700 )
+
+[node name="camera_limit_NW" type="Position2D" parent="."]
+position = Vector2( -516, -536 )
+
+[node name="camera_limit_SE" type="Position2D" parent="."]
+position = Vector2( 2636, 640 )
+
+[node name="InvisibleTiles" parent="." instance=ExtResource( 7 )]
+tile_data = PoolIntArray( -65546, 1, 131077, -10, 1, 131078, 65526, 1, 196613, 131062, 1, 131078, 196598, 1, 196613, 262134, 1, 196613, 327670, 1, 196613, 393206, 1, 196613, 458742, 1, 196614 )
+
+[node name="Props" parent="." instance=ExtResource( 11 )]
+tile_data = PoolIntArray( -196631, 22, 0, 1114087, 20, 0, 1310730, 18, 0, 1310771, 19, 0, 1310790, 19, 0, 1966160, 14, 0 )
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="moneygirl" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( 560, 284 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[node name="camera" parent="player" instance=ExtResource( 5 )]
