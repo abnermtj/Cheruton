@@ -52,6 +52,7 @@ func _ready():
 	set_state("Buy")
 	buy_tab.texture_normal = active_tab_image
 	load_data()
+	init_equipped()
 	emit_signal("tab_changed", "Weapons")
 	tabs.hide()
 	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
@@ -61,13 +62,17 @@ func _on_Exit_pressed():
 	free_the_shop()
 
 
-#func display_equipped(name):
-#	var main = get_node("Border/Bg/Contents/Items")
-#	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
-#	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
-#	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
-#	node.get_node("Background/ItemBg").texture = index_equipped_bg
-#	type.show()
+func init_equipped():
+	if(DataResource.temp_dict_player.Weapons_item):
+		display_equipped("Weapons")
+
+	if(DataResource.temp_dict_player.Apparel_item):
+		display_equipped("Apparel")
+
+
+func display_equipped(name):
+	var node = items_sell.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	node.get_node("Background/ItemBg").texture = index_equipped_bg
 
 
 # Links the buttons when pressed into the function to change active tab
@@ -219,9 +224,16 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(mouse_node != node):
-		node.get_node("Background/ItemBg").texture = null
+		change_mouse_bg(node)
 		price_value.text = EMPTY
 
+
+func change_mouse_bg(node):
+	if((active_tab.name == "Weapons" || active_tab.name == "Apparel") && shop_setting == "Sell"):
+		if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
+			node.get_node("Background/ItemBg").texture = index_equipped_bg
+			return
+	node.get_node("Background/ItemBg").texture = null
 
 # When the icon of a item is pressed
 func _on_pressed(node):
@@ -306,7 +318,7 @@ func sell_item():
 		# Dequip item held if that node is a held item
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-				inventory.item_status(inventory.find_node(mouse_node.name, true, false), "DEQUIP")
+					inventory.item_status(inventory.find_node(mouse_node.name, true, false), "DEQUIP")
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		element_index = int(element_index)
