@@ -21,7 +21,7 @@ func _ready():
 	var story_reader_class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	story_reader = story_reader_class.new()
 
-	load_story("res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres") # for debuging
+	load_story("res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres") # for debuging
 
 	dialogue_base.rect_scale = Vector2(0,1)
 	dialogue_text.percent_visible = 1
@@ -69,6 +69,8 @@ func _process(delta):
 
 
 func get_next_node():
+
+
 	node_id = story_reader.get_nid_from_slot(dialog_id, node_id, 0)
 
 	if node_id == final_node_id:
@@ -76,6 +78,9 @@ func get_next_node():
 		end_conversation()
 
 func play_dialog():
+	audio.pitch_scale = rand_range(.94, .95)
+	audio.play()
+
 	finished_current_node = false
 	$AnimationPlayerVisibility.play("default")
 
@@ -98,14 +103,15 @@ func _on_Timer_timeout():
 
 	var next_char = dialog_left[0]
 	dialogue_text.bbcode_text += next_char
-	if not [' ',',','?','!'].has(next_char):
-		audio.pitch_scale = rand_range(.98, 1.02)
-		audio.play()
+#	if not [' ',',','?','!'].has(next_char):
+#		audio.pitch_scale = rand_range(.98, 1.02)
+#		audio.play()
 
 	dialog_left.erase(0, 1)
 	if dialog_left == "":
 		finished_current_node = true
 		$AnimationPlayerVisibility.play("next")
+
 
 	else:
 		start_dialog_timer()
@@ -134,6 +140,7 @@ func end_conversation():
 	tween.start()
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
+	print(is_active_gui)
 
 func end(): # otherwise, the inherited method is will hide prematurely
 	pass

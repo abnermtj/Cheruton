@@ -5,18 +5,18 @@
 [ext_resource path="res://Display/Dialouge/Sprites/Dialogbase.png" type="Texture" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 40
 extra_spacing_top = 11
 extra_spacing_char = 1
 extra_spacing_space = 1
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 resource_name = "next"
 length = 2.0
 loop = true
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ Vector2( 940, 190 ), Vector2( 940, 186 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("dialogBox/bodyBackground/Next:modulate")
@@ -48,8 +48,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "next"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("dialogBox/bodyBackground/Next:modulate")
 tracks/0/interp = 1
@@ -108,7 +107,7 @@ margin_left = 940.0
 margin_top = 193.985
 margin_right = 985.0
 margin_bottom = 233.985
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
 text = "[E]"
 __meta__ = {
@@ -135,7 +134,7 @@ margin_left = 32.0
 margin_top = 32.0
 margin_right = 954.0
 margin_bottom = 191.0
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.921569, 0.945098, 0.972549, 1 )
 bbcode_enabled = true
 bbcode_text = "this is a test, lets get it.12312313123123"
@@ -152,14 +151,14 @@ one_shot = true
 
 [node name="AnimationPlayerPosition" type="AnimationPlayer" parent="."]
 autoplay = "next"
-anims/next = SubResource( 4 )
+anims/next = SubResource( 7 )
 
 [node name="AnimationPlayerVisibility" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 5 )
-anims/next = SubResource( 3 )
+anims/default = SubResource( 4 )
+anims/next = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -25.0
+volume_db = -30.0
 [connection signal="tween_completed" from="dialogBox/bodyBackground/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
