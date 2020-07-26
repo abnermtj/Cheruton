@@ -48,7 +48,7 @@ func init_key_bindings():
 		var bindings = column_node.get_child_count()
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
-			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
+			#current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			btn_text = check_mouse_text(btn_text)
 			set_text(current_binding.get_child(0), false, btn_text)
@@ -112,13 +112,14 @@ func _edit_key(new_key):
 	
 	check_duplicates(new_key)
 	
-#	InputMap.action_add_event(action_name, new_key)
-#
-#	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-#	set_text(temp_control.get_child(0), false, btn_text)
-#
-#	temp_control = null
+	InputMap.action_add_event(action_name, new_key)
 
+	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
+	set_text(temp_control.get_child(0), false, btn_text)
+
+	temp_control = null
+
+# Detects actions who already occupy the same key binding as the intended one
 func check_duplicates(new_key):
 	var columns = controls_column.get_child_count()
 	

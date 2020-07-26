@@ -151,7 +151,7 @@ texture = ExtResource( 8 )
 centered = false
 
 [node name="Bg" type="Sprite" parent="."]
-position = Vector2( 0, -3 )
+position = Vector2( 0, -4 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
