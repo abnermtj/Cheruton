@@ -647,13 +647,15 @@ margin_bottom = 185.0
 wait_time = 0.25
 one_shot = true
 
-[node name="MouseOver1" type="AudioStreamPlayer" parent="."]
+[node name="MusicNodes" type="Node" parent="."]
+
+[node name="MouseOver1" type="AudioStreamPlayer" parent="MusicNodes"]
 bus = "SFX"
 
-[node name="MouseOver2" type="AudioStreamPlayer" parent="."]
+[node name="MouseOver2" type="AudioStreamPlayer" parent="MusicNodes"]
 bus = "SFX"
 
-[node name="MouseOver3" type="AudioStreamPlayer" parent="."]
+[node name="MouseOver3" type="AudioStreamPlayer" parent="MusicNodes"]
 bus = "SFX"
 [connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]

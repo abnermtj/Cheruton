@@ -37,9 +37,13 @@ onready var equipped_coins = $Border/Bg/Main/Sides/Data/EquippedCoins
 onready var button_list = $Border/Bg/Main/Sides/Data/TextureRect
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
-#onready var hover_music = $MouseOver2
-#onready var select_music = $MouseOver3
 
+#onready var hover_music = $MusicNodes/MouseOver2
+#onready var select_music = $MusicNodes/MouseOver3
+#onready var equip_music = $MusicNodes/MouseOver3
+#onready var dequip_music = $MusicNodes/MouseOver3
+#onready var trash_music = $MusicNodes/MouseOver3
+#onready var heal_music = $MusicNodes/MouseOver3
 
 onready var base_attack = DataResource.temp_dict_player.attack
 onready var base_defense = DataResource.temp_dict_player.defense
@@ -384,7 +388,7 @@ func use_item():
 
 # Reduces qty of item by 1
 func delete_item():
-
+#	trash_item.play()
 	var element_index = str(int(mouse_node.name)%100)
 	DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_qty -= 1
 		#delete index

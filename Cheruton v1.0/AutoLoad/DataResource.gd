@@ -95,7 +95,7 @@ func reset_player():
 	dict_player.health_curr = 50
 	dict_player.health_max = 50
 	dict_player.level = 1
-	dict_player.coins = 9999#DEBUG
+	dict_player.coins = 100#DEBUG
 	dict_player.attack = 15
 	dict_player.defense = 15
 	dict_player.Weapons_item = null

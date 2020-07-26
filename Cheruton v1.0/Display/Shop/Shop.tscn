@@ -541,9 +541,15 @@ text = "       "
 wait_time = 0.25
 one_shot = true
 
-[node name="Transaction" type="AudioStreamPlayer" parent="."]
+[node name="MusicNodes" type="Node" parent="."]
+
+[node name="Transaction" type="AudioStreamPlayer" parent="MusicNodes"]
 stream = ExtResource( 6 )
 volume_db = 6.0
+bus = "SFX"
+
+[node name="MouseOver" type="AudioStreamPlayer" parent="MusicNodes"]
+bus = "SFX"
 [connection signal="visibility_changed" from="." to="." method="_on_Shop_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Sides/BtnMode/Buy" to="." method="_on_Buy_pressed"]

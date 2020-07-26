@@ -38,6 +38,15 @@ onready var price_value = $Border/Bg/Main/Sides/Data/Price/Value
 onready var buy_tab = $Border/Bg/Main/Sides/BtnMode/Buy
 onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
+onready var transaction_music = $MusicNodes/Transaction
+#onready var hover_music = $MusicNodes/MouseOver2
+#onready var select_music = $MusicNodes/MouseOver3
+
+
+
+onready var mouse_over
+
+
 func _ready():
 	connect_tabs()
 	set_state("Buy")
@@ -200,6 +209,7 @@ func disable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
+#		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
 		var index = int(node.name) % 100
 		if(shop_setting == "Buy"):
@@ -227,6 +237,7 @@ func _on_pressed(node):
 				if(item_state == "HOVER"):
 					revert_item_state()
 				sell_item()
+				
 			"Buy":		# Buy item: get node details, fix the item, then sell it
 				var index = int(mouse_node.name)%100
 				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
@@ -252,6 +263,10 @@ func revert_item_state():
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		btn_node.get_child(0).text = shop_setting + " Item"
+		if(shop_setting == "Buy"):
+			if(!compare_price()):
+				btn_node.hide()
+				return
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):
@@ -264,6 +279,13 @@ func revert_item_state():
 		btn_node.hide()
 		mouse_node = null
 
+# Checks if the user can afford the item
+func compare_price():
+	var index = int(mouse_node.name)%100
+	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
+	if(coins_val > DataResource.temp_dict_player["coins"]):
+		return false
+	return true
 
 # Reduces qty of item by 1
 func sell_item():
@@ -307,7 +329,7 @@ func sell_item():
 
 		get_node("Border/Bg/Main/Sides/Data/Button").hide()
 
-	$Transaction.play()
+	transaction_music.play()
 
 # Increases qty of item by 1
 func buy_item():
@@ -347,7 +369,7 @@ func buy_item():
 			enable_mouse(updating_node)
 			generate_specific_data(updating_node, element_index, list_tab)
 
-	$Transaction.play()
+	transaction_music.play()
 #Debug
 func _on_Button_pressed():
 	match shop_setting:
