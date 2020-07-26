@@ -2761,8 +2761,8 @@ scale = Vector2( -4, 4 )
 z_index = 1
 
 [node name="moneygirl" parent="NPCs" instance=ExtResource( 13 )]
-visible = false
-position = Vector2( 6700, 2100 )
+position = Vector2( -60, 156 )
+scale = Vector2( -4, 4 )
 z_index = 1
 
 [node name="rock" type="Sprite" parent="NPCs/moneygirl"]
@@ -3288,6 +3288,7 @@ margin_bottom = 236.0
 text = "E"
 
 [node name="Scene2_0" parent="Hints" instance=ExtResource( 41 )]
+visible = false
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 5464, 976 )
 
@@ -3306,6 +3307,7 @@ texture = ExtResource( 42 )
 offset = Vector2( 0, 1 )
 
 [node name="Scene4_0" parent="Hints" instance=ExtResource( 41 )]
+visible = false
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 3112, 912 )
 

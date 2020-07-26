@@ -119,7 +119,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 16, -39 )
 region_enabled = true
-region_rect = Rect2( 967, 1, 320, 192 )
+region_rect = Rect2( 645, 1, 320, 192 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "light0"

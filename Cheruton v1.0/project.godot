@@ -122,7 +122,7 @@ config/icon="res://icon.png"
 
 [audio]
 
-default_bus_layout="res://Music/default_bus_layout.tres"
+default_bus_layout="res://Sound/default_bus_layout.tres"
 
 [autoload]
 

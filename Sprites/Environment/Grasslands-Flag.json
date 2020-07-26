@@ -1,0 +1,202 @@
+{ "frames": {
+   "Grasslands-Flag 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 1.aseprite": {
+    "frame": { "x": 131, "y": 1, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 2.aseprite": {
+    "frame": { "x": 261, "y": 1, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 3.aseprite": {
+    "frame": { "x": 391, "y": 1, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 4.aseprite": {
+    "frame": { "x": 521, "y": 1, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 5.aseprite": {
+    "frame": { "x": 651, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 6.aseprite": {
+    "frame": { "x": 797, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 7.aseprite": {
+    "frame": { "x": 943, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 8.aseprite": {
+    "frame": { "x": 1089, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 9.aseprite": {
+    "frame": { "x": 1235, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 10.aseprite": {
+    "frame": { "x": 1381, "y": 1, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 11.aseprite": {
+    "frame": { "x": 1, "y": 115, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 12.aseprite": {
+    "frame": { "x": 147, "y": 115, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 13.aseprite": {
+    "frame": { "x": 293, "y": 115, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 14.aseprite": {
+    "frame": { "x": 439, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 15.aseprite": {
+    "frame": { "x": 585, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 16.aseprite": {
+    "frame": { "x": 731, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 17.aseprite": {
+    "frame": { "x": 877, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 18.aseprite": {
+    "frame": { "x": 1023, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 19.aseprite": {
+    "frame": { "x": 1169, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 20.aseprite": {
+    "frame": { "x": 1315, "y": 115, "w": 144, "h": 96 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 32, "w": 144, "h": 96 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 21.aseprite": {
+    "frame": { "x": 1461, "y": 115, "w": 144, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 16, "w": 144, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   },
+   "Grasslands-Flag 22.aseprite": {
+    "frame": { "x": 1, "y": 229, "w": 128, "h": 112 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 16, "w": 128, "h": 112 },
+    "sourceSize": { "w": 156, "h": 125 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "Grasslands-Flag.png",
+  "format": "RGBA8888",
+  "size": { "w": 1638, "h": 342 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "flag", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
