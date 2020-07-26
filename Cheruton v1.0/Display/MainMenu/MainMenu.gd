@@ -96,9 +96,8 @@ func perform_button_action():
 	match btn_pos:
 		play_position:
 			slider_enabled = false
-			SceneControl.emit_signal("init_statbar")
-			SceneControl.load_screen(SCN1, true)
-			queue_free()
+			SceneControl.change_scene(self, SCN1)
+
 		settings_position:
 			hide_options()
 			general_player.play("to_settings")

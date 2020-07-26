@@ -24,11 +24,8 @@ var curr_scene
 var loot_dict = {} # Items pending transfer to inventory
 var enable_save := false
 
-var cur_level
-
-var music_curr
-var music_next
-var music_state := "idle"
+var old_level
+var new_level
 
 signal init_statbar
 
@@ -49,7 +46,6 @@ func init_music():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 
 
-
 func init_cursor():
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
@@ -63,23 +59,32 @@ func change_music(new_music):
 	bg_music.stream = new_music
 	bg_music.play()
 
-
-# Loads the next scene
-func load_screen(scene, game_scene:= false):
-	var new_music
-	
-	scene_change.play("scene_out")
+func change_scene(old_scene, new_scene):
 	get_tree().paused = true
+	scene_change.play("scene_out")
+	old_level = old_scene
+	new_level = new_scene
 
-	var children = levels.get_children()
-	if children:
-		children[0].queue_free()
 
-	var new_level = load(scene).instance()
 
-	if(scene != MMENU):
-		cur_level = new_level
-		levels.add_child(new_level)
+
+func _on_SceneChange_animation_finished(anim_name):
+	if(anim_name == "scene_out"):
+		print("ok")
+		swap_scenes()
+		scene_change.play("scene_in")
+	else:
+		get_tree().paused = false
+
+func swap_scenes():
+	var new_music
+	old_level.queue_free()
+
+	var new_scene = load(new_level).instance()
+
+	if(new_level != MMENU):
+		#cur_level = new_level
+		levels.add_child(new_scene)
 		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 		if(new_music):
@@ -90,16 +95,6 @@ func load_screen(scene, game_scene:= false):
 		var root = get_tree().get_root()
 		root.add_child(new_level)
 		change_music(mmenu_music_file)
-
-	print("new_music", new_music)
-	print("Loaded")
-	get_tree().paused = false
-
-func _on_SceneChange_animation_finished(anim_name):
-	if(anim_name == "scene_out"):
-		scene_change.play("scene_in")
-	else:
-		get_tree().paused = false
 
 ########
 # LOOT #
@@ -212,6 +207,8 @@ func set_dialog_only_mode(val : bool):
 		pop_up_gui.dialog_only()
 	else:
 		pop_up_gui.end_dialog_only()
+
+
 
 
 
