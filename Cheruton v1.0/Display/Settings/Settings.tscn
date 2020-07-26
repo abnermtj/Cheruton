@@ -23,7 +23,7 @@ size = 50
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 50
+size = 40
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -61,9 +61,9 @@ __meta__ = {
 
 [node name="Slider" type="NinePatchRect" parent="Settings"]
 visible = false
-margin_left = 31.5
+margin_left = 22.0
 margin_top = 36.0
-margin_right = 93.5
+margin_right = 84.0
 margin_bottom = 48.0
 texture = ExtResource( 4 )
 __meta__ = {
@@ -285,6 +285,7 @@ size_flags_vertical = 2
 text = "     "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
 margin_left = 467.0
 margin_right = 1628.0
 margin_bottom = 767.0
@@ -311,7 +312,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 0
 
 [node name="Action" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_right = 764.0
+margin_right = 617.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -319,8 +320,9 @@ size_flags_stretch_ratio = 1.7
 custom_constants/separation = 60
 
 [node name="up" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_right = 764.0
-margin_bottom = 50.0
+margin_right = 617.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Up"
 align = 1
@@ -330,9 +332,10 @@ __meta__ = {
 }
 
 [node name="down" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_top = 110.0
-margin_right = 764.0
-margin_bottom = 160.0
+margin_top = 130.0
+margin_right = 617.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Down"
 align = 1
@@ -342,9 +345,10 @@ __meta__ = {
 }
 
 [node name="left" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_top = 220.0
-margin_right = 764.0
-margin_bottom = 270.0
+margin_top = 260.0
+margin_right = 617.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Left"
 align = 1
@@ -354,9 +358,10 @@ __meta__ = {
 }
 
 [node name="right" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_top = 330.0
-margin_right = 764.0
-margin_bottom = 380.0
+margin_top = 390.0
+margin_right = 617.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Right"
 align = 1
@@ -366,9 +371,10 @@ __meta__ = {
 }
 
 [node name="jump" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_top = 440.0
-margin_right = 764.0
-margin_bottom = 490.0
+margin_top = 520.0
+margin_right = 617.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Jump"
 align = 1
@@ -378,18 +384,18 @@ __meta__ = {
 }
 
 [node name="Mapping" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_left = 764.0
-margin_right = 943.0
+margin_left = 617.0
+margin_right = 944.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.9
 custom_constants/separation = 60
 
 [node name="move_up" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_right = 179.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 327.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -409,10 +415,10 @@ __meta__ = {
 }
 
 [node name="move_down" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_top = 110.0
-margin_right = 179.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 130.0
+margin_right = 327.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -432,10 +438,10 @@ __meta__ = {
 }
 
 [node name="move_left" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_top = 220.0
-margin_right = 179.0
-margin_bottom = 270.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 260.0
+margin_right = 327.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -455,10 +461,10 @@ __meta__ = {
 }
 
 [node name="move_right" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_top = 330.0
-margin_right = 179.0
-margin_bottom = 380.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 390.0
+margin_right = 327.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -478,10 +484,10 @@ __meta__ = {
 }
 
 [node name="jump" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_top = 440.0
-margin_right = 179.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 520.0
+margin_right = 327.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -501,9 +507,9 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_left = 943.0
+margin_left = 944.0
 margin_top = 298.0
-margin_right = 1159.0
+margin_right = 1160.0
 margin_bottom = 312.0
 text = "                                                      "
 
@@ -524,7 +530,8 @@ custom_constants/separation = 60
 
 [node name="hook" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_right = 939.0
-margin_bottom = 50.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Hook"
 align = 1
@@ -536,7 +543,8 @@ __meta__ = {
 [node name="attack" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 110.0
 margin_right = 939.0
-margin_bottom = 160.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Attack"
 align = 1
@@ -548,7 +556,8 @@ __meta__ = {
 [node name="sword_throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 220.0
 margin_right = 939.0
-margin_bottom = 270.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Sword Throw"
 align = 1
@@ -560,7 +569,8 @@ __meta__ = {
 [node name="dash" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 330.0
 margin_right = 939.0
-margin_bottom = 380.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Dash"
 align = 1
@@ -572,7 +582,8 @@ __meta__ = {
 [node name="interact" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 440.0
 margin_right = 939.0
-margin_bottom = 490.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Interact"
 align = 1
@@ -587,13 +598,13 @@ margin_right = 1161.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.9
 custom_constants/separation = 60
 
 [node name="hook" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_right = 222.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -616,7 +627,7 @@ __meta__ = {
 margin_top = 110.0
 margin_right = 222.0
 margin_bottom = 160.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -635,11 +646,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sword_throw2" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
+[node name="sword_throw" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 220.0
 margin_right = 222.0
 margin_bottom = 270.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -647,7 +658,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sword_throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping/sword_throw2"]
+[node name="sword_throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping/sword_throw"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -662,7 +673,7 @@ __meta__ = {
 margin_top = 330.0
 margin_right = 222.0
 margin_bottom = 380.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -684,8 +695,8 @@ __meta__ = {
 [node name="interact" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 440.0
 margin_right = 222.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -728,7 +739,8 @@ custom_constants/separation = 60
 
 [node name="escape" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Action"]
 margin_right = 939.0
-margin_bottom = 50.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Escape/Pause"
 align = 1
@@ -740,7 +752,8 @@ __meta__ = {
 [node name="inventory" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Action"]
 margin_top = 110.0
 margin_right = 939.0
-margin_bottom = 160.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Inventory"
 align = 1
@@ -752,7 +765,8 @@ __meta__ = {
 [node name="shop" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Action"]
 margin_top = 220.0
 margin_right = 939.0
-margin_bottom = 270.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Shop"
 align = 1
@@ -764,7 +778,8 @@ __meta__ = {
 [node name="shop_buy2" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Action"]
 margin_top = 330.0
 margin_right = 939.0
-margin_bottom = 380.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Shop (Buy)"
 align = 1
@@ -776,7 +791,8 @@ __meta__ = {
 [node name="shop_sell" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Action"]
 margin_top = 440.0
 margin_right = 939.0
-margin_bottom = 490.0
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Shop (Sell)"
 align = 1
@@ -791,13 +807,13 @@ margin_right = 1161.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.9
 custom_constants/separation = 60
 
 [node name="escape" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Mapping"]
 margin_right = 222.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -820,7 +836,7 @@ __meta__ = {
 margin_top = 110.0
 margin_right = 222.0
 margin_bottom = 160.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -843,7 +859,7 @@ __meta__ = {
 margin_top = 220.0
 margin_right = 222.0
 margin_bottom = 270.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -866,7 +882,7 @@ __meta__ = {
 margin_top = 330.0
 margin_right = 222.0
 margin_bottom = 380.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -888,8 +904,8 @@ __meta__ = {
 [node name="shop_sell" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col2/Mapping"]
 margin_top = 440.0
 margin_right = 222.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 510.0
+rect_min_size = Vector2( 0, 70 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -1267,8 +1283,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 961.0
+margin_left = 467.0
 margin_right = 1628.0
 margin_bottom = 767.0
 size_flags_horizontal = 3

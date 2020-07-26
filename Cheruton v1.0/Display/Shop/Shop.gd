@@ -39,7 +39,7 @@ onready var buy_tab = $Border/Bg/Main/Sides/BtnMode/Buy
 onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
 onready var transaction_music = $MusicNodes/Transaction
-onready var hover_music = $MusicNodes/MouseOver
+onready var hover_music = $MusicNodes/Hover
 #onready var select_music = $MusicNodes/MouseOver3
 
 

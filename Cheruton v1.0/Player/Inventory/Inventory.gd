@@ -38,7 +38,7 @@ onready var button_list = $Border/Bg/Main/Sides/Data/TextureRect
 onready var attack = $Border/Bg/Main/Sides/Data/Attack/Attack
 onready var defense = $Border/Bg/Main/Sides/Data/Defense/Defense
 
-onready var hover_music = $MusicNodes/MouseOver
+onready var hover_music = $MusicNodes/Hover
 #onready var select_music = $MusicNodes/MouseOver3
 #onready var equip_music = $MusicNodes/MouseOver3
 #onready var dequip_music = $MusicNodes/MouseOver3

@@ -549,7 +549,7 @@ stream = ExtResource( 6 )
 volume_db = 6.0
 bus = "SFX"
 
-[node name="MouseOver" type="AudioStreamPlayer" parent="MusicNodes"]
+[node name="Hover" type="AudioStreamPlayer" parent="MusicNodes"]
 stream = ExtResource( 14 )
 volume_db = 6.0
 bus = "SFX"
