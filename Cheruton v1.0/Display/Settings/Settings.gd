@@ -46,6 +46,7 @@ func init_key_bindings():
 		var bindings = column_node.get_child_count()
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
+			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			btn_text = check_mouse_text(btn_text)
 			set_text(current_binding.get_child(0), false, btn_text)
@@ -55,6 +56,7 @@ func set_text(node, unassign := true, new_value := ""):
 			node.text = "Unassigned"
 	else:
 			node.text = new_value
+
 
 func check_mouse_text(btn_text):
 	if(btn_text == RMB):
@@ -82,6 +84,9 @@ func controls_set_column(type):
 			controls_button.get_node("Next").hide()
 
 	controls_column.get_child(controls_set).show()
+
+func _on_button_pressed(button):
+	print(button.name)
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
