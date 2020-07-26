@@ -30,10 +30,12 @@ func _input(event):
 func new_gui(gui_name):
 	if active == false:
 		return
-	if not pop_up_enable_list[gui_name] : return
 
+	if not pop_up_enable_list[gui_name] : return
+	if state_name_stack.has(gui_name): return
 	states_map[gui_name].begin()
 	state_name_stack.push_back(gui_name)
+
 	for child in get_children():
 		child.is_active_gui = false
 	states_map[gui_name].is_active_gui = true
