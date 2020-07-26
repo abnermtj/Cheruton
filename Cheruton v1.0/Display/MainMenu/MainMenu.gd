@@ -6,6 +6,7 @@ const SCN3 = "res://Levels/spiderBosstestBench/SpiderbossTestScene.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
+onready var main_menu = self
 onready var options = $Bg/Options
 onready var slider = $Bg/Options/Slider
 onready var tween = $Tween
@@ -28,6 +29,7 @@ var slider_enabled := false
 
 
 func _ready():
+	get_tree().get_root().call_deferred("move_child",main_menu, 1) 
 	bg_player.play("water")
 	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
 	SceneControl.get_node("popUpGui").enabled = false
@@ -40,6 +42,7 @@ func _ready():
 # Gives a fadein effect
 func tween_white_screen():
 	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.65, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.interpolate_property(SceneControl.bg_music, "volume_db", -60, 0, 1.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
 
 # When the tween of the relevant object is completed
@@ -94,10 +97,11 @@ func perform_button_action():
 	var btn_pos = slider.rect_position - container.rect_position
 	match btn_pos:
 		play_position:
-			slider_enabled = false
-			SceneControl.emit_signal("init_statbar")
-			SceneControl.load_screen(SCN1, true)
-			queue_free()
+			SceneControl.scene_change.play("scene_out")
+#			slider_enabled = false
+#			SceneControl.emit_signal("init_statbar")
+#			SceneControl.load_screen(SCN1, true)
+#			queue_free()
 		settings_position:
 			hide_options()
 			general_player.play("to_settings")

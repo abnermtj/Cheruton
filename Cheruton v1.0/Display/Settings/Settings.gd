@@ -1,5 +1,9 @@
 extends Control
 
+const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
+const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
+
+
 onready var master_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
 onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/SFXVolBar
@@ -8,6 +12,7 @@ onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/
 onready var container = $Settings/Container
 onready var contents = $Settings/Container/Main/Contents
 onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Column
+onready var controls_button = $Settings/Container/Main/Contents/BaseControls/Buttons
 
 onready var slider = $Settings/Slider
 onready var tween = $Tween
@@ -22,6 +27,7 @@ onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
 
 var slider_active := false
+var controls_set := -1
 
 onready var active_tab = base_empty
 
@@ -29,6 +35,7 @@ signal closed_settings
 
 func _ready():
 	init_key_bindings()
+	controls_set_column("Next")
 	init_bar_vals()
 	connect_functions()
 
@@ -40,13 +47,42 @@ func init_key_bindings():
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-			set_text(current_binding, false, btn_text)
+			btn_text = check_mouse_text(btn_text)
+			set_text(current_binding.get_child(0), false, btn_text)
 
 func set_text(node, unassign := true, new_value := ""):
 	if(unassign):
 			node.text = "Unassigned"
 	else:
 			node.text = new_value
+
+func check_mouse_text(btn_text):
+	if(btn_text == RMB):
+		return "Right Mouse"
+	elif(btn_text == LMB):
+		return "Left Mouse"
+	return btn_text
+
+func controls_set_column(type):
+	if(controls_set != -1):
+		controls_column.get_child(controls_set).hide()
+	match type:
+		"Prev":
+			controls_set -= 1
+		"Next":
+			controls_set += 1
+			
+	match controls_set:
+		0:
+			controls_button.get_node("Previous").hide()
+		1:
+			controls_button.get_node("Previous").show()
+			controls_button.get_node("Next").show()
+		2:
+			controls_button.get_node("Next").hide()
+
+	controls_column.get_child(controls_set).show()
+
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
 	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
@@ -57,6 +93,16 @@ func connect_functions():
 	var _conn2 = DataResource.connect("change_audio_music", self, "change_music_vol")
 	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
 
+func _on_Previous_pressed():
+	SceneControl.button_click.play()
+	controls_set_column("Prev")
+
+func _on_Next_pressed():
+	SceneControl.button_click.play()
+	controls_set_column("Next")
+
+
+	
 func _on_MuteToggle_pressed():
 	DataResource.dict_settings.is_mute = !DataResource.dict_settings.is_mute
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
@@ -166,4 +212,3 @@ func change_active_tab(new_tab):
 
 	active_tab = new_tab
 	active_tab.show()
-

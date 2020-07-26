@@ -38,11 +38,18 @@ onready var price_value = $Border/Bg/Main/Sides/Data/Price/Value
 onready var buy_tab = $Border/Bg/Main/Sides/BtnMode/Buy
 onready var sell_tab = $Border/Bg/Main/Sides/BtnMode/Sell
 
+onready var transaction_music = $MusicNodes/Transaction
+onready var hover_music = $MusicNodes/Hover
+#onready var select_music = $MusicNodes/MouseOver3
+
+
+
 func _ready():
 	connect_tabs()
 	set_state("Buy")
 	buy_tab.texture_normal = active_tab_image
 	load_data()
+	init_equipped()
 	emit_signal("tab_changed", "Weapons")
 	tabs.hide()
 	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
@@ -52,13 +59,17 @@ func _on_Exit_pressed():
 	free_the_shop()
 
 
-#func display_equipped(name):
-#	var main = get_node("Border/Bg/Contents/Items")
-#	var type = get_node("Border/Bg/Contents/EquippedCoins/" + name)
-#	var node = main.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
-#	type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
-#	node.get_node("Background/ItemBg").texture = index_equipped_bg
-#	type.show()
+func init_equipped():
+	if(DataResource.temp_dict_player.Weapons_item):
+		display_equipped("Weapons")
+
+	if(DataResource.temp_dict_player.Apparel_item):
+		display_equipped("Apparel")
+
+
+func display_equipped(name):
+	var node = items_sell.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	node.get_node("Background/ItemBg").texture = index_equipped_bg
 
 
 # Links the buttons when pressed into the function to change active tab
@@ -200,6 +211,7 @@ func disable_mouse(new_node):
 
 func _on_mouse_entered(node):
 	if(mouse_node != node):
+		hover_music.play()
 		node.get_node("Background/ItemBg").texture = index_bg
 		var index = int(node.name) % 100
 		if(shop_setting == "Buy"):
@@ -209,9 +221,16 @@ func _on_mouse_entered(node):
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
 	if(mouse_node != node):
-		node.get_node("Background/ItemBg").texture = null
+		change_mouse_bg(node)
 		price_value.text = EMPTY
 
+
+func change_mouse_bg(node):
+	if((active_tab.name == "Weapons" || active_tab.name == "Apparel") && shop_setting == "Sell"):
+		if(str(DataResource.temp_dict_player[active_tab.name + "_item"]) == node.name):
+			node.get_node("Background/ItemBg").texture = index_equipped_bg
+			return
+	node.get_node("Background/ItemBg").texture = null
 
 # When the icon of a item is pressed
 func _on_pressed(node):
@@ -227,6 +246,7 @@ func _on_pressed(node):
 				if(item_state == "HOVER"):
 					revert_item_state()
 				sell_item()
+				
 			"Buy":		# Buy item: get node details, fix the item, then sell it
 				var index = int(mouse_node.name)%100
 				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
@@ -252,6 +272,10 @@ func revert_item_state():
 		item_state = "FIXED"
 		mouse_node.get_node("Background/ItemBg").texture = index_bg
 		btn_node.get_child(0).text = shop_setting + " Item"
+		if(shop_setting == "Buy"):
+			if(!compare_price()):
+				btn_node.hide()
+				return
 		btn_node.show()
 
 	elif(mouse_node != temp_mouse_node):
@@ -264,6 +288,13 @@ func revert_item_state():
 		btn_node.hide()
 		mouse_node = null
 
+# Checks if the user can afford the item
+func compare_price():
+	var index = int(mouse_node.name)%100
+	var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue
+	if(coins_val > DataResource.temp_dict_player["coins"]):
+		return false
+	return true
 
 # Reduces qty of item by 1
 func sell_item():
@@ -284,7 +315,7 @@ func sell_item():
 		# Dequip item held if that node is a held item
 		if(active_tab.name == "Weapons" || active_tab.name == "Apparel"):
 			if(DataResource.temp_dict_player[active_tab.name + "_item"] == mouse_node.name):
-				inventory.item_status(inventory.find_node(mouse_node.name, true, false), "DEQUIP")
+					inventory.item_status(inventory.find_node(mouse_node.name, true, false), "DEQUIP")
 
 		# From deleted item's index upwards, shift affected indexes down by 1
 		element_index = int(element_index)
@@ -307,7 +338,7 @@ func sell_item():
 
 		get_node("Border/Bg/Main/Sides/Data/Button").hide()
 
-	$Transaction.play()
+	transaction_music.play()
 
 # Increases qty of item by 1
 func buy_item():
@@ -347,7 +378,7 @@ func buy_item():
 			enable_mouse(updating_node)
 			generate_specific_data(updating_node, element_index, list_tab)
 
-	$Transaction.play()
+	transaction_music.play()
 #Debug
 func _on_Button_pressed():
 	match shop_setting:

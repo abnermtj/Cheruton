@@ -12,10 +12,10 @@ onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var pop_up_gui = $popUpGui
 onready var bg_music = $BgMusic
-onready var bg_music_tween = $BgMusic/Tween
 onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
 onready var button_click = $ButtonClick
+onready var scene_change = $SceneChange
 
 var cur_story
 var cur_dialog
@@ -28,27 +28,20 @@ var cur_level
 
 var music_curr
 var music_next
-var fade_in := 1.5
-var fade_out := 0.8
 var music_state := "idle"
 
 signal init_statbar
 
 func _ready():
+	bg_music.volume_db = -60
 	randomize()
-	begin_music()
+	change_music(mmenu_music_file)
 	init_music()
 	#init_cursor()
 
 ##############
 # INITIALIZE #
 ##############
-
-func begin_music():
-	music_state = "init"
-	music_next = mmenu_music_file
-	music_fsm()
-
 func init_music():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), DataResource.dict_settings.is_mute)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), DataResource.dict_settings.audio_master)
@@ -65,18 +58,18 @@ func init_cursor():
 ################
 # SCENE CHANGE #
 ################
+
+func change_music(new_music):
+	bg_music.stream = new_music
+	bg_music.play()
+
+
 # Loads the next scene
-func load_screen(scene, game_scene:= false, loading_screen:= false):
+func load_screen(scene, game_scene:= false):
 	var new_music
-
-	curr_scene = scene
-	print( "LOADING SCREEN: ", curr_scene)
-
+	
+	scene_change.play("scene_out")
 	get_tree().paused = true
-	if(loading_screen):
-		load_layer.show()
-
-	hud_elements.hide()
 
 	var children = levels.get_children()
 	if children:
@@ -91,84 +84,22 @@ func load_screen(scene, game_scene:= false, loading_screen:= false):
 		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
 		if(new_music):
 			new_music = load(new_music)
+		change_music(new_music)
 
 	else: # main menu
 		var root = get_tree().get_root()
 		root.add_child(new_level)
 		change_music(mmenu_music_file)
 
-	if(game_scene):
-		hud_elements.show()
-
-	if(loading_screen):
-		load_layer.hide()
-
-	if(scene != MMENU):
-		change_music(new_music)
 	print("new_music", new_music)
-
 	print("Loaded")
-
 	get_tree().paused = false
 
-#############
-# MUSIC FSM #
-#############
-func change_music(new_music):
-	music_state = "clear"
-	music_next = new_music
-	music_fsm()
-
-# Manages the background music
-#	Idle: No music being played
-#	Clear: Clears the current music being played
-#	Init: Initalizes the next music stream
-#	Active: Plays the current music stream
-
-func music_fsm():
-	match music_state:
-		"idle":
-			pass
-
-		"clear":
-			if(music_next):
-				music_state = "init"
-			else:
-				music_state = "idle"
-
-			if(fade_out > 0 && music_curr):
-				tween_music_vol(0, -60, fade_out)
-			else:
-				bg_music.volume_db = -60.0
-				call_deferred("music_fsm")
-
-		"init":
-			if(music_next):
-				music_state = "active"
-			else:
-				music_state = "idle"
-
-			music_curr = music_next
-			bg_music.stream = music_curr
-
-			if(fade_in > 0):
-				bg_music.play()
-				tween_music_vol(-60, 0, fade_in)
-			else:
-				bg_music.volume_db = DataResource.dict_settings.audio_music
-				call_deferred("music_fsm")
-
-		"active":
-			if(!bg_music.playing):
-				bg_music.play()
-
-func tween_music_vol(old_val, new_val, time):
-	print(new_val)
-	bg_music_tween.interpolate_property(bg_music, "volume_db", old_val, new_val, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	bg_music_tween.start()
-
-func _on_Tween_tween_completed(object, key):
-	music_fsm()
+func _on_SceneChange_animation_finished(anim_name):
+	if(anim_name == "scene_out"):
+		scene_change.play("scene_in")
+	else:
+		get_tree().paused = false
 
 ########
 # LOOT #
@@ -281,6 +212,9 @@ func set_dialog_only_mode(val : bool):
 		pop_up_gui.dialog_only()
 	else:
 		pop_up_gui.end_dialog_only()
+
+
+
 
 
 
