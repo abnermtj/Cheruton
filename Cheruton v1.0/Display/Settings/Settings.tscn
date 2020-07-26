@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
-[ext_resource path="res://Display/MainMenu/Sprites/MainMenuBase.png" type="Texture" id=2]
+[ext_resource path="res://Display/Settings/Sprites/Base/SettingsBase.png" type="Texture" id=2]
 [ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]
-[ext_resource path="res://Display/Settings/bar_under.png" type="Texture" id=5]
-[ext_resource path="res://Display/Settings/bar_progress.png" type="Texture" id=6]
+[ext_resource path="res://Display/Settings/Sprites/Bars/bar_under.png" type="Texture" id=5]
+[ext_resource path="res://Display/Settings/Sprites/Bars/bar_progress.png" type="Texture" id=6]
+[ext_resource path="res://Display/Settings/Sprites/Slots/HorizontalTabSelect.png" type="Texture" id=7]
+[ext_resource path="res://Display/Settings/Sprites/Slots/HorizontalTabDeSelect.png" type="Texture" id=8]
 [ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=12]
 
@@ -285,15 +287,14 @@ size_flags_vertical = 2
 text = "     "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 264.0
-margin_right = 860.0
+margin_left = 423.0
+margin_right = 1460.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls"]
-margin_right = 596.0
+margin_right = 1037.0
 margin_bottom = 48.0
 text = "
 
@@ -301,25 +302,25 @@ text = "
 
 [node name="Column" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls"]
 margin_top = 52.0
-margin_right = 596.0
-margin_bottom = 767.0
+margin_right = 1037.0
+margin_bottom = 663.0
 size_flags_vertical = 3
 
 [node name="Col1" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column"]
-margin_right = 596.0
-margin_bottom = 715.0
+margin_right = 1037.0
+margin_bottom = 611.0
 size_flags_horizontal = 3
 custom_constants/separation = -210
 
 [node name="Action" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_right = 403.0
-margin_bottom = 715.0
+margin_right = 623.0
+margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 60
 
 [node name="up" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
-margin_right = 403.0
+margin_right = 623.0
 margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "Up"
@@ -331,7 +332,7 @@ __meta__ = {
 
 [node name="down" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 110.0
-margin_right = 403.0
+margin_right = 623.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 3 )
 text = "Down"
@@ -343,7 +344,7 @@ __meta__ = {
 
 [node name="left" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 220.0
-margin_right = 403.0
+margin_right = 623.0
 margin_bottom = 270.0
 custom_fonts/font = SubResource( 3 )
 text = "Left"
@@ -355,7 +356,7 @@ __meta__ = {
 
 [node name="right" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 330.0
-margin_right = 403.0
+margin_right = 623.0
 margin_bottom = 380.0
 custom_fonts/font = SubResource( 3 )
 text = "Right"
@@ -367,7 +368,7 @@ __meta__ = {
 
 [node name="jump" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 440.0
-margin_right = 403.0
+margin_right = 623.0
 margin_bottom = 490.0
 custom_fonts/font = SubResource( 3 )
 text = "Jump"
@@ -378,15 +379,15 @@ __meta__ = {
 }
 
 [node name="Mapping" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1"]
-margin_left = 193.0
-margin_right = 596.0
-margin_bottom = 715.0
+margin_left = 413.0
+margin_right = 1037.0
+margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 60
 
 [node name="move_up" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
-margin_right = 403.0
+margin_right = 624.0
 margin_bottom = 50.0
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -398,7 +399,7 @@ __meta__ = {
 
 [node name="move_down" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 110.0
-margin_right = 403.0
+margin_right = 624.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -410,7 +411,7 @@ __meta__ = {
 
 [node name="move_left" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 220.0
-margin_right = 403.0
+margin_right = 624.0
 margin_bottom = 270.0
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -422,7 +423,7 @@ __meta__ = {
 
 [node name="move_right" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 330.0
-margin_right = 403.0
+margin_right = 624.0
 margin_bottom = 380.0
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -434,7 +435,7 @@ __meta__ = {
 
 [node name="jump" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 440.0
-margin_right = 403.0
+margin_right = 624.0
 margin_bottom = 490.0
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -444,16 +445,86 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Buttons" type="TextureRect" parent="Settings/Container/Main/Contents/BaseControls"]
+margin_top = 667.0
+margin_right = 1037.0
+margin_bottom = 767.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Previous" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+margin_right = 200.0
+rect_min_size = Vector2( 150, 100 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Buttons/Previous"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Prev"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Buttons"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -100.0
+rect_min_size = Vector2( 150, 100 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Buttons/Next"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -25.0
+margin_right = 70.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Next"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
-margin_left = 264.0
-margin_right = 860.0
+margin_left = 423.0
+margin_right = 1460.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
-margin_right = 596.0
+margin_right = 1037.0
 margin_bottom = 65.0
 text = "
 
@@ -462,7 +533,7 @@ text = "
 
 [node name="Rect" type="TextureRect" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 69.0
-margin_right = 596.0
+margin_right = 1037.0
 margin_bottom = 749.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -712,7 +783,7 @@ __meta__ = {
 
 [node name="BABMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_top = 753.0
-margin_right = 596.0
+margin_right = 1037.0
 margin_bottom = 767.0
 size_flags_vertical = 1
 
@@ -725,6 +796,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
 margin_left = 423.0
 margin_right = 1460.0
 margin_bottom = 767.0
