@@ -85,15 +85,15 @@ func swap_scenes():
 	if(new_level != MMENU):
 		#cur_level = new_level
 		levels.add_child(new_scene)
-		new_music = levels.get_child(levels.get_child_count() - 1).bg_music_file
-		change_story(levels.get_child(levels.get_child_count() - 1).story_file)
+		new_music = levels.get_child(0).bg_music_file
+		change_story(levels.get_child(0).story_file)
 		if(new_music):
 			new_music = load(new_music)
 		change_music(new_music)
 
 	else: # main menu
 		var root = get_tree().get_root()
-		root.add_child(new_level)
+		root.add_child(new_scene)
 		change_music(mmenu_music_file)
 
 ########
