@@ -27,6 +27,7 @@ onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
 onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
+onready var info = $Settings/Container/Main/Contents/BaseControls/Buttons/Info
 
 var slider_active := false
 var controls_set := -1
@@ -143,6 +144,7 @@ func handle_duplicates(current_binding, old_key):
 	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 	InputMap.action_add_event(current_binding.name, old_key)
 	
+	
 	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
 	set_text(current_binding.get_child(0), false, btn_text)
 	DataResource.dict_input_map[current_binding.name] = btn_text
@@ -173,17 +175,17 @@ func _on_MuteToggle_pressed():
 
 func change_master_vol():
 	SceneControl.button_click.play()
-	var end = (DataResource.dict_settings.audio_master + 60) / 60 * 100
+	var end = (DataResource.dict_settings.audio_master + 68) / 60 * 100
 	animate_healthbar(master_bar, end)
 
 func change_music_vol():
 	SceneControl.button_click.play()
-	var end = (DataResource.dict_settings.audio_music + 60) / 60 * 100
+	var end = (DataResource.dict_settings.audio_music + 68) / 60 * 100
 	animate_healthbar(music_bar, end)
 
 func change_sfx_vol():
 	SceneControl.button_click.play()
-	var end = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
+	var end = (DataResource.dict_settings.audio_sfx + 68) / 60 * 100
 	animate_healthbar(sfx_bar, end)
 
 func animate_healthbar(bar, end):

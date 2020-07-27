@@ -30,7 +30,7 @@
       "ItemDetails": null,
       "ItemPNG": "res://Props/ItemIcons/iron_sword.png"
     },
-    "Steel Sword": {
+    "Bronze Sword": {
       "ItemType": "Weapons",
       "ItemAtk": 13,
       "ItemDef": null,
@@ -38,7 +38,7 @@
       "HealVal": null,
       "ItemValue": 60,
       "ItemDetails": null,
-      "ItemPNG": null
+      "ItemPNG": "res://Props/ItemIcons/bronze_sword.png"
     },
     "Potion Tube": {
       "ItemType": "Consum",
@@ -95,7 +95,7 @@
     "stage1": {
       "Item1": "Iron Sword",
       "Item2": "Potion Tube",
-      "Item3": "Iron Armor"
+      "Item3": "Bronze Sword"
     }
   }
 }
