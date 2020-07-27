@@ -40,6 +40,16 @@
       "ItemDetails": null,
       "ItemPNG": "res://Props/ItemIcons/bronze_sword.png"
     },
+    "Bronze Armor": {
+      "ItemType": "Apparel",
+      "ItemAtk": null,
+      "ItemDef": 15,
+      "StatHeal": null,
+      "HealVal": null,
+      "ItemValue": 60,
+      "ItemDetails": null,
+      "ItemPNG": "res://Props/ItemIcons/bronze_armor.png"
+    },
     "Potion Tube": {
       "ItemType": "Consum",
       "ItemAtk": null,
@@ -95,7 +105,9 @@
     "stage1": {
       "Item1": "Iron Sword",
       "Item2": "Potion Tube",
-      "Item3": "Bronze Sword"
+      "Item3": "Bronze Sword",
+      "Item4": "Bronze Armor",
+      "Item5": "Iron Armor"
     }
   }
 }

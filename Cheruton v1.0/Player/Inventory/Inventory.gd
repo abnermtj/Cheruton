@@ -333,7 +333,6 @@ func check_fixed():
 # Use the item that has been double clicked
 func utilize_item(node):
 	# Dequipping item
-	print(202)
 	if(node.name == "Weapons" || node.name == "Apparel"):
 		item_status(node, "DEQUIP")
 
@@ -344,7 +343,6 @@ func utilize_item(node):
 			item_status(node, "EQUIP")
 		# Removing equipped item
 		else:
-			print(101)
 			item_status(node, "DEQUIP")
 	elif(active_tab.name == "Consum"):
 		use_item()
@@ -489,20 +487,23 @@ func item_status(selected_node, status):
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				type.get_node("Background/ItemBg").texture = null
 
-			var element_index = str(int(DataResource.temp_dict_player[active_tab.name + "_item"])%100)
-			DataResource.temp_dict_player[active_tab.name + "_item"] = null
+			
+			
 			if(!delete_status):
 				mouse_node = null
 
 			match active_tab.name:
 				"Weapons":
+					var element_index = str(int(DataResource.temp_dict_player["Weapons_item"])%100)
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
 					base_attack -= rating
 					attack.change_bar_value(base_attack, false, true)
 				"Apparel":
+					var element_index = str(int(DataResource.temp_dict_player["Apparel_item"])%100)
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
 					base_defense -= rating
 					defense.change_bar_value(base_defense, false, true)
+			DataResource.temp_dict_player[active_tab.name + "_item"] = null
 #Debug
 func _on_Button_pressed():
 	delete_status = true
