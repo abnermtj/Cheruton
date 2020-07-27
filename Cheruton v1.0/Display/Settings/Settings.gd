@@ -242,9 +242,10 @@ func _on_Audio_mouse_entered():
 	slide_to_position(new_position, new_offset)
 
 func _on_Game_mouse_entered():
-	var new_position = Vector2(slider.rect_position.x, game.rect_position.y)
-	var new_offset = game.get_child(0).rect_size.y /4
-	slide_to_position(new_position, new_offset)
+	pass
+#	var new_position = Vector2(slider.rect_position.x, game.rect_position.y)
+#	var new_offset = game.get_child(0).rect_size.y /4
+#	slide_to_position(new_position, new_offset)
 
 
 func _on_Back_mouse_entered():
@@ -276,8 +277,9 @@ func _on_Audio_pressed():
 	change_active_tab(base_audio)
 
 func _on_Game_pressed():
-	SceneControl.button_click.play()
-	change_active_tab(base_game)
+	pass
+#	SceneControl.button_click.play()
+#	change_active_tab(base_game)
 
 func change_active_tab(new_tab):
 	if(active_tab):
@@ -285,3 +287,4 @@ func change_active_tab(new_tab):
 
 	active_tab = new_tab
 	active_tab.show()
+
