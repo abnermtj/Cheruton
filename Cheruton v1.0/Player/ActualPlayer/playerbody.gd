@@ -178,7 +178,7 @@ func set_fsm(val):
 	states._active = val
 
 # Animation
-func play_anim(string):
+func play_anim(string : String):
 	if animation_player:
 		animation_player.clear_queue()
 		animation_player.play(string)

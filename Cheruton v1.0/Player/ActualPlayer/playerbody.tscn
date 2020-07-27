@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide_curve.tres" type="Curve" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 120, 120 )
+extents = Vector2( 138.364, 98.2648 )
 
 [sub_resource type="Animation" id=2]
 length = 0.18
@@ -1562,6 +1562,33 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=45]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 577, 447, 32, 48 ), Rect2( 611, 447, 32, 48 ), Rect2( 645, 447, 32, 48 ), Rect2( 679, 447, 32, 48 ), Rect2( 713, 447, 32, 48 ), Rect2( 747, 447, 32, 48 ), Rect2( 781, 447, 32, 48 ), Rect2( 815, 447, 32, 48 ), Rect2( 849, 447, 32, 48 ), Rect2( 883, 447, 32, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ), Vector2( 2.5, 19.5 ) ]
+}
+
+[sub_resource type="Animation" id=46]
 length = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
@@ -1588,7 +1615,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2.5, 19.5 ) ]
 }
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=47]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -1616,7 +1643,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2.5, 19.5 ) ]
 }
 
-[sub_resource type="Animation" id=47]
+[sub_resource type="Animation" id=48]
 length = 0.5
 step = 0.04
 tracks/0/type = "value"
@@ -1644,7 +1671,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 24, 10 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=48]
+[sub_resource type="Animation" id=49]
 length = 0.5
 step = 0.04
 tracks/0/type = "value"
@@ -1672,7 +1699,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -6 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=49]
+[sub_resource type="Animation" id=50]
 length = 0.5
 step = 0.04
 tracks/0/type = "value"
@@ -1700,7 +1727,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=50]
+[sub_resource type="Animation" id=51]
 length = 0.5
 step = 0.04
 tracks/0/type = "value"
@@ -1728,7 +1755,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=51]
+[sub_resource type="Animation" id=52]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1754,7 +1781,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=52]
+[sub_resource type="Animation" id=53]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1780,7 +1807,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 17 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=53]
+[sub_resource type="Animation" id=54]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1806,7 +1833,7 @@ tracks/1/keys = {
 "values": [ Vector2( -6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=54]
+[sub_resource type="Animation" id=55]
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot:scale")
 tracks/0/interp = 1
@@ -1832,7 +1859,7 @@ tracks/1/keys = {
 "values": [ Vector2( 6, 4 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=55]
+[sub_resource type="Animation" id=56]
 length = 0.1
 step = 0.05
 tracks/0/type = "value"
@@ -1848,7 +1875,7 @@ tracks/0/keys = {
 "values": [ null ]
 }
 
-[sub_resource type="Animation" id=56]
+[sub_resource type="Animation" id=57]
 length = 0.35
 step = 0.05
 tracks/0/type = "value"
@@ -1864,28 +1891,28 @@ tracks/0/keys = {
 "values": [ ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null, ExtResource( 23 ), null ]
 }
 
-[sub_resource type="CapsuleShape2D" id=57]
+[sub_resource type="CapsuleShape2D" id=58]
 radius = 28.0
 height = 65.0
 
-[sub_resource type="CapsuleShape2D" id=58]
+[sub_resource type="CapsuleShape2D" id=59]
 radius = 28.0
 height = 30.0
 
-[sub_resource type="CircleShape2D" id=59]
+[sub_resource type="CircleShape2D" id=60]
 radius = 23.0
 
-[sub_resource type="CapsuleShape2D" id=60]
+[sub_resource type="CapsuleShape2D" id=61]
 radius = 20.0
 height = 65.0
 
-[sub_resource type="RectangleShape2D" id=61]
+[sub_resource type="RectangleShape2D" id=62]
 extents = Vector2( 30, 10 )
 
-[sub_resource type="CircleShape2D" id=62]
+[sub_resource type="CircleShape2D" id=63]
 radius = 550.0
 
-[sub_resource type="CircleShape2D" id=63]
+[sub_resource type="CircleShape2D" id=64]
 radius = 100.0
 
 [node name="player" type="KinematicBody2D"]
@@ -1905,9 +1932,9 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( -5.5, 19.5 )
+offset = Vector2( 2.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 1009, 249, 48, 48 )
+region_rect = Rect2( 577, 447, 32, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1921,8 +1948,9 @@ collision_mask = 16
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
-position = Vector2( -116.598, -32.013 )
+position = Vector2( -117.28, 10.2169 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
 visible = false
@@ -1986,32 +2014,33 @@ anims/swing_continious8 = SubResource( 41 )
 anims/swing_continious9 = SubResource( 42 )
 anims/swing_exit = SubResource( 43 )
 anims/swing_start = SubResource( 44 )
-anims/wall_slide = SubResource( 45 )
-anims/wall_slide_fast = SubResource( 46 )
+anims/turn_behind = SubResource( 45 )
+anims/wall_slide = SubResource( 46 )
+anims/wall_slide_fast = SubResource( 47 )
 
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/attack_air_2 = SubResource( 47 )
-anims/attack_air_3 = SubResource( 48 )
-anims/attack_ground_3 = SubResource( 49 )
-anims/default = SubResource( 50 )
-anims/jump = SubResource( 51 )
-anims/land = SubResource( 52 )
-anims/run_change_dir_left = SubResource( 53 )
-anims/run_change_dir_right = SubResource( 54 )
+anims/attack_air_2 = SubResource( 48 )
+anims/attack_air_3 = SubResource( 49 )
+anims/attack_ground_3 = SubResource( 50 )
+anims/default = SubResource( 51 )
+anims/jump = SubResource( 52 )
+anims/land = SubResource( 53 )
+anims/run_change_dir_left = SubResource( 54 )
+anims/run_change_dir_right = SubResource( 55 )
 
 [node name="AnimationPlayerFxColor" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 55 )
-anims/hit = SubResource( 56 )
+anims/default = SubResource( 56 )
+anims/hit = SubResource( 57 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.5 )
-shape = SubResource( 57 )
+shape = SubResource( 58 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 25 )
-shape = SubResource( 58 )
+shape = SubResource( 59 )
 disabled = true
 
 [node name="states" type="Node" parent="."]
@@ -2131,7 +2160,7 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( 0, -18 )
-shape = SubResource( 59 )
+shape = SubResource( 60 )
 
 [node name="hitBox" type="Area2D" parent="."]
 visible = false
@@ -2141,7 +2170,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( 0, 10 )
-shape = SubResource( 60 )
+shape = SubResource( 61 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
 visible = false
@@ -2149,7 +2178,7 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
 position = Vector2( 0, 61.5 )
-shape = SubResource( 61 )
+shape = SubResource( 62 )
 
 [node name="circleScan" type="Area2D" parent="."]
 visible = false
@@ -2158,7 +2187,7 @@ collision_mask = 544
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScan"]
 position = Vector2( 0, 42.559 )
-shape = SubResource( 62 )
+shape = SubResource( 63 )
 
 [node name="circleScanSmall" type="Area2D" parent="."]
 visible = false
@@ -2166,7 +2195,7 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circleScanSmall"]
-shape = SubResource( 63 )
+shape = SubResource( 64 )
 
 [node name="sounds" type="Node" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=2]
@@ -35,6 +35,40 @@
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_shadows.png" type="Texture" id=33]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=35]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 50 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "cutscene0_0"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_cutscene_mode"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "turn_behind" ],
+"method": "play_anim"
+} ]
+}
 
 [node name="Hometown" type="Node2D"]
 pause_mode = 1
@@ -279,3 +313,16 @@ texture = ExtResource( 33 )
 energy = 0.4
 mode = 2
 range_height = 1080.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 11380, 516 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 9, 0 )
+shape = SubResource( 1 )
+
+[node name="CutscenePlayer" type="AnimationPlayer" parent="."]
+anims/cutscene0_0 = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
