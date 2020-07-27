@@ -446,20 +446,36 @@ func item_status(selected_node, status):
 	match status:
 		"EQUIP":
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
-			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
+
 			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			equipped_coins.get_node(active_tab.name + "/Background/ItemBg").texture = index_equipped_bg
+			var equipped_rating = 0
+			var equipped = DataResource.temp_dict_player[active_tab.name + "_item"]
 			var element_index = str(int(selected_node.name)%100)
 			match active_tab.name:
 				"Weapons":
+					if(equipped):
+						var equipped_index = str(int(equipped)%100)
+						equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack 
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-					base_attack += rating
+					base_attack += rating - equipped_rating
 					attack.change_bar_value(base_attack, false, true)
 				"Apparel":
+					if(equipped):
+						var equipped_index = str(int(equipped)%100)
+						equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_defense
 					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
-					base_defense += rating
+					base_defense += rating - equipped_rating
 					defense.change_bar_value(base_defense, false, true)
+			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
 
+#				simulate_node = base_attack
+#
+#				if(equipped):
+#					var equipped_index = str(int(equipped)%100)
+#					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack
+#				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+#				attack.change_bar_value(simulate_node - equipped_rating + rating, true)
 		"DEQUIP":
 
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
