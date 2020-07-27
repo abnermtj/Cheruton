@@ -120,6 +120,7 @@ func _edit_key(new_key):
 	
 	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
 	set_text(temp_control.get_child(0), false, btn_text)
+	DataResource.dict_input_map[temp_control.name] = btn_text
 
 	temp_control = null
 
@@ -145,7 +146,7 @@ func handle_duplicates(current_binding, old_key):
 	
 	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
 	set_text(current_binding.get_child(0), false, btn_text)
-
+	DataResource.dict_input_map[current_binding.name] = btn_text
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
