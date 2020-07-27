@@ -158,11 +158,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitPause" type="TextureButton" parent="."]
-margin_left = 322.228
-margin_top = 81.8176
-margin_right = 334.228
-margin_bottom = 93.8176
+[node name="ExitPause" type="TextureButton" parent="Border"]
+margin_left = 189.728
+margin_top = 6.8176
+margin_right = 201.728
+margin_bottom = 18.8176
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -170,4 +170,4 @@ __meta__ = {
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/RMMenu" to="." method="_on_RMMenu_pressed"]
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/ExitDirect" to="." method="_on_ExitDirect_pressed"]
-[connection signal="pressed" from="ExitPause" to="." method="_on_ExitPause_pressed"]
+[connection signal="pressed" from="Border/ExitPause" to="." method="_on_ExitPause_pressed"]

@@ -1,6 +1,8 @@
 extends Node2D
 
 const MMENU = "res://Display/MainMenu/MainMenu.tscn"
+const WHITE = Color(1,1,1,1)
+
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
 onready var arrow = preload("res://Display/MouseDesign/arrow.png")
@@ -16,6 +18,7 @@ onready var load_layer = $LoadLayer/Load
 onready var settings_layer = $SettingsLayer/Settings
 onready var button_click = $ButtonClick
 onready var scene_change = $SceneChange
+onready var canvas = $CanvasModulate
 
 var cur_story
 var cur_dialog
@@ -30,10 +33,12 @@ var new_level
 signal init_statbar
 
 func _ready():
+	if(get_tree().get_root().get_child(2).name != "MainMenu"):
+		canvas.color = WHITE
 	bg_music.volume_db = -60
 	randomize()
-	change_music(mmenu_music_file)
 	init_music()
+	change_music(mmenu_music_file)
 	#init_cursor()
 
 ##############

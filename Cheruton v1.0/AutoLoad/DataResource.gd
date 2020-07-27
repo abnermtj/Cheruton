@@ -10,6 +10,7 @@ var dict_main = {}
 var dict_inventory = {}
 var dict_player = {}
 var dict_settings = {}
+var dict_input_map = {}
 
 # Masterlist Dict
 var dict_masterlist = {}
@@ -30,7 +31,6 @@ signal change_audio_sfx
 func _ready():
 	load_data()
 
-
 func load_data():
 	#Editable
 	loaded = true
@@ -38,6 +38,7 @@ func load_data():
 	dict_masterlist = load_dict(MASTERLIST)
 	dict_player = dict_main.player.main
 	dict_settings = dict_main.settings.main
+	dict_input_map = dict_main.input_map
 	dict_inventory = dict_main.inventory
 	temp_dict_player = dict_player
 	dict_item_shop = dict_masterlist.item_shop[temp_dict_player.stage]
@@ -45,6 +46,9 @@ func load_data():
 	#Non-Editable
 	dict_item_spawn = dict_masterlist.item_spawn
 	dict_item_masterlist = dict_masterlist.item_masterlist
+
+	# Update Inputmap
+	update_input_map()
 
 
 func load_dict(FilePath, password:= ""):
@@ -80,14 +84,37 @@ func save_data(FILE, dictionary):
 func restore_last_save():
 	temp_dict_player = dict_player
 
+func update_input_map():
+	var keys = dict_input_map.keys()
+	var keys_size = keys.size()
+	for i in keys_size:
+		var action = keys[i]
+		var event = dict_input_map[action]
+
+		var existing_event = InputMap.get_action_list(action)[0].as_text()
+
+		if(existing_event != event):
+			modify_event(action, event)
+
+func modify_event(action, event):
+	var new_input = InputEventKey.new()
+	var scancode = OS.find_scancode_from_string(event) 
+	new_input.set_scancode(scancode)
+	InputMap.action_erase_event(action, InputMap.get_action_list(action)[0])
+	InputMap.action_add_event(action, new_input)
+
 func reset_all():
-	dict_main = {"player": {"main": {}}, "settings": {"main": {}}, "inventory": {} }
+	dict_main = {"player": {"main": {}}, "settings": {"main": {}}, "inventory": {}, "input_map": {} }
+
 	dict_main.player.main = dict_player
 	dict_main.settings.main = dict_settings
 	dict_main.inventory = dict_inventory
+	dict_main.input_map = dict_input_map
 	reset_player()
 	reset_settings()
 	reset_inventory()
+	reset_input_map()
+
 
 func reset_player():
 	dict_player.exp_curr = 0
@@ -95,7 +122,7 @@ func reset_player():
 	dict_player.health_curr = 50
 	dict_player.health_max = 50
 	dict_player.level = 1
-	dict_player.coins = 100#DEBUG
+	dict_player.coins = 100
 	dict_player.attack = 15
 	dict_player.defense = 15
 	dict_player.Weapons_item = null
@@ -117,6 +144,16 @@ func reset_inventory():
 	dict_inventory.Consum = {}
 	dict_inventory.Misc = {}
 	dict_inventory["Key Items"] = {}
+	save_rest()
+
+func reset_input_map():
+	var action_map = InputMap.get_actions()
+	var action_size = action_map.size()
+	for i in action_size:
+		var action = action_map[i]
+		if(action != "ui_select" && action != "ui_focus_prev"):
+			var event = InputMap.get_action_list(action)[0].as_text()
+			dict_input_map[action] = event
 	save_rest()
 
 
