@@ -176,7 +176,7 @@ func init_bars():
 
 func change_specific_bar(base_type, type_name):
 	var item = DataResource.temp_dict_player[type_name + "_item"]
-	if(item):
+	if(item && item_state != "HOVER"):
 		var element_index = str(int(item)%100)
 		var rating
 		match type_name:
