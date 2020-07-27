@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=2]
@@ -35,24 +35,34 @@
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_shadows.png" type="Texture" id=33]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Levels/Hometown/Sprites/HomeTown-PortalGlyphs.png" type="Texture" id=36]
+[ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_Hole.png" type="Texture" id=37]
+[ext_resource path="res://Effects/WormHole/WormHole.shader" type="Shader" id=38]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 38 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 50 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "cutscene0_0"
+length = 7.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 6.53436 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "start_cutscene_mode"
+}, {
+"args": [  ],
+"method": "end_cutscene_mode"
 } ]
 }
 tracks/1/type = "method"
@@ -62,13 +72,98 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.00502319, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [ Vector2( 1, 0 ) ],
+"method": "set_look_direction"
+}, {
+"args": [ "idle" ],
+"method": "change_state"
+}, {
 "args": [ "turn_behind" ],
 "method": "play_anim"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("homeTownPortal/Glyphs:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2, 1.24942, 1.33435 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.13, 4.54, 5.09, 0.84 ), Color( 1.13, 4.54, 5.09, 0.7 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("homeTownPortal/Portal2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("homeTownPortal/Portal:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("homeTownPortal/Portal2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("homeTownPortal/Portal:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2, 2.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.82, 0.8 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("homeTownPortal/Portal:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2, 2.1117 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Environment" id=3]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.22
+glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="Hometown" type="Node2D"]
 pause_mode = 1
@@ -133,6 +228,32 @@ position = Vector2( 9360, 548 )
 [node name="grassLandTree3" parent="Shaders" instance=ExtResource( 31 )]
 position = Vector2( 12041, 552 )
 
+[node name="homeTownPortal" parent="." instance=ExtResource( 30 )]
+position = Vector2( 11380, 402 )
+
+[node name="Glyphs" type="Sprite" parent="homeTownPortal"]
+modulate = Color( 1.13, 4.54, 5.09, 0.7 )
+light_mask = 0
+position = Vector2( 0, 2 )
+texture = ExtResource( 36 )
+
+[node name="Portal2" type="Sprite" parent="homeTownPortal"]
+modulate = Color( 1, 1, 1.2, 0.9 )
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 5, 34 )
+texture = ExtResource( 37 )
+
+[node name="Portal" type="Sprite" parent="homeTownPortal"]
+modulate = Color( 1, 1, 1.03, 1 )
+show_behind_parent = true
+light_mask = 0
+material = SubResource( 5 )
+position = Vector2( 1, 26 )
+rotation = 6.28319
+scale = Vector2( 0.770172, 0.751556 )
+texture = ExtResource( 37 )
+
 [node name="Tiles" parent="." instance=ExtResource( 1 )]
 light_mask = 0
 collision_mask = 0
@@ -147,9 +268,6 @@ collision_mask = 0
 occluder_light_mask = 0
 format = 1
 tile_data = PoolIntArray( -393106, 4, 0, -327589, 2, 0, -131072, 6, 0, -131035, 1, 0, -65385, 3, 0, 14, 0, 0, 196737, 5, 0, 327742, 7, 0 )
-
-[node name="homeTownPortal" parent="." instance=ExtResource( 30 )]
-position = Vector2( 11380, 402 )
 
 [node name="Props" parent="." instance=ExtResource( 34 )]
 tile_data = PoolIntArray( 131421, 3, 0, 131431, 4, 0, 262438, 4, 0, 918009, 4, 0, 1114542, 17, 0, 1180320, 4, 0, 1311058, 18, 0, 1311070, 20, 0, 1311078, 19, 0, 1573005, 19, 0, 1573007, 10, 0, 1704522, 5, 0, 1835129, 19, 0, 1835139, 15, 0, 1835497, 19, 0, 1900591, 11, 0, 1966203, 14, 0, 2097158, 19, 0, 2097174, 19, 0, 2097186, 10, 0, 2097230, 19, 0, 2097659, 15, 0, 2097805, 23, 0, 2163421, 11, 0, 2359919, 19, 0, 2359955, 19, 0, 2359972, 15, 0, 2359984, 19, 0, 2359991, 18, 0, 2360040, 18, 0, 2490947, 14, 0, 2491049, 14, 0 )
@@ -261,7 +379,7 @@ position = Vector2( 10240, 560 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 light_mask = 1
-position = Vector2( 525, 498 )
+position = Vector2( 11445, 516 )
 
 [node name="camera" parent="player" instance=ExtResource( 10 )]
 limit_left = -9999
@@ -314,8 +432,11 @@ energy = 0.4
 mode = 2
 range_height = 1080.0
 
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 11397, 516 )
+
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 11380, 516 )
+position = Vector2( 11345, 516 )
 collision_layer = 0
 collision_mask = 2
 
@@ -325,4 +446,7 @@ shape = SubResource( 1 )
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
 anims/cutscene0_0 = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
