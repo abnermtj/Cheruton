@@ -254,13 +254,26 @@ func _on_mouse_entered(node):
 			if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
 				return
 		var element_index = str(int(node.name)%100)
+		var simulate_node 
+		var equipped = DataResource.temp_dict_player[active_tab.name + "_item"]
+		var equipped_rating = 0
 		match active_tab.name:
 			"Weapons":
+				simulate_node = base_attack
+				
+				if(equipped):
+					var equipped_index = str(int(equipped)%100)
+					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack
 				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-				attack.change_bar_value(base_attack + rating, true)
+				attack.change_bar_value(simulate_node - equipped_rating + rating, true)
 			"Apparel":
+				simulate_node = base_defense
+							
+				if(equipped):
+					var equipped_index = str(int(equipped)%100)
+					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_defense
 				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
-				defense.change_bar_value(base_attack + rating, true)
+				defense.change_bar_value(simulate_node - equipped_rating + rating, true)
 
 # Mouse leaves label section of the element
 func _on_mouse_exited(node):
