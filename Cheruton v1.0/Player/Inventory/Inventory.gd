@@ -481,6 +481,22 @@ func item_status(selected_node, status):
 				actual.get_node("Background/ItemBg").texture = null
 				selected_node.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				selected_node.get_node("Background/ItemBg").texture = null
+				match selected_node.name:
+					"Weapons":
+						var equipped = DataResource.temp_dict_player["Weapons_item"]
+						var equipped_index = str(int(equipped)%100)
+						var equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack
+						base_attack -= equipped_rating
+						attack.change_bar_value(base_attack, false, true)
+						DataResource.temp_dict_player["Weapons_item"] = null
+					"Apparel":
+						var equipped = DataResource.temp_dict_player["Apparel_item"]
+						var equipped_index = str(int(equipped)%100)
+						var equipped_rating =  DataResource.dict_inventory.Apparel["Item" + equipped_index].item_defense
+						base_defense -= equipped_rating
+						defense.change_bar_value(base_defense, false, true)
+						DataResource.temp_dict_player["Apparel_item"] = null
+				return
 
 			else:
 				selected_node.get_node("Background/ItemBg").texture = null
