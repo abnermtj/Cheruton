@@ -181,10 +181,10 @@ func change_specific_bar(base_type, type_name):
 		var rating
 		match type_name:
 			"Weapons":
-				rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+				rating = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 				attack.change_bar_value(base_type + rating)
 			"Apparel":
-				rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+				rating = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
 				defense.change_bar_value(base_type + rating)
 	else:
 		match type_name:
@@ -263,16 +263,16 @@ func _on_mouse_entered(node):
 				
 				if(equipped):
 					var equipped_index = str(int(equipped)%100)
-					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack
-				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+					equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack
+				var rating = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 				attack.change_bar_value(simulate_node - equipped_rating + rating, true)
 			"Apparel":
 				simulate_node = base_defense
 							
 				if(equipped):
 					var equipped_index = str(int(equipped)%100)
-					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_defense
-				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+					equipped_rating =  DataResource.dict_inventory.Apparel["Item" + equipped_index].item_defense
+				var rating = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
 				defense.change_bar_value(simulate_node - equipped_rating + rating, true)
 
 # Mouse leaves label section of the element
@@ -459,15 +459,15 @@ func item_status(selected_node, status):
 				"Weapons":
 					if(equipped):
 						var equipped_index = str(int(equipped)%100)
-						equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack 
-					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+						equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack 
+					var rating = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 					base_attack += rating - equipped_rating
 					attack.change_bar_value(base_attack, false, true)
 				"Apparel":
 					if(equipped):
 						var equipped_index = str(int(equipped)%100)
-						equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_defense
-					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+						equipped_rating =  DataResource.dict_inventory.Apparel["Item" + equipped_index].item_defense
+					var rating = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
 					base_defense += rating - equipped_rating
 					defense.change_bar_value(base_defense, false, true)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
@@ -495,12 +495,12 @@ func item_status(selected_node, status):
 			match active_tab.name:
 				"Weapons":
 					var element_index = str(int(DataResource.temp_dict_player["Weapons_item"])%100)
-					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
+					var rating = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 					base_attack -= rating
 					attack.change_bar_value(base_attack, false, true)
 				"Apparel":
 					var element_index = str(int(DataResource.temp_dict_player["Apparel_item"])%100)
-					var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_defense
+					var rating = DataResource.dict_inventory.Apparel["Item" + element_index].item_defense
 					base_defense -= rating
 					defense.change_bar_value(base_defense, false, true)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = null

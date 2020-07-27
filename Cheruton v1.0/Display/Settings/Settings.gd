@@ -27,7 +27,6 @@ onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
 onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
-onready var info = $Settings/Container/Main/Contents/BaseControls/Buttons/Info
 
 var slider_active := false
 var controls_set := -1
