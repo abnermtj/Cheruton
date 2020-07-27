@@ -53,14 +53,13 @@ func init_key_bindings():
 			var current_binding = column_node.get_child(j)
 			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-			btn_text = check_mouse_text(btn_text)
 			set_text(current_binding.get_child(0), false, btn_text)
 
 func set_text(node, unassign := true, new_value := ""):
 	if(unassign):
 			node.text = "Unassigned"
 	else:
-			node.text = new_value
+			node.text = check_mouse_text(new_value)
 
 
 func check_mouse_text(btn_text):
