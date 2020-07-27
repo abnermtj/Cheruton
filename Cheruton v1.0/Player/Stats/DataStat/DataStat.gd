@@ -36,7 +36,7 @@ func change_bar_colour(value, browse, fix):
 		parent_rating_value.show()
 
 	else:
-		if(value > bar.value):
+		if(value > bar.value || !DataResource.temp_dict_player[get_tree().current_scene.active_tab.name + "_item"]):
 			bar.set_tint_progress(Color(0, 1, 0))   # Green
 			parent_rating_value.set("custom_colors/font_color",Color(0, 1, 0))
 		elif(value < bar.value):
