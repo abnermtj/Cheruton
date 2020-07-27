@@ -333,6 +333,7 @@ func check_fixed():
 # Use the item that has been double clicked
 func utilize_item(node):
 	# Dequipping item
+	print(202)
 	if(node.name == "Weapons" || node.name == "Apparel"):
 		item_status(node, "DEQUIP")
 
@@ -343,6 +344,7 @@ func utilize_item(node):
 			item_status(node, "EQUIP")
 		# Removing equipped item
 		else:
+			print(101)
 			item_status(node, "DEQUIP")
 	elif(active_tab.name == "Consum"):
 		use_item()
@@ -445,12 +447,15 @@ func item_status(selected_node, status):
 	var type = get_node("Border/Bg/Main/Sides/Data/EquippedCoins/" + active_tab.name)
 	match status:
 		"EQUIP":
+			var equipped = DataResource.temp_dict_player[active_tab.name + "_item"]
+			if(equipped):
+				items.find_node(equipped, true, false).get_node("Background/ItemBg").texture = null
 			type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(selected_node.get_node("Background/ItemBg/ItemBtn").get_normal_texture())
 
 			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			equipped_coins.get_node(active_tab.name + "/Background/ItemBg").texture = index_equipped_bg
 			var equipped_rating = 0
-			var equipped = DataResource.temp_dict_player[active_tab.name + "_item"]
+			
 			var element_index = str(int(selected_node.name)%100)
 			match active_tab.name:
 				"Weapons":
@@ -469,13 +474,6 @@ func item_status(selected_node, status):
 					defense.change_bar_value(base_defense, false, true)
 			DataResource.temp_dict_player[active_tab.name + "_item"] = selected_node.name
 
-#				simulate_node = base_attack
-#
-#				if(equipped):
-#					var equipped_index = str(int(equipped)%100)
-#					equipped_rating =  DataResource.dict_inventory[active_tab.name]["Item" + equipped_index].item_attack
-#				var rating = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_attack
-#				attack.change_bar_value(simulate_node - equipped_rating + rating, true)
 		"DEQUIP":
 
 			if(selected_node.name == "Weapons" || selected_node.name == "Apparel"):
