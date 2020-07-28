@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://Effects/white_screen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Stats/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Stats/ExpBar/ExpBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AutoLoad/SceneControl/SceneControl.gd" type="Script" id=4]
@@ -8,7 +9,7 @@
 [ext_resource path="res://Music/SFX/ButtonClick.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
-resource_name = "scene_in"
+resource_name = "mmenu_in"
 length = 1.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("BgMusic:volume_db")
@@ -34,8 +35,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 0.5 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("LoadLayer/Load/SceneModulate:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.5 ), Color( 0, 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
+resource_name = "mmenu_out"
 length = 1.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("BgMusic:volume_db")
@@ -60,6 +74,74 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 4, 0.14, 0.14 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.5, 0.5, 0.5, 0.5 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LoadLayer/Load/SceneModulate:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.5 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "scene_in"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ -60.0, -30.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LoadLayer/Load/SceneModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.63, 1.25 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.5 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "scene_out"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("BgMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.63, 1.2 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ 0.0, -30.0, -60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LoadLayer/Load/SceneModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.63, 1.2 ),
+"transitions": PoolRealArray( 4, 0.14, 0.14 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.5 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [node name="SceneControl" type="Node2D"]
@@ -108,6 +190,12 @@ margin_bottom = 144.0
 
 [node name="Load" type="Node2D" parent="LoadLayer"]
 
+[node name="SceneModulate" type="Sprite" parent="LoadLayer/Load"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+centered = false
+
 [node name="popUpGui" parent="." instance=ExtResource( 6 )]
 
 [node name="SettingsLayer" type="CanvasLayer" parent="."]
@@ -128,6 +216,8 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="SceneChange" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/scene_in = SubResource( 1 )
-anims/scene_out = SubResource( 2 )
+anims/mmenu_in = SubResource( 1 )
+anims/mmenu_out = SubResource( 2 )
+anims/scene_in = SubResource( 3 )
+anims/scene_out = SubResource( 4 )
 [connection signal="animation_finished" from="SceneChange" to="." method="_on_SceneChange_animation_finished"]
