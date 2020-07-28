@@ -33,6 +33,7 @@ func new_gui(gui_name):
 		return
 
 	if not pop_up_enable_list[gui_name] : return
+
 	if state_name_stack.has(gui_name): return
 	states_map[gui_name].begin()
 	state_name_stack.push_back(gui_name)

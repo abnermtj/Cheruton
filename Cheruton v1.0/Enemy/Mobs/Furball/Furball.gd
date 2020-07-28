@@ -30,6 +30,7 @@ var hitter : Node
 var hitter_pos : Vector2
 
 func _ready():
+
 	$bodyPivot/bodyRotate/hurtBox.obj = self
 	health_bar.init_bar(health)
 

@@ -9,8 +9,6 @@ onready var arrow = preload("res://Display/MouseDesign/arrow.png")
 onready var beam = preload("res://Display/MouseDesign/beam.png")
 onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
-
-
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var pop_up_gui = $popUpGui
@@ -22,7 +20,6 @@ onready var scene_change = $SceneChange
 onready var canvas = $CanvasModulate
 onready var scene_modulate = $LoadLayer/Load/SceneModulate
 
-
 var cur_story
 var cur_dialog
 
@@ -32,7 +29,6 @@ var enable_save := false
 
 var old_level
 var new_level
-
 
 signal init_statbar
 
@@ -57,11 +53,9 @@ func init_music():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 
-
 func init_cursor():
 	Input.set_custom_mouse_cursor(arrow)
 	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
-
 
 ################
 # SCENE CHANGE #
@@ -73,12 +67,13 @@ func change_music(new_music):
 
 func change_scene(old_scene, new_scene):
 	get_tree().paused = true
+	old_level = old_scene
+	new_level = load(new_scene).instance()
+
 	if(old_scene.name == "MainMenu"):
 		scene_change.play("mmenu_out")
 	else:
 		_on_SceneChange_animation_finished("scene_out")
-	old_level = old_scene
-	new_level = load(new_scene).instance()
 
 func fade_in_scene():
 	scene_change.play("scene_in")

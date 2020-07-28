@@ -80,7 +80,6 @@ func get_next_node():
 func play_dialog():
 	audio.pitch_scale = rand_range(.94, .95)
 	audio.play()
-	print(audio)
 
 	finished_current_node = false
 	$AnimationPlayerVisibility.play("default")

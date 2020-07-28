@@ -86,8 +86,6 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	can_attack = true
-	attack_enabled = true
 	var old_nearest_hook_point = nearest_hook_point
 	var old_nearest_interactible = nearest_interactible
 	nearest_hook_point = get_nearest_object("hook_points")

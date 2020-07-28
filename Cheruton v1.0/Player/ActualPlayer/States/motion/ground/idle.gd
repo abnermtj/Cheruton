@@ -14,7 +14,6 @@ func update(delta):
 	owner.move()
 
 	if get_input_direction().x:
-		print("2")
 		emit_signal("finished", "run")
 	.update(delta)
 

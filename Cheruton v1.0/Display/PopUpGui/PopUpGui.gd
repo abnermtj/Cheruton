@@ -18,4 +18,5 @@ func dialog_only():
 			popups.pop_up_enable_list[entry] = false
 
 func end_dialog_only():
-	pass
+	for entry in popups.pop_up_enable_list:
+		popups.pop_up_enable_list[entry] = true

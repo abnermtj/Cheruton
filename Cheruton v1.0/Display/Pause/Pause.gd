@@ -15,7 +15,6 @@ func _on_Settings_pressed():
 func _on_RMMenu_pressed():
 	SceneControl.button_click.play()
 	SceneControl.change_scene(SceneControl.levels.get_child(0), MAINMENU)
-	print("here")
 	emit_signal("release_gui", "pause")
 
 func _on_ExitPause_pressed():

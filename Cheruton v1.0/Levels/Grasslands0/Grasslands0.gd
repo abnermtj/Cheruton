@@ -8,7 +8,7 @@ var flying_sword
 
 func _ready():
 	DataResource.change_health(50) # fix next time
-#	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
+	bg_music_file = "res://Music/Background/Chiptune _-Clavi, Wurly & CP-(Album) _Every Morning_.wav"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
 							1: Vector2(7866 ,2552)}
@@ -19,7 +19,6 @@ func _ready():
 	#debug
 #	player_spawn_pos = Vector2(3028, -1936)
 #	$player.set_input_enabled(true)
-#	player_spawn_pos = Vector2(5472, 1056)
 	cur_cut_scene_completed = false
 #	cutscene_number = 2 # cutscene
 #	cutscene_index = 0 #
@@ -33,7 +32,6 @@ func _ready():
 	SceneControl.fade_in_scene()
 
 func next_cutscene():
-#	print(cutscene_number, cutscene_index)
 	cur_cut_scene_completed = false
 	cut_scene_player.play("cutscene" + str(cutscene_number)+ "_" + str(cutscene_index))
 

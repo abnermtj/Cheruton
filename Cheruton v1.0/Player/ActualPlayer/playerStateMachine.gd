@@ -12,7 +12,7 @@ func _change_state(state_name):
 	else:
 		owner.on_floor = true
 
-	print("player changing to ", state_name)
+#	print("player changing to ", state_name)
 	._change_state(state_name)
 
 func _on_AnimationPlayer_animation_changed(old_name, new_name):
