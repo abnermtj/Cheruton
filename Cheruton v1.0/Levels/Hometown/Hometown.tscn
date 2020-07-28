@@ -39,14 +39,13 @@
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_Hole.png" type="Texture" id=37]
 [ext_resource path="res://Effects/WormHole/WormHole.shader" type="Shader" id=38]
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 38 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 50 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "cutscene0_0"
+[sub_resource type="Animation" id=3]
 length = 7.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -158,7 +157,7 @@ tracks/7/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=4]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 1.22
@@ -248,7 +247,7 @@ texture = ExtResource( 37 )
 modulate = Color( 1, 1, 1.03, 1 )
 show_behind_parent = true
 light_mask = 0
-material = SubResource( 5 )
+material = SubResource( 1 )
 position = Vector2( 1, 26 )
 rotation = 6.28319
 scale = Vector2( 0.770172, 0.751556 )
@@ -442,11 +441,11 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 9, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]
-anims/cutscene0_0 = SubResource( 2 )
+anims/cutscene0_0 = SubResource( 3 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 4 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
