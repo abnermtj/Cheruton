@@ -75,16 +75,13 @@ func change_scene(old_scene, new_scene):
 	get_tree().paused = true
 	if(old_scene.name == "MainMenu"):
 		scene_change.play("mmenu_out")
-
+	else:
+		_on_SceneChange_animation_finished("scene_out")
 	old_level = old_scene
 	new_level = load(new_scene).instance()
 
 func fade_in_scene():
 	scene_change.play("scene_in")
-
-
-
-
 
 func _on_SceneChange_animation_finished(anim_name):
 	if(anim_name == "scene_out" || anim_name == "mmenu_out"):

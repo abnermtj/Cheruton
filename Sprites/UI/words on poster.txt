@@ -1,3 +1,8 @@
 Cheruton is 2d pixel, action, adventure platformer, where we play as a female character on
 her journey to become an adventurer. It is a linear story based game with interesting
 characters, exciting combat and worlds all handmade by us.
+
+pressing plus on the main menu settings sound, overeaches and pressing minus again does affect
+song doesn't loop
+collsioin bugs
+ingame soundtrack

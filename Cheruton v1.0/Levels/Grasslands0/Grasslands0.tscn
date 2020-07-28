@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -2735,6 +2735,9 @@ font_data = ExtResource( 34 )
 size = 30
 font_data = ExtResource( 34 )
 
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 100, 500 )
+
 [node name="Grasslands0" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -2868,7 +2871,7 @@ tile_data = PoolIntArray( -589729, 5, 0, -589728, 1, 0, -524193, 5, 0, -524192, 
 [node name="DirtTiles" type="TileMap" parent="."]
 tile_set = ExtResource( 27 )
 format = 1
-tile_data = PoolIntArray( 1376345, 6, 0, 1376346, 7, 0, 1376347, 7, 0, 1376348, 7, 0, 1376349, 6, 0, 1376350, 6, 0, 1376351, 6, 0, 1376352, 7, 0, 1376353, 6, 0, 1376354, 7, 0, 1376355, 6, 0, 1376356, 7, 0, 1376357, 7, 0, 1376358, 6, 0, 1376359, 6, 0, 1376360, 7, 0, 1376361, 7, 0, 1376362, 7, 0, 1376363, 6, 0, 1376364, 6, 0, 1376365, 6, 0, 1704025, 5, 0 )
+tile_data = PoolIntArray( 1310733, 0, 0, 1376345, 6, 0, 1376346, 7, 0, 1376347, 7, 0, 1376348, 7, 0, 1376349, 6, 0, 1376350, 6, 0, 1376351, 6, 0, 1376352, 7, 0, 1376353, 6, 0, 1376354, 7, 0, 1376355, 6, 0, 1376356, 7, 0, 1376357, 7, 0, 1376358, 6, 0, 1376359, 6, 0, 1376360, 7, 0, 1376361, 7, 0, 1376362, 7, 0, 1376363, 6, 0, 1376364, 6, 0, 1376365, 6, 0, 1704025, 5, 0 )
 
 [node name="InvisibleTiles" parent="." instance=ExtResource( 12 )]
 visible = false
@@ -2901,7 +2904,7 @@ texture = ExtResource( 32 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 self_modulate = Color( 0.698039, 0.109804, 0.109804, 1 )
-position = Vector2( 3900, 1808 )
+position = Vector2( -188, 188 )
 z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
@@ -3413,4 +3416,11 @@ position = Vector2( 416, -136 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 44 )
 offset = Vector2( 0, 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 8080, 2428 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -16 )
+shape = SubResource( 44 )
 [connection signal="body_entered" from="NextCutsceneTriger" to="." method="_on_NextCutsceneTriger_body_entered"]
