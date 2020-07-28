@@ -28,6 +28,8 @@ signal change_audio_master
 signal change_audio_music
 signal change_audio_sfx
 
+signal dialog_over
+
 func _ready():
 	load_data()
 

@@ -40,11 +40,11 @@ func _ready():
 # Gives a fadein effect
 func tween_white_screen():
 	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.65, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	tween.interpolate_property(SceneControl.bg_music, "volume_db", -60, 0, 1.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	#tween.interpolate_property(SceneControl.bg_music, "volume_db", -60, 0, 0.21, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
 
 # When the tween of the relevant object is completed
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(object, _key):
 	if(object == canvas_modulate):
 		cheruton_delay.start()
 	elif(object == cheruton):

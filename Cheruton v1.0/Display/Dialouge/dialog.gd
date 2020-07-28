@@ -135,11 +135,13 @@ func _get_tagged_text(tag : String, text : String):
 
 func end_conversation():
 	DataResource.temp_dict_player.dialog_complete = true
-
+	
 	tween.interpolate_property(dialogue_base, "rect_scale", Vector2(1,1), Vector2(.1,1), 0.2,Tween.TRANS_BACK, Tween.EASE_IN, 0)
 	tween.start()
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
+	
+	DataResource.emit_signal("dialog_over")
 	print(is_active_gui)
 
 func end(): # otherwise, the inherited method is will hide prematurely

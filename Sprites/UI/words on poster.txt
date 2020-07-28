@@ -1,0 +1,3 @@
+Cheruton is 2d pixel, action, adventure platformer, where we play as a female character on
+her journey to become an adventurer. It is a linear story based game with interesting
+characters, exciting combat and worlds all handmade by us.

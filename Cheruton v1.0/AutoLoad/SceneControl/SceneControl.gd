@@ -10,6 +10,7 @@ onready var beam = preload("res://Display/MouseDesign/beam.png")
 onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
 
+
 onready var levels = $Levels
 onready var hud_elements = $HudLayer/Hud
 onready var pop_up_gui = $popUpGui
@@ -19,6 +20,8 @@ onready var settings_layer = $SettingsLayer/Settings
 onready var button_click = $ButtonClick
 onready var scene_change = $SceneChange
 onready var canvas = $CanvasModulate
+onready var scene_modulate = $LoadLayer/Load/SceneModulate
+
 
 var cur_story
 var cur_dialog
@@ -30,12 +33,14 @@ var enable_save := false
 var old_level
 var new_level
 
+
 signal init_statbar
 
 func _ready():
+	scene_modulate.modulate = Color(0,0,0,0)
 	if(get_tree().get_root().get_child(2).name != "MainMenu"):
 		canvas.color = WHITE
-	bg_music.volume_db = -60
+	bg_music.volume_db = 0
 	randomize()
 	init_music()
 	change_music(mmenu_music_file)
@@ -66,30 +71,42 @@ func change_music(new_music):
 
 func change_scene(old_scene, new_scene):
 	get_tree().paused = true
-	scene_change.play("scene_out")
+	if(old_scene.name == "MainMenu"):
+		scene_change.play("mmenu_out")
+	else:
+		scene_change.play("scene_out")
 	old_level = old_scene
-	new_level = new_scene
+	new_level = load(new_scene).instance()
 
 
 
 
 func _on_SceneChange_animation_finished(anim_name):
-	if(anim_name == "scene_out"):
-		print("ok")
+	if(anim_name == "scene_out" || anim_name == "mmenu_out"):
+
+		if(new_level.name == "MainMenu"):
+			print("yes")
+			scene_change.play("mmenu_in")
+		else:
+			#scene_change.playback_speed = 0.25
+			scene_change.play("scene_in")
 		swap_scenes()
-		scene_change.play("scene_in")
+
 	else:
+		if(anim_name == "scene_in"):
+			scene_change.playback_speed = 1
 		get_tree().paused = false
+		print(anim_name)
 
 func swap_scenes():
 	var new_music
+	
+
 	old_level.queue_free()
 
-	var new_scene = load(new_level).instance()
-
-	if(new_level != MMENU):
+	if(new_level.name != "MainMenu"):
 		#cur_level = new_level
-		levels.add_child(new_scene)
+		levels.add_child(new_level)
 		new_music = levels.get_child(0).bg_music_file
 		change_story(levels.get_child(0).story_file)
 		if(new_music):
@@ -98,7 +115,7 @@ func swap_scenes():
 
 	else: # main menu
 		var root = get_tree().get_root()
-		root.add_child(new_scene)
+		root.add_child(new_level)
 		change_music(mmenu_music_file)
 
 ########
