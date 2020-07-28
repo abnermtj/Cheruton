@@ -7,6 +7,7 @@ onready var bar = $Bar
 onready var tween = $Tween
 onready var parent_value = get_parent().get_node("Value")
 onready var parent_rating_value = get_parent().get_node("ValueRating")
+onready var parent = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
 #onready var bar_type = get_parent().name
 
 func init_bar(type_name):
@@ -36,7 +37,7 @@ func change_bar_colour(value, browse, fix):
 		parent_rating_value.show()
 
 	else:
-		if(value > bar.value || !DataResource.temp_dict_player[get_tree().current_scene.active_tab.name + "_item"]):
+		if(value > bar.value || !DataResource.temp_dict_player[parent.active_tab.name + "_item"]):
 			bar.set_tint_progress(Color(0, 1, 0))   # Green
 			parent_rating_value.set("custom_colors/font_color",Color(0, 1, 0))
 		elif(value < bar.value):
