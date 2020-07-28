@@ -1,6 +1,6 @@
 extends Node2D
 
-const SCN1 = "res://Levels/testBench/playerTestBench.tscn"
+const SCN1 = "res://Levels/Grasslands0/Grasslands0.tscn"
 const EXPBAR = "HudLayer/Hud/StatBars/ExpBar"
 const HEALTHBAR = "HudLayer/Hud/StatBars/HealthBar"
 
@@ -27,7 +27,7 @@ var slider_enabled := false
 
 
 func _ready():
-	get_tree().get_root().call_deferred("move_child",main_menu, 1) 
+	get_tree().get_root().call_deferred("move_child",main_menu, 1)
 	bg_player.play("water")
 	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
 	SceneControl.get_node("popUpGui").enabled = false

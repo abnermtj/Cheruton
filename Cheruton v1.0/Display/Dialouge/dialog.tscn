@@ -5,7 +5,7 @@
 [ext_resource path="res://Display/Dialouge/Sprites/Dialogbase.png" type="Texture" id=4]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 5 )
 
@@ -16,7 +16,7 @@ extra_spacing_char = 1
 extra_spacing_space = 1
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "next"
 length = 2.0
 loop = true
@@ -107,7 +107,7 @@ margin_left = 940.0
 margin_top = 193.985
 margin_right = 985.0
 margin_bottom = 233.985
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
 text = "[E]"
 __meta__ = {
@@ -151,7 +151,7 @@ one_shot = true
 
 [node name="AnimationPlayerPosition" type="AnimationPlayer" parent="."]
 autoplay = "next"
-anims/next = SubResource( 7 )
+anims/next = SubResource( 3 )
 
 [node name="AnimationPlayerVisibility" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 4 )
@@ -159,6 +159,7 @@ anims/next = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -30.0
+volume_db = 2.0
+bus = "SFX"
 [connection signal="tween_completed" from="dialogBox/bodyBackground/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

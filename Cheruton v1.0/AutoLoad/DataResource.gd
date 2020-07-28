@@ -100,7 +100,7 @@ func update_input_map():
 
 func modify_event(action, event):
 	var new_input = InputEventKey.new()
-	var scancode = OS.find_scancode_from_string(event) 
+	var scancode = OS.find_scancode_from_string(event)
 	new_input.set_scancode(scancode)
 	InputMap.action_erase_event(action, InputMap.get_action_list(action)[0])
 	InputMap.action_add_event(action, new_input)

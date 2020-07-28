@@ -17,18 +17,20 @@ func _ready():
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 	#debug
-	player_spawn_pos = Vector2(3028, -1936)
-	$player.set_input_enabled(true)
+#	player_spawn_pos = Vector2(3028, -1936)
+#	$player.set_input_enabled(true)
 #	player_spawn_pos = Vector2(5472, 1056)
-	cur_cut_scene_completed = true
-	cutscene_number = 2 # cutscene
-	cutscene_index = 0 #
+	cur_cut_scene_completed = false
+#	cutscene_number = 2 # cutscene
+#	cutscene_index = 0 #
 	########
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
 	if not cur_cut_scene_completed:
 		cutscene_number = 0 # cutscene
 		cutscene_index = 0 # specific part of cutscene (separated by dialog etc)
 		next_cutscene()
+
+	SceneControl.fade_in_scene()
 
 func next_cutscene():
 #	print(cutscene_number, cutscene_index)
@@ -75,7 +77,7 @@ func _process(delta):
 		wait_dialog_complete = false
 
 #
-func _input(event):
+#func _input(event):
 #	if Input.is_action_just_pressed("reset"):
 #		player.velocity = Vector2()
 #		player.position = save_position
@@ -85,8 +87,8 @@ func _input(event):
 #		instance.position = save_position
 #		$Mobs.add_child(instance)
 
-	if Input.is_action_just_pressed("attack"):
-		$Hints/Scene0_0._on_Scene0_0_body_entered(null)
+#	if Input.is_action_just_pressed("attack"):
+#		$Hints/Scene0_0._on_Scene0_0_body_entered(null)
 #		shake_camera(.5,60,4, Vector2())
 
 func on_player_dead():

@@ -44,6 +44,8 @@ func _ready():
 	randomize()
 	init_music()
 	change_music(mmenu_music_file)
+
+	emit_signal("init_statbar")
 	#init_cursor()
 
 ##############
@@ -73,38 +75,35 @@ func change_scene(old_scene, new_scene):
 	get_tree().paused = true
 	if(old_scene.name == "MainMenu"):
 		scene_change.play("mmenu_out")
-	else:
-		scene_change.play("scene_out")
+
 	old_level = old_scene
 	new_level = load(new_scene).instance()
+
+func fade_in_scene():
+	scene_change.play("scene_in")
+
 
 
 
 
 func _on_SceneChange_animation_finished(anim_name):
 	if(anim_name == "scene_out" || anim_name == "mmenu_out"):
-
 		if(new_level.name == "MainMenu"):
-			print("yes")
 			scene_change.play("mmenu_in")
-		else:
-			#scene_change.playback_speed = 0.25
-			scene_change.play("scene_in")
 		swap_scenes()
 
 	else:
 		if(anim_name == "scene_in"):
 			scene_change.playback_speed = 1
 		get_tree().paused = false
-		print(anim_name)
 
 func swap_scenes():
 	var new_music
-	
 
 	old_level.queue_free()
 
 	if(new_level.name != "MainMenu"):
+		SceneControl.hud_elements.show()
 		#cur_level = new_level
 		levels.add_child(new_level)
 		new_music = levels.get_child(0).bg_music_file
@@ -114,6 +113,7 @@ func swap_scenes():
 		change_music(new_music)
 
 	else: # main menu
+		SceneControl.hud_elements.hide()
 		var root = get_tree().get_root()
 		root.add_child(new_level)
 		change_music(mmenu_music_file)

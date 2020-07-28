@@ -246,7 +246,7 @@ func _on_pressed(node):
 				if(item_state == "HOVER"):
 					revert_item_state()
 				sell_item()
-				
+
 			"Buy":		# Buy item: get node details, fix the item, then sell it
 				var index = int(mouse_node.name)%100
 				var coins_val = DataResource.dict_item_masterlist[DataResource.dict_item_shop["Item" + str(index)]].ItemValue

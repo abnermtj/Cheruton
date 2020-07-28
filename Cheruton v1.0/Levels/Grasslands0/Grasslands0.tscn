@@ -42,7 +42,6 @@
 [ext_resource path="res://Levels/Grasslands0/Keys/Sprites/KeyBase.png" type="Texture" id=40]
 [ext_resource path="res://Levels/Grasslands0/Keys/KeyHintArea.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Levels/Grasslands0/Sprites/LeftClick.png" type="Texture" id=42]
-[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Levels/Grasslands0/Sprites/RightClick.png" type="Texture" id=44]
 [ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/leaves.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree2/grassLandTree2.tscn" type="PackedScene" id=46]
@@ -2152,42 +2151,59 @@ tracks/5/keys = {
 "method": "set_attack_enabled"
 } ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("Hints/Scene2_0")
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hints/Scene2_0:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 2.4 ),
+"times": PoolRealArray( 2.36 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hints/Scene4_0:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.23 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=43]
+resource_name = "cutscene4_4"
+length = 2.4
+step = 0.01
+tracks/0/type = "method"
+tracks/0/path = NodePath("Hints/Scene2_0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ NodePath("player") ],
 "method": "_on_Scene0_0_body_entered"
 } ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("Hints/Scene2_0:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 2.36 ),
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hints/Scene2_0:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Hints/Scene4_0:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 2.23 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
 "values": [ true ]
 }
 
@@ -2723,6 +2739,7 @@ font_data = ExtResource( 34 )
 script = ExtResource( 1 )
 
 [node name="CutScenePlayer" type="AnimationPlayer" parent="."]
+autoplay = "cutscene0_0"
 method_call_mode = 1
 anims/cutscene0_0 = SubResource( 1 )
 anims/cutscene0_1 = SubResource( 2 )
@@ -2741,6 +2758,7 @@ anims/cutscene4_0 = SubResource( 14 )
 anims/cutscene4_1 = SubResource( 15 )
 anims/cutscene4_2 = SubResource( 16 )
 anims/cutscene4_3 = SubResource( 17 )
+anims/cutscene4_4 = SubResource( 43 )
 
 [node name="SupportingTile" parent="." instance=ExtResource( 6 )]
 tile_set = SubResource( 18 )
@@ -2883,12 +2901,12 @@ texture = ExtResource( 32 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 self_modulate = Color( 0.698039, 0.109804, 0.109804, 1 )
-position = Vector2( -188, 188 )
+position = Vector2( 3900, 1808 )
 z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
 scale = Vector2( 0.66, 0.66 )
-zoom = Vector2( 0.707673, 0.707673 )
+zoom = Vector2( 0.697121, 0.697121 )
 
 [node name="PoleSprite" type="Sprite" parent="player"]
 visible = false
@@ -3271,7 +3289,7 @@ __meta__ = {
 
 [node name="Scene1_0" parent="Hints" instance=ExtResource( 41 )]
 modulate = Color( 1, 1, 1, 0.996078 )
-position = Vector2( -252, -1520 )
+position = Vector2( 296, -1428 )
 
 [node name="Label" parent="Hints/Scene1_0" instance=ExtResource( 39 )]
 margin_left = -466.0
@@ -3293,6 +3311,24 @@ texture = ExtResource( 40 )
 offset = Vector2( 0, 1 )
 
 [node name="Sprite2" type="Sprite" parent="Hints/Scene2_0"]
+show_behind_parent = true
+position = Vector2( 0, -14 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 42 )
+offset = Vector2( 0, 1 )
+
+[node name="Scene2_1" parent="Hints" instance=ExtResource( 41 )]
+modulate = Color( 1, 1, 1, 0.996078 )
+position = Vector2( 616, 2144 )
+
+[node name="Sprite" type="Sprite" parent="Hints/Scene2_1"]
+show_behind_parent = true
+position = Vector2( 0, -14 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 40 )
+offset = Vector2( 0, 1 )
+
+[node name="Sprite2" type="Sprite" parent="Hints/Scene2_1"]
 show_behind_parent = true
 position = Vector2( 0, -14 )
 scale = Vector2( 4, 4 )
@@ -3377,6 +3413,4 @@ position = Vector2( 416, -136 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 44 )
 offset = Vector2( 0, 1 )
-
-[node name="flyingSword" parent="." instance=ExtResource( 43 )]
 [connection signal="body_entered" from="NextCutsceneTriger" to="." method="_on_NextCutsceneTriger_body_entered"]

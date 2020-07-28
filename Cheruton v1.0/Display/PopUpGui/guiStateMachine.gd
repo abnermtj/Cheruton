@@ -45,7 +45,7 @@ func new_gui(gui_name):
 func release_gui(gui_name):
 	if (gui_name == "dialog"):
 		dialog_over = true
-		
+
 	if active == false:
 		return
 

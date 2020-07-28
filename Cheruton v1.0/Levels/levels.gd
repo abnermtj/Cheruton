@@ -32,6 +32,8 @@ func _ready() -> void:
 	call_deferred("enter_level")
 	set_music()
 
+
+
 func _set_player() -> void:
 	player = find_node( "player" )
 	if player == null:

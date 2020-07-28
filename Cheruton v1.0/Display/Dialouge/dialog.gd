@@ -80,6 +80,7 @@ func get_next_node():
 func play_dialog():
 	audio.pitch_scale = rand_range(.94, .95)
 	audio.play()
+	print(audio)
 
 	finished_current_node = false
 	$AnimationPlayerVisibility.play("default")
@@ -103,9 +104,6 @@ func _on_Timer_timeout():
 
 	var next_char = dialog_left[0]
 	dialogue_text.bbcode_text += next_char
-#	if not [' ',',','?','!'].has(next_char):
-#		audio.pitch_scale = rand_range(.98, 1.02)
-#		audio.play()
 
 	dialog_left.erase(0, 1)
 	if dialog_left == "":
@@ -135,12 +133,12 @@ func _get_tagged_text(tag : String, text : String):
 
 func end_conversation():
 	DataResource.temp_dict_player.dialog_complete = true
-	
+
 	tween.interpolate_property(dialogue_base, "rect_scale", Vector2(1,1), Vector2(.1,1), 0.2,Tween.TRANS_BACK, Tween.EASE_IN, 0)
 	tween.start()
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
-	
+
 	print(is_active_gui)
 
 func end(): # otherwise, the inherited method is will hide prematurely
