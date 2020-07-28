@@ -141,7 +141,6 @@ func end_conversation():
 	DataResource.save_rest()
 	emit_signal("release_gui", "dialog")
 	
-	DataResource.emit_signal("dialog_over")
 	print(is_active_gui)
 
 func end(): # otherwise, the inherited method is will hide prematurely

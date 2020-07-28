@@ -4,6 +4,7 @@ var states_map = {}
 var pop_up_enable_list = {}
 var active = true
 var state_name_stack = []
+var dialog_over:= false
 
 func _ready():
 	for child in get_children():
@@ -42,6 +43,9 @@ func new_gui(gui_name):
 	on_gui_changed()
 
 func release_gui(gui_name):
+	if (gui_name == "dialog"):
+		dialog_over = true
+		
 	if active == false:
 		return
 
@@ -56,4 +60,7 @@ func on_gui_changed():
 		if state_name_stack.has("pause") || state_name_stack.has("inventory"):
 			get_tree().paused = true
 		else:
+			if(dialog_over):
+				DataResource.emit_signal("dialog_over")
+				dialog_over = false
 			get_tree().paused = false
