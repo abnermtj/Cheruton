@@ -3,6 +3,7 @@ extends Control
 const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 
+
 const RED = Color(1,0,0,1)
 const WHITE = Color(1,1,1,1)
 
@@ -69,6 +70,7 @@ func check_mouse_text(btn_text):
 		return "Left Mouse"
 	return btn_text
 
+
 func controls_set_column(type):
 	if(controls_set != -1):
 		controls_column.get_child(controls_set).hide()
@@ -105,6 +107,20 @@ func _input(event):
 		if(edit_control):
 			edit_control = false
 			_edit_key(event)
+			
+	elif event is InputEventMouseButton:
+		if(edit_control):
+			edit_control = false
+			if(event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
+				align_mouse_event(event)
+				_edit_key(event)
+
+func align_mouse_event(event):
+	event.position = Vector2(0, 0)
+	event.button_mask=0
+	event.pressed = false
+	event.doubleclick = false
+
 
 func _edit_key(new_key):
 	var action_name = temp_control.name
