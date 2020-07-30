@@ -130,11 +130,17 @@ func _edit_key(new_key):
 		old_key = InputMap.get_action_list(temp_control.name)[0]
 		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 
-	check_duplicates(new_key, old_key)
+	var red_check = check_duplicates(new_key, old_key)
 
 	InputMap.action_add_event(action_name, new_key)
 
 	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
+	# Color code actions with conflicting key bindings
+	if(red_check):
+		temp_control.get_child(0).set("custom_colors/font_color", RED)
+	else:
+		temp_control.get_child(0).set("custom_colors/font_color", WHITE)
+	
 	set_text(temp_control.get_child(0), false, btn_text)
 	DataResource.dict_input_map[temp_control.name] = btn_text
 
@@ -152,18 +158,20 @@ func check_duplicates(new_key, old_key):
 			var check = InputMap.event_is_action(new_key, current_binding.name)
 			if(check):
 				handle_duplicates(current_binding, old_key)
-				return
+				return true
+	return false
 
 # Handles actions with the same key_bindings
 func handle_duplicates(current_binding, old_key):
-	var action_name = current_binding.name
-	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-	InputMap.action_add_event(current_binding.name, old_key)
+	current_binding.get_child(0).set("custom_colors/font_color", RED)
+#	var action_name = current_binding.name
+#	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+#	InputMap.action_add_event(current_binding.name, old_key)
 
 
-	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
-	set_text(current_binding.get_child(0), false, btn_text)
-	DataResource.dict_input_map[current_binding.name] = btn_text
+#	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
+#	set_text(current_binding.get_child(0), false, btn_text)
+#	DataResource.dict_input_map[current_binding.name] = btn_text
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
@@ -243,7 +251,6 @@ func _on_Back_pressed():
 	DataResource.save_rest() # so that the new settings persist on next save file
 	SceneControl.settings_layer.hide()
 	emit_signal("closed_settings")
-
 
 func handle_input(event):
 	if Input.is_action_just_pressed("escape"):
