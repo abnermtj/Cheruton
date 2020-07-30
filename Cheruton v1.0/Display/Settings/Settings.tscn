@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Display/Settings/Sprites/Base/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Display/Settings/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Display/Settings/Sprites/Base/SettingsBase.png" type="Texture" id=2]
 [ext_resource path="res://Effects/white_screen.png" type="Texture" id=3]
 [ext_resource path="res://Display/MainMenu/Sprites/MainMenuselect.png" type="Texture" id=4]

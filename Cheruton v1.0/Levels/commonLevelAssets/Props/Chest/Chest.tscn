@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Levels/commonLevelAssets/Props/Chest/Chest.gd" type="Script" id=1]
 
-
 [node name="Chest" type="Node2D"]
 script = ExtResource( 1 )
 
