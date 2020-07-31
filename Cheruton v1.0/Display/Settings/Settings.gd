@@ -3,6 +3,7 @@ extends Control
 const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 
+
 const RED = Color(1,0,0,1)
 const WHITE = Color(1,1,1,1)
 
@@ -69,6 +70,7 @@ func check_mouse_text(btn_text):
 		return "Left Mouse"
 	return btn_text
 
+
 func controls_set_column(type):
 	if(controls_set != -1):
 		controls_column.get_child(controls_set).hide()
@@ -105,7 +107,22 @@ func _input(event):
 		if(edit_control):
 			edit_control = false
 			_edit_key(event)
+			
+	elif event is InputEventMouseButton:
+		if(edit_control):
+			edit_control = false
+			if(event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
+				align_mouse_event(event)
+				_edit_key(event)
 
+# Affixes the standard mouse button properties to the pressed button
+func align_mouse_event(event):
+	event.position = Vector2(0, 0)
+	event.button_mask=0
+	event.pressed = false
+	event.doubleclick = false
+
+# Affixes the new key binding to the action highlighted
 func _edit_key(new_key):
 	var action_name = temp_control.name
 	var old_key
@@ -137,7 +154,7 @@ func check_duplicates(new_key, old_key):
 				handle_duplicates(current_binding, old_key)
 				return
 
-
+# Handles actions with the same key_bindings
 func handle_duplicates(current_binding, old_key):
 	var action_name = current_binding.name
 	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
@@ -226,6 +243,7 @@ func _on_Back_pressed():
 	DataResource.save_rest() # so that the new settings persist on next save file
 	SceneControl.settings_layer.hide()
 	emit_signal("closed_settings")
+
 
 func handle_input(event):
 	if Input.is_action_just_pressed("escape"):
