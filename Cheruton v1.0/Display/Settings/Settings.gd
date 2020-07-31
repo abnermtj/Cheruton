@@ -33,7 +33,8 @@ var slider_active := false
 var controls_set := -1
 var edit_control := false
 var temp_control
-
+var key_action := []
+var key_duplicates := []
 
 onready var active_tab = base_empty
 
@@ -55,10 +56,13 @@ func init_key_bindings():
 			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			set_text(current_binding.get_child(0), false, btn_text)
+			key_action.append(current_binding.name)
 
 func set_text(node, unassign := true, new_value := ""):
 	if(unassign):
-			node.text = "Unassigned"
+		if(node.get("custom_colors/font_color") == RED):
+			node.set("custom_colors/font_color", WHITE)
+		node.text = "Unassigned"
 	else:
 			node.text = check_mouse_text(new_value)
 
@@ -157,13 +161,23 @@ func check_duplicates(new_key, old_key):
 # Handles actions with the same key_bindings
 func handle_duplicates(current_binding, old_key):
 	var action_name = current_binding.name
-	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-	InputMap.action_add_event(current_binding.name, old_key)
-
-
-	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
-	set_text(current_binding.get_child(0), false, btn_text)
-	DataResource.dict_input_map[current_binding.name] = btn_text
+	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
+	key_action[conflict_index] = current_binding.name
+	if(!key_duplicates.has(current_binding.name)):
+		key_duplicates.append(current_binding.name)
+	var key_size = key_action.size()
+	for i in key_size:
+		if(key_action[i] == current_binding.name):
+			var controls_child_count = controls_column.get_child_count()
+			var node = controls_column.get_child(i/controls_child_count).get_child(1).get_child(i%5).get_child(0)
+			node.set("custom_colors/font_color", RED)
+#	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+#	InputMap.action_add_event(current_binding.name, old_key)
+#
+#
+#	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
+#	set_text(current_binding.get_child(0), false, btn_text)
+#	DataResource.dict_input_map[current_binding.name] = btn_text
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
