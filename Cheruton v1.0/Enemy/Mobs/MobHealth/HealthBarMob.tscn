@@ -50,3 +50,5 @@ tint_progress = Color( 0.768627, 0.172549, 0.211765, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
