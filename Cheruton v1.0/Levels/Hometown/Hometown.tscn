@@ -393,7 +393,7 @@ tile_set = ExtResource( 23 )
 cell_size = Vector2( 4, 4 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 4588510, 3, 0 )
+tile_data = PoolIntArray( 4588510, 3, 0, 4850655, 0, 0 )
 
 [node name="DeathZone" parent="." instance=ExtResource( 15 )]
 position = Vector2( 5417.32, 2375.08 )
