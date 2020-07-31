@@ -254,13 +254,13 @@ func _on_mouse_entered(node):
 			if(node.name == DataResource.temp_dict_player[active_tab.name + "_item"]):
 				return
 		var element_index = str(int(node.name)%100)
-		var simulate_node 
+		var simulate_node
 		var equipped = DataResource.temp_dict_player[active_tab.name + "_item"]
 		var equipped_rating = 0
 		match active_tab.name:
 			"Weapons":
 				simulate_node = base_attack
-				
+
 				if(equipped):
 					var equipped_index = str(int(equipped)%100)
 					equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack
@@ -268,7 +268,7 @@ func _on_mouse_entered(node):
 				attack.change_bar_value(simulate_node - equipped_rating + rating, true)
 			"Apparel":
 				simulate_node = base_defense
-							
+
 				if(equipped):
 					var equipped_index = str(int(equipped)%100)
 					equipped_rating =  DataResource.dict_inventory.Apparel["Item" + equipped_index].item_defense
@@ -304,13 +304,13 @@ func _on_pressed(node):
 	temp_mouse_node = node
 
 	if (mouse_count == 2):
-		
+
 		if(item_state == "FIXED"):
 			check_fixed()
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		utilize_item(mouse_node)
-		
+
 
 
 		mouse_count = 0
@@ -453,13 +453,13 @@ func item_status(selected_node, status):
 			selected_node.get_node("Background/ItemBg").texture = index_equipped_bg
 			equipped_coins.get_node(active_tab.name + "/Background/ItemBg").texture = index_equipped_bg
 			var equipped_rating = 0
-			
+
 			var element_index = str(int(selected_node.name)%100)
 			match active_tab.name:
 				"Weapons":
 					if(equipped):
 						var equipped_index = str(int(equipped)%100)
-						equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack 
+						equipped_rating =  DataResource.dict_inventory.Weapons["Item" + equipped_index].item_attack
 					var rating = DataResource.dict_inventory.Weapons["Item" + element_index].item_attack
 					base_attack += rating - equipped_rating
 					attack.change_bar_value(base_attack, false, true)
@@ -503,8 +503,8 @@ func item_status(selected_node, status):
 				type.get_node("Background/ItemBg/ItemBtn").set_normal_texture(null)
 				type.get_node("Background/ItemBg").texture = null
 
-			
-			
+
+
 			if(!delete_status):
 				mouse_node = null
 
@@ -528,7 +528,7 @@ func _on_Button_pressed():
 
 func _on_ButtonUse_pressed():
 	utilize_item(mouse_node)
-		
+
 
 func handle_input(event):
 	if is_active_gui and (Input.is_action_just_pressed("escape") or Input.is_action_just_pressed("inventory")):

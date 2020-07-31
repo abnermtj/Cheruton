@@ -16,7 +16,7 @@ func _ready():
 
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
-	#debug
+#	#debug
 #	player_spawn_pos = Vector2(3028, -1936)
 #	$player.set_input_enabled(true)
 	cur_cut_scene_completed = false
