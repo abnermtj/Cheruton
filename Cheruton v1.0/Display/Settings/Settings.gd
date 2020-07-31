@@ -30,8 +30,10 @@ onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
 
 var slider_active := false
-var controls_set := -1
 var edit_control := false
+var prior_collision := false
+
+var controls_set := -1
 var temp_control
 var key_action := []
 var key_duplicates := []
@@ -61,7 +63,10 @@ func init_key_bindings():
 func set_text(node, unassign := true, new_value := ""):
 	if(unassign):
 		if(node.get("custom_colors/font_color") == RED):
+			prior_collision = true
 			node.set("custom_colors/font_color", WHITE)
+		else:
+			prior_collision = false
 		node.text = "Unassigned"
 	else:
 			node.text = check_mouse_text(new_value)
@@ -135,7 +140,7 @@ func _edit_key(new_key):
 		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 
 	check_duplicates(new_key, old_key)
-
+	# Update duplicate list	
 	InputMap.action_add_event(action_name, new_key)
 
 	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
@@ -145,6 +150,7 @@ func _edit_key(new_key):
 	temp_control = null
 
 # Detects actions who already occupy the same key binding as the intended one
+# Search can be improved
 func check_duplicates(new_key, old_key):
 	var columns = controls_column.get_child_count()
 
@@ -155,16 +161,25 @@ func check_duplicates(new_key, old_key):
 			var current_binding = column_node.get_child(j)
 			var check = InputMap.event_is_action(new_key, current_binding.name)
 			if(check):
-				handle_duplicates(current_binding, old_key)
-				return
+				handle_duplicates(current_binding)
+				return 
+	# No Duplicates found and selected node had a previous conflict
+	if(prior_collision):
+		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
+		var old_binding = controls_column.find_node(key_action[conflict_index], true, false)
+		key_action[conflict_index] = temp_control.name
+		clear_duplicates(old_binding)
 
 # Handles actions with the same key_bindings
-func handle_duplicates(current_binding, old_key):
+func handle_duplicates(current_binding):
 	var action_name = current_binding.name
 	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
 	key_action[conflict_index] = current_binding.name
+	# New key conflicts with current_binding and conflict is newly detected
 	if(!key_duplicates.has(current_binding.name)):
 		key_duplicates.append(current_binding.name)
+		
+	# Find all conflicting actions and highlight it
 	var key_size = key_action.size()
 	for i in key_size:
 		if(key_action[i] == current_binding.name):
@@ -178,6 +193,17 @@ func handle_duplicates(current_binding, old_key):
 #	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
 #	set_text(current_binding.get_child(0), false, btn_text)
 #	DataResource.dict_input_map[current_binding.name] = btn_text
+
+# Clears duplicates that have been resolved
+func clear_duplicates(current_binding):
+	var size = key_action.size()
+	var occurence = 0
+	for i in size:
+		if(key_action[i] == current_binding.name):
+			occurence += 1
+	if(occurence == 1):
+		current_binding.get_child(0).set("custom_colors/font_color", WHITE)
+		key_duplicates.erase(current_binding.name)
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
