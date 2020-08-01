@@ -134,7 +134,7 @@ size_flags_vertical = 0
 
 [node name="Options" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 margin_left = 4.0
-margin_right = 421.0
+margin_right = 244.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -142,12 +142,12 @@ size_flags_stretch_ratio = 0.36
 custom_constants/separation = 0
 
 [node name="OTMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 14.0
 
 [node name="Controls" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 14.0
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 135.0
 rect_min_size = Vector2( 0, 23 )
 size_flags_vertical = 3
@@ -172,7 +172,7 @@ __meta__ = {
 
 [node name="Audio" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 135.0
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 0, 23 )
 size_flags_vertical = 3
@@ -197,7 +197,7 @@ __meta__ = {
 
 [node name="Game" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 256.0
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 377.0
 rect_min_size = Vector2( 0, 23 )
 size_flags_vertical = 3
@@ -221,7 +221,7 @@ __meta__ = {
 
 [node name="OBMargin" type="Label" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 377.0
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 646.0
 text = "
 
@@ -242,7 +242,7 @@ text = "
 
 [node name="Back" type="TextureButton" parent="Settings/Container/Main/Contents/Options"]
 margin_top = 646.0
-margin_right = 417.0
+margin_right = 240.0
 margin_bottom = 767.0
 size_flags_vertical = 3
 expand = true
@@ -265,14 +265,14 @@ __meta__ = {
 }
 
 [node name="ORMargin2" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 425.0
-margin_right = 425.0
+margin_left = 248.0
+margin_right = 248.0
 margin_bottom = 14.0
 size_flags_vertical = 0
 
 [node name="DividerSub" type="TextureRect" parent="Settings/Container/Main/Contents"]
-margin_left = 429.0
-margin_right = 439.0
+margin_left = 252.0
+margin_right = 262.0
 margin_bottom = 767.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_vertical = 3
@@ -280,22 +280,21 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="SLMargin" type="Label" parent="Settings/Container/Main/Contents"]
-margin_left = 443.0
-margin_right = 463.0
+margin_left = 266.0
+margin_right = 286.0
 margin_bottom = 14.0
 size_flags_vertical = 2
 text = "     "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 467.0
-margin_right = 1628.0
+margin_left = 290.0
+margin_right = 957.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls"]
-margin_right = 1161.0
+margin_right = 667.0
 margin_bottom = 48.0
 text = "
 
@@ -303,18 +302,18 @@ text = "
 
 [node name="Column" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls"]
 margin_top = 52.0
-margin_right = 1161.0
+margin_right = 667.0
 margin_bottom = 663.0
 size_flags_vertical = 3
 
 [node name="Col0" type="HBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column"]
-margin_right = 1161.0
+margin_right = 667.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
 [node name="Action" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -322,7 +321,7 @@ size_flags_stretch_ratio = 1.7
 custom_constants/separation = 60
 
 [node name="up" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
@@ -335,7 +334,7 @@ __meta__ = {
 
 [node name="down" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
 margin_top = 130.0
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
@@ -348,7 +347,7 @@ __meta__ = {
 
 [node name="left" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
 margin_top = 260.0
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 330.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
@@ -361,7 +360,7 @@ __meta__ = {
 
 [node name="right" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
 margin_top = 390.0
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 460.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
@@ -374,7 +373,7 @@ __meta__ = {
 
 [node name="jump" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Action"]
 margin_top = 520.0
-margin_right = 617.0
+margin_right = 294.0
 margin_bottom = 590.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
@@ -386,8 +385,8 @@ __meta__ = {
 }
 
 [node name="Mapping" type="VBoxContainer" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_left = 617.0
-margin_right = 944.0
+margin_left = 294.0
+margin_right = 450.0
 margin_bottom = 611.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -395,7 +394,7 @@ size_flags_stretch_ratio = 0.9
 custom_constants/separation = 60
 
 [node name="move_up" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
-margin_right = 327.0
+margin_right = 156.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
 texture_hover = ExtResource( 7 )
@@ -417,7 +416,7 @@ __meta__ = {
 
 [node name="move_down" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
 margin_top = 130.0
-margin_right = 327.0
+margin_right = 156.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 70 )
 texture_hover = ExtResource( 7 )
@@ -439,7 +438,7 @@ __meta__ = {
 
 [node name="move_left" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
 margin_top = 260.0
-margin_right = 327.0
+margin_right = 156.0
 margin_bottom = 330.0
 rect_min_size = Vector2( 0, 70 )
 texture_hover = ExtResource( 7 )
@@ -461,7 +460,7 @@ __meta__ = {
 
 [node name="move_right" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
 margin_top = 390.0
-margin_right = 327.0
+margin_right = 156.0
 margin_bottom = 460.0
 rect_min_size = Vector2( 0, 70 )
 texture_hover = ExtResource( 7 )
@@ -483,7 +482,7 @@ __meta__ = {
 
 [node name="jump" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0/Mapping"]
 margin_top = 520.0
-margin_right = 327.0
+margin_right = 156.0
 margin_bottom = 590.0
 rect_min_size = Vector2( 0, 70 )
 texture_hover = ExtResource( 7 )
@@ -504,9 +503,9 @@ __meta__ = {
 }
 
 [node name="RMargin" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col0"]
-margin_left = 944.0
+margin_left = 450.0
 margin_top = 298.0
-margin_right = 1160.0
+margin_right = 666.0
 margin_bottom = 312.0
 text = "                                                      "
 
@@ -550,7 +549,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sword_throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
+[node name="throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Action"]
 margin_top = 220.0
 margin_right = 939.0
 margin_bottom = 290.0
@@ -641,7 +640,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sword_throw" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
+[node name="throw" type="TextureButton" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping"]
 margin_top = 220.0
 margin_right = 222.0
 margin_bottom = 270.0
@@ -652,7 +651,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sword_throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping/sword_throw"]
+[node name="throw" type="Label" parent="Settings/Container/Main/Contents/BaseControls/Column/Col1/Mapping/throw"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
@@ -920,7 +919,7 @@ text = "                                                      "
 
 [node name="Buttons" type="TextureRect" parent="Settings/Container/Main/Contents/BaseControls"]
 margin_top = 667.0
-margin_right = 1161.0
+margin_right = 667.0
 margin_bottom = 767.0
 rect_min_size = Vector2( 0, 100 )
 
@@ -1270,7 +1269,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-margin_left = 467.0
+margin_left = 961.0
 margin_right = 1628.0
 margin_bottom = 767.0
 size_flags_horizontal = 3

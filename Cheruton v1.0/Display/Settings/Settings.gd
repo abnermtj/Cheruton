@@ -56,6 +56,7 @@ func init_key_bindings():
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
 			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
+			print(current_binding.name)
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			set_text(current_binding.get_child(0), false, btn_text)
 			key_action.append(current_binding.name)
@@ -116,7 +117,7 @@ func _input(event):
 		if(edit_control):
 			edit_control = false
 			_edit_key(event)
-			
+
 	elif event is InputEventMouseButton:
 		if(edit_control):
 			edit_control = false
@@ -140,7 +141,7 @@ func _edit_key(new_key):
 		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 
 	check_duplicates(new_key, old_key)
-	# Update duplicate list	
+	# Update duplicate list
 	InputMap.action_add_event(action_name, new_key)
 
 	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
@@ -162,7 +163,7 @@ func check_duplicates(new_key, old_key):
 			var check = InputMap.event_is_action(new_key, current_binding.name)
 			if(check):
 				handle_duplicates(current_binding)
-				return 
+				return
 	# No Duplicates found and selected node had a previous conflict
 	if(prior_collision):
 		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
@@ -177,7 +178,7 @@ func handle_duplicates(current_binding):
 	# New key conflicts with current_binding and conflict is newly detected
 	if(!key_duplicates.has(current_binding.name)):
 		key_duplicates.append(current_binding.name)
-		
+
 	# Find all conflicting actions and highlight it
 	var key_size = key_action.size()
 	for i in key_size:
