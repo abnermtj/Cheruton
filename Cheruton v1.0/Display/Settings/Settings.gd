@@ -56,7 +56,6 @@ func init_key_bindings():
 		for j in bindings:
 			var current_binding = column_node.get_child(j)
 			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
-			print(current_binding.name)
 			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
 			set_text(current_binding.get_child(0), false, btn_text)
 			key_action.append(current_binding.name)

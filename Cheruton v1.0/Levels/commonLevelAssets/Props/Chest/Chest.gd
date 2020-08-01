@@ -4,7 +4,7 @@ var looted  := false
 
 signal chest_looted
 
-onready var player = $Player
+onready var player = $Player # Change this to be set by level
 
 func _ready():
 	var _conn0 = connect("chest_looted", self, "_on_Chest_chest_looted")
