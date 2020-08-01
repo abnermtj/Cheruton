@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Levels/testBench2/testBench2.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=6]
@@ -15,6 +15,9 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/movingTrap/movingTrap0.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/commonLevelAssets/worldt_env.res" type="Environment" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
+
+
+
 
 
 [node name="testBench2" type="Node2D"]

@@ -11,7 +11,7 @@ func handle_input(event):
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
 
-	if event.is_action_pressed("sword_throw"):
+	if event.is_action_pressed("sworthrow"):
 		if not ["attack", "wallSlide"].has(owner.cur_state.name)\
 		 and owner.can_throw_sword:
 #			owner.throw_sword_dir = get_input_direction().normalized() # keyboard

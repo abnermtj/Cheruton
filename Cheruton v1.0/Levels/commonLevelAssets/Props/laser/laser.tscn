@@ -4,6 +4,8 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/laser/laser.gd" type="Script" id=2]
 
 
+
+
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
 emission_sphere_radius = 2.0

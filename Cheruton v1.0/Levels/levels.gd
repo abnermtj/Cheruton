@@ -25,14 +25,13 @@ func _ready() -> void:
 
 	SceneControl.get_node("popUpGui").enabled = true
 
-	call_deferred( "_set_camera" )
 	call_deferred( "_set_player" )
+	call_deferred( "_set_camera" )
 	call_deferred("_set_player_objects")
 	call_deferred("_set_level")
+	call_deferred("_set_level_player_references")
 	call_deferred("enter_level")
-	set_music()
-
-
+	call_deferred("set_music")
 
 func _set_player() -> void:
 	player = find_node( "player" )
@@ -43,6 +42,7 @@ func _set_camera() -> void:
 	camera = find_node( "camera" )
 	if camera == null:
 		print( "Level: camera not found" )
+
 	var pos_NW = find_node( "camera_limit_NW" )
 	if pos_NW:
 		camera.limit_left = pos_NW.position.x
@@ -60,26 +60,37 @@ func _set_player_objects() -> void:
 		player.connect("camera_command", camera, "_on_player_camera_command")
 
 	var grapple_hook = find_node ("grappleHook")
-	if grapple_hook == null:
-		print( "Level: grappleHook not found" )
-	else:
+	if grapple_hook:
 		grapple_hook.connect("hooked", player, "_on_Chain_hooked")
 		player.connect("hook_command", grapple_hook, "_on_player_hook_command")
+	else:
+		print("Level: grappleHook not found")
 
 	var flying_sword = find_node("flyingSword")
-	if flying_sword == null:
-		print( "Level: flyingSword not found" )
-	else:
+	if flying_sword:
 		flying_sword.connect("sword_result", player, "on_sword_result")
 		player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
+	else:
+		print("Level: flyingSword not found")
 
 func _set_level():
 	var death_zone = find_node("DeathZone")
 
-	if not death_zone:
-		print("death_zone not found")
-	else:
+	if death_zone:
 		death_zone.connect("body_entered", self, "handle_death_zone")
+	else:
+		print("death_zone not found")
+
+func _set_level_player_references():
+	var player_refs = get_tree().get_nodes_in_group("needs_player_ref")
+	var level_refs = get_tree().get_nodes_in_group("needs_level_ref")
+
+	if player:
+		for node in player_refs:
+			node.player = player
+
+	for node in level_refs:
+		node.level = self
 
 func enter_level():
 	player.global_position = player_spawn_pos

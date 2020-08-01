@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Furball/Sprites/Enemy_Furball_22fps.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Mobs/Furball/Furball.gd" type="Script" id=2]
@@ -13,9 +13,6 @@
 [ext_resource path="res://Enemy/Mobs/Furball/dead.gd" type="Script" id=11]
 [ext_resource path="res://Enemy/Mobs/Furball/hurtBox.gd" type="Script" id=12]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=13]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 100 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 60, 80 )
@@ -457,9 +454,9 @@ position = Vector2( -1.5, -36 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( 1, 7 )
+offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 783, 1, 32, 48 )
+region_rect = Rect2( 511, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
@@ -470,7 +467,7 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
 position = Vector2( 59.6764, -50 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -538,17 +535,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackRangeArea"]
 position = Vector2( 0, -50 )
 shape = SubResource( 13 )
-
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 40, 40 )
-rect_scale = Vector2( 2, 2 )
-text = "sd"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HealthBar" parent="." instance=ExtResource( 13 )]
 margin_left = 0.0

@@ -9,7 +9,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Hometown/Hometown.gd" type="Script" id=13]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Levels/Hometown/NPCs/clgirl/clgirl.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Levels/Hometown/homeTownPortal.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=35]
+
 
 [sub_resource type="OccluderPolygon2D" id=1]
 cull_mode = 2

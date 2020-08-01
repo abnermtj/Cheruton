@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Levels/commonLevelAssets/Flag/Sprites/Grasslands-Flag.png" type="Texture" id=1]
+[ext_resource path="res://Levels/commonLevelAssets/Props/Flag/Sprites/Grasslands-Flag.png" type="Texture" id=1]
+
 
 [sub_resource type="Animation" id=1]
 length = 0.92

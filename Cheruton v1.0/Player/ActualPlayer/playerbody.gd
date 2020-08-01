@@ -8,7 +8,6 @@ const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 const TIME_PER_ATTACK = 1
 
-onready var level = get_parent()
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var animation_player_fx_color = $AnimationPlayerFxColor
@@ -29,6 +28,8 @@ onready var circle_scan_small = $circleScanSmall
 onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
 onready var run_dust = preload("res://Effects/Dust/RunDust/runDust.tscn")
 onready var land_dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
+
+var level
 
 var cur_state : Node
 var prev_state : Node
@@ -83,6 +84,7 @@ func _ready():
 	slide_collision.disabled = true
 	$bodyPivot/bodyRotate/hurtBox/CollisionShape2D.disabled = true
 	$bodyPivot/bodyRotate/hurtBox.obj = self
+	add_to_group("needs_level_ref")
 
 # warning-ignore:unused_argument
 func _physics_process(delta):

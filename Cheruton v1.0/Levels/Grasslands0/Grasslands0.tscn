@@ -1,8 +1,8 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=6]
@@ -32,21 +32,19 @@
 [ext_resource path="res://Levels/Grasslands0/Sprites/MC - Pole.png" type="Texture" id=30]
 [ext_resource path="res://Levels/Grasslands0/Sprites/circleLight.png" type="Texture" id=31]
 [ext_resource path="res://Levels/Grasslands0/Sprites/PureWhite.png" type="Texture" id=32]
-[ext_resource path="res://Levels/commonLevelAssets/SavePoint/SavePoint.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Levels/commonLevelAssets/Props/SavePoint/SavePoint.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=34]
 [ext_resource path="res://Levels/Grasslands0/PoleCatchParticles/PoleCatchParticlesUP.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Levels/Grasslands0/PoleCatchParticles/PoleCatchParticlesDown.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Levels/commonLevelAssets/Props/spike1/spike1.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Levels/commonLevelAssets/TeleportZone/TeleportZone.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Levels/Grasslands0/KeysHint/KeyHint.tscn" type="PackedScene" id=39]
-[ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/KeyBase.png" type="Texture" id=40]
+[ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/UI_HintKeys.png" type="Texture" id=40]
 [ext_resource path="res://Levels/Grasslands0/KeysHint/KeyHintArea.tscn" type="PackedScene" id=41]
-[ext_resource path="res://Levels/Grasslands0/Sprites/LeftClick.png" type="Texture" id=42]
-[ext_resource path="res://Levels/Grasslands0/Sprites/Mouse.png" type="Texture" id=43]
-[ext_resource path="res://Levels/Grasslands0/Sprites/RightClick.png" type="Texture" id=44]
+[ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/Mouse.png" type="Texture" id=43]
 [ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/leaves.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree2/grassLandTree2.tscn" type="PackedScene" id=46]
-[ext_resource path="res://Levels/Grasslands0/Sprites/arrow.png" type="Texture" id=48]
+[ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/arrow.png" type="Texture" id=48]
 [ext_resource path="res://Levels/commonLevelAssets/Ray/Ray.tscn" type="PackedScene" id=49]
 
 [sub_resource type="Animation" id=1]
@@ -342,7 +340,7 @@ tracks/21/keys = {
 "values": [ false ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("Hints/Scene4_0:visible")
+tracks/22/path = NodePath("Hints/Scene3_0:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -2164,7 +2162,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Hints/Scene4_0:visible")
+tracks/7/path = NodePath("Hints/Scene3_0:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -2720,21 +2718,12 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="ShaderMaterial" id=40]
 shader = ExtResource( 14 )
-shader_param/cutoff = 0.050697
+shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.25
 shader_param/mask = ExtResource( 15 )
 
 [sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 400, 200 )
-
-[sub_resource type="DynamicFont" id=42]
-size = 30
-font_data = ExtResource( 34 )
-
-[sub_resource type="DynamicFont" id=43]
-size = 30
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 34 )
 
 [sub_resource type="DynamicFont" id=44]
 size = 30
@@ -3237,166 +3226,52 @@ scale = Vector2( 2, 1.3 )
 [node name="Hints" type="Node2D" parent="."]
 
 [node name="Scene0_0" parent="Hints" instance=ExtResource( 41 )]
-visible = false
 position = Vector2( 48, 24 )
 
-[node name="Label" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
-margin_left = -80.0
-margin_top = -328.0
-margin_right = 420.0
-margin_bottom = 172.0
-custom_fonts/font = SubResource( 42 )
-text = "W"
+[node name="up" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
+position = Vector2( 38, -101 )
+action_name = "move_up"
 
-[node name="Label2" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
-margin_left = -136.0
-margin_top = -268.0
-margin_right = 364.0
-margin_bottom = 232.0
-custom_fonts/font = SubResource( 42 )
-text = "A"
+[node name="left" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
+position = Vector2( -54, -33 )
+action_name = "move_left"
 
-[node name="Label3" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
-margin_left = -80.0
-margin_top = -268.0
-margin_right = 420.0
-margin_bottom = 232.0
-custom_fonts/font = SubResource( 42 )
-text = "S"
+[node name="down" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
+position = Vector2( 37, -30 )
+action_name = "move_down"
 
-[node name="Label4" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
-margin_left = -24.0
-margin_top = -268.0
-margin_right = 476.0
-margin_bottom = 232.0
-custom_fonts/font = SubResource( 42 )
-text = "D"
+[node name="right" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
+position = Vector2( 129, -30 )
+action_name = "move_right"
 
 [node name="Scene0_1" parent="Hints" instance=ExtResource( 41 )]
 position = Vector2( 1060, 216 )
 
-[node name="Label" type="Label" parent="Hints/Scene0_1"]
-margin_left = -248.0
-margin_top = -244.0
-margin_right = 252.0
-margin_bottom = 256.0
-rect_pivot_offset = Vector2( 250, 250 )
-custom_fonts/font = SubResource( 43 )
-custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
-text = "Space"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="NinePatchRect" parent="Hints/Scene0_1/Label"]
-show_behind_parent = true
-margin_left = 168.0
-margin_top = 228.0
-margin_right = 208.0
-margin_bottom = 241.0
-rect_scale = Vector2( 4, 4 )
-texture = ExtResource( 40 )
-patch_margin_left = 4
-patch_margin_top = 2
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="jump" parent="Hints/Scene0_1" instance=ExtResource( 39 )]
 
 [node name="Scene1_0" parent="Hints" instance=ExtResource( 41 )]
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 296, -1428 )
 
-[node name="Label" parent="Hints/Scene1_0" instance=ExtResource( 39 )]
-margin_left = -466.0
-margin_top = -264.0
-margin_right = 34.0
-margin_bottom = 236.0
-text = "E"
+[node name="interact" parent="Hints/Scene1_0" instance=ExtResource( 39 )]
+action_name = "interact"
 
 [node name="Scene2_0" parent="Hints" instance=ExtResource( 41 )]
-visible = false
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 5464, 976 )
 
-[node name="Sprite" type="Sprite" parent="Hints/Scene2_0"]
-show_behind_parent = true
-position = Vector2( 0, -14 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 40 )
-offset = Vector2( 0, 1 )
+[node name="attack" parent="Hints/Scene2_0" instance=ExtResource( 39 )]
+action_name = "attack"
 
-[node name="Sprite2" type="Sprite" parent="Hints/Scene2_0"]
-show_behind_parent = true
-position = Vector2( 0, -14 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 42 )
-offset = Vector2( 0, 1 )
-
-[node name="Scene2_1" parent="Hints" instance=ExtResource( 41 )]
-modulate = Color( 1, 1, 1, 0.996078 )
-position = Vector2( 616, 2144 )
-
-[node name="Sprite" type="Sprite" parent="Hints/Scene2_1"]
-show_behind_parent = true
-position = Vector2( 0, -14 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 40 )
-offset = Vector2( 0, 1 )
-
-[node name="Sprite2" type="Sprite" parent="Hints/Scene2_1"]
-show_behind_parent = true
-position = Vector2( 0, -14 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 42 )
-offset = Vector2( 0, 1 )
-
-[node name="Scene4_0" parent="Hints" instance=ExtResource( 41 )]
+[node name="Scene3_0" parent="Hints" instance=ExtResource( 41 )]
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 3112, 912 )
 
-[node name="Label" parent="Hints/Scene4_0" instance=ExtResource( 39 )]
-margin_left = -489.0
-margin_top = -262.0
-margin_right = 11.0
-margin_bottom = 238.0
-text = "Q"
+[node name="throw" parent="Hints/Scene3_0" instance=ExtResource( 39 )]
+position = Vector2( -268, -38 )
+action_name = "throw"
 
-[node name="Label2" type="Label" parent="Hints/Scene4_0"]
-margin_left = -514.0
-margin_top = -165.0
-margin_right = -14.0
-margin_bottom = 335.0
-rect_pivot_offset = Vector2( 250, 250 )
-custom_fonts/font = SubResource( 43 )
-custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
-text = "LShift"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="NinePatchRect" parent="Hints/Scene4_0/Label2"]
-show_behind_parent = true
-margin_left = 168.0
-margin_top = 228.0
-margin_right = 208.0
-margin_bottom = 241.0
-rect_scale = Vector2( 4, 4 )
-texture = ExtResource( 40 )
-patch_margin_left = 4
-patch_margin_top = 2
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Hints/Scene4_0"]
+[node name="Label3" type="Label" parent="Hints/Scene3_0"]
 margin_left = -520.0
 margin_top = -211.0
 margin_right = -20.0
@@ -3411,12 +3286,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mouse" type="Sprite" parent="Hints/Scene4_0"]
+[node name="Mouse" type="Sprite" parent="Hints/Scene3_0"]
 position = Vector2( -300, -8 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 43 )
 
-[node name="Sprite2" type="NinePatchRect" parent="Hints/Scene4_0/Mouse"]
+[node name="Sprite2" type="NinePatchRect" parent="Hints/Scene3_0/Mouse"]
 show_behind_parent = true
 margin_left = -7.0
 margin_top = -7.0
@@ -3431,59 +3306,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Hints/Scene4_0"]
+[node name="Sprite" type="Sprite" parent="Hints/Scene3_0"]
 position = Vector2( -664, 32 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 48 )
 
-[node name="Sprite2" type="Sprite" parent="Hints/Scene4_0"]
+[node name="Sprite2" type="Sprite" parent="Hints/Scene3_0"]
 position = Vector2( -600, -60 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 48 )
 
-[node name="Scene4_1" parent="Hints" instance=ExtResource( 41 )]
+[node name="dash" parent="Hints/Scene3_0" instance=ExtResource( 39 )]
+position = Vector2( -321, 65 )
+action_name = "dash"
+
+[node name="Scene3_1" parent="Hints" instance=ExtResource( 41 )]
 modulate = Color( 1, 1, 1, 0.996078 )
-position = Vector2( 2008, 1030 )
+position = Vector2( 1866, 1014 )
 
-[node name="Label" parent="Hints/Scene4_1" instance=ExtResource( 39 )]
-margin_left = -489.0
-margin_top = -262.0
-margin_right = 11.0
-margin_bottom = 238.0
-text = "Q"
+[node name="throw" parent="Hints/Scene3_1" instance=ExtResource( 39 )]
+position = Vector2( -268, -38 )
+action_name = "throw"
 
-[node name="Label2" type="Label" parent="Hints/Scene4_1"]
-margin_left = -514.0
-margin_top = -165.0
-margin_right = -14.0
-margin_bottom = 335.0
-rect_pivot_offset = Vector2( 250, 250 )
-custom_fonts/font = SubResource( 43 )
-custom_colors/font_color = Color( 0.921569, 0.945098, 0.972549, 1 )
-text = "LShift"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="NinePatchRect" parent="Hints/Scene4_1/Label2"]
-show_behind_parent = true
-margin_left = 168.0
-margin_top = 228.0
-margin_right = 208.0
-margin_bottom = 241.0
-rect_scale = Vector2( 4, 4 )
-texture = ExtResource( 40 )
-patch_margin_left = 4
-patch_margin_top = 2
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Hints/Scene4_1"]
+[node name="Label3" type="Label" parent="Hints/Scene3_1"]
 margin_left = -520.0
 margin_top = -211.0
 margin_right = -20.0
@@ -3498,12 +3343,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mouse" type="Sprite" parent="Hints/Scene4_1"]
+[node name="Mouse" type="Sprite" parent="Hints/Scene3_1"]
 position = Vector2( -300, -8 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 43 )
 
-[node name="Sprite2" type="NinePatchRect" parent="Hints/Scene4_1/Mouse"]
+[node name="Sprite2" type="NinePatchRect" parent="Hints/Scene3_1/Mouse"]
 show_behind_parent = true
 margin_left = -7.0
 margin_top = -7.0
@@ -3517,6 +3362,18 @@ patch_margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="dash" parent="Hints/Scene3_1" instance=ExtResource( 39 )]
+position = Vector2( -321, 65 )
+action_name = "dash"
+
+[node name="Scene4_0" parent="Hints" instance=ExtResource( 41 )]
+modulate = Color( 1, 1, 1, 0.996078 )
+position = Vector2( 616, 2144 )
+
+[node name="attack" parent="Hints/Scene4_0" instance=ExtResource( 39 )]
+position = Vector2( -13, -43 )
+action_name = "attack"
 
 [node name="Scene5_0" parent="Hints" instance=ExtResource( 41 )]
 modulate = Color( 1, 1, 1, 0.996078 )
@@ -3537,17 +3394,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite2" type="Sprite" parent="Hints/Scene5_0"]
-show_behind_parent = true
-position = Vector2( 457, -136 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 44 )
-offset = Vector2( 0, 1 )
-
-[node name="Sprite" type="Sprite" parent="Hints/Scene5_0/Sprite2"]
-show_behind_parent = true
-texture = ExtResource( 40 )
-offset = Vector2( 0, 1 )
+[node name="KeyHint" parent="Hints/Scene5_0" instance=ExtResource( 39 )]
+position = Vector2( 434, -162 )
+action_name = "hook"
 
 [node name="ThanksForPlaying" type="Label" parent="."]
 margin_left = 7049.0

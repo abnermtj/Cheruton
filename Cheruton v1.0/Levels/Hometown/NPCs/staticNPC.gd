@@ -5,11 +5,12 @@ class_name StaticNPC
 export var is_flipped = false
 
 
-onready var level = get_parent().get_parent()
-onready var player = level.get_node("player")
 onready var sprite = $Sprite
 onready var sprite2 = $Sprite2
 onready var dialog_name = name
+
+var level
+var player
 
 var interact_enabled = true setget set_interact_enabled
 
@@ -21,8 +22,10 @@ var save_dir : int
 func _ready():
 	interaction_type = "dialog"
 	$AnimationPlayer.play("idle")
-	add_to_group("interactibles")
-	add_to_group("NPCs")
+	add_to_group("interactibles", true)
+	add_to_group("NPCs", true)
+	add_to_group("needs_player_ref", true)
+	add_to_group("needs_level_ref", true)
 
 	set_process(false)
 	if is_flipped: scale.x = -abs(scale.x)
