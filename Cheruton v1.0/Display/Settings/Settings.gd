@@ -167,8 +167,7 @@ func check_duplicates(new_key, old_key):
 	if(prior_collision):
 		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
 		var old_binding = controls_column.find_node(key_action[conflict_index], true, false)
-		key_action[conflict_index] = temp_control.name
-		clear_duplicates(old_binding)
+		clear_duplicates(old_binding, conflict_index)
 
 # Handles actions with the same key_bindings
 func handle_duplicates(current_binding):
@@ -195,15 +194,27 @@ func handle_duplicates(current_binding):
 #	DataResource.dict_input_map[current_binding.name] = btn_text
 
 # Clears duplicates that have been resolved
-func clear_duplicates(current_binding):
+func clear_duplicates(current_binding, conflict_index):
 	var size = key_action.size()
 	var occurence = 0
-	for i in size:
-		if(key_action[i] == current_binding.name):
-			occurence += 1
-	if(occurence == 1):
-		current_binding.get_child(0).set("custom_colors/font_color", WHITE)
-		key_duplicates.erase(current_binding.name)
+	var occur_index = []
+	# Original action from which duplicates were created
+	print(key_action)
+	print(conflict_index)
+	if(temp_control.name == key_action[conflict_index]):
+		print(2)
+	# Duplicated from another action
+	else:
+		key_action[conflict_index] = temp_control.name
+		print(1)
+		for i in size:
+			if(key_action[i] == current_binding.name):
+				occurence += 1
+				occur_index.append(i)
+		if(occurence == 1):
+			current_binding.get_child(0).set("custom_colors/font_color", WHITE)
+			key_duplicates.erase(current_binding.name)
+		temp_control.get_child(0).set("custom_colors/font_color", WHITE)
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
