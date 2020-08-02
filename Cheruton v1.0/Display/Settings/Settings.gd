@@ -2,7 +2,7 @@ extends Control
 
 const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
-
+const UNASSIGN = "Unassigned"
 
 const RED = Color(1,0,0,1)
 const WHITE = Color(1,1,1,1)
@@ -58,14 +58,16 @@ func init_key_bindings():
 	var action_size = key_action.size()
 	
 	for i in action_size:
-		print(key_action[i])
-		print(key_action[i].find("ui") != -1)
 		if(key_action[i].find("ui") != -1):
 			continue
 		var new_label = control_label.instance()
 		var new_button = control_btn.instance()
 		
+		new_label.name = key_action[i]
+		new_button.name = key_action[i]
+		
 		new_label.text = key_action[i].capitalize()#reform_label_text(key_action[i])
+		new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
 		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
 		
 		controls_action.add_child(new_label)
@@ -80,33 +82,20 @@ func reform_btn_text(text):
 		RMB:
 			return "Right Mouse"
 
-	return text.capitalize()
-#	var columns = controls_column.get_child_count()
-#	for i in columns:
-#		var column_node = controls_column.get_child(i).get_node("Mapping")
-#		var bindings = column_node.get_child_count()
-#		for j in bindings:
-#			var current_binding = column_node.get_child(j)
-#			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
-#			print(current_binding.name)
-#			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-#			set_text(current_binding.get_child(0), false, btn_text)
-#			key_action.append(current_binding.name)
+	return text
 
+#func set_text(node, unassign := true, new_value := ""):
+#	if(unassign):
+#		if(node.get("custom_colors/font_color") == RED):
+#			prior_collision = true
+#			node.set("custom_colors/font_color", WHITE)
+#		else:
+#			prior_collision = false
+#		node.text = "Unassigned"
+#	else:
+#			node.text = check_mouse_text(new_value)
 
-
-func set_text(node, unassign := true, new_value := ""):
-	if(unassign):
-		if(node.get("custom_colors/font_color") == RED):
-			prior_collision = true
-			node.set("custom_colors/font_color", WHITE)
-		else:
-			prior_collision = false
-		node.text = "Unassigned"
-	else:
-			node.text = check_mouse_text(new_value)
-
-
+# Reformats certain keypress nodes
 func check_mouse_text(btn_text):
 	if(btn_text == RMB):
 		return "Right Mouse"
@@ -114,121 +103,120 @@ func check_mouse_text(btn_text):
 		return "Left Mouse"
 	return btn_text
 
+# when the button is pressed
 func _on_button_pressed(button):
-	if(!edit_control):
-		edit_control = true
-		set_text(button.get_child(0), true)
-
-	else:
-		var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-		set_text(temp_control.get_child(0), false, btn_text)
-		set_text(button.get_child(0), true)
+	if(temp_control):
+		temp_control.get_child(0).text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
+	button.get_child(0).text = UNASSIGN
 	temp_control = button
+	#print(temp_control.name)
 
 func _input(event):
+	# Keyboard Button
 	if event is InputEventKey:
 		if(edit_control):
 			edit_control = false
-			_edit_key(event)
+			#_edit_key(event)
 
+	# Mouse Button
 	elif event is InputEventMouseButton:
 		if(edit_control):
 			edit_control = false
 			if(event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
 				align_mouse_event(event)
-				_edit_key(event)
+				#_edit_key(event)
 
 # Affixes the standard mouse button properties to the pressed button
 func align_mouse_event(event):
 	event.position = Vector2(0, 0)
-	event.button_mask=0
+	event.button_mask= 0
 	event.pressed = false
 	event.doubleclick = false
 
-# Affixes the new key binding to the action highlighted
-func _edit_key(new_key):
-	var action_name = temp_control.name
-	var old_key
-	if !InputMap.get_action_list(action_name).empty():
-		old_key = InputMap.get_action_list(temp_control.name)[0]
-		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-
-	check_duplicates(new_key, old_key)
-	# Update duplicate list
-	InputMap.action_add_event(action_name, new_key)
-
-	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-	set_text(temp_control.get_child(0), false, btn_text)
-	DataResource.dict_input_map[temp_control.name] = btn_text
-
-	temp_control = null
-
-# Detects actions who already occupy the same key binding as the intended one
-# Search can be improved
-func check_duplicates(new_key, old_key):
-	var columns = controls_column.get_child_count()
-
-	for i in columns:
-		var column_node = controls_column.get_child(i).get_node("Mapping")
-		var bindings = column_node.get_child_count()
-		for j in bindings:
-			var current_binding = column_node.get_child(j)
-			var check = InputMap.event_is_action(new_key, current_binding.name)
-			if(check):
-				handle_duplicates(current_binding)
-				return
-	# No Duplicates found and selected node had a previous conflict
-	if(prior_collision):
-		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
-		var old_binding = controls_column.find_node(key_action[conflict_index], true, false)
-		clear_duplicates(old_binding, conflict_index)
-
-# Handles actions with the same key_bindings
-func handle_duplicates(current_binding):
-	var action_name = current_binding.name
-	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
-	key_action[conflict_index] = current_binding.name
-	# New key conflicts with current_binding and conflict is newly detected
-	if(!key_duplicates.has(current_binding.name)):
-		key_duplicates.append(current_binding.name)
-
-	# Find all conflicting actions and highlight it
-	var key_size = key_action.size()
-	for i in key_size:
-		if(key_action[i] == current_binding.name):
-			var controls_child_count = controls_column.get_child_count()
-			var node = controls_column.get_child(i/controls_child_count).get_child(1).get_child(i%5).get_child(0)
-			node.set("custom_colors/font_color", RED)
-#	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-#	InputMap.action_add_event(current_binding.name, old_key)
+## Affixes the new key binding to the action highlighted
+#func _edit_key(new_key):
+#	var action_name = temp_control.name
+#	var old_key
+#	if !InputMap.get_action_list(action_name).empty():
+#		old_key = InputMap.get_action_list(temp_control.name)[0]
+#		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 #
+#	check_duplicates(new_key, old_key)
+#	# Update duplicate list
+#	InputMap.action_add_event(action_name, new_key)
 #
-#	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
-#	set_text(current_binding.get_child(0), false, btn_text)
-#	DataResource.dict_input_map[current_binding.name] = btn_text
-
-# Clears duplicates that have been resolved
-func clear_duplicates(current_binding, conflict_index):
-	var size = key_action.size()
-	var occurence = 0
-	var occur_index = []
-	# Original action from which duplicates were created
-	print(key_action)
-	print(conflict_index)
-	if(temp_control.name == key_action[conflict_index]):
-		print(2)
-	# Duplicated from another action
-	else:
-		key_action[conflict_index] = temp_control.name
-		print(1)
-		for i in size:
-			if(key_action[i] == current_binding.name):
-				occurence += 1
-				occur_index.append(i)
-		if(occurence == 1):
-			current_binding.get_child(0).set("custom_colors/font_color", WHITE)
-			key_duplicates.erase(current_binding.name)
-		temp_control.get_child(0).set("custom_colors/font_color", WHITE)
+#	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
+#	set_text(temp_control.get_child(0), false, btn_text)
+#	DataResource.dict_input_map[temp_control.name] = btn_text
+#
+#	temp_control = null
+#
+## Detects actions who already occupy the same key binding as the intended one
+## Search can be improved
+#func check_duplicates(new_key, old_key):
+#	var columns = controls_column.get_child_count()
+#
+#	for i in columns:
+#		var column_node = controls_column.get_child(i).get_node("Mapping")
+#		var bindings = column_node.get_child_count()
+#		for j in bindings:
+#			var current_binding = column_node.get_child(j)
+#			var check = InputMap.event_is_action(new_key, current_binding.name)
+#			if(check):
+#				handle_duplicates(current_binding)
+#				return
+#	# No Duplicates found and selected node had a previous conflict
+#	if(prior_collision):
+#		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
+#		var old_binding = controls_column.find_node(key_action[conflict_index], true, false)
+#		clear_duplicates(old_binding, conflict_index)
+#
+## Handles actions with the same key_bindings
+#func handle_duplicates(current_binding):
+#	var action_name = current_binding.name
+#	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
+#	key_action[conflict_index] = current_binding.name
+#	# New key conflicts with current_binding and conflict is newly detected
+#	if(!key_duplicates.has(current_binding.name)):
+#		key_duplicates.append(current_binding.name)
+#
+#	# Find all conflicting actions and highlight it
+#	var key_size = key_action.size()
+#	for i in key_size:
+#		if(key_action[i] == current_binding.name):
+#			var controls_child_count = controls_column.get_child_count()
+#			var node = controls_column.get_child(i/controls_child_count).get_child(1).get_child(i%5).get_child(0)
+#			node.set("custom_colors/font_color", RED)
+##	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+##	InputMap.action_add_event(current_binding.name, old_key)
+##
+##
+##	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
+##	set_text(current_binding.get_child(0), false, btn_text)
+##	DataResource.dict_input_map[current_binding.name] = btn_text
+#
+## Clears duplicates that have been resolved
+#func clear_duplicates(current_binding, conflict_index):
+#	var size = key_action.size()
+#	var occurence = 0
+#	var occur_index = []
+#	# Original action from which duplicates were created
+#	print(key_action)
+#	print(conflict_index)
+#	if(temp_control.name == key_action[conflict_index]):
+#		print(2)
+#	# Duplicated from another action
+#	else:
+#		key_action[conflict_index] = temp_control.name
+#		print(1)
+#		for i in size:
+#			if(key_action[i] == current_binding.name):
+#				occurence += 1
+#				occur_index.append(i)
+#		if(occurence == 1):
+#			current_binding.get_child(0).set("custom_colors/font_color", WHITE)
+#			key_duplicates.erase(current_binding.name)
+#		temp_control.get_child(0).set("custom_colors/font_color", WHITE)
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
