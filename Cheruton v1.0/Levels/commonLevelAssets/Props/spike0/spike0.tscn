@@ -4,9 +4,9 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/spike0/spike0.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 10 )
+extents = Vector2( 76, 10 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.825
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -52,7 +52,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 3 )
+anims/idle = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

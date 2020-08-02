@@ -3,31 +3,29 @@ class_name motionState
 
 func handle_input(event):
 	if event.is_action_pressed("attack")\
-	 and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
-	 and owner.can_attack\
-	 and owner.can_throw_sword\
-	 and owner.attack_enabled: # nasty
-		owner.can_attack = false
+	and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
+	and owner.sword_state == owner.SWORD_STATES.ON_HAND_CAN_ATTACK\
+	and owner.attack_enabled:
+		owner.sword_state = owner.SWORD_STATES.ON_HAND_CANNOT_ATTACK
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
 
-	if event.is_action_pressed("sworthrow"):
+	if event.is_action_pressed("throw"):
 		if not ["attack", "wallSlide"].has(owner.cur_state.name)\
-		 and owner.can_throw_sword:
-#			owner.throw_sword_dir = get_input_direction().normalized() # keyboard
+		and owner.sword_state == owner.SWORD_STATES.ON_HAND_CAN_ATTACK:
 			owner.throw_sword_dir = (get_viewport().get_mouse_position() - owner.get_global_transform_with_canvas().origin).normalized()
 
 			if owner.throw_sword_dir == Vector2(): owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()
-		elif owner.sword_stuck:
+		elif owner.sword_state == owner.SWORD_STATES.STUCK:
 			owner.return_sword_throw()
 
-	if event.is_action_pressed("dash") and owner.sword_stuck:
+	if event.is_action_pressed("dash") and owner.sword_state == owner.SWORD_STATES.STUCK:
 		emit_signal("finished", "dash")
 
 # note left and right at the same time cancel out
 func get_input_direction():
-	if not get_parent().input_enabled: return Vector2()
+	if get_parent().input_enabled == false: return Vector2()
 
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))

@@ -1,5 +1,4 @@
 extends motionState
-
 class_name airState
 
 const WALL_SLIDE_THRESHHOLD = -100 # max y velocity to goto wall slide

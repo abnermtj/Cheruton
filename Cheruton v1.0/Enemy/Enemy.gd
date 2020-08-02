@@ -17,8 +17,8 @@ var velocity = Vector2()
 var health = 15.0 setget set_health
 
 func _ready():
-	add_to_group("needs_player_ref", true)
 	add_to_group("needs_level_ref", true)
+	add_to_group("needs_player_ref", true)
 
 func display_damage(damage_value):
 	var damage_text = damage_val.instance()
@@ -37,6 +37,7 @@ func play_anim(string):
 	animation_player.clear_queue()
 	animation_player.play(string)
 	animation_player.advance(0) # play immediately instead of deferred
+
 func queue_anim(string):
 	animation_player.queue(string)
 func play_anim_fx(string):

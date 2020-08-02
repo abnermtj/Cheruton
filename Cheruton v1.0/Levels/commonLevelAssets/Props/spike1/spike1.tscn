@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/spike1/Sprites/Props-Vines1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 8 )
+extents = Vector2( 20, 8 )
 
 [sub_resource type="Animation" id=2]
 length = 0.425

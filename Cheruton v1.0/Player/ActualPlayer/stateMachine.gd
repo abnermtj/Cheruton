@@ -12,9 +12,9 @@ var states_map = {}
 
 var states_stack = []
 var current_state = null
-var previous_state = null # for function
+var previous_state = null
 
-var input_enabled = false
+var input_enabled = false # Must set this yourself for player's fsm
 var _active = false setget set_active
 
 func _ready(): # ready function not overwritten so no need ._ready() in inheritors
@@ -42,7 +42,7 @@ func set_start_state(start_state):
 	states_stack.resize(0)
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]
-	current_state.enter()
+	current_state.call_deferred("enter") # else may call animations in enter() before anim player is set
 
 func _input(event):
 	if input_enabled:

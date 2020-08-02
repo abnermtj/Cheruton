@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Enemy/Mobs/Furball/Sprites/Enemy_Furball_22fps.png" type="Texture" id=1]
 [ext_resource path="res://Enemy/Mobs/Furball/Furball.gd" type="Script" id=2]
@@ -8,16 +8,16 @@
 [ext_resource path="res://Enemy/Mobs/Furball/States/search.gd" type="Script" id=6]
 [ext_resource path="res://Effects/White/blinkWhite.tres" type="Material" id=7]
 [ext_resource path="res://Enemy/Mobs/Furball/States/fall.gd" type="Script" id=8]
-[ext_resource path="res://Enemy/Mobs/Furball/idle.gd" type="Script" id=9]
-[ext_resource path="res://Enemy/Mobs/Furball/attack.gd" type="Script" id=10]
-[ext_resource path="res://Enemy/Mobs/Furball/dead.gd" type="Script" id=11]
+[ext_resource path="res://Enemy/Mobs/Furball/States/idle.gd" type="Script" id=9]
+[ext_resource path="res://Enemy/Mobs/Furball/States/attack.gd" type="Script" id=10]
+[ext_resource path="res://Enemy/Mobs/Furball/States/dead.gd" type="Script" id=11]
 [ext_resource path="res://Enemy/Mobs/Furball/hurtBox.gd" type="Script" id=12]
 [ext_resource path="res://Enemy/Mobs/MobHealth/HealthBarMob.tscn" type="PackedScene" id=13]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 80 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.65
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/Sprite:region_rect")
@@ -46,49 +46,49 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ SubResource( 2 ) ]
+"update": 1,
+"values": [ SubResource( 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:position")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 59.6764, -50 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:shape:extents")
 tracks/4/interp = 1
-tracks/4/loop_wrap = true
+tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 60, 80 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("bodyPivot/bodyRotate/hurtBox/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
+tracks/5/interp = 0
+tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.45, 0.65 ),
+"times": PoolRealArray( 0, 0.4, 0.65 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ true, false, true ]
 }
 tracks/6/type = "method"
@@ -130,7 +130,7 @@ tracks/8/keys = {
 "values": [ Vector2( -1.5, -36 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/Sprite:region_rect")
@@ -183,7 +183,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/Sprite:region_rect")
@@ -234,7 +234,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.88, 1.25 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/Sprite:region_rect")
@@ -297,7 +297,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.45
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate/Sprite:region_rect")
@@ -362,7 +362,7 @@ tracks/4/keys = {
 "values": [ Vector2( -1.5, -36 ), Vector2( -1.5, -26.5 ), Vector2( -1.5, -50 ), Vector2( -1.5, -36 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.75
 loop = true
 tracks/0/type = "value"
@@ -414,7 +414,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyPivot/bodyRotate:material")
@@ -429,16 +429,19 @@ tracks/0/keys = {
 "values": [ ExtResource( 7 ), null, ExtResource( 7 ), null, ExtResource( 7 ), null ]
 }
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=9]
 radius = 28.0
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 48, 28 )
 
-[sub_resource type="CircleShape2D" id=12]
-radius = 800.0
+[sub_resource type="CircleShape2D" id=13]
+radius = 500.0
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=11]
+radius = 700.0
+
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 90, 80 )
 
 [node name="Furball" type="KinematicBody2D"]
@@ -456,7 +459,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 511, 1, 32, 32 )
+region_rect = Rect2( 953, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
@@ -467,30 +470,30 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
 position = Vector2( 59.6764, -50 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "sleep"
-anims/attack = SubResource( 3 )
-anims/die = SubResource( 4 )
-anims/fall = SubResource( 5 )
-anims/hit = SubResource( 6 )
-anims/jump = SubResource( 7 )
-anims/sleep = SubResource( 8 )
+anims/attack = SubResource( 2 )
+anims/die = SubResource( 3 )
+anims/fall = SubResource( 4 )
+anims/hit = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/sleep = SubResource( 7 )
 
 [node name="AnimationPlayerFx" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 9 )
+anims/hit = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-shape = SubResource( 11 )
+shape = SubResource( 10 )
 
 [node name="states" type="Node" parent="."]
 pause_mode = 2
@@ -520,13 +523,19 @@ pause_mode = 2
 script = ExtResource( 11 )
 
 [node name="alertArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="alertArea"]
+shape = SubResource( 13 )
+
+[node name="followArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="followArea"]
 position = Vector2( 1, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="attackRangeArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -534,7 +543,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackRangeArea"]
 position = Vector2( 0, -50 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 13 )]
 margin_left = 0.0
@@ -544,4 +553,4 @@ margin_bottom = -50.854
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
 [connection signal="body_entered" from="alertArea" to="." method="_on_alertArea_body_entered"]
-[connection signal="body_exited" from="alertArea" to="." method="_on_alertArea_body_exited"]
+[connection signal="body_exited" from="followArea" to="." method="_on_followArea_body_exited"]

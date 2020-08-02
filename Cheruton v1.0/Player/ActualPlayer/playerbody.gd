@@ -3,7 +3,7 @@ extends KinematicBody2D
 # -anmation player connects to states -> ON ANIMATION CHANGED
 
 const GRAVITY = 2400
-const AIR_ACCEL = 34  # increase in this >> increase in stearing power in air
+const AIR_ACCEL = 32.5  # increase in this >> increase in stearing power in air old 34
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 const TIME_PER_ATTACK = 1
@@ -56,15 +56,15 @@ var exit_slide_blocked = false
 
 var wall_direction = 0 # 0 or 1
 
+enum SWORD_STATES {ON_HAND_CAN_ATTACK = 0, ON_HAND_CANNOT_ATTACK = 1, AIR = 2, STUCK = 3}
+var sword_state
+
 var throw_sword_dir = Vector2()
-var sword_stuck = false
 var sword_pos = Vector2()
 var sword_col_normal = Vector2()
 
 var attack_enabled = true
-var can_attack = true
 var can_hook = true
-var can_throw_sword = true
 var attack_cooldown_finished = true
 
 var hit_dir : Vector2
@@ -86,7 +86,6 @@ func _ready():
 	$bodyPivot/bodyRotate/hurtBox.obj = self
 	add_to_group("needs_level_ref")
 
-# warning-ignore:unused_argument
 func _physics_process(delta):
 	var old_nearest_hook_point = nearest_hook_point
 	var old_nearest_interactible = nearest_interactible
@@ -110,7 +109,8 @@ func _physics_process(delta):
 		interaction_type = ""
 
 	if on_floor and attack_cooldown_finished:
-		can_attack = true
+		attack_cooldown_finished = false
+		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
 
 # General Helper functions
 func set_input_enabled(val):
@@ -176,7 +176,7 @@ func set_on_floor(grounded):
 	on_floor = grounded
 	set_camera_mode_logic()
 
-func set_fsm(val):
+func set_fsm(val : bool):
 	states._active = val
 
 # Animation
@@ -232,27 +232,26 @@ func chain_release():
 
 # Sword Throw
 func start_sword_throw():
-	can_throw_sword = false
-	sword_stuck = false
+	sword_state = SWORD_STATES.AIR
 	emit_signal("flying_sword_command", 0, throw_sword_dir)
 func return_sword_throw():
-	sword_stuck = false
+	sword_state = SWORD_STATES.AIR
 	emit_signal("flying_sword_command", 1, Vector2())
 func on_sword_result(result, pos, normal):
 	if result == 0: # hit
-		sword_stuck = true
+		sword_state = SWORD_STATES.STUCK
 		sword_pos = pos
 		sword_col_normal = normal
 	elif result == 1: # returning
-		sword_stuck = false
+		sword_state = SWORD_STATES.AIR
 	elif result == 2:
-		can_throw_sword = true
-		sword_stuck = false
+		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
 
 # Player damaged
 func _on_hitBox_area_entered(area):
 	if is_invunerable: return
 	is_invunerable = true
+
 	if zone: global_position = zone.tele_pos
 
 	var damage
@@ -263,7 +262,7 @@ func _on_hitBox_area_entered(area):
 
 	DataResource.change_health(damage)
 
-	if DataResource.temp_dict_player.health_curr < 1: # change this to a better system
+	if DataResource.temp_dict_player.health_curr < 1: # change this to a better system to have less dependancies
 		get_parent().on_player_dead()
 
 	if hooked: chain_release()

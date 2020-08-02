@@ -29,11 +29,9 @@ func update(delta):
 	var col = owner.get_slide_collision(0)
 
 	if col and owner.velocity.length() > 150:
-
 		var dust_instance = owner.dust.instance()
 		dust_instance.global_position = col.position
 		dust_instance.rotation = col.normal.angle_to(Vector2.UP)
 		dust_instance.emitting = true
 
 		get_parent().add_child(dust_instance)
-

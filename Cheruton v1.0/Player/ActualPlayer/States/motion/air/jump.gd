@@ -4,7 +4,7 @@ const JUMP_RELEASE_SLOWDOWN = .72 # 0 to 1, after releasing jump key how much to
 const JUMP_TERMINAL_VELOCITY = 7000
 const NORMAL_GRAV_MULTIPLIER = .42
 const MIN_ENTER_VELOCITY_X = 420
-const JUMP_VEL = -666 # normal -666
+const JUMP_VEL = -730 # 2tilestall -666 2.5 -730 3 -800
 const CORNER_CORRECTION_DISPLACEMENT = 7
 
 var enter_velocity : Vector2

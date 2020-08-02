@@ -9,7 +9,7 @@ func handle_input(event): # disables all inputs
 	pass
 
 func enter():
-	owner.sword_stuck = false # so cannot repeatedly dash
+	owner.sword_state = owner.SWORD_STATES.ON_HAND_CAN_ATTACK
 
 	var normal = owner.sword_col_normal
 	owner.look_direction = -normal

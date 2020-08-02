@@ -7,22 +7,26 @@ var cur_cut_scene_completed = false
 var flying_sword
 
 func _ready():
-	DataResource.change_health(50) # fix next time
 	bg_music_file = "res://Music/Background/Chiptune _-Clavi, Wurly & CP-(Album) _Every Morning_.wav"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
+
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
 							1: Vector2(7866 ,2552)}
-	if not enter_point: enter_point = 0 # default must be set for all scenes
+	if not enter_point: enter_point = 0
+
+	# debug
+	#
 
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 #	#debug
-#	player_spawn_pos = Vector2(3028, -1936)
-#	$player.set_input_enabled(true)
-	cur_cut_scene_completed = false
-#	cutscene_number = 2 # cutscene
-#	cutscene_index = 0 #
+	player.set_input_enabled(true)
+	player_spawn_pos = Vector2(3028, -1936)
+	cur_cut_scene_completed = true
+	cutscene_number = 2 # cutscene
+	cutscene_index = 0 #
 	########
+
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
 	if not cur_cut_scene_completed:
 		cutscene_number = 0 # cutscene
@@ -70,28 +74,11 @@ func end_cutscene():
 	cutscene_index = 0
 
 func _process(delta):
+	Engine.time_scale = 1
 	if wait_dialog_complete and DataResource.temp_dict_player.dialog_complete:
 		next_cutscene()
 		wait_dialog_complete = false
 
-#
-#func _input(event):
-#	if Input.is_action_just_pressed("reset"):
-#		player.velocity = Vector2()
-#		player.position = save_position
-#
-#		var mob = preload("res://Enemy/Mobs/Furball/Furball.tscn")
-#		var instance = mob.instance()
-#		instance.position = save_position
-#		$Mobs.add_child(instance)
-
-#	if Input.is_action_just_pressed("attack"):
-#		$Hints/Scene0_0._on_Scene0_0_body_entered(null)
-#		shake_camera(.5,60,4, Vector2())
-
-func on_player_dead():
-	player.global_position = player_spawn_pos
-	DataResource.change_health(999)
 
 func handle_death_zone(body):
 	player.velocity = Vector2()
@@ -117,6 +104,7 @@ func start_glove_throw():
 	var glove_node = glove.instance()
 	glove_node.global_position = $NPCs/moneygirl.global_position
 	glove_node.velocity = Vector2(-1500 , -540)
+	glove_node.level = self
 
 	$NPCs.add_child(glove_node)
 
@@ -141,7 +129,3 @@ func instance_flying_sword():
 func on_sword_result(result, vector1, vector2):
 	if result == 2 and cutscene_number == 4:
 		next_cutscene()
-
-func shake_camera(time : float, freq : float, power : float, dir: Vector2):
-	camera.shake(time, freq, power, dir)
-

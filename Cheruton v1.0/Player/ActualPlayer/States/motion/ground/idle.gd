@@ -10,7 +10,7 @@ func enter():
 		owner.queue_anim("idle_continious")
 
 func update(delta):
-	owner.velocity = Vector2.DOWN * 10  # DOWN so we have collision response
+	owner.velocity = Vector2.DOWN * 12  # DOWN so we have collision response
 	owner.move()
 
 	if get_input_direction().x:

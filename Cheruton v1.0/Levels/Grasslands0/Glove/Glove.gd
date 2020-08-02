@@ -6,6 +6,11 @@ onready var dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
 var velocity : Vector2
 var interact_enabled = true
 
+var level
+
+func _ready():
+	add_to_group("needs_level_ref", true)
+
 func _physics_process(delta):
 	velocity.x *= .978
 	velocity.y += 2400 * delta
@@ -35,7 +40,6 @@ func interact(body):
 	if not interact_enabled: return
 	interact_enabled = false
 
-	var level = get_parent().get_parent()
 	level.next_cutscene()
 	DataResource.temp_dict_player.dialog_complete = true
 	level.wait_dialog_complete = false

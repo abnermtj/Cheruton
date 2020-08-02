@@ -7,7 +7,6 @@ var cur_cut_scene_completed = false
 var flying_sword
 
 func _ready():
-#	DataResource.change_health(50) # fix next time
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-404, 252)}

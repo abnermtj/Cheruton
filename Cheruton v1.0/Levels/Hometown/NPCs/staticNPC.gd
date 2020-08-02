@@ -24,6 +24,7 @@ func _ready():
 	$AnimationPlayer.play("idle")
 	add_to_group("interactibles", true)
 	add_to_group("NPCs", true)
+
 	add_to_group("needs_player_ref", true)
 	add_to_group("needs_level_ref", true)
 

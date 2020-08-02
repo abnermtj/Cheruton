@@ -20,7 +20,7 @@
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/slide_curve.tres" type="Curve" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 138.364, 98.2648 )
+extents = Vector2( 120, 120 )
 
 [sub_resource type="Animation" id=2]
 length = 0.18
@@ -1923,11 +1923,11 @@ height = 65.0
 radius = 28.0
 height = 30.0
 
-[sub_resource type="CapsuleShape2D" id=61]
+[sub_resource type="CapsuleShape2D" id=60]
 radius = 20.0
 height = 65.0
 
-[sub_resource type="CircleShape2D" id=60]
+[sub_resource type="CircleShape2D" id=61]
 radius = 23.0
 
 [sub_resource type="RectangleShape2D" id=62]
@@ -1956,9 +1956,9 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( 2.5, 19.5 )
+offset = Vector2( -5.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 883, 447, 32, 48 )
+region_rect = Rect2( 611, 167, 48, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1972,12 +1972,11 @@ collision_mask = 16
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bodyPivot/bodyRotate/hurtBox"]
-position = Vector2( -117.28, 10.2169 )
+position = Vector2( -116.598, -32.013 )
 shape = SubResource( 1 )
 disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
-visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124
@@ -2059,10 +2058,12 @@ anims/default = SubResource( 56 )
 anims/hit = SubResource( 57 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 7.5 )
 shape = SubResource( 58 )
 
 [node name="slideCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 25 )
 shape = SubResource( 59 )
 disabled = true
@@ -2184,18 +2185,20 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 modulate = Color( 0.52549, 0.196078, 0.196078, 1 )
 position = Vector2( 0, 10 )
-shape = SubResource( 61 )
+shape = SubResource( 60 )
 
 [node name="slideArea2D" type="Area2D" parent="."]
+visible = false
 gravity_vec = Vector2( 0, 0 )
 collision_layer = 2
 collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( 0, -18 )
-shape = SubResource( 60 )
+shape = SubResource( 61 )
 
 [node name="almostReachingPlatformBoost" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="almostReachingPlatformBoost"]
@@ -2203,6 +2206,7 @@ position = Vector2( 0, 61.5 )
 shape = SubResource( 62 )
 
 [node name="circleScan" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 544
 
@@ -2211,6 +2215,7 @@ position = Vector2( 0, 42.559 )
 shape = SubResource( 63 )
 
 [node name="circleScanSmall" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 512
 

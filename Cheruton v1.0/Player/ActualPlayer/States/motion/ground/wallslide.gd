@@ -15,7 +15,8 @@ func enter():
 		emit_signal("finished", "jump")
 		return
 
-	owner.can_attack = false
+	owner.sword_state = owner.SWORD_STATES.ON_HAND_CANNOT_ATTACK
+
 	gravity_strength = GRAVITY_STRENGTH_MIN
 	grip_timer = GRIP_TIME
 	owner.play_anim("wall_slide")
@@ -51,4 +52,4 @@ func update(delta):
 		emit_signal("finished", "idle")
 
 func exit():
-	owner.can_attack = true
+	owner.sword_state = owner.SWORD_STATES.ON_HAND_CAN_ATTACK

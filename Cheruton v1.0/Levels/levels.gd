@@ -17,21 +17,19 @@ var wait_dialog_complete = false
 var cutscene_number = 0
 var cutscene_index = 0
 
+##SETUP#####################################################################
 func _ready() -> void:
-	DataResource.current_scene = self
 	if(!DataResource.loaded):
 		DataResource.load_data()
 
-
 	SceneControl.get_node("popUpGui").enabled = true
 
-	call_deferred( "_set_player" )
-	call_deferred( "_set_camera" )
-	call_deferred("_set_player_objects")
-	call_deferred("_set_level")
-	call_deferred("_set_level_player_references")
+	_set_player()
+	_set_camera()
+	_set_player_objects()
+	_set_level()
+	_set_level_player_references()
 	call_deferred("enter_level")
-	call_deferred("set_music")
 
 func _set_player() -> void:
 	player = find_node( "player" )
@@ -94,17 +92,16 @@ func _set_level_player_references():
 
 func enter_level():
 	player.global_position = player_spawn_pos
+################################################################################
+
 
 # loads prev checkpoint
-func _on_player_dead() -> void:
-	pass
-
-func set_music():
-	pass
+func on_player_dead():
+	player.global_position = player_spawn_pos
+	DataResource.change_health(9999)
 
 func handle_death_zone(body):
 	pass
-
 func next_cutscene():
 	pass
 

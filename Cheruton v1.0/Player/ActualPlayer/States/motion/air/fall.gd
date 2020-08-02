@@ -2,12 +2,10 @@ extends airState
 
 const COYOTE_TIME = 0.085 # time window after leaving edge where you are allowed to jump
 const TERM_VEL = 1200
-const MIN_ENTER_VELOCITY_X = 420
+const MIN_ENTER_VELOCITY_X = 420 # same as run
 
 var coyote_timer : float # here incase playeer walks off an edge
 var enter_velocity
-
-var updated_once
 
 func handle_input(event):
 	if Input.is_action_just_pressed("jump"):
@@ -19,7 +17,6 @@ func handle_input(event):
 
 func enter():
 	enter_velocity = owner.velocity
-	updated_once = false
 
 	if owner.hooked:
 		emit_signal("finished", "hook")
@@ -81,7 +78,7 @@ func update(delta):
 			emit_signal("finished", "jump")
 			return
 
-		if (owner.jump_again):
+		if owner.jump_again:
 			emit_signal("finished", "jump")
 		elif Input.is_action_pressed("slide"):
 			emit_signal("finished", "slide")
@@ -90,5 +87,4 @@ func update(delta):
 			emit_signal("finished", "run")
 
 	owner.move()
-	updated_once = true
 	.update(delta)

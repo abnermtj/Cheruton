@@ -8,7 +8,7 @@ var initial_speed : float = 1000
 var timer : float
 
 func enter():
-	owner.return_to_sleep = false
+	owner.return_to_default = false
 	owner.display_damage(owner.damage)
 	owner.play_hit_effect()
 	owner.health -= owner.damage
