@@ -7,6 +7,9 @@ const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, p
 const RED = Color(1,0,0,1)
 const WHITE = Color(1,1,1,1)
 
+onready var control_label = preload("res://Display/Settings/control_label.tscn")
+onready var control_btn = preload("res://Display/Settings/control_btn.tscn")
+
 onready var master_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
 onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/SFXVolBar
@@ -14,8 +17,7 @@ onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/
 
 onready var container = $Settings/Container
 onready var contents = $Settings/Container/Main/Contents
-onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Column
-onready var controls_button = $Settings/Container/Main/Contents/BaseControls/Buttons
+onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Scroll
 
 onready var slider = $Settings/Slider
 onready var tween = $Tween
@@ -23,6 +25,9 @@ onready var controls = $Settings/Container/Main/Contents/Options/Controls
 onready var audio = $Settings/Container/Main/Contents/Options/Audio
 onready var game = $Settings/Container/Main/Contents/Options/Game
 onready var back = $Settings/Container/Main/Contents/Options/Back
+
+onready var controls_action = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Action
+onready var controls_mapping = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Mapping
 
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
@@ -33,7 +38,6 @@ var slider_active := false
 var edit_control := false
 var prior_collision := false
 
-var controls_set := -1
 var temp_control
 var key_action := []
 var key_duplicates := []
@@ -44,22 +48,52 @@ signal closed_settings
 
 func _ready():
 	init_key_bindings()
-	controls_set_column("Next")
 	init_bar_vals()
 	connect_functions()
 
+# Updates configurable keys in the controls displays
 func init_key_bindings():
-	var columns = controls_column.get_child_count()
-	for i in columns:
-		var column_node = controls_column.get_child(i).get_node("Mapping")
-		var bindings = column_node.get_child_count()
-		for j in bindings:
-			var current_binding = column_node.get_child(j)
-			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
-			print(current_binding.name)
-			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-			set_text(current_binding.get_child(0), false, btn_text)
-			key_action.append(current_binding.name)
+	key_action = InputMap.get_actions()
+	key_action.sort()
+	var action_size = key_action.size()
+	
+	for i in action_size:
+		print(key_action[i])
+		print(key_action[i].find("ui") != -1)
+		if(key_action[i].find("ui") != -1):
+			continue
+		var new_label = control_label.instance()
+		var new_button = control_btn.instance()
+		
+		new_label.text = key_action[i].capitalize()#reform_label_text(key_action[i])
+		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
+		
+		controls_action.add_child(new_label)
+		controls_mapping.add_child(new_button)
+
+
+
+func reform_btn_text(text):
+	match text:
+		LMB:
+			return "Left Mouse"
+		RMB:
+			return "Right Mouse"
+
+	return text.capitalize()
+#	var columns = controls_column.get_child_count()
+#	for i in columns:
+#		var column_node = controls_column.get_child(i).get_node("Mapping")
+#		var bindings = column_node.get_child_count()
+#		for j in bindings:
+#			var current_binding = column_node.get_child(j)
+#			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
+#			print(current_binding.name)
+#			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
+#			set_text(current_binding.get_child(0), false, btn_text)
+#			key_action.append(current_binding.name)
+
+
 
 func set_text(node, unassign := true, new_value := ""):
 	if(unassign):
@@ -79,27 +113,6 @@ func check_mouse_text(btn_text):
 	elif(btn_text == LMB):
 		return "Left Mouse"
 	return btn_text
-
-
-func controls_set_column(type):
-	if(controls_set != -1):
-		controls_column.get_child(controls_set).hide()
-	match type:
-		"Prev":
-			controls_set -= 1
-		"Next":
-			controls_set += 1
-
-	match controls_set:
-		0:
-			controls_button.get_node("Previous").hide()
-		1:
-			controls_button.get_node("Previous").show()
-			controls_button.get_node("Next").show()
-		2:
-			controls_button.get_node("Next").hide()
-
-	controls_column.get_child(controls_set).show()
 
 func _on_button_pressed(button):
 	if(!edit_control):
@@ -226,16 +239,6 @@ func connect_functions():
 	var _conn1 = DataResource.connect("change_audio_master", self, "change_master_vol")
 	var _conn2 = DataResource.connect("change_audio_music", self, "change_music_vol")
 	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
-
-func _on_Previous_pressed():
-	SceneControl.button_click.play()
-	controls_set_column("Prev")
-
-func _on_Next_pressed():
-	SceneControl.button_click.play()
-	controls_set_column("Next")
-
-
 
 func _on_MuteToggle_pressed():
 	DataResource.dict_settings.is_mute = !DataResource.dict_settings.is_mute
