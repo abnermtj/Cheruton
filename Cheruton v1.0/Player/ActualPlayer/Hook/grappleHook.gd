@@ -11,6 +11,8 @@ var cur_player_pos : Vector2
 var prev_player_pos : Vector2
 var speed_tip : float
 
+var player : Node
+
 onready var chain_state = chain_states.HIDDEN
 onready var tween = $Tween
 onready var rope  = $tip/rope
@@ -20,6 +22,8 @@ signal hooked(tip_pos)
 
 func _ready():
 	hide()
+	add_to_group("needs_player_ref")
+
 # com stand for commnad command: 0 -start hook, 1 -release
 func _on_player_hook_command (com, dir, player_pos):
 	if com == 0: #START
@@ -66,6 +70,6 @@ func _physics_process(delta: float) -> void:
 func _process(delta):
 	if visible:
 		prev_player_pos = cur_player_pos
-		cur_player_pos = get_parent().player.shoulder_position.global_position # shoulder for alignment issues
+		cur_player_pos = player.shoulder_position.global_position # shoulder for alignment issues
 		rope.c = max((cur_player_pos - tip.global_position).length(),1)
 		tip.rotation = cur_player_pos.angle_to_point(tip.global_position)

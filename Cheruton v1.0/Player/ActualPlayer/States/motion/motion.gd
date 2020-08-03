@@ -3,24 +3,25 @@ class_name motionState
 
 func handle_input(event):
 	if event.is_action_pressed("attack")\
-	and not ["hook", "attack", "slide"].has(owner.cur_state.name)\
-	and owner.sword_state == owner.SWORD_STATES.ON_HAND_CAN_ATTACK\
+	and not ["hook", "attack", "slide", "wallSlide"].has(owner.cur_state.name)\
+	and owner.can_attack\
+	and owner.sword_state == owner.SWORD_STATES.ON_HAND\
 	and owner.attack_enabled:
-		owner.sword_state = owner.SWORD_STATES.ON_HAND_CANNOT_ATTACK
 		owner.start_attack_cool_down()
 		emit_signal("finished", "attack")
 
-	if event.is_action_pressed("throw"):
+	elif event.is_action_pressed("throw"):
 		if not ["attack", "wallSlide"].has(owner.cur_state.name)\
-		and owner.sword_state == owner.SWORD_STATES.ON_HAND_CAN_ATTACK:
+		and owner.sword_state == owner.SWORD_STATES.ON_HAND:
 			owner.throw_sword_dir = (get_viewport().get_mouse_position() - owner.get_global_transform_with_canvas().origin).normalized()
 
 			if owner.throw_sword_dir == Vector2(): owner.throw_sword_dir = owner.look_direction
 			owner.start_sword_throw()
+
 		elif owner.sword_state == owner.SWORD_STATES.STUCK:
 			owner.return_sword_throw()
 
-	if event.is_action_pressed("dash") and owner.sword_state == owner.SWORD_STATES.STUCK:
+	elif event.is_action_pressed("dash") and owner.sword_state == owner.SWORD_STATES.STUCK:
 		emit_signal("finished", "dash")
 
 # note left and right at the same time cancel out

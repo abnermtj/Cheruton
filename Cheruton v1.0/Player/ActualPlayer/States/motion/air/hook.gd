@@ -39,6 +39,7 @@ func enter():
 	owner.play_anim("swing_begin")
 	owner.queue_anim("swing_continious6")
 	owner.play_sound("hook_hit")
+	owner.camera_state = owner.CAMERA_STATES.HOOK
 	initial_swing_anim_done = false
 
 func _on_animation_finished(anim_name):

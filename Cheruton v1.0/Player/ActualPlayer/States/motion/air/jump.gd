@@ -4,7 +4,7 @@ const JUMP_RELEASE_SLOWDOWN = .72 # 0 to 1, after releasing jump key how much to
 const JUMP_TERMINAL_VELOCITY = 7000
 const NORMAL_GRAV_MULTIPLIER = .42
 const MIN_ENTER_VELOCITY_X = 420
-const JUMP_VEL = -730 # 2tilestall -666 2.5 -730 3 -800
+const JUMP_VEL = -730 # 2 TILES tall -666,  2.5 -730,  3 -800
 const CORNER_CORRECTION_DISPLACEMENT = 7
 
 var enter_velocity : Vector2
@@ -39,6 +39,7 @@ func enter() -> void:
 	owner.play_anim("jump")
 	owner.play_anim_fx("jump")
 	owner.play_sound("jump")
+	owner.camera_state = owner.CAMERA_STATES.AIR
 
 	if owner.bounce_boost:
 		owner.velocity.y = -1600
@@ -67,7 +68,6 @@ func update( delta ):
 		keypress_timer = -1.0
 		if not owner.bounce_boost:
 			grav_multiplier = 1.5
-#			owner.velocity.y *= JUMP_RELEASE_SLOWDOWN # this caused weird equilibriums as with adding gravity line above
 
 	# steering here
 	input_dir = get_input_direction()

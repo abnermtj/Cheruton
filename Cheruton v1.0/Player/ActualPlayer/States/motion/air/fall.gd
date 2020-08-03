@@ -69,6 +69,7 @@ func update(delta):
 		owner.has_jumped = false
 		owner.play_anim_fx("land")
 
+		owner.camera_state = owner.CAMERA_STATES.GROUND
 		if owner.velocity.y > 850:
 			owner.emit_dust("land")
 

@@ -3,7 +3,7 @@ extends Camera2D
 const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_IN_OUT
 const SMOOTH_SPEED_FACTOR = .00001
-enum camera_states { DEFAULT = 0, HOOK = 1}
+enum CAMERA_STATES { DEFAULT = 0, HOOK = 1}
 
 var LOOK_AHEAD_FACTOR  # percentage of screen to shift for looking ahead when changing directions
 var SHIFT_DURATION # seconds
@@ -113,7 +113,7 @@ func _on_player_camera_command(command, arg):
 	camera_state = command
 
 	match (camera_state):
-		camera_states.DEFAULT:
+		CAMERA_STATES.DEFAULT:
 			drag_margin_left = .06
 			drag_margin_right = .06
 			drag_margin_top = 0.4
@@ -123,7 +123,7 @@ func _on_player_camera_command(command, arg):
 			SHIFT_DURATION = 1
 			smoothing_speed_goal = 1
 			LOOK_AHEAD_FACTOR = .1
-		camera_states.HOOK:
+		CAMERA_STATES.HOOK:
 			drag_margin_v_enabled = true
 			drag_margin_h_enabled = true
 			SHIFT_DURATION = .5

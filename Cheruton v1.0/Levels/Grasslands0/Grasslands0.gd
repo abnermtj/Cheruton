@@ -15,8 +15,6 @@ func _ready():
 	if not enter_point: enter_point = 0
 
 	# debug
-	#
-
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 #	#debug
@@ -116,6 +114,7 @@ func instance_flying_sword():
 	flying_sword.connect("sword_result", self, "on_sword_result")
 	player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
 
+	flying_sword.player = player
 	flying_sword.hide()
 	add_child(flying_sword)
 

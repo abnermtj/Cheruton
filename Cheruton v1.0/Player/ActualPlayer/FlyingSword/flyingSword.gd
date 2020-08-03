@@ -31,8 +31,8 @@ func _ready():
 	state = sword_states.HIDDEN
 	angular_velocity = SPIN_SPEED
 
-	player = get_parent().get_node("player")
 	$hurtBox.obj = self
+	add_to_group("needs_player_ref")
 
 func _on_flyingSword_command(command, arg):
 	animation_player.play("air")
@@ -56,7 +56,7 @@ func _on_flyingSword_command(command, arg):
 func _physics_process(delta):
 	if not active: return
 
-	cur_player_pos = get_parent().player.global_position
+	cur_player_pos = player.global_position
 	var bodies_in_collection_area = $collectionArea.get_overlapping_bodies()
 	var bodies_in_limit_area = $limitArea.get_overlapping_bodies()
 

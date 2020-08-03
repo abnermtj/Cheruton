@@ -6,7 +6,7 @@ const GRAVITY = 2400
 const AIR_ACCEL = 32.5  # increase in this >> increase in stearing power in air old 34
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
-const TIME_PER_ATTACK = 1
+const TIME_PER_ATTACK = 1.2
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -35,7 +35,6 @@ var cur_state : Node
 var prev_state : Node
 var velocity = Vector2()
 var actual_velocity = Vector2()
-var on_floor = false setget set_on_floor
 var look_direction = Vector2(1, 0) setget set_look_direction
 var previous_anim : String
 var is_invunerable = false
@@ -56,16 +55,19 @@ var exit_slide_blocked = false
 
 var wall_direction = 0 # 0 or 1
 
-enum SWORD_STATES {ON_HAND_CAN_ATTACK = 0, ON_HAND_CANNOT_ATTACK = 1, AIR = 2, STUCK = 3}
-var sword_state
+enum SWORD_STATES {ON_HAND = 1, AIR = 2, STUCK = 3}
+var sword_state = SWORD_STATES.ON_HAND
 
 var throw_sword_dir = Vector2()
 var sword_pos = Vector2()
 var sword_col_normal = Vector2()
 
-var attack_enabled = true
 var can_hook = true
+
+var attack_enabled = true # To enable/disable attacks completely
+var can_attack = true # used to decide which state can attack
 var attack_cooldown_finished = true
+var attack_count = 0
 
 var hit_dir : Vector2
 
@@ -74,8 +76,8 @@ var interaction_type : String
 
 var can_talk = true
 
-enum CAMERA_STATES {NORMAL = 0, HOOK = 1}
-var camera_state
+enum CAMERA_STATES {GROUND = 0, AIR = 1, HOOK = 2}
+var camera_state = CAMERA_STATES.GROUND setget set_camera_mode_logic
 
 signal hook_command
 signal flying_sword_command
@@ -155,7 +157,7 @@ func interact_with_nearest_object():
 	if nearest_interactible:
 		nearest_interactible.interact(self)
 
-# makes character face right direction
+# Makes character face right direction
 func set_look_direction(direction : Vector2):
 	if direction != Vector2() :look_direction = direction
 
@@ -170,13 +172,6 @@ func displace(vector : Vector2):
 func _on_states_state_changed(states_stack):
 	prev_state = cur_state
 	cur_state = states_stack[0]
-
-func set_on_floor(val):
-	on_floor = val
-	if on_floor and attack_cooldown_finished:
-		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
-
-	set_camera_mode_logic()
 
 func set_fsm(val : bool):
 	states._active = val
@@ -221,7 +216,6 @@ func _on_Chain_hooked(command, tip_p, node):
 		tip_pos = tip_p
 		rope_length = global_position.distance_to(tip_pos) # used to limit player distance from tip, she can't run from it
 		change_state("hook")
-		set_camera_mode_logic()
 	elif command == 1: # bad hook
 		play_sound("hook_bad")
 func get_close_to_floor_collider(): # used to repel player from floor
@@ -247,7 +241,7 @@ func on_sword_result(result, pos, normal):
 	elif result == 1: # returning
 		sword_state = SWORD_STATES.AIR
 	elif result == 2:
-		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
+		sword_state = SWORD_STATES.ON_HAND # edge case when return during slide/wallslide
 
 # Player damaged
 func _on_hitBox_area_entered(area):
@@ -282,25 +276,41 @@ func _on_invunerableTimer_timeout():
 # Movement
 func move():
 	actual_velocity = (global_position - prev_pos) * 60
-	prev_pos = global_position # used to calcualate actual speed junmping of moving platform
+	prev_pos = global_position # used to calculate actual speed junmping of moving platform
+
+	var reported_vel
 	if hooked and not ["hook"].has(cur_state.name) and\
 	(global_position + velocity).distance_to(tip_pos) > MAX_WIRE_LENGTH_GROUND: # when player is hooked but tried to move away from hook point
-		return move_and_slide(Vector2(), Vector2.UP)
+		reported_vel = move_and_slide(Vector2(), Vector2.UP)
 	elif ["run", "slide", "idle", "wallSlide"].has(cur_state.name):
-		return move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
+		reported_vel = move_and_slide_with_snap(velocity,Vector2.DOWN * 15, Vector2.UP)
 	else:
-		return move_and_slide(velocity, Vector2.UP)
+		reported_vel = move_and_slide(velocity, Vector2.UP)
 
+	handle_move_collisions()
+	check_reset_attack()
+
+	return reported_vel
+
+# used to interact collision objects
+func handle_move_collisions():
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
-		if col.collider.has_method("handle_collision"): # used to hit enemies / platform
+		if col.collider.has_method("handle_collision"):
 			col.collider.handle_collision(col, self)
+
+func check_reset_attack():
+	if is_on_floor() and attack_cooldown_finished:
+		can_attack = true
+		attack_count = 0
+		attack_cooldown_finished = false
 
 func switch_col():
 	call_deferred("_switch_col")
 func _switch_col():
 	slide_collision.disabled = not slide_collision.disabled
 	body_collision.disabled = not body_collision.disabled
+
 func _on_slideArea2D_body_exited(body):
 	if not body.is_in_group("one_way_platforms"):
 		exit_slide_blocked = false
@@ -362,8 +372,6 @@ func start_attack_cool_down():
 	attack_cooldown_finished = false
 	$timers/attackCoolDown.start(TIME_PER_ATTACK)
 func _on_attackCoolDown_timeout():
-	if on_floor:
-		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
 	attack_cooldown_finished = true
 
 # Dialog
@@ -383,11 +391,13 @@ func volume(string, vol_db):
 	sound_parent.get_node(string).volume_db = vol_db
 
 # CAMERA  CONTROL PART
-func set_camera_mode_logic():
-	if hooked or states.previous_state.name == "hook":
-		emit_signal("camera_command", 1, 0) # HOOK MODE
-	else:
-		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
+func set_camera_mode_logic(state):
+	camera_state = state
+	emit_signal("camera_command", camera_state, 0) # HOOK MODE
+	match camera_state:
+		CAMERA_STATES.AIR : emit_signal("camera_command", 0, 0)
+		CAMERA_STATES.GROUND : emit_signal("camera_command", 0, 1)
+		CAMERA_STATES.HOOK : emit_signal("camera_command", 1, 0)
 
 func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)

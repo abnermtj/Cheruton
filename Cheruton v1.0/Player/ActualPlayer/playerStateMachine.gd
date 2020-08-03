@@ -7,11 +7,6 @@ func _change_state(state_name):
 	if states_stack:
 		previous_state = states_stack[-1]
 
-	if ["jump", "fall", "attack"].has(state_name):
-		owner.on_floor = false
-	else:
-		owner.on_floor = true
-
 	print("player changing to ", state_name)
 	._change_state(state_name)
 

@@ -9,13 +9,13 @@ var gravity_strength = .02
 var slide_down : bool
 var grip_timer : float
 var input_dir : Vector2
+var prev_sword_state
 
 func enter():
+	owner.can_attack = true # else not touching ground will permanently disable  attack
 	if owner.jump_again:
 		emit_signal("finished", "jump")
 		return
-
-	owner.sword_state = owner.SWORD_STATES.ON_HAND_CANNOT_ATTACK
 
 	gravity_strength = GRAVITY_STRENGTH_MIN
 	grip_timer = GRIP_TIME
@@ -50,6 +50,3 @@ func update(delta):
 
 	if owner.is_on_floor():
 		emit_signal("finished", "idle")
-
-func exit():
-	owner.sword_state = owner.SWORD_STATES.ON_HAND_CAN_ATTACK
