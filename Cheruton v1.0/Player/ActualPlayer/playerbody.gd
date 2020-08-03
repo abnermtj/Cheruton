@@ -74,6 +74,9 @@ var interaction_type : String
 
 var can_talk = true
 
+enum CAMERA_STATES {NORMAL = 0, HOOK = 1}
+var camera_state
+
 signal hook_command
 signal flying_sword_command
 signal camera_command
@@ -107,10 +110,6 @@ func _physics_process(delta):
 		interaction_type = nearest_interactible.interaction_type
 	else:
 		interaction_type = ""
-
-	if on_floor and attack_cooldown_finished:
-		attack_cooldown_finished = false
-		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
 
 # General Helper functions
 func set_input_enabled(val):
@@ -172,8 +171,11 @@ func _on_states_state_changed(states_stack):
 	prev_state = cur_state
 	cur_state = states_stack[0]
 
-func set_on_floor(grounded):
-	on_floor = grounded
+func set_on_floor(val):
+	on_floor = val
+	if on_floor and attack_cooldown_finished:
+		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
+
 	set_camera_mode_logic()
 
 func set_fsm(val : bool):
@@ -360,6 +362,8 @@ func start_attack_cool_down():
 	attack_cooldown_finished = false
 	$timers/attackCoolDown.start(TIME_PER_ATTACK)
 func _on_attackCoolDown_timeout():
+	if on_floor:
+		sword_state = SWORD_STATES.ON_HAND_CAN_ATTACK
 	attack_cooldown_finished = true
 
 # Dialog
@@ -384,5 +388,6 @@ func set_camera_mode_logic():
 		emit_signal("camera_command", 1, 0) # HOOK MODE
 	else:
 		emit_signal("camera_command", 0, on_floor) # GENERAL MODE
+
 func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)
