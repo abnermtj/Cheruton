@@ -40,7 +40,7 @@ var prior_collision := false
 
 var temp_control
 var key_action := []
-var key_duplicates := []
+var key_duplicates := {}
 
 onready var active_tab = base_empty
 
@@ -68,6 +68,7 @@ func init_key_bindings():
 		
 		new_label.text = key_action[i].capitalize()#reform_label_text(key_action[i])
 		new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
+		new_button.connect("mouse_entered" ,self, "_on_button_mouse_entered", [new_button])
 		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
 		
 		controls_action.add_child(new_label)
@@ -105,18 +106,25 @@ func check_mouse_text(btn_text):
 
 # when the button is pressed
 func _on_button_pressed(button):
+
+	edit_control = false
+	
 	if(temp_control):
 		temp_control.get_child(0).text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
 	button.get_child(0).text = UNASSIGN
 	temp_control = button
-	#print(temp_control.name)
+	edit_control = true
+
+func _on_button_mouse_entered(button):
+	if(temp_control != button):
+		edit_control = false
 
 func _input(event):
 	# Keyboard Button
 	if event is InputEventKey:
 		if(edit_control):
 			edit_control = false
-			#_edit_key(event)
+			_edit_key(event)
 
 	# Mouse Button
 	elif event is InputEventMouseButton:
@@ -124,7 +132,10 @@ func _input(event):
 			edit_control = false
 			if(event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
 				align_mouse_event(event)
-				#_edit_key(event)
+				_edit_key(event)
+
+func _on_Delay_timeout():
+	pass # Replace with function body.
 
 # Affixes the standard mouse button properties to the pressed button
 func align_mouse_event(event):
@@ -133,37 +144,36 @@ func align_mouse_event(event):
 	event.pressed = false
 	event.doubleclick = false
 
-## Affixes the new key binding to the action highlighted
-#func _edit_key(new_key):
-#	var action_name = temp_control.name
-#	var old_key
-#	if !InputMap.get_action_list(action_name).empty():
-#		old_key = InputMap.get_action_list(temp_control.name)[0]
-#		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-#
-#	check_duplicates(new_key, old_key)
-#	# Update duplicate list
-#	InputMap.action_add_event(action_name, new_key)
-#
-#	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-#	set_text(temp_control.get_child(0), false, btn_text)
-#	DataResource.dict_input_map[temp_control.name] = btn_text
-#
-#	temp_control = null
-#
-## Detects actions who already occupy the same key binding as the intended one
-## Search can be improved
-#func check_duplicates(new_key, old_key):
-#	var columns = controls_column.get_child_count()
-#
-#	for i in columns:
-#		var column_node = controls_column.get_child(i).get_node("Mapping")
-#		var bindings = column_node.get_child_count()
-#		for j in bindings:
-#			var current_binding = column_node.get_child(j)
-#			var check = InputMap.event_is_action(new_key, current_binding.name)
-#			if(check):
-#				handle_duplicates(current_binding)
+# Affixes the new key binding to the action highlighted
+func _edit_key(new_key):
+	var action_name = temp_control.name
+	var old_key
+	if !InputMap.get_action_list(action_name).empty():
+		old_key = InputMap.get_action_list(temp_control.name)[0]
+		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
+
+	check_duplicates(new_key, temp_control.name)
+	# Update duplicate list
+	InputMap.action_add_event(action_name, new_key)
+
+	var btn_text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
+	DataResource.dict_input_map[temp_control.name] = btn_text
+	temp_control.get_child(0).text = btn_text
+	
+	temp_control = null
+
+# Detects actions who  occupy the same key binding as the new key2
+func check_duplicates(new_key, action_assigned):
+
+	var action_size = key_action.size()
+	for i in action_size:
+		var check = InputMap.event_is_action(new_key, key_action[i])
+		if(check):
+			handle_duplicates(action_assigned, key_action[i])
+			print(key_duplicates)
+			return
+		#Update duplicate list if it was previously a duplicate
+				
 #				return
 #	# No Duplicates found and selected node had a previous conflict
 #	if(prior_collision):
@@ -172,7 +182,30 @@ func align_mouse_event(event):
 #		clear_duplicates(old_binding, conflict_index)
 #
 ## Handles actions with the same key_bindings
-#func handle_duplicates(current_binding):
+func handle_duplicates(action_assigned, conflicting_action):
+	var duplicate_size = key_duplicates.size()
+	var inserted = false
+	
+	
+	
+	if(duplicate_size != 0):
+		for i in duplicate_size:
+			# Case 1: Array does not contain either actions
+			if(!(key_duplicates[i].has(action_assigned) ||key_duplicates[i].has(conflicting_action))):
+				continue
+			# Case 2: Array contains the action causing the conflict
+			elif(key_duplicates[i].has(action_assigned) && !key_duplicates[i].has(conflicting_action)):
+				key_duplicates[i].erase(action_assigned)
+			# Case 3: Array contains the action that conflicted with the assigned action
+			elif(!key_duplicates[i].has(action_assigned) && key_duplicates[i].has(conflicting_action)):
+				key_duplicates[i].append(action_assigned)
+				inserted = true
+	# Inserts new array of conflicts
+	if(!inserted):
+		key_duplicates[duplicate_size] = []
+		key_duplicates[duplicate_size].append(action_assigned)
+		key_duplicates[duplicate_size].append(conflicting_action)
+		
 #	var action_name = current_binding.name
 #	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
 #	key_action[conflict_index] = current_binding.name
@@ -348,4 +381,7 @@ func change_active_tab(new_tab):
 
 	active_tab = new_tab
 	active_tab.show()
+
+
+
 

@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
-"base": "Node",
-"class": "FSM_Enemy",
-"language": "GDScript",
-"path": "res://Enemy/FSMEnemy.gd"
-}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -99,7 +94,6 @@ _global_script_class_icons={
 "AsepriteImporter": "",
 "EditorTheme": "",
 "Enemy": "",
-"FSM_Enemy": "",
 "Level": "",
 "MovingNPC": "",
 "SpiderLegController": "",
