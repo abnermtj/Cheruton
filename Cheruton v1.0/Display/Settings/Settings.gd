@@ -28,11 +28,13 @@ onready var back = $Settings/Container/Main/Contents/Options/Back
 
 onready var controls_action = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Action
 onready var controls_mapping = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Mapping
+onready var controls_message = $Settings/Container/Main/Contents/BaseControls/Message
 
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
 onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
+
 
 var slider_active := false
 var edit_control := false
@@ -170,7 +172,8 @@ func check_duplicates(new_key, action_assigned):
 		# Duplicate has been detected
 		if(check):
 			handle_duplicates(action_assigned, key_action[i])
-			print(key_duplicates)
+			controls_message.show()
+			back.disabled = true
 			return
 		
 		#Update duplicate list if it was previously a duplicate
@@ -224,7 +227,8 @@ func clear_duplicates(action_assigned):
 	assigned_mapping.set("custom_colors/font_color", WHITE)
 	
 	if(key_duplicates.empty()):
-		pass
+		controls_message.hide()
+		back.disabled = false
 
 #########
 # AUDIO #

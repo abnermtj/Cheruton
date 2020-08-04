@@ -332,6 +332,19 @@ margin_right = 1160.0
 margin_bottom = 364.0
 text = "  "
 
+[node name="Message" type="Label" parent="Settings/Container/Main/Contents/BaseControls"]
+visible = false
+margin_top = 717.0
+margin_right = 1161.0
+margin_bottom = 767.0
+custom_fonts/font = SubResource( 2 )
+text = "Please resolve conflicting keys!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BaseAudio" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
 margin_left = 423.0
@@ -606,8 +619,8 @@ size_flags_vertical = 1
 
 [node name="BaseGame" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
 visible = false
-margin_left = 264.0
-margin_right = 860.0
+margin_left = 689.0
+margin_right = 1156.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
