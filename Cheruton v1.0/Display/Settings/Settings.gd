@@ -163,6 +163,8 @@ func check_duplicates(new_key, action_assigned):
 
 	var action_size = key_action.size()
 	for i in action_size:
+		if(key_action[i].find("ui") != -1):
+			continue
 		var check = InputMap.event_is_action(new_key, key_action[i])
 		
 		# Duplicate has been detected

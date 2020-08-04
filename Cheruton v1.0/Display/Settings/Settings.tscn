@@ -281,6 +281,7 @@ size_flags_vertical = 2
 text = "     "
 
 [node name="BaseControls" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
+visible = false
 margin_left = 467.0
 margin_right = 1628.0
 margin_bottom = 767.0
@@ -338,7 +339,6 @@ margin_right = 1460.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.7
 
 [node name="BATMargin" type="Label" parent="Settings/Container/Main/Contents/BaseAudio"]
 margin_right = 1037.0
@@ -613,8 +613,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BaseEmpty" type="VBoxContainer" parent="Settings/Container/Main/Contents"]
-visible = false
-margin_left = 961.0
+margin_left = 467.0
 margin_right = 1628.0
 margin_bottom = 767.0
 size_flags_horizontal = 3
