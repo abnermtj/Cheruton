@@ -1,5 +1,5 @@
 { "frames": {
-   "Props-HookPoint 0.aseprite": {
+   "Props_HookPoint 0.aseprite": {
     "frame": { "x": 1, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 1.aseprite": {
+   "Props_HookPoint 1.aseprite": {
     "frame": { "x": 35, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -15,7 +15,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 2.aseprite": {
+   "Props_HookPoint 2.aseprite": {
     "frame": { "x": 69, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -23,7 +23,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 3.aseprite": {
+   "Props_HookPoint 3.aseprite": {
     "frame": { "x": 103, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -31,7 +31,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 4.aseprite": {
+   "Props_HookPoint 4.aseprite": {
     "frame": { "x": 137, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -39,7 +39,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 5.aseprite": {
+   "Props_HookPoint 5.aseprite": {
     "frame": { "x": 171, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -47,7 +47,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 6.aseprite": {
+   "Props_HookPoint 6.aseprite": {
     "frame": { "x": 205, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -55,7 +55,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 7.aseprite": {
+   "Props_HookPoint 7.aseprite": {
     "frame": { "x": 239, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -63,7 +63,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 8.aseprite": {
+   "Props_HookPoint 8.aseprite": {
     "frame": { "x": 273, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -71,7 +71,7 @@
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 40
    },
-   "Props-HookPoint 9.aseprite": {
+   "Props_HookPoint 9.aseprite": {
     "frame": { "x": 307, "y": 1, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": true,
@@ -83,9 +83,9 @@
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.15-x64",
-  "image": "Props-HookPoint.png",
+  "image": "Props_HookPoint.png",
   "format": "RGBA8888",
-  "size": { "w": 1638, "h": 152 },
+  "size": { "w": 340, "h": 50 },
   "scale": "1",
   "frameTags": [
    { "name": "shine", "from": 0, "to": 9, "direction": "forward" }

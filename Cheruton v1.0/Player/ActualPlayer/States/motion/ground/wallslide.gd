@@ -13,6 +13,7 @@ var prev_sword_state
 
 func enter():
 	owner.can_attack = true # else not touching ground will permanently disable  attack
+	owner.attack_count = 0
 	if owner.jump_again:
 		emit_signal("finished", "jump")
 		return

@@ -6,7 +6,7 @@ const GRAVITY = 2400
 const AIR_ACCEL = 32.5  # increase in this >> increase in stearing power in air old 34
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
-const TIME_PER_ATTACK = 1.2
+const TIME_PER_ATTACK = 1.1
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
