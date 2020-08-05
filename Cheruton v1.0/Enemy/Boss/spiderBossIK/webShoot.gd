@@ -52,7 +52,7 @@ func update(delta):
 				projectile_shot = true
 
 				var proj = projectile.instance()
-				owner.get_parent().add_child(proj)
+				owner.level.add_child(proj)
 
 				proj.global_position = owner.global_position
 				proj.z_index = owner.player.z_index - 1

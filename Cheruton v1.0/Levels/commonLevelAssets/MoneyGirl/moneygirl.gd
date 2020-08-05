@@ -42,5 +42,6 @@ func instance_magic_shot():
 	instance.global_position = $bodyRotate/staffPos/tipStaffPos.global_position
 	instance.goal_obj = level.get_node("Mobs/FurballTarget")
 	instance.get_node("hurtBox").obj = self
+	instance.level = level
 
 	level.add_child(instance)

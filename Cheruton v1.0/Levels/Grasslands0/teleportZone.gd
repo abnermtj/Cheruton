@@ -2,7 +2,6 @@ extends Area2D
 
 onready var tele_pos = get_parent().get_node(name + "_pos").global_position
 
-# player enters()
 func _on_zone1_0_body_entered(body):
 	body.zone = self
 

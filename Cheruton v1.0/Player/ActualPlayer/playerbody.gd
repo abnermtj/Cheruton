@@ -259,7 +259,7 @@ func _on_hitBox_area_entered(area):
 	DataResource.change_health(damage)
 
 	if DataResource.temp_dict_player.health_curr < 1: # change this to a better system to have less dependancies
-		get_parent().on_player_dead()
+		level.on_player_dead()
 
 	if hooked: chain_release()
 
@@ -355,10 +355,10 @@ func emit_dust(type : String):
 			dust = land_dust.instance()
 
 	dust.scale.x = look_direction.x
-	dust.global_position = global_position + Vector2(0, 68) - get_parent().global_position
+	dust.global_position = global_position + Vector2(0, 68) - level.global_position
 	dust.emitting = true
 
-	get_parent().add_child(dust)
+	level.add_child(dust)
 
 # Jump input buffering
 func jump_buffer_start():

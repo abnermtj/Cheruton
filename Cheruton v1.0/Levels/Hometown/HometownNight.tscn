@@ -22,12 +22,13 @@
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Levels/Hometown/NPCs/chad/chad.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrasslandsBackTree1/GrasslandsBackTree1.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Levels/commonLevelAssets/Props/grapplePoint/grapplePoint.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Levels/Hometown/NPCs/gramps/gramps.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree1/grassLandTree1.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Levels/Hometown/NPCs/clgirl/clgirl.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Levels/Hometown/homeTownPortal.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=35]
+
 
 
 [sub_resource type="OccluderPolygon2D" id=1]

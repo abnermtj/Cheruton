@@ -40,7 +40,7 @@ func update(delta):
 #func handle_input(event):
 #	if Input.is_action_just_pressed("hook"):
 #		var proj = projectile.instance() # delete onREADY ONTOP PLSPSLDPALPDASDOASJOD
-#		owner.get_parent().add_child(proj)
+#		owner.level.add_child(proj)
 #
 #		proj.global_position = owner.global_position
 #		proj.z_index = owner.player.z_index - 1

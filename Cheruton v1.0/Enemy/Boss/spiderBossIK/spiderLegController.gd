@@ -14,6 +14,9 @@ onready var base_cast_diag = $RayCast2D2.cast_to
 
 var just_planted = false
 
+func _ready():
+	$leg.leg_controller = self
+
 func force_raycast_update():
 	ray_cast.force_raycast_update()
 	diag_ray_cast.force_raycast_update()
@@ -70,7 +73,7 @@ func set_offset(vel):
 	diag_ray_cast.cast_to = base_cast_diag + sign(vel.x)* (1 if sign(vel.x) == sign(base_cast_diag.x) else 0 ) *  Vector2(clamp(abs(vel.x)*.38 + int(not is_colliding_ground()) * 400, 0, INF), 0)  # if no where to place foot , boost diagonal vector
 	force_raycast_update()
 
-#Relaying funtion
+#Relaying functions
 func step(pos):
 	leg.step(pos)
 func timed_step(pos, time):

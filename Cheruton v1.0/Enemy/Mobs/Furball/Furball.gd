@@ -59,7 +59,7 @@ func _on_alertArea_body_entered(body):
 func play_hit_effect():
 	var instance = hit_effect.instance()
 	instance.global_position = global_position
-	get_parent().add_child(instance)
+	level.add_child(instance)
 
 func _on_followArea_body_exited(body):
 	return_to_default = true

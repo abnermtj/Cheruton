@@ -13,8 +13,6 @@ func _ready():
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
 							1: Vector2(7866 ,2552)}
 	if not enter_point: enter_point = 0
-
-	# debug
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 #	#debug
@@ -72,11 +70,9 @@ func end_cutscene():
 	cutscene_index = 0
 
 func _process(delta):
-	Engine.time_scale = 1
 	if wait_dialog_complete and DataResource.temp_dict_player.dialog_complete:
 		next_cutscene()
 		wait_dialog_complete = false
-
 
 func handle_death_zone(body):
 	player.velocity = Vector2()
@@ -114,9 +110,9 @@ func instance_flying_sword():
 	flying_sword.connect("sword_result", self, "on_sword_result")
 	player.connect("flying_sword_command", flying_sword, "_on_flyingSword_command")
 
-	flying_sword.player = player
 	flying_sword.hide()
 	add_child(flying_sword)
+	flying_sword.player = player
 
 	flying_sword.global_position = player.global_position + Vector2 (2000, -2000)
 	flying_sword.active = true

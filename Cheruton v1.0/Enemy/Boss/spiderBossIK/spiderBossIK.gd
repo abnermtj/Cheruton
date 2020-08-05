@@ -29,7 +29,9 @@ onready var jump_hurt_box_col_shape = $jumpHurtBox/CollisionShape2D
 
 # General
 onready var default_sprite_pos = []
+
 var player
+var level
 
 var velocity = Vector2()
 var leg_move_timer
@@ -57,6 +59,7 @@ func _ready():
 	$smallPlayerLookArea.connect("body_exited", self, "on_player_exited_small_area")
 
 	add_to_group("needs_player_ref", true)
+	add_to_group("needs_level_ref", true)
 
 func init_leg(leg):
 	leg.force_raycast_update()

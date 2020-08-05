@@ -5,7 +5,7 @@
 [ext_resource path="res://Levels/Hometown/NPCs/clgirl/clgirl.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Hometown/NPCs/whippersnapper/whippersnapper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Hometown/NPCs/gramps/gramps.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/commonLevelAssets/Props/zipPoint/grapplePoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/commonLevelAssets/Props/grapplePoint/grapplePoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=9]
@@ -38,6 +38,7 @@
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-PortalGlyphs.png" type="Texture" id=36]
 [ext_resource path="res://Levels/Hometown/Sprites/HomeTown-Portal_Hole.png" type="Texture" id=37]
 [ext_resource path="res://Effects/WormHole/WormHole.shader" type="Shader" id=38]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 38 )

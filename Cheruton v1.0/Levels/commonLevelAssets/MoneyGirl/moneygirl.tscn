@@ -180,7 +180,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=6]
 length = 1.12
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -231,7 +231,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=7]
 length = 1.16
 loop = true
 tracks/0/type = "value"
@@ -283,7 +283,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 0.36
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -348,7 +348,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.64
 loop = true
 step = 0.02
@@ -413,7 +413,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.64
 loop = true
 tracks/0/type = "value"
@@ -465,7 +465,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 length = 0.16
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -516,7 +516,7 @@ tracks/3/keys = {
 "values": [ Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.56
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -567,7 +567,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=13]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/staffPos/Sprite:region_rect")
@@ -656,7 +656,7 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 32.5, 12.5 )
 
 [node name="moneygirl" type="Area2D"]
@@ -706,18 +706,18 @@ method_call_mode = 1
 anims/blink = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/idle2 = SubResource( 5 )
-anims/idle3 = SubResource( 12 )
-anims/idle4 = SubResource( 13 )
-anims/jump = SubResource( 6 )
-anims/on_broom_idle = SubResource( 7 )
-anims/poke = SubResource( 8 )
-anims/staff_jump_switch = SubResource( 14 )
-anims/turn_around = SubResource( 9 )
+anims/idle3 = SubResource( 6 )
+anims/idle4 = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/on_broom_idle = SubResource( 9 )
+anims/poke = SubResource( 10 )
+anims/staff_jump_switch = SubResource( 11 )
+anims/turn_around = SubResource( 12 )
 
 [node name="AnimationPlayerStaff" type="AnimationPlayer" parent="."]
-anims/Staff = SubResource( 10 )
+anims/Staff = SubResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 10 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )

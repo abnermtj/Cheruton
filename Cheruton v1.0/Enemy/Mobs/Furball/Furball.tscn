@@ -435,13 +435,13 @@ radius = 28.0
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 48, 28 )
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=11]
 radius = 500.0
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=12]
 radius = 700.0
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 90, 80 )
 
 [node name="Furball" type="KinematicBody2D"]
@@ -527,7 +527,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="alertArea"]
-shape = SubResource( 13 )
+shape = SubResource( 11 )
 
 [node name="followArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -535,7 +535,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="followArea"]
 position = Vector2( 1, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="attackRangeArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -543,7 +543,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackRangeArea"]
 position = Vector2( 0, -50 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 13 )]
 margin_left = 0.0

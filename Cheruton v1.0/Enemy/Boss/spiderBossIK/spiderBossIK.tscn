@@ -17,7 +17,6 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stepBack.gd" type="Script" id=15]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/webShoot.gd" type="Script" id=16]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 100.0
 height = 400.0
@@ -33,10 +32,10 @@ height = 500.0
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 125, 200 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 500, 25 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 64
 font_data = ExtResource( 13 )
 
@@ -272,7 +271,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
 position = Vector2( 0, 185 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -282,7 +281,7 @@ disabled = true
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "asd"
 script = ExtResource( 12 )
 __meta__ = {

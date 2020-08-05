@@ -4,9 +4,10 @@ const SPEED = 2000
 
 var goal_obj
 var velocity
+var level # set by shooter
 
 func _ready():
-	get_parent().shake_camera(.3, 20, 20, Vector2.RIGHT)
+	level.shake_camera(.3, 20, 20, Vector2.RIGHT)
 
 func _physics_process(delta):
 	var goal_pos = goal_obj.global_position
@@ -18,5 +19,5 @@ func _physics_process(delta):
 
 
 func _on_hurtBox_area_entered(area):
-	get_parent().shake_camera(.3, 20, 20, -velocity.normalized())
+	level.shake_camera(.3, 20, 20, -velocity.normalized())
 	queue_free()

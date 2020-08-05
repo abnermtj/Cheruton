@@ -34,4 +34,4 @@ func update(delta):
 		dust_instance.rotation = col.normal.angle_to(Vector2.UP)
 		dust_instance.emitting = true
 
-		get_parent().add_child(dust_instance)
+		owner.level.add_child(dust_instance)

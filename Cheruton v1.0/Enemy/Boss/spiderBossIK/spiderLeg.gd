@@ -1,6 +1,6 @@
 extends Position2D
 
-const MIN_LENGTH = 248 # used so it doesn't dissapear 118 min for sss 330 for fabrik
+const MIN_LENGTH = 248 # used so it doesn't disappear when too close 118 min for sss 330 for fabrik
 const DEFAULT_STEP_RATE = 0.4 # actual time in seconds taken to complete a step
 const STEP_HEIGHT = 55
 
@@ -16,6 +16,7 @@ var length_lower = 0
 
 export var flipped = true
 
+var leg_controller : Node
 var tip_pos : Vector2
 var start_pos = Vector2()
 var middle_pos = Vector2()
@@ -64,14 +65,14 @@ func step_and_hold(pos, time):
 
 	step_rate = time
 	hold = true # NOTE needs to after step()
-	relative_position = pos - get_parent().global_position
+	relative_position = pos - leg_controller.global_position
 
 func _process(delta):
 	step_time += delta
 	var target_pos = Vector2()
 	var step_percent = step_time / step_rate # percentage of the step completed
 
-	if hold: cur_target_pos = get_parent().global_position + relative_position
+	if hold: cur_target_pos = leg_controller.global_position + relative_position
 
 	if step_percent < .5:
 		target_pos = start_pos.linear_interpolate(middle_pos, step_percent * 2)

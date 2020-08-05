@@ -1,6 +1,6 @@
 extends basePopUp
 
-var TIME_PER_CHAR_WRITE = .014 # seconds
+var TIME_PER_CHAR_WRITE = .001 # seconds .014
 
 onready var dialogue_base = $dialogBox/bodyBackground
 onready var dialogue_text = $dialogBox/bodyBackground/MarginContainer/bodyText
