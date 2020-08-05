@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemy/Enemy.gd"
 }, {
-"base": "Node",
-"class": "FSM_Enemy",
-"language": "GDScript",
-"path": "res://Enemy/FSMEnemy.gd"
-}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -99,7 +94,6 @@ _global_script_class_icons={
 "AsepriteImporter": "",
 "EditorTheme": "",
 "Enemy": "",
-"FSM_Enemy": "",
 "Level": "",
 "MovingNPC": "",
 "SpiderLegController": "",
@@ -133,7 +127,6 @@ SceneControl="*res://AutoLoad/SceneControl/SceneControl.tscn"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/size/test_width=1920
 window/size/test_height=1080
 window/dpi/allow_hidpi=true
@@ -272,7 +265,7 @@ dash={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
-sword_throw={
+throw={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
  ]
