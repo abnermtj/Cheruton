@@ -11,7 +11,7 @@ var active_tab
 var item_state = "HOVER"
 var mouse_count = 0
 var mouse_node
-var shop_setting = "Buy"
+var shop_setting
 var temp_mouse_node
 
 signal tab_changed(next_tab)
@@ -29,6 +29,7 @@ onready var misc_sell = DataResource.dict_inventory.get("Misc")
 
 onready var shop = self
 onready var inventory = get_parent().get_node("inventory")
+
 onready var contents = $Border/Bg/Main/Sides/Rest/Contents
 onready var tabs = $Border/Bg/Main/Sides/Rest/Contents/Tabs
 onready var items_sell = $Border/Bg/Main/Sides/Rest/Contents/ItemsSell
@@ -46,31 +47,14 @@ onready var select_music = $MusicNodes/Select
 
 func _ready():
 	connect_tabs()
-	set_state("Buy")
-	buy_tab.texture_normal = active_tab_image
+	_on_Buy_pressed()
+	
 	load_data()
 	init_equipped()
 	emit_signal("tab_changed", "Weapons")
-	tabs.hide()
+
 	coins.get_node("CoinsVal").text = str(DataResource.temp_dict_player["coins"])
 	price_value.text = EMPTY
-
-func _on_Exit_pressed():
-	free_the_shop()
-
-
-func init_equipped():
-	if(DataResource.temp_dict_player.Weapons_item):
-		display_equipped("Weapons")
-
-	if(DataResource.temp_dict_player.Apparel_item):
-		display_equipped("Apparel")
-
-
-func display_equipped(name):
-	var node = items_sell.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
-	node.get_node("Background/ItemBg").texture = index_equipped_bg
-
 
 # Links the buttons when pressed into the function to change active tab
 func connect_tabs():
@@ -80,34 +64,38 @@ func connect_tabs():
 	var _conn3 = tabs.get_node("Consum/Consum").connect("pressed", shop,  "tab_pressed", ["Consum"])
 	var _conn4 = tabs.get_node("Misc/Misc").connect("pressed", shop,  "tab_pressed", ["Misc"])
 
+# Buy Option set
+func _on_Buy_pressed():
+	if(shop_setting == "Sell" || !shop_setting):
+		sell_tab.texture_normal = default_tab_image
+		buy_tab.texture_normal = active_tab_image
+		tabs.hide()
+		set_state("Buy")
+		check_fixed()
+	print("Ok")
 
-func tab_pressed(next_tab):
-	if(active_tab.name != next_tab):
-		emit_signal("tab_changed", next_tab)
+#Sell Option Set
+func _on_Sell_pressed():
+	if(shop_setting == "Buy"):
+		buy_tab.texture_normal = default_tab_image
+		sell_tab.texture_normal = active_tab_image
+		tabs.show()
+		set_state("Sell")
+		check_fixed()
 
-func change_tab_state(next_tab):
-	match next_tab:
-		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
-		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
-		"Consum":    change_active_tab(tabs.get_node("Consum"))
-		"Misc":      change_active_tab(tabs.get_node("Misc"))
+#Sets state of the option
+func set_state(types):
+	if(types != shop_setting):
+		if(shop_setting):
+			contents.get_node("Items" + shop_setting).hide()
+		shop_setting = types
+		contents.get_node("Items" + shop_setting).show()
 
-func change_active_tab(new_tab):
-	# Set current tab to default colour and hide its items
-	if(mouse_node):
+func check_fixed():
+	if(item_state == "FIXED"):
 		var temp = mouse_node
 		revert_item_state()
 		_on_mouse_exited(temp)
-
-	if(active_tab):
-		active_tab.texture = default_tab_image
-		contents.get_node("ItemsSell/" + active_tab.name).hide()
-		price_value.text = EMPTY
-
-	# Set new active tab and its colour and show its items
-	active_tab = new_tab
-	active_tab.texture = active_tab_image
-	contents.get_node("ItemsSell/" + active_tab.name).show()
 
 func load_data():
 	#Find subnodes of each tab
@@ -209,6 +197,49 @@ func disable_mouse(new_node):
 		var _disconn4 = btn.disconnect("mouse_entered", shop, "_on_mouse_entered")
 		btn.disconnect("mouse_exited", shop, "_on_mouse_exited")
 
+
+func init_equipped():
+	if(DataResource.temp_dict_player.Weapons_item):
+		display_equipped("Weapons")
+
+	if(DataResource.temp_dict_player.Apparel_item):
+		display_equipped("Apparel")
+
+# Displays equipped item if it was equipped in the shop
+func display_equipped(name):
+	var node = items_sell.find_node(str(DataResource.temp_dict_player[name + "_item"]), true, false)
+	node.get_node("Background/ItemBg").texture = index_equipped_bg
+
+
+func tab_pressed(next_tab):
+	if(active_tab.name != next_tab):
+		emit_signal("tab_changed", next_tab)
+
+func change_tab_state(next_tab):
+	match next_tab:
+		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
+		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
+		"Consum":    change_active_tab(tabs.get_node("Consum"))
+		"Misc":      change_active_tab(tabs.get_node("Misc"))
+
+# Toggles active tab of items to be sold
+func change_active_tab(new_tab):
+	# Set current tab to default colour and hide its items
+	if(mouse_node):
+		var temp = mouse_node
+		revert_item_state()
+		_on_mouse_exited(temp)
+
+	if(active_tab):
+		active_tab.texture = default_tab_image
+		contents.get_node("ItemsSell/" + active_tab.name).hide()
+		price_value.text = EMPTY
+
+	# Set new active tab and its colour and show its items
+	active_tab = new_tab
+	active_tab.texture = active_tab_image
+	contents.get_node("ItemsSell/" + active_tab.name).show()
+
 func _on_mouse_entered(node):
 	if(mouse_node != node):
 		hover_music.play()
@@ -299,7 +330,6 @@ func compare_price():
 
 # Reduces qty of item by 1
 func sell_item():
-
 	var element_index = str(int(mouse_node.name)%100)
 	var sell_coins = DataResource.dict_inventory[active_tab.name]["Item" + element_index].item_value/2
 	DataResource.change_coins(sell_coins)
@@ -380,60 +410,14 @@ func buy_item():
 			generate_specific_data(updating_node, element_index, list_tab)
 
 	transaction_music.play()
-#Debug
+	
+# Sells/Buys Item
 func _on_Button_pressed():
 	match shop_setting:
 		"Sell": sell_item()
 		"Buy": buy_item()
 
-# Buy Option set
-func _on_Buy_pressed():
-	if(shop_setting == "Sell"):
-		sell_tab.texture_normal = default_tab_image
-		buy_tab.texture_normal = active_tab_image
-		tabs.hide()
-		set_state("Buy")
-		check_fixed()
-
-#Sell Option Set
-func _on_Sell_pressed():
-	if(shop_setting == "Buy"):
-		buy_tab.texture_normal = default_tab_image
-		sell_tab.texture_normal = active_tab_image
-		tabs.show()
-		set_state("Sell")
-		check_fixed()
-
-func check_fixed():
-	if(item_state == "FIXED"):
-		var temp = mouse_node
-		revert_item_state()
-		_on_mouse_exited(temp)
-
-#Sets state of the option
-func set_state(types):
-	if(types != shop_setting):
-		contents.get_node("Items" + shop_setting).hide()
-		shop_setting = types
-		contents.get_node("Items" + shop_setting).show()
-
-func handle_input(event):
-	if is_active_gui:
-		if Input.is_action_just_pressed("escape"):
-			_on_ExitShop_pressed()
-		elif Input.is_action_just_pressed("shop_buy"):
-			_on_Buy_pressed()
-		elif Input.is_action_just_pressed("shop_sell"):
-			_on_Sell_pressed()
-
-func _on_ExitShop_pressed():
-	free_the_shop()
-
-func free_the_shop():
-	DataResource.save_rest()
-	emit_signal("release_gui", "shop")
-
-
+# Based on whether the shop is active
 func _on_Shop_visibility_changed():
 	if(!visible):
 		check_fixed()
@@ -465,3 +449,19 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 			updating_node = updating_path.get_node(tab_name).find_node(updating_node_index, true, false)
 			if(updating_node.get_child(0).get_child(0).name != "ItemName"):
 				inventory.disable_mouse(updating_node)
+
+func handle_input(event):
+	if is_active_gui:
+		if Input.is_action_just_pressed("escape"):
+			_on_Exit_pressed()
+		elif Input.is_action_just_pressed("shop_buy"):
+			_on_Buy_pressed()
+		elif Input.is_action_just_pressed("shop_sell"):
+			_on_Sell_pressed()
+
+func _on_Exit_pressed():
+	free_the_shop()
+
+func free_the_shop():
+	DataResource.save_rest()
+	emit_signal("release_gui", "shop")

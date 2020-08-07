@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="up" type="Label"]
+margin_right = 617.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 1 )
+text = "Up"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

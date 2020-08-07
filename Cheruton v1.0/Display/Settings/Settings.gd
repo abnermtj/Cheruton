@@ -2,10 +2,13 @@ extends Control
 
 const LMB = "InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
 const RMB = "InputEventMouseButton : button_index=BUTTON_RIGHT, pressed=false, position=(0, 0), button_mask=0, doubleclick=false"
-
+const UNASSIGN = "Unassigned"
 
 const RED = Color(1,0,0,1)
 const WHITE = Color(1,1,1,1)
+
+onready var control_label = preload("res://Display/Settings/control_label.tscn")
+onready var control_btn = preload("res://Display/Settings/control_btn.tscn")
 
 onready var master_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MainVolBar
 onready var music_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/SoundBar/MusicVolBar
@@ -14,8 +17,7 @@ onready var sfx_bar = $Settings/Container/Main/Contents/BaseAudio/Rect/Contents/
 
 onready var container = $Settings/Container
 onready var contents = $Settings/Container/Main/Contents
-onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Column
-onready var controls_button = $Settings/Container/Main/Contents/BaseControls/Buttons
+onready var controls_column = $Settings/Container/Main/Contents/BaseControls/Scroll
 
 onready var slider = $Settings/Slider
 onready var tween = $Tween
@@ -24,19 +26,23 @@ onready var audio = $Settings/Container/Main/Contents/Options/Audio
 onready var game = $Settings/Container/Main/Contents/Options/Game
 onready var back = $Settings/Container/Main/Contents/Options/Back
 
+onready var controls_action = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Action
+onready var controls_mapping = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Mapping
+onready var controls_message = $Settings/Container/Main/Contents/BaseControls/Message
+
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
 onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
 
+
 var slider_active := false
 var edit_control := false
 var prior_collision := false
 
-var controls_set := -1
 var temp_control
 var key_action := []
-var key_duplicates := []
+var key_duplicates := {}
 
 onready var active_tab = base_empty
 
@@ -44,34 +50,46 @@ signal closed_settings
 
 func _ready():
 	init_key_bindings()
-	controls_set_column("Next")
 	init_bar_vals()
 	connect_functions()
 
+############
+# CONTROLS #
+############
+
+# Updates configurable keys in the controls displays
 func init_key_bindings():
-	var columns = controls_column.get_child_count()
-	for i in columns:
-		var column_node = controls_column.get_child(i).get_node("Mapping")
-		var bindings = column_node.get_child_count()
-		for j in bindings:
-			var current_binding = column_node.get_child(j)
-			current_binding.connect("pressed",self,  "_on_button_pressed", [current_binding])
-			var btn_text = InputMap.get_action_list(current_binding.name)[0].as_text()
-			set_text(current_binding.get_child(0), false, btn_text)
-			key_action.append(current_binding.name)
+	key_action = InputMap.get_actions()
+	key_action.sort()
+	var action_size = key_action.size()
+	
+	for i in action_size:
+		if(key_action[i].find("ui") != -1):
+			continue
+		var new_label = control_label.instance()
+		var new_button = control_btn.instance()
+		
+		new_label.name = key_action[i]
+		new_button.name = key_action[i]
+		
+		new_label.text = key_action[i].capitalize()
+		new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
+		new_button.connect("mouse_entered" ,self, "_on_button_mouse_entered", [new_button])
+		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
+		
+		controls_action.add_child(new_label)
+		controls_mapping.add_child(new_button) 
 
-func set_text(node, unassign := true, new_value := ""):
-	if(unassign):
-		if(node.get("custom_colors/font_color") == RED):
-			prior_collision = true
-			node.set("custom_colors/font_color", WHITE)
-		else:
-			prior_collision = false
-		node.text = "Unassigned"
-	else:
-			node.text = check_mouse_text(new_value)
+func reform_btn_text(text):
+	match text:
+		LMB:
+			return "Left Mouse"
+		RMB:
+			return "Right Mouse"
 
+	return text
 
+# Reformats certain keypress nodes
 func check_mouse_text(btn_text):
 	if(btn_text == RMB):
 		return "Right Mouse"
@@ -79,44 +97,37 @@ func check_mouse_text(btn_text):
 		return "Left Mouse"
 	return btn_text
 
-
-func controls_set_column(type):
-	if(controls_set != -1):
-		controls_column.get_child(controls_set).hide()
-	match type:
-		"Prev":
-			controls_set -= 1
-		"Next":
-			controls_set += 1
-
-	match controls_set:
-		0:
-			controls_button.get_node("Previous").hide()
-		1:
-			controls_button.get_node("Previous").show()
-			controls_button.get_node("Next").show()
-		2:
-			controls_button.get_node("Next").hide()
-
-	controls_column.get_child(controls_set).show()
-
+# when the button is pressed
 func _on_button_pressed(button):
-	if(!edit_control):
-		edit_control = true
-		set_text(button.get_child(0), true)
-
+	edit_control = false
+	
+	if(temp_control):
+		if(prior_collision):
+			temp_control.get_child(0).set("custom_colors/font_color", RED)
+		temp_control.get_child(0).text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
+	
+	if(button.get_child(0).get("custom_colors/font_color") == RED):
+		button.get_child(0).set("custom_colors/font_color", WHITE)
+		prior_collision = true
 	else:
-		var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-		set_text(temp_control.get_child(0), false, btn_text)
-		set_text(button.get_child(0), true)
+		prior_collision = false
+	
+	button.get_child(0).text = UNASSIGN
 	temp_control = button
+	edit_control = true
+
+func _on_button_mouse_entered(button):
+	if(temp_control != button):
+		edit_control = false
 
 func _input(event):
+	# Keyboard Button
 	if event is InputEventKey:
 		if(edit_control):
 			edit_control = false
 			_edit_key(event)
 
+	# Mouse Button
 	elif event is InputEventMouseButton:
 		if(edit_control):
 			edit_control = false
@@ -127,7 +138,7 @@ func _input(event):
 # Affixes the standard mouse button properties to the pressed button
 func align_mouse_event(event):
 	event.position = Vector2(0, 0)
-	event.button_mask=0
+	event.button_mask= 0
 	event.pressed = false
 	event.doubleclick = false
 
@@ -139,82 +150,89 @@ func _edit_key(new_key):
 		old_key = InputMap.get_action_list(temp_control.name)[0]
 		InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
 
-	check_duplicates(new_key, old_key)
+	check_duplicates(new_key, temp_control.name)
 	# Update duplicate list
 	InputMap.action_add_event(action_name, new_key)
 
-	var btn_text = InputMap.get_action_list(temp_control.name)[0].as_text()
-	set_text(temp_control.get_child(0), false, btn_text)
+	var btn_text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
 	DataResource.dict_input_map[temp_control.name] = btn_text
-
+	temp_control.get_child(0).text = btn_text
+	
 	temp_control = null
 
-# Detects actions who already occupy the same key binding as the intended one
-# Search can be improved
-func check_duplicates(new_key, old_key):
-	var columns = controls_column.get_child_count()
+# Detects actions who  occupy the same key binding as the new key2
+func check_duplicates(new_key, action_assigned):
 
-	for i in columns:
-		var column_node = controls_column.get_child(i).get_node("Mapping")
-		var bindings = column_node.get_child_count()
-		for j in bindings:
-			var current_binding = column_node.get_child(j)
-			var check = InputMap.event_is_action(new_key, current_binding.name)
-			if(check):
-				handle_duplicates(current_binding)
-				return
-	# No Duplicates found and selected node had a previous conflict
-	if(prior_collision):
-		var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
-		var old_binding = controls_column.find_node(key_action[conflict_index], true, false)
-		clear_duplicates(old_binding, conflict_index)
+	var action_size = key_action.size()
+	for i in action_size:
+		if(key_action[i].find("ui") != -1):
+			continue
+		var check = InputMap.event_is_action(new_key, key_action[i])
+		
+		# Duplicate has been detected
+		if(check):
+			handle_duplicates(action_assigned, key_action[i])
+			controls_message.show()
+			back.disabled = true
+			return
+		
+		#Update duplicate list if it was previously a duplicate
+		if(prior_collision):
+			clear_duplicates(action_assigned)
 
 # Handles actions with the same key_bindings
-func handle_duplicates(current_binding):
-	var action_name = current_binding.name
-	var conflict_index = temp_control.get_index() + temp_control.get_parent().get_parent().get_index() * 5
-	key_action[conflict_index] = current_binding.name
-	# New key conflicts with current_binding and conflict is newly detected
-	if(!key_duplicates.has(current_binding.name)):
-		key_duplicates.append(current_binding.name)
-
-	# Find all conflicting actions and highlight it
-	var key_size = key_action.size()
-	for i in key_size:
-		if(key_action[i] == current_binding.name):
-			var controls_child_count = controls_column.get_child_count()
-			var node = controls_column.get_child(i/controls_child_count).get_child(1).get_child(i%5).get_child(0)
-			node.set("custom_colors/font_color", RED)
-#	InputMap.action_erase_event(action_name, InputMap.get_action_list(action_name)[0])
-#	InputMap.action_add_event(current_binding.name, old_key)
-#
-#
-#	var btn_text = InputMap.get_action_list(action_name)[0].as_text()
-#	set_text(current_binding.get_child(0), false, btn_text)
-#	DataResource.dict_input_map[current_binding.name] = btn_text
+func handle_duplicates(action_assigned, conflicting_action):
+	var duplicate_size = key_duplicates.size()
+	var inserted = false
+	
+	if(duplicate_size != 0):
+		for i in duplicate_size:
+			# Case 1: Array does not contain either actions
+			if(!(key_duplicates[i].has(action_assigned) ||key_duplicates[i].has(conflicting_action))):
+				continue
+			# Case 2: Array contains the action causing the conflict
+			elif(key_duplicates[i].has(action_assigned) && !key_duplicates[i].has(conflicting_action)):
+				key_duplicates[i].erase(action_assigned)
+			# Case 3: Array contains the action that conflicted with the assigned action
+			elif(!key_duplicates[i].has(action_assigned) && key_duplicates[i].has(conflicting_action)):
+				key_duplicates[i].append(action_assigned)
+				inserted = true
+	# Inserts new array of conflicts
+	if(!inserted):
+		key_duplicates[duplicate_size] = []
+		key_duplicates[duplicate_size].append(action_assigned)
+		key_duplicates[duplicate_size].append(conflicting_action)
+	
+	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0) 
+	var conflict_mapping = controls_mapping.get_node(conflicting_action).get_child(0)
+	
+	assigned_mapping.set("custom_colors/font_color", RED)
+	conflict_mapping.set("custom_colors/font_color", RED)
 
 # Clears duplicates that have been resolved
-func clear_duplicates(current_binding, conflict_index):
-	var size = key_action.size()
-	var occurence = 0
-	var occur_index = []
-	# Original action from which duplicates were created
-	print(key_action)
-	print(conflict_index)
-	if(temp_control.name == key_action[conflict_index]):
-		print(2)
-	# Duplicated from another action
-	else:
-		key_action[conflict_index] = temp_control.name
-		print(1)
-		for i in size:
-			if(key_action[i] == current_binding.name):
-				occurence += 1
-				occur_index.append(i)
-		if(occurence == 1):
-			current_binding.get_child(0).set("custom_colors/font_color", WHITE)
-			key_duplicates.erase(current_binding.name)
-		temp_control.get_child(0).set("custom_colors/font_color", WHITE)
+func clear_duplicates(action_assigned):
+	var duplicate_size = key_duplicates.size()
+
+	for i in duplicate_size:
+		if(key_duplicates[i].has(action_assigned)):
+			key_duplicates[i].erase(action_assigned)
+			
+			if(key_duplicates[i].size() == 1):
+				var conflict_mapping = controls_mapping.get_node(key_duplicates[i][0]).get_child(0)
+				conflict_mapping.set("custom_colors/font_color", WHITE)
+				key_duplicates.erase(i)
+			break
+
+	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0)
+	assigned_mapping.set("custom_colors/font_color", WHITE)
+	
+	if(key_duplicates.empty()):
+		controls_message.hide()
+		back.disabled = false
+
+#########
+# AUDIO #
+#########
 
 func init_bar_vals():
 	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
@@ -225,16 +243,6 @@ func connect_functions():
 	var _conn1 = DataResource.connect("change_audio_master", self, "change_master_vol")
 	var _conn2 = DataResource.connect("change_audio_music", self, "change_music_vol")
 	var _conn3 = DataResource.connect("change_audio_sfx", self, "change_sfx_vol")
-
-func _on_Previous_pressed():
-	SceneControl.button_click.play()
-	controls_set_column("Prev")
-
-func _on_Next_pressed():
-	SceneControl.button_click.play()
-	controls_set_column("Next")
-
-
 
 func _on_MuteToggle_pressed():
 	DataResource.dict_settings.is_mute = !DataResource.dict_settings.is_mute
@@ -259,7 +267,6 @@ func animate_healthbar(bar, end):
 	SceneControl.button_click.play()
 	tween.interpolate_property(bar, "value", bar.value, end, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
-
 
 func _on_MainVolUp_pressed():
 	SceneControl.button_click.play()
@@ -356,4 +363,7 @@ func change_active_tab(new_tab):
 
 	active_tab = new_tab
 	active_tab.show()
+
+
+
 
