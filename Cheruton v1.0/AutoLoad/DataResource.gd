@@ -1,6 +1,6 @@
 extends Node
 
-const MAIN = "user://player-data.json"
+const MAIN = "res://Data/player-data.json"
 const MASTERLIST = "res://Data/item-masterlist.json"
 
 var current_scene = null
