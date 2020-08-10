@@ -3,7 +3,7 @@ extends Level
 func _ready():
 
 	player_spawn_pos = Vector2(525, -208)
-#	player_spawn_pos = Vector2(10525, 98)
+	player_spawn_pos = Vector2(10525, -208)
 
 	story_file = "res://Levels/Hometown/Stories/Baked/HometownDialog.tres"
 	SceneControl.change_story(story_file) # delete next time thisis to directly run it

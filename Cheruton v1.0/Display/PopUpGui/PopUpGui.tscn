@@ -24,28 +24,25 @@ __meta__ = {
 }
 
 [node name="inventory" parent="popUps" instance=ExtResource( 6 )]
-visible = false
-margin_left = 860.627
-margin_top = 542.352
-margin_right = 860.627
-margin_bottom = 542.352
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
 
 [node name="pause" parent="popUps" instance=ExtResource( 8 )]
-visible = false
 margin_left = 536.788
-margin_top = 256.289
+margin_top = 334.538
 margin_right = 750.789
-margin_bottom = 380.29
+margin_bottom = 458.539
 
 [node name="shop" parent="popUps" instance=ExtResource( 5 )]
-visible = false
-margin_left = 882.608
-margin_top = 535.551
-margin_right = 882.608
-margin_bottom = 535.551
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
 
 [node name="dialog" parent="popUps" instance=ExtResource( 7 )]
-margin_left = 1000.88
-margin_top = 1080.0
-margin_right = 1000.88
-margin_bottom = 1080.0
+margin_left = 930.0
+margin_top = 1068.92
+margin_right = 930.0
+margin_bottom = 1068.92
