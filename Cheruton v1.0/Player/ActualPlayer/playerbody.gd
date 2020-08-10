@@ -114,10 +114,10 @@ func _physics_process(delta):
 		interaction_type = ""
 
 # General Helper functions
-func set_input_enabled(val):
+func set_input_enabled(val : bool):
 	states.input_enabled = val
 
-func change_state(name):
+func change_state(name : String):
 	states._change_state(name)
 
 func get_nearest_object(obj_type : String):
@@ -164,7 +164,7 @@ func set_look_direction(direction : Vector2):
 	if direction.x in [-1, 1]:
 		body_rotate.scale = Vector2(direction.x,1) # flips horizontally
 
-func set_attack_enabled (val):
+func set_attack_enabled (val : bool):
 	attack_enabled = val
 func displace(vector : Vector2):
 	global_position += vector
@@ -183,11 +183,11 @@ func play_anim(string : String):
 		animation_player.play(string)
 		previous_anim = string
 		animation_player.advance(0) # play from the start of anim
-func queue_anim(string):
+func queue_anim(string : String):
 	if animation_player:
 			animation_player.queue(string)
 			previous_anim = string
-func play_and_return_anim(string):
+func play_and_return_anim(string : String):
 	if animation_player:
 		animation_player.play(string)
 		animation_player.queue(previous_anim)
@@ -195,12 +195,12 @@ func stop_anim():
 	if animation_player: animation_player.stop(false)
 func set_anim_speed (val : float):
 	if animation_player: animation_player.playback_speed = val
-func play_anim_fx(string):
+func play_anim_fx(string : String):
 	if animation_player_fx: animation_player_fx.play(string)
-func queue_anim_fx(string):
+func queue_anim_fx(string : String):
 	if animation_player_fx: animation_player_fx.queue(string)
 
-func play_anim_fx_color(string):
+func play_anim_fx_color(string : String):
 	if animation_player_fx_color: animation_player_fx_color.play(string)
 
 # Grapple
@@ -210,7 +210,7 @@ func start_hook():
 	$timers/grappleCoolDown.start(.5)
 func _on_grappleCoolDown_timeout():
 	can_hook = true
-func _on_Chain_hooked(command, tip_p, node):
+func _on_Chain_hooked(command : int, tip_p : Vector2, node : Node):
 	if command == 0: # good hook
 		hooked = true
 		tip_pos = tip_p
@@ -233,7 +233,7 @@ func start_sword_throw():
 func return_sword_throw():
 	sword_state = SWORD_STATES.AIR
 	emit_signal("flying_sword_command", 1, Vector2())
-func on_sword_result(result, pos, normal):
+func on_sword_result(result : int, pos : Vector2, normal : Vector2):
 	if result == 0: # hit
 		sword_state = SWORD_STATES.STUCK
 		sword_pos = pos
@@ -244,7 +244,7 @@ func on_sword_result(result, pos, normal):
 		sword_state = SWORD_STATES.ON_HAND # edge case when return during slide/wallslide
 
 # Player damaged
-func _on_hitBox_area_entered(area):
+func _on_hitBox_area_entered(area : Node):
 	if is_invunerable: return
 	is_invunerable = true
 
@@ -267,7 +267,7 @@ func _on_hitBox_area_entered(area):
 
 	change_state("hit")
 
-func set_player_invunerable(time):
+func set_player_invunerable(time : float):
 	is_invunerable = true
 	$timers/invunerableTimer.start(time)
 func _on_invunerableTimer_timeout():
@@ -296,6 +296,7 @@ func move():
 func handle_move_collisions():
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
+#		if col:	print("COL", col.collider.name)
 		if col.collider.has_method("handle_collision"):
 			col.collider.handle_collision(col, self)
 
@@ -311,10 +312,10 @@ func _switch_col():
 	slide_collision.disabled = not slide_collision.disabled
 	body_collision.disabled = not body_collision.disabled
 
-func _on_slideArea2D_body_exited(body):
+func _on_slideArea2D_body_exited(body : Node):
 	if not body.is_in_group("one_way_platforms"):
 		exit_slide_blocked = false
-func _on_slideArea2D_body_entered(body):
+func _on_slideArea2D_body_entered(body : Node):
 	if not body.is_in_group("one_way_platforms"):
 		exit_slide_blocked = true
 
@@ -382,16 +383,16 @@ func _on_Timer_timeout():
 	can_talk = true
 
 # Sound
-func play_sound(string):
+func play_sound(string : String):
 #	sound_parent.get_node(string).play()
 	pass
-func stop_sound(string):
+func stop_sound(string : String):
 	sound_parent.get_node(string).stop()
 func volume(string, vol_db):
 	sound_parent.get_node(string).volume_db = vol_db
 
 # CAMERA  CONTROL PART
-func set_camera_mode_logic(state):
+func set_camera_mode_logic(state : int):
 	camera_state = state
 	emit_signal("camera_command", camera_state, 0) # HOOK MODE
 	match camera_state:
@@ -399,5 +400,5 @@ func set_camera_mode_logic(state):
 		CAMERA_STATES.GROUND : emit_signal("camera_command", 0, 1)
 		CAMERA_STATES.HOOK : emit_signal("camera_command", 1, 0)
 
-func shake_camera(dur, freq, amp, dir):
+func shake_camera(dur : float, freq : float, amp : float, dir : float):
 	level.shake_camera(dur, freq, amp, dir)

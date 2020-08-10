@@ -1131,6 +1131,20 @@ tracks/3/keys = {
 "method": "set_perm_hide"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("NPCs/moneygirl")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_outline_enabled"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "cutscene1_1"
@@ -2763,7 +2777,7 @@ font_data = ExtResource( 34 )
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 14 )
-shader_param/cutoff = 1.0
+shader_param/cutoff = 0.0
 shader_param/smooth_size = 0.25
 shader_param/mask = ExtResource( 15 )
 
@@ -2821,8 +2835,7 @@ scale = Vector2( -4, 4 )
 z_index = 1
 
 [node name="moneygirl" parent="NPCs" instance=ExtResource( 13 )]
-position = Vector2( 5000, -1300 )
-scale = Vector2( -4, 4 )
+position = Vector2( 72, -1336 )
 z_index = 1
 
 [node name="rock" type="Sprite" parent="NPCs/moneygirl"]
@@ -2930,6 +2943,7 @@ tile_data = PoolIntArray( -7864193, 13, 0, -7602054, 18, 0, -7602035, 19, 0, -73
 [node name="Hints" type="Node2D" parent="."]
 
 [node name="Scene0_0" parent="Hints" instance=ExtResource( 41 )]
+visible = false
 position = Vector2( 48, 24 )
 
 [node name="up" parent="Hints/Scene0_0" instance=ExtResource( 39 )]
@@ -3123,7 +3137,7 @@ texture = ExtResource( 32 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 self_modulate = Color( 0.698039, 0.109804, 0.109804, 1 )
-position = Vector2( -315, 188 )
+position = Vector2( -188, 188 )
 z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]

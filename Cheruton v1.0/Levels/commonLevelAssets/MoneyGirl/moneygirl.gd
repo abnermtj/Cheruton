@@ -12,18 +12,18 @@ func _ready():
 
 	$bodyRotate/staffPos.hide()
 
-func play_anim(name):
+func play_anim(name : String):
 	if name != "on_broom_idle": $bodyRotate.position = Vector2()
 	anim_player.clear_queue()
 	anim_player.play(name)
 	anim_player.advance(0)
-func queue_anim(name):
+func queue_anim(name : String):
 	anim_player.queue(name)
 
-func set_anim_speed(speed):
+func set_anim_speed(speed : float):
 	anim_player.playback_speed = speed
 
-func interact(body):
+func interact(body : Node):
 	if not interact_enabled:
 		DataResource.temp_dict_player.dialog_complete = true
 		return

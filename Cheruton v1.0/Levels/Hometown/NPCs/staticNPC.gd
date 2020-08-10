@@ -44,7 +44,7 @@ func _process(delta):
 		sprite.scale.x = save_dir
 		if sprite2: sprite2.scale.x = save_dir
 
-func interact(body):
+func interact(body : Node):
 	is_talking = true
 	SceneControl.change_and_start_dialog(dialog_name)
 	DataResource.temp_dict_player.dialog_complete = false # the defered call in Scene Control causes timing issue
@@ -53,11 +53,11 @@ func interact(body):
 	if sprite2: sprite2.scale.x = sprite.scale.x
 	set_process(true)
 
-func set_interact_enabled(val):
+func set_interact_enabled(val : bool):
 	interact_enabled = val
 
 func set_dialog_name(val : String):
 	dialog_name = val
 
-func set_outline_enabled(val):
+func set_outline_enabled(val : bool):
 	sprite.visible = val
