@@ -26,9 +26,11 @@ onready var audio = $Settings/Container/Main/Contents/Options/Audio
 onready var game = $Settings/Container/Main/Contents/Options/Game
 onready var back = $Settings/Container/Main/Contents/Options/Back
 
+
 onready var controls_action = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Action
 onready var controls_mapping = $Settings/Container/Main/Contents/BaseControls/Scroll/Column/Mapping
 onready var controls_message = $Settings/Container/Main/Contents/BaseControls/Message
+onready var controls_reset = $Settings/Container/Main/Contents/BaseControls/Button
 
 onready var base_controls = $Settings/Container/Main/Contents/BaseControls
 onready var base_audio = $Settings/Container/Main/Contents/BaseAudio
@@ -58,7 +60,7 @@ func _ready():
 ############
 
 # Updates configurable keys in the controls displays
-func init_key_bindings():
+func init_key_bindings(reset:= false):
 	key_action = InputMap.get_actions()
 	key_action.sort()
 	var action_size = key_action.size()
@@ -66,20 +68,31 @@ func init_key_bindings():
 	for i in action_size:
 		if(key_action[i].find("ui") != -1):
 			continue
-		var new_label = control_label.instance()
-		var new_button = control_btn.instance()
-		
-		new_label.name = key_action[i]
-		new_button.name = key_action[i]
-		
-		new_label.text = key_action[i].capitalize()
-		new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
-		new_button.connect("mouse_entered" ,self, "_on_button_mouse_entered", [new_button])
+		var new_label
+		var new_button
+		var x = key_action[i]
+		match reset:
+			true:
+				new_button = controls_mapping.get_node(key_action[i])
+			false:
+				new_label = control_label.instance()
+				new_button = control_btn.instance()
+				
+				new_label.name = key_action[i]
+				new_button.name = key_action[i]
+				new_button.get_child(0).name = key_action[i]
+			
+				new_label.text = key_action[i].capitalize()
+				new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
+				new_button.connect("mouse_entered" ,self, "_on_button_mouse_entered", [new_button])
+				controls_action.add_child(new_label)
+				controls_mapping.add_child(new_button) 
+			
 		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
+		if(new_button.get_child(0).get("custom_colors/font_color") == RED):
+			new_button.get_child(0).set("custom_colors/font_color", WHITE)
 		
-		controls_action.add_child(new_label)
-		controls_mapping.add_child(new_button) 
-
+		
 func reform_btn_text(text):
 	match text:
 		LMB:
@@ -173,6 +186,7 @@ func check_duplicates(new_key, action_assigned):
 		if(check):
 			handle_duplicates(action_assigned, key_action[i])
 			controls_message.show()
+			controls_reset.show()
 			back.disabled = true
 			return
 		
@@ -229,6 +243,18 @@ func clear_duplicates(action_assigned):
 	if(key_duplicates.empty()):
 		controls_message.hide()
 		back.disabled = false
+
+
+func _on_Reset_pressed():
+	handle_reset()
+	controls_message.hide()
+	controls_reset.hide()
+	back.disabled = false
+
+func handle_reset():
+	key_duplicates.clear()
+	InputMap.load_from_globals()
+	init_key_bindings(true)
 
 #########
 # AUDIO #
@@ -363,6 +389,7 @@ func change_active_tab(new_tab):
 
 	active_tab = new_tab
 	active_tab.show()
+
 
 
 
