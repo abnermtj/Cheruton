@@ -190,9 +190,9 @@ func check_duplicates(new_key, action_assigned):
 			back.disabled = true
 			return
 		
-		#Update duplicate list if it was previously a duplicate
-		if(prior_collision):
-			clear_duplicates(action_assigned)
+	#Update duplicate list if it was previously a duplicate
+	if(prior_collision):
+		clear_duplicates(action_assigned)
 
 # Handles actions with the same key_bindings
 func handle_duplicates(action_assigned, conflicting_action):
@@ -225,8 +225,9 @@ func handle_duplicates(action_assigned, conflicting_action):
 
 # Clears duplicates that have been resolved
 func clear_duplicates(action_assigned):
+	var update_duplicates = false
 	var duplicate_size = key_duplicates.size()
-
+	print(1)
 	for i in duplicate_size:
 		if(key_duplicates[i].has(action_assigned)):
 			key_duplicates[i].erase(action_assigned)
@@ -234,8 +235,14 @@ func clear_duplicates(action_assigned):
 			if(key_duplicates[i].size() == 1):
 				var conflict_mapping = controls_mapping.get_node(key_duplicates[i][0]).get_child(0)
 				conflict_mapping.set("custom_colors/font_color", WHITE)
+				update_duplicates = true
+		
+		if(update_duplicates):
+			if(i != duplicate_size - 1):
+				key_duplicates[i] = key_duplicates[i+1]
+			else:
 				key_duplicates.erase(i)
-			break
+
 
 	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0)
 	assigned_mapping.set("custom_colors/font_color", WHITE)
@@ -243,7 +250,7 @@ func clear_duplicates(action_assigned):
 	if(key_duplicates.empty()):
 		controls_message.hide()
 		back.disabled = false
-
+	
 
 func _on_Reset_pressed():
 	handle_reset()
