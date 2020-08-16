@@ -1,6 +1,6 @@
 extends Position2D
 
-const MIN_LENGTH = 248 # used so it doesn't disappear when too close 118 min for sss 330 for fabrik
+const MIN_LENGTH = 285 # used so it doesn't disappear when too close 118 min for sss 330 for fabrik
 const DEFAULT_STEP_RATE = 0.4 # actual time in seconds taken to complete a step
 const STEP_HEIGHT = 55
 
@@ -9,12 +9,17 @@ enum legs {UPPER_LEG = 0, MIDDLE_LEG = 1, LOWER_LEG = 2}
 onready var joint1 = $joint1
 onready var joint2 = $joint1/joint2
 onready var tip = $joint1/joint2/tip
+onready var hurt_box_col = $joint1/joint2/tip/HurtBox/CollisionShape2D
+onready var dust_ray = $joint1/joint2/tip/DustSpawner/RayCast2D
 
 var length_upper = 0
 var length_middle = 0
 var length_lower = 0
 
 export var flipped = true
+export var is_back_leg = false
+
+var level
 
 var leg_controller : Node
 var tip_pos : Vector2
@@ -32,10 +37,22 @@ func _ready():
 	length_upper = joint1.position.x
 	length_middle = joint2.position.x
 	length_lower = tip.position.x
-	if flipped:
-		$Sprite.flip_h = true
-		joint1.get_node("Sprite").flip_h = true
-		joint2.get_node("Sprite").flip_h = true
+
+	$backLimb/frontLegSprite.flip_h = flipped
+	$backLimb/backLegSprite.flip_h = flipped
+	joint1.get_node("midLimb/frontLegSprite").flip_h = flipped
+	joint1.get_node("midLimb/backLegSprite").flip_h = flipped
+	joint2.get_node("frontLimb/frontLegSprite").flip_h = flipped
+	joint2.get_node("frontLimb/backLegSprite").flip_h = flipped
+
+	$backLimb/backLegSprite.visible = is_back_leg
+	$backLimb/frontLegSprite.visible = not is_back_leg
+	joint1.get_node("midLimb/backLegSprite").visible = is_back_leg
+	joint1.get_node("midLimb/frontLegSprite").visible = not is_back_leg
+	joint2.get_node("frontLimb/backLegSprite").visible = is_back_leg
+	joint2.get_node("frontLimb/frontLegSprite").visible = not is_back_leg
+
+	add_to_group("needs_level_ref")
 
 func step(target_pos):
 	hold = false
@@ -132,7 +149,20 @@ func get_dist_tip_to_point(point: Vector2):
 	return (tip.global_position - point).length()
 
 func set_tip_hurt_box_disabled(val):
-	tip.get_node("Area2D/CollisionShape2D").disabled = val
+	hurt_box_col.disabled = val
+
+# Dust
+func _on_DustSpawner_body_entered(body):
+	if body is TileMap:
+		var col_normal = dust_ray.get_collision_normal()
+		emit_dust(col_normal)
+
+func emit_dust(col_normal):
+	var dust_instance = load("res://Effects/Dust/JumpDust/jumpDust.tscn").instance()
+	dust_instance.global_position = tip.global_position
+	dust_instance.rotation = Vector2.UP.angle_to(col_normal)
+	level.add_child(dust_instance)
+	dust_instance.emitting = true
 # FABRIK IMPLMENTATION TEST
 
 # used for FABRIK
@@ -232,3 +262,7 @@ func set_tip_hurt_box_disabled(val):
 #			else:
 #				if abs(angle_deg) < INWARD_FOLD_ANGLE_LIMIT:
 #					leg_pos_dict[current_limb][1] = leg_pos_dict[current_limb][0] + Vector2.UP.rotated(deg2rad(INWARD_FOLD_ANGLE_LIMIT) * sign(angle_deg)) * leg_length_dict[current_limb]
+
+
+
+

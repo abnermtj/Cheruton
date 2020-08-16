@@ -28,11 +28,15 @@ onready var smaller_body_collision = $smallerBodyCollision
 onready var jump_hurt_box_col_shape = $jumpHurtBox/CollisionShape2D
 
 # General
+onready var shockwave = $CanvasLayer/Shockwave
+onready var mouth_pos = $head/mouthPos
+onready var anim_player = $AnimationPlayer
 onready var default_sprite_pos = []
 
 var player
 var level
 
+var sprite_move_speed_modifier = 1.0
 var velocity = Vector2()
 var leg_move_timer
 var cur_state
@@ -75,13 +79,25 @@ func move_body_sprites():
 	desired_head_pos = default_sprite_pos[0] + (velocity * 0.03).clamped(100)
 	desired_feeler_pos = default_sprite_pos[1] + (velocity * 0.01).clamped(0)
 	desired_mid_body_pos = default_sprite_pos[2] + velocity.clamped(0)
-	desired_butt_pos = default_sprite_pos[3] - (velocity * 0.032).clamped(48)
+	desired_butt_pos = default_sprite_pos[3] - (velocity * 0.034).clamped(60)
 
 func _process(delta):
-	head_sprite.position = lerp (head_sprite.position, desired_head_pos, delta)
-	feelers_sprite.position = lerp (feelers_sprite.position, desired_feeler_pos, delta)
-	mid_body_sprite.position = lerp (mid_body_sprite.position, desired_mid_body_pos, delta)
-	butt_sprite.position = lerp (butt_sprite.position, desired_butt_pos, delta)
+	head_sprite.position = lerp (head_sprite.position, desired_head_pos, delta * sprite_move_speed_modifier)
+	feelers_sprite.position = lerp (feelers_sprite.position, desired_feeler_pos, delta * sprite_move_speed_modifier)
+	mid_body_sprite.position = lerp (mid_body_sprite.position, desired_mid_body_pos, delta * sprite_move_speed_modifier)
+	butt_sprite.position = lerp (butt_sprite.position, desired_butt_pos, delta * sprite_move_speed_modifier)
+
+	var mouth_uv = mouth_pos.get_global_transform_with_canvas().origin# get position on screen of mouth area
+	var screen_res = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
+
+	mouth_uv /= screen_res
+	mouth_uv.x = clamp(mouth_uv.x, 0.0, 1.0)
+	mouth_uv.y = 1.0 - clamp(mouth_uv.y, 0.0, 1.0)
+	shockwave.material.set_shader_param("center", mouth_uv)
+
+# ANIMATINOS:
+func play_anim(string : String):
+	anim_player.play(string)
 
 # AREAS
 func on_player_entered_small_area(body):

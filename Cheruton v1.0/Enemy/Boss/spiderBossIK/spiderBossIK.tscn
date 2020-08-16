@@ -1,13 +1,13 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_head.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_head.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLegController.gd" type="Script" id=4]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/spiderBossStateMachine.gd" type="Script" id=5]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_feelers.png" type="Texture" id=6]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_midbody.png" type="Texture" id=7]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_butt.png" type="Texture" id=8]
+[ext_resource path="res://Effects/ShockWave/ShockWave.shader" type="Shader" id=6]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/scream.gd" type="Script" id=7]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_butt.png" type="Texture" id=8]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/idle.gd" type="Script" id=9]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/run.gd" type="Script" id=10]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/jumpAttack.gd" type="Script" id=11]
@@ -35,9 +35,57 @@ extents = Vector2( 125, 200 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 500, 25 )
 
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 6 )
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/strength = 0.0
+shader_param/size = 0.0
+shader_param/thickness = 0.01
+shader_param/chrome_abberation_offset = 0.01
+
 [sub_resource type="DynamicFont" id=6]
 size = 64
 font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Shockwave"
+length = 1.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Shockwave:material:shader_param/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.01 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.03, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Shockwave:material:shader_param/size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.01 ),
+"transitions": PoolRealArray( 0.7, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Shockwave:material:shader_param/thickness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.01 ]
+}
 
 [node name="spiderBossIK" type="KinematicBody2D"]
 collision_layer = 0
@@ -49,10 +97,10 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 
 [node name="midBody" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -140 )
 scale = Vector2( 4, 4 )
 z_index = 2
-texture = ExtResource( 7 )
 
 [node name="head" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
@@ -60,15 +108,18 @@ z_index = 4
 texture = ExtResource( 2 )
 
 [node name="feelers" type="Sprite" parent="head"]
+visible = false
 position = Vector2( 0, 40 )
-texture = ExtResource( 6 )
+
+[node name="mouthPos" type="Position2D" parent="head"]
+position = Vector2( 0, 45 )
 
 [node name="smallerBodyCollision" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="smallBodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 95 )
+position = Vector2( 0, 110 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
@@ -80,7 +131,7 @@ shape = SubResource( 3 )
 [node name="ALegs" type="Node2D" parent="."]
 
 [node name="leg1" type="Position2D" parent="ALegs"]
-position = Vector2( 206, -8.50046 )
+position = Vector2( 180, -8.5 )
 z_index = 3
 script = ExtResource( 4 )
 
@@ -104,12 +155,13 @@ enabled = true
 cast_to = Vector2( -950, 600 )
 
 [node name="leg2" type="Position2D" parent="ALegs"]
-position = Vector2( -192.128, -109.081 )
+position = Vector2( -180, -70 )
 z_index = 2
 script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg2" instance=ExtResource( 3 )]
 position = Vector2( 0, 55.8384 )
+is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg2"]
 position = Vector2( -389.844, 121.991 )
@@ -127,13 +179,14 @@ enabled = true
 cast_to = Vector2( 950, 600 )
 
 [node name="leg3" type="Position2D" parent="ALegs"]
-position = Vector2( 160.566, -130.267 )
+position = Vector2( 160.566, -120 )
 z_index = 1
 script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg3" instance=ExtResource( 3 )]
 position = Vector2( 0, 20 )
 flipped = true
+is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg3"]
 position = Vector2( 346.011, 117.028 )
@@ -153,9 +206,10 @@ exclude_parent = false
 cast_to = Vector2( -950, 600 )
 
 [node name="BLegs" type="Node2D" parent="."]
+position = Vector2( -8, 0 )
 
 [node name="leg1" type="Position2D" parent="BLegs"]
-position = Vector2( -209.258, 2.90265 )
+position = Vector2( -180, 2.903 )
 z_index = 3
 script = ExtResource( 4 )
 
@@ -178,13 +232,14 @@ enabled = true
 cast_to = Vector2( 950, 600 )
 
 [node name="leg2" type="Position2D" parent="BLegs"]
-position = Vector2( 188.422, -88.4825 )
+position = Vector2( 180, -70 )
 z_index = 2
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg2" instance=ExtResource( 3 )]
 position = Vector2( 0, 20 )
 flipped = true
+is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg2"]
 position = Vector2( 272.702, 76.7147 )
@@ -204,12 +259,13 @@ exclude_parent = false
 cast_to = Vector2( -950, 600 )
 
 [node name="leg3" type="Position2D" parent="BLegs"]
-position = Vector2( -161.177, -146.222 )
+position = Vector2( -161.177, -120 )
 z_index = 1
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg3" instance=ExtResource( 3 )]
 position = Vector2( 0, 55.8384 )
+is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg3"]
 position = Vector2( -373.737, 160.438 )
@@ -233,6 +289,9 @@ START_STATE = NodePath("idle")
 [node name="idle" type="Node" parent="states"]
 script = ExtResource( 9 )
 
+[node name="scream" type="Node" parent="states"]
+script = ExtResource( 7 )
+
 [node name="run" type="Node" parent="states"]
 script = ExtResource( 10 )
 
@@ -250,7 +309,7 @@ script = ExtResource( 16 )
 
 [node name="groundCheck" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 0, 380 )
+cast_to = Vector2( 0, 330 )
 
 [node name="nextPosColCheck" type="RayCast2D" parent="."]
 enabled = true
@@ -278,6 +337,14 @@ disabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Shockwave" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -287,4 +354,7 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Shockwave = SubResource( 8 )
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

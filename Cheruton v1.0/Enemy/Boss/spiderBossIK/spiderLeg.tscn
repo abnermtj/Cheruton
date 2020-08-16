@@ -1,50 +1,98 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderLeg.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legmid.png" type="Texture" id=2]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legfront.png" type="Texture" id=3]
-[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_SpiderBoss_legback.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_legmid.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_legfront.png" type="Texture" id=3]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_legback.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_backlegback.png" type="Texture" id=5]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_backlegfront..png" type="Texture" id=6]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_backlegmid.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 100, 40 )
+extents = Vector2( 100, 20 )
 
-[node name="leg" type="Position2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 20 )
+
+[node name="SpiderLeg" type="Position2D"]
 position = Vector2( 907.432, 390.611 )
 script = ExtResource( 1 )
 flipped = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="backLimb" type="Node2D" parent="."]
+
+[node name="frontLegSprite" type="Sprite" parent="backLimb"]
 position = Vector2( 75.0089, -0.409851 )
 rotation = -1.5708
-scale = Vector2( 3, 4 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
-[node name="joint1" type="Position2D" parent="."]
-position = Vector2( 142, 0 )
+[node name="backLegSprite" type="Sprite" parent="backLimb"]
+visible = false
+position = Vector2( 75.0089, -0.409851 )
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="joint1"]
-position = Vector2( 105.987, -0.976318 )
-rotation = 1.5708
+[node name="joint1" type="Position2D" parent="."]
+position = Vector2( 140.568, 0 )
+
+[node name="midLimb" type="Node2D" parent="joint1"]
+
+[node name="frontLegSprite" type="Sprite" parent="joint1/midLimb"]
+position = Vector2( 95, 0.389008 )
+rotation = -1.5708
 scale = Vector2( 3, 4 )
 texture = ExtResource( 2 )
 
-[node name="joint2" type="Position2D" parent="joint1"]
-position = Vector2( 195, 0 )
-
-[node name="Sprite" type="Sprite" parent="joint1/joint2"]
-position = Vector2( 177.292, -3.67383 )
+[node name="backLegSprite" type="Sprite" parent="joint1/midLimb"]
+visible = false
+position = Vector2( 95, 0.389008 )
 rotation = -1.5708
+scale = Vector2( 3, 4 )
+texture = ExtResource( 7 )
+
+[node name="joint2" type="Position2D" parent="joint1"]
+position = Vector2( 190, 0.389008 )
+
+[node name="frontLimb" type="Node2D" parent="joint1/joint2"]
+position = Vector2( -190, -0.389008 )
+
+[node name="frontLegSprite" type="Sprite" parent="joint1/joint2/frontLimb"]
+position = Vector2( 382, 0.778015 )
+rotation = -1.58825
 scale = Vector2( 3, 4 )
 texture = ExtResource( 3 )
 
-[node name="tip" type="Position2D" parent="joint1/joint2"]
-position = Vector2( 365, 0 )
+[node name="backLegSprite" type="Sprite" parent="joint1/joint2/frontLimb"]
+visible = false
+position = Vector2( 382, 0.778015 )
+rotation = -1.58825
+scale = Vector2( 3, 4 )
+texture = ExtResource( 6 )
 
-[node name="Area2D" type="Area2D" parent="joint1/joint2/tip"]
+[node name="tip" type="Position2D" parent="joint1/joint2"]
+position = Vector2( 392, -21.611 )
+
+[node name="HurtBox" type="Area2D" parent="joint1/joint2/tip"]
+position = Vector2( -22.8497, 2.30038 )
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="joint1/joint2/tip/Area2D"]
-position = Vector2( -80, 0 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="joint1/joint2/tip/HurtBox"]
+position = Vector2( -108.15, -0.300385 )
 shape = SubResource( 1 )
 disabled = true
+
+[node name="DustSpawner" type="Area2D" parent="joint1/joint2/tip"]
+position = Vector2( 8, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="joint1/joint2/tip/DustSpawner"]
+position = Vector2( -40, 0 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="joint1/joint2/tip/DustSpawner"]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+[connection signal="body_entered" from="joint1/joint2/tip/DustSpawner" to="." method="_on_DustSpawner_body_entered"]

@@ -31,8 +31,8 @@ func update(delta):
 				owner.velocity = Vector2(0, JUMP_VEL)
 				owner.move()
 				return
-			owner.head_sprite.position.y = lerp(owner.head_sprite.position.y,  owner.default_sprite_pos[0].y + 40,delta)
-			owner.butt_sprite.position.y = lerp(owner.butt_sprite.position.y,  owner.default_sprite_pos[3].y -40,delta)
+			owner.desired_head_pos = owner.default_sprite_pos[0].y + 40
+			owner.desired_butt_pos = owner.default_sprite_pos[3].y -40
 
 			owner.velocity.x = lerp(owner.velocity.x , 0 , delta)
 			owner.velocity.y = lerp(owner.velocity.y , 400 , delta)
@@ -64,8 +64,8 @@ func update(delta):
 
 		stages.LAND:
 			owner.jump_hurt_box_col_shape.disabled = true
-			owner.head_sprite.position.y = lerp(owner.head_sprite.position.y,  owner.default_sprite_pos[0].y ,delta)
-			owner.butt_sprite.position.y = lerp(owner.butt_sprite.position.y,  owner.default_sprite_pos[3].y, delta)
+			owner.desired_head_pos.y = owner.default_sprite_pos[0].y
+			owner.butt_sprite.position.y = owner.default_sprite_pos[3].y
 
 			owner.velocity.y = lerp(owner.velocity.y, -200, delta)
 			owner.move()
