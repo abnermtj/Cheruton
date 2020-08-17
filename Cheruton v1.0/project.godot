@@ -131,6 +131,7 @@ window/size/test_width=1920
 window/size/test_height=1080
 window/dpi/allow_hidpi=true
 mouse_cursor/custom_image="res://Props/MouseIcons/UI_Cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 20, 20 )
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
