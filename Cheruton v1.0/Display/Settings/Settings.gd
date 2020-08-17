@@ -268,9 +268,9 @@ func handle_reset():
 #########
 
 func init_bar_vals():
-	master_bar.value = (DataResource.dict_settings.audio_master + 60) / 60 * 100
-	music_bar.value = (DataResource.dict_settings.audio_music + 60) / 60 * 100
-	sfx_bar.value = (DataResource.dict_settings.audio_sfx + 60) / 60 * 100
+	master_bar.value = (DataResource.dict_settings.audio_master + 68) / 60 * 100
+	music_bar.value = (DataResource.dict_settings.audio_music + 68) / 60 * 100
+	sfx_bar.value = (DataResource.dict_settings.audio_sfx + 68) / 60 * 100
 
 func connect_functions():
 	var _conn1 = DataResource.connect("change_audio_master", self, "change_master_vol")
