@@ -5,7 +5,7 @@ const WHITE = Color(1,1,1,1)
 
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
-onready var arrow = preload("res://Display/MouseDesign/arrow.png")
+
 onready var beam = preload("res://Display/MouseDesign/beam.png")
 onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
@@ -42,7 +42,7 @@ func _ready():
 	change_music(mmenu_music_file)
 
 	emit_signal("init_statbar")
-	#init_cursor()
+
 
 ##############
 # INITIALIZE #
@@ -53,9 +53,7 @@ func init_music():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), DataResource.dict_settings.audio_music)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), DataResource.dict_settings.audio_sfx)
 
-func init_cursor():
-	Input.set_custom_mouse_cursor(arrow)
-	Input.set_custom_mouse_cursor(beam, Input.CURSOR_IBEAM)
+
 
 ################
 # SCENE CHANGE #
