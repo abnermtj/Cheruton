@@ -29,9 +29,9 @@ signal change_audio_music
 signal change_audio_sfx
 
 signal dialog_over
-
 func _ready():
 	load_data()
+
 
 func load_data():
 	#Editable
