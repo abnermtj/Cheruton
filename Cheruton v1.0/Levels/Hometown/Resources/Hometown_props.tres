@@ -13,7 +13,7 @@ points = PoolVector2Array( 256, 48, 0, 48, 0, 40, 256, 40 )
 points = PoolVector2Array( 6.87781, 20.1172, 80.9519, 19.5386, 81.5305, 7.96436, 108.151, 7.96436, 108.151, 40.3718, 6.87781, 39.7932 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 24, 32, 24 )
+points = PoolVector2Array( 40, 36, 0, 36, 4, 20, 40, 20 )
 
 [resource]
 2/name = "Grasslands.png 2"

@@ -1956,9 +1956,9 @@ position = Vector2( 0, -68 )
 use_parent_material = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
-offset = Vector2( -5.5, 19.5 )
+offset = Vector2( 2.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 611, 167, 48, 48 )
+region_rect = Rect2( 375, 447, 32, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -1977,7 +1977,6 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
-visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124

@@ -29,8 +29,6 @@
 [ext_resource path="res://Levels/Hometown/homeTownPortal.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=35]
 
-
-
 [sub_resource type="OccluderPolygon2D" id=1]
 cull_mode = 2
 polygon = PoolVector2Array( -1320, -60, -1320, 224, -1356, 224, -1356, -60 )
@@ -47,15 +45,15 @@ polygon = PoolVector2Array( -1508, -100, -1532, -100, -1520, -104 )
 cull_mode = 2
 polygon = PoolVector2Array( 260, 20, 260, -124, 268, -124, 268, 20 )
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=5]
 cull_mode = 1
 polygon = PoolVector2Array( -64, 146, -244, 146, -72, 146 )
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=6]
 cull_mode = 1
 polygon = PoolVector2Array( -268, 50, -268, 94, -268, 114, -268, 90 )
 
-[sub_resource type="Environment" id=8]
+[sub_resource type="Environment" id=7]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 0.6
@@ -337,10 +335,10 @@ shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lights/LampLight6"]
-occluder = SubResource( 6 )
+occluder = SubResource( 5 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Lights/LampLight6"]
-occluder = SubResource( 7 )
+occluder = SubResource( 6 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 light_mask = 1
@@ -375,4 +373,4 @@ position = Vector2( 5417.32, 2375.08 )
 color = Color( 0.247059, 0.172549, 0.47451, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 8 )
+environment = SubResource( 7 )

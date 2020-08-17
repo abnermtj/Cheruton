@@ -1,17 +1,20 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Hometown/Sprites/Hometown_BuidingsALL.png" type="Texture" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 912, 708, 84, 708, 84, 704, 912, 704 )
+points = PoolVector2Array( 920, 728, 92, 724, 92, 712, 920, 712 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 48, 116, 1456, 116, 1456, 144, 48, 144 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 4, 536, 4, 508, 328, 516, 376, 516, 484, 536, 1800, 536, 1800, 564, 4, 564 )
+points = PoolVector2Array( 840, 528, 956, 528, 956, 536, 840, 536 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 4, 536, 4, 508, 328, 516, 376, 516, 484, 536, 1800, 536, 1800, 564, 4, 564 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 564, 432, 500, 432, 500, 428, 564, 428 )
 
 [resource]
@@ -25,20 +28,20 @@ points = PoolVector2Array( 564, 432, 500, 432, 500, 428, 564, 428 )
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 3 )
+9/shape = SubResource( 4 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
@@ -164,7 +167,14 @@ points = PoolVector2Array( 564, 432, 500, 432, 500, 428, 564, 428 )
 17/navigation_offset = Vector2( 0, 0 )
 17/shape_offset = Vector2( 0, 0 )
 17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-17/shape_one_way = false
-17/shape_one_way_margin = 0.0
-17/shapes = [  ]
+17/shape = SubResource( 3 )
+17/shape_one_way = true
+17/shape_one_way_margin = 1.0
+17/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 17/z_index = 0

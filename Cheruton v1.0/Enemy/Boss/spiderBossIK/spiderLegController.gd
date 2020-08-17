@@ -66,6 +66,7 @@ func get_collision_point():
 func set_tip_hurt_box_disabled(val):
 	leg.set_tip_hurt_box_disabled(val)
 
+# moves raycasts according to vel
 func set_offset(vel):
 	ray_cast.position.x = base_offset + vel.x * .75
 	ray_cast.cast_to.x = base_cast.x + .1 * vel.x

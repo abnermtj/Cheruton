@@ -18,7 +18,7 @@ func enter():
 
 	var obj_pos = owner.hitter_pos
 	move_dir = (owner.global_position - obj_pos ).normalized()
-	owner.shake_camera(.05, 20.0, 19.5, -move_dir) # dur, freq, amp, dir
+	owner.shake_camera(.07, 20.0, 42, -move_dir) # dur, freq, amp, dir
 	owner.velocity.x = move_dir.x * initial_speed
 	owner.look_dir = Vector2(-sign(move_dir.x),0)
 

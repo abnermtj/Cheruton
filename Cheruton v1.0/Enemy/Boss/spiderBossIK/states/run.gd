@@ -13,6 +13,7 @@ func enter():
 
 func update(delta):
 	var player_pos = owner.player.global_position
+
 	var next_position =  player_pos + Vector2(0, -250) + (Vector2(0,-200 )if (player_pos.y < owner.global_position.y) else Vector2())# the first offset account for the spider never touching the player due to hitbox, second offset accounts for situations when the spider needs to go up but there is a wall blocking
 #	next_position = owner.get_global_mouse_position()
 	if owner.ground_check.is_colliding() and owner.velocity.length() > SPEED/3.0: # keeps owner above ground when moving fast
@@ -30,7 +31,7 @@ func update(delta):
 
 	#RANDOM ATTTACK
 	if owner.player_in_small_look_area:
-		emit_signal("finished", "scream")
+		emit_signal("finished", "stabAttack")
 #		var rand = randi()%3
 #		match rand:
 #			0:

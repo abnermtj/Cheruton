@@ -1,12 +1,12 @@
 extends KinematicBody2D
 # IMPT NOTES
-# -anmation player connects to states -> ON ANIMATION CHANGED
+# -animation player connects  ON ANIMATION CHANGED signal to states
 
 const GRAVITY = 2400
-const AIR_ACCEL = 32.5  # increase in this >> increase in stearing power in air old 34
+const AIR_ACCEL = 32.5  # increase in this >> increase in stearing power in air
 const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
-const TIME_PER_ATTACK = 1.1
+const TIME_PER_ATTACK = 1.1 # this causes a slight annoying delay when clicks don't register between the attacks, need to find a way to input buffer. Make an input system in the future
 
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
@@ -371,6 +371,7 @@ func _on_jumpInputBuffer_timeout():
 # ATTACK
 func start_attack_cool_down():
 	attack_cooldown_finished = false
+	$timers/attackCoolDown.stop()
 	$timers/attackCoolDown.start(TIME_PER_ATTACK)
 func _on_attackCoolDown_timeout():
 	attack_cooldown_finished = true

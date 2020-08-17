@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Enemy_Boss_Spider_head.png" type="Texture" id=2]
@@ -16,39 +16,61 @@
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stabAttack.gd" type="Script" id=14]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/states/stepBack.gd" type="Script" id=15]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/webShoot.gd" type="Script" id=16]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/Sprites/Roar_wave_light_orange.png" type="Texture" id=17]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.0780669, 0.122677, 0.256506 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.789196, 1, 1, 1, 0.130435, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 2.62346, 0, 0, Vector2( 0.955882, 1 ), 0.487963, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 100.0
 height = 400.0
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 150.0
 height = 680.0
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 240.0
 height = 500.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 125, 200 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 500, 25 )
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 6 )
 shader_param/center = Vector2( 0.5, 0.5 )
-shader_param/strength = 0.0
+shader_param/strength = 0.2
 shader_param/size = 0.0
 shader_param/thickness = 0.01
 shader_param/chrome_abberation_offset = 0.01
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=12]
 size = 64
 font_data = ExtResource( 13 )
 
-[sub_resource type="Animation" id=8]
-resource_name = "Shockwave"
+[sub_resource type="Animation" id=13]
 length = 1.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Shockwave:material:shader_param/strength")
@@ -60,7 +82,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.01 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.03, 0.0, 0.0 ]
+"values": [ 0.2, 0.0, 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/Shockwave:material:shader_param/size")
@@ -114,24 +136,33 @@ position = Vector2( 0, 40 )
 [node name="mouthPos" type="Position2D" parent="head"]
 position = Vector2( 0, 45 )
 
+[node name="roarEffect" type="Particles2D" parent="head/mouthPos"]
+emitting = false
+amount = 20
+lifetime = 3.0
+one_shot = true
+visibility_rect = Rect2( -100, -100, 1000, 1000 )
+process_material = SubResource( 5 )
+texture = ExtResource( 17 )
+
 [node name="smallerBodyCollision" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="smallBodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 110 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="bodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 60 )
+position = Vector2( 0, 70 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="ALegs" type="Node2D" parent="."]
 
 [node name="leg1" type="Position2D" parent="ALegs"]
-position = Vector2( 180, -8.5 )
+position = Vector2( 164, -8.5 )
 z_index = 3
 script = ExtResource( 4 )
 
@@ -161,7 +192,6 @@ script = ExtResource( 4 )
 
 [node name="leg" parent="ALegs/leg2" instance=ExtResource( 3 )]
 position = Vector2( 0, 55.8384 )
-is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="ALegs/leg2"]
 position = Vector2( -389.844, 121.991 )
@@ -209,7 +239,7 @@ cast_to = Vector2( -950, 600 )
 position = Vector2( -8, 0 )
 
 [node name="leg1" type="Position2D" parent="BLegs"]
-position = Vector2( -180, 2.903 )
+position = Vector2( -164, 2.903 )
 z_index = 3
 script = ExtResource( 4 )
 
@@ -239,7 +269,6 @@ script = ExtResource( 4 )
 [node name="leg" parent="BLegs/leg2" instance=ExtResource( 3 )]
 position = Vector2( 0, 20 )
 flipped = true
-is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg2"]
 position = Vector2( 272.702, 76.7147 )
@@ -321,7 +350,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smallPlayerLookArea"]
 position = Vector2( 0, 230.82 )
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="jumpHurtBox" type="Area2D" parent="."]
 position = Vector2( 0, 35 )
@@ -330,7 +359,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jumpHurtBox"]
 position = Vector2( 0, 185 )
-shape = SubResource( 5 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -338,7 +367,7 @@ disabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Shockwave" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 7 )
+material = SubResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -348,7 +377,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 12 )
 text = "asd"
 script = ExtResource( 12 )
 __meta__ = {
@@ -356,5 +385,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Shockwave = SubResource( 8 )
+anims/shockwave = SubResource( 13 )
 [connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

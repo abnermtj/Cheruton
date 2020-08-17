@@ -131,3 +131,9 @@ func check_most_displaced_leg(leg, desired_flip, cur_max):
 		cur_max = dist
 		flip_legs = desired_flip
 	return cur_max
+
+func begin_scream():
+	$head/mouthPos/roarEffect.emitting = true
+	level.shake_camera(3, 13.2, 40, Vector2())
+	play_anim("shockwave")
+	level.play_anim("boss_enter")

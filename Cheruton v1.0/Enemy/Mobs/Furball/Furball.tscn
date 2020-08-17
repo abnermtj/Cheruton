@@ -459,7 +459,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 15 )
 region_enabled = true
-region_rect = Rect2( 953, 1, 32, 32 )
+region_rect = Rect2( 511, 1, 32, 32 )
 
 [node name="hurtBox" type="Area2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( 1.5, 36 )
@@ -522,6 +522,8 @@ script = ExtResource( 5 )
 pause_mode = 2
 script = ExtResource( 11 )
 
+[node name="dustCooldown" type="Timer" parent="states/dead"]
+
 [node name="alertArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -552,5 +554,6 @@ margin_right = 0.0
 margin_bottom = -50.854
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
+[connection signal="timeout" from="states/dead/dustCooldown" to="states/dead" method="_on_dustCooldown_timeout"]
 [connection signal="body_entered" from="alertArea" to="." method="_on_alertArea_body_entered"]
 [connection signal="body_exited" from="followArea" to="." method="_on_followArea_body_exited"]

@@ -22,6 +22,6 @@ func handle_death_zone(body):
 	$player.position = player_spawn_pos
 
 
-# triggers the cutscene to teleport, area only masks for the player layer
+# triggers the cutscene to teleport
 func _on_Area2D_body_entered(body):
 	$CutscenePlayer.play("cutscene0_0")

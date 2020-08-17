@@ -4,7 +4,7 @@ const JUMP_VEL = -4600
 const GRAVITY = 4000
 enum stages {ANTICIPATION  = 0, SCREAM = 1, RECOVER = 2}
 
-var timers_dict = {"ANTICIPATION" : 1, "SCREAM" : 2}
+var timers_dict = {"ANTICIPATION" : 1, "SCREAM" : 2.8}
 var stage : int
 var timer : float
 
@@ -20,6 +20,8 @@ func enter():
 	owner.desired_butt_pos.y = owner.default_sprite_pos[3].y + 40
 	timer = timers_dict["ANTICIPATION"]
 
+	owner.sprite_move_speed_modifier = 1.2
+
 
 func update(delta):
 	timer -= delta
@@ -33,6 +35,8 @@ func update(delta):
 				owner.desired_butt_pos.y = owner.default_sprite_pos[3].y - 20
 
 				owner.velocity.y = 500
+
+				owner.begin_scream()
 				return
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.tscn" type="PackedScene" id=2]
@@ -10,10 +10,24 @@
 [ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/commonLevelAssets/CinematicBlackBars/CinematicBlackBars.png" type="Texture" id=12]
 
-
-
-
+[sub_resource type="Animation" id=1]
+resource_name = "boss_enter"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TextureRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1.4, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.3 ) ]
+}
 
 [node name="spiderBossTestScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -75,3 +89,23 @@ position = Vector2( 865.787, -461.632 )
 
 [node name="DeathZone" parent="." instance=ExtResource( 9 )]
 position = Vector2( 221.303, 3390.36 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1, 1.5 )
+rect_pivot_offset = Vector2( 960, 540 )
+texture = ExtResource( 12 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassLandsParallaxBg" parent="." instance=ExtResource( 11 )]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/boss_enter = SubResource( 1 )

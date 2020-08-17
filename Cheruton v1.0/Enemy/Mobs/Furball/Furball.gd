@@ -56,10 +56,23 @@ func _on_hitBox_area_entered(area):
 func _on_alertArea_body_entered(body):
 	return_to_default = false
 
+# FIX ME: Move some of this code specific to hit FX directly else gonna rewrite a lot
 func play_hit_effect():
 	var instance = hit_effect.instance()
 	instance.global_position = global_position
+
+	var player_waist_pos = player.global_position + Vector2 (0, 30)
+	var player_angle_to_mob = Vector2.UP.angle_to(global_position - player_waist_pos)
+	instance.rotation = player_angle_to_mob - PI/2
+#
+	var gravity = Vector3()
+	gravity.x =  -2900 * sin(player_angle_to_mob)
+	gravity.y = clamp (abs(3000 * cos(player_angle_to_mob)), 1300, 3000)
+
+	instance.get_node("Particles2D").process_material.gravity = gravity
+
 	level.add_child(instance)
+	move_child(instance, 0) # appears behind mobs and player
 
 func _on_followArea_body_exited(body):
 	return_to_default = true

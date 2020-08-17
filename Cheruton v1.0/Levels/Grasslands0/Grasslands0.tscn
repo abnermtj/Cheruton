@@ -2986,6 +2986,7 @@ position = Vector2( 64, 32 )
 action_name = "attack"
 
 [node name="Scene3_0" parent="Hints" instance=ExtResource( 41 )]
+visible = false
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 3112, 912 )
 
@@ -3121,12 +3122,14 @@ position = Vector2( 472, -136 )
 action_name = "hook"
 
 [node name="BlackFade" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 5092, 1084 )
 scale = Vector2( 100, 100 )
 z_index = 1
 texture = ExtResource( 29 )
 
 [node name="WhiteFade" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 5092, 1084 )
 scale = Vector2( 100, 100 )
 z_index = 1
@@ -3141,15 +3144,17 @@ z_index = 1
 scale = Vector2( 0.66, 0.66 )
 
 [node name="PoleSprite" type="Sprite" parent="player"]
-modulate = Color( 0, 1, 1, 1 )
+visible = false
 position = Vector2( -28, -52 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 30 )
 
 [node name="PoleCatchParticlesUp" parent="player/PoleSprite" instance=ExtResource( 35 )]
 position = Vector2( -11, -3 )
+emitting = true
 
 [node name="PoleCatchParticlesDown" parent="player/PoleSprite" instance=ExtResource( 36 )]
+emitting = true
 
 [node name="CannonExplosion" type="Light2D" parent="."]
 position = Vector2( 6800, 1792 )

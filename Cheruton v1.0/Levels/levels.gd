@@ -113,5 +113,5 @@ func end_cutscene_mode():
 	player.set_input_enabled(true)
 	SceneControl.set_dialog_only_mode(false)
 
-func shake_camera(dur, freq, amp, dir):
+func shake_camera(dur : float, freq : float , amp : float , dir : Vector2):
 	camera.shake(dur, freq, amp, dir)

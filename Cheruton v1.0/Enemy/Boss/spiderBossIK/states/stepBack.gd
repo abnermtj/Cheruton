@@ -53,7 +53,7 @@ func update(delta):
 			owner.move()
 			move_body_sprites()
 
-			if owner.velocity.y > -200 and close_to_ground: # note close_to_ground affected by cast_to property of ray, which we modified above
+			if owner.velocity.y > -300 and close_to_ground: # note close_to_ground affected by cast_to property of ray, which we modified above
 				for leg in owner.legs:
 					if leg.just_planted: continue
 
@@ -68,7 +68,7 @@ func update(delta):
 		stages.LAND:
 			owner.jump_hurt_box_col_shape.disabled = true
 			owner.desired_head_pos.y = owner.default_sprite_pos[0].y
-			owner.desired_butt_pos.position.y = owner.default_sprite_pos[3].y
+			owner.desired_butt_pos.y = owner.default_sprite_pos[3].y
 
 			owner.velocity.x = lerp(owner.velocity.x,0 ,delta * 2)
 			owner.velocity.y = lerp(owner.velocity.y, -600, delta * 2)

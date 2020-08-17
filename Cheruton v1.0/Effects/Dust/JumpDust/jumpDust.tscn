@@ -8,4 +8,5 @@ amount = 10
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+visibility_rect = Rect2( -100, -100, 400, 400 )
 process_material = ExtResource( 1 )
