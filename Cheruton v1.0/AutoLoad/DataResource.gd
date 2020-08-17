@@ -3,8 +3,6 @@ extends Node
 const MAIN = "res://Data/player-data.json"
 const MASTERLIST = "res://Data/item-masterlist.json"
 
-onready var arrow = preload("res://Props/MouseIcons/UI_Cursor.png")
-
 var current_scene = null
 
 # Main Dict
@@ -32,11 +30,8 @@ signal change_audio_sfx
 
 signal dialog_over
 func _ready():
-	init_cursor()
 	load_data()
 
-func init_cursor():
-	Input.set_custom_mouse_cursor(arrow)
 
 func load_data():
 	#Editable
