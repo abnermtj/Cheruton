@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=2]
@@ -43,9 +43,14 @@
 [ext_resource path="res://Levels/Hometown/Sprites/PureWhite_Roar.png" type="Texture" id=41]
 [ext_resource path="res://Effects/Dust/RunDust/runDust.tres" type="Material" id=42]
 [ext_resource path="res://Levels/Hometown/Sprites/line.png" type="Texture" id=43]
+[ext_resource path="res://Levels/Hometown/Sprites/Hometown_Portal_rocks.png" type="Texture" id=44]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 38 )
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/size = 0.5
+shader_param/sprite_warp = 30.0
+shader_param/spin_speed = 0.2
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 0.0916667 ), 0.0, 1.81333, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -85,6 +90,33 @@ orbit_velocity = 0.2
 orbit_velocity_random = 0.0
 scale = 8.0
 color = Color( 0.309804, 1, 1, 1 )
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.00743494, 0.189591, 1 )
+colors = PoolColorArray( 0.333333, 0.780392, 1, 0, 0.333333, 0.780392, 1, 1, 0.333333, 0.780392, 1, 0 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Curve" id=12]
+min_value = -100.0
+max_value = 0.0
+_data = [ Vector2( 0.00735294, -37.7222 ), 0.0, 0.0, 0, 0, Vector2( 1, -100 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 1
+emission_sphere_radius = 250.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel_curve = SubResource( 13 )
+scale = 8.0
+color_ramp = SubResource( 15 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 50 )
@@ -129,7 +161,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("homeTownPortal/Glyphs:modulate")
+tracks/2/path = NodePath("homeTownPortal/glyphs:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
@@ -141,7 +173,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1.13, 4.54, 5.09, 0.84 ), Color( 1.13, 4.54, 5.09, 0.7 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("homeTownPortal/PortalVFX2:visible")
+tracks/3/path = NodePath("homeTownPortal/portalVFX:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -153,72 +185,48 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("homeTownPortal/PortalVFX:visible")
+tracks/4/path = NodePath("homeTownPortal/portalVFX:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.01 ),
+"times": PoolRealArray( 2, 2.12 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1.1, 1.1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("homeTownPortal/PortalVFX2:scale")
+tracks/5/path = NodePath("homeTownPortal/portalVFX:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2, 2.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("homeTownPortal/PortalVFX:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 2, 2.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.82, 0.8 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("homeTownPortal/PortalVFX:rotation_degrees")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 2, 2.1117 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("homeTownPortal/RoarStart:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath("homeTownPortal/roarStart:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0.0044, 2, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 20, 20 ) ]
 }
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -226,20 +234,44 @@ tracks/9/keys = {
 "method": "shake_camera"
 } ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("player/runDust:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
+tracks/8/type = "value"
+tracks/8/path = NodePath("player/runDust:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
 "times": PoolRealArray( 0.62 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("homeTownPortal/orbitParticles:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("homeTownPortal/orbitParticles2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/11/type = "value"
-tracks/11/path = NodePath("homeTownPortal/orbitParticles:visible")
+tracks/11/path = NodePath("homeTownPortal/orbitParticles3:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -251,19 +283,19 @@ tracks/11/keys = {
 "values": [ false, true ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("homeTownPortal/orbitParticles2:visible")
+tracks/12/path = NodePath("homeTownPortal/roarStart:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 2.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, true, false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("homeTownPortal/orbitParticles3:visible")
+tracks/13/path = NodePath("homeTownPortal/roarTrail:emitting")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -275,24 +307,12 @@ tracks/13/keys = {
 "values": [ false, true ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("homeTownPortal/RoarStart:visible")
+tracks/14/path = NodePath("homeTownPortal/intoPortalParticles:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.6, 2.24 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("homeTownPortal/RoarTrail:emitting")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -351,30 +371,30 @@ tile_data = PoolIntArray( -196525, 24, 0, -196503, 22, 0, 65622, 13, 0, 131083, 
 [node name="homeTownPortal" parent="." instance=ExtResource( 30 )]
 position = Vector2( 11380, 244 )
 
-[node name="Glyphs" type="Sprite" parent="homeTownPortal"]
+[node name="rocks" type="Sprite" parent="homeTownPortal"]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( -16, -36 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 44 )
+
+[node name="glyphs" type="Sprite" parent="homeTownPortal"]
 modulate = Color( 1.13, 4.54, 5.09, 0.7 )
 light_mask = 0
 position = Vector2( 0, -30 )
 texture = ExtResource( 36 )
 
-[node name="PortalVFX2" type="Sprite" parent="homeTownPortal"]
-modulate = Color( 1, 1, 1.2, 0.9 )
-show_behind_parent = true
-light_mask = 0
-position = Vector2( -384, -534 )
-texture = ExtResource( 37 )
-
-[node name="PortalVFX" type="Sprite" parent="homeTownPortal"]
+[node name="portalVFX" type="Sprite" parent="homeTownPortal"]
 modulate = Color( 1, 1, 1.03, 1 )
 show_behind_parent = true
 light_mask = 0
 material = SubResource( 1 )
-position = Vector2( -20, -16 )
+position = Vector2( 0, 8 )
 rotation = 6.28319
-scale = Vector2( 0.82, 0.8 )
+scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 37 )
 
-[node name="RoarStart" type="Sprite" parent="homeTownPortal"]
+[node name="roarStart" type="Sprite" parent="homeTownPortal"]
 visible = false
 scale = Vector2( 20, 20 )
 z_index = 1
@@ -384,7 +404,7 @@ __meta__ = {
 "
 }
 
-[node name="RoarTrail" type="Particles2D" parent="homeTownPortal"]
+[node name="roarTrail" type="Particles2D" parent="homeTownPortal"]
 self_modulate = Color( 1, 1, 1, 0.458824 )
 light_mask = 0
 z_index = 1
@@ -399,6 +419,7 @@ texture = ExtResource( 43 )
 [node name="orbitParticles" type="Particles2D" parent="homeTownPortal"]
 light_mask = 0
 position = Vector2( -212, 242 )
+z_index = 1
 lifetime = 16.0
 explosiveness = 0.99
 visibility_rect = Rect2( -100, -100, 400, 400 )
@@ -428,6 +449,11 @@ process_material = SubResource( 4 )
 __meta__ = {
 "_editor_description_": " "
 }
+
+[node name="intoPortalParticles" type="Particles2D" parent="homeTownPortal"]
+light_mask = 0
+amount = 26
+process_material = SubResource( 11 )
 
 [node name="Tiles" parent="." instance=ExtResource( 1 )]
 light_mask = 0

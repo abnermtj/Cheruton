@@ -3,7 +3,8 @@ shader_type canvas_item;
 uniform vec2 center;
 uniform float size;
 uniform float sprite_warp;
-x
+uniform float spin_speed;
+
 void fragment(){
     vec2 position = UV;
     float pi = 3.14;
