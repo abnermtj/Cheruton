@@ -64,7 +64,7 @@ func init_key_bindings(reset:= false):
 	key_action = InputMap.get_actions()
 	key_action.sort()
 	var action_size = key_action.size()
-	
+
 	for i in action_size:
 		if(key_action[i].find("ui") != -1):
 			continue
@@ -77,22 +77,22 @@ func init_key_bindings(reset:= false):
 			false:
 				new_label = control_label.instance()
 				new_button = control_btn.instance()
-				
+
 				new_label.name = key_action[i]
 				new_button.name = key_action[i]
 				new_button.get_child(0).name = key_action[i]
-			
+
 				new_label.text = key_action[i].capitalize()
 				new_button.connect("pressed" ,self, "_on_button_pressed", [new_button])
 				new_button.connect("mouse_entered" ,self, "_on_button_mouse_entered", [new_button])
 				controls_action.add_child(new_label)
-				controls_mapping.add_child(new_button) 
-			
+				controls_mapping.add_child(new_button)
+
 		new_button.get_child(0).text = reform_btn_text(InputMap.get_action_list(key_action[i])[0].as_text())
 		if(new_button.get_child(0).get("custom_colors/font_color") == RED):
 			new_button.get_child(0).set("custom_colors/font_color", WHITE)
-		
-		
+
+
 func reform_btn_text(text):
 	match text:
 		LMB:
@@ -113,18 +113,18 @@ func check_mouse_text(btn_text):
 # when the button is pressed
 func _on_button_pressed(button):
 	edit_control = false
-	
+
 	if(temp_control):
 		if(prior_collision):
 			temp_control.get_child(0).set("custom_colors/font_color", RED)
 		temp_control.get_child(0).text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
-	
+
 	if(button.get_child(0).get("custom_colors/font_color") == RED):
 		button.get_child(0).set("custom_colors/font_color", WHITE)
 		prior_collision = true
 	else:
 		prior_collision = false
-	
+
 	button.get_child(0).text = UNASSIGN
 	temp_control = button
 	edit_control = true
@@ -170,7 +170,7 @@ func _edit_key(new_key):
 	var btn_text = reform_btn_text(InputMap.get_action_list(temp_control.name)[0].as_text())
 	DataResource.dict_input_map[temp_control.name] = btn_text
 	temp_control.get_child(0).text = btn_text
-	
+
 	temp_control = null
 
 # Detects actions who  occupy the same key binding as the new key2
@@ -181,7 +181,7 @@ func check_duplicates(new_key, action_assigned):
 		if(key_action[i].find("ui") != -1):
 			continue
 		var check = InputMap.event_is_action(new_key, key_action[i])
-		
+
 		# Duplicate has been detected
 		if(check):
 			handle_duplicates(action_assigned, key_action[i])
@@ -189,7 +189,7 @@ func check_duplicates(new_key, action_assigned):
 			controls_reset.show()
 			back.disabled = true
 			return
-		
+
 	#Update duplicate list if it was previously a duplicate
 	if(prior_collision):
 		clear_duplicates(action_assigned)
@@ -198,7 +198,7 @@ func check_duplicates(new_key, action_assigned):
 func handle_duplicates(action_assigned, conflicting_action):
 	var duplicate_size = key_duplicates.size()
 	var inserted = false
-	
+
 	if(duplicate_size != 0):
 		for i in duplicate_size:
 			# Case 1: Array does not contain either actions
@@ -216,10 +216,10 @@ func handle_duplicates(action_assigned, conflicting_action):
 		key_duplicates[duplicate_size] = []
 		key_duplicates[duplicate_size].append(action_assigned)
 		key_duplicates[duplicate_size].append(conflicting_action)
-	
-	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0) 
+
+	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0)
 	var conflict_mapping = controls_mapping.get_node(conflicting_action).get_child(0)
-	
+
 	assigned_mapping.set("custom_colors/font_color", RED)
 	conflict_mapping.set("custom_colors/font_color", RED)
 
@@ -231,12 +231,12 @@ func clear_duplicates(action_assigned):
 	for i in duplicate_size:
 		if(key_duplicates[i].has(action_assigned)):
 			key_duplicates[i].erase(action_assigned)
-			
+
 			if(key_duplicates[i].size() == 1):
 				var conflict_mapping = controls_mapping.get_node(key_duplicates[i][0]).get_child(0)
 				conflict_mapping.set("custom_colors/font_color", WHITE)
 				update_duplicates = true
-		
+
 		if(update_duplicates):
 			if(i != duplicate_size - 1):
 				key_duplicates[i] = key_duplicates[i+1]
@@ -246,11 +246,11 @@ func clear_duplicates(action_assigned):
 
 	var assigned_mapping = controls_mapping.get_node(action_assigned).get_child(0)
 	assigned_mapping.set("custom_colors/font_color", WHITE)
-	
+
 	if(key_duplicates.empty()):
 		controls_message.hide()
 		back.disabled = false
-	
+
 
 func _on_Reset_pressed():
 	handle_reset()
