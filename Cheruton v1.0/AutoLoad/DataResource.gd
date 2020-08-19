@@ -20,6 +20,7 @@ var dict_item_shop = {}
 # Stores any unsaved data regarding player stats
 var temp_dict_player = {}
 var loaded:= false
+var action_alternate := false
 
 signal update_exp(new_exp, new_exp_max, new_level)
 signal change_health(new_health)
@@ -97,6 +98,7 @@ func update_input_map():
 
 		if(existing_event != event):
 			modify_event(action, event)
+			action_alternate = true
 
 func modify_event(action, event):
 	var new_input = InputEventKey.new()

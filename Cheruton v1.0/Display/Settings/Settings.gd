@@ -51,6 +51,8 @@ onready var active_tab = base_empty
 signal closed_settings
 
 func _ready():
+	if(DataResource.action_alternate):
+		controls_reset.show()
 	init_key_bindings()
 	init_bar_vals()
 	connect_functions()
