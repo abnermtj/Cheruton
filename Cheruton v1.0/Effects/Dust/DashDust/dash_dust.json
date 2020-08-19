@@ -1,0 +1,83 @@
+{ "frames": {
+   "dash_dust 0.aseprite": {
+    "frame": { "x": 1, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 1.aseprite": {
+    "frame": { "x": 51, "y": 1, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 2.aseprite": {
+    "frame": { "x": 101, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 3.aseprite": {
+    "frame": { "x": 135, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 4.aseprite": {
+    "frame": { "x": 169, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 5.aseprite": {
+    "frame": { "x": 203, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 6.aseprite": {
+    "frame": { "x": 237, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   },
+   "dash_dust 7.aseprite": {
+    "frame": { "x": 271, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 38, "h": 36 },
+    "duration": 40
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "dash_dust.png",
+  "format": "RGBA8888",
+  "size": { "w": 320, "h": 50 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "start", "from": 0, "to": 7, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

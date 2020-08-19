@@ -4,10 +4,10 @@ class_name StaticNPC
 
 export var is_flipped = false
 
-
-onready var sprite = $Sprite
-onready var sprite2 = $Sprite2
 onready var dialog_name = name
+
+var sprite
+var sprite2
 
 var level
 var player
@@ -20,6 +20,8 @@ var is_talking = false
 var save_dir : int
 
 func _ready():
+	sprite = $Sprite
+	sprite2 = $Sprite2
 	interaction_type = "dialog"
 	$AnimationPlayer.play("idle")
 	add_to_group("interactibles", true)

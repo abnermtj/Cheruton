@@ -7,8 +7,6 @@ func _ready():
 	story_file = "res://Levels/Hometown/Stories/Baked/HometownDialog.tres"
 	SceneControl.change_story(story_file) # delete next time thisis to directly run it
 
-	$Buildings.add_to_group("one_way_platforms")
-	$Props.add_to_group("one_way_platforms")
 	$player.set_input_enabled(true)
 
 #func _input(event):

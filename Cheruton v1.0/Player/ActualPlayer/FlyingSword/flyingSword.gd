@@ -13,8 +13,11 @@ onready var animation_player = $AnimationPlayer
 onready var bodyRotation = $bodyRotation
 onready var sprite = $bodyRotation/Sprite
 onready var hurt_box_col = $hurtBox/CollisionShape2D
+onready var hit_particles = preload("res://Player/ActualPlayer/FlyingSword/HitParticles.tscn")
 
 var player : Node
+var level : Node
+
 var velocity : Vector2
 var desired_velocity = Vector2()
 var angular_velocity : float
@@ -33,6 +36,7 @@ func _ready():
 
 	$hurtBox.obj = self
 	add_to_group("needs_player_ref")
+	add_to_group("needs_level_ref")
 
 func _on_flyingSword_command(command, arg):
 	animation_player.play("air")
@@ -89,7 +93,14 @@ func _physics_process(delta):
 				pick_up_timer = PICK_UP_TIME
 				velocity = Vector2()
 				bodyRotation.rotation = Vector2.UP.angle_to(col.normal)
+
 				animation_player.play("stuck")
+				var hit_particles_instance = hit_particles.instance()
+				hit_particles_instance.process_material.direction = Vector3(col.normal.x, col.normal.y, 0.0)
+				hit_particles_instance.global_position = col.position - level.global_position
+				level.add_child(hit_particles_instance)
+				hit_particles_instance.emitting = true
+
 				state = sword_states.HIT
 				emit_signal("sword_result", 0, global_position, col.normal)
 

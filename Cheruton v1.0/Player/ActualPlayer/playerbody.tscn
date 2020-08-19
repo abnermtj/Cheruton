@@ -1977,6 +1977,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
+visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124
@@ -2177,6 +2178,9 @@ one_shot = true
 [node name="talkCoolDown" type="Timer" parent="timers"]
 one_shot = true
 
+[node name="ghostTimer" type="Timer" parent="timers"]
+wait_time = 0.05
+
 [node name="hitBox" type="Area2D" parent="."]
 priority = 1.0
 collision_layer = 4
@@ -2190,8 +2194,7 @@ shape = SubResource( 60 )
 [node name="slideArea2D" type="Area2D" parent="."]
 visible = false
 gravity_vec = Vector2( 0, 0 )
-collision_layer = 2
-collision_mask = 129
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slideArea2D"]
 position = Vector2( 0, -18 )
@@ -2251,6 +2254,7 @@ volume_db = -3.0
 [connection signal="timeout" from="timers/jumpInputBuffer" to="." method="_on_jumpInputBuffer_timeout"]
 [connection signal="timeout" from="timers/invunerableTimer" to="." method="_on_invunerableTimer_timeout"]
 [connection signal="timeout" from="timers/talkCoolDown" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="timers/ghostTimer" to="." method="_on_ghostTimer_timeout"]
 [connection signal="area_entered" from="hitBox" to="." method="_on_hitBox_area_entered"]
 [connection signal="body_entered" from="slideArea2D" to="." method="_on_slideArea2D_body_entered"]
 [connection signal="body_exited" from="slideArea2D" to="." method="_on_slideArea2D_body_exited"]

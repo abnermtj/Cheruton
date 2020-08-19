@@ -8,6 +8,7 @@ const MAX_WIRE_LENGTH_GROUND = 1000
 const INPUT_AGAIN_MARGIN = 0.12
 const TIME_PER_ATTACK = 1.1 # this causes a slight annoying delay when clicks don't register between the attacks, need to find a way to input buffer. Make an input system in the future
 
+onready var timers = $timers
 onready var animation_player = $AnimationPlayer
 onready var animation_player_fx = $AnimationPlayerFx
 onready var animation_player_fx_color = $AnimationPlayerFxColor
@@ -26,8 +27,11 @@ onready var states = $states
 onready var circle_scan = $circleScan
 onready var circle_scan_small = $circleScanSmall
 onready var shoulder_position = $bodyPivot/bodyRotate/shoulderPosition
+onready var player_sprite = $bodyPivot/bodyRotate/playerSprite
 onready var run_dust = preload("res://Effects/Dust/RunDust/runDust.tscn")
 onready var land_dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
+onready var ghost_image = preload("res://Player/ActualPlayer/GhostImage/GhostImage.tscn")
+onready var dash_dust = preload("res://Effects/Dust/DashDust/DashDust.tscn")
 
 var level
 
@@ -202,12 +206,29 @@ func queue_anim_fx(string : String):
 
 func play_anim_fx_color(string : String):
 	if animation_player_fx_color: animation_player_fx_color.play(string)
+# Ghost effect
+func _on_ghostTimer_timeout():
+	emit_ghost()
+func emit_ghost():
+	var instance = ghost_image.instance()
+	var actual_sprite = instance.get_node("GhostSprite")
+	instance.global_position = player_sprite.global_position - level.global_position
+
+	actual_sprite.offset = player_sprite.offset
+	actual_sprite.texture = player_sprite.texture
+	actual_sprite.region_enabled = true
+	actual_sprite.region_rect = player_sprite.region_rect
+	actual_sprite.scale = player_sprite.scale
+	actual_sprite.scale.x *= body_rotate.scale.x
+
+	level.add_child(instance)
+	level.move_child(instance, get_index() - 1) # this shows the shadows behind the player instead of over
 
 # Grapple
 func start_hook():
 	emit_signal("hook_command",0, hook_dir,global_position)
 	can_hook = false
-	$timers/grappleCoolDown.start(.5)
+	timers.get_node("grappleCoolDown").start(.5)
 func _on_grappleCoolDown_timeout():
 	can_hook = true
 func _on_Chain_hooked(command : int, tip_p : Vector2, node : Node):
@@ -224,7 +245,7 @@ func chain_release():
 	hooked = false
 	emit_signal("hook_command", 1,Vector2(),Vector2())
 	can_hook = false
-	$timers/grappleCoolDown.start(.05)
+	timers.get_node("grappleCoolDown").start(.05)
 
 # Sword Throw
 func start_sword_throw():
@@ -269,7 +290,7 @@ func _on_hitBox_area_entered(area : Node):
 
 func set_player_invunerable(time : float):
 	is_invunerable = true
-	$timers/invunerableTimer.start(time)
+	timers.get_node("invunerableTimer").start(time)
 func _on_invunerableTimer_timeout():
 	is_invunerable = false
 
@@ -313,11 +334,9 @@ func _switch_col():
 	body_collision.disabled = not body_collision.disabled
 
 func _on_slideArea2D_body_exited(body : Node):
-	if not body.is_in_group("one_way_platforms"):
-		exit_slide_blocked = false
+	exit_slide_blocked = false
 func _on_slideArea2D_body_entered(body : Node):
-	if not body.is_in_group("one_way_platforms"):
-		exit_slide_blocked = true
+	exit_slide_blocked = true
 
 # Wall climb
 func get_wall_direction():
@@ -354,6 +373,14 @@ func emit_dust(type : String):
 			dust = run_dust.instance()
 		"land":
 			dust = land_dust.instance()
+		"dash":
+			dust = dash_dust.instance()
+			dust.scale.x = -sign(velocity.x)
+#			dust.rotation = Vector2.DOWN.angle_to(velocity)
+			dust.global_position = global_position + Vector2(0, 68) - level.global_position
+			level.add_child(dust)
+			return
+
 
 	dust.scale.x = look_direction.x
 	dust.global_position = global_position + Vector2(0, 68) - level.global_position
@@ -364,22 +391,22 @@ func emit_dust(type : String):
 # Jump input buffering
 func jump_buffer_start():
 	jump_again = true
-	$timers/jumpInputBuffer.start(INPUT_AGAIN_MARGIN)
+	timers.get_node("jumpInputBuffer").start(INPUT_AGAIN_MARGIN)
 func _on_jumpInputBuffer_timeout():
 	jump_again = false
 
 # ATTACK
 func start_attack_cool_down():
 	attack_cooldown_finished = false
-	$timers/attackCoolDown.stop()
-	$timers/attackCoolDown.start(TIME_PER_ATTACK)
+	timers.get_node("attackCoolDown").stop()
+	timers.get_node("attackCoolDown").start(TIME_PER_ATTACK)
 func _on_attackCoolDown_timeout():
 	attack_cooldown_finished = true
 
 # Dialog
 func talk_cooldown_start():
 	can_talk = false
-	$timers/talkCoolDown.start(.5)
+	timers.get_node("talkCoolDown").start(.5)
 func _on_Timer_timeout():
 	can_talk = true
 
