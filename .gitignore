@@ -5,7 +5,6 @@ Sprites/References
 *.un~
 *.swp
 ./Old script ignore
-./Cheruton v1.0/project.godot
 ./Cheruton v1.0/.import
 .*
 !/.gitignore
