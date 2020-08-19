@@ -51,6 +51,8 @@ onready var active_tab = base_empty
 signal closed_settings
 
 func _ready():
+	if(DataResource.action_alternate):
+		controls_reset.show()
 	init_key_bindings()
 	init_bar_vals()
 	connect_functions()
@@ -207,6 +209,8 @@ func handle_duplicates(action_assigned, conflicting_action):
 			# Case 2: Array contains the action causing the conflict
 			elif(key_duplicates[i].has(action_assigned) && !key_duplicates[i].has(conflicting_action)):
 				key_duplicates[i].erase(action_assigned)
+				if(key_duplicates[i].size() == 1):
+					clear_duplicates(key_duplicates[i][0])
 			# Case 3: Array contains the action that conflicted with the assigned action
 			elif(!key_duplicates[i].has(action_assigned) && key_duplicates[i].has(conflicting_action)):
 				key_duplicates[i].append(action_assigned)
