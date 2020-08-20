@@ -1,6 +1,6 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
-[ext_resource path="res://Player/ActualPlayer/Sprites/MC - General_24fps.png" type="Texture" id=1]
+[ext_resource path="res://Player/ActualPlayer/Sprites/MC_General.png" type="Texture" id=1]
 [ext_resource path="res://Player/ActualPlayer/States/debug/stateLabel.gd" type="Script" id=2]
 [ext_resource path="res://Player/ActualPlayer/playerStateMachine.gd" type="Script" id=3]
 [ext_resource path="res://Player/ActualPlayer/States/motion/ground/idle.gd" type="Script" id=4]
@@ -539,6 +539,33 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ SubResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=65]
+length = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("bodyPivot/bodyRotate/playerSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 917, 447, 48, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bodyPivot/bodyRotate/playerSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.5, 19.5 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1941,6 +1968,7 @@ radius = 100.0
 
 [node name="player" type="KinematicBody2D"]
 light_mask = 3
+position = Vector2( 1, 0 )
 collision_layer = 6
 collision_mask = 524673
 script = ExtResource( 5 )
@@ -1958,7 +1986,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 2.5, 19.5 )
 region_enabled = true
-region_rect = Rect2( 375, 447, 32, 48 )
+region_rect = Rect2( 171, 51, 32, 48 )
 
 [node name="shoulderPosition" type="Position2D" parent="bodyPivot/bodyRotate"]
 position = Vector2( -6.11726, 61.9883 )
@@ -2003,6 +2031,7 @@ anims/attack_air_3 = SubResource( 6 )
 anims/attack_ground_1 = SubResource( 7 )
 anims/attack_ground_2 = SubResource( 8 )
 anims/attack_ground_3 = SubResource( 9 )
+anims/dash = SubResource( 65 )
 anims/fall = SubResource( 10 )
 anims/hover = SubResource( 11 )
 anims/idle = SubResource( 12 )

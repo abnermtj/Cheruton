@@ -97,7 +97,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 offset = Vector2( -2.5, 4.5 )
 region_enabled = true
-region_rect = Rect2( 151, 1, 16, 64 )
+region_rect = Rect2( 1, 1, 48, 64 )
 
 [node name="collectionArea" type="Area2D" parent="."]
 visible = false

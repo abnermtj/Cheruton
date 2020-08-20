@@ -12,6 +12,7 @@ var prev_player_pos : Vector2
 var speed_tip : float
 
 var player : Node
+var level : Node
 
 onready var chain_state = chain_states.HIDDEN
 onready var tween = $Tween
@@ -23,6 +24,7 @@ signal hooked(tip_pos)
 func _ready():
 	hide()
 	add_to_group("needs_player_ref")
+	add_to_group("needs_level_ref")
 
 # com stand for commnad command: 0 -start hook, 1 -release
 func _on_player_hook_command (com, dir, player_pos):
@@ -60,6 +62,7 @@ func _physics_process(delta: float) -> void:
 			if col :
 				chain_state = chain_states.HOOKED
 				emit_signal("hooked",0, tip.global_position, col.collider)
+				level.shake_camera(.08, 6.2, 20, col.normal)
 		chain_states.HOOKED:
 			pass
 		chain_states.REEL:

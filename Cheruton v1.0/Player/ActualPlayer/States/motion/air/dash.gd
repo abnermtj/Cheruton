@@ -13,6 +13,7 @@ var stage : int
 var dir : Vector2
 var goal_pos : Vector2
 var timer : float
+var save_player_mask
 
 func handle_input(event): # overwrite to disables all inputs
 	pass
@@ -22,11 +23,13 @@ func enter():
 	owner.look_direction = -normal
 	goal_pos = owner.sword_pos + OFFSET_FROM_SWORD_POS * normal
 
-#	owner.play_anim("dash")
+	owner.play_anim("dash")
 	owner.timers.get_node("ghostTimer").start(.05)
 	owner.body_pivot.material = color_shader
 	stage = stages.INITIAL
 	timer = INITIAL_STAGE_TIME
+	save_player_mask = owner.collision_mask
+	owner.collision_mask = 0
 
 func update(delta):
 	timer -= delta
@@ -60,3 +63,4 @@ func _on_animation_finished(anim_name):
 func exit():
 	owner.timers.get_node("ghostTimer").stop()
 	owner.body_pivot.material = null
+	owner.collision_mask = save_player_mask
