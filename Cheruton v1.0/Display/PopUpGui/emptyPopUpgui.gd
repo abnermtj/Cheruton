@@ -13,4 +13,5 @@ func handle_input(event):
 		elif Input.is_action_just_pressed("escape"):
 			emit_signal("new_gui", "pause")
 		elif Input.is_action_just_pressed("shop"):
+			Engine.time_scale = 0.0
 			emit_signal("new_gui", "shop")

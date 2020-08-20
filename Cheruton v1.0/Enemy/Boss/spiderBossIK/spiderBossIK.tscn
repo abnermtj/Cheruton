@@ -137,11 +137,12 @@ position = Vector2( 0, 40 )
 position = Vector2( 0, 45 )
 
 [node name="roarEffect" type="Particles2D" parent="head/mouthPos"]
+modulate = Color( 0.4375, 0.4375, 0.4375, 1 )
 emitting = false
 amount = 20
 lifetime = 3.0
 one_shot = true
-visibility_rect = Rect2( -100, -100, 1000, 1000 )
+visibility_rect = Rect2( -100, -100, 2000, 2000 )
 process_material = SubResource( 5 )
 texture = ExtResource( 17 )
 
@@ -375,6 +376,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 12 )

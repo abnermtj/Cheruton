@@ -1,0 +1,323 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Levels/Cave0/Cave0.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Cave0/Sprites/Cave_Parralax2.png" type="Texture" id=2]
+[ext_resource path="res://Levels/commonLevelAssets/CinematicBlackBars/CinematicBlackBars.png" type="Texture" id=9]
+[ext_resource path="res://Levels/Cave0/Sprites/Cave_Bg.png" type="Texture" id=10]
+[ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/spiderBossIK.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Levels/commonLevelAssets/Props/grapplePoint/grapplePoint.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Enemy/Boss/spiderBossIK/acidProjectile/acidProjectile.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/Cave0/Sprites/Cave.png" type="Texture" id=19]
+[ext_resource path="res://Levels/Cave0/Sprites/Cave_Parralax.png" type="Texture" id=20]
+[ext_resource path="res://Levels/Cave0/Sprites/MoneyGirl_Hanging.png" type="Texture" id=21]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 128, 64, 0, 64, 0, 32, 128, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "Cave.png 0"
+0/texture = ExtResource( 19 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 16, 32, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Cave.png 1"
+1/texture = ExtResource( 19 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 16, 64, 128, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = true
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "Cave.png 2"
+2/texture = ExtResource( 19 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 16, 128, 64, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Cave.png 3"
+3/texture = ExtResource( 19 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 80, 128, 160, 128 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Cave.png 4"
+4/texture = ExtResource( 19 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 80, 32, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 3 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "Cave.png 5"
+5/texture = ExtResource( 19 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 208, 32, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Cave.png 6"
+6/texture = ExtResource( 19 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 240, 32, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "Cave.png 7"
+7/texture = ExtResource( 19 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 240, 160, 160, 96 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Cave.png 8"
+8/texture = ExtResource( 19 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 336, 192, 64, 64 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+
+[sub_resource type="PhysicsMaterial" id=5]
+friction = 0.21
+bounce = 0.38
+
+[sub_resource type="Animation" id=6]
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TextureRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 5.8, 5.9 ),
+"transitions": PoolRealArray( 1.4, 1, 1, 1.4 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.3 ), Vector2( 1, 1.3 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Cave0" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="grappleHook" parent="." instance=ExtResource( 16 )]
+
+[node name="player" parent="." instance=ExtResource( 12 )]
+z_index = 4
+
+[node name="camera" parent="player" instance=ExtResource( 13 )]
+position = Vector2( 0, -300 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = SubResource( 4 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 129
+format = 1
+tile_data = PoolIntArray( -655342, -1073741820, 0, -524293, -1610612736, 0, -524292, 1073741828, 0, -524291, 1073741828, 0, -524290, 1073741828, 0, -524289, 1073741828, 0, -589806, -1073741820, 0, -458757, -1610612736, 0, -524270, -1073741820, 0, -393221, -1610612736, 0, -458749, 1073741828, 0, -458748, 1073741828, 0, -458747, 1073741828, 0, -458743, 1073741828, 0, -458742, 1073741828, 0, -458741, 1073741828, 0, -458740, 1073741828, 0, -458738, 1073741828, 0, -458737, 1073741828, 0, -458736, 1073741828, 0, -458735, 1073741828, 0, -458734, 1073741828, 0, -327685, -1610612736, 0, -393198, -1073741820, 0, -262149, -536870908, 0, -327662, -1073741820, 0, -196613, -536870908, 0, -262126, -1073741820, 0, -131077, -536870912, 0, -196594, 3, 0, -196590, -1073741820, 0, -65542, 536870919, 0, -65541, -536870908, 0, -131054, -1073741820, 0, -5, -536870908, 0, -65531, 1, 0, -65518, -1073741820, 0, 65529, -1610612734, 0, 65531, -536870908, 0, 5, 7, 0, 18, -1073741820, 0, 131067, 536870912, 0, 131068, 536870912, 0, 131069, 536870912, 0, 131070, 536870912, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 4, 0, 65540, 536870916, 0, 65541, 536870912, 0, 65542, 536870912, 0, 65543, 0, 0, 65544, 536870912, 0, 65545, 536870912, 0, 65546, 4, 0, 65547, 536870916, 0, 65548, 536870912, 0, 65549, 536870912, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 196603, 536870917, 0, 196604, 536870917, 0, 196605, 536870917, 0, 196606, 536870917, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 6, 0, 131076, 536870918, 0, 131077, 536870917, 0, 131078, 536870917, 0, 131079, 5, 0, 131080, 536870917, 0, 131081, 536870917, 0, 131082, 6, 0, 131083, 536870918, 0, 131084, 536870917, 0, 131085, 536870917, 0, 131086, 5, 0, 131087, 5, 0, 131088, 5, 0, 131089, 5, 0, 131090, 5, 0 )
+
+[node name="grapplePoints" type="Node2D" parent="."]
+z_index = -1
+z_as_relative = false
+
+[node name="grapplePoint5" parent="grapplePoints" instance=ExtResource( 17 )]
+position = Vector2( -208, -692.376 )
+
+[node name="grapplePoint6" parent="grapplePoints" instance=ExtResource( 17 )]
+position = Vector2( 583.234, -357.82 )
+
+[node name="grapplePoint7" parent="grapplePoints" instance=ExtResource( 17 )]
+position = Vector2( 1328, -335.878 )
+
+[node name="grapplePoint8" parent="grapplePoints" instance=ExtResource( 17 )]
+position = Vector2( 1984, -346.878 )
+
+[node name="spiderBossIK" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1552.37, -462.376 )
+z_index = -2
+
+[node name="acidProjectile" parent="." instance=ExtResource( 18 )]
+visible = false
+position = Vector2( -824.283, -516.071 )
+physics_material_override = SubResource( 5 )
+
+[node name="acidProjectile2" parent="." instance=ExtResource( 18 )]
+visible = false
+position = Vector2( 136.472, -152.668 )
+physics_material_override = SubResource( 5 )
+
+[node name="flyingSword" parent="." instance=ExtResource( 15 )]
+position = Vector2( 865.787, -461.632 )
+
+[node name="DeathZone" parent="." instance=ExtResource( 11 )]
+position = Vector2( 221.303, 3390.36 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 960, 540 )
+texture = ExtResource( 9 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassLandsParallaxBg" type="ParallaxBackground" parent="."]
+
+[node name="DarkBg" type="Sprite" parent="grassLandsParallaxBg"]
+light_mask = 0
+scale = Vector2( 4, 8 )
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1000, 136 )
+
+[node name="Pillars2" type="ParallaxLayer" parent="grassLandsParallaxBg"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+light_mask = 0
+scale = Vector2( 0.8, 0.8 )
+motion_scale = Vector2( 0.8, 0 )
+motion_offset = Vector2( 0, -580 )
+motion_mirroring = Vector2( 1572, 0 )
+
+[node name="Sprite" type="Sprite" parent="grassLandsParallaxBg/Pillars2"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 393, 270 )
+
+[node name="Pillars" type="ParallaxLayer" parent="grassLandsParallaxBg"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+light_mask = 0
+motion_scale = Vector2( 1, 0 )
+motion_offset = Vector2( 0, -540 )
+motion_mirroring = Vector2( 1740, 0 )
+
+[node name="Sprite" type="Sprite" parent="grassLandsParallaxBg/Pillars"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 20 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 435, 270 )
+
+[node name="MoneyGirl" type="ParallaxLayer" parent="grassLandsParallaxBg"]
+modulate = Color( 1, 1, 1, 0.54902 )
+light_mask = 0
+motion_scale = Vector2( 1, 0 )
+motion_offset = Vector2( 0, -580 )
+
+[node name="Sprite" type="Sprite" parent="grassLandsParallaxBg/MoneyGirl"]
+position = Vector2( 1280, 148 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 21 )
+centered = false
+region_rect = Rect2( 0, 0, 435, 238 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/boss_enter = SubResource( 6 )
+
+[node name="camera_limit_NW" type="Position2D" parent="."]
+position = Vector2( -524.962, -907.267 )
+
+[node name="camera_limit_SE" type="Position2D" parent="."]
+position = Vector2( 2342.59, 316.186 )

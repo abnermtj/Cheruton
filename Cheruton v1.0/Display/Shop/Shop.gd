@@ -464,4 +464,5 @@ func _on_Exit_pressed():
 
 func free_the_shop():
 	DataResource.save_rest()
+	Engine.time_scale = 1.0
 	emit_signal("release_gui", "shop")
