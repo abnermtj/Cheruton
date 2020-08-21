@@ -27,6 +27,9 @@ var slider_enabled := false
 
 
 func _ready():
+	cheruton.modulate.a = 0
+	options.modulate.a = 0
+
 	get_tree().get_root().call_deferred("move_child",main_menu, 1)
 	bg_player.play("water")
 	SceneControl.settings_layer.get_node("Settings").connect("closed_settings", self, "back_to_mmenu")
@@ -34,12 +37,10 @@ func _ready():
 	tween_white_screen()
 	slider_enabled = true
 
-	cheruton.modulate.a = 0
-	options.modulate.a = 0
 
 # Gives a fadein effect
 func tween_white_screen():
-	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), 0.65, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.interpolate_property(canvas_modulate, "color", canvas_modulate.color, Color(1,1,1,1), .65, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	#tween.interpolate_property(SceneControl.bg_music, "volume_db", -60, 0, 0.21, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
 

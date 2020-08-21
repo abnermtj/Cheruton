@@ -2,7 +2,7 @@ extends Level
 
 func _ready():
 
-	$CutscenePlayer.play("day")
+	$CutscenePlayer.play("dat")
 	player_spawn_pos = Vector2(525, -208)
 	player_spawn_pos = Vector2(10525, -208)
 #	player_spawn_pos = Vector2(5000, -208)

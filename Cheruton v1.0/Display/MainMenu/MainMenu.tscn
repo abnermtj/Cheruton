@@ -155,6 +155,7 @@ position = Vector2( 0, -4 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false
+offset = Vector2( 0, 1 )
 region_enabled = true
 region_rect = Rect2( 1, 1, 480, 272 )
 

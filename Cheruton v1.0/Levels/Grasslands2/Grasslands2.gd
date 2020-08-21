@@ -27,6 +27,7 @@ func _ready():
 		cutscene_number = 0 # cutscene
 		cutscene_index = 0 # specific part of cutscene (separated by dialog etc)
 		next_cutscene()
+	SceneControl.fade_in_scene()
 
 func next_cutscene():
 #	print(cutscene_number, cutscene_index)

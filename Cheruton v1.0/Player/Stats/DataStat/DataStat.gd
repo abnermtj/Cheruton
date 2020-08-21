@@ -15,7 +15,7 @@ func init_bar(type_name):
 	bar.value = item
 	parent_value.text = str(item)
 	parent_rating_value.text = FILLER
-	
+
 
 func change_bar_value(value, browse := false, fix := false):
 	change_bar_colour(value, browse, fix)

@@ -192,6 +192,7 @@ margin_bottom = 144.0
 
 [node name="SceneModulate" type="Sprite" parent="LoadLayer/Load"]
 modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -135.444, 285.753 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false

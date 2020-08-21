@@ -16,11 +16,11 @@ func _ready():
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 #	#debug
-	player.set_input_enabled(true)
-	player_spawn_pos = Vector2(3028, -1936)
-	cur_cut_scene_completed = true
-	cutscene_number = 2 # cutscene
-	cutscene_index = 0 #
+#	player.set_input_enabled(true)
+#	player_spawn_pos = Vector2(3028, -1936)
+#	cur_cut_scene_completed = true
+#	cutscene_number = 2 # cutscene
+#	cutscene_index = 0 #
 	########
 
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
@@ -113,6 +113,7 @@ func instance_flying_sword():
 	flying_sword.hide()
 	add_child(flying_sword)
 	flying_sword.player = player
+	flying_sword.level = self
 
 	flying_sword.global_position = player.global_position + Vector2 (2000, -2000)
 	flying_sword.active = true

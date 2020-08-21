@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Levels/Grasslands0/Grasslands0.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Levels/Grasslands0/KeysHint/KeyHint.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/UI_HintKeys.png" type="Texture" id=40]
 [ext_resource path="res://Levels/Grasslands0/KeysHint/KeyHintArea.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Levels/Grasslands0/KeysHint/Sprites/Mouse.png" type="Texture" id=43]
 [ext_resource path="res://Levels/commonLevelAssets/LeaveParticles/leaves.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTrees/GrassLandsTree2/grassLandTree2.tscn" type="PackedScene" id=46]
@@ -1894,10 +1895,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.0250933, 3.31003 ),
+"times": PoolRealArray( 0, 3.31003 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ 0.4, 20.0, 30.0, Vector2( 0, 0 ) ],
+"args": [ 0.3, 20.0, 60.0, Vector2( 0, 0 ) ],
 "method": "shake_camera"
 }, {
 "args": [ "cutscene4_1" ],
@@ -2924,7 +2925,7 @@ tile_data = PoolIntArray( -589729, 5, 0, -589728, 1, 0, -524193, 5, 0, -524192, 
 [node name="DirtTiles" type="TileMap" parent="."]
 tile_set = ExtResource( 27 )
 format = 1
-tile_data = PoolIntArray( 1376345, 6, 0, 1376346, 7, 0, 1376347, 7, 0, 1376348, 7, 0, 1376349, 6, 0, 1376350, 6, 0, 1376351, 6, 0, 1376352, 7, 0, 1376353, 6, 0, 1376354, 7, 0, 1376355, 6, 0, 1376356, 7, 0, 1376357, 7, 0, 1376358, 6, 0, 1376359, 6, 0, 1376360, 7, 0, 1376361, 7, 0, 1376362, 7, 0, 1376363, 6, 0, 1376364, 6, 0, 1376365, 6, 0, 1704025, 5, 0 )
+tile_data = PoolIntArray( 1376344, 1073741834, 0, 1376345, 6, 0, 1376346, 7, 0, 1376347, 7, 0, 1376348, 7, 0, 1376349, 6, 0, 1376350, 6, 0, 1376351, 6, 0, 1376352, 7, 0, 1376353, 6, 0, 1376354, 7, 0, 1376355, 6, 0, 1376356, 7, 0, 1376357, 7, 0, 1376358, 6, 0, 1376359, 6, 0, 1376360, 7, 0, 1376361, 7, 0, 1376362, 7, 0, 1376363, 6, 0, 1376364, 6, 0, 1376365, 6, 0, 1704025, 5, 0 )
 
 [node name="InvisibleTiles" parent="." instance=ExtResource( 12 )]
 visible = false
@@ -2939,7 +2940,7 @@ format = 1
 tile_data = PoolIntArray( -1507266, 0, 0, -1441730, 0, 0, -1376194, 0, 0, -1310658, 0, 0, 65526, 0, 0, 22, 0, 0, 131062, 0, 0, 65558, 0, 0, 196598, 0, 0, 131094, 0, 0, 262134, 0, 0, 196630, 0, 0, 262166, 0, 0, 327702, 0, 0, 393238, 0, 0 )
 
 [node name="Props" parent="." instance=ExtResource( 7 )]
-tile_data = PoolIntArray( -7864193, 13, 0, -7602054, 18, 0, -7602035, 19, 0, -7339867, 19, 0, -7077699, 18, 0, -7077697, 15, 0, -6815653, 20, 0, -6553528, 19, 0, -6553493, 19, 0, -6291389, 19, 0, -5767134, 18, 0, -5766877, 19, 0, -5504799, 18, 0, -5177367, 20, 0, -5242864, 19, 0, -5242860, 15, 0, -5242679, 20, 0, -5242675, 15, 0, -5242672, 20, 0, -4980678, 19, 0, -4980677, 19, 0, -4980676, 19, 0, -4980649, 19, 0, -4718497, 19, 0, -4456330, 18, 0, -3145600, 18, 0, -3145577, 15, 0, -3145573, 19, 0, -1834888, 19, 0, -1834880, 19, 0, -1834875, 19, 0, -1310568, 20, 0, -1048397, 19, 0, -1048385, 19, 0, -524079, 20, 0, -393009, 14, 0, 186, 18, 0, 262273, 20, 0, 262298, 20, 0, 524553, 19, 0, 524572, 18, 0, 655351, 11, 0, 851928, 19, 0, 851936, 19, 0, 851954, 18, 0, 851967, 18, 0, 786528, 20, 0, 786544, 19, 0, 1310783, 20, 0, 1310796, 18, 0, 1572902, 18, 0, 1703976, 14, 0, 1835102, 19, 0, 1835130, 19, 0, 3670330, 19, 0, 4456660, 18, 0, 4718933, 19, 0, 4980807, 18, 0, 4980857, 18, 0, 4980859, 15, 0, 4980885, 19, 0, 5046539, 11, 0, 5243117, 19, 0, 5243145, 19, 0, 5243154, 18, 0, 5243202, 19, 0, 5374270, 14, 0, 5767194, 19, 0, 6815760, 19, 0, 6946832, 14, 0, 8126722, 18, 0, 8192353, 17, 0, 8388849, 19, 0, 8388893, 15, 0, 8388898, 19, 0, 8388899, 19, 0, 8388900, 19, 0, 8388901, 19, 0, 8388902, 19, 0, 8388955, 20, 0, 9175045, 19, 0, 9437222, 18, 0, 9437242, 15, 0, 9437243, 19, 0, 10223704, 19, 0, 10223763, 19, 0, 10223964, 18, 0, 10223967, 12, 0, 10420685, 16, 0, 10485879, 19, 0, 10486133, 20, 0, 10486219, 19, 0, 10486226, 19, 0, 10486257, 19, 0 )
+tile_data = PoolIntArray( -7864193, 13, 0, -7602054, 18, 0, -7602035, 19, 0, -7339867, 19, 0, -7077699, 18, 0, -7077697, 15, 0, -6815653, 20, 0, -6553528, 19, 0, -6553493, 19, 0, -6291389, 19, 0, -5767134, 18, 0, -5766877, 19, 0, -5504799, 18, 0, -5177367, 20, 0, -5242864, 19, 0, -5242860, 15, 0, -5242679, 20, 0, -5242675, 15, 0, -5242672, 20, 0, -4980678, 19, 0, -4980677, 19, 0, -4980676, 19, 0, -4980649, 19, 0, -4718497, 19, 0, -4456330, 18, 0, -3145600, 18, 0, -3145577, 15, 0, -3145573, 19, 0, -1834888, 19, 0, -1834880, 19, 0, -1834875, 19, 0, -1310568, 20, 0, -1048397, 19, 0, -1048385, 19, 0, -524079, 20, 0, -393009, 14, 0, 186, 18, 0, 262273, 20, 0, 262298, 20, 0, 589817, 11, 0, 524553, 19, 0, 524572, 18, 0, 851928, 19, 0, 851936, 19, 0, 851954, 18, 0, 851967, 18, 0, 786528, 20, 0, 786544, 19, 0, 1310783, 20, 0, 1310796, 18, 0, 1572902, 18, 0, 1703976, 14, 0, 1835102, 19, 0, 1835130, 19, 0, 3670330, 19, 0, 4456660, 18, 0, 4718933, 19, 0, 4980807, 18, 0, 4980857, 18, 0, 4980859, 15, 0, 4980885, 19, 0, 5046539, 11, 0, 5243117, 19, 0, 5243145, 19, 0, 5243154, 18, 0, 5243202, 19, 0, 5374270, 14, 0, 5767194, 19, 0, 6815760, 19, 0, 6946832, 14, 0, 8126722, 18, 0, 8192353, 17, 0, 8388849, 19, 0, 8388893, 15, 0, 8388898, 19, 0, 8388899, 19, 0, 8388900, 19, 0, 8388901, 19, 0, 8388902, 19, 0, 8388955, 20, 0, 9175045, 19, 0, 9437222, 18, 0, 9437242, 15, 0, 9437243, 19, 0, 10223704, 19, 0, 10223763, 19, 0, 10223964, 18, 0, 10223967, 12, 0, 10420685, 16, 0, 10485879, 19, 0, 10486133, 20, 0, 10486219, 19, 0, 10486226, 19, 0, 10486257, 19, 0 )
 
 [node name="Hints" type="Node2D" parent="."]
 
@@ -2978,6 +2979,7 @@ position = Vector2( -220, -8 )
 action_name = "interact"
 
 [node name="Scene2_0" parent="Hints" instance=ExtResource( 41 )]
+visible = false
 modulate = Color( 1, 1, 1, 0.996078 )
 position = Vector2( 5464, 976 )
 
@@ -3122,6 +3124,7 @@ position = Vector2( 472, -136 )
 action_name = "hook"
 
 [node name="BlackFade" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 5092, 1084 )
 scale = Vector2( 100, 100 )
@@ -3129,6 +3132,7 @@ z_index = 1
 texture = ExtResource( 29 )
 
 [node name="WhiteFade" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 5092, 1084 )
 scale = Vector2( 100, 100 )
@@ -3137,7 +3141,7 @@ texture = ExtResource( 32 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 self_modulate = Color( 0.698039, 0.109804, 0.109804, 1 )
-position = Vector2( -188, 188 )
+position = Vector2( 3511.58, -1514.71 )
 z_index = 1
 
 [node name="camera" parent="player" instance=ExtResource( 3 )]
@@ -3173,12 +3177,10 @@ start_flipped = true
 
 [node name="Furball3" parent="Mobs" instance=ExtResource( 8 )]
 position = Vector2( 4308, 2016 )
-patrolling = true
 patrol_range_x = 160.0
 
 [node name="Furball4" parent="Mobs" instance=ExtResource( 8 )]
 position = Vector2( 4812, 2084 )
-patrolling = true
 patrol_range_x = 320.0
 
 [node name="Furball5" parent="Mobs" instance=ExtResource( 8 )]
@@ -3402,6 +3404,7 @@ scale = Vector2( 2, 2 )
 transform = Transform2D( 2, 0, 0, 2, 0, -700 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource( 41 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -3460,6 +3463,7 @@ position = Vector2( 6544, 3200 )
 scale = Vector2( 2, 1.3 )
 
 [node name="ThanksForPlaying" type="Label" parent="."]
+visible = false
 margin_left = 7049.0
 margin_top = 2161.0
 margin_right = 8149.0
@@ -3477,4 +3481,6 @@ position = Vector2( 8080, 2428 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit0"]
 position = Vector2( 0, -16 )
 shape = SubResource( 44 )
+
+[node name="flyingSword" parent="." instance=ExtResource( 42 )]
 [connection signal="body_entered" from="NextCutsceneTriger" to="." method="_on_NextCutsceneTriger_body_entered"]

@@ -295,7 +295,7 @@ func _on_pressed(node):
 	if (mouse_count == 2):
 		if(item_state == "FIXED"):
 			check_fixed()
-			
+
 		mouse_node = temp_mouse_node
 		item_state = "FIXED"
 		utilize_item(mouse_node)
