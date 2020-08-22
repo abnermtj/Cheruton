@@ -8,7 +8,7 @@ Go on an adventure in the land of Cheruton! An handcrafted pixel art world where
 </p>
 
 ## Downloading
-To try a demo of the tutorial download it [here](https://drive.google.com/drive/folders/1mhSfvl_kHA7nTocgp4frlHaoxC78nxqS)  
+To try a demo of the tutorial download it from our releases
 
 To try more recent features, you can download [Godot v3.2.1](https://downloads.tuxfamily.org/godotengine/3.2.1/), clone this repository and run project.godot directly.  
 
