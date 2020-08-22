@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Levels/Grasslands2/Grasslands2.gd" type="Script" id=1]
 [ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
@@ -166,6 +166,23 @@ tracks/3/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "cutscene0_3"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_scene"
+} ]
+}
+
 [node name="Grasslands2" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -174,6 +191,7 @@ autoplay = "cutscene0_0"
 anims/cutscene0_0 = SubResource( 1 )
 anims/cutscene0_1 = SubResource( 2 )
 anims/cutscene0_2 = SubResource( 3 )
+anims/cutscene0_3 = SubResource( 4 )
 
 [node name="PropsBehind" type="Node2D" parent="."]
 
@@ -244,6 +262,7 @@ texture = ExtResource( 16 )
 
 [node name="moneygirl" parent="NPCs" instance=ExtResource( 10 )]
 position = Vector2( 804, 284 )
+scale = Vector2( -4, 4 )
 
 [node name="Surprised" parent="NPCs" instance=ExtResource( 17 )]
 position = Vector2( 808, 220 )

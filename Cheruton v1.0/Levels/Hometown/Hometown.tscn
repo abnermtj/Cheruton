@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://Levels/Hometown/Sprites/Hometown_Portal_rocks.png" type="Texture" id=44]
 [ext_resource path="res://Levels/Hometown/Sprites/Hometown_BuidingsALL.png" type="Texture" id=45]
 [ext_resource path="res://Levels/Hometown/Sprites/Grasslands.png" type="Texture" id=46]
+[ext_resource path="res://Display/Font/AbrilFatface-Regular.ttf" type="DynamicFontData" id=47]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
@@ -122,6 +123,10 @@ radial_accel_curve = SubResource( 11 )
 scale = 8.0
 color_ramp = SubResource( 9 )
 
+[sub_resource type="DynamicFont" id=40]
+size = 64
+font_data = ExtResource( 47 )
+
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 180, 3 )
 
@@ -144,6 +149,7 @@ polygon = PoolVector2Array( -268, 50, -268, 94, -268, 114, -268, 90 )
 
 [sub_resource type="Environment" id=19]
 background_mode = 4
+glow_enabled = true
 glow_intensity = 1.22
 glow_blend_mode = 0
 glow_hdr_threshold = 1.1
@@ -1062,6 +1068,7 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 37 )
 
 [node name="roarStart" type="Sprite" parent="homeTownPortal"]
+visible = false
 scale = Vector2( 1e-05, 1e-05 )
 z_index = 1
 texture = ExtResource( 41 )
@@ -1124,6 +1131,20 @@ visible = false
 light_mask = 0
 amount = 26
 process_material = SubResource( 12 )
+
+[node name="Label" type="Label" parent="homeTownPortal"]
+margin_left = -444.0
+margin_top = -640.0
+margin_right = 1595.0
+margin_bottom = -283.0
+custom_fonts/font = SubResource( 40 )
+text = "Thanks for playing!
+The rest of cheruton is 
+still under development 
+and not ready to be shown. Sorry!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tiles" parent="." instance=ExtResource( 1 )]
 light_mask = 0
@@ -1405,7 +1426,6 @@ drag_margin_bottom = 0.3
 [node name="runDust" type="Particles2D" parent="player"]
 position = Vector2( 68, 68 )
 scale = Vector2( -1, 1 )
-emitting = false
 amount = 10
 lifetime = 0.7
 one_shot = true

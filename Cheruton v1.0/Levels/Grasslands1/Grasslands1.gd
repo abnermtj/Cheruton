@@ -1,7 +1,7 @@
 extends Level
 onready var save_position = $player.position
 
-func _ready():
+#func _ready():
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 
 func _input(event):

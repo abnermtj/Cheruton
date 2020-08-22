@@ -181,18 +181,17 @@ margin_bottom = 90.0
 rect_min_size = Vector2( 0, 90 )
 
 [node name="ExpBar" parent="HudLayer/Hud/StatBars" instance=ExtResource( 3 )]
-visible = false
-margin_top = 80.0
+margin_top = 94.0
 margin_right = 209.0
 margin_bottom = 144.0
 
 [node name="LoadLayer" type="CanvasLayer" parent="."]
 
 [node name="Load" type="Node2D" parent="LoadLayer"]
+visible = false
 
 [node name="SceneModulate" type="Sprite" parent="LoadLayer/Load"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -135.444, 285.753 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 centered = false

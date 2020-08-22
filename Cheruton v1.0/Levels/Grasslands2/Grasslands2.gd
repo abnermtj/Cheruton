@@ -7,6 +7,7 @@ var cur_cut_scene_completed = false
 var flying_sword
 
 func _ready():
+	camera.current = true
 #	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
 	story_file = "res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-404, 252)}
@@ -54,10 +55,9 @@ func _process(delta):
 		wait_dialog_complete = false
 
 #
-func _input(event):
+#func _input(event):
 #	if Input.is_action_just_pressed("reset"):
-#		player.velocity = Vector2()
-#		player.position = save_position
+#		next_scene()
 #
 #		var mob = preload("res://Enemy/Mobs/Furball/Furball.tscn")
 #		var instance = mob.instance()
@@ -84,3 +84,5 @@ func play_cutscene_dialog(name : String):
 func shake_camera(time : float, freq : float, power : float, dir: Vector2):
 	camera.shake(time, freq, power, dir)
 
+func next_scene():
+	SceneControl.change_scene(self, "res://Levels/Hometown/Hometown.tscn")

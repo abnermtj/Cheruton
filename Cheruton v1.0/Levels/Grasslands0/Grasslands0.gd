@@ -125,3 +125,6 @@ func instance_flying_sword():
 func on_sword_result(result, vector1, vector2):
 	if result == 2 and cutscene_number == 4:
 		next_cutscene()
+
+func _on_Exit0_area_entered(area):
+	SceneControl.change_scene(self, "res://Levels/Grasslands2/Grasslands2.tscn")

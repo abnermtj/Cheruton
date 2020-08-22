@@ -63,7 +63,7 @@ func change_music(new_music):
 	bg_music.stream = new_music
 	bg_music.play()
 
-func change_scene(old_scene, new_scene):
+func change_scene(old_scene : Node, new_scene : String):
 	get_tree().paused = true
 	old_level = old_scene
 	new_level = load(new_scene).instance()
@@ -101,6 +101,7 @@ func swap_scenes():
 		if(new_music):
 			new_music = load(new_music)
 		change_music(new_music)
+		get_tree().paused = false
 
 	else: # main menu
 		SceneControl.hud_elements.hide()
