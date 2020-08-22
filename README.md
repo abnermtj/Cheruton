@@ -1,6 +1,5 @@
 # Cheruton
-A game made for NUS Orbital 2020 Godot 3.2.1  
-by Team GingerBreadmen
+A game made for NUS Orbital 2020 Godot 3.2.1 by Team GingerBreadmen
 
 Go on an adventure in the land of Cheruton! An handcrafted pixel art world where you meet new friends and fight your way past dangerous enemies. Visit towns, explore dungeons and upgrade your items as beautiful chiptunes play in the background.  
 
@@ -11,7 +10,7 @@ Go on an adventure in the land of Cheruton! An handcrafted pixel art world where
 ## Downloading
 To try a demo of the tutorial download it [here](https://drive.google.com/drive/folders/1mhSfvl_kHA7nTocgp4frlHaoxC78nxqS)  
 
-To try more recent features, you can download [Godot v3.2.1]([https://downloads.tuxfamily.org/godotengine/3.2.1/](https://downloads.tuxfamily.org/godotengine/3.2.1/)), clone this repository and run project.godot directly.  
+To try more recent features, you can download [Godot v3.2.1](https://downloads.tuxfamily.org/godotengine/3.2.1/), clone this repository and run project.godot directly.  
 
 To use our art assets, use  [Aseprite](https://store.steampowered.com/app/431730/Aseprite/) to open the *.aseprite files.  
 
