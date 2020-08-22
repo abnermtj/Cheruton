@@ -26,3 +26,8 @@ All code is licensed under a GNU GPL 3.0 License
 
 All graphical assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License  
 
+
+<p align = "center">
+    <img src="https://i.ibb.co/FwTstCv/Whats-App-Image-2020-08-23-at-1-29-59-AM.jpg" alt="Fan Art">
+</p>
+
