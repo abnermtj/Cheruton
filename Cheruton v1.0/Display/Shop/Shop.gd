@@ -48,7 +48,7 @@ onready var select_music = $MusicNodes/Select
 func _ready():
 	connect_tabs()
 	_on_Buy_pressed()
-	
+
 	load_data()
 	init_equipped()
 	emit_signal("tab_changed", "Weapons")
@@ -410,7 +410,7 @@ func buy_item():
 			generate_specific_data(updating_node, element_index, list_tab)
 
 	transaction_music.play()
-	
+
 # Sells/Buys Item
 func _on_Button_pressed():
 	match shop_setting:

@@ -1,15 +1,18 @@
-# GingerBreadMen
-Orbital 2020 Project <br/>
+# Cheruton
+A game made for NUS Orbital 2020 Godot 3.2.1
+![](https://i.ibb.co/q1tPJ6w/UI-Main-Menu.gif)
 
-Cheruton. <br/>
 
-A 2D platformer made with Godot.<br/>
+Try the first level: https://drive.google.com/drive/folders/1mhSfvl_kHA7nTocgp4frlHaoxC78nxqS
 
-Timeline<br/>
-29 Jun - Evaluation Milestone 2 - Prototyping2<br/>
+## Credits
+Tolentino Abner Jr Morales: Art, Code and Design
+Theodore Pinto: Code, UI/UX Design
 
-27 Jul - Evaluation Milestone 3 - Extension3<br/>
+[Wool Pool](https://soundcloud.com/gubera) : Music
 
-26 Aug - Splashdown - Refinement4<br/>
-	(Poster session and award ceremony)<br/>
-![alt text](https://i.ibb.co/8dg33rm/image.png "Progress1")
+## Licenses
+All code is licensed under a GNU GPL 3.0 License
+
+All graphical assets are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+
