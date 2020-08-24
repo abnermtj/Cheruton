@@ -6,7 +6,7 @@ A game made for NUS Orbital 2020 Godot 3.2.1 by Team GingerBreadmen
 Go on an adventure in the land of Cheruton! An handcrafted pixel art world where you meet new friends and fight your way past dangerous enemies. Visit towns, explore dungeons and upgrade your items as beautiful chiptunes play in the background.  
 
 <p align = "center">
-    <img src="https://i.ibb.co/bXDc96p/UI-Main-Menu.gif" alt="Cheruton TitleScreen">
+    <img src="https://i.ibb.co/WWmX4VQ/UI-Main-Menu.gif" alt="Cheruton TitleScreen">
 </p>
 <p align = "center">
     <img src="https://i.ibb.co/yWWtZp5/mainmenu1080below.gif" alt="Cheruton TitleScreen2">
