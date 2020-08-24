@@ -9,7 +9,7 @@ Go on an adventure in the land of Cheruton! An handcrafted pixel art world where
     <img src="https://i.ibb.co/WWmX4VQ/UI-Main-Menu.gif" alt="Cheruton TitleScreen">
 </p>
 <p align = "center">
-    <img src="https://i.ibb.co/yWWtZp5/mainmenu1080below.gif" alt="Cheruton TitleScreen2">
+    <img src="https://i.ibb.co/LNd9v20/mainmenu1080below.gif" alt="Cheruton TitleScreen2">
 </p>
 
 
