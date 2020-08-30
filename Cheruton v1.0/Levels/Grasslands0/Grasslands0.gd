@@ -15,12 +15,12 @@ func _ready():
 	if not enter_point: enter_point = 0
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
-#	#debug
-#	player.set_input_enabled(true)
-#	player_spawn_pos = Vector2(3028, -1936)
-#	cur_cut_scene_completed = true
-#	cutscene_number = 2 # cutscene
-#	cutscene_index = 0 #
+	#debug
+	player.set_input_enabled(true)
+	player_spawn_pos = Vector2(3028, -1936)
+	cur_cut_scene_completed = true
+	cutscene_number = 2 # cutscene
+	cutscene_index = 0 #
 	########
 
 #	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
