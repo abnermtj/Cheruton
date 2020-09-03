@@ -171,9 +171,9 @@ func set_attack_enabled (val : bool):
 func displace(vector : Vector2):
 	global_position += vector
 
-func _on_states_stateChanged(statesStack):
+func onStateChanged(curState):
 	prev_state = cur_state
-	cur_state = statesStack[0]
+	cur_state = curState
 
 func set_fsm(val : bool):
 	states.isActive = val
