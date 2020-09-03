@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/Grasslands1/Grasslands1.gd" type="Script" id=1]
-[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/PlayerBody/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTilemaps/GrassLandTileMapProps.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/PlayerBody/playerBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/PlayerBody/Hook/grappleHook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/commonLevelAssets/InvisibleTiles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/commonLevelAssets/Props/spike0/spike0.tscn" type="PackedScene" id=10]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/movingPlatforms/movingPlatform0.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/commonLevelAssets/Props/bouncePad/bouncePad.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/commonLevelAssets/Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=14]
+
 
 [node name="Grasslands1" type="Node2D"]
 script = ExtResource( 1 )

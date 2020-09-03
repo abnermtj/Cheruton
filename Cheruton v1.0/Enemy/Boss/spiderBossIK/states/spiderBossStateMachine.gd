@@ -1,5 +1,5 @@
 extends baseFSM
 
-func _change_state(state_name):
+func onChangeState(state_name):
 	print("spiderboss changing to ", state_name)
-	._change_state(state_name)
+	.onChangeState(state_name)

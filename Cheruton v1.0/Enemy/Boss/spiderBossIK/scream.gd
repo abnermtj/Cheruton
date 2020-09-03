@@ -57,7 +57,7 @@ func update(delta):
 			owner.velocity.x = lerp(owner.velocity.x , 0 , delta)
 			owner.velocity.y = lerp(owner.velocity.y , 400 , delta)
 			if owner.is_on_floor():
-				emit_signal("finished", "run")
+				emit_signal("changeState", "run")
 
 	owner.move()
 

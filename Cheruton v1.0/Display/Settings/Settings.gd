@@ -38,7 +38,7 @@ onready var base_game = $Settings/Container/Main/Contents/BaseGame
 onready var base_empty = $Settings/Container/Main/Contents/BaseEmpty
 
 
-var slider_active := false
+var sliderisActive := false
 var edit_control := false
 var prior_collision := false
 
@@ -332,9 +332,9 @@ func _on_SFXVolDown_pressed():
 #change this to go back to previously loaded scene
 func _on_Back_pressed():
 	SceneControl.button_click.play()
-	change_active_tab(base_empty)
+	changeisActive_tab(base_empty)
 	slider.hide()
-	slider_active = false
+	sliderisActive = false
 	DataResource.save_rest() # so that the new settings persist on next save file
 	SceneControl.settings_layer.hide()
 	emit_signal("closed_settings")
@@ -373,28 +373,28 @@ func slide_to_position(new_position, new_offset):
 	new_position.y /= 6.25
 	new_position.y += new_offset
 	var old_position = slider.rect_position
-	if(slider_active):
+	if(sliderisActive):
 		tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 		tween.start()
 	else:
 		slider.rect_position.y = new_position.y
 		slider.show()
-		slider_active = true
+		sliderisActive = true
 
 func _on_Controls_pressed():
 	SceneControl.button_click.play()
-	change_active_tab(base_controls)
+	changeisActive_tab(base_controls)
 
 func _on_Audio_pressed():
 	SceneControl.button_click.play()
-	change_active_tab(base_audio)
+	changeisActive_tab(base_audio)
 
 func _on_Game_pressed():
 	pass
 #	SceneControl.button_click.play()
-#	change_active_tab(base_game)
+#	changeisActive_tab(base_game)
 
-func change_active_tab(new_tab):
+func changeisActive_tab(new_tab):
 	if(active_tab):
 		active_tab.hide()
 

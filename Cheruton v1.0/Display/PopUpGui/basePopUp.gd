@@ -2,7 +2,7 @@ extends Control
 
 class_name basePopUp
 
-var is_active_gui = false setget set_is_active_gui
+var isisActive_gui = false setget set_isisActive_gui
 
 signal new_gui
 signal release_gui
@@ -15,8 +15,8 @@ func end():
 func handle_input(event):
 	pass
 
-func set_is_active_gui(val):
-	is_active_gui = val
+func set_isisActive_gui(val):
+	isisActive_gui = val
 	if val:
 		enable_all_buttons(self)
 	else:

@@ -53,7 +53,7 @@ func start_dialog(record_name : String): # SPECIFIC DIALOG
 	play_dialog()
 
 func handle_input(event):
-	if is_active_gui and Input.is_action_just_pressed("interact"): # bcause we started via dialog visa function call vs signal, it causes the interact key used to open dialog to also skip the first text
+	if isisActive_gui and Input.is_action_just_pressed("interact"): # bcause we started via dialog visa function call vs signal, it causes the interact key used to open dialog to also skip the first text
 		if finished_current_node and not finished_last_node:
 			get_next_node()
 			if not finished_last_node: # method above coulve changed the value
@@ -64,7 +64,7 @@ func handle_input(event):
 			$AnimationPlayerVisibility.play("next")
 
 func _process(delta):
-	if is_active_gui:
+	if isisActive_gui:
 		dialogue_base.rect_pivot_offset = dialogue_base.rect_size/2 # doing this will allow the base to be scaled from the center
 
 
@@ -114,7 +114,7 @@ func _on_Timer_timeout():
 		start_dialog_timer()
 
 func _on_Tween_tween_completed(object, key):
-	if key == ":rect_scale" and not is_active_gui:
+	if key == ":rect_scale" and not isisActive_gui:
 		hide()
 
 func _get_tagged_text(tag : String, text : String):

@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Levels/Grasslands2/Grasslands2.gd" type="Script" id=1]
-[ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerBody/playerBody.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/PlayerBody/FlyingSword/flyingSword.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/commonLevelAssets/GrassLandTileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/commonLevelAssets/grassLandsParralaxBg/grassLandsParallaxBg.tscn" type="PackedScene" id=6]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/Ray/Ray.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/MoneyGirlStaffFloor.png" type="Texture" id=16]
 [ext_resource path="res://Levels/commonLevelAssets/Expressions/Surprised/Surprised.tscn" type="PackedScene" id=17]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "cutscene0_0"

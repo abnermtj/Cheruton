@@ -33,15 +33,15 @@ func update(delta):
 
 	#RANDOM ATTTACK
 	if owner.player_in_small_look_area:
-#		emit_signal("finished", "stabAttack")
+#		emit_signal("changeState", "stabAttack")
 		var rand = randi()%3
 		match rand:
 			0:
-				emit_signal("finished","stepBack")
+				emit_signal("changeState","stepBack")
 			1:
-				emit_signal("finished","jumpAttack")
+				emit_signal("changeState","jumpAttack")
 			2:
-				emit_signal("finished","stabAttack")
+				emit_signal("changeState","stabAttack")
 
 #func handle_input(event):
 #	if Input.is_action_just_pressed("hook"):

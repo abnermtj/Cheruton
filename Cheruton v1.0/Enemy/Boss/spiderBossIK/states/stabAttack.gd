@@ -46,7 +46,7 @@ func update(delta):
 				stage = stages.RECOVER
 
 		stages.RECOVER:
-			emit_signal("finished", "run")
+			emit_signal("changeState", "run")
 
 	owner.move()
 

@@ -50,7 +50,7 @@ func _on_hitBox_area_entered(area):
 	hitter = area.obj
 
 	hitter_pos = hitter.global_position
-	if states.current_state.name != "dead":
+	if states.curState.name != "dead":
 		change_state("hit")
 
 func _on_alertArea_body_entered(body):

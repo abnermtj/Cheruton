@@ -65,7 +65,7 @@ func update(delta):
 			owner.move_body_sprites()
 
 		stages.RECOVER:
-			emit_signal("finished", "run")
+			emit_signal("changeState", "run")
 func update_idle(delta):
 	pass
 

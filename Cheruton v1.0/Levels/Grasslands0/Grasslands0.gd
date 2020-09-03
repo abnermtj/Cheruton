@@ -16,7 +16,7 @@ func _ready():
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
 
 	#debug
-	player.set_input_enabled(true)
+	player.set_isInputEnabled(true)
 	player_spawn_pos = Vector2(3028, -1936)
 	cur_cut_scene_completed = true
 	cutscene_number = 2 # cutscene
@@ -103,7 +103,7 @@ func start_glove_throw():
 	$NPCs.add_child(glove_node)
 
 func instance_flying_sword():
-	var load_sword = load("res://Player/ActualPlayer/FlyingSword/flyingSword.tscn")
+	var load_sword = load("res://Player/PlayerBody/FlyingSword/flyingSword.tscn")
 	flying_sword = load_sword.instance()
 
 	flying_sword.connect("sword_result", player, "on_sword_result")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/testBench2/testBench2.gd" type="Script" id=1]
-[ext_resource path="res://Player/ActualPlayer/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/PlayerBody/FlyingSword/flyingSword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Camera/camera_shake.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/ActualPlayer/playerBody.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/ActualPlayer/Hook/grappleHook.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/PlayerBody/playerBody.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/PlayerBody/Hook/grappleHook.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Hometown/Resources/Hometown.tres" type="TileSet" id=6]
 [ext_resource path="res://Levels/commonLevelAssets/Props/grapplePoint/grapplePoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/commonLevelAssets/Props/laser/laser.tscn" type="PackedScene" id=8]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/bouncePad/bouncePad.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/commonLevelAssets/worldt_env.res" type="Environment" id=14]
 [ext_resource path="res://Levels/commonLevelAssets/DeathZone.tscn" type="PackedScene" id=15]
+
 
 [node name="testBench2" type="Node2D"]
 script = ExtResource( 1 )

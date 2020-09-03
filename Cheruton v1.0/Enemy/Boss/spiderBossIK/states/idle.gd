@@ -5,7 +5,7 @@ func enter():
 
 func update(delta):
 	if owner.player_found:
-		emit_signal("finished", "run")
+		emit_signal("changeState", "run")
 
 func exit():
 	pass

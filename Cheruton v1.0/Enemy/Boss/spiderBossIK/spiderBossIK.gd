@@ -106,8 +106,8 @@ func on_player_exited_small_area(body):
 	player_in_small_look_area = false
 
 # GENERAL HELPERS
-func _on_states_state_changed(states_stack):
-	cur_state = states_stack[0]
+func _on_states_stateChanged(statesStack):
+	cur_state = statesStack[0]
 func set_body_collision(val):
 	call_deferred("_set_body_collision", val)
 func _set_body_collision(val):

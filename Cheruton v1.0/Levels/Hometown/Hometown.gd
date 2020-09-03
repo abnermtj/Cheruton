@@ -10,7 +10,7 @@ func _ready():
 	story_file = "res://Levels/Hometown/Stories/Baked/HometownDialog.tres"
 	SceneControl.change_story(story_file) # delete next time thisis to directly run it
 
-	$player.set_input_enabled(true)
+	$player.set_isInputEnabled(true)
 
 #func _input(event):
 #	if Input.is_action_just_pressed("reset"):

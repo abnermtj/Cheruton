@@ -22,7 +22,7 @@ onready var settings_position = $Bg/Options/VBoxContainer/Settings.rect_position
 onready var quit_position = $Bg/Options/VBoxContainer/Quit.rect_position
 
 var modulate_dec = "white"
-var slider_active := false
+var sliderisActive := false
 var slider_enabled := false
 
 
@@ -107,7 +107,7 @@ func perform_button_action():
 
 
 func hide_options():
-	slider_active = false
+	sliderisActive = false
 	slider.hide()
 	container.hide()
 
@@ -134,11 +134,11 @@ func slide_to_position(new_position):
 	if(slider_enabled):
 		new_position.y += container.rect_position.y
 		var old_position = slider.rect_position
-		if(slider_active):
+		if(sliderisActive):
 			tween.interpolate_property(slider, "rect_position", old_position, new_position, 0.075, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			tween.start()
 		else:
 			slider.rect_position.y = new_position.y
 			slider.show()
-			slider_active = true
+			sliderisActive = true
 

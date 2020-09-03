@@ -4,7 +4,7 @@ const ENTERED = 0
 const EXITED = 1
 const ACTIVE_COLOR = Color(1,1,0)
 
-var active = false setget set_active
+var active = false setget setisActive
 
 func _ready():
 	add_to_group("hook_points")
@@ -22,7 +22,7 @@ func _ready():
 		$End.hide()
 
 
-func set_active(val):
+func setisActive(val):
 	if val:
 		modulate = ACTIVE_COLOR
 	else:

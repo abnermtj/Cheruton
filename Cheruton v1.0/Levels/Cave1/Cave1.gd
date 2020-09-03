@@ -4,7 +4,7 @@ onready var save_position = player.position
 onready var anim_player = $AnimationPlayer
 
 func _ready():
-	player.set_input_enabled(true)
+	player.set_isInputEnabled(true)
 
 func _input(event):
 	if Input.is_action_just_pressed("reset"):

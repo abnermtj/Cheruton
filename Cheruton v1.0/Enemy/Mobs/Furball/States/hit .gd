@@ -29,7 +29,7 @@ func update(delta):
 	timer -= delta
 	if timer < 0:
 		owner.velocity.y = 0
-		emit_signal("finished", "fall")
+		emit_signal("changeState", "fall")
 
 	owner.velocity.x = lerp(owner.velocity.x,0 , delta * 3)
 	owner.velocity.y = clamp(owner.velocity.y + owner.GRAVITY / 2 * delta, -INF, owner.TERMINAL_VELOCITY)

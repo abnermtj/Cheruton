@@ -4,10 +4,10 @@
 [gd_scene load_steps=23 format=2]
 >>>>>>> 2d97bc9920db4753ff5373118e5a2b9e90c063bb
 
-[ext_resource path="res://Player/ActualPlayer/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/PlayerBody/Debug/stateStackDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/levelAssets/Hometown.tres" type="TileSet" id=2]
-[ext_resource path="res://Player/ActualPlayer/playerbody.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/ActualPlayer/Hook/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/PlayerBody/playerbody.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerBody/Hook/Chain.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Camera/Camera2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/levelAssets/HomeTown-BuidingsALL.png" type="Texture" id=6]
 [ext_resource path="res://Levels/testBench/playerTestBench.gd" type="Script" id=7]

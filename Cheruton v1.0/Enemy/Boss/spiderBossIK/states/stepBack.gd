@@ -78,7 +78,7 @@ func update(delta):
 				stage = stages.RECOVER
 
 		stages.RECOVER:
-			emit_signal("finished", "webShoot")
+			emit_signal("changeState", "webShoot")
 
 func move_leg(leg):
 	var desired_pos = leg.get_collision_point()

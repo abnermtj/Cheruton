@@ -26,4 +26,4 @@ func update(delta):
 	owner.move()
 
 	if owner.is_on_floor():
-		emit_signal("finished", "idle")
+		emit_signal("changeState", "idle")

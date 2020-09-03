@@ -50,4 +50,4 @@ func shake_camera(dur, freq, amp, dir):
 	level.shake_camera(dur, freq, amp, dir)
 
 func change_state(state_name : String):
-	states._change_state(state_name)
+	states.onChangeState(state_name)

@@ -18,7 +18,7 @@ func _ready():
 
 	#debug
 #	player_spawn_pos = Vector2(0)
-	$player.set_input_enabled(true)
+	$player.set_isInputEnabled(true)
 #	cur_cut_scene_completed = false
 #	cutscene_number = 0 # cutscene
 #	cutscene_index = 0 #

@@ -31,5 +31,5 @@ func update( delta ):
 		owner.look_dir = Vector2(sign(owner.velocity.x),0)
 
 	if owner.velocity.y > 0:
-		emit_signal("finished","fall")
+		emit_signal("changeState","fall")
 	owner.move()

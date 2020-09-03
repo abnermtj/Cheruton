@@ -217,13 +217,13 @@ func tab_pressed(next_tab):
 
 func change_tab_state(next_tab):
 	match next_tab:
-		"Weapons":   change_active_tab(tabs.get_node("Weapons"))
-		"Apparel":   change_active_tab(tabs.get_node("Apparel"))
-		"Consum":    change_active_tab(tabs.get_node("Consum"))
-		"Misc":      change_active_tab(tabs.get_node("Misc"))
+		"Weapons":   changeisActive_tab(tabs.get_node("Weapons"))
+		"Apparel":   changeisActive_tab(tabs.get_node("Apparel"))
+		"Consum":    changeisActive_tab(tabs.get_node("Consum"))
+		"Misc":      changeisActive_tab(tabs.get_node("Misc"))
 
 # Toggles active tab of items to be sold
-func change_active_tab(new_tab):
+func changeisActive_tab(new_tab):
 	# Set current tab to default colour and hide its items
 	if(mouse_node):
 		var temp = mouse_node
@@ -451,7 +451,7 @@ func update_tab_items(tab_constant, updating_path, tab_name):
 				inventory.disable_mouse(updating_node)
 
 func handle_input(event):
-	if is_active_gui:
+	if isisActive_gui:
 		if Input.is_action_just_pressed("escape"):
 			_on_Exit_pressed()
 		elif Input.is_action_just_pressed("shop_buy"):

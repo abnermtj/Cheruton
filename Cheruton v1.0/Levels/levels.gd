@@ -106,11 +106,11 @@ func next_cutscene():
 	pass
 
 func start_cutscene_mode():
-	player.set_input_enabled(false)
+	player.set_isInputEnabled(false)
 	SceneControl.set_dialog_only_mode(true)
 
 func end_cutscene_mode():
-	player.set_input_enabled(true)
+	player.set_isInputEnabled(true)
 	SceneControl.set_dialog_only_mode(false)
 
 func shake_camera(dur : float, freq : float , amp : float , dir : Vector2):

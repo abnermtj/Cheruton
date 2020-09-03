@@ -7,7 +7,7 @@ extends basePopUp
 #			DataResource.load_data()
 
 func handle_input(event):
-	if is_active_gui:
+	if isisActive_gui:
 		if Input.is_action_just_pressed("inventory"):
 			emit_signal("new_gui", "inventory")
 		elif Input.is_action_just_pressed("escape"):
