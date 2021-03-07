@@ -43,6 +43,6 @@ Cool fanart by [Loo Kai Wen](https://www.instagram.com/okai_iwen/)
     <img src="https://i.ibb.co/FzvMPX3/Gameplay.png" alt="Gameplay">
 </p>
 
-
-<img width="960" alt="3" src="https://user-images.githubusercontent.com/55742254/110230830-a8bbf900-7f4e-11eb-8436-fc5704412267.png">
+<img width="936" alt="4" src="https://user-images.githubusercontent.com/55742254/110230844-bec9b980-7f4e-11eb-996b-118241affe02.png">
+<img width="960" alt="1" src="https://user-images.githubusercontent.com/55742254/110230851-d012c600-7f4e-11eb-9359-c953d13eb914.png">
 
