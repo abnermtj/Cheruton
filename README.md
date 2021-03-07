@@ -44,4 +44,5 @@ Cool fanart by [Loo Kai Wen](https://www.instagram.com/okai_iwen/)
 </p>
 
 
+<img width="960" alt="3" src="https://user-images.githubusercontent.com/55742254/110230830-a8bbf900-7f4e-11eb-8436-fc5704412267.png">
 
