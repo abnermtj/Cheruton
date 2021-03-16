@@ -1,9 +1,7 @@
-
-
 # Cheruton
-A game made for NUS Orbital 2020 Godot 3.2.1 by Team GingerBreadmen
+A game made for NUS Orbital 2020 Godot 3.2.1 by Team GingerBreadmen. Apollo (Honorable mention).
 
-Go on an adventure in the land of Cheruton! An handcrafted pixel art world where you meet new friends and fight your way past dangerous enemies. Visit towns, explore dungeons and upgrade your items as beautiful chiptunes play in the background.  
+Go on an adventure in the land of Cheruton! An handcrafted pixel art world where you meet new friends and fight dangerous enemies. Visit towns, explore dungeons and upgrade your items as beautiful chiptunes play in the background.  
 
 <p align = "center">
     <img src="https://i.ibb.co/WWmX4VQ/UI-Main-Menu.gif" alt="Cheruton TitleScreen">
