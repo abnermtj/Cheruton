@@ -68,11 +68,11 @@ func update(delta):
 	if owner.is_on_floor():
 		owner.has_jumped = false
 		owner.play_anim_fx("land")
-
+		
 		owner.camera_state = owner.CAMERA_STATES.GROUND
 		if owner.velocity.y > 850:
 			owner.emit_dust("land")
-
+			owner.play_sound("land_dirt_hard" + str(randi()%6+1))
 		var col = owner.get_slide_collision(0).get_collider() # bounce pad
 		if col and  col.is_in_group("bouncePads"):
 			owner.bounce_boost = true
@@ -84,7 +84,7 @@ func update(delta):
 		elif Input.is_action_pressed("slide"):
 			emit_signal("changeState", "slide")
 		else:
-			owner.play_sound("land")
+			
 			emit_signal("changeState", "run")
 
 	owner.move()

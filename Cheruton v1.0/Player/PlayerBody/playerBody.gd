@@ -410,7 +410,8 @@ func _on_Timer_timeout():
 
 # Sound
 func play_sound(string : String):
-#	sound_parent.get_node(string).play()
+	sound_parent.get_node(string).play()
+	print(string)
 	pass
 func stop_sound(string : String):
 	sound_parent.get_node(string).stop()

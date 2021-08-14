@@ -25,3 +25,10 @@ func _on_ExitPause_pressed():
 func handle_input(event):
 	if isisActive_gui and Input.is_action_just_pressed("escape") and !SceneControl.settings_layer.visible:
 		_on_ExitPause_pressed()
+		$Resume.play()
+		
+func set_isisActive_gui(val):
+	.set_isisActive_gui(val)
+	if val:
+		$Pause.play()
+		

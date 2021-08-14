@@ -21,7 +21,7 @@ func handle_input(event):
 		elif owner.sword_state == owner.SWORD_STATES.STUCK:
 			owner.return_sword_throw()
 
-	elif event.is_action_pressed("dash") and owner.sword_state == owner.SWORD_STATES.STUCK:
+	elif event.is_action_pressed("dash") and owner.sword_state == owner.SWORD_STATES.STUCK and not ["hook"].has(owner.cur_state.name):
 		emit_signal("changeState", "dash")
 
 # note left and right at the same time cancel out

@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/PlayerBody/FlyingSword/flyingSword.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerBody/Sprites/MC - FlyingSword.png" type="Texture" id=2]
 [ext_resource path="res://Player/PlayerBody/FlyingSword/hurtBox.gd" type="Script" id=3]
+[ext_resource path="res://Player/PlayerBody/Sounds/flying_sword.wav" type="AudioStream" id=4]
+[ext_resource path="res://Player/PlayerBody/Sounds/flying_sword_hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Player/PlayerBody/Sounds/flying_sword_recover.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.0
@@ -126,3 +129,14 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/air = SubResource( 5 )
 anims/stuck = SubResource( 6 )
+
+[node name="FlyAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 2.0
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 2.0
+
+[node name="ReturnAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

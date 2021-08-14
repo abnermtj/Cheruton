@@ -18,7 +18,6 @@
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/MoneyGirlStaffFloor.png" type="Texture" id=16]
 [ext_resource path="res://Levels/commonLevelAssets/Expressions/Surprised/Surprised.tscn" type="PackedScene" id=17]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "cutscene0_0"
 length = 3.5
@@ -147,10 +146,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ Vector2( -4, 4 ) ]
+"values": [  ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -159,9 +158,12 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.402414 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 3.90625e-05, 0.402414 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "turn_npc_player"
+}, {
 "args": [ "cutscene0_2" ],
 "method": "play_cutscene_dialog"
 } ]
@@ -239,8 +241,8 @@ tile_data = PoolIntArray( 393207, 0, 0, 393208, 0, 3, 393209, 0, 3, 393210, 0, 1
 
 [node name="grassLandsParallaxBg" parent="CanvasLayer" instance=ExtResource( 6 )]
 offset = Vector2( 0, -700 )
-scale = Vector2( 2, 2 )
-transform = Transform2D( 2, 0, 0, 2, 0, -700 )
+scale = Vector2( 2.4, 2.4 )
+transform = Transform2D( 2.4, 0, 0, 2.4, 0, -700 )
 
 [node name="camera_limit_NW" type="Position2D" parent="."]
 position = Vector2( -516, -640 )
@@ -263,7 +265,7 @@ texture = ExtResource( 16 )
 
 [node name="moneygirl" parent="NPCs" instance=ExtResource( 10 )]
 position = Vector2( 804, 284 )
-scale = Vector2( -4, 4 )
+is_flipped = true
 
 [node name="Surprised" parent="NPCs" instance=ExtResource( 17 )]
 position = Vector2( 808, 220 )
@@ -271,5 +273,6 @@ position = Vector2( 808, 220 )
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 [node name="camera" parent="player" instance=ExtResource( 5 )]
+zoom = Vector2( 1.2, 1.2 )
 
 [node name="Shaders" type="Node2D" parent="."]

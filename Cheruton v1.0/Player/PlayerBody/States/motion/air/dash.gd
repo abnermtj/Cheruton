@@ -2,7 +2,7 @@ extends airState
 
 const INITIAL_SPEED = 5000
 const MIN_SPEED = 200
-const OFFSET_FROM_SWORD_POS = 65
+const OFFSET_FROM_SWORD_POS = 72
 const INITIAL_STAGE_TIME = .1
 
 enum stages{INITIAL = 1, MID_DASH = 2, END =3 }
@@ -24,6 +24,8 @@ func enter():
 	goal_pos = owner.sword_pos + OFFSET_FROM_SWORD_POS * normal
 
 	owner.play_anim("dash")
+	owner.play_sound("dash")
+	owner.play_sound("land_dirt_soft1")
 	owner.timers.get_node("ghostTimer").start(.05)
 	owner.body_pivot.material = color_shader
 	stage = stages.INITIAL
@@ -42,7 +44,7 @@ func update(delta):
 				owner.velocity =  (goal_pos - owner.global_position).normalized() * INITIAL_SPEED
 				stage = stages.MID_DASH
 				owner.emit_dust("dash")
-
+	
 		stages.MID_DASH:
 			owner.velocity = (goal_pos - owner.global_position).normalized() * owner.velocity.length()
 			if owner.velocity.length() > 500:

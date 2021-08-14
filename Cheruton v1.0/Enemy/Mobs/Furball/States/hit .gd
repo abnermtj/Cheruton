@@ -12,10 +12,10 @@ func enter():
 	owner.display_damage(owner.damage)
 	owner.play_hit_effect()
 	owner.health -= owner.damage
-
 	owner.play_anim("hit")
 	owner.play_anim_fx("hit")
-
+	owner.play_sound("hit" + str(randi()%4+1))
+	
 	var obj_pos = owner.hitter_pos
 	move_dir = (owner.global_position - obj_pos ).normalized()
 	owner.shake_camera(.07, 20.0, 42, -move_dir) # dur, freq, amp, dir

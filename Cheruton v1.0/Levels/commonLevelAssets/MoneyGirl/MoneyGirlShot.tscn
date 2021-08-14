@@ -65,4 +65,5 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
 shape = SubResource( 3 )
+
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurtBox_area_entered"]

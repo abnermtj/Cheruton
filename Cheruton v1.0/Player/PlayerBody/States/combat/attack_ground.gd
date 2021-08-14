@@ -33,15 +33,18 @@ func enter():
 			1:
 				owner.velocity = Vector2(owner.look_direction.x*GROUND_SPEED_H_1,500)
 				owner.play_anim("attack_ground_1")
+				owner.play_sound("basic_attack1")
 
 			2:
 				owner.velocity = Vector2(input_dir.x*GROUND_SPEED_H_2, 500)
 				owner.play_anim("attack_ground_2")
+				owner.play_sound("basic_attack2")
 
 			3:
 				owner.velocity = Vector2(input_dir.x*GROUND_SPEED_H_3, 5)
 
 				owner.play_anim("attack_ground_3")
+				owner.play_sound("basic_attack3")
 				if input_dir.x:
 					owner.play_anim_fx("attack_ground_3")
 
@@ -55,16 +58,19 @@ func enter():
 			1:
 				owner.velocity.x = owner.look_direction.x*AIR_SPEED_H_1
 				owner.play_anim("attack_air_1")
+				owner.play_sound("basic_attack1")
 			2:
 				owner.velocity.x = input_dir.x*AIR_SPEED_H_2
 
 				owner.play_anim("attack_air_2")
 				owner.play_anim_fx("attack_air_2")
+				owner.play_sound("basic_attack3")
 			3:
 				owner.velocity.x = input_dir.x*AIR_SPEED_H_3
 
 				owner.play_anim("attack_air_3")
 				owner.play_anim_fx("attack_air_3")
+				owner.play_sound("basic_attack2")
 
 				owner.can_attack = false
 

@@ -10,6 +10,7 @@ size = 30
 font_data = ExtResource( 4 )
 
 [node name="ExpBar" type="Control"]
+visible = false
 margin_right = 200.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 200, 50 )

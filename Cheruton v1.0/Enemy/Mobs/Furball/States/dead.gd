@@ -13,6 +13,8 @@ func enter():
 	owner.shake_camera(.08, 20.0, 64, -move_dir)
 	owner.play_anim("die")
 	get_tree().paused = false
+	owner.play_sound("death")
+	owner.play_sound("hit1")
 
 	owner.velocity.x =  SPEED * move_dir.x
 

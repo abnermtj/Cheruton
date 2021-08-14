@@ -220,4 +220,5 @@ anims/mmenu_in = SubResource( 1 )
 anims/mmenu_out = SubResource( 2 )
 anims/scene_in = SubResource( 3 )
 anims/scene_out = SubResource( 4 )
+
 [connection signal="animation_finished" from="SceneChange" to="." method="_on_SceneChange_animation_finished"]

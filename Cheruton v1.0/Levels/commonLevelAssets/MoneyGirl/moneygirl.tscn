@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/moneygirl.gd" type="Script" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/22fps_limitPallete_PIL_HomeTown_NPC_moneygirl.png" type="Texture" id=2]
 [ext_resource path="res://Effects/Outline/outline.shader" type="Shader" id=3]
 [ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sprites/Moneygirl_staff_explode.png" type="Texture" id=4]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sounds/poke.wav" type="AudioStream" id=5]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sounds/ChargeStaff.wav" type="AudioStream" id=6]
+[ext_resource path="res://Levels/commonLevelAssets/MoneyGirl/Sounds/Cast.wav" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -11,7 +14,6 @@ shader_param/width = 0.0
 shader_param/outline_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/lighttest.png-dd86ab63643f5d4d2b49d5c7785fbfcd.stex"
 
 [sub_resource type="Animation" id=3]
 length = 0.08
@@ -180,7 +182,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=6]
 length = 1.12
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -231,7 +233,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=7]
 length = 1.16
 loop = true
 tracks/0/type = "value"
@@ -283,7 +285,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=8]
 length = 0.36
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -348,7 +350,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=9]
 length = 0.64
 loop = true
 step = 0.02
@@ -413,7 +415,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=10]
 length = 0.64
 loop = true
 tracks/0/type = "value"
@@ -464,8 +466,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( 7, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ), Vector2( -1, 15 ) ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("sounds/poke")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=11]
 length = 0.16
 tracks/0/type = "value"
 tracks/0/path = NodePath("bodyRotate/Sprite:region_rect")
@@ -655,6 +671,24 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/7/type = "audio"
+tracks/7/path = NodePath("sounds/fire")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0.33723, 0.91871 )
+}
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 32.5, 12.5 )
@@ -673,13 +707,13 @@ material = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 7, 15 )
 region_enabled = true
-region_rect = Rect2( 307, 151, 32, 48 )
+region_rect = Rect2( 201, 101, 32, 48 )
 
 [node name="Sprite2" type="Sprite" parent="bodyRotate"]
 texture = ExtResource( 2 )
 offset = Vector2( 7, 15 )
 region_enabled = true
-region_rect = Rect2( 307, 151, 32, 48 )
+region_rect = Rect2( 201, 101, 32, 48 )
 
 [node name="staffPos" type="Position2D" parent="bodyRotate"]
 position = Vector2( 24, 19.9741 )
@@ -706,12 +740,12 @@ method_call_mode = 1
 anims/blink = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/idle2 = SubResource( 5 )
-anims/idle3 = SubResource( 15 )
-anims/idle4 = SubResource( 16 )
-anims/jump = SubResource( 17 )
-anims/on_broom_idle = SubResource( 18 )
-anims/poke = SubResource( 19 )
-anims/staff_jump_switch = SubResource( 20 )
+anims/idle3 = SubResource( 6 )
+anims/idle4 = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/on_broom_idle = SubResource( 9 )
+anims/poke = SubResource( 10 )
+anims/staff_jump_switch = SubResource( 11 )
 anims/turn_around = SubResource( 12 )
 
 [node name="AnimationPlayerStaff" type="AnimationPlayer" parent="."]
@@ -721,3 +755,11 @@ anims/Staff = SubResource( 13 )
 visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 14 )
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="poke" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 5 )
+
+[node name="fire" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 6 )

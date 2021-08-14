@@ -5,29 +5,39 @@ onready var cut_scene_player = $CutScenePlayer
 
 var cur_cut_scene_completed = false
 var flying_sword
+var prev_bg_volume = 0
 
 func _ready():
-	bg_music_file = "res://Music/Background/Chiptune _-Clavi, Wurly & CP-(Album) _Every Morning_.wav"
+	bg_music_file = "res://Music/Background/Relax.mp3"
 	story_file = "res://Levels/Grasslands0/Stories/Baked/Grasslands0Dialog.tres"
-
+	
 	entrace_to_pos_dict = {0: Vector2(-200, 188),\
 							1: Vector2(7866 ,2552)}
 	if not enter_point: enter_point = 0
 	player_spawn_pos = entrace_to_pos_dict[enter_point] # enter point set by scene control
+	DataResource.change_health(100)
+	
 
-	#debug
-	player.set_isInputEnabled(true)
-	player.set_attack_enabled(true)
-	player.level = self
-	find_node("flyingSword").level = self
-
-	player_spawn_pos = Vector2(3340, 964)
-	cur_cut_scene_completed = true
-	cutscene_number = 2 # cutscene
-	cutscene_index = 0 #
-	########
-
-#	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
+	cur_cut_scene_completed = DataResource.dict_player.completed_cutscenes["grasslands0_0"]
+	
+	
+#	#debug
+#	player.set_isInputEnabled(true)
+#	player.set_attack_enabled(false)
+#	player.level = self
+##	find_node("flyingSeword").level = self
+#
+#	player_spawn_pos = Vector2(3340, 964) # middle
+#	player_spawn_pos = Vector2(5340, 964) # middle right
+#	player_spawn_pos = Vector2(3640, -2000) #top 
+#	player_spawn_pos = Vector2(7700, 2400) #bottom right 
+#	cur_cut_scene_completed = true
+#	cutscene_number = 2 # cutscene
+#	cutscene_index = 0 #
+#	SceneControl.change_story(story_file)
+#	########
+	
+	
 	if not cur_cut_scene_completed:
 		cutscene_number = 0 # cutscene
 		cutscene_index = 0 # specific part of cutscene (separated by dialog etc)
@@ -132,3 +142,10 @@ func on_sword_result(result, vector1, vector2):
 
 func _on_Exit0_area_entered(area):
 	SceneControl.change_scene(self, "res://Levels/Grasslands2/Grasslands2.tscn")
+	
+func silence_bgm():
+	prev_bg_volume = bg_music_stream.volume_db
+	$AudioTween.interpolate_property(bg_music_stream,"volume_db", bg_music_stream.volume_db, -80, 1.5, Tween.EASE_IN, 0)	
+
+func restore_bgm():
+	$AudioTween.interpolate_property(bg_music_stream,"volume_db", bg_music_stream.volume_db, prev_bg_volume, 1, Tween.EASE_IN, 0)	

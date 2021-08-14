@@ -231,7 +231,6 @@ func handle_duplicates(action_assigned, conflicting_action):
 func clear_duplicates(action_assigned):
 	var update_duplicates = false
 	var duplicate_size = key_duplicates.size()
-	print(1)
 	for i in duplicate_size:
 		if(key_duplicates[i].has(action_assigned)):
 			key_duplicates[i].erase(action_assigned)

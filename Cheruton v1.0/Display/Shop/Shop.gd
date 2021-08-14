@@ -72,7 +72,6 @@ func _on_Buy_pressed():
 		tabs.hide()
 		set_state("Buy")
 		check_fixed()
-	print("Ok")
 
 #Sell Option Set
 func _on_Sell_pressed():

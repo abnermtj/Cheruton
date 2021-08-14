@@ -2,6 +2,7 @@
 extends Node2D
 class_name Level
 
+var bg_music_stream
 var bg_music_file
 var story_file
 var player

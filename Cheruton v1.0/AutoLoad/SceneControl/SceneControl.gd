@@ -5,7 +5,6 @@ const WHITE = Color(1,1,1,1)
 
 enum item{TYPE = 0, NAME = 1, AMOUNT = 2}
 
-
 onready var beam = preload("res://Display/MouseDesign/beam.png")
 onready var mmenu_music_file = preload("res://Music/Background/Time Trip.wav")
 
@@ -23,6 +22,7 @@ onready var scene_modulate = $LoadLayer/Load/SceneModulate
 var cur_story
 var cur_dialog
 
+var prev_scene_path
 var curr_scene
 var loot_dict = {} # Items pending transfer to inventory
 var enable_save := false
@@ -64,10 +64,14 @@ func change_music(new_music):
 	bg_music.play()
 
 func change_scene(old_scene : Node, new_scene : String):
+	if(prev_scene_path == new_scene):
+		return 
+	prev_scene_path = new_scene	
 	get_tree().paused = true
+	
 	old_level = old_scene
 	new_level = load(new_scene).instance()
-
+	
 	if(old_scene.name == "MainMenu"):
 		scene_change.play("mmenu_out")
 	else:
@@ -96,8 +100,9 @@ func swap_scenes():
 		SceneControl.hud_elements.show()
 		#cur_level = new_level
 		levels.add_child(new_level)
-		new_music = levels.get_child(0).bg_music_file
-		change_story(levels.get_child(0).story_file)
+		new_level.bg_music_stream = $BgMusic
+		new_music = new_level.bg_music_file
+		change_story(new_level.story_file)
 		if(new_music):
 			new_music = load(new_music)
 		change_music(new_music)
@@ -203,7 +208,7 @@ func _input(_ev):
 #########
 func change_story(story): # a collection of dialogs
 	if not story: return
-
+	
 	cur_story = story
 	pop_up_gui.get_node("popUps/dialog").load_story(cur_story)
 

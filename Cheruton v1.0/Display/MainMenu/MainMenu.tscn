@@ -311,6 +311,7 @@ wait_time = 0.8
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 100, 100, 100, 1 )
+
 [connection signal="animation_finished" from="Bg/Cheruton/Player" to="." method="_on_Player_animation_finished"]
 [connection signal="mouse_entered" from="Bg/Options/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="pressed" from="Bg/Options/VBoxContainer/Play" to="." method="_on_Play_pressed"]

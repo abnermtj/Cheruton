@@ -665,6 +665,7 @@ bus = "SFX"
 [node name="Trash" type="AudioStreamPlayer" parent="MusicNodes"]
 stream = ExtResource( 17 )
 bus = "SFX"
+
 [connection signal="visibility_changed" from="." to="." method="_on_Inventory_visibility_changed"]
 [connection signal="pressed" from="Border/Bg/Main/Header/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Border/Bg/Main/Sides/Data/TextureRect/ButtonUse" to="." method="_on_ButtonUse_pressed"]

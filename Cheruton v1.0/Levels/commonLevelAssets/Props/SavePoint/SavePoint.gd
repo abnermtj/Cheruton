@@ -13,3 +13,5 @@ func save():
 
 	$rotate.scale.x = scale.x # so that the text pop up doesn't flip along with the sprite
 	$AnimationPlayer.play("saved")
+	$AudioStreamPlayer.play();
+	

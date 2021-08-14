@@ -38,7 +38,7 @@ func enter() -> void:
 	owner.velocity.y = JUMP_VEL
 	owner.play_anim("jump")
 	owner.play_anim_fx("jump")
-	owner.play_sound("jump")
+	owner.play_sound("jump" + str(randi()%7+1))
 	owner.camera_state = owner.CAMERA_STATES.AIR
 
 	if owner.bounce_boost:

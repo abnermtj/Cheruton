@@ -15,7 +15,6 @@
 [ext_resource path="res://Levels/commonLevelAssets/Props/bouncePad/bouncePad.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/commonLevelAssets/Props/fallingPlatforms/fallingPlatform.tscn" type="PackedScene" id=14]
 
-
 [node name="Grasslands1" type="Node2D"]
 script = ExtResource( 1 )
 

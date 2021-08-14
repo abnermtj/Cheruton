@@ -8,7 +8,7 @@ var flying_sword
 
 func _ready():
 	camera.current = true
-#	bg_music_file = "res://Sound/MusicDebug/Frantic-Gameplay.ogg"
+	bg_music_file = "res://Music/Background/Relax.mp3"
 	story_file = "res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres"
 	entrace_to_pos_dict = {0: Vector2(-404, 252)}
 
@@ -54,6 +54,8 @@ func _process(delta):
 		next_cutscene()
 		wait_dialog_complete = false
 
+func turn_npc_player():
+	$NPCs/moneygirl.face_player(player.global_position)
 #
 #func _input(event):
 #	if Input.is_action_just_pressed("reset"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=110 format=2]
 
 [ext_resource path="res://Player/PlayerBody/States/motion/ground/idle.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerBody/States/motion/air/hook.gd" type="Script" id=2]
@@ -18,6 +18,32 @@
 [ext_resource path="res://Effects/White/blinkWhite.tres" type="Material" id=16]
 [ext_resource path="res://Player/PlayerBody/Sprites/MC_General.png" type="Texture" id=17]
 [ext_resource path="res://Player/PlayerBody/States/motion/ground/slide_curve.tres" type="Curve" id=18]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_02.wav" type="AudioStream" id=19]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_06.wav" type="AudioStream" id=20]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_01.wav" type="AudioStream" id=21]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_01.wav" type="AudioStream" id=22]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_07.wav" type="AudioStream" id=23]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_06.wav" type="AudioStream" id=24]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_05.wav" type="AudioStream" id=25]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_04.wav" type="AudioStream" id=26]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_04.wav" type="AudioStream" id=27]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_03.wav" type="AudioStream" id=28]
+[ext_resource path="res://Player/PlayerBody/Sounds/platform_unit_return_03.wav" type="AudioStream" id=29]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_05.wav" type="AudioStream" id=30]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_soft_02.wav" type="AudioStream" id=31]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_01.wav" type="AudioStream" id=32]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_02.wav" type="AudioStream" id=33]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_06.wav" type="AudioStream" id=34]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_05.wav" type="AudioStream" id=35]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_07.wav" type="AudioStream" id=36]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_04.wav" type="AudioStream" id=37]
+[ext_resource path="res://Player/PlayerBody/Sounds/debris_dirt_hard_03.wav" type="AudioStream" id=38]
+[ext_resource path="res://Player/PlayerBody/Sounds/Natural_Whoosh_2.wav" type="AudioStream" id=39]
+[ext_resource path="res://Player/PlayerBody/Sounds/Natural_Whoosh_1.wav" type="AudioStream" id=40]
+[ext_resource path="res://Player/PlayerBody/Sounds/Natural_Whoosh_3.wav" type="AudioStream" id=41]
+[ext_resource path="res://Player/PlayerBody/Sounds/dash.wav" type="AudioStream" id=42]
+[ext_resource path="res://Player/PlayerBody/Sounds/hook.wav" type="AudioStream" id=43]
+[ext_resource path="res://Player/PlayerBody/Sounds/slide_down.wav" type="AudioStream" id=44]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120, 120 )
@@ -2005,6 +2031,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="stateNameDisplay" type="Label" parent="."]
+visible = false
 margin_left = -44.8912
 margin_top = -83.7137
 margin_right = -6.89124
@@ -2255,7 +2282,32 @@ shape = SubResource( 65 )
 
 [node name="sounds" type="Node" parent="."]
 
-[node name="jump" type="AudioStreamPlayer" parent="sounds"]
+[node name="jump1" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 22 )
+volume_db = -10.0
+
+[node name="jump2" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 19 )
+volume_db = -10.0
+
+[node name="jump3" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 29 )
+volume_db = -10.0
+
+[node name="jump4" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 27 )
+volume_db = -10.0
+
+[node name="jump5" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 25 )
+volume_db = -10.0
+
+[node name="jump6" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 20 )
+volume_db = -10.0
+
+[node name="jump7" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 23 )
 volume_db = -10.0
 
 [node name="hook_bad" type="AudioStreamPlayer" parent="sounds"]
@@ -2268,13 +2320,73 @@ volume_db = 0.77
 volume_db = -80.0
 
 [node name="hook_hit" type="AudioStreamPlayer" parent="sounds"]
-volume_db = -10.0
+stream = ExtResource( 43 )
 
-[node name="land" type="AudioStreamPlayer" parent="sounds"]
+[node name="land_dirt_soft1" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 21 )
 volume_db = -25.0
 
-[node name="slide" type="AudioStreamPlayer" parent="sounds"]
-volume_db = -3.0
+[node name="land_dirt_soft2" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 31 )
+volume_db = -25.0
+
+[node name="land_dirt_soft3" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 28 )
+volume_db = -25.0
+
+[node name="land_dirt_soft4" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 26 )
+volume_db = -25.0
+
+[node name="land_dirt_soft5" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 30 )
+volume_db = -25.0
+
+[node name="land_dirt_soft6" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 24 )
+volume_db = -25.0
+
+[node name="wall_slide_fast" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 44 )
+volume_db = 5.0
+
+[node name="wall_slide" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 21 )
+
+[node name="land_dirt_hard1" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 32 )
+
+[node name="land_dirt_hard2" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 33 )
+
+[node name="land_dirt_hard3" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 38 )
+
+[node name="land_dirt_hard4" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 37 )
+
+[node name="land_dirt_hard5" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 35 )
+
+[node name="land_dirt_hard6" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 34 )
+
+[node name="land_dirt_hard7" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 36 )
+
+[node name="basic_attack1" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 40 )
+
+[node name="basic_attack2" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 39 )
+
+[node name="basic_attack3" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 41 )
+
+[node name="dash" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 42 )
+pitch_scale = 1.8
+
 [connection signal="animation_changed" from="AnimationPlayer" to="states" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="stateChanged" from="states" to="." method="_on_states_stateChanged"]
 [connection signal="timeout" from="timers/attackCoolDown" to="." method="_on_attackCoolDown_timeout"]

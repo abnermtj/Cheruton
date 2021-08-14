@@ -16,5 +16,6 @@ position = Vector2( 8, 56 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_Scene0_0_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Scene0_0_body_exited"]

@@ -12,6 +12,7 @@ onready var body_rot = $bodyPivot/bodyRotate
 onready var body_pivot = $bodyPivot
 onready var hit_box = $hitBox
 onready var attack_area = $attackRangeArea
+onready var sound_parent = $sounds
 
 onready var initial_pos = global_position
 onready var dust = preload("res://Effects/Dust/JumpDust/jumpDust.tscn")
@@ -24,7 +25,7 @@ var hitter : Node
 var hitter_pos : Vector2
 
 func _ready():
-	health = 15
+	health = 25
 	health_bar.init_bar(health)
 
 	if start_flipped:
@@ -76,3 +77,7 @@ func play_hit_effect():
 
 func _on_followArea_body_exited(body):
 	return_to_default = true
+	
+func play_sound(string : String):
+	sound_parent.get_node(string).play()
+	pass

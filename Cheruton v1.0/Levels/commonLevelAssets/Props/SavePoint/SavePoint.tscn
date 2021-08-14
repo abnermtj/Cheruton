@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Levels/commonLevelAssets/Props/SavePoint/SavePoint.gd" type="Script" id=2]
 [ext_resource path="res://Levels/Grasslands0/Sprites/circleLight.png" type="Texture" id=3]
 [ext_resource path="res://Levels/commonLevelAssets/Props/SavePoint/Sprites/SavePopUp - Base.png" type="Texture" id=4]
 [ext_resource path="res://Levels/commonLevelAssets/Props/SavePoint/Sprites/Props-Savepoint.png" type="Texture" id=5]
+[ext_resource path="res://Levels/commonLevelAssets/Props/SavePoint/Sprites/Sound/SFX_UI_Saved.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -211,4 +212,8 @@ text = "Game  Saved"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
 [connection signal="body_entered" from="." to="." method="_on_SavePoint_body_entered"]

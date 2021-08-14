@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Display/Pause/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Display/Pause/Sprites/Slots/HorizontalTabSelect.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Display/Pause/Sprites/Slots/HorizontalTabDeSelect.png" type="Texture" id=5]
 [ext_resource path="res://Display/Font/eight-bit-dragon.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Display/Font/UAV-OSD-Mono-13.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Display/Pause/sound/SFX_UI_Resume.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Display/Pause/sound/SFX_UI_Pause.mp3" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -167,6 +169,13 @@ texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Resume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Pause" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/RMMenu" to="." method="_on_RMMenu_pressed"]
 [connection signal="pressed" from="Border/Rectangle/VBoxContainer/Buttons/Buttons/ExitDirect" to="." method="_on_ExitDirect_pressed"]

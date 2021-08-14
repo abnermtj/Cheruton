@@ -18,40 +18,18 @@ story = {
 "links": {
 0: 3
 },
-"text": "<speaker>Elena</speaker>
-<dialog>I wonder when they'll...</dialog>"
+"text": " <speaker>Elena</speaker>
+<dialog>I'll stay here for a while.</dialog>"
 },
 3: {
 "links": {
 0: 4
 },
-"text": " <speaker>Elena</speaker>
-<dialog>Oo, another adventurer!</dialog>"
+"text": "<speaker>Elena</speaker>
+<dialog>Go ahead and explore first!  </dialog>"
 },
 4: {
 "links": {
-0: 5
-},
-"text": "<speaker>Elena</speaker>
-<dialog>Welcome to Laspla!</dialog>"
-},
-5: {
-"links": {
-0: 6
-},
-"text": "<speaker>Elena</speaker>
-<dialog>If you're looking for work, I heard the Guildhouse has some quests.</dialog>"
-},
-6: {
-"links": {
-0: 7
-},
-"text": "<speaker>Elena</speaker>
-<dialog>This cat? Oh, Iggy doesn't bite.</dialog>"
-},
-7: {
-"links": {
-
 },
 "text": "<end>"
 }
@@ -74,7 +52,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -118,7 +95,6 @@ story = {
 },
 6: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -155,7 +131,6 @@ story = {
 },
 5: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -192,7 +167,6 @@ story = {
 },
 5: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -215,7 +189,6 @@ story = {
 },
 3: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -266,7 +239,6 @@ story = {
 },
 7: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -302,7 +274,6 @@ story = {
 },
 5: {
 "links": {
-
 },
 "text": "<speaker>Nylah</speaker>
 <dialog>...</dialog>"
@@ -333,7 +304,6 @@ story = {
 },
 4: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -363,7 +333,6 @@ story = {
 },
 4: {
 "links": {
-
 },
 "text": "<end>"
 }
@@ -393,7 +362,6 @@ story = {
 },
 4: {
 "links": {
-
 },
 "text": "<end>"
 }

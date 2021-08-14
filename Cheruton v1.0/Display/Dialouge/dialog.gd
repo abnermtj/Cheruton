@@ -21,7 +21,7 @@ func _ready():
 	var story_reader_class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	story_reader = story_reader_class.new()
 
-	load_story("res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres") # for debuging
+#	load_story("res://Levels/Grasslands2/Stories/Baked/Grasslands2Dialog.tres") # for debuging 
 
 	dialogue_base.rect_scale = Vector2(0,1)
 	dialogue_text.percent_visible = 1
@@ -36,6 +36,7 @@ func begin():
 
 func load_story(path : String): # LOAD COLLECTION OF ALL DIALOGS IN THAT MAP
 	var story = load(path)
+	print(path)
 	story_reader.read(story)
 
 func start_dialog(record_name : String): # SPECIFIC DIALOG

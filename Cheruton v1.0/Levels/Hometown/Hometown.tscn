@@ -261,11 +261,14 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 2, 2.89204 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ 0.1, 20.0, 40.0, Vector2( 0, 0 ) ],
 "method": "shake_camera"
+}, {
+"args": [  ],
+"method": "next_scene"
 } ]
 }
 tracks/8/type = "value"
@@ -287,7 +290,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( -0.0152704, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -1062,7 +1065,8 @@ modulate = Color( 0.28, 0.9, 1.19, 1 )
 show_behind_parent = true
 light_mask = 0
 position = Vector2( 0, 8 )
-scale = Vector2( 1e-05, 1e-05 )
+rotation = 0.617559
+scale = Vector2( 0.197681, 0.197681 )
 texture = ExtResource( 37 )
 
 [node name="roarStart" type="Sprite" parent="homeTownPortal"]
@@ -1257,7 +1261,7 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingsDay/House5/StaticBody2D"]
-position = Vector2( -2, 0 )
+position = Vector2( -1.95044, 0.94252 )
 shape = SubResource( 15 )
 one_way_collision = true
 
@@ -1271,6 +1275,31 @@ region_rect = Rect2( 1742, 303, 260, 97 )
 __meta__ = {
 "_editor_description_": " "
 }
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BuildingsDay/House6"]
+position = Vector2( -85.8083, -20.7318 )
+rotation = -0.308425
+scale = Vector2( 0.4, 0.5 )
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingsDay/House6/StaticBody2D2"]
+position = Vector2( -1.95044, 0.94252 )
+shape = SubResource( 15 )
+one_way_collision = true
+one_way_collision_margin = 0.5
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="BuildingsDay/House6"]
+position = Vector2( -12.9846, -20.9967 )
+rotation = 0.313949
+scale = Vector2( 0.35, 1 )
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingsDay/House6/StaticBody2D3"]
+position = Vector2( -1.95044, 0.94252 )
+shape = SubResource( 15 )
+one_way_collision = true
 
 [node name="House4" type="Sprite" parent="BuildingsDay"]
 light_mask = 0
@@ -1293,7 +1322,7 @@ shape = SubResource( 16 )
 one_way_collision = true
 
 [node name="Props" parent="." instance=ExtResource( 34 )]
-tile_data = PoolIntArray( -655071, 4, 0, 131565, 4, 0, 328102, 17, 0, 393888, 4, 0, 524626, 18, 0, 524638, 20, 0, 524646, 19, 0, 786438, 19, 0, 786454, 19, 0, 786510, 19, 0, 918073, 5, 0, 1049046, 18, 0, 1310868, 19, 0, 1310870, 10, 0, 1311373, 23, 0, 1311453, 11, 0, 1573365, 19, 0, 1573401, 19, 0, 1573487, 19, 0, 1573523, 19, 0, 1573540, 15, 0, 1573552, 19, 0, 1573559, 18, 0, 1573608, 18, 0, 1704528, 14, 0, 1704617, 14, 0 )
+tile_data = PoolIntArray( -655071, 4, 0, 131565, 4, 0, 328102, 17, 0, 393888, 4, 0, 524626, 18, 0, 524638, 20, 0, 524646, 19, 0, 786438, 19, 0, 786454, 19, 0, 786510, 19, 0, 918073, 5, 0, 1049046, 18, 0, 1310868, 19, 0, 1310870, 10, 0, 1311373, 23, 0, 1573365, 19, 0, 1573401, 19, 0, 1573487, 19, 0, 1573523, 19, 0, 1573540, 15, 0, 1573552, 19, 0, 1573559, 18, 0, 1573608, 18, 0, 1573611, 10, 0, 1704528, 14, 0, 1704617, 14, 0 )
 
 [node name="Hometown_checkpoint_stands" type="Sprite" parent="."]
 position = Vector2( 3224, 352 )
@@ -1321,6 +1350,7 @@ transform = Transform2D( 2, 0, 0, 2, 0, -750 )
 
 [node name="grapplePoints" type="Node2D" parent="."]
 visible = false
+position = Vector2( 11.3137, -254.558 )
 
 [node name="grapplePoint0" parent="grapplePoints" instance=ExtResource( 6 )]
 position = Vector2( 5701.91, -81.9597 )
@@ -1418,7 +1448,6 @@ position = Vector2( 0, -160 )
 limit_left = -9999
 limit_top = -880
 limit_right = 9999
-offset_v = -1.0
 drag_margin_top = 0.3
 drag_margin_bottom = 0.3
 
@@ -1495,7 +1524,7 @@ motion_scale = Vector2( 1.1, 1.1 )
 motion_offset = Vector2( 0, -60 )
 
 [node name="Sprite" type="Sprite" parent="ForegroundParralax/fence"]
-position = Vector2( -139.62, 59.1336 )
+position = Vector2( -139.62, 125 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 39 )
 region_enabled = true
@@ -1509,7 +1538,7 @@ motion_offset = Vector2( 0, -80 )
 
 [node name="Sprite" type="Sprite" parent="ForegroundParralax/fence2"]
 light_mask = 0
-position = Vector2( 15002.6, 307.153 )
+position = Vector2( 15002.6, 360 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 39 )
 region_enabled = true
@@ -1626,4 +1655,5 @@ tile_set = SubResource( 40 )
 collision_layer = 161
 collision_mask = 0
 format = 1
+
 [connection signal="body_entered" from="PortalEnter" to="." method="_on_Area2D_body_entered"]

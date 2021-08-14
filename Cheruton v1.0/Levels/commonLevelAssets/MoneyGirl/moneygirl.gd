@@ -4,6 +4,7 @@ extends StaticNPC
 
 onready var anim_player = $AnimationPlayer
 onready var magic_shot = preload("res://Levels/commonLevelAssets/MoneyGirl/MoneyGirlShot.tscn")
+onready var sound_parent = $sounds
 
 func _ready():
 	._ready()
@@ -45,3 +46,10 @@ func instance_magic_shot():
 	instance.level = level
 
 	level.add_child(instance)
+	
+func play_sound(string : String):
+	sound_parent.get_node(string).play()
+	pass
+
+func face_player(player_pos : Vector2):
+	scale.x = sign(player_pos.x - global_position.x) * 4

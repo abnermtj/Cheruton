@@ -20,7 +20,7 @@ names = {
 }
 story = {
 1: {
-"available_nid": [  ],
+"available_nid": [ 5, 6, 7 ],
 "groups": [  ],
 "human_readable_description": "initial",
 "name": "moneygirl",
@@ -36,14 +36,14 @@ story = {
 "type": "line"
 },
 2: {
-"graph_offset": Vector2( -140, -249 ),
+"graph_offset": Vector2( 120, -280 ),
 "links": {
 0: 3
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": "<speaker>Elena</speaker>
-<dialog>I wonder when they'll...</dialog>",
+"text": " <speaker>Elena</speaker>
+<dialog>I'll stay here for a while.</dialog>",
 "type": "line"
 },
 3: {
@@ -53,47 +53,13 @@ story = {
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
-"text": " <speaker>Elena</speaker>
-<dialog>Oo, another adventurer!</dialog>",
+"text": "<speaker>Elena</speaker>
+<dialog>Go ahead and explore first!  </dialog>",
 "type": "line"
 },
 4: {
-"graph_offset": Vector2( 780, -420 ),
+"graph_offset": Vector2( 760, -520 ),
 "links": {
-0: 5
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "<speaker>Elena</speaker>
-<dialog>Welcome to Laspla!</dialog>",
-"type": "line"
-},
-5: {
-"graph_offset": Vector2( 820, -180 ),
-"links": {
-0: 6
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "<speaker>Elena</speaker>
-<dialog>If you're looking for work, I heard the Guildhouse has some quests.</dialog>",
-"type": "line"
-},
-6: {
-"graph_offset": Vector2( 820, 120 ),
-"links": {
-0: 7
-},
-"rect_size": Vector2( 324, 137 ),
-"slot_amount": 1,
-"text": "<speaker>Elena</speaker>
-<dialog>This cat? Oh, Iggy doesn't bite.</dialog>",
-"type": "line"
-},
-7: {
-"graph_offset": Vector2( 2560, 460 ),
-"links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -132,7 +98,6 @@ story = {
 3: {
 "graph_offset": Vector2( 731.373, -256 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -204,7 +169,6 @@ story = {
 6: {
 "graph_offset": Vector2( 2640, 40 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -265,7 +229,6 @@ story = {
 5: {
 "graph_offset": Vector2( 720, 360 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -326,7 +289,6 @@ story = {
 5: {
 "graph_offset": Vector2( 2040, -300 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -365,7 +327,6 @@ story = {
 3: {
 "graph_offset": Vector2( 1120, -540 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -448,7 +409,6 @@ story = {
 7: {
 "graph_offset": Vector2( 3820, -380 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -508,7 +468,6 @@ story = {
 5: {
 "graph_offset": Vector2( 2520, 60 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -559,7 +518,6 @@ story = {
 4: {
 "graph_offset": Vector2( 1820, 40 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -609,7 +567,6 @@ story = {
 4: {
 "graph_offset": Vector2( 1980, -140 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
@@ -659,7 +616,6 @@ story = {
 4: {
 "graph_offset": Vector2( 1120, -220 ),
 "links": {
-
 },
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,

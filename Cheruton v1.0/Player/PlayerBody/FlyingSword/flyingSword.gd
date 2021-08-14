@@ -15,6 +15,9 @@ onready var bodyRotation = $bodyRotation
 onready var sprite = $bodyRotation/Sprite
 onready var hurt_box_col = $hurtBox/CollisionShape2D
 onready var hit_particles = preload("res://Player/PlayerBody/FlyingSword/HitParticles.tscn")
+onready var fly_audio = $FlyAudio
+onready var hit_audio = $HitAudio
+onready var return_audio = $ReturnAudio
 
 var player : Node
 var level : Node
@@ -39,18 +42,17 @@ func _ready():
 	bodyRotation.hide()
 	state = sword_states.HIDDEN
 	angular_velocity = SPIN_SPEED
-
+	fly_audio.pitch_scale = SPIN_SPEED;
 	$hurtBox.obj = self
 	add_to_group("needs_player_ref")
 	add_to_group("needs_level_ref")
 
 func _on_flyingSword_command(command, arg):
 	bodyRotation.show()
-
+	animation_player.play("air")
 	if command == 0:
-		animation_player.play("air")
 		set_collision_mask_bit(0,1)
-
+		fly_audio.play();
 
 		global_position = player.global_position + 24 * player.look_direction
 		active = true
@@ -63,7 +65,7 @@ func _on_flyingSword_command(command, arg):
 	elif command == 1: # player orders return
 		state = sword_states.RETURN
 	elif command == 2: # cut scene special return to hand
-		animation_player.play("air")
+		fly_audio.play();
 		state = sword_states.RETURN
 		bodyRotation.position += Vector2(-40, -80) # hand of player
 
@@ -87,7 +89,6 @@ func _physics_process(delta):
 		sword_states.SHOOT:
 			hurt_box_col.disabled = false
 			bodyRotation.rotate(angular_velocity)
-
 			air_timer -= delta
 			if air_timer < 0 :
 				state = sword_states.RETURN
@@ -111,7 +112,9 @@ func _physics_process(delta):
 				animation_player.play("stuck")
 				emit_dust("hit")
 				level.shake_camera(.06, 13.2, 16, -col_normal)
-
+				fly_audio.stop()
+				hit_audio.play()
+				
 				state = sword_states.HIT
 				emit_signal("sword_result", 0, global_position, col_normal)
 
@@ -147,6 +150,9 @@ func _physics_process(delta):
 
 			if (global_position - cur_player_pos).length() < 70:
 				state = sword_states.HIDDEN
+				fly_audio.stop()
+				return_audio.play()
+				
 			emit_signal("sword_result", 1, Vector2(), Vector2())
 
 		sword_states.HIDDEN:

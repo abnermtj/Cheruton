@@ -21,6 +21,10 @@ func enter():
 	gravity_strength = GRAVITY_STRENGTH_MIN
 	grip_timer = GRIP_TIME
 	owner.play_anim("wall_slide")
+	owner.play_sound("wall_slide")
+	
+	if (owner.velocity.length() > 800):
+		owner.play_sound("wall_slide_fast")
 
 
 func update(delta):
