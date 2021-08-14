@@ -179,7 +179,7 @@ cast_to = Vector2( -53, 720 )
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( 100.907, -77.1101 )
 enabled = true
-cast_to = Vector2( 500, 300 )
+cast_to = Vector2( 440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg1"]
 position = Vector2( 305.641, 160.441 )
@@ -200,9 +200,9 @@ enabled = true
 cast_to = Vector2( 53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg2"]
-position = Vector2( -109.138, -21.128 )
+position = Vector2( -36, -82 )
 enabled = true
-cast_to = Vector2( -500, 300 )
+cast_to = Vector2( -440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg2"]
 position = Vector2( -336.115, 332.144 )
@@ -225,10 +225,10 @@ enabled = true
 cast_to = Vector2( -53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="ALegs/leg3"]
-position = Vector2( 159.198, -52.4726 )
+position = Vector2( 124.198, -60.4726 )
 enabled = true
 exclude_parent = false
-cast_to = Vector2( 500, 300 )
+cast_to = Vector2( 440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="ALegs/leg3"]
 position = Vector2( 394.232, 380.58 )
@@ -255,7 +255,7 @@ cast_to = Vector2( 53, 720 )
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( -80.8382, -94.6984 )
 enabled = true
-cast_to = Vector2( -500, 300 )
+cast_to = Vector2( -440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg1"]
 position = Vector2( -293.494, 156.895 )
@@ -277,10 +277,10 @@ enabled = true
 cast_to = Vector2( -53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg2"]
-position = Vector2( 125.792, -42.7495 )
+position = Vector2( 52, -82 )
 enabled = true
 exclude_parent = false
-cast_to = Vector2( 500, 300 )
+cast_to = Vector2( 440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg2"]
 position = Vector2( 353.06, 301.026 )
@@ -294,7 +294,7 @@ z_index = 1
 script = ExtResource( 4 )
 
 [node name="leg" parent="BLegs/leg3" instance=ExtResource( 3 )]
-position = Vector2( 0, 55.8384 )
+position = Vector2( 1.177, 56 )
 is_back_leg = true
 
 [node name="RayCast2D" type="RayCast2D" parent="BLegs/leg3"]
@@ -303,9 +303,9 @@ enabled = true
 cast_to = Vector2( 53, 720 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="BLegs/leg3"]
-position = Vector2( -147.872, -39.4197 )
+position = Vector2( -110.823, -62 )
 enabled = true
-cast_to = Vector2( -500, 300 )
+cast_to = Vector2( -440, 280 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="BLegs/leg3"]
 position = Vector2( -376.522, 406.611 )
@@ -388,4 +388,3 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/shockwave = SubResource( 13 )
-[connection signal="state_changed" from="states" to="." method="_on_states_state_changed"]

@@ -33,6 +33,8 @@ func enter():
 
 func update(delta):
 	timer -= delta
+	owner.look_direction = Vector2(sign((goal_pos - owner.global_position).x), 0)
+
 	match stage:
 		stages.INITIAL:
 			owner.velocity *= .98
@@ -42,6 +44,7 @@ func update(delta):
 				owner.emit_dust("dash")
 
 		stages.MID_DASH:
+			owner.velocity = (goal_pos - owner.global_position).normalized() * owner.velocity.length()
 			if owner.velocity.length() > 500:
 				owner.velocity *= .97
 

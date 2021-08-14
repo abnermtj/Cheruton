@@ -110,7 +110,7 @@ func _physics_process(delta):
 
 				animation_player.play("stuck")
 				emit_dust("hit")
-#				level.shake_camera(.06, 13.2, 16, -col_normal)s
+				level.shake_camera(.06, 13.2, 16, -col_normal)
 
 				state = sword_states.HIT
 				emit_signal("sword_result", 0, global_position, col_normal)
@@ -122,7 +122,7 @@ func _physics_process(delta):
 		sword_states.RETURN:
 			if not return_dust_emitted:
 				return_dust_emitted = true
-#				level.shake_camera(.1, 13.2, 20, col_normal)
+				level.shake_camera(.1, 13.2, 20, col_normal)
 				return_timer = WEAPON_RETURN_DELAY
 				global_position += col_normal * 8
 				emit_dust("return")

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const LEG_MOVE_COOLDOWN = .4
+const LEG_MOVE_COOLDOWN = .35
 
 # Leg references
 onready var a_legs = $ALegs.get_children()

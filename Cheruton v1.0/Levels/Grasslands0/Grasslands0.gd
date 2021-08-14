@@ -17,7 +17,11 @@ func _ready():
 
 	#debug
 	player.set_isInputEnabled(true)
-	player_spawn_pos = Vector2(3028, -1936)
+	player.set_attack_enabled(true)
+	player.level = self
+	find_node("flyingSword").level = self
+
+	player_spawn_pos = Vector2(3340, 964)
 	cur_cut_scene_completed = true
 	cutscene_number = 2 # cutscene
 	cutscene_index = 0 #

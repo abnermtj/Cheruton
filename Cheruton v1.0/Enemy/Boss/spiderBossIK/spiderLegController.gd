@@ -69,7 +69,7 @@ func set_tip_hurt_box_disabled(val):
 # moves raycasts according to vel
 func set_offset(vel):
 	ray_cast.position.x = base_offset + vel.x * .75
-	ray_cast.cast_to.x = base_cast.x + .1 * vel.x
+	ray_cast.cast_to.x = base_cast.x + .2 * vel.x
 	diag_ray_cast.position.y =  base_offset_diag + clamp(vel.y  * 1.3, -250, INF) # clamp so scaling up doesn't make spider reach very far
 	diag_ray_cast.cast_to = base_cast_diag + sign(vel.x)* (1 if sign(vel.x) == sign(base_cast_diag.x) else 0 ) *  Vector2(clamp(abs(vel.x)*.38 + int(not is_colliding_ground()) * 400, 0, INF), 0)  # if no where to place foot , boost diagonal vector
 	force_raycast_update()

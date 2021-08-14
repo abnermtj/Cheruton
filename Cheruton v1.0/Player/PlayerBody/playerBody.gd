@@ -171,12 +171,12 @@ func set_attack_enabled (val : bool):
 func displace(vector : Vector2):
 	global_position += vector
 
-func onStateChanged(curState):
+func _on_states_stateChanged(curState):
 	prev_state = cur_state
 	cur_state = curState
 
 func set_fsm(val : bool):
-	states.isActive = val
+	states.isFsmActive = val
 
 # Animation
 func play_anim(string : String):
@@ -428,3 +428,5 @@ func set_camera_mode_logic(state : int):
 
 func shake_camera(dur : float, freq : float, amp : float, dir : float):
 	level.shake_camera(dur, freq, amp, dir)
+
+

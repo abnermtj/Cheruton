@@ -1131,6 +1131,7 @@ amount = 26
 process_material = SubResource( 12 )
 
 [node name="Label" type="Label" parent="homeTownPortal"]
+visible = false
 margin_left = -444.0
 margin_top = -640.0
 margin_right = 1595.0
@@ -1410,7 +1411,7 @@ position = Vector2( 10240, 360 )
 
 [node name="player" parent="." instance=ExtResource( 9 )]
 light_mask = 1
-position = Vector2( 11445, 516 )
+position = Vector2( 10280, 176 )
 
 [node name="camera" parent="player" instance=ExtResource( 10 )]
 position = Vector2( 0, -160 )

@@ -3,7 +3,7 @@ extends baseState
 const SPEED = 465  # faster than player
 const RUN_SPEED = 100
 
-const LEG_DIST_MARGIN = 440
+const LEG_DIST_MARGIN = 400
 onready var projectile = preload("res://Enemy/Boss/spiderBossIK/acidProjectile/acidProjectile.tscn")
 var leg_move_timer : float
 var desired_velocity = Vector2()
@@ -32,16 +32,16 @@ func update(delta):
 	owner.move_body_sprites()
 
 	#RANDOM ATTTACK
-	if owner.player_in_small_look_area:
-#		emit_signal("changeState", "stabAttack")
-		var rand = randi()%3
-		match rand:
-			0:
-				emit_signal("changeState","stepBack")
-			1:
-				emit_signal("changeState","jumpAttack")
-			2:
-				emit_signal("changeState","stabAttack")
+#	if owner.player_in_small_look_area:
+##		emit_signal("changeState", "stabAttack")
+#		var rand = randi()%3
+#		match rand:
+#			0:
+#				emit_signal("changeState","stepBack")
+#			1:
+#				emit_signal("changeState","jumpAttack")
+#			2:
+#				emit_signal("changeState","stabAttack")
 
 #func handle_input(event):
 #	if Input.is_action_just_pressed("hook"):
